@@ -1,0 +1,2 @@
+/usr/bin/ar qc libCanvasDeskCore.a CMakeFiles/CanvasDeskCore.dir/CanvasDeskCore_autogen/mocs_compilation.cpp.o CMakeFiles/CanvasDeskCore.dir/CanvasDeskCore.cpp.o
+/usr/bin/ranlib libCanvasDeskCore.a

@@ -1,0 +1,11 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/brad/Documents/canvasdesk/build/cmake_install.cmake",
+		"/home/brad/Documents/canvasdesk/build/src/cmake_install.cmake",
+		"/home/brad/Documents/canvasdesk/build/src/app/cmake_install.cmake",
+		"/home/brad/Documents/canvasdesk/build/src/core/cmake_install.cmake",
+		"/home/brad/Documents/canvasdesk/build/src/qml/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

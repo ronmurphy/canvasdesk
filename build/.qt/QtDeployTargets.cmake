@@ -1,0 +1,8 @@
+set(__QT_DEPLOY_TARGET_canvasdesk-runtime_FILE /home/brad/Documents/canvasdesk/build/src/app/canvasdesk-runtime)
+set(__QT_DEPLOY_TARGET_canvasdesk-runtime_TYPE EXECUTABLE)
+set(__QT_DEPLOY_TARGET_CanvasDeskCore_FILE /home/brad/Documents/canvasdesk/build/src/core/libCanvasDeskCore.a)
+set(__QT_DEPLOY_TARGET_CanvasDeskCore_TYPE STATIC_LIBRARY)
+set(__QT_DEPLOY_TARGET_CanvasDeskQml_FILE /home/brad/Documents/canvasdesk/build/src/qml/libCanvasDeskQml.so)
+set(__QT_DEPLOY_TARGET_CanvasDeskQml_TYPE SHARED_LIBRARY)
+set(__QT_DEPLOY_TARGET_CanvasDeskQmlplugin_FILE /home/brad/Documents/canvasdesk/build/src/qml/libCanvasDeskQmlplugin.so)
+set(__QT_DEPLOY_TARGET_CanvasDeskQmlplugin_TYPE MODULE_LIBRARY)

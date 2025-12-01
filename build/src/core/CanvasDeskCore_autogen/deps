@@ -1,0 +1,5 @@
+CanvasDeskCore_autogen/timestamp: \
+	/home/brad/Documents/canvasdesk/src/core/CMakeLists.txt \
+	/home/brad/Documents/canvasdesk/src/core/CanvasDeskCore.cpp \
+	/home/brad/Documents/canvasdesk/src/core/CanvasDeskCore.h \
+	/usr/bin/cmake

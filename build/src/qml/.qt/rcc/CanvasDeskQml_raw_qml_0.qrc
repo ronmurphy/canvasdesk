@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/CanvasDesk/">
+    <file alias="Main.qml">/home/brad/Documents/canvasdesk/src/qml/Main.qml</file>
+  </qresource>
+</RCC>
+
