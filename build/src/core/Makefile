@@ -158,6 +158,30 @@ CanvasDeskCore_autogen/fast:
 	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore_autogen.dir/build.make src/core/CMakeFiles/CanvasDeskCore_autogen.dir/build
 .PHONY : CanvasDeskCore_autogen/fast
 
+AppManager.o: AppManager.cpp.o
+.PHONY : AppManager.o
+
+# target to build an object file
+AppManager.cpp.o:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore.dir/build.make src/core/CMakeFiles/CanvasDeskCore.dir/AppManager.cpp.o
+.PHONY : AppManager.cpp.o
+
+AppManager.i: AppManager.cpp.i
+.PHONY : AppManager.i
+
+# target to preprocess a source file
+AppManager.cpp.i:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore.dir/build.make src/core/CMakeFiles/CanvasDeskCore.dir/AppManager.cpp.i
+.PHONY : AppManager.cpp.i
+
+AppManager.s: AppManager.cpp.s
+.PHONY : AppManager.s
+
+# target to generate assembly for a file
+AppManager.cpp.s:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore.dir/build.make src/core/CMakeFiles/CanvasDeskCore.dir/AppManager.cpp.s
+.PHONY : AppManager.cpp.s
+
 CanvasDeskCore.o: CanvasDeskCore.cpp.o
 .PHONY : CanvasDeskCore.o
 
@@ -254,6 +278,30 @@ LayoutManager.cpp.s:
 	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore.dir/build.make src/core/CMakeFiles/CanvasDeskCore.dir/LayoutManager.cpp.s
 .PHONY : LayoutManager.cpp.s
 
+WindowManager.o: WindowManager.cpp.o
+.PHONY : WindowManager.o
+
+# target to build an object file
+WindowManager.cpp.o:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore.dir/build.make src/core/CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.o
+.PHONY : WindowManager.cpp.o
+
+WindowManager.i: WindowManager.cpp.i
+.PHONY : WindowManager.i
+
+# target to preprocess a source file
+WindowManager.cpp.i:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore.dir/build.make src/core/CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.i
+.PHONY : WindowManager.cpp.i
+
+WindowManager.s: WindowManager.cpp.s
+.PHONY : WindowManager.s
+
+# target to generate assembly for a file
+WindowManager.cpp.s:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore.dir/build.make src/core/CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.s
+.PHONY : WindowManager.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -265,6 +313,9 @@ help:
 	@echo "... CanvasDeskCore_autogen"
 	@echo "... CanvasDeskCore_autogen_timestamp_deps"
 	@echo "... CanvasDeskCore"
+	@echo "... AppManager.o"
+	@echo "... AppManager.i"
+	@echo "... AppManager.s"
 	@echo "... CanvasDeskCore.o"
 	@echo "... CanvasDeskCore.i"
 	@echo "... CanvasDeskCore.s"
@@ -277,6 +328,9 @@ help:
 	@echo "... LayoutManager.o"
 	@echo "... LayoutManager.i"
 	@echo "... LayoutManager.s"
+	@echo "... WindowManager.o"
+	@echo "... WindowManager.i"
+	@echo "... WindowManager.s"
 .PHONY : help
 
 

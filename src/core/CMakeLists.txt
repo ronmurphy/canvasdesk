@@ -5,6 +5,10 @@ add_library(CanvasDeskCore
     Component.h
     LayoutManager.cpp
     LayoutManager.h
+    AppManager.cpp
+    AppManager.h
+    WindowManager.cpp
+    WindowManager.h
 )
 
 target_link_libraries(CanvasDeskCore PRIVATE

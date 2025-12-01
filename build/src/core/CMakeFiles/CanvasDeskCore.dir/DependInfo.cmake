@@ -9,10 +9,12 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "" "src/core/CanvasDeskCore_autogen/timestamp" "custom" "src/core/CanvasDeskCore_autogen/deps"
+  "/home/brad/Documents/canvasdesk/src/core/AppManager.cpp" "src/core/CMakeFiles/CanvasDeskCore.dir/AppManager.cpp.o" "gcc" "src/core/CMakeFiles/CanvasDeskCore.dir/AppManager.cpp.o.d"
   "/home/brad/Documents/canvasdesk/src/core/CanvasDeskCore.cpp" "src/core/CMakeFiles/CanvasDeskCore.dir/CanvasDeskCore.cpp.o" "gcc" "src/core/CMakeFiles/CanvasDeskCore.dir/CanvasDeskCore.cpp.o.d"
   "/home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/mocs_compilation.cpp" "src/core/CMakeFiles/CanvasDeskCore.dir/CanvasDeskCore_autogen/mocs_compilation.cpp.o" "gcc" "src/core/CMakeFiles/CanvasDeskCore.dir/CanvasDeskCore_autogen/mocs_compilation.cpp.o.d"
   "/home/brad/Documents/canvasdesk/src/core/Component.cpp" "src/core/CMakeFiles/CanvasDeskCore.dir/Component.cpp.o" "gcc" "src/core/CMakeFiles/CanvasDeskCore.dir/Component.cpp.o.d"
   "/home/brad/Documents/canvasdesk/src/core/LayoutManager.cpp" "src/core/CMakeFiles/CanvasDeskCore.dir/LayoutManager.cpp.o" "gcc" "src/core/CMakeFiles/CanvasDeskCore.dir/LayoutManager.cpp.o.d"
+  "/home/brad/Documents/canvasdesk/src/core/WindowManager.cpp" "src/core/CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.o" "gcc" "src/core/CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

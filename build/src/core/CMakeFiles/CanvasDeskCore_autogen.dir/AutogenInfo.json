@@ -12,6 +12,12 @@
 	"HEADERS" : 
 	[
 		[
+			"/home/brad/Documents/canvasdesk/src/core/AppManager.h",
+			"MU",
+			"EWIEGA46WW/moc_AppManager.cpp",
+			null
+		],
+		[
 			"/home/brad/Documents/canvasdesk/src/core/CanvasDeskCore.h",
 			"MU",
 			"EWIEGA46WW/moc_CanvasDeskCore.cpp",
@@ -27,6 +33,12 @@
 			"/home/brad/Documents/canvasdesk/src/core/LayoutManager.h",
 			"MU",
 			"EWIEGA46WW/moc_LayoutManager.cpp",
+			null
+		],
+		[
+			"/home/brad/Documents/canvasdesk/src/core/WindowManager.h",
+			"MU",
+			"EWIEGA46WW/moc_WindowManager.cpp",
 			null
 		]
 	],
@@ -104,6 +116,7 @@
 	"SETTINGS_FILE" : "/home/brad/Documents/canvasdesk/build/src/core/CMakeFiles/CanvasDeskCore_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
+		[ "/home/brad/Documents/canvasdesk/src/core/AppManager.cpp", "MU", null ],
 		[
 			"/home/brad/Documents/canvasdesk/src/core/CanvasDeskCore.cpp",
 			"MU",
@@ -112,6 +125,11 @@
 		[ "/home/brad/Documents/canvasdesk/src/core/Component.cpp", "MU", null ],
 		[
 			"/home/brad/Documents/canvasdesk/src/core/LayoutManager.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/brad/Documents/canvasdesk/src/core/WindowManager.cpp",
 			"MU",
 			null
 		]

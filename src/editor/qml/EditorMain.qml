@@ -18,7 +18,14 @@ ApplicationWindow {
         var items = []
         for (var i = 0; i < canvasModel.count; ++i) {
             var item = canvasModel.get(i)
-            items.push({ type: item.type, x: item.x, y: item.y })
+            items.push({ 
+                type: item.type, 
+                x: item.x, 
+                y: item.y,
+                text: item.text,
+                icon: item.icon,
+                exec: item.exec
+            })
         }
         var json = JSON.stringify({ components: items }, null, 2)
         if (layoutManager.saveLayout("layout.json", json)) {
@@ -84,38 +91,91 @@ ApplicationWindow {
             border.color: "#ccc"
             z: 2
             
-            ColumnLayout {
+            SplitView {
                 anchors.fill: parent
-                anchors.margins: 10
-                
-                Text {
-                    text: "Components"
-                    font.bold: true
-                    font.pixelSize: 16
+                orientation: Qt.Horizontal
+
+                // Left Panel: Components & Apps
+                ColumnLayout {
+                    SplitView.preferredWidth: 250
+                    SplitView.minimumWidth: 200
+                    spacing: 0
+
+                    TabBar {
+                        id: leftTabBar
+                        Layout.fillWidth: true
+                        TabButton { text: "Components" }
+                        TabButton { text: "Apps" }
+                    }
+
+                    StackLayout {
+                        currentIndex: leftTabBar.currentIndex
+                        Layout.fillWidth: true
+                        Layout.fillHeight: true
+
+                        // Components List
+                        ListView {
+                            model: ListModel {
+                                ListElement { type: "Rectangle"; name: "Rectangle"; icon: "rectangle" }
+                                ListElement { type: "Button"; name: "Button"; icon: "button" }
+                                ListElement { type: "Text"; name: "Text Label"; icon: "text" }
+                                ListElement { type: "Image"; name: "Image"; icon: "image" }
+                                ListElement { type: "Taskbar"; name: "Taskbar"; icon: "view-list-icons" }
+                                ListElement { type: "AppGrid"; name: "App Grid"; icon: "view-grid" }
+                                ListElement { type: "FileManager"; name: "File Manager"; icon: "system-file-manager" }
+                            }
+                            delegate: ItemDelegate {
+                                width: parent.width
+                                text: name
+                                icon.name: icon
+                                
+                                Drag.active: dragHandler.active
+                                Drag.dragType: Drag.Automatic
+                                Drag.mimeData: { "text/plain": type }
+
+                                DragHandler {
+                                    id: dragHandler
+                                    onActiveChanged: if (active) parent.grabToImage(function(result) { parent.Drag.imageSource = result.url })
+                                }
+                            }
+                        }
+
+                        // Apps List
+                        ListView {
+                            model: AppManager.apps
+                            clip: true
+                            delegate: ItemDelegate {
+                                width: parent.width
+                                text: modelData.name
+                                icon.name: modelData.icon || "application-x-executable"
+                                
+                                Drag.active: appDragHandler.active
+                                Drag.dragType: Drag.Automatic
+                                // Pass app data as JSON in mime data
+                                Drag.mimeData: { 
+                                    "application/x-canvasdesk-app": JSON.stringify({
+                                        type: "Button",
+                                        properties: {
+                                            text: modelData.name,
+                                            icon: modelData.icon,
+                                            exec: modelData.exec
+                                        }
+                                    })
+                                }
+
+                                DragHandler {
+                                    id: appDragHandler
+                                    onActiveChanged: if (active) parent.grabToImage(function(result) { parent.Drag.imageSource = result.url })
+                                }
+                            }
+                        }
+                    }
                 }
-                
-                ListView {
+
+                // Center Panel: Canvas
+                Rectangle {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
-                    model: ["Bar", "Button", "Icon", "Panel"]
-                    delegate: Item {
-                        width: parent.width
-                        height: 40
-                        
-                        Rectangle {
-                            anchors.fill: parent
-                            anchors.margins: 2
-                            color: "white"
-                            border.color: "#999"
-                            radius: 4
-                            
-                            Text {
-                                anchors.centerIn: parent
-                                text: modelData
-                            }
-                            
-                            MouseArea {
-                                id: dragArea
                                 anchors.fill: parent
                                 drag.target: draggableItem
                                 
@@ -181,16 +241,26 @@ ApplicationWindow {
                 
                 DropArea {
                     anchors.fill: parent
-                    keys: ["component"]
-                    
                     onDropped: (drop) => {
-                        if (drop.mimeData.type) {
-                            console.log("Dropped: " + drop.mimeData.type + " at " + drop.x + ", " + drop.y)
-                            canvasModel.append({
-                                "type": drop.mimeData.type,
-                                "x": drop.x,
-                                "y": drop.y
-                            })
+                        if (drop.hasText && !drop.formats.includes("application/x-canvasdesk-app")) {
+                            var type = drop.text
+                            var comp = { type: type, x: drop.x, y: drop.y }
+                            canvasModel.append(comp)
+                            drop.accept()
+                        } else if (drop.formats.includes("application/x-canvasdesk-app")) {
+                            var data = JSON.parse(drop.getDataAsString("application/x-canvasdesk-app"))
+                            var comp = { 
+                                type: data.type, 
+                                x: drop.x, 
+                                y: drop.y,
+                                // We need to store properties in the model. 
+                                // For prototype simplicity, we'll just store specific ones or a generic map if ListModel supports it (it doesn't well).
+                                // So we'll flatten important ones.
+                                text: data.properties.text,
+                                icon: data.properties.icon,
+                                exec: data.properties.exec
+                            }
+                            canvasModel.append(comp)
                             drop.accept()
                         }
                     }
