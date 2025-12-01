@@ -8,5 +8,5 @@ target_link_libraries(canvasdesk-runtime PRIVATE
     Qt6::Gui
     Qt6::Qml
     CanvasDeskCore
-    CanvasDeskQmlplugin
+    CanvasDeskQml
 )

@@ -5,7 +5,7 @@ canvasdesk-runtime: \
   CMakeFiles/canvasdesk-runtime.dir/canvasdesk-runtime_autogen/mocs_compilation.cpp.o \
   CMakeFiles/canvasdesk-runtime.dir/main.cpp.o \
   ../core/libCanvasDeskCore.a \
-  ../qml/libCanvasDeskQmlplugin.so \
+  ../qml/libCanvasDeskQml.so \
   /usr/lib/libQt6Quick.so.6.10.1 \
   /usr/lib/libQt6OpenGL.so.6.10.1 \
   /usr/lib/libQt6Gui.so.6.10.1 \
@@ -40,7 +40,6 @@ canvasdesk-runtime: \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/libgcc.a \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtendS.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crtn.o \
-  /home/brad/Documents/canvasdesk/build/src/qml/libCanvasDeskQml.so \
   /usr/lib/libQt6QmlMeta.so.6 \
   /usr/lib/libQt6QmlModels.so.6 \
   /usr/lib/ld-linux-x86-64.so.2 \
@@ -150,7 +149,7 @@ CMakeFiles/canvasdesk-runtime.dir/main.cpp.o:
 
 ../core/libCanvasDeskCore.a:
 
-../qml/libCanvasDeskQmlplugin.so:
+../qml/libCanvasDeskQml.so:
 
 /usr/lib/libQt6Quick.so.6.10.1:
 
@@ -219,8 +218,6 @@ CMakeFiles/canvasdesk-runtime.dir/main.cpp.o:
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtendS.o:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crtn.o:
-
-/home/brad/Documents/canvasdesk/build/src/qml/libCanvasDeskQml.so:
 
 /usr/lib/libQt6QmlMeta.so.6:
 

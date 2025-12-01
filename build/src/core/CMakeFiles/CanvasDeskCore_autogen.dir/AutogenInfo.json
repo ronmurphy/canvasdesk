@@ -16,6 +16,18 @@
 			"MU",
 			"EWIEGA46WW/moc_CanvasDeskCore.cpp",
 			null
+		],
+		[
+			"/home/brad/Documents/canvasdesk/src/core/Component.h",
+			"MU",
+			"EWIEGA46WW/moc_Component.cpp",
+			null
+		],
+		[
+			"/home/brad/Documents/canvasdesk/src/core/LayoutManager.h",
+			"MU",
+			"EWIEGA46WW/moc_LayoutManager.cpp",
+			null
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
@@ -94,6 +106,12 @@
 	[
 		[
 			"/home/brad/Documents/canvasdesk/src/core/CanvasDeskCore.cpp",
+			"MU",
+			null
+		],
+		[ "/home/brad/Documents/canvasdesk/src/core/Component.cpp", "MU", null ],
+		[
+			"/home/brad/Documents/canvasdesk/src/core/LayoutManager.cpp",
 			"MU",
 			null
 		]

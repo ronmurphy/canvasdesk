@@ -14,6 +14,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/home/brad/Documents/canvasdesk/src/CMakeLists.txt"
   "/home/brad/Documents/canvasdesk/src/app/CMakeLists.txt"
   "/home/brad/Documents/canvasdesk/src/core/CMakeLists.txt"
+  "/home/brad/Documents/canvasdesk/src/editor/CMakeLists.txt"
   "/home/brad/Documents/canvasdesk/src/qml/CMakeLists.txt"
   "/usr/lib/cmake/Qt6/FindWrapAtomic.cmake"
   "/usr/lib/cmake/Qt6/FindWrapOpenGL.cmake"
@@ -902,6 +903,8 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "src/qml/.qt/CanvasDeskQml_qml.cmake"
   "src/qml/.qt/CanvasDeskQml_res.cmake"
   "src/qml/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "src/editor/CMakeFiles/canvasdesk-editor_autogen.dir/AutogenInfo.json"
+  "src/editor/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
@@ -932,4 +935,7 @@ set(CMAKE_DEPEND_INFO_FILES
   "src/qml/CMakeFiles/CanvasDeskQml_autogen.dir/DependInfo.cmake"
   "src/qml/CMakeFiles/CanvasDeskQmlplugin_autogen_timestamp_deps.dir/DependInfo.cmake"
   "src/qml/CMakeFiles/CanvasDeskQmlplugin_autogen.dir/DependInfo.cmake"
+  "src/editor/CMakeFiles/canvasdesk-editor.dir/DependInfo.cmake"
+  "src/editor/CMakeFiles/canvasdesk-editor_autogen_timestamp_deps.dir/DependInfo.cmake"
+  "src/editor/CMakeFiles/canvasdesk-editor_autogen.dir/DependInfo.cmake"
   )

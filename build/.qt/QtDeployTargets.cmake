@@ -6,3 +6,5 @@ set(__QT_DEPLOY_TARGET_CanvasDeskQml_FILE /home/brad/Documents/canvasdesk/build/
 set(__QT_DEPLOY_TARGET_CanvasDeskQml_TYPE SHARED_LIBRARY)
 set(__QT_DEPLOY_TARGET_CanvasDeskQmlplugin_FILE /home/brad/Documents/canvasdesk/build/src/qml/libCanvasDeskQmlplugin.so)
 set(__QT_DEPLOY_TARGET_CanvasDeskQmlplugin_TYPE MODULE_LIBRARY)
+set(__QT_DEPLOY_TARGET_canvasdesk-editor_FILE /home/brad/Documents/canvasdesk/build/src/editor/canvasdesk-editor)
+set(__QT_DEPLOY_TARGET_canvasdesk-editor_TYPE EXECUTABLE)

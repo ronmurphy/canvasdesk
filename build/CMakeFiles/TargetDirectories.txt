@@ -34,3 +34,8 @@
 /home/brad/Documents/canvasdesk/build/src/qml/CMakeFiles/CanvasDeskQml_autogen.dir
 /home/brad/Documents/canvasdesk/build/src/qml/CMakeFiles/CanvasDeskQmlplugin_autogen_timestamp_deps.dir
 /home/brad/Documents/canvasdesk/build/src/qml/CMakeFiles/CanvasDeskQmlplugin_autogen.dir
+/home/brad/Documents/canvasdesk/build/src/editor/CMakeFiles/canvasdesk-editor.dir
+/home/brad/Documents/canvasdesk/build/src/editor/CMakeFiles/edit_cache.dir
+/home/brad/Documents/canvasdesk/build/src/editor/CMakeFiles/rebuild_cache.dir
+/home/brad/Documents/canvasdesk/build/src/editor/CMakeFiles/canvasdesk-editor_autogen_timestamp_deps.dir
+/home/brad/Documents/canvasdesk/build/src/editor/CMakeFiles/canvasdesk-editor_autogen.dir

@@ -454,6 +454,45 @@ CanvasDeskQmlplugin_autogen/fast:
 	$(MAKE) $(MAKESILENT) -f src/qml/CMakeFiles/CanvasDeskQmlplugin_autogen.dir/build.make src/qml/CMakeFiles/CanvasDeskQmlplugin_autogen.dir/build
 .PHONY : CanvasDeskQmlplugin_autogen/fast
 
+#=============================================================================
+# Target rules for targets named canvasdesk-editor
+
+# Build rule for target.
+canvasdesk-editor: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 canvasdesk-editor
+.PHONY : canvasdesk-editor
+
+# fast build rule for target.
+canvasdesk-editor/fast:
+	$(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor.dir/build.make src/editor/CMakeFiles/canvasdesk-editor.dir/build
+.PHONY : canvasdesk-editor/fast
+
+#=============================================================================
+# Target rules for targets named canvasdesk-editor_autogen_timestamp_deps
+
+# Build rule for target.
+canvasdesk-editor_autogen_timestamp_deps: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 canvasdesk-editor_autogen_timestamp_deps
+.PHONY : canvasdesk-editor_autogen_timestamp_deps
+
+# fast build rule for target.
+canvasdesk-editor_autogen_timestamp_deps/fast:
+	$(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor_autogen_timestamp_deps.dir/build.make src/editor/CMakeFiles/canvasdesk-editor_autogen_timestamp_deps.dir/build
+.PHONY : canvasdesk-editor_autogen_timestamp_deps/fast
+
+#=============================================================================
+# Target rules for targets named canvasdesk-editor_autogen
+
+# Build rule for target.
+canvasdesk-editor_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 canvasdesk-editor_autogen
+.PHONY : canvasdesk-editor_autogen
+
+# fast build rule for target.
+canvasdesk-editor_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor_autogen.dir/build.make src/editor/CMakeFiles/canvasdesk-editor_autogen.dir/build
+.PHONY : canvasdesk-editor_autogen/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -479,6 +518,8 @@ help:
 	@echo "... all_qmllint_json"
 	@echo "... all_qmllint_module"
 	@echo "... all_qmltyperegistrations"
+	@echo "... canvasdesk-editor_autogen"
+	@echo "... canvasdesk-editor_autogen_timestamp_deps"
 	@echo "... canvasdesk-runtime_autogen"
 	@echo "... canvasdesk-runtime_autogen_timestamp_deps"
 	@echo "... generate_qmlls_build_ini_file"
@@ -487,6 +528,7 @@ help:
 	@echo "... CanvasDeskCore"
 	@echo "... CanvasDeskQml"
 	@echo "... CanvasDeskQmlplugin"
+	@echo "... canvasdesk-editor"
 	@echo "... canvasdesk-runtime"
 .PHONY : help
 

@@ -120,7 +120,7 @@ src/app/canvasdesk-runtime: src/app/CMakeFiles/canvasdesk-runtime.dir/main.cpp.o
 src/app/canvasdesk-runtime: src/app/CMakeFiles/canvasdesk-runtime.dir/build.make
 src/app/canvasdesk-runtime: src/app/CMakeFiles/canvasdesk-runtime.dir/compiler_depend.ts
 src/app/canvasdesk-runtime: src/core/libCanvasDeskCore.a
-src/app/canvasdesk-runtime: src/qml/libCanvasDeskQmlplugin.so
+src/app/canvasdesk-runtime: src/qml/libCanvasDeskQml.so
 src/app/canvasdesk-runtime: /usr/lib/libQt6Quick.so.6.10.1
 src/app/canvasdesk-runtime: /usr/lib/libQt6OpenGL.so.6.10.1
 src/app/canvasdesk-runtime: /usr/lib/libQt6Gui.so.6.10.1

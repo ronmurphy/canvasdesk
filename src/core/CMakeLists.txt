@@ -1,6 +1,10 @@
 
 add_library(CanvasDeskCore
     CanvasDeskCore.cpp
+    Component.cpp
+    Component.h
+    LayoutManager.cpp
+    LayoutManager.h
 )
 
 target_link_libraries(CanvasDeskCore PRIVATE

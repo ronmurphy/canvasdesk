@@ -206,6 +206,54 @@ CanvasDeskCore_autogen/mocs_compilation.cpp.s:
 	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore.dir/build.make src/core/CMakeFiles/CanvasDeskCore.dir/CanvasDeskCore_autogen/mocs_compilation.cpp.s
 .PHONY : CanvasDeskCore_autogen/mocs_compilation.cpp.s
 
+Component.o: Component.cpp.o
+.PHONY : Component.o
+
+# target to build an object file
+Component.cpp.o:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore.dir/build.make src/core/CMakeFiles/CanvasDeskCore.dir/Component.cpp.o
+.PHONY : Component.cpp.o
+
+Component.i: Component.cpp.i
+.PHONY : Component.i
+
+# target to preprocess a source file
+Component.cpp.i:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore.dir/build.make src/core/CMakeFiles/CanvasDeskCore.dir/Component.cpp.i
+.PHONY : Component.cpp.i
+
+Component.s: Component.cpp.s
+.PHONY : Component.s
+
+# target to generate assembly for a file
+Component.cpp.s:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore.dir/build.make src/core/CMakeFiles/CanvasDeskCore.dir/Component.cpp.s
+.PHONY : Component.cpp.s
+
+LayoutManager.o: LayoutManager.cpp.o
+.PHONY : LayoutManager.o
+
+# target to build an object file
+LayoutManager.cpp.o:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore.dir/build.make src/core/CMakeFiles/CanvasDeskCore.dir/LayoutManager.cpp.o
+.PHONY : LayoutManager.cpp.o
+
+LayoutManager.i: LayoutManager.cpp.i
+.PHONY : LayoutManager.i
+
+# target to preprocess a source file
+LayoutManager.cpp.i:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore.dir/build.make src/core/CMakeFiles/CanvasDeskCore.dir/LayoutManager.cpp.i
+.PHONY : LayoutManager.cpp.i
+
+LayoutManager.s: LayoutManager.cpp.s
+.PHONY : LayoutManager.s
+
+# target to generate assembly for a file
+LayoutManager.cpp.s:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore.dir/build.make src/core/CMakeFiles/CanvasDeskCore.dir/LayoutManager.cpp.s
+.PHONY : LayoutManager.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -223,6 +271,12 @@ help:
 	@echo "... CanvasDeskCore_autogen/mocs_compilation.o"
 	@echo "... CanvasDeskCore_autogen/mocs_compilation.i"
 	@echo "... CanvasDeskCore_autogen/mocs_compilation.s"
+	@echo "... Component.o"
+	@echo "... Component.i"
+	@echo "... Component.s"
+	@echo "... LayoutManager.o"
+	@echo "... LayoutManager.i"
+	@echo "... LayoutManager.s"
 .PHONY : help
 
 

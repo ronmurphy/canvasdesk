@@ -6,12 +6,28 @@
                 {
                     "entries": [
                         {
+                            "codegenResult": 2,
+                            "column": 5,
+                            "durationMicroseconds": 0,
+                            "functionName": "createObject",
+                            "line": 40,
+                            "message": "Functions without type annotations won't be compiled"
+                        },
+                        {
                             "codegenResult": 0,
-                            "column": 27,
-                            "durationMicroseconds": 73,
-                            "functionName": "centerIn",
-                            "line": 11,
+                            "column": 23,
+                            "durationMicroseconds": 85,
+                            "functionName": "fill",
+                            "line": 17,
                             "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 28,
+                            "durationMicroseconds": 765,
+                            "functionName": "onCompleted",
+                            "line": 20,
+                            "message": "Cannot retrieve a non-object type by ID: layoutManager"
                         }
                     ],
                     "filePath": "/home/brad/Documents/canvasdesk/src/qml/Main.qml"

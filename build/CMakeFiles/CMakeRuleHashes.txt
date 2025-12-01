@@ -8,6 +8,8 @@ df1555009076ff38ec4c3b06a6e9b8e2 .rcc/qmlcache/all_aotstats.aotstats
 4b489ff288a514ed422dfd2cf2f67980 src/app/canvasdesk-runtime_autogen/timestamp
 e7b5cf7031fbce967605b63d0839e24f src/core/CMakeFiles/CanvasDeskCore_autogen
 c4cd7160dbf26a8a68810e260d165fed src/core/CanvasDeskCore_autogen/timestamp
+fcd025b01b29a13f90cbd56a70f86595 src/editor/CMakeFiles/canvasdesk-editor_autogen
+04be3a575ddb0900f5ae7613b91c9302 src/editor/canvasdesk-editor_autogen/timestamp
 6a6b6bb177aff6195b053d35c92383dc src/qml/.qt/CanvasDeskQml_qml.txt
 480871c1839555a4cc8f1d695ecb4d94 src/qml/.qt/CanvasDeskQml_res.txt
 2c4c5fa80d7566733d86260615bbe847 src/qml/.qt/rcc/qrc_CanvasDeskQml_raw_qml_0.cpp
