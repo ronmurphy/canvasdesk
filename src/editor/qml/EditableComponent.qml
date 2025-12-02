@@ -19,6 +19,18 @@ Item {
     // Expose the loaded component for docking access
     property alias loadedItem: componentLoader.item
 
+    // Notify parent when selection changes
+    onSelectedChanged: {
+        // Find the DesktopMode parent and notify it
+        var current = parent
+        while (current && !current.selectComponent) {
+            current = current.parent
+        }
+        if (current && current.selectComponent) {
+            current.selectComponent(root)
+        }
+    }
+
     Component.onCompleted: {
         if (!isDocked) {
             desktopParent = parent

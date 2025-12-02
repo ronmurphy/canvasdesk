@@ -19,6 +19,20 @@ ApplicationWindow {
 
     // Selected component for property editing
     property var selectedComponent: null
+
+    // Update selected component when any component is clicked
+    function selectComponent(component) {
+        // Deselect all other components
+        for (var i = 0; i < desktopContainer.children.length; i++) {
+            var child = desktopContainer.children[i]
+            if (child && child.componentType && child !== component) {
+                child.selected = false
+            }
+        }
+
+        // Set the selected component
+        selectedComponent = component.selected ? component : null
+    }
     
     // Floating editor panel visibility
     property bool showFloatingEditor: false
@@ -215,28 +229,164 @@ ApplicationWindow {
                 
                 // Properties Tab
                 ScrollView {
+                    clip: true
+
                     ColumnLayout {
-                        width: parent.width
-                        spacing: 8
-                        
-                        Label {
-                            text: selectedComponent ? "Component Properties" : "Select a component"
-                            color: "white"
-                            font.bold: true
+                        width: parent ? parent.width : 300
+                        spacing: 12
+
+                        // Header
+                        Rectangle {
+                            Layout.fillWidth: true
+                            height: 40
+                            color: "#2a2a2a"
+                            radius: 4
+
+                            Label {
+                                anchors.centerIn: parent
+                                text: selectedComponent ? selectedComponent.componentType + " Properties" : "Select a Component"
+                                color: "white"
+                                font.bold: true
+                                font.pixelSize: 14
+                            }
                         }
-                        
-                        Label {
-                            visible: selectedComponent
-                            text: selectedComponent ? "Type: " + selectedComponent.type : ""
-                            color: "#aaa"
-                        }
-                        
+
+                        // No selection message
                         Label {
                             visible: !selectedComponent
                             text: "Click a component on the desktop to edit its properties"
                             color: "#888"
                             wrapMode: Text.WordWrap
                             Layout.fillWidth: true
+                            Layout.margins: 8
+                        }
+
+                        // Property sections (only visible when component selected)
+                        ColumnLayout {
+                            visible: selectedComponent
+                            Layout.fillWidth: true
+                            spacing: 16
+
+                            // Position & Size section
+                            ColumnLayout {
+                                Layout.fillWidth: true
+                                spacing: 8
+
+                                Label {
+                                    text: "Position & Size"
+                                    color: "#4a90e2"
+                                    font.bold: true
+                                }
+
+                                Rectangle {
+                                    Layout.fillWidth: true
+                                    height: 1
+                                    color: "#333"
+                                }
+
+                                // X position
+                                RowLayout {
+                                    Layout.fillWidth: true
+                                    Label {
+                                        text: "X:"
+                                        color: "#ccc"
+                                        Layout.preferredWidth: 60
+                                    }
+                                    TextField {
+                                        id: propX
+                                        Layout.fillWidth: true
+                                        text: selectedComponent ? Math.round(selectedComponent.x) : "0"
+                                        validator: IntValidator {}
+                                        onEditingFinished: {
+                                            if (selectedComponent) {
+                                                selectedComponent.x = parseInt(text) || 0
+                                            }
+                                        }
+                                    }
+                                }
+
+                                // Y position
+                                RowLayout {
+                                    Layout.fillWidth: true
+                                    Label {
+                                        text: "Y:"
+                                        color: "#ccc"
+                                        Layout.preferredWidth: 60
+                                    }
+                                    TextField {
+                                        id: propY
+                                        Layout.fillWidth: true
+                                        text: selectedComponent ? Math.round(selectedComponent.y) : "0"
+                                        validator: IntValidator {}
+                                        onEditingFinished: {
+                                            if (selectedComponent) {
+                                                selectedComponent.y = parseInt(text) || 0
+                                            }
+                                        }
+                                    }
+                                }
+
+                                // Width
+                                RowLayout {
+                                    Layout.fillWidth: true
+                                    Label {
+                                        text: "Width:"
+                                        color: "#ccc"
+                                        Layout.preferredWidth: 60
+                                    }
+                                    TextField {
+                                        id: propWidth
+                                        Layout.fillWidth: true
+                                        text: selectedComponent ? Math.round(selectedComponent.width) : "0"
+                                        validator: IntValidator { bottom: 10 }
+                                        onEditingFinished: {
+                                            if (selectedComponent) {
+                                                selectedComponent.width = parseInt(text) || 100
+                                            }
+                                        }
+                                    }
+                                }
+
+                                // Height
+                                RowLayout {
+                                    Layout.fillWidth: true
+                                    Label {
+                                        text: "Height:"
+                                        color: "#ccc"
+                                        Layout.preferredWidth: 60
+                                    }
+                                    TextField {
+                                        id: propHeight
+                                        Layout.fillWidth: true
+                                        text: selectedComponent ? Math.round(selectedComponent.height) : "0"
+                                        validator: IntValidator { bottom: 10 }
+                                        onEditingFinished: {
+                                            if (selectedComponent) {
+                                                selectedComponent.height = parseInt(text) || 50
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            // Component-specific properties
+                            Loader {
+                                Layout.fillWidth: true
+                                sourceComponent: {
+                                    if (!selectedComponent) return null
+
+                                    switch (selectedComponent.componentType) {
+                                        case "Panel":
+                                            return panelPropertiesComponent
+                                        case "Clock":
+                                            return clockPropertiesComponent
+                                        case "AppLauncher":
+                                            return appLauncherPropertiesComponent
+                                        default:
+                                            return null
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -466,6 +616,314 @@ ApplicationWindow {
         } catch (e) {
             console.log("Error creating component " + data.type + ": " + e)
             return null
+        }
+    }
+
+    // Component-specific property panels
+    Component {
+        id: panelPropertiesComponent
+
+        ColumnLayout {
+            spacing: 8
+
+            Label {
+                text: "Panel Settings"
+                color: "#4a90e2"
+                font.bold: true
+            }
+
+            Rectangle {
+                Layout.fillWidth: true
+                height: 1
+                color: "#333"
+            }
+
+            // Edge
+            RowLayout {
+                Layout.fillWidth: true
+                Label {
+                    text: "Edge:"
+                    color: "#ccc"
+                    Layout.preferredWidth: 100
+                }
+                ComboBox {
+                    Layout.fillWidth: true
+                    model: ["top", "bottom", "left", "right"]
+                    currentIndex: {
+                        if (!selectedComponent || !selectedComponent.loadedItem) return 1
+                        var edge = selectedComponent.loadedItem.edge || "bottom"
+                        return model.indexOf(edge)
+                    }
+                    onActivated: {
+                        if (selectedComponent && selectedComponent.loadedItem) {
+                            selectedComponent.loadedItem.edge = model[index]
+                        }
+                    }
+                }
+            }
+
+            // Auto Hide
+            RowLayout {
+                Layout.fillWidth: true
+                Label {
+                    text: "Auto Hide:"
+                    color: "#ccc"
+                    Layout.preferredWidth: 100
+                }
+                CheckBox {
+                    checked: selectedComponent && selectedComponent.loadedItem ? selectedComponent.loadedItem.autoHide : false
+                    onToggled: {
+                        if (selectedComponent && selectedComponent.loadedItem) {
+                            selectedComponent.loadedItem.autoHide = checked
+                        }
+                    }
+                }
+            }
+
+            // Panel Color
+            RowLayout {
+                Layout.fillWidth: true
+                Label {
+                    text: "Color:"
+                    color: "#ccc"
+                    Layout.preferredWidth: 100
+                }
+                Rectangle {
+                    width: 30
+                    height: 30
+                    color: selectedComponent && selectedComponent.loadedItem ? selectedComponent.loadedItem.panelColor : "#1a1a1a"
+                    border.color: "#555"
+                    border.width: 1
+                    radius: 4
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            // TODO: Open color picker dialog
+                            console.log("Color picker not implemented yet")
+                        }
+                    }
+                }
+                TextField {
+                    Layout.fillWidth: true
+                    text: selectedComponent && selectedComponent.loadedItem ? selectedComponent.loadedItem.panelColor : "#1a1a1a"
+                    onEditingFinished: {
+                        if (selectedComponent && selectedComponent.loadedItem) {
+                            selectedComponent.loadedItem.panelColor = text
+                        }
+                    }
+                }
+            }
+
+            // Opacity
+            RowLayout {
+                Layout.fillWidth: true
+                Label {
+                    text: "Opacity:"
+                    color: "#ccc"
+                    Layout.preferredWidth: 100
+                }
+                Slider {
+                    Layout.fillWidth: true
+                    from: 0.1
+                    to: 1.0
+                    value: selectedComponent && selectedComponent.loadedItem ? selectedComponent.loadedItem.panelOpacity : 0.95
+                    stepSize: 0.05
+                    onMoved: {
+                        if (selectedComponent && selectedComponent.loadedItem) {
+                            selectedComponent.loadedItem.panelOpacity = value
+                        }
+                    }
+                }
+                Label {
+                    text: selectedComponent && selectedComponent.loadedItem ? Math.round(selectedComponent.loadedItem.panelOpacity * 100) + "%" : "95%"
+                    color: "#888"
+                    Layout.preferredWidth: 40
+                }
+            }
+
+            // Radius
+            RowLayout {
+                Layout.fillWidth: true
+                Label {
+                    text: "Radius:"
+                    color: "#ccc"
+                    Layout.preferredWidth: 100
+                }
+                Slider {
+                    Layout.fillWidth: true
+                    from: 0
+                    to: 20
+                    value: selectedComponent && selectedComponent.loadedItem ? selectedComponent.loadedItem.panelRadius : 8
+                    stepSize: 1
+                    onMoved: {
+                        if (selectedComponent && selectedComponent.loadedItem) {
+                            selectedComponent.loadedItem.panelRadius = value
+                        }
+                    }
+                }
+                Label {
+                    text: selectedComponent && selectedComponent.loadedItem ? Math.round(selectedComponent.loadedItem.panelRadius) + "px" : "8px"
+                    color: "#888"
+                    Layout.preferredWidth: 40
+                }
+            }
+        }
+    }
+
+    Component {
+        id: clockPropertiesComponent
+
+        ColumnLayout {
+            spacing: 8
+
+            Label {
+                text: "Clock Settings"
+                color: "#4a90e2"
+                font.bold: true
+            }
+
+            Rectangle {
+                Layout.fillWidth: true
+                height: 1
+                color: "#333"
+            }
+
+            // Background Color
+            RowLayout {
+                Layout.fillWidth: true
+                Label {
+                    text: "BG Color:"
+                    color: "#ccc"
+                    Layout.preferredWidth: 100
+                }
+                TextField {
+                    Layout.fillWidth: true
+                    text: selectedComponent && selectedComponent.loadedItem ? selectedComponent.loadedItem.backgroundColor : "#2a2a2a"
+                    onEditingFinished: {
+                        if (selectedComponent && selectedComponent.loadedItem) {
+                            selectedComponent.loadedItem.backgroundColor = text
+                        }
+                    }
+                }
+            }
+
+            // Text Color
+            RowLayout {
+                Layout.fillWidth: true
+                Label {
+                    text: "Text Color:"
+                    color: "#ccc"
+                    Layout.preferredWidth: 100
+                }
+                TextField {
+                    Layout.fillWidth: true
+                    text: selectedComponent && selectedComponent.loadedItem ? selectedComponent.loadedItem.textColor : "white"
+                    onEditingFinished: {
+                        if (selectedComponent && selectedComponent.loadedItem) {
+                            selectedComponent.loadedItem.textColor = text
+                        }
+                    }
+                }
+            }
+
+            // Font Size
+            RowLayout {
+                Layout.fillWidth: true
+                Label {
+                    text: "Font Size:"
+                    color: "#ccc"
+                    Layout.preferredWidth: 100
+                }
+                SpinBox {
+                    Layout.fillWidth: true
+                    from: 8
+                    to: 72
+                    value: selectedComponent && selectedComponent.loadedItem ? selectedComponent.loadedItem.fontSize : 16
+                    onValueModified: {
+                        if (selectedComponent && selectedComponent.loadedItem) {
+                            selectedComponent.loadedItem.fontSize = value
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    Component {
+        id: appLauncherPropertiesComponent
+
+        ColumnLayout {
+            spacing: 8
+
+            Label {
+                text: "App Launcher Settings"
+                color: "#4a90e2"
+                font.bold: true
+            }
+
+            Rectangle {
+                Layout.fillWidth: true
+                height: 1
+                color: "#333"
+            }
+
+            // Button Text
+            RowLayout {
+                Layout.fillWidth: true
+                Label {
+                    text: "Button Text:"
+                    color: "#ccc"
+                    Layout.preferredWidth: 100
+                }
+                TextField {
+                    Layout.fillWidth: true
+                    text: selectedComponent && selectedComponent.loadedItem ? selectedComponent.loadedItem.buttonText : "Apps"
+                    onEditingFinished: {
+                        if (selectedComponent && selectedComponent.loadedItem) {
+                            selectedComponent.loadedItem.buttonText = text
+                        }
+                    }
+                }
+            }
+
+            // Button Color
+            RowLayout {
+                Layout.fillWidth: true
+                Label {
+                    text: "Button Color:"
+                    color: "#ccc"
+                    Layout.preferredWidth: 100
+                }
+                TextField {
+                    Layout.fillWidth: true
+                    text: selectedComponent && selectedComponent.loadedItem ? selectedComponent.loadedItem.buttonColor : "#3a3a3a"
+                    onEditingFinished: {
+                        if (selectedComponent && selectedComponent.loadedItem) {
+                            selectedComponent.loadedItem.buttonColor = text
+                        }
+                    }
+                }
+            }
+
+            // Popup Color
+            RowLayout {
+                Layout.fillWidth: true
+                Label {
+                    text: "Popup Color:"
+                    color: "#ccc"
+                    Layout.preferredWidth: 100
+                }
+                TextField {
+                    Layout.fillWidth: true
+                    text: selectedComponent && selectedComponent.loadedItem ? selectedComponent.loadedItem.popupColor : "#1a1a1a"
+                    onEditingFinished: {
+                        if (selectedComponent && selectedComponent.loadedItem) {
+                            selectedComponent.loadedItem.popupColor = text
+                        }
+                    }
+                }
+            }
         }
     }
 }
