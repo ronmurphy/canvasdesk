@@ -26,6 +26,7 @@ Item {
         while (current && !current.selectComponent) {
             current = current.parent
         }
+        
         if (current && current.selectComponent) {
             current.selectComponent(root)
         }
@@ -236,19 +237,20 @@ Item {
     MouseArea {
         id: dragArea
         anchors.fill: parent
-        enabled: editorOpen && !isDocked  // Disable drag when docked
+        enabled: editorOpen && !isDocked
         drag.target: (editorOpen && !isDocked) ? parent : null
         cursorShape: (editorOpen && !isDocked) ? Qt.OpenHandCursor : Qt.ArrowCursor
-        z: -2  // Below everything so it doesn't block pin icon
-        propagateComposedEvents: true  // Let clicks through to child components
+        z: 100  // Above content to capture events in editor mode
+        acceptedButtons: Qt.LeftButton
+        
+        // Make transparent to mouse when not in editor mode
+        visible: editorOpen
 
         property point dragStartPos
         property var dragStartParent
 
         onClicked: {
-            if (editorOpen) {
-                root.selected = !root.selected
-            }
+            root.selected = !root.selected
         }
 
         onPressed: {

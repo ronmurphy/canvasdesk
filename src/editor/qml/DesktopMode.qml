@@ -4,6 +4,7 @@ import QtQuick.Layouts
 import CanvasDesk
 
 ApplicationWindow {
+    id: desktopWindow
     visible: true
     width: Screen.width
     height: Screen.height
@@ -19,6 +20,17 @@ ApplicationWindow {
 
     // Selected component for property editing
     property var selectedComponent: null
+    property bool isManuallyEditing: false
+    
+    // Update property fields when selection changes
+    onSelectedComponentChanged: {
+        if (selectedComponent) {
+            if (fieldX) fieldX.text = Math.round(selectedComponent.x).toString()
+            if (fieldY) fieldY.text = Math.round(selectedComponent.y).toString()
+            if (fieldWidth) fieldWidth.text = Math.round(selectedComponent.width).toString()
+            if (fieldHeight) fieldHeight.text = Math.round(selectedComponent.height).toString()
+        }
+    }
 
     // Update selected component when any component is clicked
     function selectComponent(component) {
@@ -41,6 +53,12 @@ ApplicationWindow {
     Item {
         id: desktopContainer
         anchors.fill: parent
+        
+        // Expose selectComponent so child components can find it
+        function selectComponent(component) {
+            // Use direct ID reference to the window
+            desktopWindow.selectComponent(component)
+        }
     }
     
     // Load layout after window is ready
@@ -263,7 +281,7 @@ ApplicationWindow {
 
                         // Property sections (only visible when component selected)
                         ColumnLayout {
-                            visible: selectedComponent
+                            visible: selectedComponent !== null
                             Layout.fillWidth: true
                             spacing: 16
 
@@ -293,11 +311,10 @@ ApplicationWindow {
                                         Layout.preferredWidth: 60
                                     }
                                     TextField {
-                                        id: propX
+                                        id: fieldX
                                         Layout.fillWidth: true
-                                        text: selectedComponent ? Math.round(selectedComponent.x) : "0"
-                                        validator: IntValidator {}
-                                        onEditingFinished: {
+                                        validator: IntValidator { bottom: 0; top: 9999 }
+                                        onAccepted: {
                                             if (selectedComponent) {
                                                 selectedComponent.x = parseInt(text) || 0
                                             }
@@ -314,11 +331,10 @@ ApplicationWindow {
                                         Layout.preferredWidth: 60
                                     }
                                     TextField {
-                                        id: propY
+                                        id: fieldY
                                         Layout.fillWidth: true
-                                        text: selectedComponent ? Math.round(selectedComponent.y) : "0"
-                                        validator: IntValidator {}
-                                        onEditingFinished: {
+                                        validator: IntValidator { bottom: 0; top: 9999 }
+                                        onAccepted: {
                                             if (selectedComponent) {
                                                 selectedComponent.y = parseInt(text) || 0
                                             }
@@ -335,11 +351,10 @@ ApplicationWindow {
                                         Layout.preferredWidth: 60
                                     }
                                     TextField {
-                                        id: propWidth
+                                        id: fieldWidth
                                         Layout.fillWidth: true
-                                        text: selectedComponent ? Math.round(selectedComponent.width) : "0"
-                                        validator: IntValidator { bottom: 10 }
-                                        onEditingFinished: {
+                                        validator: IntValidator { bottom: 10; top: 9999 }
+                                        onAccepted: {
                                             if (selectedComponent) {
                                                 selectedComponent.width = parseInt(text) || 100
                                             }
@@ -356,11 +371,10 @@ ApplicationWindow {
                                         Layout.preferredWidth: 60
                                     }
                                     TextField {
-                                        id: propHeight
+                                        id: fieldHeight
                                         Layout.fillWidth: true
-                                        text: selectedComponent ? Math.round(selectedComponent.height) : "0"
-                                        validator: IntValidator { bottom: 10 }
-                                        onEditingFinished: {
+                                        validator: IntValidator { bottom: 10; top: 9999 }
+                                        onAccepted: {
                                             if (selectedComponent) {
                                                 selectedComponent.height = parseInt(text) || 50
                                             }
@@ -369,22 +383,134 @@ ApplicationWindow {
                                 }
                             }
 
-                            // Component-specific properties
-                            Loader {
+                            // Component-specific properties  
+                            Item {
                                 Layout.fillWidth: true
-                                sourceComponent: {
-                                    if (!selectedComponent) return null
+                                Layout.preferredHeight: 400
+                                visible: selectedComponent !== null
+                                
+                                // Panel properties
+                                ColumnLayout {
+                                    anchors.fill: parent
+                                    visible: selectedComponent && selectedComponent.componentType === "Panel"
+                                    spacing: 8
 
-                                    switch (selectedComponent.componentType) {
-                                        case "Panel":
-                                            return panelPropertiesComponent
-                                        case "Clock":
-                                            return clockPropertiesComponent
-                                        case "AppLauncher":
-                                            return appLauncherPropertiesComponent
-                                        default:
-                                            return null
+                                    Label {
+                                        text: "Panel Settings"
+                                        color: "#4a90e2"
+                                        font.bold: true
                                     }
+
+                                    Rectangle {
+                                        Layout.fillWidth: true
+                                        height: 1
+                                        color: "#333"
+                                    }
+
+                                    // Edge
+                                    RowLayout {
+                                        Layout.fillWidth: true
+                                        Label {
+                                            text: "Edge:"
+                                            color: "#ccc"
+                                            Layout.preferredWidth: 100
+                                        }
+                                        ComboBox {
+                                            Layout.fillWidth: true
+                                            model: ["top", "bottom", "left", "right"]
+                                            currentIndex: {
+                                                if (!selectedComponent || !selectedComponent.loadedItem) return 1
+                                                var edge = selectedComponent.loadedItem.edge || "bottom"
+                                                return model.indexOf(edge)
+                                            }
+                                            onActivated: {
+                                                if (selectedComponent && selectedComponent.loadedItem) {
+                                                    selectedComponent.loadedItem.edge = model[index]
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    // Auto Hide
+                                    RowLayout {
+                                        Layout.fillWidth: true
+                                        Label {
+                                            text: "Auto Hide:"
+                                            color: "#ccc"
+                                            Layout.preferredWidth: 100
+                                        }
+                                        CheckBox {
+                                            checked: selectedComponent && selectedComponent.loadedItem ? selectedComponent.loadedItem.autoHide : false
+                                            onToggled: {
+                                                if (selectedComponent && selectedComponent.loadedItem) {
+                                                    selectedComponent.loadedItem.autoHide = checked
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    Item { Layout.fillHeight: true }
+                                }
+
+                                // Clock properties
+                                ColumnLayout {
+                                    anchors.fill: parent
+                                    visible: selectedComponent && selectedComponent.componentType === "Clock"
+                                    spacing: 8
+
+                                    Label {
+                                        text: "Clock Settings"
+                                        color: "#4a90e2"
+                                        font.bold: true
+                                    }
+
+                                    Rectangle {
+                                        Layout.fillWidth: true
+                                        height: 1
+                                        color: "#333"
+                                    }
+
+                                    Item { Layout.fillHeight: true }
+                                }
+
+                                // AppLauncher properties
+                                ColumnLayout {
+                                    anchors.fill: parent
+                                    visible: selectedComponent && selectedComponent.componentType === "AppLauncher"
+                                    spacing: 8
+
+                                    Label {
+                                        text: "App Launcher Settings"
+                                        color: "#4a90e2"
+                                        font.bold: true
+                                    }
+
+                                    Rectangle {
+                                        Layout.fillWidth: true
+                                        height: 1
+                                        color: "#333"
+                                    }
+
+                                    // Button Text
+                                    RowLayout {
+                                        Layout.fillWidth: true
+                                        Label {
+                                            text: "Button Text:"
+                                            color: "#ccc"
+                                            Layout.preferredWidth: 100
+                                        }
+                                        TextField {
+                                            Layout.fillWidth: true
+                                            text: selectedComponent && selectedComponent.loadedItem ? selectedComponent.loadedItem.buttonText : "Apps"
+                                            onEditingFinished: {
+                                                if (selectedComponent && selectedComponent.loadedItem) {
+                                                    selectedComponent.loadedItem.buttonText = text
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    Item { Layout.fillHeight: true }
                                 }
                             }
                         }
@@ -599,6 +725,7 @@ ApplicationWindow {
         var height = data.height || defaultSize.height
 
         // Create component wrapper with loader
+        var comp_id = "comp_" + data.type + "_" + Date.now()
         var componentQml = 'import QtQuick 2.15; import "."; EditableComponent { ' +
             'x: ' + data.x + '; ' +
             'y: ' + data.y + '; ' +
@@ -616,314 +743,6 @@ ApplicationWindow {
         } catch (e) {
             console.log("Error creating component " + data.type + ": " + e)
             return null
-        }
-    }
-
-    // Component-specific property panels
-    Component {
-        id: panelPropertiesComponent
-
-        ColumnLayout {
-            spacing: 8
-
-            Label {
-                text: "Panel Settings"
-                color: "#4a90e2"
-                font.bold: true
-            }
-
-            Rectangle {
-                Layout.fillWidth: true
-                height: 1
-                color: "#333"
-            }
-
-            // Edge
-            RowLayout {
-                Layout.fillWidth: true
-                Label {
-                    text: "Edge:"
-                    color: "#ccc"
-                    Layout.preferredWidth: 100
-                }
-                ComboBox {
-                    Layout.fillWidth: true
-                    model: ["top", "bottom", "left", "right"]
-                    currentIndex: {
-                        if (!selectedComponent || !selectedComponent.loadedItem) return 1
-                        var edge = selectedComponent.loadedItem.edge || "bottom"
-                        return model.indexOf(edge)
-                    }
-                    onActivated: {
-                        if (selectedComponent && selectedComponent.loadedItem) {
-                            selectedComponent.loadedItem.edge = model[index]
-                        }
-                    }
-                }
-            }
-
-            // Auto Hide
-            RowLayout {
-                Layout.fillWidth: true
-                Label {
-                    text: "Auto Hide:"
-                    color: "#ccc"
-                    Layout.preferredWidth: 100
-                }
-                CheckBox {
-                    checked: selectedComponent && selectedComponent.loadedItem ? selectedComponent.loadedItem.autoHide : false
-                    onToggled: {
-                        if (selectedComponent && selectedComponent.loadedItem) {
-                            selectedComponent.loadedItem.autoHide = checked
-                        }
-                    }
-                }
-            }
-
-            // Panel Color
-            RowLayout {
-                Layout.fillWidth: true
-                Label {
-                    text: "Color:"
-                    color: "#ccc"
-                    Layout.preferredWidth: 100
-                }
-                Rectangle {
-                    width: 30
-                    height: 30
-                    color: selectedComponent && selectedComponent.loadedItem ? selectedComponent.loadedItem.panelColor : "#1a1a1a"
-                    border.color: "#555"
-                    border.width: 1
-                    radius: 4
-
-                    MouseArea {
-                        anchors.fill: parent
-                        onClicked: {
-                            // TODO: Open color picker dialog
-                            console.log("Color picker not implemented yet")
-                        }
-                    }
-                }
-                TextField {
-                    Layout.fillWidth: true
-                    text: selectedComponent && selectedComponent.loadedItem ? selectedComponent.loadedItem.panelColor : "#1a1a1a"
-                    onEditingFinished: {
-                        if (selectedComponent && selectedComponent.loadedItem) {
-                            selectedComponent.loadedItem.panelColor = text
-                        }
-                    }
-                }
-            }
-
-            // Opacity
-            RowLayout {
-                Layout.fillWidth: true
-                Label {
-                    text: "Opacity:"
-                    color: "#ccc"
-                    Layout.preferredWidth: 100
-                }
-                Slider {
-                    Layout.fillWidth: true
-                    from: 0.1
-                    to: 1.0
-                    value: selectedComponent && selectedComponent.loadedItem ? selectedComponent.loadedItem.panelOpacity : 0.95
-                    stepSize: 0.05
-                    onMoved: {
-                        if (selectedComponent && selectedComponent.loadedItem) {
-                            selectedComponent.loadedItem.panelOpacity = value
-                        }
-                    }
-                }
-                Label {
-                    text: selectedComponent && selectedComponent.loadedItem ? Math.round(selectedComponent.loadedItem.panelOpacity * 100) + "%" : "95%"
-                    color: "#888"
-                    Layout.preferredWidth: 40
-                }
-            }
-
-            // Radius
-            RowLayout {
-                Layout.fillWidth: true
-                Label {
-                    text: "Radius:"
-                    color: "#ccc"
-                    Layout.preferredWidth: 100
-                }
-                Slider {
-                    Layout.fillWidth: true
-                    from: 0
-                    to: 20
-                    value: selectedComponent && selectedComponent.loadedItem ? selectedComponent.loadedItem.panelRadius : 8
-                    stepSize: 1
-                    onMoved: {
-                        if (selectedComponent && selectedComponent.loadedItem) {
-                            selectedComponent.loadedItem.panelRadius = value
-                        }
-                    }
-                }
-                Label {
-                    text: selectedComponent && selectedComponent.loadedItem ? Math.round(selectedComponent.loadedItem.panelRadius) + "px" : "8px"
-                    color: "#888"
-                    Layout.preferredWidth: 40
-                }
-            }
-        }
-    }
-
-    Component {
-        id: clockPropertiesComponent
-
-        ColumnLayout {
-            spacing: 8
-
-            Label {
-                text: "Clock Settings"
-                color: "#4a90e2"
-                font.bold: true
-            }
-
-            Rectangle {
-                Layout.fillWidth: true
-                height: 1
-                color: "#333"
-            }
-
-            // Background Color
-            RowLayout {
-                Layout.fillWidth: true
-                Label {
-                    text: "BG Color:"
-                    color: "#ccc"
-                    Layout.preferredWidth: 100
-                }
-                TextField {
-                    Layout.fillWidth: true
-                    text: selectedComponent && selectedComponent.loadedItem ? selectedComponent.loadedItem.backgroundColor : "#2a2a2a"
-                    onEditingFinished: {
-                        if (selectedComponent && selectedComponent.loadedItem) {
-                            selectedComponent.loadedItem.backgroundColor = text
-                        }
-                    }
-                }
-            }
-
-            // Text Color
-            RowLayout {
-                Layout.fillWidth: true
-                Label {
-                    text: "Text Color:"
-                    color: "#ccc"
-                    Layout.preferredWidth: 100
-                }
-                TextField {
-                    Layout.fillWidth: true
-                    text: selectedComponent && selectedComponent.loadedItem ? selectedComponent.loadedItem.textColor : "white"
-                    onEditingFinished: {
-                        if (selectedComponent && selectedComponent.loadedItem) {
-                            selectedComponent.loadedItem.textColor = text
-                        }
-                    }
-                }
-            }
-
-            // Font Size
-            RowLayout {
-                Layout.fillWidth: true
-                Label {
-                    text: "Font Size:"
-                    color: "#ccc"
-                    Layout.preferredWidth: 100
-                }
-                SpinBox {
-                    Layout.fillWidth: true
-                    from: 8
-                    to: 72
-                    value: selectedComponent && selectedComponent.loadedItem ? selectedComponent.loadedItem.fontSize : 16
-                    onValueModified: {
-                        if (selectedComponent && selectedComponent.loadedItem) {
-                            selectedComponent.loadedItem.fontSize = value
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    Component {
-        id: appLauncherPropertiesComponent
-
-        ColumnLayout {
-            spacing: 8
-
-            Label {
-                text: "App Launcher Settings"
-                color: "#4a90e2"
-                font.bold: true
-            }
-
-            Rectangle {
-                Layout.fillWidth: true
-                height: 1
-                color: "#333"
-            }
-
-            // Button Text
-            RowLayout {
-                Layout.fillWidth: true
-                Label {
-                    text: "Button Text:"
-                    color: "#ccc"
-                    Layout.preferredWidth: 100
-                }
-                TextField {
-                    Layout.fillWidth: true
-                    text: selectedComponent && selectedComponent.loadedItem ? selectedComponent.loadedItem.buttonText : "Apps"
-                    onEditingFinished: {
-                        if (selectedComponent && selectedComponent.loadedItem) {
-                            selectedComponent.loadedItem.buttonText = text
-                        }
-                    }
-                }
-            }
-
-            // Button Color
-            RowLayout {
-                Layout.fillWidth: true
-                Label {
-                    text: "Button Color:"
-                    color: "#ccc"
-                    Layout.preferredWidth: 100
-                }
-                TextField {
-                    Layout.fillWidth: true
-                    text: selectedComponent && selectedComponent.loadedItem ? selectedComponent.loadedItem.buttonColor : "#3a3a3a"
-                    onEditingFinished: {
-                        if (selectedComponent && selectedComponent.loadedItem) {
-                            selectedComponent.loadedItem.buttonColor = text
-                        }
-                    }
-                }
-            }
-
-            // Popup Color
-            RowLayout {
-                Layout.fillWidth: true
-                Label {
-                    text: "Popup Color:"
-                    color: "#ccc"
-                    Layout.preferredWidth: 100
-                }
-                TextField {
-                    Layout.fillWidth: true
-                    text: selectedComponent && selectedComponent.loadedItem ? selectedComponent.loadedItem.popupColor : "#1a1a1a"
-                    onEditingFinished: {
-                        if (selectedComponent && selectedComponent.loadedItem) {
-                            selectedComponent.loadedItem.popupColor = text
-                        }
-                    }
-                }
-            }
         }
     }
 }

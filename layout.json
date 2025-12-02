@@ -22,6 +22,34 @@
           "height": 40
         }
       ]
+    },
+    {
+      "type": "Panel",
+      "x": 560,
+      "y": 1000,
+      "width": 800,
+      "height": 64,
+      "props": {
+        "edge": "bottom",
+        "autoHide": false
+      },
+      "dockedComponents": [
+        {
+          "type": "AppLauncher",
+          "width": 80,
+          "height": 40
+        },
+        {
+          "type": "Taskbar",
+          "width": 400,
+          "height": 40
+        },
+        {
+          "type": "Clock",
+          "width": 120,
+          "height": 40
+        }
+      ]
     }
   ]
 }
