@@ -1,0 +1,30 @@
+{
+  "components": [
+    {
+      "type": "Panel",
+      "x": 200,
+      "y": 950,
+      "width": 1200,
+      "height": 64,
+      "props": {
+        "edge": "bottom",
+        "autoHide": false,
+        "thickness": 64
+      }
+    },
+    {
+      "type": "Clock",
+      "x": 100,
+      "y": 100,
+      "width": 120,
+      "height": 40
+    },
+    {
+      "type": "AppLauncher",
+      "x": 250,
+      "y": 100,
+      "width": 80,
+      "height": 40
+    }
+  ]
+}

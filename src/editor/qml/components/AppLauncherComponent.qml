@@ -1,21 +1,31 @@
 import QtQuick
 import QtQuick.Controls
 import CanvasDesk
+import ".."  // For PopupPositionHelper
 
 Rectangle {
     id: root
-    
+
     // Configurable properties
     property color buttonColor: "#3a3a3a"
     property color popupColor: "#1a1a1a"
     property string buttonText: "Apps"
-    
+
     // Editor support
     property bool editorOpen: false
-    
+
     // Internal state
     property bool showPopup: false
-    
+
+    // Smart positioning helper
+    PopupPositionHelper {
+        id: positionHelper
+        sourceItem: root
+        popupWidth: 400
+        popupHeight: 500
+        margin: 8
+    }
+
     color: "transparent"
     
     // Launcher button
@@ -41,59 +51,27 @@ Rectangle {
         }
     }
     
-    // App grid popup
+    // App grid popup (parented to desktop to escape panel clipping)
     Rectangle {
         id: popup
         visible: showPopup
-        width: 400
-        height: 500
+        parent: positionHelper.getDesktopParent(root)
+        width: positionHelper.popupWidth
+        height: positionHelper.popupHeight
         color: popupColor
         border.color: "#555"
         border.width: 2
         radius: 6
-        z: 1000
-        
-        // Smart positioning based on screen edges
-        property point buttonGlobalPos: root.mapToItem(null, 0, 0)
-        property real screenWidth: root.parent ? root.parent.width : 1920
-        property real screenHeight: root.parent ? root.parent.height : 1080
-        
-        // Calculate available space in each direction
-        property real spaceAbove: buttonGlobalPos.y
-        property real spaceBelow: screenHeight - (buttonGlobalPos.y + root.height)
-        property real spaceLeft: buttonGlobalPos.x
-        property real spaceRight: screenWidth - (buttonGlobalPos.x + root.width)
-        
-        // Determine vertical position (above or below)
-        property bool showAbove: spaceAbove > spaceBelow && spaceAbove >= height + 8
-        
-        // Determine horizontal alignment
-        property real centerOffset: (width / 2) - (root.width / 2)
-        property real leftEdge: buttonGlobalPos.x - centerOffset
-        property real rightEdge: leftEdge + width
-        
-        x: {
-            var desiredX = root.x - centerOffset
-            
-            // Check if popup would go off left edge
-            if (leftEdge < 8) {
-                desiredX = root.x - (buttonGlobalPos.x - 8)
-            }
-            // Check if popup would go off right edge
-            else if (rightEdge > screenWidth - 8) {
-                desiredX = root.x - (rightEdge - screenWidth + 8) - centerOffset
-            }
-            
-            return desiredX
-        }
-        
-        y: {
-            if (showAbove) {
-                // Position above button
-                return root.y - height - 8
-            } else {
-                // Position below button
-                return root.y + root.height + 8
+        z: 2000  // Very high z to be above everything
+
+        // Use smart positioning from helper
+        x: positionHelper.x
+        y: positionHelper.y
+
+        // Recalculate position when shown
+        onVisibleChanged: {
+            if (visible) {
+                positionHelper.calculatePosition()
             }
         }
         
@@ -159,11 +137,12 @@ Rectangle {
         }
     }
     
-    // Click outside to close
+    // Click outside to close - parented to desktop
     MouseArea {
         visible: showPopup
-        anchors.fill: parent.parent
-        z: 999
+        parent: popup.parent  // Same parent as popup (desktop)
+        anchors.fill: parent
+        z: 1999  // Just below popup
         onClicked: root.showPopup = false
     }
 }
