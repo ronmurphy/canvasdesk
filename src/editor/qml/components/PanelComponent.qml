@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
-Rectangle {
+Item {
     id: root
     
     // Panel configuration
@@ -19,9 +19,18 @@ Rectangle {
     property bool revealed: !autoHide
     property bool mouseInside: false
     
-    color: panelColor
-    border.color: panelBorderColor
-    border.width: 1
+    // Docked components
+    property var dockedComponents: []
+    
+    // Panel background
+    Rectangle {
+        id: panelBackground
+        anchors.fill: parent
+        color: panelColor
+        border.color: panelBorderColor
+        border.width: 1
+        radius: 2
+    }
     
     // Position based on edge
     states: [
@@ -51,51 +60,152 @@ Rectangle {
         NumberAnimation { properties: "x,y"; duration: 200; easing.type: Easing.OutQuad }
     }
     
-    // Mouse area for reveal on hover
+    // Invisible trigger area at screen edge (like macOS Dock)
     MouseArea {
-        id: revealArea
+        id: triggerArea
+        enabled: autoHide && !editorOpen && !revealed
+        hoverEnabled: true
+        z: 100
+        
+        // Position at screen edge
+        states: [
+            State {
+                name: "top"
+                when: edge === "top"
+                PropertyChanges { target: triggerArea; x: 0; y: 0; width: parent.width; height: 2 }
+            },
+            State {
+                name: "bottom"
+                when: edge === "bottom"
+                PropertyChanges { target: triggerArea; x: 0; y: parent.height - 2; width: parent.width; height: 2 }
+            },
+            State {
+                name: "left"
+                when: edge === "left"
+                PropertyChanges { target: triggerArea; x: 0; y: 0; width: 2; height: parent.height }
+            },
+            State {
+                name: "right"
+                when: edge === "right"
+                PropertyChanges { target: triggerArea; x: parent.width - 2; y: 0; width: 2; height: parent.height }
+            }
+        ]
+        
+        onEntered: {
+            revealed = true
+        }
+    }
+    
+    // Panel mouse area to keep it revealed while mouse is over it
+    MouseArea {
+        id: panelArea
+        anchors.fill: parent
         enabled: autoHide && !editorOpen
         hoverEnabled: true
-        
-        // Extend slightly beyond panel for easier triggering
-        anchors.fill: parent
-        anchors.margins: -5
+        propagateComposedEvents: true
         
         onEntered: {
             mouseInside = true
-            revealed = true
         }
         
         onExited: {
             mouseInside = false
-            revealed = false
+            // Hide after a short delay
+            hideTimer.start()
         }
-    }
-    
-    // Container for child components
-    Loader {
-        id: childContainer
-        anchors.fill: parent
-        anchors.margins: 4
         
-        sourceComponent: (edge === "top" || edge === "bottom") ? horizontalLayout : verticalLayout
+        onPressed: mouse.accepted = false
+        onReleased: mouse.accepted = false
+        onClicked: mouse.accepted = false
     }
     
-    // Horizontal layout for top/bottom panels
-    Component {
-        id: horizontalLayout
-        Row {
-            spacing: 4
-            // Children will be added here dynamically
+    // Timer to hide panel when mouse leaves
+    Timer {
+        id: hideTimer
+        interval: 300
+        onTriggered: {
+            if (!mouseInside && autoHide && !editorOpen) {
+                revealed = false
+            }
         }
     }
     
-    // Vertical layout for left/right panels
-    Component {
-        id: verticalLayout
-        Column {
-            spacing: 4
-            // Children will be added here dynamically
+    // Container for docked components
+    Row {
+        id: horizontalContainer
+        visible: edge === "top" || edge === "bottom"
+        anchors.fill: parent
+        anchors.margins: 8
+        spacing: 8
+        
+        Repeater {
+            model: dockedComponents
+            delegate: Item {
+                width: modelData.width || 40
+                height: parent.height
+                
+                Loader {
+                    anchors.centerIn: parent
+                    source: "qrc:/qt/qml/CanvasDeskEditor/" + modelData.type + "Component.qml"
+                    
+                    onLoaded: {
+                        // Pass through properties
+                        if (modelData.properties) {
+                            for (var prop in modelData.properties) {
+                                item[prop] = modelData.properties[prop]
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    Column {
+        id: verticalContainer
+        visible: edge === "left" || edge === "right"
+        anchors.fill: parent
+        anchors.margins: 8
+        spacing: 8
+        
+        Repeater {
+            model: dockedComponents
+            delegate: Item {
+                width: parent.width
+                height: modelData.height || 40
+                
+                Loader {
+                    anchors.centerIn: parent
+                    source: "qrc:/qt/qml/CanvasDeskEditor/" + modelData.type + "Component.qml"
+                    
+                    onLoaded: {
+                        // Pass through properties
+                        if (modelData.properties) {
+                            for (var prop in modelData.properties) {
+                                item[prop] = modelData.properties[prop]
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    // Function to dock a component
+    function dockComponent(componentType, properties) {
+        var newComponent = {
+            type: componentType,
+            properties: properties || {}
+        }
+        dockedComponents.push(newComponent)
+        dockedComponentsChanged()
+    }
+    
+    // Function to undock a component
+    function undockComponent(index) {
+        if (index >= 0 && index < dockedComponents.length) {
+            dockedComponents.splice(index, 1)
+            dockedComponentsChanged()
         }
     }
     

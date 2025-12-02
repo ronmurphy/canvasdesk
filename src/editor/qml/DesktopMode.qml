@@ -267,6 +267,30 @@ ApplicationWindow {
         }
     }
 
+    // Handle docking of components into panels
+    function handleDocking(component, panel) {
+        if (!component || !panel) return
+        
+        console.log("Docking " + component.componentType + " into Panel")
+        
+        // Get the component's loader item
+        var loaderItem = component.children[0]
+        if (!loaderItem || !loaderItem.item) return
+        
+        // Add to panel's docked components
+        panel.children[0].item.dockComponent(component.componentType, {})
+        
+        // Mark component as docked
+        component.parentId = "panel_" + panel.x + "_" + panel.y
+        component.isDocked = true
+        
+        // Hide the component from desktop (it's now in the panel)
+        component.visible = false
+        
+        // Save layout
+        saveDesktopLayout()
+    }
+
     function saveDesktopLayout() {
         var components = []
         
@@ -278,6 +302,7 @@ ApplicationWindow {
             if (child && child.componentType) {
                 var comp = {
                     type: child.componentType,
+                    parentId: child.parentId || "",
                     x: child.x,
                     y: child.y,
                     width: child.width,
@@ -287,6 +312,14 @@ ApplicationWindow {
                 // Include any custom properties from componentData
                 if (child.componentData && child.componentData.props) {
                     comp.props = child.componentData.props
+                }
+                
+                // If this is a Panel, save its docked components
+                if (child.componentType === "Panel") {
+                    var loaderItem = child.children[0]
+                    if (loaderItem && loaderItem.item && loaderItem.item.dockedComponents) {
+                        comp.dockedComponents = loaderItem.item.dockedComponents
+                    }
                 }
                 
                 components.push(comp)
@@ -347,6 +380,11 @@ ApplicationWindow {
         var width = data.width || defaultSize.width
         var height = data.height || defaultSize.height
         
+        // Skip docked components (they're managed by their parent panel)
+        if (data.parentId && data.parentId !== "") {
+            return
+        }
+        
         // Create component wrapper with loader
         var componentQml = 'import QtQuick 2.15; import "."; EditableComponent { ' +
             'x: ' + data.x + '; ' +
@@ -354,12 +392,26 @@ ApplicationWindow {
             'width: ' + width + '; ' +
             'height: ' + height + '; ' +
             'componentType: "' + data.type + '"; ' +
+            'parentId: "' + (data.parentId || "") + '"; ' +
             'editorOpen: showFloatingEditor; ' +
-            'componentData: (' + JSON.stringify(data) + ') ' +
+            'componentData: (' + JSON.stringify(data) + '); ' +
+            'onDockRequested: function(comp, panel) { handleDocking(comp, panel) }' +
         '}'
 
         try {
-            Qt.createQmlObject(componentQml, desktopContainer, "component_" + data.type)
+            var newComponent = Qt.createQmlObject(componentQml, desktopContainer, "component_" + data.type + "_" + Date.now())
+            
+            // If this is a Panel and has docked components, restore them
+            if (data.type === "Panel" && data.dockedComponents) {
+                for (var i = 0; i < data.dockedComponents.length; i++) {
+                    var dockedData = data.dockedComponents[i]
+                    // Get panel's loader item
+                    var loaderItem = newComponent.children[0]
+                    if (loaderItem && loaderItem.item) {
+                        loaderItem.item.dockComponent(dockedData.type, dockedData.properties || {})
+                    }
+                }
+            }
         } catch (e) {
             console.log("Error creating component " + data.type + ": " + e)
         }

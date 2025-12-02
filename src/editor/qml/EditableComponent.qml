@@ -9,14 +9,44 @@ Item {
     property bool selected: false
     property var componentData: null
     property string componentType: ""
+    property string parentId: ""  // ID of parent panel if docked
+    property bool isDocked: parentId !== ""
+    property bool canDock: false  // Visual feedback during drag
+    
+    // Signal for docking
+    signal dockRequested(var component, var panel)
     
     // Selection border
     Rectangle {
         anchors.fill: parent
         color: "transparent"
-        border.color: selected ? "#4a90e2" : "transparent"
-        border.width: 2
+        border.color: {
+            if (canDock) return "#2ecc71"  // Green when over a panel
+            return selected ? "#4a90e2" : "transparent"
+        }
+        border.width: canDock ? 3 : 2
         z: -1
+    }
+    
+    // Docked indicator
+    Rectangle {
+        visible: isDocked && editorOpen
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.margins: 4
+        width: 20
+        height: 20
+        radius: 10
+        color: "#9b59b6"
+        border.color: "#8e44ad"
+        border.width: 1
+        z: 999
+        
+        Text {
+            anchors.centerIn: parent
+            text: "📌"
+            font.pixelSize: 10
+        }
     }
     
     // Component loader
@@ -153,10 +183,13 @@ Item {
     
     // Drag handle (entire component when editor open)
     MouseArea {
+        id: dragArea
         anchors.fill: parent
         enabled: editorOpen
         drag.target: editorOpen ? parent : null
         cursorShape: editorOpen ? Qt.OpenHandCursor : Qt.ArrowCursor
+        
+        property point dragStartPos
         
         onClicked: {
             if (editorOpen) {
@@ -167,12 +200,70 @@ Item {
         onPressed: {
             if (editorOpen) {
                 cursorShape = Qt.ClosedHandCursor
+                dragStartPos = Qt.point(root.x, root.y)
+            }
+        }
+        
+        onPositionChanged: {
+            if (pressed && editorOpen) {
+                // Check if dragging over a panel
+                checkDockTarget()
             }
         }
         
         onReleased: {
             if (editorOpen) {
                 cursorShape = Qt.OpenHandCursor
+                
+                // Try to dock if over a panel
+                if (canDock) {
+                    attemptDock()
+                }
+                canDock = false
+            }
+        }
+    }
+    
+    // Check if component is over a panel
+    function checkDockTarget() {
+        canDock = false
+        if (!parent || !parent.children) return
+        
+        var centerX = root.x + root.width / 2
+        var centerY = root.y + root.height / 2
+        
+        for (var i = 0; i < parent.children.length; i++) {
+            var child = parent.children[i]
+            if (child === root) continue
+            if (child.componentType !== "Panel") continue
+            
+            // Check if center is inside panel bounds
+            if (centerX >= child.x && centerX <= child.x + child.width &&
+                centerY >= child.y && centerY <= child.y + child.height) {
+                canDock = true
+                return
+            }
+        }
+    }
+    
+    // Attempt to dock into a panel
+    function attemptDock() {
+        if (!parent || !parent.children) return
+        
+        var centerX = root.x + root.width / 2
+        var centerY = root.y + root.height / 2
+        
+        for (var i = 0; i < parent.children.length; i++) {
+            var child = parent.children[i]
+            if (child === root) continue
+            if (child.componentType !== "Panel") continue
+            
+            // Check if center is inside panel bounds
+            if (centerX >= child.x && centerX <= child.x + child.width &&
+                centerY >= child.y && centerY <= child.y + child.height) {
+                // Found a panel to dock into
+                dockRequested(root, child)
+                return
             }
         }
     }

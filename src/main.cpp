@@ -7,6 +7,11 @@
 #include <QQuickImageProvider>
 #include <QIcon>
 #include <QPixmap>
+#include <QFile>
+#include <QTextStream>
+#include <QDir>
+#include <QDebug>
+#include <QStandardPaths>
 
 class ThemeImageProvider : public QQuickImageProvider {
 public:
@@ -48,7 +53,77 @@ int main(int argc, char *argv[]) {
       "Start in preview mode");
   parser.addOption(previewOption);
   
+  QCommandLineOption installSessionOption("installsession",
+      "Install CanvasDesk as a desktop session (requires sudo/root)");
+  parser.addOption(installSessionOption);
+  
+  QCommandLineOption uninstallSessionOption("uninstallsession",
+      "Uninstall CanvasDesk desktop session (requires sudo/root)");
+  parser.addOption(uninstallSessionOption);
+  
   parser.process(app);
+  
+  // Handle session installation
+  if (parser.isSet(installSessionOption)) {
+    QString execPath = QCoreApplication::applicationFilePath();
+    QString sessionDir = "/usr/share/wayland-sessions";
+    QString sessionFile = sessionDir + "/canvasdesk.desktop";
+    
+    // Check if directory exists
+    if (!QDir(sessionDir).exists()) {
+      qWarning() << "Directory" << sessionDir << "does not exist.";
+      qWarning() << "You may need to create it first or check your compositor support.";
+      return 1;
+    }
+    
+    // Create desktop entry content
+    QString desktopEntry = 
+      "[Desktop Entry]\n"
+      "Name=CanvasDesk\n"
+      "Comment=Customizable Wayland Desktop Environment\n"
+      "Exec=" + execPath + " --runtime\n"
+      "Type=Application\n"
+      "DesktopNames=CanvasDesk\n"
+      "X-KDE-PluginInfo-Name=canvasdesk\n";
+    
+    // Try to write the file
+    QFile file(sessionFile);
+    if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+      QTextStream out(&file);
+      out << desktopEntry;
+      file.close();
+      qInfo() << "Successfully installed session file to" << sessionFile;
+      qInfo() << "CanvasDesk should now appear in your login manager.";
+      return 0;
+    } else {
+      qWarning() << "Failed to write to" << sessionFile;
+      qWarning() << "Error:" << file.errorString();
+      qWarning() << "You may need to run this with sudo:";
+      qWarning() << "  sudo" << execPath << "--installsession";
+      return 1;
+    }
+  }
+  
+  // Handle session uninstallation
+  if (parser.isSet(uninstallSessionOption)) {
+    QString sessionFile = "/usr/share/wayland-sessions/canvasdesk.desktop";
+    
+    if (!QFile::exists(sessionFile)) {
+      qInfo() << "Session file" << sessionFile << "does not exist. Nothing to uninstall.";
+      return 0;
+    }
+    
+    if (QFile::remove(sessionFile)) {
+      qInfo() << "Successfully removed session file" << sessionFile;
+      qInfo() << "CanvasDesk has been uninstalled from your login manager.";
+      return 0;
+    } else {
+      qWarning() << "Failed to remove" << sessionFile;
+      qWarning() << "You may need to run this with sudo:";
+      qWarning() << "  sudo" << QCoreApplication::applicationFilePath() << "--uninstallsession";
+      return 1;
+    }
+  }
 
   bool runtimeMode = parser.isSet(runtimeOption);
   bool previewMode = parser.isSet(previewOption);
