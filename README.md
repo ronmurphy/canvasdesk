@@ -293,55 +293,160 @@ ListView {
 
 ---
 
-# 🚀 10. Project Roadmap (MVP → Full Release)
+# 🚀 10. Current Status & Features
 
-### **Phase 1 — Foundation**
+## **✅ Implemented Features**
 
-* Create basic QML runtime
-* Create component system
-* Load static QML layout
-* Integrate C++ backend for app listing
+### **Unified Binary System**
+- Single executable with multiple modes:
+  - **Editor Mode** (default): Visual designer with live desktop preview
+  - **Runtime Mode** (`--runtime`): Production desktop environment
+  - **Preview Mode** (`--preview`): Quick layout testing
 
-### **Phase 2 — Editor Prototype**
+### **Visual Editor**
+- ✅ **Drag-and-drop component placement** from side panel
+- ✅ **Live canvas** showing actual desktop with editable components
+- ✅ **Component selection** with visual feedback (orange border)
+- ✅ **Resize handles** (top-left, top-right, bottom-left, bottom-right)
+- ✅ **Delete button** on selected components
+- ✅ **Properties panel** with real-time editing:
+  - Position & Size (X, Y, Width, Height)
+  - Component-specific settings (Panel, Clock, AppLauncher)
+  - TextField inputs with Enter-to-apply
+- ✅ **Dock/Undock system** - Pin components to screen edges
+- ✅ **Layout persistence** - Saves to JSON, restores on restart
 
-* Build drag-and-drop canvas
-* Component list
-* Property editor
-* Export JSON/QML layout
-* Live preview mode
+### **Working Components**
+- ✅ **Panel** - Customizable bar/panel with configurable edges
+- ✅ **Clock** - System clock display
+- ✅ **AppLauncher** - Application grid launcher
+- ✅ **Taskbar** - Window list with minimize/activate
+- ✅ **FileManager** - Simple file browser with navigation
 
-### **Phase 3 — Real Desktop Integration**
+### **System Integration**
+- ✅ **Window Management** - Track open windows via Wayland protocols
+- ✅ **Window Activation** - Click taskbar items to activate windows
+- ✅ **Application Indexing** - Scan and display installed apps
+- ✅ **App Launching** - Launch applications from AppLauncher
+- ✅ **File System** - Browse directories in FileManager
 
-* Taskbar system
-* Window thumbnails
-* Start menu
-* Installed app index
-* Launching apps
-* Minimal file manager
-* WebView embedding
+### **Backend Architecture**
+- ✅ **AppManager** - Application listing and launching
+- ✅ **WindowManager** - Window tracking and control (Wayland)
+- ✅ **LayoutManager** - Save/load layout configurations
+- ✅ **Component System** - Dynamic component loading
+- ✅ **EditableComponent** - Wrapper providing editor functionality
 
-### **Phase 4 — Workspace & WM Integration**
+## **🔄 In Progress**
 
-* Multi-workspace
-* Window snapping
-* System tray
-* Notifications
+### **Phase 3 — Desktop Integration Enhancement**
+- 🔄 Window thumbnails in taskbar
+- 🔄 Advanced window operations (minimize, maximize, close)
+- 🔄 System tray integration
+- 🔄 Notification system
+- 🔄 More component types (WebView, Widgets, etc.)
+
+### **Phase 4 — Workspace & Advanced Features**
+- 🔄 Multi-workspace support
+- 🔄 Window snapping and tiling
+- 🔄 Advanced property editing
+- 🔄 Keyboard shortcuts
 
 ### **Phase 5 — Polishing**
+- 🔄 Theming system
+- 🔄 Component templates gallery
+- 🔄 Layout backup/sync
+- 🔄 Plugin API
+- 🔄 Release packaging
 
-* Theming system
-* Templates gallery
-* Backup/sync for layouts
-* Plugin APIs
-* Release builds
+## **🛠️ Build & Run**
+
+### **Requirements**
+- Qt 6.5+
+- CMake 3.16+
+- Wayland development libraries
+- KDE Frameworks (for window management)
+
+### **Build**
+```bash
+./build.sh
+```
+
+### **Run**
+```bash
+# Editor mode (design your desktop)
+./build/canvasdesk
+
+# Runtime mode (use your desktop)
+./build/canvasdesk --runtime
+
+# Preview mode (test layout)
+./build/canvasdesk --preview
+```
+
+### **Layout Files**
+Layouts are saved to `~/.config/canvasdesk/layouts/`
+- `layout.json` - Main layout file
+- Component configurations stored with position, size, and properties
 
 ---
 
-# 🏁 11. Final Thoughts
+# 🏁 11. Technical Details
 
-**CanvasDesk** is:
-✔ original
-✔ technically feasible
-✔ scalable
-✔ useful for Linux customizers
-✔ a fantastic open-source undertaking
+## **Project Structure**
+
+```
+canvasdesk/
+├── src/
+│   ├── app/           # Runtime mode entry point
+│   ├── core/          # C++ backend (managers, system integration)
+│   ├── editor/        # Editor mode UI and components
+│   └── qml/           # Runtime QML components
+├── build/
+│   └── canvasdesk     # Unified binary
+├── layouts/           # Example layout files
+└── CMakeLists.txt     # Build configuration
+```
+
+## **Key Files**
+
+- `src/editor/qml/DesktopMode.qml` - Main editor window with properties panel
+- `src/editor/qml/EditableComponent.qml` - Component wrapper for editor interactions
+- `src/editor/qml/components/` - Available component types
+- `src/core/LayoutManager.cpp` - Layout save/load logic
+- `src/core/WindowManager.cpp` - Wayland window management
+- `src/core/AppManager.cpp` - Application indexing and launching
+
+## **Component Development**
+
+To create a new component:
+
+1. Create QML file in `src/editor/qml/components/`
+2. Define `componentType` property
+3. Add visual elements
+4. Register in component list
+5. Add property editor section in DesktopMode.qml
+
+Example:
+```qml
+Rectangle {
+    id: root
+    property string componentType: "MyComponent"
+    property bool editorOpen: false
+    
+    // Your component UI here
+}
+```
+
+---
+
+# 🏁 12. Final Thoughts
+
+**CanvasDesk** is a functional, working desktop environment builder that demonstrates:
+- ✔ Visual desktop design is possible and practical
+- ✔ Qt/QML provides excellent tools for custom DE development
+- ✔ No-code approach makes desktop customization accessible
+- ✔ Modular component system enables unlimited creativity
+- ✔ Real system integration works on modern Wayland
+
+The project continues to evolve with new components, better editor features, and deeper system integration.
