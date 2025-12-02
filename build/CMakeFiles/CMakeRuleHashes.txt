@@ -1,13 +1,7 @@
 # Hashes of file build rules.
 eaa87480b4b92d0bd3802d239fdbe9a7 .qt/.qmlls.build.ini
-b165007be2d529f9d0699f48ea13cb5c .qt/canvasdesk_qml.txt
-4e6e572a041e70d8b30a661fdc121c93 .qt/canvasdesk_res.txt
 38702c654b69d923bfd950cf7ebfe7ed .qt/qml_imports/canvasdesk_build.cmake
-849d1cf06fdd0543bd351d6766b0dc24 .qt/rcc/qrc_canvasdesk_raw_qml_0.cpp
-55bef112d5d4d7ff93cd5b0d3f0dc8fe .qt/rcc/qrc_qmake_CanvasDeskEditor.cpp
 be4054b191df598db442d39efa71c5b1 .rcc/qmlcache/all_aotstats.aotstats
-f34890745b955dee2f020acb81c26eaa .rcc/qmlcache/canvasdesk_qmlcache_loader.cpp
-e1e05ca7bcfda5b2e2509b86c3ebcf35 .rcc/qmlcache/canvasdesk_src/editor/qml/EditorMain_qml.cpp
 3f90982e3f1c574192dbe4a92eb66f02 CMakeFiles/all_aotstats
 78109f07bdbdbbd3a98f5cadec5c8348 CMakeFiles/canvasdesk_autogen
 78109f07bdbdbbd3a98f5cadec5c8348 CMakeFiles/canvasdesk_qmlimportscan
@@ -15,10 +9,6 @@ e1e05ca7bcfda5b2e2509b86c3ebcf35 .rcc/qmlcache/canvasdesk_src/editor/qml/EditorM
 78109f07bdbdbbd3a98f5cadec5c8348 CMakeFiles/module_CanvasDeskQml_aotstats_target
 78109f07bdbdbbd3a98f5cadec5c8348 CMakeFiles/module_canvasdesk-editor_aotstats_target
 69b36f9a1dcc8c4f2e58c64cf64887c7 canvasdesk_autogen/timestamp
-7fbdab22eef5047e4b3e92b09b2387ba canvasdesk_qmltyperegistrations.cpp
-7fd20a21e96fa8aed996b0c602772cd3 meta_types/canvasdesk_json_file_list.txt
-c76b38f5b7069ea9aa03dbc85bfd48d1 meta_types/qt6canvasdesk_metatypes.json
-b359cf4cf5c83828bed71fa786000980 meta_types/qt6canvasdesk_metatypes.json.gen
 3422271ca527c52daccf936cfce2332f src/app/CMakeFiles/canvasdesk-runtime_autogen
 4b489ff288a514ed422dfd2cf2f67980 src/app/canvasdesk-runtime_autogen/timestamp
 6f0609405995afc73bcab32270b6655a src/core/.qt/CanvasDeskCore_qml.txt

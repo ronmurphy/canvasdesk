@@ -1,0 +1,55 @@
+#!/bin/bash
+# CanvasDesk Session Wrapper
+# This script launches CanvasDesk as a desktop environment.
+# If no display server is running, it starts labwc compositor first.
+
+# Get the directory where this script is located
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Path to the CanvasDesk binary
+# When installed system-wide, this will be in /usr/bin or similar
+CANVASDESK_BIN="${SCRIPT_DIR}/build/canvasdesk"
+
+# Check if we need to start a compositor
+COMPOSITOR_PID=""
+
+if [ -z "$WAYLAND_DISPLAY" ] && [ -z "$DISPLAY" ]; then
+    echo "No display server detected, starting labwc compositor..."
+
+    # Check if labwc is installed
+    if ! command -v labwc &> /dev/null; then
+        echo "ERROR: labwc compositor not found!"
+        echo "Please install it: sudo pacman -S labwc"
+        exit 1
+    fi
+
+    # Start labwc in the background
+    labwc &
+    COMPOSITOR_PID=$!
+
+    # Give the compositor time to start
+    sleep 2
+
+    # Export the Wayland display (labwc typically uses wayland-0)
+    export WAYLAND_DISPLAY=wayland-0
+
+    echo "Compositor started with PID: $COMPOSITOR_PID"
+else
+    echo "Display server already running (WAYLAND_DISPLAY=$WAYLAND_DISPLAY, DISPLAY=$DISPLAY)"
+fi
+
+# Set Qt platform to Wayland
+export QT_QPA_PLATFORM=wayland
+
+# Launch CanvasDesk
+echo "Starting CanvasDesk..."
+"$CANVASDESK_BIN" --runtime
+
+# If we started a compositor, kill it when CanvasDesk exits
+if [ -n "$COMPOSITOR_PID" ]; then
+    echo "Stopping compositor (PID: $COMPOSITOR_PID)..."
+    kill $COMPOSITOR_PID 2>/dev/null
+    wait $COMPOSITOR_PID 2>/dev/null
+fi
+
+echo "CanvasDesk session ended."

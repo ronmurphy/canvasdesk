@@ -649,18 +649,13 @@ src/app/canvasdesk-runtime: src/core/libCanvasDeskCore.so \
   /usr/lib32/libGLdispatch.so.0 \
   /usr/lib32/libXau.so.6 \
   /usr/lib32/libXdmcp.so.6 \
-  /usr/lib32/libblkid.so.1 \
   /usr/lib32/libbrotlicommon.so.1 \
   /usr/lib32/libbz2.so.1.0 \
   /usr/lib32/libcap.so.2 \
   /usr/lib32/libcom_err.so.2 \
   /usr/lib32/libcurl.so.4 \
-  /usr/lib32/libduktape.so.207 \
   /usr/lib32/libexpat.so.1 \
   /usr/lib32/libffi.so.8 \
-  /usr/lib32/libgio-2.0.so.0 \
-  /usr/lib32/libgmodule-2.0.so.0 \
-  /usr/lib32/libgobject-2.0.so.0 \
   /usr/lib32/libgomp.so.1 \
   /usr/lib32/libicudata.so.78 \
   /usr/lib32/libidn2.so.0 \
@@ -668,11 +663,8 @@ src/app/canvasdesk-runtime: src/core/libCanvasDeskCore.so \
   /usr/lib32/libkeyutils.so.1 \
   /usr/lib32/libkrb5.so.3 \
   /usr/lib32/libkrb5support.so.0 \
-  /usr/lib32/libmount.so.1 \
   /usr/lib32/libnghttp2.so.14 \
   /usr/lib32/libnghttp3.so.9 \
-  /usr/lib32/libpcre2-8.so.0 \
-  /usr/lib32/libproxy.so.1 \
   /usr/lib32/libpsl.so.5 \
   /usr/lib32/libresolv.so.2 \
   /usr/lib32/libssh2.so.1 \
@@ -696,8 +688,6 @@ src/app/CMakeFiles/canvasdesk-runtime.dir/canvasdesk-runtime_autogen/mocs_compil
 
 /usr/lib32/libpsl.so.5:
 
-/usr/lib32/libmount.so.1:
-
 /usr/lib32/libkrb5.so.3:
 
 /usr/lib32/libkeyutils.so.1:
@@ -708,12 +698,6 @@ src/app/CMakeFiles/canvasdesk-runtime.dir/canvasdesk-runtime_autogen/mocs_compil
 
 /usr/lib32/libgomp.so.1:
 
-/usr/lib32/libgobject-2.0.so.0:
-
-/usr/lib32/libgio-2.0.so.0:
-
-/usr/lib32/libduktape.so.207:
-
 /usr/lib32/libcurl.so.4:
 
 /usr/lib32/libcom_err.so.2:
@@ -721,8 +705,6 @@ src/app/CMakeFiles/canvasdesk-runtime.dir/canvasdesk-runtime_autogen/mocs_compil
 /usr/lib32/libcap.so.2:
 
 /usr/lib32/libbrotlicommon.so.1:
-
-/usr/lib32/libblkid.so.1:
 
 /usr/lib32/libXdmcp.so.6:
 
@@ -1516,8 +1498,6 @@ src/qml/libCanvasDeskQml.so:
 
 /usr/include/c++/15.2.1/bits/concept_check.h:
 
-/usr/lib32/libproxy.so.1:
-
 /usr/include/c++/15.2.1/ext/type_traits.h:
 
 /usr/include/qt6/QtQml/qqmlregistration.h:
@@ -1569,8 +1549,6 @@ src/qml/libCanvasDeskQml.so:
 /usr/lib/libOpenGL.so:
 
 /usr/include/qt6/QtCore/qpair.h:
-
-/usr/lib32/libpcre2-8.so.0:
 
 /usr/include/c++/15.2.1/ranges:
 
@@ -1879,8 +1857,6 @@ src/qml/libCanvasDeskQml.so:
 /usr/include/qt6/QtCore/qobject.h:
 
 /usr/include/qt6/QtCore/qobject_impl.h:
-
-/usr/lib32/libgmodule-2.0.so.0:
 
 /usr/include/limits.h:
 

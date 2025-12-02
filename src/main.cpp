@@ -66,26 +66,35 @@ int main(int argc, char *argv[]) {
   // Handle session installation
   if (parser.isSet(installSessionOption)) {
     QString execPath = QCoreApplication::applicationFilePath();
+    QString execDir = QFileInfo(execPath).absolutePath();
+    QString wrapperScript = execDir + "/../canvasdesk-session";
     QString sessionDir = "/usr/share/wayland-sessions";
     QString sessionFile = sessionDir + "/canvasdesk.desktop";
-    
+
     // Check if directory exists
     if (!QDir(sessionDir).exists()) {
       qWarning() << "Directory" << sessionDir << "does not exist.";
       qWarning() << "You may need to create it first or check your compositor support.";
       return 1;
     }
-    
-    // Create desktop entry content
-    QString desktopEntry = 
+
+    // Check if wrapper script exists
+    if (!QFile::exists(wrapperScript)) {
+      qWarning() << "Session wrapper script not found at" << wrapperScript;
+      qWarning() << "Please ensure canvasdesk-session exists in the project root.";
+      return 1;
+    }
+
+    // Create desktop entry content pointing to wrapper script
+    QString desktopEntry =
       "[Desktop Entry]\n"
       "Name=CanvasDesk\n"
       "Comment=Customizable Wayland Desktop Environment\n"
-      "Exec=" + execPath + " --runtime\n"
+      "Exec=" + wrapperScript + "\n"
       "Type=Application\n"
       "DesktopNames=CanvasDesk\n"
       "X-KDE-PluginInfo-Name=canvasdesk\n";
-    
+
     // Try to write the file
     QFile file(sessionFile);
     if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
@@ -93,7 +102,11 @@ int main(int argc, char *argv[]) {
       out << desktopEntry;
       file.close();
       qInfo() << "Successfully installed session file to" << sessionFile;
+      qInfo() << "Session wrapper:" << wrapperScript;
       qInfo() << "CanvasDesk should now appear in your login manager.";
+      qInfo() << "";
+      qInfo() << "NOTE: If logging in as a standalone session, labwc compositor is required.";
+      qInfo() << "      Install it with: sudo pacman -S labwc";
       return 0;
     } else {
       qWarning() << "Failed to write to" << sessionFile;

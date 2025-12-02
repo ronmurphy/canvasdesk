@@ -1,0 +1,59 @@
+# CanvasDesk Build Dependencies for Arch Linux
+
+## Required Packages
+
+Install all dependencies with:
+```bash
+sudo pacman -S qt6-base qt6-declarative qt6-wayland wayland wlr-protocols kwayland cmake gcc pkgconf make
+```
+
+## Package Breakdown
+
+### Qt 6 Framework (minimum version 6.5)
+- qt6-base          # Provides Qt6::Core, Qt6::Gui
+- qt6-declarative   # Provides Qt6::Qml, Qt6::Quick
+- qt6-wayland       # Provides Qt6::WaylandClient
+
+### Wayland Support
+- wayland           # Wayland client libraries (includes wayland-protocols as dependency)
+- wlr-protocols     # wlroots protocols (wlr-foreign-toplevel-management)
+
+### KDE Frameworks
+- kwayland          # KWaylandClient for Plasma window management
+
+### Build Tools
+- cmake             # Build system (minimum version 3.16)
+- gcc               # C++ compiler with C++20 support (or 'clang' as alternative)
+- pkgconf           # Package config tool for finding libraries
+- make              # Build automation (or 'ninja' as alternative)
+
+## Optional Tools
+- ninja             # Faster alternative to make (optional but recommended)
+
+## Build Instructions
+
+After installing dependencies:
+
+```bash
+# Build the project
+./build.sh
+
+# Run editor mode (design your desktop)
+./build/canvasdesk
+
+# Run runtime mode (use your desktop)
+./build/canvasdesk --runtime
+```
+
+## System Requirements
+
+- Linux with Wayland compositor
+- C++20 compatible compiler
+- CMake 3.16 or newer
+- Qt 6.5 or newer
+
+## Notes
+
+- This project requires a Wayland session (not X11)
+- KWaylandClient is needed for window management integration with Plasma
+- wlr-protocols provides support for wlroots-based compositors (Sway, Hyprland, etc.)
