@@ -66,7 +66,7 @@ include src/qml/CMakeFiles/CanvasDeskQmlplugin_autogen_timestamp_deps.dir/compil
 # Include the progress variables for this target.
 include src/qml/CMakeFiles/CanvasDeskQmlplugin_autogen_timestamp_deps.dir/progress.make
 
-src/qml/CMakeFiles/CanvasDeskQmlplugin_autogen_timestamp_deps: src/qml/CanvasDeskQmlplugin_CanvasDeskPlugin.cpp
+src/qml/CMakeFiles/CanvasDeskQmlplugin_autogen_timestamp_deps: src/qml/CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.cpp
 
 src/qml/CMakeFiles/CanvasDeskQmlplugin_autogen_timestamp_deps.dir/codegen:
 .PHONY : src/qml/CMakeFiles/CanvasDeskQmlplugin_autogen_timestamp_deps.dir/codegen

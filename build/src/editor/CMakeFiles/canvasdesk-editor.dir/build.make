@@ -69,12 +69,77 @@ include src/editor/CMakeFiles/canvasdesk-editor.dir/progress.make
 # Include the compile flags for this target's objects.
 include src/editor/CMakeFiles/canvasdesk-editor.dir/flags.make
 
+src/editor/meta_types/qt6canvasdesk-editor_metatypes.json.gen: /usr/lib/qt6/moc
+src/editor/meta_types/qt6canvasdesk-editor_metatypes.json.gen: src/editor/meta_types/canvasdesk-editor_json_file_list.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Running moc --collect-json for target canvasdesk-editor"
+	cd /home/brad/Documents/canvasdesk/build/src/editor && /usr/lib/qt6/moc -o /home/brad/Documents/canvasdesk/build/src/editor/meta_types/qt6canvasdesk-editor_metatypes.json.gen --collect-json @/home/brad/Documents/canvasdesk/build/src/editor/meta_types/canvasdesk-editor_json_file_list.txt
+	cd /home/brad/Documents/canvasdesk/build/src/editor && /usr/bin/cmake -E copy_if_different /home/brad/Documents/canvasdesk/build/src/editor/meta_types/qt6canvasdesk-editor_metatypes.json.gen /home/brad/Documents/canvasdesk/build/src/editor/meta_types/qt6canvasdesk-editor_metatypes.json
+
+src/editor/canvasdesk-editor_qmltyperegistrations.cpp: src/editor/qmltypes/canvasdesk-editor_foreign_types.txt
+src/editor/canvasdesk-editor_qmltyperegistrations.cpp: src/editor/meta_types/qt6canvasdesk-editor_metatypes.json
+src/editor/canvasdesk-editor_qmltyperegistrations.cpp: /usr/lib/qt6/qmltyperegistrar
+src/editor/canvasdesk-editor_qmltyperegistrations.cpp: /usr/lib/qt6/metatypes/qt6core_metatypes.json
+src/editor/canvasdesk-editor_qmltyperegistrations.cpp: /usr/lib/qt6/metatypes/qt6qml_metatypes.json
+src/editor/canvasdesk-editor_qmltyperegistrations.cpp: /usr/lib/qt6/metatypes/qt6network_metatypes.json
+src/editor/canvasdesk-editor_qmltyperegistrations.cpp: /usr/lib/qt6/metatypes/qt6quick_metatypes.json
+src/editor/canvasdesk-editor_qmltyperegistrations.cpp: /usr/lib/qt6/metatypes/qt6gui_metatypes.json
+src/editor/canvasdesk-editor_qmltyperegistrations.cpp: /usr/lib/qt6/metatypes/qt6opengl_metatypes.json
+src/editor/canvasdesk-editor_qmltyperegistrations.cpp: src/core/meta_types/qt6canvasdeskcore_metatypes.json
+src/editor/canvasdesk-editor_qmltyperegistrations.cpp: src/qml/meta_types/qt6canvasdeskqml_metatypes.json
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Automatic QML type registration for target canvasdesk-editor"
+	cd /home/brad/Documents/canvasdesk/build/src/editor && /usr/lib/qt6/qmltyperegistrar --generate-qmltypes=/home/brad/Documents/canvasdesk/build/src/editor/CanvasDeskEditor/canvasdesk-editor.qmltypes --import-name=CanvasDeskEditor --major-version=1 --minor-version=0 @/home/brad/Documents/canvasdesk/build/src/editor/qmltypes/canvasdesk-editor_foreign_types.txt -o /home/brad/Documents/canvasdesk/build/src/editor/canvasdesk-editor_qmltyperegistrations.cpp /home/brad/Documents/canvasdesk/build/src/editor/meta_types/qt6canvasdesk-editor_metatypes.json
+	cd /home/brad/Documents/canvasdesk/build/src/editor && /usr/bin/cmake -E make_directory /home/brad/Documents/canvasdesk/build/src/editor/.qt/qmltypes
+	cd /home/brad/Documents/canvasdesk/build/src/editor && /usr/bin/cmake -E touch /home/brad/Documents/canvasdesk/build/src/editor/.qt/qmltypes/canvasdesk-editor.qmltypes
+
+src/editor/CanvasDeskEditor/canvasdesk-editor.qmltypes: src/editor/canvasdesk-editor_qmltyperegistrations.cpp
+	@$(CMAKE_COMMAND) -E touch_nocreate src/editor/CanvasDeskEditor/canvasdesk-editor.qmltypes
+
+src/editor/.qt/rcc/qrc_qmake_CanvasDeskEditor.cpp: src/editor/CanvasDeskEditor/qmldir
+src/editor/.qt/rcc/qrc_qmake_CanvasDeskEditor.cpp: src/editor/.qt/rcc/qmake_CanvasDeskEditor.qrc
+src/editor/.qt/rcc/qrc_qmake_CanvasDeskEditor.cpp: /usr/lib/qt6/rcc
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Running rcc for resource qmake_CanvasDeskEditor"
+	cd /home/brad/Documents/canvasdesk/build/src/editor && /usr/lib/qt6/rcc --output /home/brad/Documents/canvasdesk/build/src/editor/.qt/rcc/qrc_qmake_CanvasDeskEditor.cpp --name qmake_CanvasDeskEditor /home/brad/Documents/canvasdesk/build/src/editor/.qt/rcc/qmake_CanvasDeskEditor.qrc
+
+src/editor/.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp: /usr/lib/qt6/qmlcachegen
+src/editor/.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp: src/editor/.rcc/qmlcache/canvasdesk-editor_qml_loader_file_list.rsp
+src/editor/.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp: src/editor/.qt/rcc/qmake_CanvasDeskEditor.qrc
+src/editor/.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp: src/editor/.qt/rcc/canvasdesk-editor_raw_qml_0.qrc
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating .rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp"
+	cd /home/brad/Documents/canvasdesk/build/src/editor && /usr/lib/qt6/qmlcachegen --resource-name qmlcache_canvasdesk-editor -o /home/brad/Documents/canvasdesk/build/src/editor/.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp @/home/brad/Documents/canvasdesk/build/src/editor/.rcc/qmlcache/canvasdesk-editor_qml_loader_file_list.rsp
+
+src/editor/.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp: /usr/lib/qt6/qmlcachegen
+src/editor/.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp: /home/brad/Documents/canvasdesk/src/editor/qml/EditorMain.qml
+src/editor/.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp: src/editor/.qt/rcc/qmake_CanvasDeskEditor.qrc
+src/editor/.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp: src/editor/.qt/rcc/canvasdesk-editor_raw_qml_0.qrc
+src/editor/.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp: src/editor/CanvasDeskEditor/canvasdesk-editor.qmltypes
+src/editor/.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp: src/editor/CanvasDeskEditor/qmldir
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating .rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp, .rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp.aotstats"
+	cd /home/brad/Documents/canvasdesk/build/src/editor && /usr/bin/cmake -E make_directory /home/brad/Documents/canvasdesk/build/src/editor/.rcc/qmlcache/canvasdesk-editor_qml
+	cd /home/brad/Documents/canvasdesk/build/src/editor && /usr/lib/qt6/qmlcachegen --bare --resource-path /CanvasDeskEditor/qml/EditorMain.qml -I /home/brad/Documents/canvasdesk/build/src/editor -I /usr/lib/qt6/qml -i /home/brad/Documents/canvasdesk/build/src/editor/CanvasDeskEditor/qmldir --resource /home/brad/Documents/canvasdesk/build/src/editor/.qt/rcc/qmake_CanvasDeskEditor.qrc --resource /home/brad/Documents/canvasdesk/build/src/editor/.qt/rcc/canvasdesk-editor_raw_qml_0.qrc --dump-aot-stats "--module-id=CanvasDeskEditor(canvasdesk-editor)" -o /home/brad/Documents/canvasdesk/build/src/editor/.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp /home/brad/Documents/canvasdesk/src/editor/qml/EditorMain.qml
+
+src/editor/.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp.aotstats: src/editor/.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp
+	@$(CMAKE_COMMAND) -E touch_nocreate src/editor/.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp.aotstats
+
+src/editor/.qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp: /home/brad/Documents/canvasdesk/src/editor/qml/EditorMain.qml
+src/editor/.qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp: src/editor/.qt/rcc/canvasdesk-editor_raw_qml_0.qrc
+src/editor/.qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp: /usr/lib/qt6/rcc
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Running rcc for resource canvasdesk-editor_raw_qml_0"
+	cd /home/brad/Documents/canvasdesk/build/src/editor && /usr/lib/qt6/rcc --output /home/brad/Documents/canvasdesk/build/src/editor/.qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp --name canvasdesk-editor_raw_qml_0 /home/brad/Documents/canvasdesk/build/src/editor/.qt/rcc/canvasdesk-editor_raw_qml_0.qrc
+
 src/editor/canvasdesk-editor_autogen/timestamp: /usr/lib/qt6/moc
-src/editor/canvasdesk-editor_autogen/timestamp: /usr/lib/qt6/uic
 src/editor/canvasdesk-editor_autogen/timestamp: src/editor/CMakeFiles/canvasdesk-editor.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target canvasdesk-editor"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Automatic MOC and UIC for target canvasdesk-editor"
 	cd /home/brad/Documents/canvasdesk/build/src/editor && /usr/bin/cmake -E cmake_autogen /home/brad/Documents/canvasdesk/build/src/editor/CMakeFiles/canvasdesk-editor_autogen.dir/AutogenInfo.json ""
 	cd /home/brad/Documents/canvasdesk/build/src/editor && /usr/bin/cmake -E touch /home/brad/Documents/canvasdesk/build/src/editor/canvasdesk-editor_autogen/timestamp
+
+src/editor/meta_types/canvasdesk-editor_json_file_list.txt: /usr/lib/qt6/cmake_automoc_parser
+src/editor/meta_types/canvasdesk-editor_json_file_list.txt: src/editor/canvasdesk-editor_autogen/timestamp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Running AUTOMOC file extraction for target canvasdesk-editor"
+	cd /home/brad/Documents/canvasdesk/build/src/editor && /usr/lib/qt6/cmake_automoc_parser --cmake-autogen-cache-file /home/brad/Documents/canvasdesk/build/src/editor/CMakeFiles/canvasdesk-editor_autogen.dir/ParseCache.txt --cmake-autogen-info-file /home/brad/Documents/canvasdesk/build/src/editor/CMakeFiles/canvasdesk-editor_autogen.dir/AutogenInfo.json --output-file-path /home/brad/Documents/canvasdesk/build/src/editor/meta_types/canvasdesk-editor_json_file_list.txt --timestamp-file-path /home/brad/Documents/canvasdesk/build/src/editor/meta_types/canvasdesk-editor_json_file_list.txt.timestamp --cmake-autogen-include-dir-path /home/brad/Documents/canvasdesk/build/src/editor/canvasdesk-editor_autogen/include
+
+src/editor/meta_types/qt6canvasdesk-editor_metatypes.json: src/editor/meta_types/qt6canvasdesk-editor_metatypes.json.gen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Generating meta_types/qt6canvasdesk-editor_metatypes.json"
+	cd /home/brad/Documents/canvasdesk/build/src/editor && /usr/bin/cmake -E true
 
 src/editor/CMakeFiles/canvasdesk-editor.dir/codegen:
 .PHONY : src/editor/CMakeFiles/canvasdesk-editor.dir/codegen
@@ -82,7 +147,7 @@ src/editor/CMakeFiles/canvasdesk-editor.dir/codegen:
 src/editor/CMakeFiles/canvasdesk-editor.dir/canvasdesk-editor_autogen/mocs_compilation.cpp.o: src/editor/CMakeFiles/canvasdesk-editor.dir/flags.make
 src/editor/CMakeFiles/canvasdesk-editor.dir/canvasdesk-editor_autogen/mocs_compilation.cpp.o: src/editor/canvasdesk-editor_autogen/mocs_compilation.cpp
 src/editor/CMakeFiles/canvasdesk-editor.dir/canvasdesk-editor_autogen/mocs_compilation.cpp.o: src/editor/CMakeFiles/canvasdesk-editor.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/editor/CMakeFiles/canvasdesk-editor.dir/canvasdesk-editor_autogen/mocs_compilation.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object src/editor/CMakeFiles/canvasdesk-editor.dir/canvasdesk-editor_autogen/mocs_compilation.cpp.o"
 	cd /home/brad/Documents/canvasdesk/build/src/editor && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/editor/CMakeFiles/canvasdesk-editor.dir/canvasdesk-editor_autogen/mocs_compilation.cpp.o -MF CMakeFiles/canvasdesk-editor.dir/canvasdesk-editor_autogen/mocs_compilation.cpp.o.d -o CMakeFiles/canvasdesk-editor.dir/canvasdesk-editor_autogen/mocs_compilation.cpp.o -c /home/brad/Documents/canvasdesk/build/src/editor/canvasdesk-editor_autogen/mocs_compilation.cpp
 
 src/editor/CMakeFiles/canvasdesk-editor.dir/canvasdesk-editor_autogen/mocs_compilation.cpp.i: cmake_force
@@ -96,7 +161,7 @@ src/editor/CMakeFiles/canvasdesk-editor.dir/canvasdesk-editor_autogen/mocs_compi
 src/editor/CMakeFiles/canvasdesk-editor.dir/main.cpp.o: src/editor/CMakeFiles/canvasdesk-editor.dir/flags.make
 src/editor/CMakeFiles/canvasdesk-editor.dir/main.cpp.o: /home/brad/Documents/canvasdesk/src/editor/main.cpp
 src/editor/CMakeFiles/canvasdesk-editor.dir/main.cpp.o: src/editor/CMakeFiles/canvasdesk-editor.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/editor/CMakeFiles/canvasdesk-editor.dir/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object src/editor/CMakeFiles/canvasdesk-editor.dir/main.cpp.o"
 	cd /home/brad/Documents/canvasdesk/build/src/editor && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/editor/CMakeFiles/canvasdesk-editor.dir/main.cpp.o -MF CMakeFiles/canvasdesk-editor.dir/main.cpp.o.d -o CMakeFiles/canvasdesk-editor.dir/main.cpp.o -c /home/brad/Documents/canvasdesk/src/editor/main.cpp
 
 src/editor/CMakeFiles/canvasdesk-editor.dir/main.cpp.i: cmake_force
@@ -107,30 +172,110 @@ src/editor/CMakeFiles/canvasdesk-editor.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/canvasdesk-editor.dir/main.cpp.s"
 	cd /home/brad/Documents/canvasdesk/build/src/editor && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/brad/Documents/canvasdesk/src/editor/main.cpp -o CMakeFiles/canvasdesk-editor.dir/main.cpp.s
 
+src/editor/CMakeFiles/canvasdesk-editor.dir/canvasdesk-editor_qmltyperegistrations.cpp.o: src/editor/CMakeFiles/canvasdesk-editor.dir/flags.make
+src/editor/CMakeFiles/canvasdesk-editor.dir/canvasdesk-editor_qmltyperegistrations.cpp.o: src/editor/canvasdesk-editor_qmltyperegistrations.cpp
+src/editor/CMakeFiles/canvasdesk-editor.dir/canvasdesk-editor_qmltyperegistrations.cpp.o: src/editor/CMakeFiles/canvasdesk-editor.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object src/editor/CMakeFiles/canvasdesk-editor.dir/canvasdesk-editor_qmltyperegistrations.cpp.o"
+	cd /home/brad/Documents/canvasdesk/build/src/editor && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/editor/CMakeFiles/canvasdesk-editor.dir/canvasdesk-editor_qmltyperegistrations.cpp.o -MF CMakeFiles/canvasdesk-editor.dir/canvasdesk-editor_qmltyperegistrations.cpp.o.d -o CMakeFiles/canvasdesk-editor.dir/canvasdesk-editor_qmltyperegistrations.cpp.o -c /home/brad/Documents/canvasdesk/build/src/editor/canvasdesk-editor_qmltyperegistrations.cpp
+
+src/editor/CMakeFiles/canvasdesk-editor.dir/canvasdesk-editor_qmltyperegistrations.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/canvasdesk-editor.dir/canvasdesk-editor_qmltyperegistrations.cpp.i"
+	cd /home/brad/Documents/canvasdesk/build/src/editor && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/brad/Documents/canvasdesk/build/src/editor/canvasdesk-editor_qmltyperegistrations.cpp > CMakeFiles/canvasdesk-editor.dir/canvasdesk-editor_qmltyperegistrations.cpp.i
+
+src/editor/CMakeFiles/canvasdesk-editor.dir/canvasdesk-editor_qmltyperegistrations.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/canvasdesk-editor.dir/canvasdesk-editor_qmltyperegistrations.cpp.s"
+	cd /home/brad/Documents/canvasdesk/build/src/editor && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/brad/Documents/canvasdesk/build/src/editor/canvasdesk-editor_qmltyperegistrations.cpp -o CMakeFiles/canvasdesk-editor.dir/canvasdesk-editor_qmltyperegistrations.cpp.s
+
+src/editor/CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_qmake_CanvasDeskEditor.cpp.o: src/editor/CMakeFiles/canvasdesk-editor.dir/flags.make
+src/editor/CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_qmake_CanvasDeskEditor.cpp.o: src/editor/.qt/rcc/qrc_qmake_CanvasDeskEditor.cpp
+src/editor/CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_qmake_CanvasDeskEditor.cpp.o: src/editor/CMakeFiles/canvasdesk-editor.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object src/editor/CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_qmake_CanvasDeskEditor.cpp.o"
+	cd /home/brad/Documents/canvasdesk/build/src/editor && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/editor/CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_qmake_CanvasDeskEditor.cpp.o -MF CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_qmake_CanvasDeskEditor.cpp.o.d -o CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_qmake_CanvasDeskEditor.cpp.o -c /home/brad/Documents/canvasdesk/build/src/editor/.qt/rcc/qrc_qmake_CanvasDeskEditor.cpp
+
+src/editor/CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_qmake_CanvasDeskEditor.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_qmake_CanvasDeskEditor.cpp.i"
+	cd /home/brad/Documents/canvasdesk/build/src/editor && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/brad/Documents/canvasdesk/build/src/editor/.qt/rcc/qrc_qmake_CanvasDeskEditor.cpp > CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_qmake_CanvasDeskEditor.cpp.i
+
+src/editor/CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_qmake_CanvasDeskEditor.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_qmake_CanvasDeskEditor.cpp.s"
+	cd /home/brad/Documents/canvasdesk/build/src/editor && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/brad/Documents/canvasdesk/build/src/editor/.qt/rcc/qrc_qmake_CanvasDeskEditor.cpp -o CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_qmake_CanvasDeskEditor.cpp.s
+
+src/editor/CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp.o: src/editor/CMakeFiles/canvasdesk-editor.dir/flags.make
+src/editor/CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp.o: src/editor/.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp
+src/editor/CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp.o: src/editor/CMakeFiles/canvasdesk-editor.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object src/editor/CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp.o"
+	cd /home/brad/Documents/canvasdesk/build/src/editor && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/editor/CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp.o -MF CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp.o.d -o CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp.o -c /home/brad/Documents/canvasdesk/build/src/editor/.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp
+
+src/editor/CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp.i"
+	cd /home/brad/Documents/canvasdesk/build/src/editor && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/brad/Documents/canvasdesk/build/src/editor/.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp > CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp.i
+
+src/editor/CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp.s"
+	cd /home/brad/Documents/canvasdesk/build/src/editor && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/brad/Documents/canvasdesk/build/src/editor/.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp -o CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp.s
+
+src/editor/CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp.o: src/editor/CMakeFiles/canvasdesk-editor.dir/flags.make
+src/editor/CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp.o: src/editor/.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp
+src/editor/CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp.o: src/editor/CMakeFiles/canvasdesk-editor.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object src/editor/CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp.o"
+	cd /home/brad/Documents/canvasdesk/build/src/editor && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/editor/CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp.o -MF CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp.o.d -o CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp.o -c /home/brad/Documents/canvasdesk/build/src/editor/.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp
+
+src/editor/CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp.i"
+	cd /home/brad/Documents/canvasdesk/build/src/editor && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/brad/Documents/canvasdesk/build/src/editor/.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp > CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp.i
+
+src/editor/CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp.s"
+	cd /home/brad/Documents/canvasdesk/build/src/editor && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/brad/Documents/canvasdesk/build/src/editor/.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp -o CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp.s
+
+src/editor/CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp.o: src/editor/CMakeFiles/canvasdesk-editor.dir/flags.make
+src/editor/CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp.o: src/editor/.qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp
+src/editor/CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp.o: src/editor/CMakeFiles/canvasdesk-editor.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object src/editor/CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp.o"
+	cd /home/brad/Documents/canvasdesk/build/src/editor && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/editor/CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp.o -MF CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp.o.d -o CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp.o -c /home/brad/Documents/canvasdesk/build/src/editor/.qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp
+
+src/editor/CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp.i"
+	cd /home/brad/Documents/canvasdesk/build/src/editor && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/brad/Documents/canvasdesk/build/src/editor/.qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp > CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp.i
+
+src/editor/CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp.s"
+	cd /home/brad/Documents/canvasdesk/build/src/editor && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/brad/Documents/canvasdesk/build/src/editor/.qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp -o CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp.s
+
 # Object files for target canvasdesk-editor
 canvasdesk__editor_OBJECTS = \
 "CMakeFiles/canvasdesk-editor.dir/canvasdesk-editor_autogen/mocs_compilation.cpp.o" \
-"CMakeFiles/canvasdesk-editor.dir/main.cpp.o"
+"CMakeFiles/canvasdesk-editor.dir/main.cpp.o" \
+"CMakeFiles/canvasdesk-editor.dir/canvasdesk-editor_qmltyperegistrations.cpp.o" \
+"CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_qmake_CanvasDeskEditor.cpp.o" \
+"CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp.o" \
+"CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp.o" \
+"CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp.o"
 
 # External object files for target canvasdesk-editor
 canvasdesk__editor_EXTERNAL_OBJECTS =
 
 src/editor/canvasdesk-editor: src/editor/CMakeFiles/canvasdesk-editor.dir/canvasdesk-editor_autogen/mocs_compilation.cpp.o
 src/editor/canvasdesk-editor: src/editor/CMakeFiles/canvasdesk-editor.dir/main.cpp.o
+src/editor/canvasdesk-editor: src/editor/CMakeFiles/canvasdesk-editor.dir/canvasdesk-editor_qmltyperegistrations.cpp.o
+src/editor/canvasdesk-editor: src/editor/CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_qmake_CanvasDeskEditor.cpp.o
+src/editor/canvasdesk-editor: src/editor/CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp.o
+src/editor/canvasdesk-editor: src/editor/CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp.o
+src/editor/canvasdesk-editor: src/editor/CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp.o
 src/editor/canvasdesk-editor: src/editor/CMakeFiles/canvasdesk-editor.dir/build.make
 src/editor/canvasdesk-editor: src/editor/CMakeFiles/canvasdesk-editor.dir/compiler_depend.ts
-src/editor/canvasdesk-editor: src/core/libCanvasDeskCore.a
 src/editor/canvasdesk-editor: src/qml/libCanvasDeskQml.so
 src/editor/canvasdesk-editor: /usr/lib/libQt6Quick.so.6.10.1
 src/editor/canvasdesk-editor: /usr/lib/libQt6OpenGL.so.6.10.1
 src/editor/canvasdesk-editor: /usr/lib/libQt6Gui.so.6.10.1
 src/editor/canvasdesk-editor: /usr/lib/libGLX.so
 src/editor/canvasdesk-editor: /usr/lib/libOpenGL.so
+src/editor/canvasdesk-editor: src/core/libCanvasDeskCore.so
 src/editor/canvasdesk-editor: /usr/lib/libQt6Qml.so.6.10.1
 src/editor/canvasdesk-editor: /usr/lib/libQt6Network.so.6.10.1
 src/editor/canvasdesk-editor: /usr/lib/libQt6Core.so.6.10.1
 src/editor/canvasdesk-editor: src/editor/CMakeFiles/canvasdesk-editor.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable canvasdesk-editor"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Linking CXX executable canvasdesk-editor"
 	cd /home/brad/Documents/canvasdesk/build/src/editor && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/canvasdesk-editor.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -141,7 +286,17 @@ src/editor/CMakeFiles/canvasdesk-editor.dir/clean:
 	cd /home/brad/Documents/canvasdesk/build/src/editor && $(CMAKE_COMMAND) -P CMakeFiles/canvasdesk-editor.dir/cmake_clean.cmake
 .PHONY : src/editor/CMakeFiles/canvasdesk-editor.dir/clean
 
+src/editor/CMakeFiles/canvasdesk-editor.dir/depend: src/editor/.qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp
+src/editor/CMakeFiles/canvasdesk-editor.dir/depend: src/editor/.qt/rcc/qrc_qmake_CanvasDeskEditor.cpp
+src/editor/CMakeFiles/canvasdesk-editor.dir/depend: src/editor/.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp
+src/editor/CMakeFiles/canvasdesk-editor.dir/depend: src/editor/.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp.aotstats
+src/editor/CMakeFiles/canvasdesk-editor.dir/depend: src/editor/.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp
+src/editor/CMakeFiles/canvasdesk-editor.dir/depend: src/editor/CanvasDeskEditor/canvasdesk-editor.qmltypes
 src/editor/CMakeFiles/canvasdesk-editor.dir/depend: src/editor/canvasdesk-editor_autogen/timestamp
+src/editor/CMakeFiles/canvasdesk-editor.dir/depend: src/editor/canvasdesk-editor_qmltyperegistrations.cpp
+src/editor/CMakeFiles/canvasdesk-editor.dir/depend: src/editor/meta_types/canvasdesk-editor_json_file_list.txt
+src/editor/CMakeFiles/canvasdesk-editor.dir/depend: src/editor/meta_types/qt6canvasdesk-editor_metatypes.json
+src/editor/CMakeFiles/canvasdesk-editor.dir/depend: src/editor/meta_types/qt6canvasdesk-editor_metatypes.json.gen
 	cd /home/brad/Documents/canvasdesk/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/brad/Documents/canvasdesk /home/brad/Documents/canvasdesk/src/editor /home/brad/Documents/canvasdesk/build /home/brad/Documents/canvasdesk/build/src/editor /home/brad/Documents/canvasdesk/build/src/editor/CMakeFiles/canvasdesk-editor.dir/DependInfo.cmake "--color=$(COLOR)" canvasdesk-editor
 .PHONY : src/editor/CMakeFiles/canvasdesk-editor.dir/depend
 

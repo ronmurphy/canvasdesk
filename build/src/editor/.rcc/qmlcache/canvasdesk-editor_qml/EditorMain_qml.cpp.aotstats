@@ -1,0 +1,447 @@
+{
+    "formatRevision": 1,
+    "modules": [
+        {
+            "moduleFiles": [
+                {
+                    "entries": [
+                        {
+                            "codegenResult": 0,
+                            "column": 27,
+                            "durationMicroseconds": 112,
+                            "functionName": "onPreviewModeChanged",
+                            "line": 19,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 5,
+                            "durationMicroseconds": 532,
+                            "functionName": "saveLayout",
+                            "line": 27,
+                            "message": "Cannot retrieve a non-object type by ID: layoutManager"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 5,
+                            "durationMicroseconds": 646,
+                            "functionName": "loadLayout",
+                            "line": 46,
+                            "message": "Cannot retrieve a non-object type by ID: layoutManager"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 5,
+                            "durationMicroseconds": 888,
+                            "functionName": "loadPreview",
+                            "line": 339,
+                            "message": "Cannot retrieve a non-object type by ID: layoutManager"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 5,
+                            "durationMicroseconds": 288,
+                            "functionName": "clearPreview",
+                            "line": 357,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 5,
+                            "durationMicroseconds": 0,
+                            "functionName": "createPreviewObject",
+                            "line": 364,
+                            "message": "Functions without type annotations won't be compiled"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 28,
+                            "durationMicroseconds": 0,
+                            "functionName": "onClicked",
+                            "line": 73,
+                            "message": "Could not find signal \"clicked\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 26,
+                            "durationMicroseconds": 0,
+                            "functionName": "enabled",
+                            "line": 74,
+                            "message": "Could not find property \"enabled\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 28,
+                            "durationMicroseconds": 0,
+                            "functionName": "onClicked",
+                            "line": 78,
+                            "message": "Could not find signal \"clicked\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 26,
+                            "durationMicroseconds": 0,
+                            "functionName": "enabled",
+                            "line": 79,
+                            "message": "Could not find property \"enabled\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 23,
+                            "durationMicroseconds": 0,
+                            "functionName": "text",
+                            "line": 82,
+                            "message": "Could not find property \"text\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 30,
+                            "durationMicroseconds": 0,
+                            "functionName": "highlighted",
+                            "line": 83,
+                            "message": "Could not find property \"highlighted\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 28,
+                            "durationMicroseconds": 0,
+                            "functionName": "onClicked",
+                            "line": 84,
+                            "message": "Could not find signal \"clicked\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 28,
+                            "durationMicroseconds": 0,
+                            "functionName": "onClicked",
+                            "line": 94,
+                            "message": "Could not find signal \"clicked\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 26,
+                            "durationMicroseconds": 0,
+                            "functionName": "enabled",
+                            "line": 95,
+                            "message": "Could not find property \"enabled\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 23,
+                            "durationMicroseconds": 0,
+                            "functionName": "text",
+                            "line": 99,
+                            "message": "Could not find property \"text\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 23,
+                            "durationMicroseconds": 20,
+                            "functionName": "currentIndex",
+                            "line": 108,
+                            "message": "Cannot access value for name previewMode"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 23,
+                            "durationMicroseconds": 34,
+                            "functionName": "fill",
+                            "line": 107,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 30,
+                            "durationMicroseconds": 0,
+                            "functionName": "orientation",
+                            "line": 124,
+                            "message": "Could not find property \"orientation\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 31,
+                            "durationMicroseconds": 0,
+                            "functionName": "fill",
+                            "line": 123,
+                            "message": "Could not find property \"fill\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 39,
+                            "durationMicroseconds": 14,
+                            "functionName": "currentIndex",
+                            "line": 140,
+                            "message": "Cannot retrieve a non-object type by ID: leftTabBar"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 40,
+                            "durationMicroseconds": 0,
+                            "functionName": "width",
+                            "line": 158,
+                            "message": "Could not find property \"width\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 39,
+                            "durationMicroseconds": 0,
+                            "functionName": "text",
+                            "line": 159,
+                            "message": "Could not find property \"text\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 44,
+                            "durationMicroseconds": 0,
+                            "functionName": "name",
+                            "line": 160,
+                            "message": "Could not find property \"name\"."
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 46,
+                            "durationMicroseconds": 34,
+                            "functionName": "active",
+                            "line": 162,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 48,
+                            "durationMicroseconds": 33,
+                            "functionName": "dragType",
+                            "line": 163,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 48,
+                            "durationMicroseconds": 13,
+                            "functionName": "mimeData",
+                            "line": 164,
+                            "message": "Cannot access value for name type"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 54,
+                            "durationMicroseconds": 118,
+                            "functionName": "onActiveChanged",
+                            "line": 168,
+                            "message": "Cannot generate efficient code for LoadClosure"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 36,
+                            "durationMicroseconds": 391,
+                            "functionName": "model",
+                            "line": 175,
+                            "message": "Cannot access value for name AppManager"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 40,
+                            "durationMicroseconds": 0,
+                            "functionName": "width",
+                            "line": 178,
+                            "message": "Could not find property \"width\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 39,
+                            "durationMicroseconds": 0,
+                            "functionName": "text",
+                            "line": 179,
+                            "message": "Could not find property \"text\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 44,
+                            "durationMicroseconds": 0,
+                            "functionName": "name",
+                            "line": 180,
+                            "message": "Could not find property \"name\"."
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 46,
+                            "durationMicroseconds": 36,
+                            "functionName": "active",
+                            "line": 182,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 48,
+                            "durationMicroseconds": 34,
+                            "functionName": "dragType",
+                            "line": 183,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 48,
+                            "durationMicroseconds": 40,
+                            "functionName": "mimeData",
+                            "line": 185,
+                            "message": "Cannot access value for name modelData"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 54,
+                            "durationMicroseconds": 84,
+                            "functionName": "onActiveChanged",
+                            "line": 198,
+                            "message": "Cannot generate efficient code for LoadClosure"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 35,
+                            "durationMicroseconds": 21,
+                            "functionName": "centerIn",
+                            "line": 221,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 32,
+                            "durationMicroseconds": 809,
+                            "functionName": "onDropped",
+                            "line": 227,
+                            "message": "Cannot generate efficient code for call to untyped JavaScript function"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 32,
+                            "durationMicroseconds": 17,
+                            "functionName": "onDropped",
+                            "line": 227,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 35,
+                            "durationMicroseconds": 21,
+                            "functionName": "fill",
+                            "line": 226,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 28,
+                            "durationMicroseconds": 21,
+                            "functionName": "model",
+                            "line": 254,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 28,
+                            "durationMicroseconds": 14,
+                            "functionName": "x",
+                            "line": 257,
+                            "message": "Cannot access value for name model"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 28,
+                            "durationMicroseconds": 8,
+                            "functionName": "y",
+                            "line": 258,
+                            "message": "Cannot access value for name model"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 35,
+                            "durationMicroseconds": 12,
+                            "functionName": "text",
+                            "line": 266,
+                            "message": "Cannot access value for name model"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 47,
+                            "durationMicroseconds": 20,
+                            "functionName": "centerIn",
+                            "line": 265,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 40,
+                            "durationMicroseconds": 44,
+                            "functionName": "onClicked",
+                            "line": 272,
+                            "message": "Cannot access value for name model"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 41,
+                            "durationMicroseconds": 210,
+                            "functionName": "onReleased",
+                            "line": 276,
+                            "message": "Cannot access value for name canvasModel"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 43,
+                            "durationMicroseconds": 22,
+                            "functionName": "fill",
+                            "line": 270,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 42,
+                            "durationMicroseconds": 16,
+                            "functionName": "target",
+                            "line": 271,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 31,
+                            "durationMicroseconds": 16,
+                            "functionName": "fill",
+                            "line": 299,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 27,
+                            "durationMicroseconds": 16,
+                            "functionName": "text",
+                            "line": 309,
+                            "message": "Cannot load property type from (component in /home/brad/Documents/canvasdesk/src/editor/qml/EditorMain.qml)::selectedComponent with type QVariant."
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 31,
+                            "durationMicroseconds": 16,
+                            "functionName": "fill",
+                            "line": 324,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 18,
+                            "durationMicroseconds": 10,
+                            "functionName": "visible",
+                            "line": 335,
+                            "message": "Cannot access value for name previewMode"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 23,
+                            "durationMicroseconds": 15,
+                            "functionName": "fill",
+                            "line": 333,
+                            "message": ""
+                        }
+                    ],
+                    "filePath": "/home/brad/Documents/canvasdesk/src/editor/qml/EditorMain.qml"
+                }
+            ],
+            "moduleId": "CanvasDeskEditor(canvasdesk-editor)"
+        }
+    ]
+}

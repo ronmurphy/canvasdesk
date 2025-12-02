@@ -143,6 +143,19 @@ module_CanvasDeskQml_aotstats_target/fast:
 .PHONY : module_CanvasDeskQml_aotstats_target/fast
 
 #=============================================================================
+# Target rules for targets named module_canvasdesk-editor_aotstats_target
+
+# Build rule for target.
+module_canvasdesk-editor_aotstats_target: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 module_canvasdesk-editor_aotstats_target
+.PHONY : module_canvasdesk-editor_aotstats_target
+
+# fast build rule for target.
+module_canvasdesk-editor_aotstats_target/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/module_canvasdesk-editor_aotstats_target.dir/build.make CMakeFiles/module_canvasdesk-editor_aotstats_target.dir/build
+.PHONY : module_canvasdesk-editor_aotstats_target/fast
+
+#=============================================================================
 # Target rules for targets named all_aotstats
 
 # Build rule for target.
@@ -208,6 +221,162 @@ CanvasDeskCore/fast:
 .PHONY : CanvasDeskCore/fast
 
 #=============================================================================
+# Target rules for targets named CanvasDeskCore_qmltyperegistration
+
+# Build rule for target.
+CanvasDeskCore_qmltyperegistration: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CanvasDeskCore_qmltyperegistration
+.PHONY : CanvasDeskCore_qmltyperegistration
+
+# fast build rule for target.
+CanvasDeskCore_qmltyperegistration/fast:
+	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore_qmltyperegistration.dir/build.make src/core/CMakeFiles/CanvasDeskCore_qmltyperegistration.dir/build
+.PHONY : CanvasDeskCore_qmltyperegistration/fast
+
+#=============================================================================
+# Target rules for targets named all_qmltyperegistrations
+
+# Build rule for target.
+all_qmltyperegistrations: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all_qmltyperegistrations
+.PHONY : all_qmltyperegistrations
+
+# fast build rule for target.
+all_qmltyperegistrations/fast:
+	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/all_qmltyperegistrations.dir/build.make src/core/CMakeFiles/all_qmltyperegistrations.dir/build
+.PHONY : all_qmltyperegistrations/fast
+
+#=============================================================================
+# Target rules for targets named CanvasDeskCoreplugin
+
+# Build rule for target.
+CanvasDeskCoreplugin: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CanvasDeskCoreplugin
+.PHONY : CanvasDeskCoreplugin
+
+# fast build rule for target.
+CanvasDeskCoreplugin/fast:
+	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCoreplugin.dir/build.make src/core/CMakeFiles/CanvasDeskCoreplugin.dir/build
+.PHONY : CanvasDeskCoreplugin/fast
+
+#=============================================================================
+# Target rules for targets named qt_internal_plugins
+
+# Build rule for target.
+qt_internal_plugins: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 qt_internal_plugins
+.PHONY : qt_internal_plugins
+
+# fast build rule for target.
+qt_internal_plugins/fast:
+	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/qt_internal_plugins.dir/build.make src/core/CMakeFiles/qt_internal_plugins.dir/build
+.PHONY : qt_internal_plugins/fast
+
+#=============================================================================
+# Target rules for targets named CanvasDeskCore_qmllint
+
+# Build rule for target.
+CanvasDeskCore_qmllint: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CanvasDeskCore_qmllint
+.PHONY : CanvasDeskCore_qmllint
+
+# fast build rule for target.
+CanvasDeskCore_qmllint/fast:
+	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore_qmllint.dir/build.make src/core/CMakeFiles/CanvasDeskCore_qmllint.dir/build
+.PHONY : CanvasDeskCore_qmllint/fast
+
+#=============================================================================
+# Target rules for targets named CanvasDeskCore_qmllint_json
+
+# Build rule for target.
+CanvasDeskCore_qmllint_json: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CanvasDeskCore_qmllint_json
+.PHONY : CanvasDeskCore_qmllint_json
+
+# fast build rule for target.
+CanvasDeskCore_qmllint_json/fast:
+	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore_qmllint_json.dir/build.make src/core/CMakeFiles/CanvasDeskCore_qmllint_json.dir/build
+.PHONY : CanvasDeskCore_qmllint_json/fast
+
+#=============================================================================
+# Target rules for targets named CanvasDeskCore_qmllint_module
+
+# Build rule for target.
+CanvasDeskCore_qmllint_module: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CanvasDeskCore_qmllint_module
+.PHONY : CanvasDeskCore_qmllint_module
+
+# fast build rule for target.
+CanvasDeskCore_qmllint_module/fast:
+	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore_qmllint_module.dir/build.make src/core/CMakeFiles/CanvasDeskCore_qmllint_module.dir/build
+.PHONY : CanvasDeskCore_qmllint_module/fast
+
+#=============================================================================
+# Target rules for targets named all_qmllint
+
+# Build rule for target.
+all_qmllint: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all_qmllint
+.PHONY : all_qmllint
+
+# fast build rule for target.
+all_qmllint/fast:
+	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/all_qmllint.dir/build.make src/core/CMakeFiles/all_qmllint.dir/build
+.PHONY : all_qmllint/fast
+
+#=============================================================================
+# Target rules for targets named all_qmllint_json
+
+# Build rule for target.
+all_qmllint_json: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all_qmllint_json
+.PHONY : all_qmllint_json
+
+# fast build rule for target.
+all_qmllint_json/fast:
+	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/all_qmllint_json.dir/build.make src/core/CMakeFiles/all_qmllint_json.dir/build
+.PHONY : all_qmllint_json/fast
+
+#=============================================================================
+# Target rules for targets named all_qmllint_module
+
+# Build rule for target.
+all_qmllint_module: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all_qmllint_module
+.PHONY : all_qmllint_module
+
+# fast build rule for target.
+all_qmllint_module/fast:
+	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/all_qmllint_module.dir/build.make src/core/CMakeFiles/all_qmllint_module.dir/build
+.PHONY : all_qmllint_module/fast
+
+#=============================================================================
+# Target rules for targets named CanvasDeskCore_copy_qml
+
+# Build rule for target.
+CanvasDeskCore_copy_qml: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CanvasDeskCore_copy_qml
+.PHONY : CanvasDeskCore_copy_qml
+
+# fast build rule for target.
+CanvasDeskCore_copy_qml/fast:
+	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore_copy_qml.dir/build.make src/core/CMakeFiles/CanvasDeskCore_copy_qml.dir/build
+.PHONY : CanvasDeskCore_copy_qml/fast
+
+#=============================================================================
+# Target rules for targets named CanvasDeskCore_copy_res
+
+# Build rule for target.
+CanvasDeskCore_copy_res: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CanvasDeskCore_copy_res
+.PHONY : CanvasDeskCore_copy_res
+
+# fast build rule for target.
+CanvasDeskCore_copy_res/fast:
+	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore_copy_res.dir/build.make src/core/CMakeFiles/CanvasDeskCore_copy_res.dir/build
+.PHONY : CanvasDeskCore_copy_res/fast
+
+#=============================================================================
 # Target rules for targets named CanvasDeskCore_autogen_timestamp_deps
 
 # Build rule for target.
@@ -232,6 +401,32 @@ CanvasDeskCore_autogen: cmake_check_build_system
 CanvasDeskCore_autogen/fast:
 	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore_autogen.dir/build.make src/core/CMakeFiles/CanvasDeskCore_autogen.dir/build
 .PHONY : CanvasDeskCore_autogen/fast
+
+#=============================================================================
+# Target rules for targets named CanvasDeskCoreplugin_autogen_timestamp_deps
+
+# Build rule for target.
+CanvasDeskCoreplugin_autogen_timestamp_deps: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CanvasDeskCoreplugin_autogen_timestamp_deps
+.PHONY : CanvasDeskCoreplugin_autogen_timestamp_deps
+
+# fast build rule for target.
+CanvasDeskCoreplugin_autogen_timestamp_deps/fast:
+	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCoreplugin_autogen_timestamp_deps.dir/build.make src/core/CMakeFiles/CanvasDeskCoreplugin_autogen_timestamp_deps.dir/build
+.PHONY : CanvasDeskCoreplugin_autogen_timestamp_deps/fast
+
+#=============================================================================
+# Target rules for targets named CanvasDeskCoreplugin_autogen
+
+# Build rule for target.
+CanvasDeskCoreplugin_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CanvasDeskCoreplugin_autogen
+.PHONY : CanvasDeskCoreplugin_autogen
+
+# fast build rule for target.
+CanvasDeskCoreplugin_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCoreplugin_autogen.dir/build.make src/core/CMakeFiles/CanvasDeskCoreplugin_autogen.dir/build
+.PHONY : CanvasDeskCoreplugin_autogen/fast
 
 #=============================================================================
 # Target rules for targets named CanvasDeskQml
@@ -260,19 +455,6 @@ CanvasDeskQml_qmltyperegistration/fast:
 .PHONY : CanvasDeskQml_qmltyperegistration/fast
 
 #=============================================================================
-# Target rules for targets named all_qmltyperegistrations
-
-# Build rule for target.
-all_qmltyperegistrations: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all_qmltyperegistrations
-.PHONY : all_qmltyperegistrations
-
-# fast build rule for target.
-all_qmltyperegistrations/fast:
-	$(MAKE) $(MAKESILENT) -f src/qml/CMakeFiles/all_qmltyperegistrations.dir/build.make src/qml/CMakeFiles/all_qmltyperegistrations.dir/build
-.PHONY : all_qmltyperegistrations/fast
-
-#=============================================================================
 # Target rules for targets named CanvasDeskQmlplugin
 
 # Build rule for target.
@@ -284,19 +466,6 @@ CanvasDeskQmlplugin: cmake_check_build_system
 CanvasDeskQmlplugin/fast:
 	$(MAKE) $(MAKESILENT) -f src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/build.make src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/build
 .PHONY : CanvasDeskQmlplugin/fast
-
-#=============================================================================
-# Target rules for targets named qt_internal_plugins
-
-# Build rule for target.
-qt_internal_plugins: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 qt_internal_plugins
-.PHONY : qt_internal_plugins
-
-# fast build rule for target.
-qt_internal_plugins/fast:
-	$(MAKE) $(MAKESILENT) -f src/qml/CMakeFiles/qt_internal_plugins.dir/build.make src/qml/CMakeFiles/qt_internal_plugins.dir/build
-.PHONY : qt_internal_plugins/fast
 
 #=============================================================================
 # Target rules for targets named CanvasDeskQml_qmllint
@@ -336,45 +505,6 @@ CanvasDeskQml_qmllint_module: cmake_check_build_system
 CanvasDeskQml_qmllint_module/fast:
 	$(MAKE) $(MAKESILENT) -f src/qml/CMakeFiles/CanvasDeskQml_qmllint_module.dir/build.make src/qml/CMakeFiles/CanvasDeskQml_qmllint_module.dir/build
 .PHONY : CanvasDeskQml_qmllint_module/fast
-
-#=============================================================================
-# Target rules for targets named all_qmllint
-
-# Build rule for target.
-all_qmllint: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all_qmllint
-.PHONY : all_qmllint
-
-# fast build rule for target.
-all_qmllint/fast:
-	$(MAKE) $(MAKESILENT) -f src/qml/CMakeFiles/all_qmllint.dir/build.make src/qml/CMakeFiles/all_qmllint.dir/build
-.PHONY : all_qmllint/fast
-
-#=============================================================================
-# Target rules for targets named all_qmllint_json
-
-# Build rule for target.
-all_qmllint_json: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all_qmllint_json
-.PHONY : all_qmllint_json
-
-# fast build rule for target.
-all_qmllint_json/fast:
-	$(MAKE) $(MAKESILENT) -f src/qml/CMakeFiles/all_qmllint_json.dir/build.make src/qml/CMakeFiles/all_qmllint_json.dir/build
-.PHONY : all_qmllint_json/fast
-
-#=============================================================================
-# Target rules for targets named all_qmllint_module
-
-# Build rule for target.
-all_qmllint_module: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all_qmllint_module
-.PHONY : all_qmllint_module
-
-# fast build rule for target.
-all_qmllint_module/fast:
-	$(MAKE) $(MAKESILENT) -f src/qml/CMakeFiles/all_qmllint_module.dir/build.make src/qml/CMakeFiles/all_qmllint_module.dir/build
-.PHONY : all_qmllint_module/fast
 
 #=============================================================================
 # Target rules for targets named CanvasDeskQml_copy_qml
@@ -468,6 +598,97 @@ canvasdesk-editor/fast:
 .PHONY : canvasdesk-editor/fast
 
 #=============================================================================
+# Target rules for targets named canvasdesk-editor_qmltyperegistration
+
+# Build rule for target.
+canvasdesk-editor_qmltyperegistration: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 canvasdesk-editor_qmltyperegistration
+.PHONY : canvasdesk-editor_qmltyperegistration
+
+# fast build rule for target.
+canvasdesk-editor_qmltyperegistration/fast:
+	$(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor_qmltyperegistration.dir/build.make src/editor/CMakeFiles/canvasdesk-editor_qmltyperegistration.dir/build
+.PHONY : canvasdesk-editor_qmltyperegistration/fast
+
+#=============================================================================
+# Target rules for targets named canvasdesk-editor_qmllint
+
+# Build rule for target.
+canvasdesk-editor_qmllint: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 canvasdesk-editor_qmllint
+.PHONY : canvasdesk-editor_qmllint
+
+# fast build rule for target.
+canvasdesk-editor_qmllint/fast:
+	$(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor_qmllint.dir/build.make src/editor/CMakeFiles/canvasdesk-editor_qmllint.dir/build
+.PHONY : canvasdesk-editor_qmllint/fast
+
+#=============================================================================
+# Target rules for targets named canvasdesk-editor_qmllint_json
+
+# Build rule for target.
+canvasdesk-editor_qmllint_json: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 canvasdesk-editor_qmllint_json
+.PHONY : canvasdesk-editor_qmllint_json
+
+# fast build rule for target.
+canvasdesk-editor_qmllint_json/fast:
+	$(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor_qmllint_json.dir/build.make src/editor/CMakeFiles/canvasdesk-editor_qmllint_json.dir/build
+.PHONY : canvasdesk-editor_qmllint_json/fast
+
+#=============================================================================
+# Target rules for targets named canvasdesk-editor_qmllint_module
+
+# Build rule for target.
+canvasdesk-editor_qmllint_module: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 canvasdesk-editor_qmllint_module
+.PHONY : canvasdesk-editor_qmllint_module
+
+# fast build rule for target.
+canvasdesk-editor_qmllint_module/fast:
+	$(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor_qmllint_module.dir/build.make src/editor/CMakeFiles/canvasdesk-editor_qmllint_module.dir/build
+.PHONY : canvasdesk-editor_qmllint_module/fast
+
+#=============================================================================
+# Target rules for targets named canvasdesk-editor_copy_qml
+
+# Build rule for target.
+canvasdesk-editor_copy_qml: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 canvasdesk-editor_copy_qml
+.PHONY : canvasdesk-editor_copy_qml
+
+# fast build rule for target.
+canvasdesk-editor_copy_qml/fast:
+	$(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor_copy_qml.dir/build.make src/editor/CMakeFiles/canvasdesk-editor_copy_qml.dir/build
+.PHONY : canvasdesk-editor_copy_qml/fast
+
+#=============================================================================
+# Target rules for targets named canvasdesk-editor_copy_res
+
+# Build rule for target.
+canvasdesk-editor_copy_res: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 canvasdesk-editor_copy_res
+.PHONY : canvasdesk-editor_copy_res
+
+# fast build rule for target.
+canvasdesk-editor_copy_res/fast:
+	$(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor_copy_res.dir/build.make src/editor/CMakeFiles/canvasdesk-editor_copy_res.dir/build
+.PHONY : canvasdesk-editor_copy_res/fast
+
+#=============================================================================
+# Target rules for targets named canvasdesk-editor_qmlimportscan
+
+# Build rule for target.
+canvasdesk-editor_qmlimportscan: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 canvasdesk-editor_qmlimportscan
+.PHONY : canvasdesk-editor_qmlimportscan
+
+# fast build rule for target.
+canvasdesk-editor_qmlimportscan/fast:
+	$(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor_qmlimportscan.dir/build.make src/editor/CMakeFiles/canvasdesk-editor_qmlimportscan.dir/build
+.PHONY : canvasdesk-editor_qmlimportscan/fast
+
+#=============================================================================
 # Target rules for targets named canvasdesk-editor_autogen_timestamp_deps
 
 # Build rule for target.
@@ -503,6 +724,14 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... CanvasDeskCore_autogen"
 	@echo "... CanvasDeskCore_autogen_timestamp_deps"
+	@echo "... CanvasDeskCore_copy_qml"
+	@echo "... CanvasDeskCore_copy_res"
+	@echo "... CanvasDeskCore_qmllint"
+	@echo "... CanvasDeskCore_qmllint_json"
+	@echo "... CanvasDeskCore_qmllint_module"
+	@echo "... CanvasDeskCore_qmltyperegistration"
+	@echo "... CanvasDeskCoreplugin_autogen"
+	@echo "... CanvasDeskCoreplugin_autogen_timestamp_deps"
 	@echo "... CanvasDeskQml_autogen"
 	@echo "... CanvasDeskQml_autogen_timestamp_deps"
 	@echo "... CanvasDeskQml_copy_qml"
@@ -520,12 +749,21 @@ help:
 	@echo "... all_qmltyperegistrations"
 	@echo "... canvasdesk-editor_autogen"
 	@echo "... canvasdesk-editor_autogen_timestamp_deps"
+	@echo "... canvasdesk-editor_copy_qml"
+	@echo "... canvasdesk-editor_copy_res"
+	@echo "... canvasdesk-editor_qmlimportscan"
+	@echo "... canvasdesk-editor_qmllint"
+	@echo "... canvasdesk-editor_qmllint_json"
+	@echo "... canvasdesk-editor_qmllint_module"
+	@echo "... canvasdesk-editor_qmltyperegistration"
 	@echo "... canvasdesk-runtime_autogen"
 	@echo "... canvasdesk-runtime_autogen_timestamp_deps"
 	@echo "... generate_qmlls_build_ini_file"
 	@echo "... module_CanvasDeskQml_aotstats_target"
+	@echo "... module_canvasdesk-editor_aotstats_target"
 	@echo "... qt_internal_plugins"
 	@echo "... CanvasDeskCore"
+	@echo "... CanvasDeskCoreplugin"
 	@echo "... CanvasDeskQml"
 	@echo "... CanvasDeskQmlplugin"
 	@echo "... canvasdesk-editor"

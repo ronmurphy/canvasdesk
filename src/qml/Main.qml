@@ -15,25 +15,25 @@ ApplicationWindow {
     Item {
         id: container
         anchors.fill: parent
-    }
 
-    Component.onCompleted: {
-        var json = layoutManager.loadLayout("layout.json")
-        if (json) {
-            console.log("Loaded layout in runtime")
-            try {
-                var data = JSON.parse(json)
-                if (data.components) {
-                    for (var i = 0; i < data.components.length; ++i) {
-                        var comp = data.components[i]
-                        createObject(comp)
+        Component.onCompleted: {
+            var json = layoutManager.loadLayout("layout.json")
+            if (json) {
+                console.log("Loaded layout in runtime")
+                try {
+                    var data = JSON.parse(json)
+                    if (data.components) {
+                        for (var i = 0; i < data.components.length; ++i) {
+                            var comp = data.components[i]
+                            createObject(comp)
+                        }
                     }
+                } catch (e) {
+                    console.log("Error parsing layout: " + e)
                 }
-            } catch (e) {
-                console.log("Error parsing layout: " + e)
+            } else {
+                console.log("No layout found")
             }
-        } else {
-            console.log("No layout found")
         }
     }
 
@@ -49,6 +49,12 @@ ApplicationWindow {
             Qt.createQmlObject(qml, container, "dynamicComponent")
         } else if (data.type === "FileManager") {
             var qml = 'import QtQuick; import QtQuick.Controls; import Qt.labs.folderlistmodel; import CanvasDesk; ListView { width: 200; height: 300; x: ' + data.x + '; y: ' + data.y + '; model: FolderListModel { folder: "file://" + AppManager.homeDir(); showDirsFirst: true; nameFilters: ["*"] }; delegate: ItemDelegate { text: fileName; icon.name: fileIsDir ? "folder" : "text-x-generic"; width: parent.width } }'
+            Qt.createQmlObject(qml, container, "dynamicComponent")
+        } else if (data.type === "WorkspaceSwitcher") {
+            var qml = 'import QtQuick; import QtQuick.Controls; import QtQuick.Layouts; import CanvasDesk; Row { spacing: 5; x: ' + data.x + '; y: ' + data.y + '; Repeater { model: WindowManager.workspaceCount; delegate: Button { text: (index + 1).toString(); highlighted: WindowManager.currentWorkspace === index; onClicked: WindowManager.switchToWorkspace(index); width: 40; height: 30 } } }'
+            Qt.createQmlObject(qml, container, "dynamicComponent")
+        } else if (data.type === "Clock") {
+            var qml = 'import QtQuick; import QtQuick.Controls; Rectangle { width: 120; height: 40; color: "#2a2a2a"; border.color: "#555"; radius: 4; x: ' + data.x + '; y: ' + data.y + '; Text { id: clockText; anchors.centerIn: parent; color: "white"; font.pixelSize: 16; font.family: "monospace"; text: Qt.formatTime(new Date(), "hh:mm:ss"); } Timer { interval: 1000; running: true; repeat: true; onTriggered: clockText.text = Qt.formatTime(new Date(), "hh:mm:ss") } }'
             Qt.createQmlObject(qml, container, "dynamicComponent")
         } else {
             // Fallback for other types

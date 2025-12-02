@@ -1,0 +1,22 @@
+{
+  "components": [
+    {
+      "type": "Text",
+      "x": 350,
+      "y": 250,
+      "text": "Welcome to CanvasDesk!",
+      "icon": "",
+      "exec": ""
+    },
+    {
+      "type": "Taskbar",
+      "x": 200,
+      "y": 550
+    },
+    {
+      "type": "WorkspaceSwitcher",
+      "x": 10,
+      "y": 10
+    }
+  ]
+}

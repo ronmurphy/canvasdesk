@@ -1,9 +1,8 @@
 src/app/CMakeFiles/canvasdesk-runtime.dir/main.cpp.o: \
  /home/brad/Documents/canvasdesk/src/app/main.cpp \
- /usr/include/stdc-predef.h /usr/include/qt6/QtGui/QGuiApplication \
- /usr/include/qt6/QtGui/qguiapplication.h \
- /usr/include/qt6/QtGui/qtguiglobal.h /usr/include/qt6/QtCore/qglobal.h \
- /usr/include/c++/15.2.1/type_traits \
+ /usr/include/stdc-predef.h /usr/include/qt6/QtCore/QDir \
+ /usr/include/qt6/QtCore/qdir.h /usr/include/qt6/QtCore/qcompare.h \
+ /usr/include/qt6/QtCore/qglobal.h /usr/include/c++/15.2.1/type_traits \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -185,11 +184,6 @@ src/app/CMakeFiles/canvasdesk-runtime.dir/main.cpp.o: \
  /usr/include/qt6/QtCore/qtresource.h \
  /usr/include/qt6/QtCore/qttranslation.h \
  /usr/include/qt6/QtCore/qversiontagging.h \
- /usr/include/qt6/QtGui/qtgui-config.h \
- /usr/include/qt6/QtGui/qtguiexports.h \
- /usr/include/qt6/QtCore/qcoreapplication.h \
- /usr/include/qt6/QtCore/qstring.h /usr/include/qt6/QtCore/qchar.h \
- /usr/include/qt6/QtCore/qcompare.h \
  /usr/include/qt6/QtCore/qstdlibdetection.h \
  /usr/include/qt6/QtCore/qcomparehelpers.h \
  /usr/include/c++/15.2.1/functional \
@@ -218,6 +212,7 @@ src/app/CMakeFiles/canvasdesk-runtime.dir/main.cpp.o: \
  /usr/include/c++/15.2.1/bits/stl_vector.h \
  /usr/include/c++/15.2.1/bits/stl_bvector.h \
  /usr/include/c++/15.2.1/bits/vector.tcc /usr/include/c++/15.2.1/array \
+ /usr/include/qt6/QtCore/qstring.h /usr/include/qt6/QtCore/qchar.h \
  /usr/include/qt6/QtCore/qstringview.h \
  /usr/include/qt6/QtCore/qbytearray.h /usr/include/qt6/QtCore/qrefcount.h \
  /usr/include/qt6/QtCore/qnamespace.h \
@@ -302,9 +297,10 @@ src/app/CMakeFiles/canvasdesk-runtime.dir/main.cpp.o: \
  /usr/include/qt6/QtCore/qstringbuilder.h \
  /usr/include/qt6/QtCore/qstringconverter.h \
  /usr/include/qt6/QtCore/qstringconverter_base.h \
- /usr/include/qt6/QtCore/qcoreevent.h \
- /usr/include/qt6/QtCore/qbasictimer.h \
- /usr/include/qt6/QtCore/qabstracteventdispatcher.h \
+ /usr/include/qt6/QtCore/qdirlisting.h \
+ /usr/include/qt6/QtCore/qfiledevice.h \
+ /usr/include/qt6/QtCore/qiodevice.h \
+ /usr/include/qt6/QtCore/qiodevicebase.h \
  /usr/include/qt6/QtCore/qobject.h /usr/include/qt6/QtCore/qobjectdefs.h \
  /usr/include/qt6/QtCore/qobjectdefs_impl.h \
  /usr/include/qt6/QtCore/qfunctionaltools_impl.h \
@@ -319,11 +315,10 @@ src/app/CMakeFiles/canvasdesk-runtime.dir/main.cpp.o: \
  /usr/include/qt6/QtCore/qstringmatcher.h \
  /usr/include/qt6/QtCore/qscopedpointer.h \
  /usr/include/qt6/QtCore/qmetatype.h \
- /usr/include/qt6/QtCore/qdatastream.h \
- /usr/include/qt6/QtCore/qiodevicebase.h \
- /usr/include/qt6/QtCore/qfloat16.h /usr/include/qt6/QtCore/qmath.h \
- /usr/include/qt6/QtCore/qtformat_impl.h /usr/include/c++/15.2.1/format \
- /usr/include/c++/15.2.1/charconv /usr/include/c++/15.2.1/locale \
+ /usr/include/qt6/QtCore/qdatastream.h /usr/include/qt6/QtCore/qfloat16.h \
+ /usr/include/qt6/QtCore/qmath.h /usr/include/qt6/QtCore/qtformat_impl.h \
+ /usr/include/c++/15.2.1/format /usr/include/c++/15.2.1/charconv \
+ /usr/include/c++/15.2.1/locale \
  /usr/include/c++/15.2.1/bits/locale_facets_nonio.h \
  /usr/include/c++/15.2.1/ctime \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/time_members.h \
@@ -353,14 +348,11 @@ src/app/CMakeFiles/canvasdesk-runtime.dir/main.cpp.o: \
  /usr/include/c++/15.2.1/bits/sstream.tcc \
  /usr/include/c++/15.2.1/bits/chrono_io.h /usr/include/c++/15.2.1/iomanip \
  /usr/include/c++/15.2.1/bits/quoted_string.h \
- /usr/include/qt6/QtCore/qeventloop.h \
- /usr/include/qt6/QtCore/qdeadlinetimer.h \
- /usr/include/qt6/QtCore/qnativeinterface.h \
- /usr/include/qt6/QtCore/qcoreapplication_platform.h \
- /usr/include/qt6/QtGui/qwindowdefs.h \
- /usr/include/qt6/QtGui/qinputmethod.h /usr/include/qt6/QtCore/qlocale.h \
- /usr/include/qt6/QtCore/qvariant.h /usr/include/qt6/QtCore/qdebug.h \
- /usr/include/qt6/QtCore/qtextstream.h \
+ /usr/include/qt6/QtCore/qspan.h /usr/include/c++/15.2.1/cassert \
+ /usr/include/qt6/QtCore/q20iterator.h \
+ /usr/include/qt6/QtCore/qdatetime.h /usr/include/qt6/QtCore/qcalendar.h \
+ /usr/include/qt6/QtCore/qlocale.h /usr/include/qt6/QtCore/qvariant.h \
+ /usr/include/qt6/QtCore/qdebug.h /usr/include/qt6/QtCore/qtextstream.h \
  /usr/include/qt6/QtCore/qcontiguouscache.h \
  /usr/include/qt6/QtCore/qsharedpointer.h \
  /usr/include/qt6/QtCore/qshareddata.h \
@@ -374,20 +366,37 @@ src/app/CMakeFiles/canvasdesk-runtime.dir/main.cpp.o: \
  /usr/include/qt6/QtCore/qset.h /usr/include/qt6/QtCore/qhash.h \
  /usr/include/qt6/QtCore/qvarlengtharray.h \
  /usr/include/qt6/QtCore/qalloc.h /usr/include/qt6/QtCore/q23utility.h \
- /usr/include/qt6/QtCore/q20utility.h /usr/include/qt6/QtCore/qpoint.h \
+ /usr/include/qt6/QtCore/q20utility.h /usr/include/qt6/QtCore/qfile.h \
+ /usr/include/c++/15.2.1/filesystem /usr/include/c++/15.2.1/bits/fs_fwd.h \
+ /usr/include/c++/15.2.1/bits/fs_path.h /usr/include/c++/15.2.1/codecvt \
+ /usr/include/c++/15.2.1/bits/fs_dir.h \
+ /usr/include/c++/15.2.1/bits/fs_ops.h \
+ /usr/include/qt6/QtCore/qfileinfo.h /usr/include/qt6/QtCore/qtimezone.h \
+ /usr/include/qt6/QtGui/QGuiApplication \
+ /usr/include/qt6/QtGui/qguiapplication.h \
+ /usr/include/qt6/QtGui/qtguiglobal.h \
+ /usr/include/qt6/QtGui/qtgui-config.h \
+ /usr/include/qt6/QtGui/qtguiexports.h \
+ /usr/include/qt6/QtCore/qcoreapplication.h \
+ /usr/include/qt6/QtCore/qcoreevent.h \
+ /usr/include/qt6/QtCore/qbasictimer.h \
+ /usr/include/qt6/QtCore/qabstracteventdispatcher.h \
+ /usr/include/qt6/QtCore/qeventloop.h \
+ /usr/include/qt6/QtCore/qdeadlinetimer.h \
+ /usr/include/qt6/QtCore/qnativeinterface.h \
+ /usr/include/qt6/QtCore/qcoreapplication_platform.h \
+ /usr/include/qt6/QtGui/qwindowdefs.h \
+ /usr/include/qt6/QtGui/qinputmethod.h /usr/include/qt6/QtCore/qpoint.h \
  /usr/include/qt6/QtCore/qcheckedint_impl.h \
  /usr/include/qt6/QtCore/qsize.h /usr/include/qt6/QtCore/qmargins.h \
  /usr/include/qt6/QtGui/qguiapplication_platform.h \
  /usr/include/qt6/QtGui/qguiapplication.h \
  /usr/include/qt6/QtCore/QIODevice /usr/include/qt6/QtCore/qiodevice.h \
- /usr/include/qt6/QtCore/qspan.h /usr/include/c++/15.2.1/cassert \
- /usr/include/qt6/QtCore/q20iterator.h \
  /usr/include/qt6/QtQml/QQmlApplicationEngine \
  /usr/include/qt6/QtQml/qqmlapplicationengine.h \
  /usr/include/qt6/QtQml/qqmlengine.h /usr/include/qt6/QtCore/qurl.h \
- /usr/include/qt6/QtQml/qjsengine.h /usr/include/qt6/QtCore/qtimezone.h \
- /usr/include/qt6/QtCore/qdatetime.h /usr/include/qt6/QtCore/qcalendar.h \
- /usr/include/qt6/QtQml/qjsvalue.h /usr/include/qt6/QtQml/qtqmlglobal.h \
+ /usr/include/qt6/QtQml/qjsengine.h /usr/include/qt6/QtQml/qjsvalue.h \
+ /usr/include/qt6/QtQml/qtqmlglobal.h \
  /usr/include/qt6/QtQml/qtqml-config.h \
  /usr/include/qt6/QtNetwork/qtnetworkglobal.h \
  /usr/include/qt6/QtNetwork/qtnetwork-config.h \

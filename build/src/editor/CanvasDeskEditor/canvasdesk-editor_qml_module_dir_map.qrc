@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/">
+    <file alias="/CanvasDeskEditor">/home/brad/Documents/canvasdesk/build/src/editor/CanvasDeskEditor</file>
+
+  </qresource>
+</RCC>

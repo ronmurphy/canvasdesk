@@ -143,6 +143,10 @@ src/app/CMakeFiles/canvasdesk-runtime.dir/main.cpp.o
  /usr/include/c++/15.2.1/bits/exception_defines.h
  /usr/include/c++/15.2.1/bits/exception_ptr.h
  /usr/include/c++/15.2.1/bits/formatfwd.h
+ /usr/include/c++/15.2.1/bits/fs_dir.h
+ /usr/include/c++/15.2.1/bits/fs_fwd.h
+ /usr/include/c++/15.2.1/bits/fs_ops.h
+ /usr/include/c++/15.2.1/bits/fs_path.h
  /usr/include/c++/15.2.1/bits/functexcept.h
  /usr/include/c++/15.2.1/bits/functional_hash.h
  /usr/include/c++/15.2.1/bits/hash_bytes.h
@@ -240,6 +244,7 @@ src/app/CMakeFiles/canvasdesk-runtime.dir/main.cpp.o
  /usr/include/c++/15.2.1/climits
  /usr/include/c++/15.2.1/clocale
  /usr/include/c++/15.2.1/cmath
+ /usr/include/c++/15.2.1/codecvt
  /usr/include/c++/15.2.1/compare
  /usr/include/c++/15.2.1/concepts
  /usr/include/c++/15.2.1/cstddef
@@ -260,6 +265,7 @@ src/app/CMakeFiles/canvasdesk-runtime.dir/main.cpp.o
  /usr/include/c++/15.2.1/ext/numeric_traits.h
  /usr/include/c++/15.2.1/ext/string_conversions.h
  /usr/include/c++/15.2.1/ext/type_traits.h
+ /usr/include/c++/15.2.1/filesystem
  /usr/include/c++/15.2.1/format
  /usr/include/c++/15.2.1/functional
  /usr/include/c++/15.2.1/initializer_list
@@ -347,6 +353,7 @@ src/app/CMakeFiles/canvasdesk-runtime.dir/main.cpp.o
  /usr/include/locale.h
  /usr/include/math.h
  /usr/include/pthread.h
+ /usr/include/qt6/QtCore/QDir
  /usr/include/qt6/QtCore/QIODevice
  /usr/include/qt6/QtCore/q17memory.h
  /usr/include/qt6/QtCore/q20functional.h
@@ -394,8 +401,13 @@ src/app/CMakeFiles/canvasdesk-runtime.dir/main.cpp.o
  /usr/include/qt6/QtCore/qdatetime.h
  /usr/include/qt6/QtCore/qdeadlinetimer.h
  /usr/include/qt6/QtCore/qdebug.h
+ /usr/include/qt6/QtCore/qdir.h
+ /usr/include/qt6/QtCore/qdirlisting.h
  /usr/include/qt6/QtCore/qeventloop.h
  /usr/include/qt6/QtCore/qexceptionhandling.h
+ /usr/include/qt6/QtCore/qfile.h
+ /usr/include/qt6/QtCore/qfiledevice.h
+ /usr/include/qt6/QtCore/qfileinfo.h
  /usr/include/qt6/QtCore/qflags.h
  /usr/include/qt6/QtCore/qfloat16.h
  /usr/include/qt6/QtCore/qforeach.h
@@ -547,7 +559,7 @@ src/app/CMakeFiles/canvasdesk-runtime.dir/main.cpp.o
  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/syslimits.h
 
 src/app/canvasdesk-runtime
- /home/brad/Documents/canvasdesk/build/src/core/libCanvasDeskCore.a
+ /home/brad/Documents/canvasdesk/build/src/core/libCanvasDeskCore.so
  /home/brad/Documents/canvasdesk/build/src/qml/libCanvasDeskQml.so
  /usr/lib/Scrt1.o
  /usr/lib/crti.o
@@ -564,6 +576,7 @@ src/app/canvasdesk-runtime
  /usr/lib/libEGL.so.1
  /usr/lib/libGLX.so
  /usr/lib/libGLdispatch.so.0
+ /usr/lib/libKWaylandClient.so.6
  /usr/lib/libOpenGL.so
  /usr/lib/libQt6Core.so.6.10.1
  /usr/lib/libQt6DBus.so.6
@@ -575,6 +588,7 @@ src/app/canvasdesk-runtime
  /usr/lib/libQt6QmlModels.so.6
  /usr/lib/libQt6QmlWorkerScript.so.6
  /usr/lib/libQt6Quick.so.6.10.1
+ /usr/lib/libQt6WaylandClient.so.6
  /usr/lib/libX11.so.6
  /usr/lib/libXau.so.6
  /usr/lib/libXdmcp.so.6
@@ -629,6 +643,8 @@ src/app/canvasdesk-runtime
  /usr/lib/libssl.so.3
  /usr/lib/libsystemd.so.0
  /usr/lib/libunistring.so.5
+ /usr/lib/libwayland-client.so.0
+ /usr/lib/libwayland-cursor.so.0
  /usr/lib/libxcb.so.1
  /usr/lib/libxkbcommon.so.0
  /usr/lib/libz.so.1
@@ -665,6 +681,7 @@ src/app/canvasdesk-runtime
  /usr/lib32/libssh2.so.1
  /usr/lib32/libssl.so.3
  /usr/lib32/libunistring.so.5
+ /usr/lib32/libwayland-client.so.0
  /usr/lib32/libxcb.so.1
  /home/brad/Documents/canvasdesk/build/src/app/CMakeFiles/canvasdesk-runtime.dir/canvasdesk-runtime_autogen/mocs_compilation.cpp.o
  /home/brad/Documents/canvasdesk/build/src/app/CMakeFiles/canvasdesk-runtime.dir/main.cpp.o

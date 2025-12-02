@@ -1,9 +1,8 @@
 src/editor/CMakeFiles/canvasdesk-editor.dir/main.cpp.o: \
  /home/brad/Documents/canvasdesk/src/editor/main.cpp \
- /usr/include/stdc-predef.h /usr/include/qt6/QtGui/QGuiApplication \
- /usr/include/qt6/QtGui/qguiapplication.h \
- /usr/include/qt6/QtGui/qtguiglobal.h /usr/include/qt6/QtCore/qglobal.h \
- /usr/include/c++/15.2.1/type_traits \
+ /usr/include/stdc-predef.h /usr/include/qt6/QtCore/QCoreApplication \
+ /usr/include/qt6/QtCore/qcoreapplication.h \
+ /usr/include/qt6/QtCore/qglobal.h /usr/include/c++/15.2.1/type_traits \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -185,9 +184,6 @@ src/editor/CMakeFiles/canvasdesk-editor.dir/main.cpp.o: \
  /usr/include/qt6/QtCore/qtresource.h \
  /usr/include/qt6/QtCore/qttranslation.h \
  /usr/include/qt6/QtCore/qversiontagging.h \
- /usr/include/qt6/QtGui/qtgui-config.h \
- /usr/include/qt6/QtGui/qtguiexports.h \
- /usr/include/qt6/QtCore/qcoreapplication.h \
  /usr/include/qt6/QtCore/qstring.h /usr/include/qt6/QtCore/qchar.h \
  /usr/include/qt6/QtCore/qcompare.h \
  /usr/include/qt6/QtCore/qstdlibdetection.h \
@@ -357,6 +353,12 @@ src/editor/CMakeFiles/canvasdesk-editor.dir/main.cpp.o: \
  /usr/include/qt6/QtCore/qdeadlinetimer.h \
  /usr/include/qt6/QtCore/qnativeinterface.h \
  /usr/include/qt6/QtCore/qcoreapplication_platform.h \
+ /usr/include/qt6/QtCore/qcoreapplication.h \
+ /usr/include/qt6/QtGui/QGuiApplication \
+ /usr/include/qt6/QtGui/qguiapplication.h \
+ /usr/include/qt6/QtGui/qtguiglobal.h \
+ /usr/include/qt6/QtGui/qtgui-config.h \
+ /usr/include/qt6/QtGui/qtguiexports.h \
  /usr/include/qt6/QtGui/qwindowdefs.h \
  /usr/include/qt6/QtGui/qinputmethod.h /usr/include/qt6/QtCore/qlocale.h \
  /usr/include/qt6/QtCore/qvariant.h /usr/include/qt6/QtCore/qdebug.h \

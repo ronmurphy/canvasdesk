@@ -70,7 +70,6 @@ include src/app/CMakeFiles/canvasdesk-runtime.dir/progress.make
 include src/app/CMakeFiles/canvasdesk-runtime.dir/flags.make
 
 src/app/canvasdesk-runtime_autogen/timestamp: /usr/lib/qt6/moc
-src/app/canvasdesk-runtime_autogen/timestamp: /usr/lib/qt6/uic
 src/app/canvasdesk-runtime_autogen/timestamp: src/app/CMakeFiles/canvasdesk-runtime.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target canvasdesk-runtime"
 	cd /home/brad/Documents/canvasdesk/build/src/app && /usr/bin/cmake -E cmake_autogen /home/brad/Documents/canvasdesk/build/src/app/CMakeFiles/canvasdesk-runtime_autogen.dir/AutogenInfo.json ""
@@ -119,13 +118,13 @@ src/app/canvasdesk-runtime: src/app/CMakeFiles/canvasdesk-runtime.dir/canvasdesk
 src/app/canvasdesk-runtime: src/app/CMakeFiles/canvasdesk-runtime.dir/main.cpp.o
 src/app/canvasdesk-runtime: src/app/CMakeFiles/canvasdesk-runtime.dir/build.make
 src/app/canvasdesk-runtime: src/app/CMakeFiles/canvasdesk-runtime.dir/compiler_depend.ts
-src/app/canvasdesk-runtime: src/core/libCanvasDeskCore.a
 src/app/canvasdesk-runtime: src/qml/libCanvasDeskQml.so
 src/app/canvasdesk-runtime: /usr/lib/libQt6Quick.so.6.10.1
 src/app/canvasdesk-runtime: /usr/lib/libQt6OpenGL.so.6.10.1
 src/app/canvasdesk-runtime: /usr/lib/libQt6Gui.so.6.10.1
 src/app/canvasdesk-runtime: /usr/lib/libGLX.so
 src/app/canvasdesk-runtime: /usr/lib/libOpenGL.so
+src/app/canvasdesk-runtime: src/core/libCanvasDeskCore.so
 src/app/canvasdesk-runtime: /usr/lib/libQt6Qml.so.6.10.1
 src/app/canvasdesk-runtime: /usr/lib/libQt6Network.so.6.10.1
 src/app/canvasdesk-runtime: /usr/lib/libQt6Core.so.6.10.1

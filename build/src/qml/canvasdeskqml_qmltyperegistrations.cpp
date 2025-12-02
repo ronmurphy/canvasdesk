@@ -14,11 +14,11 @@
 #else
 #define Q_QMLTYPE_EXPORT
 #endif
-Q_QMLTYPE_EXPORT void qml_register_types_CanvasDesk()
+Q_QMLTYPE_EXPORT void qml_register_types_CanvasDeskRuntime()
 {
     QT_WARNING_PUSH QT_WARNING_DISABLE_DEPRECATED
     QT_WARNING_POP
-    qmlRegisterModule("CanvasDesk", 1, 0);
+    qmlRegisterModule("CanvasDeskRuntime", 1, 0);
 }
 
-static const QQmlModuleRegistration canvasDeskRegistration("CanvasDesk", qml_register_types_CanvasDesk);
+static const QQmlModuleRegistration canvasDeskRuntimeRegistration("CanvasDeskRuntime", qml_register_types_CanvasDeskRuntime);

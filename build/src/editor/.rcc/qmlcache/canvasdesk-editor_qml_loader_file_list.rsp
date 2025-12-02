@@ -1,0 +1,5 @@
+--resource
+/home/brad/Documents/canvasdesk/build/src/editor/.qt/rcc/qmake_CanvasDeskEditor.qrc
+--resource
+/home/brad/Documents/canvasdesk/build/src/editor/.qt/rcc/canvasdesk-editor_raw_qml_0.qrc
+/CanvasDeskEditor/qml/EditorMain.qml

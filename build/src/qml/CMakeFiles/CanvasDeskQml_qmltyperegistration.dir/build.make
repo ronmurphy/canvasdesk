@@ -75,8 +75,12 @@ src/qml/canvasdeskqml_qmltyperegistrations.cpp: /usr/lib/qt6/qmltyperegistrar
 src/qml/canvasdeskqml_qmltyperegistrations.cpp: /usr/lib/qt6/metatypes/qt6qml_metatypes.json
 src/qml/canvasdeskqml_qmltyperegistrations.cpp: /usr/lib/qt6/metatypes/qt6core_metatypes.json
 src/qml/canvasdeskqml_qmltyperegistrations.cpp: /usr/lib/qt6/metatypes/qt6network_metatypes.json
+src/qml/canvasdeskqml_qmltyperegistrations.cpp: src/core/meta_types/qt6canvasdeskcore_metatypes.json
+src/qml/canvasdeskqml_qmltyperegistrations.cpp: /usr/lib/qt6/metatypes/qt6quick_metatypes.json
+src/qml/canvasdeskqml_qmltyperegistrations.cpp: /usr/lib/qt6/metatypes/qt6gui_metatypes.json
+src/qml/canvasdeskqml_qmltyperegistrations.cpp: /usr/lib/qt6/metatypes/qt6opengl_metatypes.json
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic QML type registration for target CanvasDeskQml"
-	cd /home/brad/Documents/canvasdesk/build/src/qml && /usr/lib/qt6/qmltyperegistrar --generate-qmltypes=/home/brad/Documents/canvasdesk/build/src/qml/CanvasDeskQml.qmltypes --import-name=CanvasDesk --major-version=1 --minor-version=0 @/home/brad/Documents/canvasdesk/build/src/qml/qmltypes/CanvasDeskQml_foreign_types.txt -o /home/brad/Documents/canvasdesk/build/src/qml/canvasdeskqml_qmltyperegistrations.cpp /home/brad/Documents/canvasdesk/build/src/qml/meta_types/qt6canvasdeskqml_metatypes.json
+	cd /home/brad/Documents/canvasdesk/build/src/qml && /usr/lib/qt6/qmltyperegistrar --generate-qmltypes=/home/brad/Documents/canvasdesk/build/src/qml/CanvasDeskQml.qmltypes --import-name=CanvasDeskRuntime --major-version=1 --minor-version=0 @/home/brad/Documents/canvasdesk/build/src/qml/qmltypes/CanvasDeskQml_foreign_types.txt -o /home/brad/Documents/canvasdesk/build/src/qml/canvasdeskqml_qmltyperegistrations.cpp /home/brad/Documents/canvasdesk/build/src/qml/meta_types/qt6canvasdeskqml_metatypes.json
 	cd /home/brad/Documents/canvasdesk/build/src/qml && /usr/bin/cmake -E make_directory /home/brad/Documents/canvasdesk/build/src/qml/.qt/qmltypes
 	cd /home/brad/Documents/canvasdesk/build/src/qml && /usr/bin/cmake -E touch /home/brad/Documents/canvasdesk/build/src/qml/.qt/qmltypes/CanvasDeskQml.qmltypes
 
@@ -99,7 +103,6 @@ src/qml/meta_types/CanvasDeskQml_json_file_list.txt: src/qml/CanvasDeskQml_autog
 	cd /home/brad/Documents/canvasdesk/build/src/qml && /usr/lib/qt6/cmake_automoc_parser --cmake-autogen-cache-file /home/brad/Documents/canvasdesk/build/src/qml/CMakeFiles/CanvasDeskQml_autogen.dir/ParseCache.txt --cmake-autogen-info-file /home/brad/Documents/canvasdesk/build/src/qml/CMakeFiles/CanvasDeskQml_autogen.dir/AutogenInfo.json --output-file-path /home/brad/Documents/canvasdesk/build/src/qml/meta_types/CanvasDeskQml_json_file_list.txt --timestamp-file-path /home/brad/Documents/canvasdesk/build/src/qml/meta_types/CanvasDeskQml_json_file_list.txt.timestamp --cmake-autogen-include-dir-path /home/brad/Documents/canvasdesk/build/src/qml/CanvasDeskQml_autogen/include
 
 src/qml/CanvasDeskQml_autogen/timestamp: /usr/lib/qt6/moc
-src/qml/CanvasDeskQml_autogen/timestamp: /usr/lib/qt6/uic
 src/qml/CanvasDeskQml_autogen/timestamp: src/qml/CMakeFiles/CanvasDeskQml_qmltyperegistration.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Automatic MOC and UIC for target CanvasDeskQml"
 	cd /home/brad/Documents/canvasdesk/build/src/qml && /usr/bin/cmake -E cmake_autogen /home/brad/Documents/canvasdesk/build/src/qml/CMakeFiles/CanvasDeskQml_autogen.dir/AutogenInfo.json ""

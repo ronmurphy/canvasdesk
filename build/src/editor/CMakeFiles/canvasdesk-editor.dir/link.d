@@ -4,13 +4,18 @@ canvasdesk-editor: \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o \
   CMakeFiles/canvasdesk-editor.dir/canvasdesk-editor_autogen/mocs_compilation.cpp.o \
   CMakeFiles/canvasdesk-editor.dir/main.cpp.o \
-  ../core/libCanvasDeskCore.a \
+  CMakeFiles/canvasdesk-editor.dir/canvasdesk-editor_qmltyperegistrations.cpp.o \
+  CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_qmake_CanvasDeskEditor.cpp.o \
+  CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp.o \
+  CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp.o \
+  CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp.o \
   ../qml/libCanvasDeskQml.so \
   /usr/lib/libQt6Quick.so.6.10.1 \
   /usr/lib/libQt6OpenGL.so.6.10.1 \
   /usr/lib/libQt6Gui.so.6.10.1 \
   /usr/lib/libGLX.so \
   /usr/lib/libOpenGL.so \
+  ../core/libCanvasDeskCore.so \
   /usr/lib/libQt6Qml.so.6.10.1 \
   /usr/lib/libQt6Network.so.6.10.1 \
   /usr/lib/libQt6Core.so.6.10.1 \
@@ -56,6 +61,7 @@ canvasdesk-editor: \
   /usr/lib/libz.so.1 \
   /usr/lib32/libGLdispatch.so.0 \
   /usr/lib/libGLdispatch.so.0 \
+  /usr/lib/libKWaylandClient.so.6 \
   /usr/lib/libgssapi_krb5.so.2 \
   /usr/lib/libbrotlidec.so.1 \
   /usr/lib/libzstd.so.1 \
@@ -81,6 +87,9 @@ canvasdesk-editor: \
   /usr/lib/libgraphite2.so.3 \
   /usr/lib32/libbz2.so.1.0 \
   /usr/lib/libbz2.so.1.0 \
+  /usr/lib32/libwayland-client.so.0 \
+  /usr/lib/libwayland-client.so.0 \
+  /usr/lib/libQt6WaylandClient.so.6 \
   /usr/lib32/libkrb5.so.3 \
   /usr/lib/libkrb5.so.3 \
   /usr/lib32/libk5crypto.so.3 \
@@ -108,14 +117,15 @@ canvasdesk-editor: \
   /usr/lib/libXau.so.6 \
   /usr/lib32/libXdmcp.so.6 \
   /usr/lib/libXdmcp.so.6 \
+  /usr/lib32/libffi.so.8 \
+  /usr/lib/libffi.so.8 \
+  /usr/lib/libwayland-cursor.so.0 \
   /usr/lib32/libcurl.so.4 \
   /usr/lib/libcurl.so.4 \
   /usr/lib32/libgio-2.0.so.0 \
   /usr/lib/libgio-2.0.so.0 \
   /usr/lib32/libduktape.so.207 \
   /usr/lib/libduktape.so.207 \
-  /usr/lib32/libffi.so.8 \
-  /usr/lib/libffi.so.8 \
   /usr/lib32/libnghttp3.so.9 \
   /usr/lib/libnghttp3.so.9 \
   /usr/lib32/libnghttp2.so.14 \
@@ -147,7 +157,15 @@ CMakeFiles/canvasdesk-editor.dir/canvasdesk-editor_autogen/mocs_compilation.cpp.
 
 CMakeFiles/canvasdesk-editor.dir/main.cpp.o:
 
-../core/libCanvasDeskCore.a:
+CMakeFiles/canvasdesk-editor.dir/canvasdesk-editor_qmltyperegistrations.cpp.o:
+
+CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_qmake_CanvasDeskEditor.cpp.o:
+
+CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp.o:
+
+CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp.o:
+
+CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp.o:
 
 ../qml/libCanvasDeskQml.so:
 
@@ -160,6 +178,8 @@ CMakeFiles/canvasdesk-editor.dir/main.cpp.o:
 /usr/lib/libGLX.so:
 
 /usr/lib/libOpenGL.so:
+
+../core/libCanvasDeskCore.so:
 
 /usr/lib/libQt6Qml.so.6.10.1:
 
@@ -251,6 +271,8 @@ CMakeFiles/canvasdesk-editor.dir/main.cpp.o:
 
 /usr/lib/libGLdispatch.so.0:
 
+/usr/lib/libKWaylandClient.so.6:
+
 /usr/lib/libgssapi_krb5.so.2:
 
 /usr/lib/libbrotlidec.so.1:
@@ -300,6 +322,12 @@ CMakeFiles/canvasdesk-editor.dir/main.cpp.o:
 /usr/lib32/libbz2.so.1.0:
 
 /usr/lib/libbz2.so.1.0:
+
+/usr/lib32/libwayland-client.so.0:
+
+/usr/lib/libwayland-client.so.0:
+
+/usr/lib/libQt6WaylandClient.so.6:
 
 /usr/lib32/libkrb5.so.3:
 
@@ -355,6 +383,12 @@ CMakeFiles/canvasdesk-editor.dir/main.cpp.o:
 
 /usr/lib/libXdmcp.so.6:
 
+/usr/lib32/libffi.so.8:
+
+/usr/lib/libffi.so.8:
+
+/usr/lib/libwayland-cursor.so.0:
+
 /usr/lib32/libcurl.so.4:
 
 /usr/lib/libcurl.so.4:
@@ -366,10 +400,6 @@ CMakeFiles/canvasdesk-editor.dir/main.cpp.o:
 /usr/lib32/libduktape.so.207:
 
 /usr/lib/libduktape.so.207:
-
-/usr/lib32/libffi.so.8:
-
-/usr/lib/libffi.so.8:
 
 /usr/lib32/libnghttp3.so.9:
 

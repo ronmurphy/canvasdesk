@@ -1,5 +1,6 @@
 #pragma once
 
+#include <QJSEngine>
 #include <QObject>
 #include <QQmlEngine>
 #include <QVariantList>
@@ -13,6 +14,14 @@ class AppManager : public QObject {
   Q_PROPERTY(QVariantList apps READ apps NOTIFY appsChanged)
 
 public:
+  static AppManager *create(QQmlEngine *qmlEngine, QJSEngine *jsEngine) {
+    Q_UNUSED(qmlEngine)
+    Q_UNUSED(jsEngine)
+    auto *am = new AppManager();
+    am->setParent(qmlEngine);
+    return am;
+  }
+
   explicit AppManager(QObject *parent = nullptr);
 
   QVariantList apps() const;

@@ -1,0 +1,6 @@
+module CanvasDeskEditor
+typeinfo canvasdesk-editor.qmltypes
+prefer :/CanvasDeskEditor/
+EditorMain 1.0 qml/EditorMain.qml
+depends QtQuick
+

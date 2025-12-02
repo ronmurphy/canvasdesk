@@ -1,0 +1,467 @@
+[
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "auto"
+                    },
+                    {
+                        "name": "QML.Singleton",
+                        "value": "true"
+                    }
+                ],
+                "className": "AppManager",
+                "lineNumber": 9,
+                "methods": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "exec",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 1,
+                        "lineNumber": 28,
+                        "name": "launch",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 2,
+                        "lineNumber": 29,
+                        "name": "rescan",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 3,
+                        "isConst": true,
+                        "lineNumber": 30,
+                        "name": "homeDir",
+                        "returnType": "QString"
+                    }
+                ],
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 0,
+                        "lineNumber": 14,
+                        "name": "apps",
+                        "notify": "appsChanged",
+                        "read": "apps",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVariantList",
+                        "user": false
+                    }
+                ],
+                "qualifiedClassName": "AppManager",
+                "signals": [
+                    {
+                        "access": "public",
+                        "index": 0,
+                        "lineNumber": 33,
+                        "name": "appsChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "AppManager.h",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "auto"
+                    }
+                ],
+                "className": "Component",
+                "lineNumber": 7,
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 0,
+                        "lineNumber": 9,
+                        "name": "type",
+                        "notify": "typeChanged",
+                        "read": "type",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QString",
+                        "user": false,
+                        "write": "setType"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 1,
+                        "lineNumber": 10,
+                        "name": "role",
+                        "notify": "roleChanged",
+                        "read": "role",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QString",
+                        "user": false,
+                        "write": "setRole"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 2,
+                        "lineNumber": 11,
+                        "name": "properties",
+                        "notify": "propertiesChanged",
+                        "read": "properties",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVariantMap",
+                        "user": false,
+                        "write": "setProperties"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 3,
+                        "lineNumber": 13,
+                        "name": "childComponents",
+                        "read": "childComponents",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QQmlListProperty<Component>",
+                        "user": false
+                    }
+                ],
+                "qualifiedClassName": "Component",
+                "signals": [
+                    {
+                        "access": "public",
+                        "index": 0,
+                        "lineNumber": 32,
+                        "name": "typeChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 1,
+                        "lineNumber": 33,
+                        "name": "roleChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 2,
+                        "lineNumber": 34,
+                        "name": "propertiesChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "Component.h",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "auto"
+                    }
+                ],
+                "className": "LayoutManager",
+                "lineNumber": 7,
+                "methods": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "path",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "jsonContent",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 0,
+                        "lineNumber": 14,
+                        "name": "saveLayout",
+                        "returnType": "bool"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "path",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 1,
+                        "lineNumber": 15,
+                        "name": "loadLayout",
+                        "returnType": "QString"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "path",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 2,
+                        "lineNumber": 16,
+                        "name": "runProject",
+                        "returnType": "void"
+                    }
+                ],
+                "object": true,
+                "qualifiedClassName": "LayoutManager",
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "LayoutManager.h",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "auto"
+                    },
+                    {
+                        "name": "QML.Singleton",
+                        "value": "true"
+                    }
+                ],
+                "className": "WindowManager",
+                "lineNumber": 15,
+                "methods": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "id",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 5,
+                        "lineNumber": 41,
+                        "name": "activate",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "id",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 6,
+                        "lineNumber": 42,
+                        "name": "close",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "id",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 7,
+                        "lineNumber": 43,
+                        "name": "minimize",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "index",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 8,
+                        "lineNumber": 44,
+                        "name": "switchToWorkspace",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "windowId",
+                                "type": "int"
+                            },
+                            {
+                                "name": "workspaceIndex",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 9,
+                        "lineNumber": 45,
+                        "name": "moveWindowToWorkspace",
+                        "returnType": "void"
+                    }
+                ],
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 0,
+                        "lineNumber": 20,
+                        "name": "windows",
+                        "notify": "windowsChanged",
+                        "read": "windows",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVariantList",
+                        "user": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 1,
+                        "lineNumber": 21,
+                        "name": "currentWorkspace",
+                        "notify": "currentWorkspaceChanged",
+                        "read": "currentWorkspace",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "write": "setCurrentWorkspace"
+                    },
+                    {
+                        "constant": true,
+                        "designable": true,
+                        "final": false,
+                        "index": 2,
+                        "lineNumber": 23,
+                        "name": "workspaceCount",
+                        "read": "workspaceCount",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false
+                    }
+                ],
+                "qualifiedClassName": "WindowManager",
+                "signals": [
+                    {
+                        "access": "public",
+                        "index": 0,
+                        "lineNumber": 48,
+                        "name": "windowsChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 1,
+                        "lineNumber": 49,
+                        "name": "currentWorkspaceChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "private",
+                        "arguments": [
+                            {
+                                "name": "name",
+                                "type": "quint32"
+                            },
+                            {
+                                "name": "version",
+                                "type": "quint32"
+                            }
+                        ],
+                        "index": 2,
+                        "lineNumber": 52,
+                        "name": "setupPlasmaWindowManagement",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "private",
+                        "arguments": [
+                            {
+                                "name": "window",
+                                "type": "KWayland::Client::PlasmaWindow*"
+                            }
+                        ],
+                        "index": 3,
+                        "lineNumber": 53,
+                        "name": "onWindowCreated",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "private",
+                        "index": 4,
+                        "lineNumber": 54,
+                        "name": "onWindowUnmapped",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "WindowManager.h",
+        "outputRevision": 69
+    }
+]

@@ -70,9 +70,10 @@ CMakeFiles/all_aotstats: .rcc/qmlcache/all_aotstats.txt
 	/usr/bin/cmake -E cat /home/brad/Documents/canvasdesk/build/.rcc/qmlcache/all_aotstats.txt
 
 .rcc/qmlcache/all_aotstats.aotstats: src/qml/.rcc/qmlcache/module_CanvasDeskQml.aotstats
+.rcc/qmlcache/all_aotstats.aotstats: src/editor/.rcc/qmlcache/module_canvasdesk-editor.aotstats
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating .rcc/qmlcache/all_aotstats.aotstats, .rcc/qmlcache/all_aotstats.txt"
 	/usr/lib/qt6/qmlaotstats aggregate /home/brad/Documents/canvasdesk/build/.rcc/qmlcache/all_aotstats.aotstatslist /home/brad/Documents/canvasdesk/build/.rcc/qmlcache/all_aotstats.aotstats
-	/usr/lib/qt6/qmlaotstats format /home/brad/Documents/canvasdesk/build/.rcc/qmlcache/all_aotstats.aotstats /home/brad/Documents/canvasdesk/build/.rcc/qmlcache/all_aotstats.txt
+	/usr/lib/qt6/qmlaotstats format /home/brad/Documents/canvasdesk/build/.rcc/qmlcache/all_aotstats.aotstats /home/brad/Documents/canvasdesk/build/.rcc/qmlcache/all_aotstats.txt --empty-modules /home/brad/Documents/canvasdesk/build/.rcc/qmlcache/aotstats_empty_modules.txt
 
 .rcc/qmlcache/all_aotstats.txt: .rcc/qmlcache/all_aotstats.aotstats
 	@$(CMAKE_COMMAND) -E touch_nocreate .rcc/qmlcache/all_aotstats.txt

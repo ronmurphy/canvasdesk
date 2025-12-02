@@ -10,7 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "" "src/qml/CanvasDeskQml_autogen/timestamp" "custom" "src/qml/CanvasDeskQml_autogen/deps"
   "/home/brad/Documents/canvasdesk/build/src/qml/.qt/rcc/qrc_CanvasDeskQml_raw_qml_0.cpp" "src/qml/CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_CanvasDeskQml_raw_qml_0.cpp.o" "gcc" "src/qml/CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_CanvasDeskQml_raw_qml_0.cpp.o.d"
-  "/home/brad/Documents/canvasdesk/build/src/qml/.qt/rcc/qrc_qmake_CanvasDesk.cpp" "src/qml/CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDesk.cpp.o" "gcc" "src/qml/CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDesk.cpp.o.d"
+  "/home/brad/Documents/canvasdesk/build/src/qml/.qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp" "src/qml/CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp.o" "gcc" "src/qml/CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp.o.d"
   "/home/brad/Documents/canvasdesk/build/src/qml/.rcc/qmlcache/CanvasDeskQml_Main_qml.cpp" "src/qml/CMakeFiles/CanvasDeskQml.dir/.rcc/qmlcache/CanvasDeskQml_Main_qml.cpp.o" "gcc" "src/qml/CMakeFiles/CanvasDeskQml.dir/.rcc/qmlcache/CanvasDeskQml_Main_qml.cpp.o.d"
   "/home/brad/Documents/canvasdesk/build/src/qml/.rcc/qmlcache/CanvasDeskQml_qmlcache_loader.cpp" "src/qml/CMakeFiles/CanvasDeskQml.dir/.rcc/qmlcache/CanvasDeskQml_qmlcache_loader.cpp.o" "gcc" "src/qml/CMakeFiles/CanvasDeskQml.dir/.rcc/qmlcache/CanvasDeskQml_qmlcache_loader.cpp.o.d"
   "/home/brad/Documents/canvasdesk/build/src/qml/CanvasDeskQml_autogen/mocs_compilation.cpp" "src/qml/CMakeFiles/CanvasDeskQml.dir/CanvasDeskQml_autogen/mocs_compilation.cpp.o" "gcc" "src/qml/CMakeFiles/CanvasDeskQml.dir/CanvasDeskQml_autogen/mocs_compilation.cpp.o.d"

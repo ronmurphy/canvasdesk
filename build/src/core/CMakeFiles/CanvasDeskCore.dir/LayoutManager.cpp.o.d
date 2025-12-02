@@ -387,13 +387,29 @@ src/core/CMakeFiles/CanvasDeskCore.dir/LayoutManager.cpp.o: \
  /usr/include/qt6/QtQml/qqmlerror.h \
  /usr/include/qt6/QtQml/qqmlabstracturlinterceptor.h \
  /usr/include/qt6/QtCore/QString /usr/include/qt6/QtCore/qstring.h \
+ /usr/include/qt6/QtCore/QCoreApplication \
+ /usr/include/qt6/QtCore/qcoreapplication.h \
+ /usr/include/qt6/QtCore/qcoreevent.h \
+ /usr/include/qt6/QtCore/qbasictimer.h \
+ /usr/include/qt6/QtCore/qabstracteventdispatcher.h \
+ /usr/include/qt6/QtCore/qeventloop.h \
+ /usr/include/qt6/QtCore/qdeadlinetimer.h \
+ /usr/include/qt6/QtCore/qnativeinterface.h \
+ /usr/include/qt6/QtCore/qcoreapplication_platform.h \
+ /usr/include/qt6/QtCore/qcoreapplication.h \
  /usr/include/qt6/QtCore/QDebug /usr/include/qt6/QtCore/qdebug.h \
- /usr/include/qt6/QtCore/QFile /usr/include/qt6/QtCore/qfile.h \
+ /usr/include/qt6/QtCore/QDir /usr/include/qt6/QtCore/qdir.h \
+ /usr/include/qt6/QtCore/qdirlisting.h \
  /usr/include/qt6/QtCore/qfiledevice.h \
- /usr/include/qt6/QtCore/qiodevice.h /usr/include/c++/15.2.1/filesystem \
- /usr/include/c++/15.2.1/bits/fs_fwd.h \
+ /usr/include/qt6/QtCore/qiodevice.h /usr/include/qt6/QtCore/qfile.h \
+ /usr/include/c++/15.2.1/filesystem /usr/include/c++/15.2.1/bits/fs_fwd.h \
  /usr/include/c++/15.2.1/bits/fs_path.h /usr/include/c++/15.2.1/codecvt \
  /usr/include/c++/15.2.1/bits/fs_dir.h \
- /usr/include/c++/15.2.1/bits/fs_ops.h /usr/include/qt6/QtCore/QProcess \
- /usr/include/qt6/QtCore/qprocess.h /usr/include/qt6/QtCore/QTextStream \
+ /usr/include/c++/15.2.1/bits/fs_ops.h \
+ /usr/include/qt6/QtCore/qfileinfo.h /usr/include/qt6/QtCore/QFile \
+ /usr/include/qt6/QtCore/qfile.h /usr/include/qt6/QtCore/QFileInfo \
+ /usr/include/qt6/QtCore/qfileinfo.h /usr/include/qt6/QtCore/QProcess \
+ /usr/include/qt6/QtCore/qprocess.h \
+ /usr/include/qt6/QtCore/QProcessEnvironment \
+ /usr/include/qt6/QtCore/QTextStream \
  /usr/include/qt6/QtCore/qtextstream.h

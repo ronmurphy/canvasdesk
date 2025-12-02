@@ -1,8 +1,11 @@
-module CanvasDesk
+module CanvasDeskRuntime
 linktarget CanvasDeskQmlplugin
 optional plugin CanvasDeskQmlplugin
-classname CanvasDeskPlugin
+classname CanvasDeskRuntimePlugin
 typeinfo CanvasDeskQml.qmltypes
-prefer :/CanvasDesk/
+depends QtQuick
+depends QtQuick.Controls
+prefer :/CanvasDeskRuntime/
 Main 1.0 Main.qml
+depends QtQuick
 

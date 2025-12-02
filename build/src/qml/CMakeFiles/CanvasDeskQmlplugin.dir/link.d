@@ -2,7 +2,7 @@ libCanvasDeskQmlplugin.so: \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o \
   CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_autogen/mocs_compilation.cpp.o \
-  CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_CanvasDeskPlugin.cpp.o \
+  CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.cpp.o \
   libCanvasDeskQml.so \
   /usr/lib/libQt6Qml.so.6.10.1 \
   /usr/lib/libQt6Network.so.6.10.1 \
@@ -38,7 +38,7 @@ libCanvasDeskQmlplugin.so: \
 
 CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_autogen/mocs_compilation.cpp.o:
 
-CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_CanvasDeskPlugin.cpp.o:
+CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.cpp.o:
 
 libCanvasDeskQml.so:
 

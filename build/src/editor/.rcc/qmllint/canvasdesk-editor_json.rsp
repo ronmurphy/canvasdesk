@@ -1,0 +1,12 @@
+--bare
+-I
+/home/brad/Documents/canvasdesk/build/src/editor
+-I
+/usr/lib/qt6/qml
+--resource
+/home/brad/Documents/canvasdesk/build/src/editor/.qt/rcc/qmake_CanvasDeskEditor.qrc
+--resource
+/home/brad/Documents/canvasdesk/build/src/editor/.qt/rcc/canvasdesk-editor_raw_qml_0.qrc
+/home/brad/Documents/canvasdesk/src/editor/qml/EditorMain.qml
+--json
+/home/brad/Documents/canvasdesk/build/canvasdesk-editor_qmllint.json

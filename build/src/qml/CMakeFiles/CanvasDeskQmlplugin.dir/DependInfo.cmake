@@ -9,7 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "" "src/qml/CanvasDeskQmlplugin_autogen/timestamp" "custom" "src/qml/CanvasDeskQmlplugin_autogen/deps"
-  "/home/brad/Documents/canvasdesk/build/src/qml/CanvasDeskQmlplugin_CanvasDeskPlugin.cpp" "src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_CanvasDeskPlugin.cpp.o" "gcc" "src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_CanvasDeskPlugin.cpp.o.d"
+  "/home/brad/Documents/canvasdesk/build/src/qml/CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.cpp" "src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.cpp.o" "gcc" "src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.cpp.o.d"
   "/home/brad/Documents/canvasdesk/build/src/qml/CanvasDeskQmlplugin_autogen/mocs_compilation.cpp" "src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_autogen/mocs_compilation.cpp.o" "gcc" "src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_autogen/mocs_compilation.cpp.o.d"
   "" "src/qml/libCanvasDeskQmlplugin.so" "gcc" "src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/link.d"
   )

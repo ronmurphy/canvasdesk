@@ -1,0 +1,37 @@
+{
+  "components": [
+    {
+      "type": "Clock",
+      "x": 20,
+      "y": 20
+    },
+    {
+      "type": "Taskbar",
+      "x": 20,
+      "y": 80
+    },
+    {
+      "type": "WorkspaceSwitcher",
+      "x": 20,
+      "y": 140
+    },
+    {
+      "type": "AppGrid",
+      "x": 20,
+      "y": 200
+    },
+    {
+      "type": "FileManager",
+      "x": 340,
+      "y": 200
+    },
+    {
+      "type": "Button",
+      "x": 620,
+      "y": 20,
+      "text": "Test Button",
+      "icon": "system-run",
+      "exec": "echo 'Hello!'"
+    }
+  ]
+}

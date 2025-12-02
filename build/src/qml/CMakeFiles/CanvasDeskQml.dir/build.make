@@ -81,36 +81,40 @@ src/qml/canvasdeskqml_qmltyperegistrations.cpp: /usr/lib/qt6/qmltyperegistrar
 src/qml/canvasdeskqml_qmltyperegistrations.cpp: /usr/lib/qt6/metatypes/qt6qml_metatypes.json
 src/qml/canvasdeskqml_qmltyperegistrations.cpp: /usr/lib/qt6/metatypes/qt6core_metatypes.json
 src/qml/canvasdeskqml_qmltyperegistrations.cpp: /usr/lib/qt6/metatypes/qt6network_metatypes.json
+src/qml/canvasdeskqml_qmltyperegistrations.cpp: src/core/meta_types/qt6canvasdeskcore_metatypes.json
+src/qml/canvasdeskqml_qmltyperegistrations.cpp: /usr/lib/qt6/metatypes/qt6quick_metatypes.json
+src/qml/canvasdeskqml_qmltyperegistrations.cpp: /usr/lib/qt6/metatypes/qt6gui_metatypes.json
+src/qml/canvasdeskqml_qmltyperegistrations.cpp: /usr/lib/qt6/metatypes/qt6opengl_metatypes.json
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Automatic QML type registration for target CanvasDeskQml"
-	cd /home/brad/Documents/canvasdesk/build/src/qml && /usr/lib/qt6/qmltyperegistrar --generate-qmltypes=/home/brad/Documents/canvasdesk/build/src/qml/CanvasDeskQml.qmltypes --import-name=CanvasDesk --major-version=1 --minor-version=0 @/home/brad/Documents/canvasdesk/build/src/qml/qmltypes/CanvasDeskQml_foreign_types.txt -o /home/brad/Documents/canvasdesk/build/src/qml/canvasdeskqml_qmltyperegistrations.cpp /home/brad/Documents/canvasdesk/build/src/qml/meta_types/qt6canvasdeskqml_metatypes.json
+	cd /home/brad/Documents/canvasdesk/build/src/qml && /usr/lib/qt6/qmltyperegistrar --generate-qmltypes=/home/brad/Documents/canvasdesk/build/src/qml/CanvasDeskQml.qmltypes --import-name=CanvasDeskRuntime --major-version=1 --minor-version=0 @/home/brad/Documents/canvasdesk/build/src/qml/qmltypes/CanvasDeskQml_foreign_types.txt -o /home/brad/Documents/canvasdesk/build/src/qml/canvasdeskqml_qmltyperegistrations.cpp /home/brad/Documents/canvasdesk/build/src/qml/meta_types/qt6canvasdeskqml_metatypes.json
 	cd /home/brad/Documents/canvasdesk/build/src/qml && /usr/bin/cmake -E make_directory /home/brad/Documents/canvasdesk/build/src/qml/.qt/qmltypes
 	cd /home/brad/Documents/canvasdesk/build/src/qml && /usr/bin/cmake -E touch /home/brad/Documents/canvasdesk/build/src/qml/.qt/qmltypes/CanvasDeskQml.qmltypes
 
 src/qml/CanvasDeskQml.qmltypes: src/qml/canvasdeskqml_qmltyperegistrations.cpp
 	@$(CMAKE_COMMAND) -E touch_nocreate src/qml/CanvasDeskQml.qmltypes
 
-src/qml/.qt/rcc/qrc_qmake_CanvasDesk.cpp: src/qml/qmldir
-src/qml/.qt/rcc/qrc_qmake_CanvasDesk.cpp: src/qml/.qt/rcc/qmake_CanvasDesk.qrc
-src/qml/.qt/rcc/qrc_qmake_CanvasDesk.cpp: /usr/lib/qt6/rcc
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Running rcc for resource qmake_CanvasDesk"
-	cd /home/brad/Documents/canvasdesk/build/src/qml && /usr/lib/qt6/rcc --output /home/brad/Documents/canvasdesk/build/src/qml/.qt/rcc/qrc_qmake_CanvasDesk.cpp --name qmake_CanvasDesk /home/brad/Documents/canvasdesk/build/src/qml/.qt/rcc/qmake_CanvasDesk.qrc
+src/qml/.qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp: src/qml/qmldir
+src/qml/.qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp: src/qml/.qt/rcc/qmake_CanvasDeskRuntime.qrc
+src/qml/.qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp: /usr/lib/qt6/rcc
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Running rcc for resource qmake_CanvasDeskRuntime"
+	cd /home/brad/Documents/canvasdesk/build/src/qml && /usr/lib/qt6/rcc --output /home/brad/Documents/canvasdesk/build/src/qml/.qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp --name qmake_CanvasDeskRuntime /home/brad/Documents/canvasdesk/build/src/qml/.qt/rcc/qmake_CanvasDeskRuntime.qrc
 
 src/qml/.rcc/qmlcache/CanvasDeskQml_qmlcache_loader.cpp: /usr/lib/qt6/qmlcachegen
 src/qml/.rcc/qmlcache/CanvasDeskQml_qmlcache_loader.cpp: src/qml/.rcc/qmlcache/CanvasDeskQml_qml_loader_file_list.rsp
-src/qml/.rcc/qmlcache/CanvasDeskQml_qmlcache_loader.cpp: src/qml/.qt/rcc/qmake_CanvasDesk.qrc
+src/qml/.rcc/qmlcache/CanvasDeskQml_qmlcache_loader.cpp: src/qml/.qt/rcc/qmake_CanvasDeskRuntime.qrc
 src/qml/.rcc/qmlcache/CanvasDeskQml_qmlcache_loader.cpp: src/qml/.qt/rcc/CanvasDeskQml_raw_qml_0.qrc
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating .rcc/qmlcache/CanvasDeskQml_qmlcache_loader.cpp"
 	cd /home/brad/Documents/canvasdesk/build/src/qml && /usr/lib/qt6/qmlcachegen --resource-name qmlcache_CanvasDeskQml -o /home/brad/Documents/canvasdesk/build/src/qml/.rcc/qmlcache/CanvasDeskQml_qmlcache_loader.cpp @/home/brad/Documents/canvasdesk/build/src/qml/.rcc/qmlcache/CanvasDeskQml_qml_loader_file_list.rsp
 
 src/qml/.rcc/qmlcache/CanvasDeskQml_Main_qml.cpp: /usr/lib/qt6/qmlcachegen
 src/qml/.rcc/qmlcache/CanvasDeskQml_Main_qml.cpp: /home/brad/Documents/canvasdesk/src/qml/Main.qml
-src/qml/.rcc/qmlcache/CanvasDeskQml_Main_qml.cpp: src/qml/.qt/rcc/qmake_CanvasDesk.qrc
+src/qml/.rcc/qmlcache/CanvasDeskQml_Main_qml.cpp: src/qml/.qt/rcc/qmake_CanvasDeskRuntime.qrc
 src/qml/.rcc/qmlcache/CanvasDeskQml_Main_qml.cpp: src/qml/.qt/rcc/CanvasDeskQml_raw_qml_0.qrc
 src/qml/.rcc/qmlcache/CanvasDeskQml_Main_qml.cpp: src/qml/CanvasDeskQml.qmltypes
 src/qml/.rcc/qmlcache/CanvasDeskQml_Main_qml.cpp: src/qml/qmldir
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating .rcc/qmlcache/CanvasDeskQml_Main_qml.cpp, .rcc/qmlcache/CanvasDeskQml_Main_qml.cpp.aotstats"
 	cd /home/brad/Documents/canvasdesk/build/src/qml && /usr/bin/cmake -E make_directory /home/brad/Documents/canvasdesk/build/src/qml/.rcc/qmlcache
-	cd /home/brad/Documents/canvasdesk/build/src/qml && /usr/lib/qt6/qmlcachegen --bare --resource-path /CanvasDesk/Main.qml -I /usr/lib/qt6/qml -i /home/brad/Documents/canvasdesk/build/src/qml/qmldir --resource /home/brad/Documents/canvasdesk/build/src/qml/.qt/rcc/qmake_CanvasDesk.qrc --resource /home/brad/Documents/canvasdesk/build/src/qml/.qt/rcc/CanvasDeskQml_raw_qml_0.qrc --dump-aot-stats "--module-id=CanvasDesk(CanvasDeskQml)" -o /home/brad/Documents/canvasdesk/build/src/qml/.rcc/qmlcache/CanvasDeskQml_Main_qml.cpp /home/brad/Documents/canvasdesk/src/qml/Main.qml
+	cd /home/brad/Documents/canvasdesk/build/src/qml && /usr/lib/qt6/qmlcachegen --bare --resource-path /CanvasDeskRuntime/Main.qml -I /usr/lib/qt6/qml -i /home/brad/Documents/canvasdesk/build/src/qml/qmldir --resource /home/brad/Documents/canvasdesk/build/src/qml/.qt/rcc/qmake_CanvasDeskRuntime.qrc --resource /home/brad/Documents/canvasdesk/build/src/qml/.qt/rcc/CanvasDeskQml_raw_qml_0.qrc --dump-aot-stats "--module-id=CanvasDeskRuntime(CanvasDeskQml)" -o /home/brad/Documents/canvasdesk/build/src/qml/.rcc/qmlcache/CanvasDeskQml_Main_qml.cpp /home/brad/Documents/canvasdesk/src/qml/Main.qml
 
 src/qml/.rcc/qmlcache/CanvasDeskQml_Main_qml.cpp.aotstats: src/qml/.rcc/qmlcache/CanvasDeskQml_Main_qml.cpp
 	@$(CMAKE_COMMAND) -E touch_nocreate src/qml/.rcc/qmlcache/CanvasDeskQml_Main_qml.cpp.aotstats
@@ -122,7 +126,6 @@ src/qml/.qt/rcc/qrc_CanvasDeskQml_raw_qml_0.cpp: /usr/lib/qt6/rcc
 	cd /home/brad/Documents/canvasdesk/build/src/qml && /usr/lib/qt6/rcc --output /home/brad/Documents/canvasdesk/build/src/qml/.qt/rcc/qrc_CanvasDeskQml_raw_qml_0.cpp --name CanvasDeskQml_raw_qml_0 /home/brad/Documents/canvasdesk/build/src/qml/.qt/rcc/CanvasDeskQml_raw_qml_0.qrc
 
 src/qml/CanvasDeskQml_autogen/timestamp: /usr/lib/qt6/moc
-src/qml/CanvasDeskQml_autogen/timestamp: /usr/lib/qt6/uic
 src/qml/CanvasDeskQml_autogen/timestamp: src/qml/CMakeFiles/CanvasDeskQml.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Automatic MOC and UIC for target CanvasDeskQml"
 	cd /home/brad/Documents/canvasdesk/build/src/qml && /usr/bin/cmake -E cmake_autogen /home/brad/Documents/canvasdesk/build/src/qml/CMakeFiles/CanvasDeskQml_autogen.dir/AutogenInfo.json ""
@@ -168,19 +171,19 @@ src/qml/CMakeFiles/CanvasDeskQml.dir/canvasdeskqml_qmltyperegistrations.cpp.s: c
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CanvasDeskQml.dir/canvasdeskqml_qmltyperegistrations.cpp.s"
 	cd /home/brad/Documents/canvasdesk/build/src/qml && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/brad/Documents/canvasdesk/build/src/qml/canvasdeskqml_qmltyperegistrations.cpp -o CMakeFiles/CanvasDeskQml.dir/canvasdeskqml_qmltyperegistrations.cpp.s
 
-src/qml/CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDesk.cpp.o: src/qml/CMakeFiles/CanvasDeskQml.dir/flags.make
-src/qml/CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDesk.cpp.o: src/qml/.qt/rcc/qrc_qmake_CanvasDesk.cpp
-src/qml/CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDesk.cpp.o: src/qml/CMakeFiles/CanvasDeskQml.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object src/qml/CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDesk.cpp.o"
-	cd /home/brad/Documents/canvasdesk/build/src/qml && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/qml/CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDesk.cpp.o -MF CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDesk.cpp.o.d -o CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDesk.cpp.o -c /home/brad/Documents/canvasdesk/build/src/qml/.qt/rcc/qrc_qmake_CanvasDesk.cpp
+src/qml/CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp.o: src/qml/CMakeFiles/CanvasDeskQml.dir/flags.make
+src/qml/CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp.o: src/qml/.qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp
+src/qml/CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp.o: src/qml/CMakeFiles/CanvasDeskQml.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object src/qml/CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp.o"
+	cd /home/brad/Documents/canvasdesk/build/src/qml && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/qml/CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp.o -MF CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp.o.d -o CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp.o -c /home/brad/Documents/canvasdesk/build/src/qml/.qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp
 
-src/qml/CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDesk.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDesk.cpp.i"
-	cd /home/brad/Documents/canvasdesk/build/src/qml && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/brad/Documents/canvasdesk/build/src/qml/.qt/rcc/qrc_qmake_CanvasDesk.cpp > CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDesk.cpp.i
+src/qml/CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp.i"
+	cd /home/brad/Documents/canvasdesk/build/src/qml && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/brad/Documents/canvasdesk/build/src/qml/.qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp > CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp.i
 
-src/qml/CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDesk.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDesk.cpp.s"
-	cd /home/brad/Documents/canvasdesk/build/src/qml && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/brad/Documents/canvasdesk/build/src/qml/.qt/rcc/qrc_qmake_CanvasDesk.cpp -o CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDesk.cpp.s
+src/qml/CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp.s"
+	cd /home/brad/Documents/canvasdesk/build/src/qml && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/brad/Documents/canvasdesk/build/src/qml/.qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp -o CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp.s
 
 src/qml/CMakeFiles/CanvasDeskQml.dir/.rcc/qmlcache/CanvasDeskQml_qmlcache_loader.cpp.o: src/qml/CMakeFiles/CanvasDeskQml.dir/flags.make
 src/qml/CMakeFiles/CanvasDeskQml.dir/.rcc/qmlcache/CanvasDeskQml_qmlcache_loader.cpp.o: src/qml/.rcc/qmlcache/CanvasDeskQml_qmlcache_loader.cpp
@@ -228,7 +231,7 @@ src/qml/CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_CanvasDeskQml_raw_qml_0.cpp.s: 
 CanvasDeskQml_OBJECTS = \
 "CMakeFiles/CanvasDeskQml.dir/CanvasDeskQml_autogen/mocs_compilation.cpp.o" \
 "CMakeFiles/CanvasDeskQml.dir/canvasdeskqml_qmltyperegistrations.cpp.o" \
-"CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDesk.cpp.o" \
+"CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp.o" \
 "CMakeFiles/CanvasDeskQml.dir/.rcc/qmlcache/CanvasDeskQml_qmlcache_loader.cpp.o" \
 "CMakeFiles/CanvasDeskQml.dir/.rcc/qmlcache/CanvasDeskQml_Main_qml.cpp.o" \
 "CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_CanvasDeskQml_raw_qml_0.cpp.o"
@@ -238,12 +241,18 @@ CanvasDeskQml_EXTERNAL_OBJECTS =
 
 src/qml/libCanvasDeskQml.so: src/qml/CMakeFiles/CanvasDeskQml.dir/CanvasDeskQml_autogen/mocs_compilation.cpp.o
 src/qml/libCanvasDeskQml.so: src/qml/CMakeFiles/CanvasDeskQml.dir/canvasdeskqml_qmltyperegistrations.cpp.o
-src/qml/libCanvasDeskQml.so: src/qml/CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDesk.cpp.o
+src/qml/libCanvasDeskQml.so: src/qml/CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp.o
 src/qml/libCanvasDeskQml.so: src/qml/CMakeFiles/CanvasDeskQml.dir/.rcc/qmlcache/CanvasDeskQml_qmlcache_loader.cpp.o
 src/qml/libCanvasDeskQml.so: src/qml/CMakeFiles/CanvasDeskQml.dir/.rcc/qmlcache/CanvasDeskQml_Main_qml.cpp.o
 src/qml/libCanvasDeskQml.so: src/qml/CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_CanvasDeskQml_raw_qml_0.cpp.o
 src/qml/libCanvasDeskQml.so: src/qml/CMakeFiles/CanvasDeskQml.dir/build.make
 src/qml/libCanvasDeskQml.so: src/qml/CMakeFiles/CanvasDeskQml.dir/compiler_depend.ts
+src/qml/libCanvasDeskQml.so: src/core/libCanvasDeskCore.so
+src/qml/libCanvasDeskQml.so: /usr/lib/libQt6Quick.so.6.10.1
+src/qml/libCanvasDeskQml.so: /usr/lib/libQt6OpenGL.so.6.10.1
+src/qml/libCanvasDeskQml.so: /usr/lib/libQt6Gui.so.6.10.1
+src/qml/libCanvasDeskQml.so: /usr/lib/libGLX.so
+src/qml/libCanvasDeskQml.so: /usr/lib/libOpenGL.so
 src/qml/libCanvasDeskQml.so: /usr/lib/libQt6Qml.so.6.10.1
 src/qml/libCanvasDeskQml.so: /usr/lib/libQt6Network.so.6.10.1
 src/qml/libCanvasDeskQml.so: /usr/lib/libQt6Core.so.6.10.1
@@ -260,7 +269,7 @@ src/qml/CMakeFiles/CanvasDeskQml.dir/clean:
 .PHONY : src/qml/CMakeFiles/CanvasDeskQml.dir/clean
 
 src/qml/CMakeFiles/CanvasDeskQml.dir/depend: src/qml/.qt/rcc/qrc_CanvasDeskQml_raw_qml_0.cpp
-src/qml/CMakeFiles/CanvasDeskQml.dir/depend: src/qml/.qt/rcc/qrc_qmake_CanvasDesk.cpp
+src/qml/CMakeFiles/CanvasDeskQml.dir/depend: src/qml/.qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp
 src/qml/CMakeFiles/CanvasDeskQml.dir/depend: src/qml/.rcc/qmlcache/CanvasDeskQml_Main_qml.cpp
 src/qml/CMakeFiles/CanvasDeskQml.dir/depend: src/qml/.rcc/qmlcache/CanvasDeskQml_Main_qml.cpp.aotstats
 src/qml/CMakeFiles/CanvasDeskQml.dir/depend: src/qml/.rcc/qmlcache/CanvasDeskQml_qmlcache_loader.cpp

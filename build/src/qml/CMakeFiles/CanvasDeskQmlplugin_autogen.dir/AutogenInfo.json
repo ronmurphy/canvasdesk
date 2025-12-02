@@ -12,7 +12,7 @@
 		"/usr/lib/cmake/Qt6Qml/Qt6QmlModuleDirMappingTemplate.qrc.in",
 		"/usr/lib/cmake/Qt6Core/Qt6CoreConfigureFileTemplate.in",
 		"/usr/lib/cmake/Qt6Qml/Qt6qmldirTemplate.cmake.in",
-		"/home/brad/Documents/canvasdesk/build/src/qml/CanvasDeskQmlplugin_CanvasDeskPlugin_in.cpp"
+		"/home/brad/Documents/canvasdesk/build/src/qml/CanvasDeskQmlplugin_CanvasDeskRuntimePlugin_in.cpp"
 	],
 	"CMAKE_SOURCE_DIR" : "/home/brad/Documents/canvasdesk",
 	"CROSS_CONFIG" : false,
@@ -65,7 +65,7 @@
 		"Q_GADGET_EXPORT",
 		"Q_ENUM_NS"
 	],
-	"MOC_OPTIONS" : [ "-Muri=CanvasDesk" ],
+	"MOC_OPTIONS" : [ "-Muri=CanvasDeskRuntime" ],
 	"MOC_PATH_PREFIX" : false,
 	"MOC_PREDEFS_CMD" : 
 	[
@@ -81,7 +81,7 @@
 	"MOC_SKIP" : 
 	[
 		"/home/brad/Documents/canvasdesk/build/src/qml/.qt/rcc/qrc_CanvasDeskQml_raw_qml_0.cpp",
-		"/home/brad/Documents/canvasdesk/build/src/qml/.qt/rcc/qrc_qmake_CanvasDesk.cpp",
+		"/home/brad/Documents/canvasdesk/build/src/qml/.qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp",
 		"/home/brad/Documents/canvasdesk/build/src/qml/.rcc/qmlcache/CanvasDeskQml_Main_qml.cpp",
 		"/home/brad/Documents/canvasdesk/build/src/qml/.rcc/qmlcache/CanvasDeskQml_qmlcache_loader.cpp",
 		"/home/brad/Documents/canvasdesk/build/src/qml/CanvasDeskQml_autogen/mocs_compilation.cpp",
@@ -91,14 +91,14 @@
 	"PARALLEL" : 8,
 	"PARSE_CACHE_FILE" : "/home/brad/Documents/canvasdesk/build/src/qml/CMakeFiles/CanvasDeskQmlplugin_autogen.dir/ParseCache.txt",
 	"QT_MOC_EXECUTABLE" : "/usr/lib/qt6/moc",
-	"QT_UIC_EXECUTABLE" : "/usr/lib/qt6/uic",
+	"QT_UIC_EXECUTABLE" : "",
 	"QT_VERSION_MAJOR" : 6,
 	"QT_VERSION_MINOR" : 10,
 	"SETTINGS_FILE" : "/home/brad/Documents/canvasdesk/build/src/qml/CMakeFiles/CanvasDeskQmlplugin_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
 		[
-			"/home/brad/Documents/canvasdesk/build/src/qml/CanvasDeskQmlplugin_CanvasDeskPlugin.cpp",
+			"/home/brad/Documents/canvasdesk/build/src/qml/CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.cpp",
 			"MU",
 			null
 		]
@@ -108,7 +108,7 @@
 	"UIC_SKIP" : 
 	[
 		"/home/brad/Documents/canvasdesk/build/src/qml/.qt/rcc/qrc_CanvasDeskQml_raw_qml_0.cpp",
-		"/home/brad/Documents/canvasdesk/build/src/qml/.qt/rcc/qrc_qmake_CanvasDesk.cpp",
+		"/home/brad/Documents/canvasdesk/build/src/qml/.qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp",
 		"/home/brad/Documents/canvasdesk/build/src/qml/.rcc/qmlcache/CanvasDeskQml_Main_qml.cpp",
 		"/home/brad/Documents/canvasdesk/build/src/qml/.rcc/qmlcache/CanvasDeskQml_qmlcache_loader.cpp",
 		"/home/brad/Documents/canvasdesk/build/src/qml/CanvasDeskQml_autogen/mocs_compilation.cpp",

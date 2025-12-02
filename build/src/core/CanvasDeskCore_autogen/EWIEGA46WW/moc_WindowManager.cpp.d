@@ -1,6 +1,10 @@
 /home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/EWIEGA46WW/moc_WindowManager.cpp: /home/brad/Documents/canvasdesk/src/core/WindowManager.h \
   /home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/moc_predefs.h \
-  /usr/include/alloca.h \
+  /usr/include/KWayland/KWayland/Client/connection_thread.h \
+  /usr/include/KWayland/KWayland/Client/kwaylandclient_export.h \
+  /usr/include/KWayland/KWayland/Client/plasmawindowmanagement.h \
+  /usr/include/KWayland/KWayland/Client/registry.h \
+  /usr/include/KWayland/kwayland_version.h \
   /usr/include/asm-generic/bitsperlong.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
@@ -16,7 +20,6 @@
   /usr/include/asm/unistd_64.h \
   /usr/include/assert.h \
   /usr/include/bits/atomic_wide_counter.h \
-  /usr/include/bits/byteswap.h \
   /usr/include/bits/confname.h \
   /usr/include/bits/cpu-set.h \
   /usr/include/bits/endian.h \
@@ -28,23 +31,15 @@
   /usr/include/bits/getopt_core.h \
   /usr/include/bits/getopt_posix.h \
   /usr/include/bits/libc-header-start.h \
-  /usr/include/bits/local_lim.h \
   /usr/include/bits/locale.h \
   /usr/include/bits/long-double.h \
-  /usr/include/bits/posix1_lim.h \
-  /usr/include/bits/posix2_lim.h \
   /usr/include/bits/posix_opt.h \
   /usr/include/bits/pthread_stack_min-dynamic.h \
   /usr/include/bits/pthreadtypes-arch.h \
   /usr/include/bits/pthreadtypes.h \
   /usr/include/bits/sched.h \
-  /usr/include/bits/select.h \
   /usr/include/bits/setjmp.h \
-  /usr/include/bits/stdint-intn.h \
-  /usr/include/bits/stdint-least.h \
-  /usr/include/bits/stdint-uintn.h \
   /usr/include/bits/stdio_lim.h \
-  /usr/include/bits/stdlib-float.h \
   /usr/include/bits/struct_mutex.h \
   /usr/include/bits/struct_rwlock.h \
   /usr/include/bits/syscall.h \
@@ -67,7 +62,6 @@
   /usr/include/bits/types/error_t.h \
   /usr/include/bits/types/locale_t.h \
   /usr/include/bits/types/mbstate_t.h \
-  /usr/include/bits/types/sigset_t.h \
   /usr/include/bits/types/struct_FILE.h \
   /usr/include/bits/types/struct___jmp_buf_tag.h \
   /usr/include/bits/types/struct_itimerspec.h \
@@ -79,15 +73,10 @@
   /usr/include/bits/types/timer_t.h \
   /usr/include/bits/types/wint_t.h \
   /usr/include/bits/typesizes.h \
-  /usr/include/bits/uintn-identity.h \
-  /usr/include/bits/uio_lim.h \
   /usr/include/bits/unistd_ext.h \
-  /usr/include/bits/waitflags.h \
-  /usr/include/bits/waitstatus.h \
   /usr/include/bits/wchar.h \
   /usr/include/bits/wctype-wchar.h \
   /usr/include/bits/wordsize.h \
-  /usr/include/bits/xopen_lim.h \
   /usr/include/c++/15.2.1/algorithm \
   /usr/include/c++/15.2.1/array \
   /usr/include/c++/15.2.1/atomic \
@@ -258,6 +247,7 @@
   /usr/include/c++/15.2.1/set \
   /usr/include/c++/15.2.1/sstream \
   /usr/include/c++/15.2.1/stdexcept \
+  /usr/include/c++/15.2.1/stdlib.h \
   /usr/include/c++/15.2.1/streambuf \
   /usr/include/c++/15.2.1/string \
   /usr/include/c++/15.2.1/string_view \
@@ -297,28 +287,26 @@
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/os_defines.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/time_members.h \
   /usr/include/ctype.h \
-  /usr/include/endian.h \
   /usr/include/errno.h \
   /usr/include/features-time64.h \
   /usr/include/features.h \
   /usr/include/gnu/stubs-64.h \
   /usr/include/gnu/stubs.h \
   /usr/include/libintl.h \
-  /usr/include/limits.h \
   /usr/include/linux/close_range.h \
   /usr/include/linux/errno.h \
-  /usr/include/linux/limits.h \
   /usr/include/linux/posix_types.h \
   /usr/include/linux/sched/types.h \
   /usr/include/linux/stddef.h \
   /usr/include/linux/types.h \
   /usr/include/locale.h \
   /usr/include/pthread.h \
+  /usr/include/qt6/QtCore/QHash \
   /usr/include/qt6/QtCore/QList \
   /usr/include/qt6/QtCore/QMap \
   /usr/include/qt6/QtCore/QObject \
+  /usr/include/qt6/QtCore/QSize \
   /usr/include/qt6/QtCore/QString \
-  /usr/include/qt6/QtCore/QTimer \
   /usr/include/qt6/QtCore/QVariant \
   /usr/include/qt6/QtCore/QVariantList \
   /usr/include/qt6/QtCore/QVariantMap \
@@ -330,7 +318,6 @@
   /usr/include/qt6/QtCore/q20utility.h \
   /usr/include/qt6/QtCore/q23type_traits.h \
   /usr/include/qt6/QtCore/q23utility.h \
-  /usr/include/qt6/QtCore/qabstracteventdispatcher.h \
   /usr/include/qt6/QtCore/qalgorithms.h \
   /usr/include/qt6/QtCore/qalloc.h \
   /usr/include/qt6/QtCore/qanystringview.h \
@@ -341,7 +328,6 @@
   /usr/include/qt6/QtCore/qatomic.h \
   /usr/include/qt6/QtCore/qatomic_cxx11.h \
   /usr/include/qt6/QtCore/qbasicatomic.h \
-  /usr/include/qt6/QtCore/qbasictimer.h \
   /usr/include/qt6/QtCore/qbindingstorage.h \
   /usr/include/qt6/QtCore/qbytearray.h \
   /usr/include/qt6/QtCore/qbytearrayalgorithms.h \
@@ -349,6 +335,7 @@
   /usr/include/qt6/QtCore/qbytearrayview.h \
   /usr/include/qt6/QtCore/qcalendar.h \
   /usr/include/qt6/QtCore/qchar.h \
+  /usr/include/qt6/QtCore/qcheckedint_impl.h \
   /usr/include/qt6/QtCore/qcompare.h \
   /usr/include/qt6/QtCore/qcompare_impl.h \
   /usr/include/qt6/QtCore/qcomparehelpers.h \
@@ -362,9 +349,7 @@
   /usr/include/qt6/QtCore/qdarwinhelpers.h \
   /usr/include/qt6/QtCore/qdatastream.h \
   /usr/include/qt6/QtCore/qdatetime.h \
-  /usr/include/qt6/QtCore/qdeadlinetimer.h \
   /usr/include/qt6/QtCore/qdebug.h \
-  /usr/include/qt6/QtCore/qeventloop.h \
   /usr/include/qt6/QtCore/qexceptionhandling.h \
   /usr/include/qt6/QtCore/qflags.h \
   /usr/include/qt6/QtCore/qfloat16.h \
@@ -380,11 +365,13 @@
   /usr/include/qt6/QtCore/qiterable.h \
   /usr/include/qt6/QtCore/qiterator.h \
   /usr/include/qt6/QtCore/qlatin1stringview.h \
+  /usr/include/qt6/QtCore/qline.h \
   /usr/include/qt6/QtCore/qlist.h \
   /usr/include/qt6/QtCore/qlocale.h \
   /usr/include/qt6/QtCore/qlogging.h \
   /usr/include/qt6/QtCore/qmalloc.h \
   /usr/include/qt6/QtCore/qmap.h \
+  /usr/include/qt6/QtCore/qmargins.h \
   /usr/include/qt6/QtCore/qmath.h \
   /usr/include/qt6/QtCore/qmetacontainer.h \
   /usr/include/qt6/QtCore/qmetaobject.h \
@@ -398,8 +385,10 @@
   /usr/include/qt6/QtCore/qobjectdefs_impl.h \
   /usr/include/qt6/QtCore/qoverload.h \
   /usr/include/qt6/QtCore/qpair.h \
+  /usr/include/qt6/QtCore/qpoint.h \
   /usr/include/qt6/QtCore/qpointer.h \
   /usr/include/qt6/QtCore/qprocessordetection.h \
+  /usr/include/qt6/QtCore/qrect.h \
   /usr/include/qt6/QtCore/qrefcount.h \
   /usr/include/qt6/QtCore/qscopedpointer.h \
   /usr/include/qt6/QtCore/qscopeguard.h \
@@ -408,6 +397,7 @@
   /usr/include/qt6/QtCore/qshareddata_impl.h \
   /usr/include/qt6/QtCore/qsharedpointer.h \
   /usr/include/qt6/QtCore/qsharedpointer_impl.h \
+  /usr/include/qt6/QtCore/qsize.h \
   /usr/include/qt6/QtCore/qspan.h \
   /usr/include/qt6/QtCore/qstdlibdetection.h \
   /usr/include/qt6/QtCore/qstring.h \
@@ -435,7 +425,6 @@
   /usr/include/qt6/QtCore/qtenvironmentvariables.h \
   /usr/include/qt6/QtCore/qtextstream.h \
   /usr/include/qt6/QtCore/qtformat_impl.h \
-  /usr/include/qt6/QtCore/qtimer.h \
   /usr/include/qt6/QtCore/qtimezone.h \
   /usr/include/qt6/QtCore/qtmetamacros.h \
   /usr/include/qt6/QtCore/qtnoop.h \
@@ -458,9 +447,26 @@
   /usr/include/qt6/QtCore/qversiontagging.h \
   /usr/include/qt6/QtCore/qxptype_traits.h \
   /usr/include/qt6/QtCore/qyieldcpu.h \
+  /usr/include/qt6/QtGui/QIcon \
+  /usr/include/qt6/QtGui/qcolor.h \
+  /usr/include/qt6/QtGui/qicon.h \
+  /usr/include/qt6/QtGui/qimage.h \
+  /usr/include/qt6/QtGui/qpaintdevice.h \
+  /usr/include/qt6/QtGui/qpixelformat.h \
+  /usr/include/qt6/QtGui/qpixmap.h \
+  /usr/include/qt6/QtGui/qpolygon.h \
+  /usr/include/qt6/QtGui/qregion.h \
+  /usr/include/qt6/QtGui/qrgb.h \
+  /usr/include/qt6/QtGui/qrgba64.h \
+  /usr/include/qt6/QtGui/qtgui-config.h \
+  /usr/include/qt6/QtGui/qtguiexports.h \
+  /usr/include/qt6/QtGui/qtguiglobal.h \
+  /usr/include/qt6/QtGui/qtransform.h \
+  /usr/include/qt6/QtGui/qwindowdefs.h \
   /usr/include/qt6/QtNetwork/qtnetwork-config.h \
   /usr/include/qt6/QtNetwork/qtnetworkexports.h \
   /usr/include/qt6/QtNetwork/qtnetworkglobal.h \
+  /usr/include/qt6/QtQml/QJSEngine \
   /usr/include/qt6/QtQml/QQmlEngine \
   /usr/include/qt6/QtQml/qjsengine.h \
   /usr/include/qt6/QtQml/qjsmanagedvalue.h \
@@ -483,21 +489,20 @@
   /usr/include/qt6/QtQmlIntegration/qqmlintegration.h \
   /usr/include/sched.h \
   /usr/include/stdc-predef.h \
-  /usr/include/stdint.h \
   /usr/include/stdio.h \
-  /usr/include/stdlib.h \
   /usr/include/string.h \
   /usr/include/strings.h \
   /usr/include/sys/cdefs.h \
-  /usr/include/sys/select.h \
   /usr/include/sys/single_threaded.h \
   /usr/include/sys/syscall.h \
-  /usr/include/sys/types.h \
   /usr/include/syscall.h \
   /usr/include/time.h \
   /usr/include/unistd.h \
   /usr/include/wchar.h \
   /usr/include/wctype.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/limits.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdarg.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdbool.h \
-  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stddef.h
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stddef.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdint.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/syslimits.h

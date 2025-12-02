@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
   ".qt/rcc/qrc_CanvasDeskQml_raw_qml_0.cpp"
-  ".qt/rcc/qrc_qmake_CanvasDesk.cpp"
+  ".qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp"
   ".rcc/qmlcache/CanvasDeskQml_Main_qml.cpp"
   ".rcc/qmlcache/CanvasDeskQml_Main_qml.cpp.aotstats"
   ".rcc/qmlcache/CanvasDeskQml_qmlcache_loader.cpp"
@@ -10,8 +10,8 @@ file(REMOVE_RECURSE
   "CanvasDeskQml_autogen"
   "CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_CanvasDeskQml_raw_qml_0.cpp.o"
   "CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_CanvasDeskQml_raw_qml_0.cpp.o.d"
-  "CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDesk.cpp.o"
-  "CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDesk.cpp.o.d"
+  "CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp.o"
+  "CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp.o.d"
   "CMakeFiles/CanvasDeskQml.dir/.rcc/qmlcache/CanvasDeskQml_Main_qml.cpp.o"
   "CMakeFiles/CanvasDeskQml.dir/.rcc/qmlcache/CanvasDeskQml_Main_qml.cpp.o.d"
   "CMakeFiles/CanvasDeskQml.dir/.rcc/qmlcache/CanvasDeskQml_qmlcache_loader.cpp.o"

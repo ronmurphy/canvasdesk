@@ -70,7 +70,6 @@ include src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/progress.make
 include src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/flags.make
 
 src/qml/CanvasDeskQmlplugin_autogen/timestamp: /usr/lib/qt6/moc
-src/qml/CanvasDeskQmlplugin_autogen/timestamp: /usr/lib/qt6/uic
 src/qml/CanvasDeskQmlplugin_autogen/timestamp: src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target CanvasDeskQmlplugin"
 	cd /home/brad/Documents/canvasdesk/build/src/qml && /usr/bin/cmake -E cmake_autogen /home/brad/Documents/canvasdesk/build/src/qml/CMakeFiles/CanvasDeskQmlplugin_autogen.dir/AutogenInfo.json ""
@@ -93,30 +92,30 @@ src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_autogen/mocs_comp
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_autogen/mocs_compilation.cpp.s"
 	cd /home/brad/Documents/canvasdesk/build/src/qml && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/brad/Documents/canvasdesk/build/src/qml/CanvasDeskQmlplugin_autogen/mocs_compilation.cpp -o CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_autogen/mocs_compilation.cpp.s
 
-src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_CanvasDeskPlugin.cpp.o: src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/flags.make
-src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_CanvasDeskPlugin.cpp.o: src/qml/CanvasDeskQmlplugin_CanvasDeskPlugin.cpp
-src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_CanvasDeskPlugin.cpp.o: src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_CanvasDeskPlugin.cpp.o"
-	cd /home/brad/Documents/canvasdesk/build/src/qml && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_CanvasDeskPlugin.cpp.o -MF CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_CanvasDeskPlugin.cpp.o.d -o CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_CanvasDeskPlugin.cpp.o -c /home/brad/Documents/canvasdesk/build/src/qml/CanvasDeskQmlplugin_CanvasDeskPlugin.cpp
+src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.cpp.o: src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/flags.make
+src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.cpp.o: src/qml/CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.cpp
+src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.cpp.o: src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.cpp.o"
+	cd /home/brad/Documents/canvasdesk/build/src/qml && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.cpp.o -MF CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.cpp.o.d -o CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.cpp.o -c /home/brad/Documents/canvasdesk/build/src/qml/CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.cpp
 
-src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_CanvasDeskPlugin.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_CanvasDeskPlugin.cpp.i"
-	cd /home/brad/Documents/canvasdesk/build/src/qml && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/brad/Documents/canvasdesk/build/src/qml/CanvasDeskQmlplugin_CanvasDeskPlugin.cpp > CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_CanvasDeskPlugin.cpp.i
+src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.cpp.i"
+	cd /home/brad/Documents/canvasdesk/build/src/qml && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/brad/Documents/canvasdesk/build/src/qml/CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.cpp > CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.cpp.i
 
-src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_CanvasDeskPlugin.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_CanvasDeskPlugin.cpp.s"
-	cd /home/brad/Documents/canvasdesk/build/src/qml && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/brad/Documents/canvasdesk/build/src/qml/CanvasDeskQmlplugin_CanvasDeskPlugin.cpp -o CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_CanvasDeskPlugin.cpp.s
+src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.cpp.s"
+	cd /home/brad/Documents/canvasdesk/build/src/qml && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/brad/Documents/canvasdesk/build/src/qml/CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.cpp -o CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.cpp.s
 
 # Object files for target CanvasDeskQmlplugin
 CanvasDeskQmlplugin_OBJECTS = \
 "CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_autogen/mocs_compilation.cpp.o" \
-"CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_CanvasDeskPlugin.cpp.o"
+"CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.cpp.o"
 
 # External object files for target CanvasDeskQmlplugin
 CanvasDeskQmlplugin_EXTERNAL_OBJECTS =
 
 src/qml/libCanvasDeskQmlplugin.so: src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_autogen/mocs_compilation.cpp.o
-src/qml/libCanvasDeskQmlplugin.so: src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_CanvasDeskPlugin.cpp.o
+src/qml/libCanvasDeskQmlplugin.so: src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.cpp.o
 src/qml/libCanvasDeskQmlplugin.so: src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/build.make
 src/qml/libCanvasDeskQmlplugin.so: src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/compiler_depend.ts
 src/qml/libCanvasDeskQmlplugin.so: src/qml/libCanvasDeskQml.so

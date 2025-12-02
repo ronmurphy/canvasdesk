@@ -145,20 +145,6 @@ CanvasDeskQml_qmltyperegistration/fast:
 .PHONY : CanvasDeskQml_qmltyperegistration/fast
 
 # Convenience name for target.
-src/qml/CMakeFiles/all_qmltyperegistrations.dir/rule:
-	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/qml/CMakeFiles/all_qmltyperegistrations.dir/rule
-.PHONY : src/qml/CMakeFiles/all_qmltyperegistrations.dir/rule
-
-# Convenience name for target.
-all_qmltyperegistrations: src/qml/CMakeFiles/all_qmltyperegistrations.dir/rule
-.PHONY : all_qmltyperegistrations
-
-# fast build rule for target.
-all_qmltyperegistrations/fast:
-	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/qml/CMakeFiles/all_qmltyperegistrations.dir/build.make src/qml/CMakeFiles/all_qmltyperegistrations.dir/build
-.PHONY : all_qmltyperegistrations/fast
-
-# Convenience name for target.
 src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/rule:
 	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/rule
 .PHONY : src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/rule
@@ -171,20 +157,6 @@ CanvasDeskQmlplugin: src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/rule
 CanvasDeskQmlplugin/fast:
 	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/build.make src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/build
 .PHONY : CanvasDeskQmlplugin/fast
-
-# Convenience name for target.
-src/qml/CMakeFiles/qt_internal_plugins.dir/rule:
-	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/qml/CMakeFiles/qt_internal_plugins.dir/rule
-.PHONY : src/qml/CMakeFiles/qt_internal_plugins.dir/rule
-
-# Convenience name for target.
-qt_internal_plugins: src/qml/CMakeFiles/qt_internal_plugins.dir/rule
-.PHONY : qt_internal_plugins
-
-# fast build rule for target.
-qt_internal_plugins/fast:
-	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/qml/CMakeFiles/qt_internal_plugins.dir/build.make src/qml/CMakeFiles/qt_internal_plugins.dir/build
-.PHONY : qt_internal_plugins/fast
 
 # Convenience name for target.
 src/qml/CMakeFiles/CanvasDeskQml_qmllint.dir/rule:
@@ -227,48 +199,6 @@ CanvasDeskQml_qmllint_module: src/qml/CMakeFiles/CanvasDeskQml_qmllint_module.di
 CanvasDeskQml_qmllint_module/fast:
 	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/qml/CMakeFiles/CanvasDeskQml_qmllint_module.dir/build.make src/qml/CMakeFiles/CanvasDeskQml_qmllint_module.dir/build
 .PHONY : CanvasDeskQml_qmllint_module/fast
-
-# Convenience name for target.
-src/qml/CMakeFiles/all_qmllint.dir/rule:
-	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/qml/CMakeFiles/all_qmllint.dir/rule
-.PHONY : src/qml/CMakeFiles/all_qmllint.dir/rule
-
-# Convenience name for target.
-all_qmllint: src/qml/CMakeFiles/all_qmllint.dir/rule
-.PHONY : all_qmllint
-
-# fast build rule for target.
-all_qmllint/fast:
-	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/qml/CMakeFiles/all_qmllint.dir/build.make src/qml/CMakeFiles/all_qmllint.dir/build
-.PHONY : all_qmllint/fast
-
-# Convenience name for target.
-src/qml/CMakeFiles/all_qmllint_json.dir/rule:
-	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/qml/CMakeFiles/all_qmllint_json.dir/rule
-.PHONY : src/qml/CMakeFiles/all_qmllint_json.dir/rule
-
-# Convenience name for target.
-all_qmllint_json: src/qml/CMakeFiles/all_qmllint_json.dir/rule
-.PHONY : all_qmllint_json
-
-# fast build rule for target.
-all_qmllint_json/fast:
-	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/qml/CMakeFiles/all_qmllint_json.dir/build.make src/qml/CMakeFiles/all_qmllint_json.dir/build
-.PHONY : all_qmllint_json/fast
-
-# Convenience name for target.
-src/qml/CMakeFiles/all_qmllint_module.dir/rule:
-	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/qml/CMakeFiles/all_qmllint_module.dir/rule
-.PHONY : src/qml/CMakeFiles/all_qmllint_module.dir/rule
-
-# Convenience name for target.
-all_qmllint_module: src/qml/CMakeFiles/all_qmllint_module.dir/rule
-.PHONY : all_qmllint_module
-
-# fast build rule for target.
-all_qmllint_module/fast:
-	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/qml/CMakeFiles/all_qmllint_module.dir/build.make src/qml/CMakeFiles/all_qmllint_module.dir/build
-.PHONY : all_qmllint_module/fast
 
 # Convenience name for target.
 src/qml/CMakeFiles/CanvasDeskQml_copy_qml.dir/rule:
@@ -378,29 +308,29 @@ CanvasDeskQmlplugin_autogen/fast:
 	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/qml/CMakeFiles/CanvasDeskQml.dir/build.make src/qml/CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_CanvasDeskQml_raw_qml_0.cpp.s
 .PHONY : .qt/rcc/qrc_CanvasDeskQml_raw_qml_0.cpp.s
 
-.qt/rcc/qrc_qmake_CanvasDesk.o: .qt/rcc/qrc_qmake_CanvasDesk.cpp.o
-.PHONY : .qt/rcc/qrc_qmake_CanvasDesk.o
+.qt/rcc/qrc_qmake_CanvasDeskRuntime.o: .qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp.o
+.PHONY : .qt/rcc/qrc_qmake_CanvasDeskRuntime.o
 
 # target to build an object file
-.qt/rcc/qrc_qmake_CanvasDesk.cpp.o:
-	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/qml/CMakeFiles/CanvasDeskQml.dir/build.make src/qml/CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDesk.cpp.o
-.PHONY : .qt/rcc/qrc_qmake_CanvasDesk.cpp.o
+.qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp.o:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/qml/CMakeFiles/CanvasDeskQml.dir/build.make src/qml/CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp.o
+.PHONY : .qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp.o
 
-.qt/rcc/qrc_qmake_CanvasDesk.i: .qt/rcc/qrc_qmake_CanvasDesk.cpp.i
-.PHONY : .qt/rcc/qrc_qmake_CanvasDesk.i
+.qt/rcc/qrc_qmake_CanvasDeskRuntime.i: .qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp.i
+.PHONY : .qt/rcc/qrc_qmake_CanvasDeskRuntime.i
 
 # target to preprocess a source file
-.qt/rcc/qrc_qmake_CanvasDesk.cpp.i:
-	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/qml/CMakeFiles/CanvasDeskQml.dir/build.make src/qml/CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDesk.cpp.i
-.PHONY : .qt/rcc/qrc_qmake_CanvasDesk.cpp.i
+.qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp.i:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/qml/CMakeFiles/CanvasDeskQml.dir/build.make src/qml/CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp.i
+.PHONY : .qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp.i
 
-.qt/rcc/qrc_qmake_CanvasDesk.s: .qt/rcc/qrc_qmake_CanvasDesk.cpp.s
-.PHONY : .qt/rcc/qrc_qmake_CanvasDesk.s
+.qt/rcc/qrc_qmake_CanvasDeskRuntime.s: .qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp.s
+.PHONY : .qt/rcc/qrc_qmake_CanvasDeskRuntime.s
 
 # target to generate assembly for a file
-.qt/rcc/qrc_qmake_CanvasDesk.cpp.s:
-	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/qml/CMakeFiles/CanvasDeskQml.dir/build.make src/qml/CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDesk.cpp.s
-.PHONY : .qt/rcc/qrc_qmake_CanvasDesk.cpp.s
+.qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp.s:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/qml/CMakeFiles/CanvasDeskQml.dir/build.make src/qml/CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp.s
+.PHONY : .qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp.s
 
 .rcc/qmlcache/CanvasDeskQml_Main_qml.o: .rcc/qmlcache/CanvasDeskQml_Main_qml.cpp.o
 .PHONY : .rcc/qmlcache/CanvasDeskQml_Main_qml.o
@@ -474,29 +404,29 @@ CanvasDeskQml_autogen/mocs_compilation.cpp.s:
 	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/qml/CMakeFiles/CanvasDeskQml.dir/build.make src/qml/CMakeFiles/CanvasDeskQml.dir/CanvasDeskQml_autogen/mocs_compilation.cpp.s
 .PHONY : CanvasDeskQml_autogen/mocs_compilation.cpp.s
 
-CanvasDeskQmlplugin_CanvasDeskPlugin.o: CanvasDeskQmlplugin_CanvasDeskPlugin.cpp.o
-.PHONY : CanvasDeskQmlplugin_CanvasDeskPlugin.o
+CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.o: CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.cpp.o
+.PHONY : CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.o
 
 # target to build an object file
-CanvasDeskQmlplugin_CanvasDeskPlugin.cpp.o:
-	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/build.make src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_CanvasDeskPlugin.cpp.o
-.PHONY : CanvasDeskQmlplugin_CanvasDeskPlugin.cpp.o
+CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.cpp.o:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/build.make src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.cpp.o
+.PHONY : CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.cpp.o
 
-CanvasDeskQmlplugin_CanvasDeskPlugin.i: CanvasDeskQmlplugin_CanvasDeskPlugin.cpp.i
-.PHONY : CanvasDeskQmlplugin_CanvasDeskPlugin.i
+CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.i: CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.cpp.i
+.PHONY : CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.i
 
 # target to preprocess a source file
-CanvasDeskQmlplugin_CanvasDeskPlugin.cpp.i:
-	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/build.make src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_CanvasDeskPlugin.cpp.i
-.PHONY : CanvasDeskQmlplugin_CanvasDeskPlugin.cpp.i
+CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.cpp.i:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/build.make src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.cpp.i
+.PHONY : CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.cpp.i
 
-CanvasDeskQmlplugin_CanvasDeskPlugin.s: CanvasDeskQmlplugin_CanvasDeskPlugin.cpp.s
-.PHONY : CanvasDeskQmlplugin_CanvasDeskPlugin.s
+CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.s: CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.cpp.s
+.PHONY : CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.s
 
 # target to generate assembly for a file
-CanvasDeskQmlplugin_CanvasDeskPlugin.cpp.s:
-	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/build.make src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_CanvasDeskPlugin.cpp.s
-.PHONY : CanvasDeskQmlplugin_CanvasDeskPlugin.cpp.s
+CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.cpp.s:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/build.make src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.cpp.s
+.PHONY : CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.cpp.s
 
 CanvasDeskQmlplugin_autogen/mocs_compilation.o: CanvasDeskQmlplugin_autogen/mocs_compilation.cpp.o
 .PHONY : CanvasDeskQmlplugin_autogen/mocs_compilation.o
@@ -564,19 +494,14 @@ help:
 	@echo "... CanvasDeskQml_qmltyperegistration"
 	@echo "... CanvasDeskQmlplugin_autogen"
 	@echo "... CanvasDeskQmlplugin_autogen_timestamp_deps"
-	@echo "... all_qmllint"
-	@echo "... all_qmllint_json"
-	@echo "... all_qmllint_module"
-	@echo "... all_qmltyperegistrations"
-	@echo "... qt_internal_plugins"
 	@echo "... CanvasDeskQml"
 	@echo "... CanvasDeskQmlplugin"
 	@echo "... .qt/rcc/qrc_CanvasDeskQml_raw_qml_0.o"
 	@echo "... .qt/rcc/qrc_CanvasDeskQml_raw_qml_0.i"
 	@echo "... .qt/rcc/qrc_CanvasDeskQml_raw_qml_0.s"
-	@echo "... .qt/rcc/qrc_qmake_CanvasDesk.o"
-	@echo "... .qt/rcc/qrc_qmake_CanvasDesk.i"
-	@echo "... .qt/rcc/qrc_qmake_CanvasDesk.s"
+	@echo "... .qt/rcc/qrc_qmake_CanvasDeskRuntime.o"
+	@echo "... .qt/rcc/qrc_qmake_CanvasDeskRuntime.i"
+	@echo "... .qt/rcc/qrc_qmake_CanvasDeskRuntime.s"
 	@echo "... .rcc/qmlcache/CanvasDeskQml_Main_qml.o"
 	@echo "... .rcc/qmlcache/CanvasDeskQml_Main_qml.i"
 	@echo "... .rcc/qmlcache/CanvasDeskQml_Main_qml.s"
@@ -586,9 +511,9 @@ help:
 	@echo "... CanvasDeskQml_autogen/mocs_compilation.o"
 	@echo "... CanvasDeskQml_autogen/mocs_compilation.i"
 	@echo "... CanvasDeskQml_autogen/mocs_compilation.s"
-	@echo "... CanvasDeskQmlplugin_CanvasDeskPlugin.o"
-	@echo "... CanvasDeskQmlplugin_CanvasDeskPlugin.i"
-	@echo "... CanvasDeskQmlplugin_CanvasDeskPlugin.s"
+	@echo "... CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.o"
+	@echo "... CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.i"
+	@echo "... CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.s"
 	@echo "... CanvasDeskQmlplugin_autogen/mocs_compilation.o"
 	@echo "... CanvasDeskQmlplugin_autogen/mocs_compilation.i"
 	@echo "... CanvasDeskQmlplugin_autogen/mocs_compilation.s"

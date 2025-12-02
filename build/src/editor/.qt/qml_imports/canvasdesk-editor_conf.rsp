@@ -1,0 +1,14 @@
+-rootPath
+/home/brad/Documents/canvasdesk/src/editor
+-cmake-output
+-output-file
+/home/brad/Documents/canvasdesk/build/src/editor/.qt/qml_imports/canvasdesk-editor_conf.cmake
+-importPath
+/home/brad/Documents/canvasdesk/build/src/editor/CanvasDeskEditor
+-importPath
+/home/brad/Documents/canvasdesk/build/src/editor
+-importPath
+/usr/lib/qt6/qml
+-qrcFiles
+/home/brad/Documents/canvasdesk/build/src/editor/.qt/rcc/qmake_CanvasDeskEditor.qrc
+/home/brad/Documents/canvasdesk/build/src/editor/.qt/rcc/canvasdesk-editor_raw_qml_0.qrc

@@ -131,6 +131,104 @@ canvasdesk-editor/fast:
 .PHONY : canvasdesk-editor/fast
 
 # Convenience name for target.
+src/editor/CMakeFiles/canvasdesk-editor_qmltyperegistration.dir/rule:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/editor/CMakeFiles/canvasdesk-editor_qmltyperegistration.dir/rule
+.PHONY : src/editor/CMakeFiles/canvasdesk-editor_qmltyperegistration.dir/rule
+
+# Convenience name for target.
+canvasdesk-editor_qmltyperegistration: src/editor/CMakeFiles/canvasdesk-editor_qmltyperegistration.dir/rule
+.PHONY : canvasdesk-editor_qmltyperegistration
+
+# fast build rule for target.
+canvasdesk-editor_qmltyperegistration/fast:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor_qmltyperegistration.dir/build.make src/editor/CMakeFiles/canvasdesk-editor_qmltyperegistration.dir/build
+.PHONY : canvasdesk-editor_qmltyperegistration/fast
+
+# Convenience name for target.
+src/editor/CMakeFiles/canvasdesk-editor_qmllint.dir/rule:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/editor/CMakeFiles/canvasdesk-editor_qmllint.dir/rule
+.PHONY : src/editor/CMakeFiles/canvasdesk-editor_qmllint.dir/rule
+
+# Convenience name for target.
+canvasdesk-editor_qmllint: src/editor/CMakeFiles/canvasdesk-editor_qmllint.dir/rule
+.PHONY : canvasdesk-editor_qmllint
+
+# fast build rule for target.
+canvasdesk-editor_qmllint/fast:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor_qmllint.dir/build.make src/editor/CMakeFiles/canvasdesk-editor_qmllint.dir/build
+.PHONY : canvasdesk-editor_qmllint/fast
+
+# Convenience name for target.
+src/editor/CMakeFiles/canvasdesk-editor_qmllint_json.dir/rule:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/editor/CMakeFiles/canvasdesk-editor_qmllint_json.dir/rule
+.PHONY : src/editor/CMakeFiles/canvasdesk-editor_qmllint_json.dir/rule
+
+# Convenience name for target.
+canvasdesk-editor_qmllint_json: src/editor/CMakeFiles/canvasdesk-editor_qmllint_json.dir/rule
+.PHONY : canvasdesk-editor_qmllint_json
+
+# fast build rule for target.
+canvasdesk-editor_qmllint_json/fast:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor_qmllint_json.dir/build.make src/editor/CMakeFiles/canvasdesk-editor_qmllint_json.dir/build
+.PHONY : canvasdesk-editor_qmllint_json/fast
+
+# Convenience name for target.
+src/editor/CMakeFiles/canvasdesk-editor_qmllint_module.dir/rule:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/editor/CMakeFiles/canvasdesk-editor_qmllint_module.dir/rule
+.PHONY : src/editor/CMakeFiles/canvasdesk-editor_qmllint_module.dir/rule
+
+# Convenience name for target.
+canvasdesk-editor_qmllint_module: src/editor/CMakeFiles/canvasdesk-editor_qmllint_module.dir/rule
+.PHONY : canvasdesk-editor_qmllint_module
+
+# fast build rule for target.
+canvasdesk-editor_qmllint_module/fast:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor_qmllint_module.dir/build.make src/editor/CMakeFiles/canvasdesk-editor_qmllint_module.dir/build
+.PHONY : canvasdesk-editor_qmllint_module/fast
+
+# Convenience name for target.
+src/editor/CMakeFiles/canvasdesk-editor_copy_qml.dir/rule:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/editor/CMakeFiles/canvasdesk-editor_copy_qml.dir/rule
+.PHONY : src/editor/CMakeFiles/canvasdesk-editor_copy_qml.dir/rule
+
+# Convenience name for target.
+canvasdesk-editor_copy_qml: src/editor/CMakeFiles/canvasdesk-editor_copy_qml.dir/rule
+.PHONY : canvasdesk-editor_copy_qml
+
+# fast build rule for target.
+canvasdesk-editor_copy_qml/fast:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor_copy_qml.dir/build.make src/editor/CMakeFiles/canvasdesk-editor_copy_qml.dir/build
+.PHONY : canvasdesk-editor_copy_qml/fast
+
+# Convenience name for target.
+src/editor/CMakeFiles/canvasdesk-editor_copy_res.dir/rule:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/editor/CMakeFiles/canvasdesk-editor_copy_res.dir/rule
+.PHONY : src/editor/CMakeFiles/canvasdesk-editor_copy_res.dir/rule
+
+# Convenience name for target.
+canvasdesk-editor_copy_res: src/editor/CMakeFiles/canvasdesk-editor_copy_res.dir/rule
+.PHONY : canvasdesk-editor_copy_res
+
+# fast build rule for target.
+canvasdesk-editor_copy_res/fast:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor_copy_res.dir/build.make src/editor/CMakeFiles/canvasdesk-editor_copy_res.dir/build
+.PHONY : canvasdesk-editor_copy_res/fast
+
+# Convenience name for target.
+src/editor/CMakeFiles/canvasdesk-editor_qmlimportscan.dir/rule:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/editor/CMakeFiles/canvasdesk-editor_qmlimportscan.dir/rule
+.PHONY : src/editor/CMakeFiles/canvasdesk-editor_qmlimportscan.dir/rule
+
+# Convenience name for target.
+canvasdesk-editor_qmlimportscan: src/editor/CMakeFiles/canvasdesk-editor_qmlimportscan.dir/rule
+.PHONY : canvasdesk-editor_qmlimportscan
+
+# fast build rule for target.
+canvasdesk-editor_qmlimportscan/fast:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor_qmlimportscan.dir/build.make src/editor/CMakeFiles/canvasdesk-editor_qmlimportscan.dir/build
+.PHONY : canvasdesk-editor_qmlimportscan/fast
+
+# Convenience name for target.
 src/editor/CMakeFiles/canvasdesk-editor_autogen_timestamp_deps.dir/rule:
 	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/editor/CMakeFiles/canvasdesk-editor_autogen_timestamp_deps.dir/rule
 .PHONY : src/editor/CMakeFiles/canvasdesk-editor_autogen_timestamp_deps.dir/rule
@@ -158,6 +256,102 @@ canvasdesk-editor_autogen/fast:
 	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor_autogen.dir/build.make src/editor/CMakeFiles/canvasdesk-editor_autogen.dir/build
 .PHONY : canvasdesk-editor_autogen/fast
 
+.qt/rcc/qrc_canvasdesk-editor_raw_qml_0.o: .qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp.o
+.PHONY : .qt/rcc/qrc_canvasdesk-editor_raw_qml_0.o
+
+# target to build an object file
+.qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp.o:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor.dir/build.make src/editor/CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp.o
+.PHONY : .qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp.o
+
+.qt/rcc/qrc_canvasdesk-editor_raw_qml_0.i: .qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp.i
+.PHONY : .qt/rcc/qrc_canvasdesk-editor_raw_qml_0.i
+
+# target to preprocess a source file
+.qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp.i:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor.dir/build.make src/editor/CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp.i
+.PHONY : .qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp.i
+
+.qt/rcc/qrc_canvasdesk-editor_raw_qml_0.s: .qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp.s
+.PHONY : .qt/rcc/qrc_canvasdesk-editor_raw_qml_0.s
+
+# target to generate assembly for a file
+.qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp.s:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor.dir/build.make src/editor/CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp.s
+.PHONY : .qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp.s
+
+.qt/rcc/qrc_qmake_CanvasDeskEditor.o: .qt/rcc/qrc_qmake_CanvasDeskEditor.cpp.o
+.PHONY : .qt/rcc/qrc_qmake_CanvasDeskEditor.o
+
+# target to build an object file
+.qt/rcc/qrc_qmake_CanvasDeskEditor.cpp.o:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor.dir/build.make src/editor/CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_qmake_CanvasDeskEditor.cpp.o
+.PHONY : .qt/rcc/qrc_qmake_CanvasDeskEditor.cpp.o
+
+.qt/rcc/qrc_qmake_CanvasDeskEditor.i: .qt/rcc/qrc_qmake_CanvasDeskEditor.cpp.i
+.PHONY : .qt/rcc/qrc_qmake_CanvasDeskEditor.i
+
+# target to preprocess a source file
+.qt/rcc/qrc_qmake_CanvasDeskEditor.cpp.i:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor.dir/build.make src/editor/CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_qmake_CanvasDeskEditor.cpp.i
+.PHONY : .qt/rcc/qrc_qmake_CanvasDeskEditor.cpp.i
+
+.qt/rcc/qrc_qmake_CanvasDeskEditor.s: .qt/rcc/qrc_qmake_CanvasDeskEditor.cpp.s
+.PHONY : .qt/rcc/qrc_qmake_CanvasDeskEditor.s
+
+# target to generate assembly for a file
+.qt/rcc/qrc_qmake_CanvasDeskEditor.cpp.s:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor.dir/build.make src/editor/CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_qmake_CanvasDeskEditor.cpp.s
+.PHONY : .qt/rcc/qrc_qmake_CanvasDeskEditor.cpp.s
+
+.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.o: .rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp.o
+.PHONY : .rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.o
+
+# target to build an object file
+.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp.o:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor.dir/build.make src/editor/CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp.o
+.PHONY : .rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp.o
+
+.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.i: .rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp.i
+.PHONY : .rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.i
+
+# target to preprocess a source file
+.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp.i:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor.dir/build.make src/editor/CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp.i
+.PHONY : .rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp.i
+
+.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.s: .rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp.s
+.PHONY : .rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.s
+
+# target to generate assembly for a file
+.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp.s:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor.dir/build.make src/editor/CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp.s
+.PHONY : .rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp.s
+
+.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.o: .rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp.o
+.PHONY : .rcc/qmlcache/canvasdesk-editor_qmlcache_loader.o
+
+# target to build an object file
+.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp.o:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor.dir/build.make src/editor/CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp.o
+.PHONY : .rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp.o
+
+.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.i: .rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp.i
+.PHONY : .rcc/qmlcache/canvasdesk-editor_qmlcache_loader.i
+
+# target to preprocess a source file
+.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp.i:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor.dir/build.make src/editor/CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp.i
+.PHONY : .rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp.i
+
+.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.s: .rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp.s
+.PHONY : .rcc/qmlcache/canvasdesk-editor_qmlcache_loader.s
+
+# target to generate assembly for a file
+.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp.s:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor.dir/build.make src/editor/CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp.s
+.PHONY : .rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp.s
+
 canvasdesk-editor_autogen/mocs_compilation.o: canvasdesk-editor_autogen/mocs_compilation.cpp.o
 .PHONY : canvasdesk-editor_autogen/mocs_compilation.o
 
@@ -181,6 +375,30 @@ canvasdesk-editor_autogen/mocs_compilation.s: canvasdesk-editor_autogen/mocs_com
 canvasdesk-editor_autogen/mocs_compilation.cpp.s:
 	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor.dir/build.make src/editor/CMakeFiles/canvasdesk-editor.dir/canvasdesk-editor_autogen/mocs_compilation.cpp.s
 .PHONY : canvasdesk-editor_autogen/mocs_compilation.cpp.s
+
+canvasdesk-editor_qmltyperegistrations.o: canvasdesk-editor_qmltyperegistrations.cpp.o
+.PHONY : canvasdesk-editor_qmltyperegistrations.o
+
+# target to build an object file
+canvasdesk-editor_qmltyperegistrations.cpp.o:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor.dir/build.make src/editor/CMakeFiles/canvasdesk-editor.dir/canvasdesk-editor_qmltyperegistrations.cpp.o
+.PHONY : canvasdesk-editor_qmltyperegistrations.cpp.o
+
+canvasdesk-editor_qmltyperegistrations.i: canvasdesk-editor_qmltyperegistrations.cpp.i
+.PHONY : canvasdesk-editor_qmltyperegistrations.i
+
+# target to preprocess a source file
+canvasdesk-editor_qmltyperegistrations.cpp.i:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor.dir/build.make src/editor/CMakeFiles/canvasdesk-editor.dir/canvasdesk-editor_qmltyperegistrations.cpp.i
+.PHONY : canvasdesk-editor_qmltyperegistrations.cpp.i
+
+canvasdesk-editor_qmltyperegistrations.s: canvasdesk-editor_qmltyperegistrations.cpp.s
+.PHONY : canvasdesk-editor_qmltyperegistrations.s
+
+# target to generate assembly for a file
+canvasdesk-editor_qmltyperegistrations.cpp.s:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor.dir/build.make src/editor/CMakeFiles/canvasdesk-editor.dir/canvasdesk-editor_qmltyperegistrations.cpp.s
+.PHONY : canvasdesk-editor_qmltyperegistrations.cpp.s
 
 main.o: main.cpp.o
 .PHONY : main.o
@@ -216,10 +434,32 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... canvasdesk-editor_autogen"
 	@echo "... canvasdesk-editor_autogen_timestamp_deps"
+	@echo "... canvasdesk-editor_copy_qml"
+	@echo "... canvasdesk-editor_copy_res"
+	@echo "... canvasdesk-editor_qmlimportscan"
+	@echo "... canvasdesk-editor_qmllint"
+	@echo "... canvasdesk-editor_qmllint_json"
+	@echo "... canvasdesk-editor_qmllint_module"
+	@echo "... canvasdesk-editor_qmltyperegistration"
 	@echo "... canvasdesk-editor"
+	@echo "... .qt/rcc/qrc_canvasdesk-editor_raw_qml_0.o"
+	@echo "... .qt/rcc/qrc_canvasdesk-editor_raw_qml_0.i"
+	@echo "... .qt/rcc/qrc_canvasdesk-editor_raw_qml_0.s"
+	@echo "... .qt/rcc/qrc_qmake_CanvasDeskEditor.o"
+	@echo "... .qt/rcc/qrc_qmake_CanvasDeskEditor.i"
+	@echo "... .qt/rcc/qrc_qmake_CanvasDeskEditor.s"
+	@echo "... .rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.o"
+	@echo "... .rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.i"
+	@echo "... .rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.s"
+	@echo "... .rcc/qmlcache/canvasdesk-editor_qmlcache_loader.o"
+	@echo "... .rcc/qmlcache/canvasdesk-editor_qmlcache_loader.i"
+	@echo "... .rcc/qmlcache/canvasdesk-editor_qmlcache_loader.s"
 	@echo "... canvasdesk-editor_autogen/mocs_compilation.o"
 	@echo "... canvasdesk-editor_autogen/mocs_compilation.i"
 	@echo "... canvasdesk-editor_autogen/mocs_compilation.s"
+	@echo "... canvasdesk-editor_qmltyperegistrations.o"
+	@echo "... canvasdesk-editor_qmltyperegistrations.i"
+	@echo "... canvasdesk-editor_qmltyperegistrations.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

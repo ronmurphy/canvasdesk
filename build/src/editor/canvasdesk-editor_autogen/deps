@@ -1,4 +1,8 @@
 canvasdesk-editor_autogen/timestamp: \
+	/home/brad/Documents/canvasdesk/build/src/editor/.qt/qml_imports/canvasdesk-editor_conf.cmake \
 	/home/brad/Documents/canvasdesk/src/editor/CMakeLists.txt \
 	/home/brad/Documents/canvasdesk/src/editor/main.cpp \
+	/usr/lib/cmake/Qt6Core/Qt6CoreConfigureFileTemplate.in \
+	/usr/lib/cmake/Qt6Qml/Qt6QmlModuleDirMappingTemplate.qrc.in \
+	/usr/lib/cmake/Qt6Qml/Qt6qmldirTemplate.cmake.in \
 	/usr/bin/cmake

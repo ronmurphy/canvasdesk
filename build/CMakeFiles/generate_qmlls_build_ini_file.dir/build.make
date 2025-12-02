@@ -73,7 +73,11 @@ CMakeFiles/generate_qmlls_build_ini_file: .qt/.qmlls.build.ini
 	/usr/bin/cmake -E echo [General] > /home/brad/Documents/canvasdesk/build/.qt/.qmlls.build.ini
 	/usr/bin/cmake -E echo_append docDir= >> /home/brad/Documents/canvasdesk/build/.qt/.qmlls.build.ini
 	/usr/lib/qt6/bin/qtpaths --query QT_INSTALL_DOCS >> /home/brad/Documents/canvasdesk/build/.qt/.qmlls.build.ini
+	/usr/bin/cmake -E echo "[<SLASH>home<SLASH>brad<SLASH>Documents<SLASH>canvasdesk<SLASH>src<SLASH>core]" >> /home/brad/Documents/canvasdesk/build/.qt/.qmlls.build.ini
+	/usr/bin/cmake -E echo importPaths=\"/usr/lib/qt6/qml\" >> /home/brad/Documents/canvasdesk/build/.qt/.qmlls.build.ini
 	/usr/bin/cmake -E echo "[<SLASH>home<SLASH>brad<SLASH>Documents<SLASH>canvasdesk<SLASH>src<SLASH>qml]" >> /home/brad/Documents/canvasdesk/build/.qt/.qmlls.build.ini
+	/usr/bin/cmake -E echo importPaths=\"/usr/lib/qt6/qml\" >> /home/brad/Documents/canvasdesk/build/.qt/.qmlls.build.ini
+	/usr/bin/cmake -E echo "[<SLASH>home<SLASH>brad<SLASH>Documents<SLASH>canvasdesk<SLASH>src<SLASH>editor]" >> /home/brad/Documents/canvasdesk/build/.qt/.qmlls.build.ini
 	/usr/bin/cmake -E echo importPaths=\"/usr/lib/qt6/qml\" >> /home/brad/Documents/canvasdesk/build/.qt/.qmlls.build.ini
 
 CMakeFiles/generate_qmlls_build_ini_file.dir/codegen:

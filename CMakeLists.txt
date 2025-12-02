@@ -8,7 +8,11 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Quick Gui Qml Widgets)
+find_package(Qt6 REQUIRED COMPONENTS Core Gui Qml Quick)
+
+# Add KWayland for Plasma window management
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(KWAYLAND REQUIRED IMPORTED_TARGET KWaylandClient)
 
 if(POLICY QTP0001)
     qt_policy(SET QTP0001 NEW)

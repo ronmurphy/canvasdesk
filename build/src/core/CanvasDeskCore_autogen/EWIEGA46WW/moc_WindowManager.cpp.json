@@ -1,0 +1,201 @@
+{
+    "classes": [
+        {
+            "classInfos": [
+                {
+                    "name": "QML.Element",
+                    "value": "auto"
+                },
+                {
+                    "name": "QML.Singleton",
+                    "value": "true"
+                }
+            ],
+            "className": "WindowManager",
+            "lineNumber": 15,
+            "methods": [
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "id",
+                            "type": "int"
+                        }
+                    ],
+                    "index": 5,
+                    "lineNumber": 41,
+                    "name": "activate",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "id",
+                            "type": "int"
+                        }
+                    ],
+                    "index": 6,
+                    "lineNumber": 42,
+                    "name": "close",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "id",
+                            "type": "int"
+                        }
+                    ],
+                    "index": 7,
+                    "lineNumber": 43,
+                    "name": "minimize",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "index",
+                            "type": "int"
+                        }
+                    ],
+                    "index": 8,
+                    "lineNumber": 44,
+                    "name": "switchToWorkspace",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "windowId",
+                            "type": "int"
+                        },
+                        {
+                            "name": "workspaceIndex",
+                            "type": "int"
+                        }
+                    ],
+                    "index": 9,
+                    "lineNumber": 45,
+                    "name": "moveWindowToWorkspace",
+                    "returnType": "void"
+                }
+            ],
+            "object": true,
+            "properties": [
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 0,
+                    "lineNumber": 20,
+                    "name": "windows",
+                    "notify": "windowsChanged",
+                    "read": "windows",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "QVariantList",
+                    "user": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 1,
+                    "lineNumber": 21,
+                    "name": "currentWorkspace",
+                    "notify": "currentWorkspaceChanged",
+                    "read": "currentWorkspace",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "int",
+                    "user": false,
+                    "write": "setCurrentWorkspace"
+                },
+                {
+                    "constant": true,
+                    "designable": true,
+                    "final": false,
+                    "index": 2,
+                    "lineNumber": 23,
+                    "name": "workspaceCount",
+                    "read": "workspaceCount",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "int",
+                    "user": false
+                }
+            ],
+            "qualifiedClassName": "WindowManager",
+            "signals": [
+                {
+                    "access": "public",
+                    "index": 0,
+                    "lineNumber": 48,
+                    "name": "windowsChanged",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 1,
+                    "lineNumber": 49,
+                    "name": "currentWorkspaceChanged",
+                    "returnType": "void"
+                }
+            ],
+            "slots": [
+                {
+                    "access": "private",
+                    "arguments": [
+                        {
+                            "name": "name",
+                            "type": "quint32"
+                        },
+                        {
+                            "name": "version",
+                            "type": "quint32"
+                        }
+                    ],
+                    "index": 2,
+                    "lineNumber": 52,
+                    "name": "setupPlasmaWindowManagement",
+                    "returnType": "void"
+                },
+                {
+                    "access": "private",
+                    "arguments": [
+                        {
+                            "name": "window",
+                            "type": "KWayland::Client::PlasmaWindow*"
+                        }
+                    ],
+                    "index": 3,
+                    "lineNumber": 53,
+                    "name": "onWindowCreated",
+                    "returnType": "void"
+                },
+                {
+                    "access": "private",
+                    "index": 4,
+                    "lineNumber": 54,
+                    "name": "onWindowUnmapped",
+                    "returnType": "void"
+                }
+            ],
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QObject"
+                }
+            ]
+        }
+    ],
+    "inputFile": "WindowManager.h",
+    "outputRevision": 69
+}

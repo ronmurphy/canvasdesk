@@ -1,0 +1,7 @@
+module CanvasDesk
+linktarget CanvasDeskCoreplugin
+optional plugin CanvasDeskCoreplugin
+classname CanvasDeskPlugin
+typeinfo CanvasDeskCore.qmltypes
+prefer :/CanvasDesk/
+

@@ -1,0 +1,10 @@
+-I
+/home/brad/Documents/canvasdesk/build/src/editor
+-I
+/usr/lib/qt6/qml
+--resource
+/home/brad/Documents/canvasdesk/build/src/editor/.qt/rcc/qmake_CanvasDeskEditor.qrc
+--resource
+/home/brad/Documents/canvasdesk/build/src/editor/.qt/rcc/canvasdesk-editor_raw_qml_0.qrc
+--module
+CanvasDeskEditor

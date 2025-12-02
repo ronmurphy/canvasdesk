@@ -1,6 +1,6 @@
 CanvasDeskQmlplugin_autogen/timestamp: \
-	/home/brad/Documents/canvasdesk/build/src/qml/CanvasDeskQmlplugin_CanvasDeskPlugin.cpp \
-	/home/brad/Documents/canvasdesk/build/src/qml/CanvasDeskQmlplugin_CanvasDeskPlugin_in.cpp \
+	/home/brad/Documents/canvasdesk/build/src/qml/CanvasDeskQmlplugin_CanvasDeskRuntimePlugin.cpp \
+	/home/brad/Documents/canvasdesk/build/src/qml/CanvasDeskQmlplugin_CanvasDeskRuntimePlugin_in.cpp \
 	/home/brad/Documents/canvasdesk/build/src/qml/CanvasDeskQmlplugin_autogen/moc_predefs.h \
 	/home/brad/Documents/canvasdesk/src/qml/CMakeLists.txt \
 	/usr/include/asm-generic/bitsperlong.h \

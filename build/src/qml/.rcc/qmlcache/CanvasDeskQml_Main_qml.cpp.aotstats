@@ -16,24 +16,24 @@
                         {
                             "codegenResult": 0,
                             "column": 23,
-                            "durationMicroseconds": 73,
+                            "durationMicroseconds": 65,
                             "functionName": "fill",
                             "line": 17,
                             "message": ""
                         },
                         {
                             "codegenResult": 2,
-                            "column": 28,
-                            "durationMicroseconds": 771,
+                            "column": 32,
+                            "durationMicroseconds": 1077,
                             "functionName": "onCompleted",
-                            "line": 20,
+                            "line": 19,
                             "message": "Cannot retrieve a non-object type by ID: layoutManager"
                         }
                     ],
                     "filePath": "/home/brad/Documents/canvasdesk/src/qml/Main.qml"
                 }
             ],
-            "moduleId": "CanvasDesk(CanvasDeskQml)"
+            "moduleId": "CanvasDeskRuntime(CanvasDeskQml)"
         }
     ]
 }

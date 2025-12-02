@@ -1,0 +1,7 @@
+--bare
+-I
+/usr/lib/qt6/qml
+--resource
+/home/brad/Documents/canvasdesk/build/src/core/.qt/rcc/qmake_CanvasDesk.qrc
+--json
+/home/brad/Documents/canvasdesk/build/CanvasDeskCore_qmllint.json

@@ -1,0 +1,10 @@
+CanvasDeskCoreplugin_init_autogen/timestamp: \
+	/home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCoreplugin_CanvasDeskPlugin_in.cpp \
+	/home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCoreplugin_init.cpp \
+	/home/brad/Documents/canvasdesk/src/core/CMakeLists.txt \
+	/usr/lib/cmake/Qt6Core/Qt6CoreConfigureFileTemplate.in \
+	/usr/lib/cmake/Qt6Core/Qt6CoreResourceInit.in.cpp \
+	/usr/lib/cmake/Qt6Qml/Qt6QmlModuleDirMappingTemplate.qrc.in \
+	/usr/lib/cmake/Qt6Qml/Qt6QmlPluginTemplate.cpp.in \
+	/usr/lib/cmake/Qt6Qml/Qt6qmldirTemplate.cmake.in \
+	/usr/bin/cmake

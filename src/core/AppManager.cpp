@@ -7,7 +7,10 @@
 #include <QStandardPaths>
 #include <QTextStream>
 
-AppManager::AppManager(QObject *parent) : QObject(parent) { scanApps(); }
+AppManager::AppManager(QObject *parent) : QObject(parent) {
+  // Delay scanning to avoid issues during initialization
+  QMetaObject::invokeMethod(this, &AppManager::scanApps, Qt::QueuedConnection);
+}
 
 QVariantList AppManager::apps() const { return m_apps; }
 

@@ -69,7 +69,6 @@ include src/editor/CMakeFiles/canvasdesk-editor_autogen.dir/progress.make
 src/editor/CMakeFiles/canvasdesk-editor_autogen: src/editor/canvasdesk-editor_autogen/timestamp
 
 src/editor/canvasdesk-editor_autogen/timestamp: /usr/lib/qt6/moc
-src/editor/canvasdesk-editor_autogen/timestamp: /usr/lib/qt6/uic
 src/editor/canvasdesk-editor_autogen/timestamp: src/editor/CMakeFiles/canvasdesk-editor_autogen.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target canvasdesk-editor"
 	cd /home/brad/Documents/canvasdesk/build/src/editor && /usr/bin/cmake -E cmake_autogen /home/brad/Documents/canvasdesk/build/src/editor/CMakeFiles/canvasdesk-editor_autogen.dir/AutogenInfo.json ""

@@ -69,7 +69,6 @@ include src/core/CMakeFiles/CanvasDeskCore_autogen.dir/progress.make
 src/core/CMakeFiles/CanvasDeskCore_autogen: src/core/CanvasDeskCore_autogen/timestamp
 
 src/core/CanvasDeskCore_autogen/timestamp: /usr/lib/qt6/moc
-src/core/CanvasDeskCore_autogen/timestamp: /usr/lib/qt6/uic
 src/core/CanvasDeskCore_autogen/timestamp: src/core/CMakeFiles/CanvasDeskCore_autogen.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target CanvasDeskCore"
 	cd /home/brad/Documents/canvasdesk/build/src/core && /usr/bin/cmake -E cmake_autogen /home/brad/Documents/canvasdesk/build/src/core/CMakeFiles/CanvasDeskCore_autogen.dir/AutogenInfo.json ""

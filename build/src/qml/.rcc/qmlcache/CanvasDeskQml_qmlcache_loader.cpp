@@ -5,7 +5,7 @@
 #include <QtCore/qstring.h>
 
 namespace QmlCacheGeneratedCode {
-namespace _0x5f_CanvasDesk_Main_qml { 
+namespace _0x5f_CanvasDeskRuntime_Main_qml { 
     extern const unsigned char qmlData[];
     extern const QQmlPrivate::AOTCompiledFunction aotBuiltFunctions[];
     const QQmlPrivate::CachedQmlUnit unit = {
@@ -26,7 +26,7 @@ Q_GLOBAL_STATIC(Registry, unitRegistry)
 
 
 Registry::Registry() {
-    resourcePathToCachedUnit.insert(QStringLiteral("/CanvasDesk/Main.qml"), &QmlCacheGeneratedCode::_0x5f_CanvasDesk_Main_qml::unit);
+    resourcePathToCachedUnit.insert(QStringLiteral("/CanvasDeskRuntime/Main.qml"), &QmlCacheGeneratedCode::_0x5f_CanvasDeskRuntime_Main_qml::unit);
     QQmlPrivate::RegisterQmlUnitCacheHook registration;
     registration.structVersion = 0;
     registration.lookupCachedQmlUnit = &lookupCachedUnit;

@@ -4,7 +4,15 @@
 	"CMAKE_CURRENT_BINARY_DIR" : "/home/brad/Documents/canvasdesk/build/src/core",
 	"CMAKE_CURRENT_SOURCE_DIR" : "/home/brad/Documents/canvasdesk/src/core",
 	"CMAKE_EXECUTABLE" : "/usr/bin/cmake",
-	"CMAKE_LIST_FILES" : [ "/home/brad/Documents/canvasdesk/src/core/CMakeLists.txt" ],
+	"CMAKE_LIST_FILES" : 
+	[
+		"/home/brad/Documents/canvasdesk/src/core/CMakeLists.txt",
+		"/usr/lib/cmake/Qt6Core/Qt6CoreConfigureFileTemplate.in",
+		"/usr/lib/cmake/Qt6Qml/Qt6QmlPluginTemplate.cpp.in",
+		"/usr/lib/cmake/Qt6Qml/Qt6QmlModuleDirMappingTemplate.qrc.in",
+		"/usr/lib/cmake/Qt6Qml/Qt6qmldirTemplate.cmake.in",
+		"/home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCoreplugin_CanvasDeskPlugin_in.cpp"
+	],
 	"CMAKE_SOURCE_DIR" : "/home/brad/Documents/canvasdesk",
 	"CROSS_CONFIG" : false,
 	"DEP_FILE" : "/home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/deps",
@@ -47,14 +55,12 @@
 	"MOC_COMPILATION_FILE" : "/home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/mocs_compilation.cpp",
 	"MOC_DEFINITIONS" : 
 	[
+		"CanvasDeskCore_EXPORTS",
 		"QT_CORE_LIB",
-		"QT_GUI_LIB",
 		"QT_NETWORK_LIB",
 		"QT_NO_DEBUG",
-		"QT_OPENGL_LIB",
 		"QT_QMLINTEGRATION_LIB",
-		"QT_QML_LIB",
-		"QT_QUICK_LIB"
+		"QT_QML_LIB"
 	],
 	"MOC_DEPEND_FILTERS" : 
 	[
@@ -66,22 +72,21 @@
 	"MOC_INCLUDES" : 
 	[
 		"/home/brad/Documents/canvasdesk/src/core",
-		"/usr/include/qt6/QtQuick",
+		"/usr/include/qt6/QtQml",
 		"/usr/include/qt6",
 		"/usr/include/qt6/QtCore",
 		"/usr/lib/qt6/mkspecs/linux-g++",
-		"/usr/include/qt6/QtGui",
-		"/usr/include/qt6/QtQml",
 		"/usr/include/qt6/QtQmlIntegration",
 		"/usr/include/qt6/QtNetwork",
-		"/usr/include/qt6/QtOpenGL",
-		"/usr/include",
+		"/usr/include/KWayland",
+		"/usr/include/qt6/QtGui",
 		"/usr/include/c++/15.2.1",
 		"/usr/include/c++/15.2.1/x86_64-pc-linux-gnu",
 		"/usr/include/c++/15.2.1/backward",
 		"/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include",
 		"/usr/local/include",
-		"/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include-fixed"
+		"/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include-fixed",
+		"/usr/include"
 	],
 	"MOC_MACRO_NAMES" : 
 	[
@@ -92,7 +97,7 @@
 		"Q_GADGET_EXPORT",
 		"Q_ENUM_NS"
 	],
-	"MOC_OPTIONS" : [],
+	"MOC_OPTIONS" : [ "--output-json" ],
 	"MOC_PATH_PREFIX" : false,
 	"MOC_PREDEFS_CMD" : 
 	[
@@ -105,12 +110,16 @@
 	],
 	"MOC_PREDEFS_FILE" : "/home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/moc_predefs.h",
 	"MOC_RELAXED_MODE" : false,
-	"MOC_SKIP" : [],
+	"MOC_SKIP" : 
+	[
+		"/home/brad/Documents/canvasdesk/build/src/core/.qt/rcc/qrc_qmake_CanvasDesk.cpp",
+		"/home/brad/Documents/canvasdesk/build/src/core/canvasdeskcore_qmltyperegistrations.cpp"
+	],
 	"MULTI_CONFIG" : false,
 	"PARALLEL" : 8,
 	"PARSE_CACHE_FILE" : "/home/brad/Documents/canvasdesk/build/src/core/CMakeFiles/CanvasDeskCore_autogen.dir/ParseCache.txt",
 	"QT_MOC_EXECUTABLE" : "/usr/lib/qt6/moc",
-	"QT_UIC_EXECUTABLE" : "/usr/lib/qt6/uic",
+	"QT_UIC_EXECUTABLE" : "",
 	"QT_VERSION_MAJOR" : 6,
 	"QT_VERSION_MINOR" : 10,
 	"SETTINGS_FILE" : "/home/brad/Documents/canvasdesk/build/src/core/CMakeFiles/CanvasDeskCore_autogen.dir/AutogenUsed.txt",
@@ -136,7 +145,11 @@
 	],
 	"UIC_OPTIONS" : [],
 	"UIC_SEARCH_PATHS" : [],
-	"UIC_SKIP" : [],
+	"UIC_SKIP" : 
+	[
+		"/home/brad/Documents/canvasdesk/build/src/core/.qt/rcc/qrc_qmake_CanvasDesk.cpp",
+		"/home/brad/Documents/canvasdesk/build/src/core/canvasdeskcore_qmltyperegistrations.cpp"
+	],
 	"UIC_UI_FILES" : [],
 	"USE_BETTER_GRAPH" : true,
 	"VERBOSITY" : 0

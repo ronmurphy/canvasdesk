@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/CanvasDeskRuntime">
+    <file alias="qmldir">/home/brad/Documents/canvasdesk/build/src/qml/qmldir</file>
+  </qresource>
+</RCC>
+
