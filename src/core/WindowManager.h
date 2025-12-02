@@ -12,6 +12,8 @@
 #include <KWayland/Client/plasmawindowmanagement.h>
 #include <KWayland/Client/registry.h>
 
+class WlrWindowManager;
+
 class WindowManager : public QObject {
   Q_OBJECT
   QML_ELEMENT
@@ -56,12 +58,17 @@ private slots:
 private:
   KWayland::Client::PlasmaWindow *findWindow(const QString &uuid) const;
   void updateMockWindows();
+  void onWlrWindowChanged();
 
   // KWayland members
   KWayland::Client::ConnectionThread *m_connection = nullptr;
   KWayland::Client::Registry *m_registry = nullptr;
   KWayland::Client::PlasmaWindowManagement *m_windowManagement = nullptr;
   QHash<QString, KWayland::Client::PlasmaWindow *> m_plasmaWindows;
+
+  // wlr backend
+  WlrWindowManager *m_wlrManager = nullptr;
+  bool m_usingWlr = false;
 
   // Workspace tracking
   int m_currentWorkspace = 0;

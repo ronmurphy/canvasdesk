@@ -18,6 +18,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/CanvasDeskCore.dir/LayoutManager.cpp.o.d"
   "CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.o"
   "CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.o.d"
+  "CMakeFiles/CanvasDeskCore.dir/WlrWindowManager.cpp.o"
+  "CMakeFiles/CanvasDeskCore.dir/WlrWindowManager.cpp.o.d"
   "CMakeFiles/CanvasDeskCore.dir/canvasdeskcore_qmltyperegistrations.cpp.o"
   "CMakeFiles/CanvasDeskCore.dir/canvasdeskcore_qmltyperegistrations.cpp.o.d"
   "CanvasDeskCore.qmltypes"
@@ -30,6 +32,7 @@ file(REMOVE_RECURSE
   "meta_types/CanvasDeskCore_json_file_list.txt.timestamp"
   "meta_types/qt6canvasdeskcore_metatypes.json"
   "meta_types/qt6canvasdeskcore_metatypes.json.gen"
+  "wlr-foreign-toplevel-management-unstable-v1-client-protocol.h"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -9,6 +9,8 @@ libCanvasDeskQml.so: \
   CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_CanvasDeskQml_raw_qml_0.cpp.o \
   ../core/libCanvasDeskCore.so \
   /usr/lib/libQt6Quick.so.6.10.1 \
+  ../core/libwlr_protocol.a \
+  /usr/lib/libwayland-client.so \
   /usr/lib/libQt6OpenGL.so.6.10.1 \
   /usr/lib/libQt6Gui.so.6.10.1 \
   /usr/lib/libGLX.so \
@@ -60,6 +62,10 @@ CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_CanvasDeskQml_raw_qml_0.cpp.o:
 ../core/libCanvasDeskCore.so:
 
 /usr/lib/libQt6Quick.so.6.10.1:
+
+../core/libwlr_protocol.a:
+
+/usr/lib/libwayland-client.so:
 
 /usr/lib/libQt6OpenGL.so.6.10.1:
 

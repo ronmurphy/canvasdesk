@@ -376,6 +376,7 @@ src/editor/CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qml/
  /usr/include/qt6/QtCore/qversionnumber.h /usr/include/qt6/QtCore/qspan.h \
  /usr/include/c++/15.2.1/cassert /usr/include/qt6/QtCore/q20iterator.h \
  /usr/include/qt6/QtCore/qtyperevision.h \
+ /usr/include/qt6/QtCore/qloggingcategory.h \
  /usr/include/qt6/QtCore/qtimezone.h /usr/include/qt6/QtQml/qjsengine.h \
  /usr/include/qt6/QtQml/qjsmanagedvalue.h \
  /usr/include/qt6/QtQml/qqmldebug.h \

@@ -20,6 +20,12 @@
 	"HEADERS" : 
 	[
 		[
+			"/home/brad/Documents/canvasdesk/build/src/core/wlr-foreign-toplevel-management-unstable-v1-client-protocol.h",
+			"MU",
+			"EJRQKI7XPS/moc_wlr-foreign-toplevel-management-unstable-v1-client-protocol.cpp",
+			null
+		],
+		[
 			"/home/brad/Documents/canvasdesk/src/core/AppManager.h",
 			"MU",
 			"EWIEGA46WW/moc_AppManager.cpp",
@@ -48,6 +54,12 @@
 			"MU",
 			"EWIEGA46WW/moc_WindowManager.cpp",
 			null
+		],
+		[
+			"/home/brad/Documents/canvasdesk/src/core/WlrWindowManager.h",
+			"MU",
+			"EWIEGA46WW/moc_WlrWindowManager.cpp",
+			null
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
@@ -57,10 +69,12 @@
 	[
 		"CanvasDeskCore_EXPORTS",
 		"QT_CORE_LIB",
+		"QT_GUI_LIB",
 		"QT_NETWORK_LIB",
 		"QT_NO_DEBUG",
 		"QT_QMLINTEGRATION_LIB",
-		"QT_QML_LIB"
+		"QT_QML_LIB",
+		"QT_WAYLANDCLIENT_LIB"
 	],
 	"MOC_DEPEND_FILTERS" : 
 	[
@@ -72,21 +86,23 @@
 	"MOC_INCLUDES" : 
 	[
 		"/home/brad/Documents/canvasdesk/src/core",
+		"/home/brad/Documents/canvasdesk/build/src/core",
 		"/usr/include/qt6/QtQml",
 		"/usr/include/qt6",
 		"/usr/include/qt6/QtCore",
 		"/usr/lib/qt6/mkspecs/linux-g++",
 		"/usr/include/qt6/QtQmlIntegration",
 		"/usr/include/qt6/QtNetwork",
-		"/usr/include/KWayland",
+		"/usr/include/qt6/QtWaylandClient",
 		"/usr/include/qt6/QtGui",
+		"/usr/include/KWayland",
+		"/usr/include",
 		"/usr/include/c++/15.2.1",
 		"/usr/include/c++/15.2.1/x86_64-pc-linux-gnu",
 		"/usr/include/c++/15.2.1/backward",
 		"/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include",
 		"/usr/local/include",
-		"/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include-fixed",
-		"/usr/include"
+		"/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include-fixed"
 	],
 	"MOC_MACRO_NAMES" : 
 	[
@@ -139,6 +155,11 @@
 		],
 		[
 			"/home/brad/Documents/canvasdesk/src/core/WindowManager.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/brad/Documents/canvasdesk/src/core/WlrWindowManager.cpp",
 			"MU",
 			null
 		]

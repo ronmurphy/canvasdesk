@@ -85,6 +85,51 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
 
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+.PHONY : list_install_components/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
+
 # The main all target
 all: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles /home/brad/Documents/canvasdesk/build//CMakeFiles/progress.marks
@@ -115,6 +160,19 @@ preinstall/fast:
 depend:
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
+
+#=============================================================================
+# Target rules for targets named canvasdesk
+
+# Build rule for target.
+canvasdesk: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 canvasdesk
+.PHONY : canvasdesk
+
+# fast build rule for target.
+canvasdesk/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/canvasdesk.dir/build.make CMakeFiles/canvasdesk.dir/build
+.PHONY : canvasdesk/fast
 
 #=============================================================================
 # Target rules for targets named generate_qmlls_build_ini_file
@@ -169,6 +227,45 @@ all_aotstats/fast:
 .PHONY : all_aotstats/fast
 
 #=============================================================================
+# Target rules for targets named canvasdesk_qmlimportscan
+
+# Build rule for target.
+canvasdesk_qmlimportscan: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 canvasdesk_qmlimportscan
+.PHONY : canvasdesk_qmlimportscan
+
+# fast build rule for target.
+canvasdesk_qmlimportscan/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/canvasdesk_qmlimportscan.dir/build.make CMakeFiles/canvasdesk_qmlimportscan.dir/build
+.PHONY : canvasdesk_qmlimportscan/fast
+
+#=============================================================================
+# Target rules for targets named canvasdesk_autogen_timestamp_deps
+
+# Build rule for target.
+canvasdesk_autogen_timestamp_deps: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 canvasdesk_autogen_timestamp_deps
+.PHONY : canvasdesk_autogen_timestamp_deps
+
+# fast build rule for target.
+canvasdesk_autogen_timestamp_deps/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/canvasdesk_autogen_timestamp_deps.dir/build.make CMakeFiles/canvasdesk_autogen_timestamp_deps.dir/build
+.PHONY : canvasdesk_autogen_timestamp_deps/fast
+
+#=============================================================================
+# Target rules for targets named canvasdesk_autogen
+
+# Build rule for target.
+canvasdesk_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 canvasdesk_autogen
+.PHONY : canvasdesk_autogen
+
+# fast build rule for target.
+canvasdesk_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/canvasdesk_autogen.dir/build.make CMakeFiles/canvasdesk_autogen.dir/build
+.PHONY : canvasdesk_autogen/fast
+
+#=============================================================================
 # Target rules for targets named canvasdesk-runtime
 
 # Build rule for target.
@@ -206,6 +303,19 @@ canvasdesk-runtime_autogen: cmake_check_build_system
 canvasdesk-runtime_autogen/fast:
 	$(MAKE) $(MAKESILENT) -f src/app/CMakeFiles/canvasdesk-runtime_autogen.dir/build.make src/app/CMakeFiles/canvasdesk-runtime_autogen.dir/build
 .PHONY : canvasdesk-runtime_autogen/fast
+
+#=============================================================================
+# Target rules for targets named wlr_protocol
+
+# Build rule for target.
+wlr_protocol: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 wlr_protocol
+.PHONY : wlr_protocol
+
+# fast build rule for target.
+wlr_protocol/fast:
+	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/wlr_protocol.dir/build.make src/core/CMakeFiles/wlr_protocol.dir/build
+.PHONY : wlr_protocol/fast
 
 #=============================================================================
 # Target rules for targets named CanvasDeskCore
@@ -714,6 +824,54 @@ canvasdesk-editor_autogen/fast:
 	$(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor_autogen.dir/build.make src/editor/CMakeFiles/canvasdesk-editor_autogen.dir/build
 .PHONY : canvasdesk-editor_autogen/fast
 
+canvasdesk_autogen/mocs_compilation.o: canvasdesk_autogen/mocs_compilation.cpp.o
+.PHONY : canvasdesk_autogen/mocs_compilation.o
+
+# target to build an object file
+canvasdesk_autogen/mocs_compilation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/canvasdesk.dir/build.make CMakeFiles/canvasdesk.dir/canvasdesk_autogen/mocs_compilation.cpp.o
+.PHONY : canvasdesk_autogen/mocs_compilation.cpp.o
+
+canvasdesk_autogen/mocs_compilation.i: canvasdesk_autogen/mocs_compilation.cpp.i
+.PHONY : canvasdesk_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+canvasdesk_autogen/mocs_compilation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/canvasdesk.dir/build.make CMakeFiles/canvasdesk.dir/canvasdesk_autogen/mocs_compilation.cpp.i
+.PHONY : canvasdesk_autogen/mocs_compilation.cpp.i
+
+canvasdesk_autogen/mocs_compilation.s: canvasdesk_autogen/mocs_compilation.cpp.s
+.PHONY : canvasdesk_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+canvasdesk_autogen/mocs_compilation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/canvasdesk.dir/build.make CMakeFiles/canvasdesk.dir/canvasdesk_autogen/mocs_compilation.cpp.s
+.PHONY : canvasdesk_autogen/mocs_compilation.cpp.s
+
+src/main.o: src/main.cpp.o
+.PHONY : src/main.o
+
+# target to build an object file
+src/main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/canvasdesk.dir/build.make CMakeFiles/canvasdesk.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
+
+src/main.i: src/main.cpp.i
+.PHONY : src/main.i
+
+# target to preprocess a source file
+src/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/canvasdesk.dir/build.make CMakeFiles/canvasdesk.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
+
+src/main.s: src/main.cpp.s
+.PHONY : src/main.s
+
+# target to generate assembly for a file
+src/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/canvasdesk.dir/build.make CMakeFiles/canvasdesk.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -721,6 +879,10 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... install"
+	@echo "... install/local"
+	@echo "... install/strip"
+	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... CanvasDeskCore_autogen"
 	@echo "... CanvasDeskCore_autogen_timestamp_deps"
@@ -758,6 +920,9 @@ help:
 	@echo "... canvasdesk-editor_qmltyperegistration"
 	@echo "... canvasdesk-runtime_autogen"
 	@echo "... canvasdesk-runtime_autogen_timestamp_deps"
+	@echo "... canvasdesk_autogen"
+	@echo "... canvasdesk_autogen_timestamp_deps"
+	@echo "... canvasdesk_qmlimportscan"
 	@echo "... generate_qmlls_build_ini_file"
 	@echo "... module_CanvasDeskQml_aotstats_target"
 	@echo "... module_canvasdesk-editor_aotstats_target"
@@ -766,8 +931,16 @@ help:
 	@echo "... CanvasDeskCoreplugin"
 	@echo "... CanvasDeskQml"
 	@echo "... CanvasDeskQmlplugin"
+	@echo "... canvasdesk"
 	@echo "... canvasdesk-editor"
 	@echo "... canvasdesk-runtime"
+	@echo "... wlr_protocol"
+	@echo "... canvasdesk_autogen/mocs_compilation.o"
+	@echo "... canvasdesk_autogen/mocs_compilation.i"
+	@echo "... canvasdesk_autogen/mocs_compilation.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
 .PHONY : help
 
 

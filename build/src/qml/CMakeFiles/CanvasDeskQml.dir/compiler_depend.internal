@@ -1559,6 +1559,7 @@ src/qml/CMakeFiles/CanvasDeskQml.dir/canvasdeskqml_qmltyperegistrations.cpp.o
 
 src/qml/libCanvasDeskQml.so
  /home/brad/Documents/canvasdesk/build/src/core/libCanvasDeskCore.so
+ /home/brad/Documents/canvasdesk/build/src/core/libwlr_protocol.a
  /usr/lib/crti.o
  /usr/lib/crtn.o
  /usr/lib/libc.so
@@ -1582,6 +1583,7 @@ src/qml/libCanvasDeskQml.so
  /usr/lib/libc_nonshared.a
  /usr/lib/libm.so.6
  /usr/lib/libmvec.so.1
+ /usr/lib/libwayland-client.so
  /home/brad/Documents/canvasdesk/build/src/qml/CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_CanvasDeskQml_raw_qml_0.cpp.o
  /home/brad/Documents/canvasdesk/build/src/qml/CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp.o
  /home/brad/Documents/canvasdesk/build/src/qml/CMakeFiles/CanvasDeskQml.dir/.rcc/qmlcache/CanvasDeskQml_Main_qml.cpp.o

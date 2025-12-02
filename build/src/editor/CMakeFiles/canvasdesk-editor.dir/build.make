@@ -267,13 +267,15 @@ src/editor/canvasdesk-editor: src/editor/CMakeFiles/canvasdesk-editor.dir/compil
 src/editor/canvasdesk-editor: src/qml/libCanvasDeskQml.so
 src/editor/canvasdesk-editor: /usr/lib/libQt6Quick.so.6.10.1
 src/editor/canvasdesk-editor: /usr/lib/libQt6OpenGL.so.6.10.1
-src/editor/canvasdesk-editor: /usr/lib/libQt6Gui.so.6.10.1
-src/editor/canvasdesk-editor: /usr/lib/libGLX.so
-src/editor/canvasdesk-editor: /usr/lib/libOpenGL.so
 src/editor/canvasdesk-editor: src/core/libCanvasDeskCore.so
 src/editor/canvasdesk-editor: /usr/lib/libQt6Qml.so.6.10.1
 src/editor/canvasdesk-editor: /usr/lib/libQt6Network.so.6.10.1
+src/editor/canvasdesk-editor: src/core/libwlr_protocol.a
+src/editor/canvasdesk-editor: /usr/lib/libQt6Gui.so.6.10.1
+src/editor/canvasdesk-editor: /usr/lib/libGLX.so
+src/editor/canvasdesk-editor: /usr/lib/libOpenGL.so
 src/editor/canvasdesk-editor: /usr/lib/libQt6Core.so.6.10.1
+src/editor/canvasdesk-editor: /usr/lib/libwayland-client.so
 src/editor/canvasdesk-editor: src/editor/CMakeFiles/canvasdesk-editor.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Linking CXX executable canvasdesk-editor"
 	cd /home/brad/Documents/canvasdesk/build/src/editor && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/canvasdesk-editor.dir/link.txt --verbose=$(VERBOSE)

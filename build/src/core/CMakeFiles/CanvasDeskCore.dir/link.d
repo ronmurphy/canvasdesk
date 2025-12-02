@@ -9,12 +9,21 @@ libCanvasDeskCore.so: \
   CMakeFiles/CanvasDeskCore.dir/LayoutManager.cpp.o \
   CMakeFiles/CanvasDeskCore.dir/AppManager.cpp.o \
   CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.o \
+  CMakeFiles/CanvasDeskCore.dir/WlrWindowManager.cpp.o \
   /usr/lib/libQt6Qml.so.6.10.1 \
+  /usr/lib/libQt6WaylandClient.so.6.10.1 \
+  /usr/lib/libwayland-client.so \
+  libwlr_protocol.a \
   /usr/lib/libQt6Network.so.6.10.1 \
+  /usr/lib/libQt6Gui.so.6.10.1 \
+  /usr/lib/libGLX.so \
+  /usr/lib/libOpenGL.so \
   /usr/lib/libQt6Core.so.6.10.1 \
+  /usr/lib/libwayland-cursor.so \
   /usr/lib/libKWaylandClient.so \
   /usr/lib/libQt6Gui.so \
   /usr/lib/libQt6Core.so \
+  /usr/lib/libwayland-client.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libstdc++.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libm.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libm.so \
@@ -60,17 +69,35 @@ CMakeFiles/CanvasDeskCore.dir/AppManager.cpp.o:
 
 CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.o:
 
+CMakeFiles/CanvasDeskCore.dir/WlrWindowManager.cpp.o:
+
 /usr/lib/libQt6Qml.so.6.10.1:
+
+/usr/lib/libQt6WaylandClient.so.6.10.1:
+
+/usr/lib/libwayland-client.so:
+
+libwlr_protocol.a:
 
 /usr/lib/libQt6Network.so.6.10.1:
 
+/usr/lib/libQt6Gui.so.6.10.1:
+
+/usr/lib/libGLX.so:
+
+/usr/lib/libOpenGL.so:
+
 /usr/lib/libQt6Core.so.6.10.1:
+
+/usr/lib/libwayland-cursor.so:
 
 /usr/lib/libKWaylandClient.so:
 
 /usr/lib/libQt6Gui.so:
 
 /usr/lib/libQt6Core.so:
+
+/usr/lib/libwayland-client.so:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libstdc++.so:
 

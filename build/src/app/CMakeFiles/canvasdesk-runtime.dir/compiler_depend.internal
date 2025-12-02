@@ -560,6 +560,7 @@ src/app/CMakeFiles/canvasdesk-runtime.dir/main.cpp.o
 
 src/app/canvasdesk-runtime
  /home/brad/Documents/canvasdesk/build/src/core/libCanvasDeskCore.so
+ /home/brad/Documents/canvasdesk/build/src/core/libwlr_protocol.a
  /home/brad/Documents/canvasdesk/build/src/qml/libCanvasDeskQml.so
  /usr/lib/Scrt1.o
  /usr/lib/crti.o
@@ -643,7 +644,7 @@ src/app/canvasdesk-runtime
  /usr/lib/libssl.so.3
  /usr/lib/libsystemd.so.0
  /usr/lib/libunistring.so.5
- /usr/lib/libwayland-client.so.0
+ /usr/lib/libwayland-client.so
  /usr/lib/libwayland-cursor.so.0
  /usr/lib/libxcb.so.1
  /usr/lib/libxkbcommon.so.0
@@ -681,7 +682,7 @@ src/app/canvasdesk-runtime
  /usr/lib32/libssh2.so.1
  /usr/lib32/libssl.so.3
  /usr/lib32/libunistring.so.5
- /usr/lib32/libwayland-client.so.0
+ /usr/lib32/libwayland-cursor.so.0
  /usr/lib32/libxcb.so.1
  /home/brad/Documents/canvasdesk/build/src/app/CMakeFiles/canvasdesk-runtime.dir/canvasdesk-runtime_autogen/mocs_compilation.cpp.o
  /home/brad/Documents/canvasdesk/build/src/app/CMakeFiles/canvasdesk-runtime.dir/main.cpp.o

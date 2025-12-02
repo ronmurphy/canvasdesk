@@ -277,7 +277,7 @@
                     }
                 ],
                 "className": "WindowManager",
-                "lineNumber": 15,
+                "lineNumber": 17,
                 "methods": [
                     {
                         "access": "public",
@@ -288,7 +288,7 @@
                             }
                         ],
                         "index": 5,
-                        "lineNumber": 41,
+                        "lineNumber": 43,
                         "name": "activate",
                         "returnType": "void"
                     },
@@ -301,7 +301,7 @@
                             }
                         ],
                         "index": 6,
-                        "lineNumber": 42,
+                        "lineNumber": 44,
                         "name": "close",
                         "returnType": "void"
                     },
@@ -314,7 +314,7 @@
                             }
                         ],
                         "index": 7,
-                        "lineNumber": 43,
+                        "lineNumber": 45,
                         "name": "minimize",
                         "returnType": "void"
                     },
@@ -327,7 +327,7 @@
                             }
                         ],
                         "index": 8,
-                        "lineNumber": 44,
+                        "lineNumber": 46,
                         "name": "switchToWorkspace",
                         "returnType": "void"
                     },
@@ -344,7 +344,7 @@
                             }
                         ],
                         "index": 9,
-                        "lineNumber": 45,
+                        "lineNumber": 47,
                         "name": "moveWindowToWorkspace",
                         "returnType": "void"
                     }
@@ -356,7 +356,7 @@
                         "designable": true,
                         "final": false,
                         "index": 0,
-                        "lineNumber": 20,
+                        "lineNumber": 22,
                         "name": "windows",
                         "notify": "windowsChanged",
                         "read": "windows",
@@ -371,7 +371,7 @@
                         "designable": true,
                         "final": false,
                         "index": 1,
-                        "lineNumber": 21,
+                        "lineNumber": 23,
                         "name": "currentWorkspace",
                         "notify": "currentWorkspaceChanged",
                         "read": "currentWorkspace",
@@ -387,7 +387,7 @@
                         "designable": true,
                         "final": false,
                         "index": 2,
-                        "lineNumber": 23,
+                        "lineNumber": 25,
                         "name": "workspaceCount",
                         "read": "workspaceCount",
                         "required": false,
@@ -402,14 +402,14 @@
                     {
                         "access": "public",
                         "index": 0,
-                        "lineNumber": 48,
+                        "lineNumber": 50,
                         "name": "windowsChanged",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
                         "index": 1,
-                        "lineNumber": 49,
+                        "lineNumber": 51,
                         "name": "currentWorkspaceChanged",
                         "returnType": "void"
                     }
@@ -428,7 +428,7 @@
                             }
                         ],
                         "index": 2,
-                        "lineNumber": 52,
+                        "lineNumber": 54,
                         "name": "setupPlasmaWindowManagement",
                         "returnType": "void"
                     },
@@ -441,14 +441,14 @@
                             }
                         ],
                         "index": 3,
-                        "lineNumber": 53,
+                        "lineNumber": 55,
                         "name": "onWindowCreated",
                         "returnType": "void"
                     },
                     {
                         "access": "private",
                         "index": 4,
-                        "lineNumber": 54,
+                        "lineNumber": 56,
                         "name": "onWindowUnmapped",
                         "returnType": "void"
                     }
@@ -462,6 +462,77 @@
             }
         ],
         "inputFile": "WindowManager.h",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "className": "WlrWindow",
+                "lineNumber": 12,
+                "object": true,
+                "qualifiedClassName": "WlrWindow",
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            },
+            {
+                "className": "WlrWindowManager",
+                "lineNumber": 24,
+                "object": true,
+                "qualifiedClassName": "WlrWindowManager",
+                "signals": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "window",
+                                "type": "WlrWindow*"
+                            }
+                        ],
+                        "index": 0,
+                        "lineNumber": 48,
+                        "name": "windowAdded",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "id",
+                                "type": "uint32_t"
+                            }
+                        ],
+                        "index": 1,
+                        "lineNumber": 49,
+                        "name": "windowRemoved",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "window",
+                                "type": "WlrWindow*"
+                            }
+                        ],
+                        "index": 2,
+                        "lineNumber": 50,
+                        "name": "windowChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "WlrWindowManager.h",
         "outputRevision": 69
     }
 ]

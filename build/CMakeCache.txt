@@ -53,6 +53,32 @@ CMAKE_CXX_FLAGS_RELEASE:STRING=-O3 -DNDEBUG
 //Flags used by the CXX compiler during RELWITHDEBINFO builds.
 CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
 
+//C compiler
+CMAKE_C_COMPILER:FILEPATH=/usr/bin/cc
+
+//A wrapper around 'ar' adding the appropriate '--plugin' option
+// for the GCC compiler
+CMAKE_C_COMPILER_AR:FILEPATH=/usr/bin/gcc-ar
+
+//A wrapper around 'ranlib' adding the appropriate '--plugin' option
+// for the GCC compiler
+CMAKE_C_COMPILER_RANLIB:FILEPATH=/usr/bin/gcc-ranlib
+
+//Flags used by the C compiler during all build types.
+CMAKE_C_FLAGS:STRING=
+
+//Flags used by the C compiler during DEBUG builds.
+CMAKE_C_FLAGS_DEBUG:STRING=-g
+
+//Flags used by the C compiler during MINSIZEREL builds.
+CMAKE_C_FLAGS_MINSIZEREL:STRING=-Os -DNDEBUG
+
+//Flags used by the C compiler during RELEASE builds.
+CMAKE_C_FLAGS_RELEASE:STRING=-O3 -DNDEBUG
+
+//Flags used by the C compiler during RELWITHDEBINFO builds.
+CMAKE_C_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
+
 //Path to a program.
 CMAKE_DLLTOOL:FILEPATH=CMAKE_DLLTOOL-NOTFOUND
 
@@ -379,6 +405,15 @@ Qt6QuickTools_DIR:PATH=/usr/lib/cmake/Qt6QuickTools
 //The directory containing a CMake configuration file for Qt6Quick.
 Qt6Quick_DIR:PATH=/usr/lib/cmake/Qt6Quick
 
+//The directory containing a CMake configuration file for Qt6WaylandClient.
+Qt6WaylandClient_DIR:PATH=/usr/lib/cmake/Qt6WaylandClient
+
+//The directory containing a CMake configuration file for Qt6WaylandGlobalPrivate.
+Qt6WaylandGlobalPrivate_DIR:PATH=/usr/lib/cmake/Qt6WaylandGlobalPrivate
+
+//The directory containing a CMake configuration file for Qt6WaylandScannerTools.
+Qt6WaylandScannerTools_DIR:PATH=/usr/lib/cmake/Qt6WaylandScannerTools
+
 //The directory containing a CMake configuration file for Qt6.
 Qt6_DIR:PATH=/usr/lib/cmake/Qt6
 
@@ -394,6 +429,33 @@ Vulkan_INCLUDE_DIR:PATH=/usr/include
 //Path to a library.
 Vulkan_LIBRARY:FILEPATH=/lib/libvulkan.so
 
+//Path to a program.
+WaylandScanner_EXECUTABLE:FILEPATH=/usr/bin/wayland-scanner
+
+//Path to a file.
+Wayland_Client_INCLUDE_DIR:PATH=/usr/include
+
+//Path to a library.
+Wayland_Client_LIBRARY:FILEPATH=/usr/lib/libwayland-client.so
+
+//Path to a file.
+Wayland_Cursor_INCLUDE_DIR:PATH=/usr/include
+
+//Path to a library.
+Wayland_Cursor_LIBRARY:FILEPATH=/usr/lib/libwayland-cursor.so
+
+//Path to a file.
+Wayland_Egl_INCLUDE_DIR:PATH=/usr/include
+
+//Path to a library.
+Wayland_Egl_LIBRARY:FILEPATH=/usr/lib/libwayland-egl.so
+
+//Path to a file.
+Wayland_Server_INCLUDE_DIR:PATH=/usr/include
+
+//Path to a library.
+Wayland_Server_LIBRARY:FILEPATH=/usr/lib/libwayland-server.so
+
 //Path to a library.
 pkgcfg_lib_KWAYLAND_KWaylandClient:FILEPATH=/usr/lib/libKWaylandClient.so
 
@@ -402,6 +464,30 @@ pkgcfg_lib_KWAYLAND_Qt6Core:FILEPATH=/usr/lib/libQt6Core.so
 
 //Path to a library.
 pkgcfg_lib_KWAYLAND_Qt6Gui:FILEPATH=/usr/lib/libQt6Gui.so
+
+//Path to a library.
+pkgcfg_lib_PKG_Wayland_Client_m:FILEPATH=/usr/lib/libm.so
+
+//Path to a library.
+pkgcfg_lib_PKG_Wayland_Client_wayland-client:FILEPATH=/usr/lib/libwayland-client.so
+
+//Path to a library.
+pkgcfg_lib_PKG_Wayland_Cursor_wayland-cursor:FILEPATH=/usr/lib/libwayland-cursor.so
+
+//Path to a library.
+pkgcfg_lib_PKG_Wayland_Egl_m:FILEPATH=/usr/lib/libm.so
+
+//Path to a library.
+pkgcfg_lib_PKG_Wayland_Egl_wayland-client:FILEPATH=/usr/lib/libwayland-client.so
+
+//Path to a library.
+pkgcfg_lib_PKG_Wayland_Egl_wayland-egl:FILEPATH=/usr/lib/libwayland-egl.so
+
+//Path to a library.
+pkgcfg_lib_PKG_Wayland_Server_m:FILEPATH=/usr/lib/libm.so
+
+//Path to a library.
+pkgcfg_lib_PKG_Wayland_Server_wayland-server:FILEPATH=/usr/lib/libwayland-server.so
 
 
 ########################
@@ -444,6 +530,22 @@ CMAKE_CXX_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
 CMAKE_CXX_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_CXX_FLAGS_RELWITHDEBINFO
 CMAKE_CXX_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_C_COMPILER
+CMAKE_C_COMPILER-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_C_COMPILER_AR
+CMAKE_C_COMPILER_AR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_C_COMPILER_RANLIB
+CMAKE_C_COMPILER_RANLIB-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_C_FLAGS
+CMAKE_C_FLAGS-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_C_FLAGS_DEBUG
+CMAKE_C_FLAGS_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_C_FLAGS_MINSIZEREL
+CMAKE_C_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_C_FLAGS_RELEASE
+CMAKE_C_FLAGS_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_C_FLAGS_RELWITHDEBINFO
+CMAKE_C_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_DLLTOOL
 CMAKE_DLLTOOL-ADVANCED:INTERNAL=1
 //Path to cache edit program executable.
@@ -581,6 +683,18 @@ FIND_PACKAGE_MESSAGE_DETAILS_OpenGL:INTERNAL=[/usr/lib/libOpenGL.so][/usr/lib/li
 FIND_PACKAGE_MESSAGE_DETAILS_PkgConfig:INTERNAL=[/usr/bin/pkg-config][v2.5.1()]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
+//Details about finding Wayland
+FIND_PACKAGE_MESSAGE_DETAILS_Wayland:INTERNAL=[/usr/lib/libwayland-client.so;/usr/lib/libwayland-server.so;/usr/lib/libwayland-cursor.so;/usr/lib/libwayland-egl.so][found components: Client ][v1.24.0()]
+//Details about finding WaylandScanner
+FIND_PACKAGE_MESSAGE_DETAILS_WaylandScanner:INTERNAL=[/usr/bin/wayland-scanner][v()]
+//Details about finding Wayland_Client
+FIND_PACKAGE_MESSAGE_DETAILS_Wayland_Client:INTERNAL=[/usr/lib/libwayland-client.so][/usr/include][v1.24.0()]
+//Details about finding Wayland_Cursor
+FIND_PACKAGE_MESSAGE_DETAILS_Wayland_Cursor:INTERNAL=[/usr/lib/libwayland-cursor.so][/usr/include][v1.24.0()]
+//Details about finding Wayland_Egl
+FIND_PACKAGE_MESSAGE_DETAILS_Wayland_Egl:INTERNAL=[/usr/lib/libwayland-egl.so][/usr/include][TRUE][v18.1.0()]
+//Details about finding Wayland_Server
+FIND_PACKAGE_MESSAGE_DETAILS_Wayland_Server:INTERNAL=[/usr/lib/libwayland-server.so][/usr/include][v1.24.0()]
 //Details about finding WrapAtomic
 FIND_PACKAGE_MESSAGE_DETAILS_WrapAtomic:INTERNAL=[1][v()]
 //Details about finding WrapOpenGL
@@ -654,6 +768,146 @@ OPENGL_xmesa_INCLUDE_DIR-ADVANCED:INTERNAL=1
 PKG_CONFIG_ARGN-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
 PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
+PKG_Wayland_Client_CFLAGS:INTERNAL=-I/usr/include
+PKG_Wayland_Client_CFLAGS_I:INTERNAL=
+PKG_Wayland_Client_CFLAGS_OTHER:INTERNAL=
+PKG_Wayland_Client_FOUND:INTERNAL=1
+PKG_Wayland_Client_INCLUDEDIR:INTERNAL=/usr/include
+PKG_Wayland_Client_INCLUDE_DIRS:INTERNAL=/usr/include
+PKG_Wayland_Client_LDFLAGS:INTERNAL=-L/usr/lib;-lwayland-client;-lm
+PKG_Wayland_Client_LDFLAGS_OTHER:INTERNAL=
+PKG_Wayland_Client_LIBDIR:INTERNAL=/usr/lib
+PKG_Wayland_Client_LIBRARIES:INTERNAL=wayland-client;m
+PKG_Wayland_Client_LIBRARY_DIRS:INTERNAL=/usr/lib
+PKG_Wayland_Client_LIBS:INTERNAL=
+PKG_Wayland_Client_LIBS_L:INTERNAL=
+PKG_Wayland_Client_LIBS_OTHER:INTERNAL=
+PKG_Wayland_Client_LIBS_PATHS:INTERNAL=
+PKG_Wayland_Client_MODULE_NAME:INTERNAL=wayland-client
+PKG_Wayland_Client_PREFIX:INTERNAL=/usr
+PKG_Wayland_Client_STATIC_CFLAGS:INTERNAL=-I/usr/include
+PKG_Wayland_Client_STATIC_CFLAGS_I:INTERNAL=
+PKG_Wayland_Client_STATIC_CFLAGS_OTHER:INTERNAL=
+PKG_Wayland_Client_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include
+PKG_Wayland_Client_STATIC_LDFLAGS:INTERNAL=-L/usr/lib;-lwayland-client;-lm;-pthread;-lrt;-lffi
+PKG_Wayland_Client_STATIC_LDFLAGS_OTHER:INTERNAL=-pthread
+PKG_Wayland_Client_STATIC_LIBDIR:INTERNAL=
+PKG_Wayland_Client_STATIC_LIBRARIES:INTERNAL=wayland-client;m;rt;ffi
+PKG_Wayland_Client_STATIC_LIBRARY_DIRS:INTERNAL=/usr/lib
+PKG_Wayland_Client_STATIC_LIBS:INTERNAL=
+PKG_Wayland_Client_STATIC_LIBS_L:INTERNAL=
+PKG_Wayland_Client_STATIC_LIBS_OTHER:INTERNAL=
+PKG_Wayland_Client_STATIC_LIBS_PATHS:INTERNAL=
+PKG_Wayland_Client_VERSION:INTERNAL=1.24.0
+PKG_Wayland_Client_wayland-client_INCLUDEDIR:INTERNAL=
+PKG_Wayland_Client_wayland-client_LIBDIR:INTERNAL=
+PKG_Wayland_Client_wayland-client_PREFIX:INTERNAL=
+PKG_Wayland_Client_wayland-client_VERSION:INTERNAL=
+PKG_Wayland_Cursor_CFLAGS:INTERNAL=-I/usr/include
+PKG_Wayland_Cursor_CFLAGS_I:INTERNAL=
+PKG_Wayland_Cursor_CFLAGS_OTHER:INTERNAL=
+PKG_Wayland_Cursor_FOUND:INTERNAL=1
+PKG_Wayland_Cursor_INCLUDEDIR:INTERNAL=/usr/include
+PKG_Wayland_Cursor_INCLUDE_DIRS:INTERNAL=/usr/include
+PKG_Wayland_Cursor_LDFLAGS:INTERNAL=-L/usr/lib;-lwayland-cursor
+PKG_Wayland_Cursor_LDFLAGS_OTHER:INTERNAL=
+PKG_Wayland_Cursor_LIBDIR:INTERNAL=/usr/lib
+PKG_Wayland_Cursor_LIBRARIES:INTERNAL=wayland-cursor
+PKG_Wayland_Cursor_LIBRARY_DIRS:INTERNAL=/usr/lib
+PKG_Wayland_Cursor_LIBS:INTERNAL=
+PKG_Wayland_Cursor_LIBS_L:INTERNAL=
+PKG_Wayland_Cursor_LIBS_OTHER:INTERNAL=
+PKG_Wayland_Cursor_LIBS_PATHS:INTERNAL=
+PKG_Wayland_Cursor_MODULE_NAME:INTERNAL=wayland-cursor
+PKG_Wayland_Cursor_PREFIX:INTERNAL=/usr
+PKG_Wayland_Cursor_STATIC_CFLAGS:INTERNAL=-I/usr/include
+PKG_Wayland_Cursor_STATIC_CFLAGS_I:INTERNAL=
+PKG_Wayland_Cursor_STATIC_CFLAGS_OTHER:INTERNAL=
+PKG_Wayland_Cursor_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include
+PKG_Wayland_Cursor_STATIC_LDFLAGS:INTERNAL=-L/usr/lib;-lwayland-cursor;-lwayland-client;-lm;-pthread;-lrt;-lffi
+PKG_Wayland_Cursor_STATIC_LDFLAGS_OTHER:INTERNAL=-pthread
+PKG_Wayland_Cursor_STATIC_LIBDIR:INTERNAL=
+PKG_Wayland_Cursor_STATIC_LIBRARIES:INTERNAL=wayland-cursor;wayland-client;m;rt;ffi
+PKG_Wayland_Cursor_STATIC_LIBRARY_DIRS:INTERNAL=/usr/lib
+PKG_Wayland_Cursor_STATIC_LIBS:INTERNAL=
+PKG_Wayland_Cursor_STATIC_LIBS_L:INTERNAL=
+PKG_Wayland_Cursor_STATIC_LIBS_OTHER:INTERNAL=
+PKG_Wayland_Cursor_STATIC_LIBS_PATHS:INTERNAL=
+PKG_Wayland_Cursor_VERSION:INTERNAL=1.24.0
+PKG_Wayland_Cursor_wayland-cursor_INCLUDEDIR:INTERNAL=
+PKG_Wayland_Cursor_wayland-cursor_LIBDIR:INTERNAL=
+PKG_Wayland_Cursor_wayland-cursor_PREFIX:INTERNAL=
+PKG_Wayland_Cursor_wayland-cursor_VERSION:INTERNAL=
+PKG_Wayland_Egl_CFLAGS:INTERNAL=-I/usr/include
+PKG_Wayland_Egl_CFLAGS_I:INTERNAL=
+PKG_Wayland_Egl_CFLAGS_OTHER:INTERNAL=
+PKG_Wayland_Egl_FOUND:INTERNAL=1
+PKG_Wayland_Egl_INCLUDEDIR:INTERNAL=/usr/include
+PKG_Wayland_Egl_INCLUDE_DIRS:INTERNAL=/usr/include
+PKG_Wayland_Egl_LDFLAGS:INTERNAL=-L/usr/lib;-lwayland-egl;-lwayland-client;-lm
+PKG_Wayland_Egl_LDFLAGS_OTHER:INTERNAL=
+PKG_Wayland_Egl_LIBDIR:INTERNAL=/usr/lib
+PKG_Wayland_Egl_LIBRARIES:INTERNAL=wayland-egl;wayland-client;m
+PKG_Wayland_Egl_LIBRARY_DIRS:INTERNAL=/usr/lib
+PKG_Wayland_Egl_LIBS:INTERNAL=
+PKG_Wayland_Egl_LIBS_L:INTERNAL=
+PKG_Wayland_Egl_LIBS_OTHER:INTERNAL=
+PKG_Wayland_Egl_LIBS_PATHS:INTERNAL=
+PKG_Wayland_Egl_MODULE_NAME:INTERNAL=wayland-egl
+PKG_Wayland_Egl_PREFIX:INTERNAL=/usr
+PKG_Wayland_Egl_STATIC_CFLAGS:INTERNAL=-I/usr/include
+PKG_Wayland_Egl_STATIC_CFLAGS_I:INTERNAL=
+PKG_Wayland_Egl_STATIC_CFLAGS_OTHER:INTERNAL=
+PKG_Wayland_Egl_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include
+PKG_Wayland_Egl_STATIC_LDFLAGS:INTERNAL=-L/usr/lib;-lwayland-egl;-lwayland-client;-lm;-pthread;-lrt;-lffi
+PKG_Wayland_Egl_STATIC_LDFLAGS_OTHER:INTERNAL=-pthread
+PKG_Wayland_Egl_STATIC_LIBDIR:INTERNAL=
+PKG_Wayland_Egl_STATIC_LIBRARIES:INTERNAL=wayland-egl;wayland-client;m;rt;ffi
+PKG_Wayland_Egl_STATIC_LIBRARY_DIRS:INTERNAL=/usr/lib
+PKG_Wayland_Egl_STATIC_LIBS:INTERNAL=
+PKG_Wayland_Egl_STATIC_LIBS_L:INTERNAL=
+PKG_Wayland_Egl_STATIC_LIBS_OTHER:INTERNAL=
+PKG_Wayland_Egl_STATIC_LIBS_PATHS:INTERNAL=
+PKG_Wayland_Egl_VERSION:INTERNAL=18.1.0
+PKG_Wayland_Egl_wayland-egl_INCLUDEDIR:INTERNAL=
+PKG_Wayland_Egl_wayland-egl_LIBDIR:INTERNAL=
+PKG_Wayland_Egl_wayland-egl_PREFIX:INTERNAL=
+PKG_Wayland_Egl_wayland-egl_VERSION:INTERNAL=
+PKG_Wayland_Server_CFLAGS:INTERNAL=-I/usr/include
+PKG_Wayland_Server_CFLAGS_I:INTERNAL=
+PKG_Wayland_Server_CFLAGS_OTHER:INTERNAL=
+PKG_Wayland_Server_FOUND:INTERNAL=1
+PKG_Wayland_Server_INCLUDEDIR:INTERNAL=/usr/include
+PKG_Wayland_Server_INCLUDE_DIRS:INTERNAL=/usr/include
+PKG_Wayland_Server_LDFLAGS:INTERNAL=-L/usr/lib;-lwayland-server;-lm
+PKG_Wayland_Server_LDFLAGS_OTHER:INTERNAL=
+PKG_Wayland_Server_LIBDIR:INTERNAL=/usr/lib
+PKG_Wayland_Server_LIBRARIES:INTERNAL=wayland-server;m
+PKG_Wayland_Server_LIBRARY_DIRS:INTERNAL=/usr/lib
+PKG_Wayland_Server_LIBS:INTERNAL=
+PKG_Wayland_Server_LIBS_L:INTERNAL=
+PKG_Wayland_Server_LIBS_OTHER:INTERNAL=
+PKG_Wayland_Server_LIBS_PATHS:INTERNAL=
+PKG_Wayland_Server_MODULE_NAME:INTERNAL=wayland-server
+PKG_Wayland_Server_PREFIX:INTERNAL=/usr
+PKG_Wayland_Server_STATIC_CFLAGS:INTERNAL=-I/usr/include
+PKG_Wayland_Server_STATIC_CFLAGS_I:INTERNAL=
+PKG_Wayland_Server_STATIC_CFLAGS_OTHER:INTERNAL=
+PKG_Wayland_Server_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include
+PKG_Wayland_Server_STATIC_LDFLAGS:INTERNAL=-L/usr/lib;-lwayland-server;-lm;-pthread;-lrt;-lffi
+PKG_Wayland_Server_STATIC_LDFLAGS_OTHER:INTERNAL=-pthread
+PKG_Wayland_Server_STATIC_LIBDIR:INTERNAL=
+PKG_Wayland_Server_STATIC_LIBRARIES:INTERNAL=wayland-server;m;rt;ffi
+PKG_Wayland_Server_STATIC_LIBRARY_DIRS:INTERNAL=/usr/lib
+PKG_Wayland_Server_STATIC_LIBS:INTERNAL=
+PKG_Wayland_Server_STATIC_LIBS_L:INTERNAL=
+PKG_Wayland_Server_STATIC_LIBS_OTHER:INTERNAL=
+PKG_Wayland_Server_STATIC_LIBS_PATHS:INTERNAL=
+PKG_Wayland_Server_VERSION:INTERNAL=1.24.0
+PKG_Wayland_Server_wayland-server_INCLUDEDIR:INTERNAL=
+PKG_Wayland_Server_wayland-server_LIBDIR:INTERNAL=
+PKG_Wayland_Server_wayland-server_PREFIX:INTERNAL=
+PKG_Wayland_Server_wayland-server_VERSION:INTERNAL=
 //Qt feature: accept4 (from target Qt6::Core)
 QT_FEATURE_accept4:INTERNAL=ON
 //Qt feature: accessibility (from target Qt6::Gui)
@@ -1471,10 +1725,36 @@ Vulkan_GLSLC_EXECUTABLE-ADVANCED:INTERNAL=1
 Vulkan_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: Vulkan_LIBRARY
 Vulkan_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: WaylandScanner_EXECUTABLE
+WaylandScanner_EXECUTABLE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Wayland_Client_INCLUDE_DIR
+Wayland_Client_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Wayland_Client_LIBRARY
+Wayland_Client_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Wayland_Cursor_INCLUDE_DIR
+Wayland_Cursor_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Wayland_Cursor_LIBRARY
+Wayland_Cursor_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Wayland_Egl_INCLUDE_DIR
+Wayland_Egl_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Wayland_Egl_LIBRARY
+Wayland_Egl_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Wayland_Server_INCLUDE_DIR
+Wayland_Server_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Wayland_Server_LIBRARY
+Wayland_Server_LIBRARY-ADVANCED:INTERNAL=1
 //CMAKE_INSTALL_PREFIX during last run
 _GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=/usr/local
 __pkg_config_arguments_KWAYLAND:INTERNAL=REQUIRED;IMPORTED_TARGET;KWaylandClient
+__pkg_config_arguments_PKG_Wayland_Client:INTERNAL=QUIET;wayland-client
+__pkg_config_arguments_PKG_Wayland_Cursor:INTERNAL=QUIET;wayland-cursor
+__pkg_config_arguments_PKG_Wayland_Egl:INTERNAL=QUIET;wayland-egl
+__pkg_config_arguments_PKG_Wayland_Server:INTERNAL=QUIET;wayland-server
 __pkg_config_checked_KWAYLAND:INTERNAL=1
+__pkg_config_checked_PKG_Wayland_Client:INTERNAL=1
+__pkg_config_checked_PKG_Wayland_Cursor:INTERNAL=1
+__pkg_config_checked_PKG_Wayland_Egl:INTERNAL=1
+__pkg_config_checked_PKG_Wayland_Server:INTERNAL=1
 __qt_qml_macros_module_base_dir:INTERNAL=/usr/lib/cmake/Qt6Qml
 //ADVANCED property for variable: pkgcfg_lib_KWAYLAND_KWaylandClient
 pkgcfg_lib_KWAYLAND_KWaylandClient-ADVANCED:INTERNAL=1
@@ -1482,5 +1762,21 @@ pkgcfg_lib_KWAYLAND_KWaylandClient-ADVANCED:INTERNAL=1
 pkgcfg_lib_KWAYLAND_Qt6Core-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: pkgcfg_lib_KWAYLAND_Qt6Gui
 pkgcfg_lib_KWAYLAND_Qt6Gui-ADVANCED:INTERNAL=1
-prefix_result:INTERNAL=/usr/lib
+//ADVANCED property for variable: pkgcfg_lib_PKG_Wayland_Client_m
+pkgcfg_lib_PKG_Wayland_Client_m-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_PKG_Wayland_Client_wayland-client
+pkgcfg_lib_PKG_Wayland_Client_wayland-client-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_PKG_Wayland_Cursor_wayland-cursor
+pkgcfg_lib_PKG_Wayland_Cursor_wayland-cursor-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_PKG_Wayland_Egl_m
+pkgcfg_lib_PKG_Wayland_Egl_m-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_PKG_Wayland_Egl_wayland-client
+pkgcfg_lib_PKG_Wayland_Egl_wayland-client-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_PKG_Wayland_Egl_wayland-egl
+pkgcfg_lib_PKG_Wayland_Egl_wayland-egl-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_PKG_Wayland_Server_m
+pkgcfg_lib_PKG_Wayland_Server_m-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_PKG_Wayland_Server_wayland-server
+pkgcfg_lib_PKG_Wayland_Server_wayland-server-ADVANCED:INTERNAL=1
+prefix_result:INTERNAL=/usr/bin/wayland-scanner
 

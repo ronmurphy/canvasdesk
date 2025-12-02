@@ -419,6 +419,12 @@ src/core/CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.o: \
  /usr/include/qt6/QtGui/qregion.h /usr/include/qt6/QtCore/qline.h \
  /usr/include/qt6/QtCore/QSize /usr/include/qt6/QtCore/qsize.h \
  /usr/include/KWayland/KWayland/Client/registry.h \
+ /home/brad/Documents/canvasdesk/src/core/WlrWindowManager.h \
+ /usr/include/wayland-client.h /usr/include/wayland-client-core.h \
+ /usr/include/wayland-util.h /usr/include/c++/15.2.1/math.h \
+ /usr/include/inttypes.h /usr/include/wayland-version.h \
+ /usr/include/wayland-client-protocol.h /usr/include/wayland-client.h \
+ /home/brad/Documents/canvasdesk/build/src/core/wlr-foreign-toplevel-management-unstable-v1-client-protocol.h \
  /usr/include/qt6/QtCore/QDebug /usr/include/qt6/QtCore/qdebug.h \
  /usr/include/qt6/QtCore/QMetaObject \
  /usr/include/qt6/QtCore/qobjectdefs.h

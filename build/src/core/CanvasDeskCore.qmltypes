@@ -111,7 +111,7 @@ Module {
     }
     Component {
         file: "WindowManager.h"
-        lineNumber: 15
+        lineNumber: 17
         name: "WindowManager"
         accessSemantics: "reference"
         prototype: "QObject"
@@ -125,7 +125,7 @@ Module {
             read: "windows"
             notify: "windowsChanged"
             index: 0
-            lineNumber: 20
+            lineNumber: 22
             isReadonly: true
         }
         Property {
@@ -135,54 +135,54 @@ Module {
             write: "setCurrentWorkspace"
             notify: "currentWorkspaceChanged"
             index: 1
-            lineNumber: 21
+            lineNumber: 23
         }
         Property {
             name: "workspaceCount"
             type: "int"
             read: "workspaceCount"
             index: 2
-            lineNumber: 23
+            lineNumber: 25
             isReadonly: true
             isPropertyConstant: true
         }
-        Signal { name: "windowsChanged"; lineNumber: 48 }
-        Signal { name: "currentWorkspaceChanged"; lineNumber: 49 }
+        Signal { name: "windowsChanged"; lineNumber: 50 }
+        Signal { name: "currentWorkspaceChanged"; lineNumber: 51 }
         Method {
             name: "setupPlasmaWindowManagement"
-            lineNumber: 52
+            lineNumber: 54
             Parameter { name: "name"; type: "uint" }
             Parameter { name: "version"; type: "uint" }
         }
         Method {
             name: "onWindowCreated"
-            lineNumber: 53
+            lineNumber: 55
             Parameter { name: "window"; type: "KWayland::Client::PlasmaWindow"; isPointer: true }
         }
-        Method { name: "onWindowUnmapped"; lineNumber: 54 }
+        Method { name: "onWindowUnmapped"; lineNumber: 56 }
         Method {
             name: "activate"
-            lineNumber: 41
-            Parameter { name: "id"; type: "int" }
-        }
-        Method {
-            name: "close"
-            lineNumber: 42
-            Parameter { name: "id"; type: "int" }
-        }
-        Method {
-            name: "minimize"
             lineNumber: 43
             Parameter { name: "id"; type: "int" }
         }
         Method {
-            name: "switchToWorkspace"
+            name: "close"
             lineNumber: 44
+            Parameter { name: "id"; type: "int" }
+        }
+        Method {
+            name: "minimize"
+            lineNumber: 45
+            Parameter { name: "id"; type: "int" }
+        }
+        Method {
+            name: "switchToWorkspace"
+            lineNumber: 46
             Parameter { name: "index"; type: "int" }
         }
         Method {
             name: "moveWindowToWorkspace"
-            lineNumber: 45
+            lineNumber: 47
             Parameter { name: "windowId"; type: "int" }
             Parameter { name: "workspaceIndex"; type: "int" }
         }

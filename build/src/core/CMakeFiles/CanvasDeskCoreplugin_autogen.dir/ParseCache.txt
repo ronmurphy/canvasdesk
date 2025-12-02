@@ -4,6 +4,7 @@
  mid:CanvasDeskCoreplugin_CanvasDeskPlugin.moc
  mdp:/home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCoreplugin_CanvasDeskPlugin.cpp
  mdp:/home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCoreplugin_autogen/moc_predefs.h
+ mdp:/usr/include/alloca.h
  mdp:/usr/include/asm-generic/bitsperlong.h
  mdp:/usr/include/asm-generic/errno-base.h
  mdp:/usr/include/asm-generic/errno.h
@@ -19,6 +20,7 @@
  mdp:/usr/include/asm/unistd_64.h
  mdp:/usr/include/assert.h
  mdp:/usr/include/bits/atomic_wide_counter.h
+ mdp:/usr/include/bits/byteswap.h
  mdp:/usr/include/bits/confname.h
  mdp:/usr/include/bits/cpu-set.h
  mdp:/usr/include/bits/endian.h
@@ -30,15 +32,23 @@
  mdp:/usr/include/bits/getopt_core.h
  mdp:/usr/include/bits/getopt_posix.h
  mdp:/usr/include/bits/libc-header-start.h
+ mdp:/usr/include/bits/local_lim.h
  mdp:/usr/include/bits/locale.h
  mdp:/usr/include/bits/long-double.h
+ mdp:/usr/include/bits/posix1_lim.h
+ mdp:/usr/include/bits/posix2_lim.h
  mdp:/usr/include/bits/posix_opt.h
  mdp:/usr/include/bits/pthread_stack_min-dynamic.h
  mdp:/usr/include/bits/pthreadtypes-arch.h
  mdp:/usr/include/bits/pthreadtypes.h
  mdp:/usr/include/bits/sched.h
+ mdp:/usr/include/bits/select.h
  mdp:/usr/include/bits/setjmp.h
+ mdp:/usr/include/bits/stdint-intn.h
+ mdp:/usr/include/bits/stdint-least.h
+ mdp:/usr/include/bits/stdint-uintn.h
  mdp:/usr/include/bits/stdio_lim.h
+ mdp:/usr/include/bits/stdlib-float.h
  mdp:/usr/include/bits/struct_mutex.h
  mdp:/usr/include/bits/struct_rwlock.h
  mdp:/usr/include/bits/syscall.h
@@ -61,6 +71,7 @@
  mdp:/usr/include/bits/types/error_t.h
  mdp:/usr/include/bits/types/locale_t.h
  mdp:/usr/include/bits/types/mbstate_t.h
+ mdp:/usr/include/bits/types/sigset_t.h
  mdp:/usr/include/bits/types/struct_FILE.h
  mdp:/usr/include/bits/types/struct___jmp_buf_tag.h
  mdp:/usr/include/bits/types/struct_itimerspec.h
@@ -72,10 +83,15 @@
  mdp:/usr/include/bits/types/timer_t.h
  mdp:/usr/include/bits/types/wint_t.h
  mdp:/usr/include/bits/typesizes.h
+ mdp:/usr/include/bits/uintn-identity.h
+ mdp:/usr/include/bits/uio_lim.h
  mdp:/usr/include/bits/unistd_ext.h
+ mdp:/usr/include/bits/waitflags.h
+ mdp:/usr/include/bits/waitstatus.h
  mdp:/usr/include/bits/wchar.h
  mdp:/usr/include/bits/wctype-wchar.h
  mdp:/usr/include/bits/wordsize.h
+ mdp:/usr/include/bits/xopen_lim.h
  mdp:/usr/include/c++/15.2.1/algorithm
  mdp:/usr/include/c++/15.2.1/array
  mdp:/usr/include/c++/15.2.1/atomic
@@ -254,7 +270,6 @@
  mdp:/usr/include/c++/15.2.1/span
  mdp:/usr/include/c++/15.2.1/sstream
  mdp:/usr/include/c++/15.2.1/stdexcept
- mdp:/usr/include/c++/15.2.1/stdlib.h
  mdp:/usr/include/c++/15.2.1/streambuf
  mdp:/usr/include/c++/15.2.1/string
  mdp:/usr/include/c++/15.2.1/string_view
@@ -294,14 +309,17 @@
  mdp:/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/os_defines.h
  mdp:/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/time_members.h
  mdp:/usr/include/ctype.h
+ mdp:/usr/include/endian.h
  mdp:/usr/include/errno.h
  mdp:/usr/include/features-time64.h
  mdp:/usr/include/features.h
  mdp:/usr/include/gnu/stubs-64.h
  mdp:/usr/include/gnu/stubs.h
  mdp:/usr/include/libintl.h
+ mdp:/usr/include/limits.h
  mdp:/usr/include/linux/close_range.h
  mdp:/usr/include/linux/errno.h
+ mdp:/usr/include/linux/limits.h
  mdp:/usr/include/linux/posix_types.h
  mdp:/usr/include/linux/sched/types.h
  mdp:/usr/include/linux/stddef.h
@@ -454,20 +472,21 @@
  mdp:/usr/include/qt6/QtQml/qtqmlglobal.h
  mdp:/usr/include/sched.h
  mdp:/usr/include/stdc-predef.h
+ mdp:/usr/include/stdint.h
  mdp:/usr/include/stdio.h
+ mdp:/usr/include/stdlib.h
  mdp:/usr/include/string.h
  mdp:/usr/include/strings.h
  mdp:/usr/include/sys/cdefs.h
+ mdp:/usr/include/sys/select.h
  mdp:/usr/include/sys/single_threaded.h
  mdp:/usr/include/sys/syscall.h
+ mdp:/usr/include/sys/types.h
  mdp:/usr/include/syscall.h
  mdp:/usr/include/time.h
  mdp:/usr/include/unistd.h
  mdp:/usr/include/wchar.h
  mdp:/usr/include/wctype.h
- mdp:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/limits.h
  mdp:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdarg.h
  mdp:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdbool.h
  mdp:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stddef.h
- mdp:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdint.h
- mdp:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/syslimits.h

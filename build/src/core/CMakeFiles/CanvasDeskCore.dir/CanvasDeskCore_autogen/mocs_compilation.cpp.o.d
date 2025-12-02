@@ -425,4 +425,11 @@ src/core/CMakeFiles/CanvasDeskCore.dir/CanvasDeskCore_autogen/mocs_compilation.c
  /usr/include/qt6/QtGui/qtransform.h /usr/include/qt6/QtGui/qpolygon.h \
  /usr/include/qt6/QtGui/qregion.h /usr/include/qt6/QtCore/qline.h \
  /usr/include/qt6/QtCore/QSize /usr/include/qt6/QtCore/qsize.h \
- /usr/include/KWayland/KWayland/Client/registry.h
+ /usr/include/KWayland/KWayland/Client/registry.h \
+ /home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/EWIEGA46WW/moc_WlrWindowManager.cpp \
+ /home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/EWIEGA46WW/../../../../../src/core/WlrWindowManager.h \
+ /usr/include/wayland-client.h /usr/include/wayland-client-core.h \
+ /usr/include/wayland-util.h /usr/include/c++/15.2.1/math.h \
+ /usr/include/inttypes.h /usr/include/wayland-version.h \
+ /usr/include/wayland-client-protocol.h /usr/include/wayland-client.h \
+ /home/brad/Documents/canvasdesk/build/src/core/wlr-foreign-toplevel-management-unstable-v1-client-protocol.h

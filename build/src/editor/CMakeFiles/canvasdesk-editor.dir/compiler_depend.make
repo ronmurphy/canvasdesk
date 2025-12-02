@@ -408,6 +408,7 @@ src/editor/CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qml/
   /usr/include/qt6/QtCore/qlist.h \
   /usr/include/qt6/QtCore/qlocale.h \
   /usr/include/qt6/QtCore/qlogging.h \
+  /usr/include/qt6/QtCore/qloggingcategory.h \
   /usr/include/qt6/QtCore/qmalloc.h \
   /usr/include/qt6/QtCore/qmap.h \
   /usr/include/qt6/QtCore/qmath.h \
@@ -2107,6 +2108,7 @@ src/editor/CMakeFiles/canvasdesk-editor.dir/main.cpp.o: /home/brad/Documents/can
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/syslimits.h
 
 src/editor/canvasdesk-editor: src/core/libCanvasDeskCore.so \
+  src/core/libwlr_protocol.a \
   src/qml/libCanvasDeskQml.so \
   /usr/lib/Scrt1.o \
   /usr/lib/crti.o \
@@ -2190,7 +2192,7 @@ src/editor/canvasdesk-editor: src/core/libCanvasDeskCore.so \
   /usr/lib/libssl.so.3 \
   /usr/lib/libsystemd.so.0 \
   /usr/lib/libunistring.so.5 \
-  /usr/lib/libwayland-client.so.0 \
+  /usr/lib/libwayland-client.so \
   /usr/lib/libwayland-cursor.so.0 \
   /usr/lib/libxcb.so.1 \
   /usr/lib/libxkbcommon.so.0 \
@@ -2228,7 +2230,7 @@ src/editor/canvasdesk-editor: src/core/libCanvasDeskCore.so \
   /usr/lib32/libssh2.so.1 \
   /usr/lib32/libssl.so.3 \
   /usr/lib32/libunistring.so.5 \
-  /usr/lib32/libwayland-client.so.0 \
+  /usr/lib32/libwayland-cursor.so.0 \
   /usr/lib32/libxcb.so.1 \
   src/editor/CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp.o \
   src/editor/CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_qmake_CanvasDeskEditor.cpp.o \
@@ -2250,8 +2252,6 @@ src/editor/CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qml/
 src/editor/CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp.o:
 
 /usr/lib32/libxcb.so.1:
-
-/usr/lib32/libwayland-client.so.0:
 
 /usr/lib32/libssl.so.3:
 
@@ -2387,6 +2387,8 @@ src/editor/CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qmlc
 
 /usr/lib/Scrt1.o:
 
+src/core/libwlr_protocol.a:
+
 src/editor/CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_qmake_CanvasDeskEditor.cpp.o:
 
 /usr/lib32/libunistring.so.5:
@@ -2448,6 +2450,8 @@ src/core/libCanvasDeskCore.so:
 /usr/include/qt6/QtCore/qcoreapplication.h:
 
 /usr/include/qt6/QtCore/qcheckedint_impl.h:
+
+/usr/include/qt6/QtCore/qabstracteventdispatcher.h:
 
 /usr/include/c++/15.2.1/bits/cxxabi_forced.h:
 
@@ -2650,8 +2654,6 @@ src/editor/.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp:
 /usr/include/qt6/QtQml/qjsnumbercoercion.h:
 
 /usr/include/c++/15.2.1/bits/hash_bytes.h:
-
-/usr/lib/libwayland-client.so.0:
 
 /usr/include/c++/15.2.1/bits/stl_relops.h:
 
@@ -3307,6 +3309,8 @@ src/editor/.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp:
 
 /usr/include/qt6/QtCore/qtversionchecks.h:
 
+/usr/lib/libwayland-client.so:
+
 /usr/include/qt6/QtCore/qtconfigmacros.h:
 
 /usr/include/gnu/stubs.h:
@@ -3453,15 +3457,17 @@ src/editor/.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp:
 
 /usr/include/qt6/QtCore/qhash.h:
 
-/usr/include/qt6/QtCore/qminmax.h:
-
-/usr/include/qt6/QtCore/qiterator.h:
-
 /usr/include/qt6/QtQml/qtqmlglobal.h:
 
 /usr/include/bits/stdint-uintn.h:
 
 /usr/include/qt6/QtCore/qlogging.h:
+
+/usr/include/qt6/QtCore/qminmax.h:
+
+/usr/include/qt6/QtCore/qiterator.h:
+
+/usr/include/qt6/QtCore/qloggingcategory.h:
 
 /usr/include/qt6/QtCore/qmalloc.h:
 
@@ -3599,6 +3605,8 @@ src/editor/.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp:
 
 /usr/include/qt6/QtQml/qqml.h:
 
+/usr/lib32/libwayland-cursor.so.0:
+
 /usr/include/qt6/QtQml/qqmlengine.h:
 
 /usr/include/qt6/QtQml/qqmllist.h:
@@ -3662,5 +3670,3 @@ src/editor/canvasdesk-editor_autogen/mocs_compilation.cpp:
 /usr/include/c++/15.2.1/version:
 
 src/editor/canvasdesk-editor_qmltyperegistrations.cpp:
-
-/usr/include/qt6/QtCore/qabstracteventdispatcher.h:

@@ -2,3 +2,4 @@
 /home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/include/../EWIEGA46WW/moc_Component.cpp.json
 /home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/include/../EWIEGA46WW/moc_LayoutManager.cpp.json
 /home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/include/../EWIEGA46WW/moc_WindowManager.cpp.json
+/home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/include/../EWIEGA46WW/moc_WlrWindowManager.cpp.json

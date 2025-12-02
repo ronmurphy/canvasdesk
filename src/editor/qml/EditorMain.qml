@@ -5,17 +5,33 @@ import CanvasDesk
 
 ApplicationWindow {
     visible: true
-    width: 1280
-    height: 720
-    title: "CanvasDesk Editor"
+    width: isRuntimeMode ? Screen.width : 1280
+    height: isRuntimeMode ? Screen.height : 720
+    title: isRuntimeMode ? "CanvasDesk" : "CanvasDesk Editor"
+    visibility: isRuntimeMode ? Window.FullScreen : Window.Windowed
+    flags: isRuntimeMode ? Qt.FramelessWindowHint : Qt.Window
+    
+    // Runtime mode flag from C++ (set via context property)
+    // Using different name to avoid self-reference
+    property bool isRuntimeMode: false
+    property bool isPreviewMode: false
+    
+    // Floating editor panel visibility (for runtime mode)
+    property bool showFloatingEditor: false
+    
+    // Debug output
+    onIsRuntimeModeChanged: console.log("Runtime Mode:", isRuntimeMode)
+    
+    // Selected component for property editing
+    property var selectedComponent: null
 
     // LayoutManager instance
     LayoutManager {
         id: layoutManager
     }
 
-    // Preview mode state
-    property bool previewMode: false
+    // Preview mode state (always true in runtime, or when preview is toggled in editor)
+    property bool previewMode: isRuntimeMode || isPreviewMode
     onPreviewModeChanged: {
         if (previewMode) {
             loadPreview()
@@ -67,6 +83,9 @@ ApplicationWindow {
     }
 
     header: ToolBar {
+        visible: !isRuntimeMode
+        height: !isRuntimeMode ? implicitHeight : 0
+        
         RowLayout {
             ToolButton {
                 text: "Save"
@@ -107,9 +126,10 @@ ApplicationWindow {
         anchors.fill: parent
         currentIndex: previewMode ? 1 : 0
 
-        // EDIT MODE (Index 0)
+        // EDIT MODE (Index 0) - Only shown in editor (not runtime)
         RowLayout {
             spacing: 0
+            visible: !isRuntimeMode
 
             // Component List (Left Panel)
         Rectangle {
@@ -326,6 +346,211 @@ ApplicationWindow {
         } // End Preview Mode
 
     } // End StackLayout
+
+    // Small floating toggle button for runtime mode (32x32)
+    Rectangle {
+        visible: isRuntimeMode
+        anchors.right: parent.right
+        anchors.top: parent.top
+        anchors.margins: 8
+        z: 200
+        width: 32
+        height: 32
+        color: showFloatingEditor ? "#4a90e2" : "#2a2a2a"
+        border.color: "#555"
+        border.width: 1
+        radius: 4
+        opacity: 0.8
+        
+        Text {
+            anchors.centerIn: parent
+            text: "✎"
+            color: "white"
+            font.pixelSize: 18
+        }
+        
+        MouseArea {
+            anchors.fill: parent
+            hoverEnabled: true
+            onEntered: parent.opacity = 1.0
+            onExited: parent.opacity = 0.8
+            onClicked: showFloatingEditor = !showFloatingEditor
+        }
+    }
+
+    // Floating editor panel for runtime mode
+    Rectangle {
+        id: floatingEditorPanel
+        visible: isRuntimeMode && showFloatingEditor
+        width: 350
+        height: 500
+        x: parent.width - width - 50
+        y: 50
+        z: 250
+        color: "#2a2a2a"
+        border.color: "#555"
+        border.width: 1
+        radius: 6
+        opacity: 0.95
+        
+        // Draggable header
+        Rectangle {
+            id: panelHeader
+            width: parent.width
+            height: 40
+            color: "#1a1a1a"
+            border.color: "#555"
+            radius: 6
+            
+            RowLayout {
+                anchors.fill: parent
+                anchors.margins: 8
+                
+                Text {
+                    text: "CanvasDesk Editor"
+                    color: "white"
+                    font.bold: true
+                    Layout.fillWidth: true
+                }
+                
+                Button {
+                    text: "×"
+                    Layout.preferredWidth: 30
+                    Layout.preferredHeight: 30
+                    onClicked: showFloatingEditor = false
+                }
+            }
+            
+            MouseArea {
+                id: dragArea
+                anchors.fill: parent
+                drag.target: floatingEditorPanel
+                drag.minimumX: 0
+                drag.maximumX: parent.parent.parent.width - floatingEditorPanel.width
+                drag.minimumY: 0
+                drag.maximumY: parent.parent.parent.height - floatingEditorPanel.height
+            }
+        }
+        
+        // Content area with tabs
+        ColumnLayout {
+            anchors.fill: parent
+            anchors.topMargin: 40
+            anchors.margins: 8
+            spacing: 0
+            
+            TabBar {
+                id: floatingTabBar
+                Layout.fillWidth: true
+                
+                TabButton { text: "Components" }
+                TabButton { text: "Properties" }
+                TabButton { text: "Layout" }
+            }
+            
+            StackLayout {
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                currentIndex: floatingTabBar.currentIndex
+                
+                // Components Tab
+                ScrollView {
+                    ListView {
+                        model: ListModel {
+                            ListElement { type: "Button"; name: "Button"; icon: "button" }
+                            ListElement { type: "Clock"; name: "Clock"; icon: "clock" }
+                            ListElement { type: "Taskbar"; name: "Taskbar"; icon: "view-list-icons" }
+                            ListElement { type: "AppGrid"; name: "App Grid"; icon: "view-grid" }
+                            ListElement { type: "WorkspaceSwitcher"; name: "Workspace Switcher"; icon: "view-multiple" }
+                        }
+                        
+                        delegate: ItemDelegate {
+                            width: parent.width
+                            text: name
+                            icon.name: model.icon
+                            
+                            onClicked: {
+                                // Add component to desktop at center
+                                var comp = {
+                                    type: type,
+                                    x: parent.parent.parent.parent.parent.parent.width / 2 - 50,
+                                    y: parent.parent.parent.parent.parent.parent.height / 2 - 25,
+                                    text: name,
+                                    icon: model.icon,
+                                    exec: ""
+                                }
+                                canvasModel.append(comp)
+                            }
+                        }
+                    }
+                }
+                
+                // Properties Tab
+                ScrollView {
+                    ColumnLayout {
+                        width: parent.width
+                        spacing: 8
+                        
+                        Label {
+                            text: selectedComponent ? "Component Properties" : "Select a component"
+                            color: "white"
+                            font.bold: true
+                        }
+                        
+                        Label {
+                            visible: selectedComponent
+                            text: selectedComponent ? "Type: " + selectedComponent.type : ""
+                            color: "#aaa"
+                        }
+                        
+                        // TODO: Add property editors for width, height, color, etc.
+                        Label {
+                            visible: !selectedComponent
+                            text: "Click a component on the desktop to edit its properties"
+                            color: "#888"
+                            wrapMode: Text.WordWrap
+                            Layout.fillWidth: true
+                        }
+                    }
+                }
+                
+                // Layout Tab (Save/Load)
+                ColumnLayout {
+                    spacing: 8
+                    anchors.margins: 8
+                    
+                    Button {
+                        text: "Save Layout"
+                        Layout.fillWidth: true
+                        onClicked: saveLayout()
+                    }
+                    
+                    Button {
+                        text: "Load Layout"
+                        Layout.fillWidth: true
+                        onClicked: {
+                            loadLayout()
+                            clearPreview()
+                            loadPreview()
+                        }
+                    }
+                    
+                    Button {
+                        text: "Apply Changes"
+                        Layout.fillWidth: true
+                        highlighted: true
+                        onClicked: {
+                            saveLayout()
+                            clearPreview()
+                            loadPreview()
+                        }
+                    }
+                    
+                    Item { Layout.fillHeight: true }
+                }
+            }
+        }
+    }
 
     // Overlay for dragged items to be on top of everything
     Item {

@@ -63,10 +63,12 @@ CMAKE_BINARY_DIR = /home/brad/Documents/canvasdesk/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
+all: CMakeFiles/canvasdesk.dir/all
 all: src/all
 .PHONY : all
 
 # The main recursive "codegen" target.
+codegen: CMakeFiles/canvasdesk.dir/codegen
 codegen: src/codegen
 .PHONY : codegen
 
@@ -75,10 +77,14 @@ preinstall: src/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
+clean: CMakeFiles/canvasdesk.dir/clean
 clean: CMakeFiles/generate_qmlls_build_ini_file.dir/clean
 clean: CMakeFiles/module_CanvasDeskQml_aotstats_target.dir/clean
 clean: CMakeFiles/module_canvasdesk-editor_aotstats_target.dir/clean
 clean: CMakeFiles/all_aotstats.dir/clean
+clean: CMakeFiles/canvasdesk_qmlimportscan.dir/clean
+clean: CMakeFiles/canvasdesk_autogen_timestamp_deps.dir/clean
+clean: CMakeFiles/canvasdesk_autogen.dir/clean
 clean: src/clean
 .PHONY : clean
 
@@ -138,11 +144,13 @@ src/app/clean: src/app/CMakeFiles/canvasdesk-runtime_autogen.dir/clean
 # Directory level rules for directory src/core
 
 # Recursive "all" directory target.
+src/core/all: src/core/CMakeFiles/wlr_protocol.dir/all
 src/core/all: src/core/CMakeFiles/CanvasDeskCore.dir/all
 src/core/all: src/core/CMakeFiles/CanvasDeskCoreplugin.dir/all
 .PHONY : src/core/all
 
 # Recursive "codegen" directory target.
+src/core/codegen: src/core/CMakeFiles/wlr_protocol.dir/codegen
 src/core/codegen: src/core/CMakeFiles/CanvasDeskCore.dir/codegen
 src/core/codegen: src/core/CMakeFiles/CanvasDeskCoreplugin.dir/codegen
 .PHONY : src/core/codegen
@@ -152,6 +160,7 @@ src/core/preinstall:
 .PHONY : src/core/preinstall
 
 # Recursive "clean" directory target.
+src/core/clean: src/core/CMakeFiles/wlr_protocol.dir/clean
 src/core/clean: src/core/CMakeFiles/CanvasDeskCore.dir/clean
 src/core/clean: src/core/CMakeFiles/CanvasDeskCore_qmltyperegistration.dir/clean
 src/core/clean: src/core/CMakeFiles/all_qmltyperegistrations.dir/clean
@@ -232,13 +241,53 @@ src/qml/clean: src/qml/CMakeFiles/CanvasDeskQmlplugin_autogen.dir/clean
 .PHONY : src/qml/clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/canvasdesk.dir
+
+# All Build rule for target.
+CMakeFiles/canvasdesk.dir/all: CMakeFiles/canvasdesk_qmlimportscan.dir/all
+CMakeFiles/canvasdesk.dir/all: src/core/CMakeFiles/wlr_protocol.dir/all
+CMakeFiles/canvasdesk.dir/all: src/core/CMakeFiles/CanvasDeskCore.dir/all
+CMakeFiles/canvasdesk.dir/all: src/qml/CMakeFiles/CanvasDeskQml.dir/all
+CMakeFiles/canvasdesk.dir/all: src/editor/CMakeFiles/canvasdesk-editor.dir/all
+CMakeFiles/canvasdesk.dir/all: CMakeFiles/canvasdesk_autogen_timestamp_deps.dir/all
+CMakeFiles/canvasdesk.dir/all: CMakeFiles/canvasdesk_autogen.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/canvasdesk.dir/build.make CMakeFiles/canvasdesk.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/canvasdesk.dir/build.make CMakeFiles/canvasdesk.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=59,60,61,62 "Built target canvasdesk"
+.PHONY : CMakeFiles/canvasdesk.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/canvasdesk.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 69
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/canvasdesk.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 0
+.PHONY : CMakeFiles/canvasdesk.dir/rule
+
+# Convenience name for target.
+canvasdesk: CMakeFiles/canvasdesk.dir/rule
+.PHONY : canvasdesk
+
+# codegen rule for target.
+CMakeFiles/canvasdesk.dir/codegen: CMakeFiles/canvasdesk_qmlimportscan.dir/all
+CMakeFiles/canvasdesk.dir/codegen: src/editor/CMakeFiles/canvasdesk-editor.dir/all
+CMakeFiles/canvasdesk.dir/codegen: CMakeFiles/canvasdesk_autogen_timestamp_deps.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/canvasdesk.dir/build.make CMakeFiles/canvasdesk.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=59,60,61,62 "Finished codegen for target canvasdesk"
+.PHONY : CMakeFiles/canvasdesk.dir/codegen
+
+# clean rule for target.
+CMakeFiles/canvasdesk.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/canvasdesk.dir/build.make CMakeFiles/canvasdesk.dir/clean
+.PHONY : CMakeFiles/canvasdesk.dir/clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/generate_qmlls_build_ini_file.dir
 
 # All Build rule for target.
 CMakeFiles/generate_qmlls_build_ini_file.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/generate_qmlls_build_ini_file.dir/build.make CMakeFiles/generate_qmlls_build_ini_file.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/generate_qmlls_build_ini_file.dir/build.make CMakeFiles/generate_qmlls_build_ini_file.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=90 "Built target generate_qmlls_build_ini_file"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=95 "Built target generate_qmlls_build_ini_file"
 .PHONY : CMakeFiles/generate_qmlls_build_ini_file.dir/all
 
 # Build rule for subdir invocation for target.
@@ -255,7 +304,7 @@ generate_qmlls_build_ini_file: CMakeFiles/generate_qmlls_build_ini_file.dir/rule
 # codegen rule for target.
 CMakeFiles/generate_qmlls_build_ini_file.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/generate_qmlls_build_ini_file.dir/build.make CMakeFiles/generate_qmlls_build_ini_file.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=90 "Finished codegen for target generate_qmlls_build_ini_file"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=95 "Finished codegen for target generate_qmlls_build_ini_file"
 .PHONY : CMakeFiles/generate_qmlls_build_ini_file.dir/codegen
 
 # clean rule for target.
@@ -270,12 +319,12 @@ CMakeFiles/generate_qmlls_build_ini_file.dir/clean:
 CMakeFiles/module_CanvasDeskQml_aotstats_target.dir/all: src/qml/CMakeFiles/CanvasDeskQml_qmltyperegistration.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/module_CanvasDeskQml_aotstats_target.dir/build.make CMakeFiles/module_CanvasDeskQml_aotstats_target.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/module_CanvasDeskQml_aotstats_target.dir/build.make CMakeFiles/module_CanvasDeskQml_aotstats_target.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=91 "Built target module_CanvasDeskQml_aotstats_target"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=96 "Built target module_CanvasDeskQml_aotstats_target"
 .PHONY : CMakeFiles/module_CanvasDeskQml_aotstats_target.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/module_CanvasDeskQml_aotstats_target.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 27
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 31
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/module_CanvasDeskQml_aotstats_target.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 0
 .PHONY : CMakeFiles/module_CanvasDeskQml_aotstats_target.dir/rule
@@ -287,7 +336,7 @@ module_CanvasDeskQml_aotstats_target: CMakeFiles/module_CanvasDeskQml_aotstats_t
 # codegen rule for target.
 CMakeFiles/module_CanvasDeskQml_aotstats_target.dir/codegen: src/qml/CMakeFiles/CanvasDeskQml_qmltyperegistration.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/module_CanvasDeskQml_aotstats_target.dir/build.make CMakeFiles/module_CanvasDeskQml_aotstats_target.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=91 "Finished codegen for target module_CanvasDeskQml_aotstats_target"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=96 "Finished codegen for target module_CanvasDeskQml_aotstats_target"
 .PHONY : CMakeFiles/module_CanvasDeskQml_aotstats_target.dir/codegen
 
 # clean rule for target.
@@ -302,12 +351,12 @@ CMakeFiles/module_CanvasDeskQml_aotstats_target.dir/clean:
 CMakeFiles/module_canvasdesk-editor_aotstats_target.dir/all: src/editor/CMakeFiles/canvasdesk-editor_qmltyperegistration.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/module_canvasdesk-editor_aotstats_target.dir/build.make CMakeFiles/module_canvasdesk-editor_aotstats_target.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/module_canvasdesk-editor_aotstats_target.dir/build.make CMakeFiles/module_canvasdesk-editor_aotstats_target.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=92 "Built target module_canvasdesk-editor_aotstats_target"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=97 "Built target module_canvasdesk-editor_aotstats_target"
 .PHONY : CMakeFiles/module_canvasdesk-editor_aotstats_target.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/module_canvasdesk-editor_aotstats_target.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 47
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 52
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/module_canvasdesk-editor_aotstats_target.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 0
 .PHONY : CMakeFiles/module_canvasdesk-editor_aotstats_target.dir/rule
@@ -319,7 +368,7 @@ module_canvasdesk-editor_aotstats_target: CMakeFiles/module_canvasdesk-editor_ao
 # codegen rule for target.
 CMakeFiles/module_canvasdesk-editor_aotstats_target.dir/codegen: src/editor/CMakeFiles/canvasdesk-editor_qmltyperegistration.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/module_canvasdesk-editor_aotstats_target.dir/build.make CMakeFiles/module_canvasdesk-editor_aotstats_target.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=92 "Finished codegen for target module_canvasdesk-editor_aotstats_target"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=97 "Finished codegen for target module_canvasdesk-editor_aotstats_target"
 .PHONY : CMakeFiles/module_canvasdesk-editor_aotstats_target.dir/codegen
 
 # clean rule for target.
@@ -340,7 +389,7 @@ CMakeFiles/all_aotstats.dir/all: CMakeFiles/module_canvasdesk-editor_aotstats_ta
 
 # Build rule for subdir invocation for target.
 CMakeFiles/all_aotstats.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 54
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/all_aotstats.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 0
 .PHONY : CMakeFiles/all_aotstats.dir/rule
@@ -362,21 +411,121 @@ CMakeFiles/all_aotstats.dir/clean:
 .PHONY : CMakeFiles/all_aotstats.dir/clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/canvasdesk_qmlimportscan.dir
+
+# All Build rule for target.
+CMakeFiles/canvasdesk_qmlimportscan.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/canvasdesk_qmlimportscan.dir/build.make CMakeFiles/canvasdesk_qmlimportscan.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/canvasdesk_qmlimportscan.dir/build.make CMakeFiles/canvasdesk_qmlimportscan.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=94 "Built target canvasdesk_qmlimportscan"
+.PHONY : CMakeFiles/canvasdesk_qmlimportscan.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/canvasdesk_qmlimportscan.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 1
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/canvasdesk_qmlimportscan.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 0
+.PHONY : CMakeFiles/canvasdesk_qmlimportscan.dir/rule
+
+# Convenience name for target.
+canvasdesk_qmlimportscan: CMakeFiles/canvasdesk_qmlimportscan.dir/rule
+.PHONY : canvasdesk_qmlimportscan
+
+# codegen rule for target.
+CMakeFiles/canvasdesk_qmlimportscan.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/canvasdesk_qmlimportscan.dir/build.make CMakeFiles/canvasdesk_qmlimportscan.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=94 "Finished codegen for target canvasdesk_qmlimportscan"
+.PHONY : CMakeFiles/canvasdesk_qmlimportscan.dir/codegen
+
+# clean rule for target.
+CMakeFiles/canvasdesk_qmlimportscan.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/canvasdesk_qmlimportscan.dir/build.make CMakeFiles/canvasdesk_qmlimportscan.dir/clean
+.PHONY : CMakeFiles/canvasdesk_qmlimportscan.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/canvasdesk_autogen_timestamp_deps.dir
+
+# All Build rule for target.
+CMakeFiles/canvasdesk_autogen_timestamp_deps.dir/all: CMakeFiles/canvasdesk_qmlimportscan.dir/all
+CMakeFiles/canvasdesk_autogen_timestamp_deps.dir/all: src/core/CMakeFiles/CanvasDeskCore.dir/all
+CMakeFiles/canvasdesk_autogen_timestamp_deps.dir/all: src/qml/CMakeFiles/CanvasDeskQml.dir/all
+CMakeFiles/canvasdesk_autogen_timestamp_deps.dir/all: src/editor/CMakeFiles/canvasdesk-editor.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/canvasdesk_autogen_timestamp_deps.dir/build.make CMakeFiles/canvasdesk_autogen_timestamp_deps.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/canvasdesk_autogen_timestamp_deps.dir/build.make CMakeFiles/canvasdesk_autogen_timestamp_deps.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num= "Built target canvasdesk_autogen_timestamp_deps"
+.PHONY : CMakeFiles/canvasdesk_autogen_timestamp_deps.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/canvasdesk_autogen_timestamp_deps.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 64
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/canvasdesk_autogen_timestamp_deps.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 0
+.PHONY : CMakeFiles/canvasdesk_autogen_timestamp_deps.dir/rule
+
+# Convenience name for target.
+canvasdesk_autogen_timestamp_deps: CMakeFiles/canvasdesk_autogen_timestamp_deps.dir/rule
+.PHONY : canvasdesk_autogen_timestamp_deps
+
+# codegen rule for target.
+CMakeFiles/canvasdesk_autogen_timestamp_deps.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/canvasdesk_autogen_timestamp_deps.dir/build.make CMakeFiles/canvasdesk_autogen_timestamp_deps.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num= "Finished codegen for target canvasdesk_autogen_timestamp_deps"
+.PHONY : CMakeFiles/canvasdesk_autogen_timestamp_deps.dir/codegen
+
+# clean rule for target.
+CMakeFiles/canvasdesk_autogen_timestamp_deps.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/canvasdesk_autogen_timestamp_deps.dir/build.make CMakeFiles/canvasdesk_autogen_timestamp_deps.dir/clean
+.PHONY : CMakeFiles/canvasdesk_autogen_timestamp_deps.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/canvasdesk_autogen.dir
+
+# All Build rule for target.
+CMakeFiles/canvasdesk_autogen.dir/all: CMakeFiles/canvasdesk_autogen_timestamp_deps.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/canvasdesk_autogen.dir/build.make CMakeFiles/canvasdesk_autogen.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/canvasdesk_autogen.dir/build.make CMakeFiles/canvasdesk_autogen.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=93 "Built target canvasdesk_autogen"
+.PHONY : CMakeFiles/canvasdesk_autogen.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/canvasdesk_autogen.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 65
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/canvasdesk_autogen.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 0
+.PHONY : CMakeFiles/canvasdesk_autogen.dir/rule
+
+# Convenience name for target.
+canvasdesk_autogen: CMakeFiles/canvasdesk_autogen.dir/rule
+.PHONY : canvasdesk_autogen
+
+# codegen rule for target.
+CMakeFiles/canvasdesk_autogen.dir/codegen: CMakeFiles/canvasdesk_autogen_timestamp_deps.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/canvasdesk_autogen.dir/build.make CMakeFiles/canvasdesk_autogen.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=93 "Finished codegen for target canvasdesk_autogen"
+.PHONY : CMakeFiles/canvasdesk_autogen.dir/codegen
+
+# clean rule for target.
+CMakeFiles/canvasdesk_autogen.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/canvasdesk_autogen.dir/build.make CMakeFiles/canvasdesk_autogen.dir/clean
+.PHONY : CMakeFiles/canvasdesk_autogen.dir/clean
+
+#=============================================================================
 # Target rules for target src/app/CMakeFiles/canvasdesk-runtime.dir
 
 # All Build rule for target.
+src/app/CMakeFiles/canvasdesk-runtime.dir/all: src/core/CMakeFiles/wlr_protocol.dir/all
 src/app/CMakeFiles/canvasdesk-runtime.dir/all: src/core/CMakeFiles/CanvasDeskCore.dir/all
 src/app/CMakeFiles/canvasdesk-runtime.dir/all: src/qml/CMakeFiles/CanvasDeskQml.dir/all
 src/app/CMakeFiles/canvasdesk-runtime.dir/all: src/app/CMakeFiles/canvasdesk-runtime_autogen_timestamp_deps.dir/all
 src/app/CMakeFiles/canvasdesk-runtime.dir/all: src/app/CMakeFiles/canvasdesk-runtime_autogen.dir/all
 	$(MAKE) $(MAKESILENT) -f src/app/CMakeFiles/canvasdesk-runtime.dir/build.make src/app/CMakeFiles/canvasdesk-runtime.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/app/CMakeFiles/canvasdesk-runtime.dir/build.make src/app/CMakeFiles/canvasdesk-runtime.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=85,86,87,88 "Built target canvasdesk-runtime"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=88,89,90,91 "Built target canvasdesk-runtime"
 .PHONY : src/app/CMakeFiles/canvasdesk-runtime.dir/all
 
 # Build rule for subdir invocation for target.
 src/app/CMakeFiles/canvasdesk-runtime.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 43
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 48
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/app/CMakeFiles/canvasdesk-runtime.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 0
 .PHONY : src/app/CMakeFiles/canvasdesk-runtime.dir/rule
@@ -388,7 +537,7 @@ canvasdesk-runtime: src/app/CMakeFiles/canvasdesk-runtime.dir/rule
 # codegen rule for target.
 src/app/CMakeFiles/canvasdesk-runtime.dir/codegen: src/app/CMakeFiles/canvasdesk-runtime_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f src/app/CMakeFiles/canvasdesk-runtime.dir/build.make src/app/CMakeFiles/canvasdesk-runtime.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=85,86,87,88 "Finished codegen for target canvasdesk-runtime"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=88,89,90,91 "Finished codegen for target canvasdesk-runtime"
 .PHONY : src/app/CMakeFiles/canvasdesk-runtime.dir/codegen
 
 # clean rule for target.
@@ -409,7 +558,7 @@ src/app/CMakeFiles/canvasdesk-runtime_autogen_timestamp_deps.dir/all: src/qml/CM
 
 # Build rule for subdir invocation for target.
 src/app/CMakeFiles/canvasdesk-runtime_autogen_timestamp_deps.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 38
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 43
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/app/CMakeFiles/canvasdesk-runtime_autogen_timestamp_deps.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 0
 .PHONY : src/app/CMakeFiles/canvasdesk-runtime_autogen_timestamp_deps.dir/rule
@@ -436,12 +585,12 @@ src/app/CMakeFiles/canvasdesk-runtime_autogen_timestamp_deps.dir/clean:
 src/app/CMakeFiles/canvasdesk-runtime_autogen.dir/all: src/app/CMakeFiles/canvasdesk-runtime_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f src/app/CMakeFiles/canvasdesk-runtime_autogen.dir/build.make src/app/CMakeFiles/canvasdesk-runtime_autogen.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/app/CMakeFiles/canvasdesk-runtime_autogen.dir/build.make src/app/CMakeFiles/canvasdesk-runtime_autogen.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=89 "Built target canvasdesk-runtime_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=92 "Built target canvasdesk-runtime_autogen"
 .PHONY : src/app/CMakeFiles/canvasdesk-runtime_autogen.dir/all
 
 # Build rule for subdir invocation for target.
 src/app/CMakeFiles/canvasdesk-runtime_autogen.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 39
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 44
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/app/CMakeFiles/canvasdesk-runtime_autogen.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 0
 .PHONY : src/app/CMakeFiles/canvasdesk-runtime_autogen.dir/rule
@@ -453,7 +602,7 @@ canvasdesk-runtime_autogen: src/app/CMakeFiles/canvasdesk-runtime_autogen.dir/ru
 # codegen rule for target.
 src/app/CMakeFiles/canvasdesk-runtime_autogen.dir/codegen: src/app/CMakeFiles/canvasdesk-runtime_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f src/app/CMakeFiles/canvasdesk-runtime_autogen.dir/build.make src/app/CMakeFiles/canvasdesk-runtime_autogen.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=89 "Finished codegen for target canvasdesk-runtime_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=92 "Finished codegen for target canvasdesk-runtime_autogen"
 .PHONY : src/app/CMakeFiles/canvasdesk-runtime_autogen.dir/codegen
 
 # clean rule for target.
@@ -462,22 +611,55 @@ src/app/CMakeFiles/canvasdesk-runtime_autogen.dir/clean:
 .PHONY : src/app/CMakeFiles/canvasdesk-runtime_autogen.dir/clean
 
 #=============================================================================
+# Target rules for target src/core/CMakeFiles/wlr_protocol.dir
+
+# All Build rule for target.
+src/core/CMakeFiles/wlr_protocol.dir/all:
+	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/wlr_protocol.dir/build.make src/core/CMakeFiles/wlr_protocol.dir/depend
+	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/wlr_protocol.dir/build.make src/core/CMakeFiles/wlr_protocol.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=98,99,100 "Built target wlr_protocol"
+.PHONY : src/core/CMakeFiles/wlr_protocol.dir/all
+
+# Build rule for subdir invocation for target.
+src/core/CMakeFiles/wlr_protocol.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 3
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/core/CMakeFiles/wlr_protocol.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 0
+.PHONY : src/core/CMakeFiles/wlr_protocol.dir/rule
+
+# Convenience name for target.
+wlr_protocol: src/core/CMakeFiles/wlr_protocol.dir/rule
+.PHONY : wlr_protocol
+
+# codegen rule for target.
+src/core/CMakeFiles/wlr_protocol.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/wlr_protocol.dir/build.make src/core/CMakeFiles/wlr_protocol.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=98,99,100 "Finished codegen for target wlr_protocol"
+.PHONY : src/core/CMakeFiles/wlr_protocol.dir/codegen
+
+# clean rule for target.
+src/core/CMakeFiles/wlr_protocol.dir/clean:
+	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/wlr_protocol.dir/build.make src/core/CMakeFiles/wlr_protocol.dir/clean
+.PHONY : src/core/CMakeFiles/wlr_protocol.dir/clean
+
+#=============================================================================
 # Target rules for target src/core/CMakeFiles/CanvasDeskCore.dir
 
 # All Build rule for target.
 src/core/CMakeFiles/CanvasDeskCore.dir/all: CMakeFiles/generate_qmlls_build_ini_file.dir/all
+src/core/CMakeFiles/CanvasDeskCore.dir/all: src/core/CMakeFiles/wlr_protocol.dir/all
 src/core/CMakeFiles/CanvasDeskCore.dir/all: src/core/CMakeFiles/CanvasDeskCore_copy_qml.dir/all
 src/core/CMakeFiles/CanvasDeskCore.dir/all: src/core/CMakeFiles/CanvasDeskCore_copy_res.dir/all
 src/core/CMakeFiles/CanvasDeskCore.dir/all: src/core/CMakeFiles/CanvasDeskCore_autogen_timestamp_deps.dir/all
 src/core/CMakeFiles/CanvasDeskCore.dir/all: src/core/CMakeFiles/CanvasDeskCore_autogen.dir/all
 	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore.dir/build.make src/core/CMakeFiles/CanvasDeskCore.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore.dir/build.make src/core/CMakeFiles/CanvasDeskCore.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15 "Built target CanvasDeskCore"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16 "Built target CanvasDeskCore"
 .PHONY : src/core/CMakeFiles/CanvasDeskCore.dir/all
 
 # Build rule for subdir invocation for target.
 src/core/CMakeFiles/CanvasDeskCore.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 19
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 24
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/core/CMakeFiles/CanvasDeskCore.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 0
 .PHONY : src/core/CMakeFiles/CanvasDeskCore.dir/rule
@@ -488,9 +670,10 @@ CanvasDeskCore: src/core/CMakeFiles/CanvasDeskCore.dir/rule
 
 # codegen rule for target.
 src/core/CMakeFiles/CanvasDeskCore.dir/codegen: CMakeFiles/generate_qmlls_build_ini_file.dir/all
+src/core/CMakeFiles/CanvasDeskCore.dir/codegen: src/core/CMakeFiles/wlr_protocol.dir/all
 src/core/CMakeFiles/CanvasDeskCore.dir/codegen: src/core/CMakeFiles/CanvasDeskCore_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore.dir/build.make src/core/CMakeFiles/CanvasDeskCore.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15 "Finished codegen for target CanvasDeskCore"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16 "Finished codegen for target CanvasDeskCore"
 .PHONY : src/core/CMakeFiles/CanvasDeskCore.dir/codegen
 
 # clean rule for target.
@@ -505,12 +688,12 @@ src/core/CMakeFiles/CanvasDeskCore.dir/clean:
 src/core/CMakeFiles/CanvasDeskCore_qmltyperegistration.dir/all: src/core/CMakeFiles/CanvasDeskCore_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore_qmltyperegistration.dir/build.make src/core/CMakeFiles/CanvasDeskCore_qmltyperegistration.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore_qmltyperegistration.dir/build.make src/core/CMakeFiles/CanvasDeskCore_qmltyperegistration.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=19,20,21,22,23 "Built target CanvasDeskCore_qmltyperegistration"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=21,22,23,24,25 "Built target CanvasDeskCore_qmltyperegistration"
 .PHONY : src/core/CMakeFiles/CanvasDeskCore_qmltyperegistration.dir/all
 
 # Build rule for subdir invocation for target.
 src/core/CMakeFiles/CanvasDeskCore_qmltyperegistration.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 12
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/core/CMakeFiles/CanvasDeskCore_qmltyperegistration.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 0
 .PHONY : src/core/CMakeFiles/CanvasDeskCore_qmltyperegistration.dir/rule
@@ -522,7 +705,7 @@ CanvasDeskCore_qmltyperegistration: src/core/CMakeFiles/CanvasDeskCore_qmltypere
 # codegen rule for target.
 src/core/CMakeFiles/CanvasDeskCore_qmltyperegistration.dir/codegen: src/core/CMakeFiles/CanvasDeskCore_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore_qmltyperegistration.dir/build.make src/core/CMakeFiles/CanvasDeskCore_qmltyperegistration.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=19,20,21,22,23 "Finished codegen for target CanvasDeskCore_qmltyperegistration"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=21,22,23,24,25 "Finished codegen for target CanvasDeskCore_qmltyperegistration"
 .PHONY : src/core/CMakeFiles/CanvasDeskCore_qmltyperegistration.dir/codegen
 
 # clean rule for target.
@@ -544,7 +727,7 @@ src/core/CMakeFiles/all_qmltyperegistrations.dir/all: src/editor/CMakeFiles/canv
 
 # Build rule for subdir invocation for target.
 src/core/CMakeFiles/all_qmltyperegistrations.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 56
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 60
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/core/CMakeFiles/all_qmltyperegistrations.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 0
 .PHONY : src/core/CMakeFiles/all_qmltyperegistrations.dir/rule
@@ -570,17 +753,18 @@ src/core/CMakeFiles/all_qmltyperegistrations.dir/clean:
 # Target rules for target src/core/CMakeFiles/CanvasDeskCoreplugin.dir
 
 # All Build rule for target.
+src/core/CMakeFiles/CanvasDeskCoreplugin.dir/all: src/core/CMakeFiles/wlr_protocol.dir/all
 src/core/CMakeFiles/CanvasDeskCoreplugin.dir/all: src/core/CMakeFiles/CanvasDeskCore.dir/all
 src/core/CMakeFiles/CanvasDeskCoreplugin.dir/all: src/core/CMakeFiles/CanvasDeskCoreplugin_autogen_timestamp_deps.dir/all
 src/core/CMakeFiles/CanvasDeskCoreplugin.dir/all: src/core/CMakeFiles/CanvasDeskCoreplugin_autogen.dir/all
 	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCoreplugin.dir/build.make src/core/CMakeFiles/CanvasDeskCoreplugin.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCoreplugin.dir/build.make src/core/CMakeFiles/CanvasDeskCoreplugin.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=24,25,26,27 "Built target CanvasDeskCoreplugin"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=26,27,28 "Built target CanvasDeskCoreplugin"
 .PHONY : src/core/CMakeFiles/CanvasDeskCoreplugin.dir/all
 
 # Build rule for subdir invocation for target.
 src/core/CMakeFiles/CanvasDeskCoreplugin.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 24
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 28
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/core/CMakeFiles/CanvasDeskCoreplugin.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 0
 .PHONY : src/core/CMakeFiles/CanvasDeskCoreplugin.dir/rule
@@ -592,7 +776,7 @@ CanvasDeskCoreplugin: src/core/CMakeFiles/CanvasDeskCoreplugin.dir/rule
 # codegen rule for target.
 src/core/CMakeFiles/CanvasDeskCoreplugin.dir/codegen: src/core/CMakeFiles/CanvasDeskCoreplugin_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCoreplugin.dir/build.make src/core/CMakeFiles/CanvasDeskCoreplugin.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=24,25,26,27 "Finished codegen for target CanvasDeskCoreplugin"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=26,27,28 "Finished codegen for target CanvasDeskCoreplugin"
 .PHONY : src/core/CMakeFiles/CanvasDeskCoreplugin.dir/codegen
 
 # clean rule for target.
@@ -613,7 +797,7 @@ src/core/CMakeFiles/qt_internal_plugins.dir/all: src/qml/CMakeFiles/CanvasDeskQm
 
 # Build rule for subdir invocation for target.
 src/core/CMakeFiles/qt_internal_plugins.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 48
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 52
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/core/CMakeFiles/qt_internal_plugins.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 0
 .PHONY : src/core/CMakeFiles/qt_internal_plugins.dir/rule
@@ -646,7 +830,7 @@ src/core/CMakeFiles/CanvasDeskCore_qmllint.dir/all: src/core/CMakeFiles/all_qmlt
 
 # Build rule for subdir invocation for target.
 src/core/CMakeFiles/CanvasDeskCore_qmllint.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 56
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 60
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/core/CMakeFiles/CanvasDeskCore_qmllint.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 0
 .PHONY : src/core/CMakeFiles/CanvasDeskCore_qmllint.dir/rule
@@ -678,7 +862,7 @@ src/core/CMakeFiles/CanvasDeskCore_qmllint_json.dir/all: src/core/CMakeFiles/all
 
 # Build rule for subdir invocation for target.
 src/core/CMakeFiles/CanvasDeskCore_qmllint_json.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 56
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 60
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/core/CMakeFiles/CanvasDeskCore_qmllint_json.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 0
 .PHONY : src/core/CMakeFiles/CanvasDeskCore_qmllint_json.dir/rule
@@ -710,7 +894,7 @@ src/core/CMakeFiles/CanvasDeskCore_qmllint_module.dir/all: src/core/CMakeFiles/a
 
 # Build rule for subdir invocation for target.
 src/core/CMakeFiles/CanvasDeskCore_qmllint_module.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 56
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 60
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/core/CMakeFiles/CanvasDeskCore_qmllint_module.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 0
 .PHONY : src/core/CMakeFiles/CanvasDeskCore_qmllint_module.dir/rule
@@ -744,7 +928,7 @@ src/core/CMakeFiles/all_qmllint.dir/all: src/editor/CMakeFiles/canvasdesk-editor
 
 # Build rule for subdir invocation for target.
 src/core/CMakeFiles/all_qmllint.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 56
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 60
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/core/CMakeFiles/all_qmllint.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 0
 .PHONY : src/core/CMakeFiles/all_qmllint.dir/rule
@@ -780,7 +964,7 @@ src/core/CMakeFiles/all_qmllint_json.dir/all: src/editor/CMakeFiles/canvasdesk-e
 
 # Build rule for subdir invocation for target.
 src/core/CMakeFiles/all_qmllint_json.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 56
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 60
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/core/CMakeFiles/all_qmllint_json.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 0
 .PHONY : src/core/CMakeFiles/all_qmllint_json.dir/rule
@@ -816,7 +1000,7 @@ src/core/CMakeFiles/all_qmllint_module.dir/all: src/editor/CMakeFiles/canvasdesk
 
 # Build rule for subdir invocation for target.
 src/core/CMakeFiles/all_qmllint_module.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 56
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 60
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/core/CMakeFiles/all_qmllint_module.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 0
 .PHONY : src/core/CMakeFiles/all_qmllint_module.dir/rule
@@ -845,7 +1029,7 @@ src/core/CMakeFiles/all_qmllint_module.dir/clean:
 src/core/CMakeFiles/CanvasDeskCore_copy_qml.dir/all:
 	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore_copy_qml.dir/build.make src/core/CMakeFiles/CanvasDeskCore_copy_qml.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore_copy_qml.dir/build.make src/core/CMakeFiles/CanvasDeskCore_copy_qml.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=17 "Built target CanvasDeskCore_copy_qml"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=19 "Built target CanvasDeskCore_copy_qml"
 .PHONY : src/core/CMakeFiles/CanvasDeskCore_copy_qml.dir/all
 
 # Build rule for subdir invocation for target.
@@ -862,7 +1046,7 @@ CanvasDeskCore_copy_qml: src/core/CMakeFiles/CanvasDeskCore_copy_qml.dir/rule
 # codegen rule for target.
 src/core/CMakeFiles/CanvasDeskCore_copy_qml.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore_copy_qml.dir/build.make src/core/CMakeFiles/CanvasDeskCore_copy_qml.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=17 "Finished codegen for target CanvasDeskCore_copy_qml"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=19 "Finished codegen for target CanvasDeskCore_copy_qml"
 .PHONY : src/core/CMakeFiles/CanvasDeskCore_copy_qml.dir/codegen
 
 # clean rule for target.
@@ -877,7 +1061,7 @@ src/core/CMakeFiles/CanvasDeskCore_copy_qml.dir/clean:
 src/core/CMakeFiles/CanvasDeskCore_copy_res.dir/all:
 	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore_copy_res.dir/build.make src/core/CMakeFiles/CanvasDeskCore_copy_res.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore_copy_res.dir/build.make src/core/CMakeFiles/CanvasDeskCore_copy_res.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=18 "Built target CanvasDeskCore_copy_res"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=20 "Built target CanvasDeskCore_copy_res"
 .PHONY : src/core/CMakeFiles/CanvasDeskCore_copy_res.dir/all
 
 # Build rule for subdir invocation for target.
@@ -894,7 +1078,7 @@ CanvasDeskCore_copy_res: src/core/CMakeFiles/CanvasDeskCore_copy_res.dir/rule
 # codegen rule for target.
 src/core/CMakeFiles/CanvasDeskCore_copy_res.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore_copy_res.dir/build.make src/core/CMakeFiles/CanvasDeskCore_copy_res.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=18 "Finished codegen for target CanvasDeskCore_copy_res"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=20 "Finished codegen for target CanvasDeskCore_copy_res"
 .PHONY : src/core/CMakeFiles/CanvasDeskCore_copy_res.dir/codegen
 
 # clean rule for target.
@@ -907,16 +1091,17 @@ src/core/CMakeFiles/CanvasDeskCore_copy_res.dir/clean:
 
 # All Build rule for target.
 src/core/CMakeFiles/CanvasDeskCore_autogen_timestamp_deps.dir/all: CMakeFiles/generate_qmlls_build_ini_file.dir/all
+src/core/CMakeFiles/CanvasDeskCore_autogen_timestamp_deps.dir/all: src/core/CMakeFiles/wlr_protocol.dir/all
 src/core/CMakeFiles/CanvasDeskCore_autogen_timestamp_deps.dir/all: src/core/CMakeFiles/CanvasDeskCore_copy_qml.dir/all
 src/core/CMakeFiles/CanvasDeskCore_autogen_timestamp_deps.dir/all: src/core/CMakeFiles/CanvasDeskCore_copy_res.dir/all
 	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore_autogen_timestamp_deps.dir/build.make src/core/CMakeFiles/CanvasDeskCore_autogen_timestamp_deps.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore_autogen_timestamp_deps.dir/build.make src/core/CMakeFiles/CanvasDeskCore_autogen_timestamp_deps.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num= "Built target CanvasDeskCore_autogen_timestamp_deps"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=18 "Built target CanvasDeskCore_autogen_timestamp_deps"
 .PHONY : src/core/CMakeFiles/CanvasDeskCore_autogen_timestamp_deps.dir/all
 
 # Build rule for subdir invocation for target.
 src/core/CMakeFiles/CanvasDeskCore_autogen_timestamp_deps.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 7
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/core/CMakeFiles/CanvasDeskCore_autogen_timestamp_deps.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 0
 .PHONY : src/core/CMakeFiles/CanvasDeskCore_autogen_timestamp_deps.dir/rule
@@ -928,7 +1113,7 @@ CanvasDeskCore_autogen_timestamp_deps: src/core/CMakeFiles/CanvasDeskCore_autoge
 # codegen rule for target.
 src/core/CMakeFiles/CanvasDeskCore_autogen_timestamp_deps.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore_autogen_timestamp_deps.dir/build.make src/core/CMakeFiles/CanvasDeskCore_autogen_timestamp_deps.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num= "Finished codegen for target CanvasDeskCore_autogen_timestamp_deps"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=18 "Finished codegen for target CanvasDeskCore_autogen_timestamp_deps"
 .PHONY : src/core/CMakeFiles/CanvasDeskCore_autogen_timestamp_deps.dir/codegen
 
 # clean rule for target.
@@ -943,12 +1128,12 @@ src/core/CMakeFiles/CanvasDeskCore_autogen_timestamp_deps.dir/clean:
 src/core/CMakeFiles/CanvasDeskCore_autogen.dir/all: src/core/CMakeFiles/CanvasDeskCore_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore_autogen.dir/build.make src/core/CMakeFiles/CanvasDeskCore_autogen.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore_autogen.dir/build.make src/core/CMakeFiles/CanvasDeskCore_autogen.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=16 "Built target CanvasDeskCore_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=17 "Built target CanvasDeskCore_autogen"
 .PHONY : src/core/CMakeFiles/CanvasDeskCore_autogen.dir/all
 
 # Build rule for subdir invocation for target.
 src/core/CMakeFiles/CanvasDeskCore_autogen.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 8
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/core/CMakeFiles/CanvasDeskCore_autogen.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 0
 .PHONY : src/core/CMakeFiles/CanvasDeskCore_autogen.dir/rule
@@ -960,7 +1145,7 @@ CanvasDeskCore_autogen: src/core/CMakeFiles/CanvasDeskCore_autogen.dir/rule
 # codegen rule for target.
 src/core/CMakeFiles/CanvasDeskCore_autogen.dir/codegen: src/core/CMakeFiles/CanvasDeskCore_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore_autogen.dir/build.make src/core/CMakeFiles/CanvasDeskCore_autogen.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=16 "Finished codegen for target CanvasDeskCore_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=17 "Finished codegen for target CanvasDeskCore_autogen"
 .PHONY : src/core/CMakeFiles/CanvasDeskCore_autogen.dir/codegen
 
 # clean rule for target.
@@ -980,7 +1165,7 @@ src/core/CMakeFiles/CanvasDeskCoreplugin_autogen_timestamp_deps.dir/all: src/cor
 
 # Build rule for subdir invocation for target.
 src/core/CMakeFiles/CanvasDeskCoreplugin_autogen_timestamp_deps.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 19
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 24
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/core/CMakeFiles/CanvasDeskCoreplugin_autogen_timestamp_deps.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 0
 .PHONY : src/core/CMakeFiles/CanvasDeskCoreplugin_autogen_timestamp_deps.dir/rule
@@ -1007,12 +1192,12 @@ src/core/CMakeFiles/CanvasDeskCoreplugin_autogen_timestamp_deps.dir/clean:
 src/core/CMakeFiles/CanvasDeskCoreplugin_autogen.dir/all: src/core/CMakeFiles/CanvasDeskCoreplugin_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCoreplugin_autogen.dir/build.make src/core/CMakeFiles/CanvasDeskCoreplugin_autogen.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCoreplugin_autogen.dir/build.make src/core/CMakeFiles/CanvasDeskCoreplugin_autogen.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=28 "Built target CanvasDeskCoreplugin_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=29 "Built target CanvasDeskCoreplugin_autogen"
 .PHONY : src/core/CMakeFiles/CanvasDeskCoreplugin_autogen.dir/all
 
 # Build rule for subdir invocation for target.
 src/core/CMakeFiles/CanvasDeskCoreplugin_autogen.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 20
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 25
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/core/CMakeFiles/CanvasDeskCoreplugin_autogen.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 0
 .PHONY : src/core/CMakeFiles/CanvasDeskCoreplugin_autogen.dir/rule
@@ -1024,7 +1209,7 @@ CanvasDeskCoreplugin_autogen: src/core/CMakeFiles/CanvasDeskCoreplugin_autogen.d
 # codegen rule for target.
 src/core/CMakeFiles/CanvasDeskCoreplugin_autogen.dir/codegen: src/core/CMakeFiles/CanvasDeskCoreplugin_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCoreplugin_autogen.dir/build.make src/core/CMakeFiles/CanvasDeskCoreplugin_autogen.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=28 "Finished codegen for target CanvasDeskCoreplugin_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=29 "Finished codegen for target CanvasDeskCoreplugin_autogen"
 .PHONY : src/core/CMakeFiles/CanvasDeskCoreplugin_autogen.dir/codegen
 
 # clean rule for target.
@@ -1037,6 +1222,7 @@ src/core/CMakeFiles/CanvasDeskCoreplugin_autogen.dir/clean:
 
 # All Build rule for target.
 src/qml/CMakeFiles/CanvasDeskQml.dir/all: CMakeFiles/generate_qmlls_build_ini_file.dir/all
+src/qml/CMakeFiles/CanvasDeskQml.dir/all: src/core/CMakeFiles/wlr_protocol.dir/all
 src/qml/CMakeFiles/CanvasDeskQml.dir/all: src/core/CMakeFiles/CanvasDeskCore.dir/all
 src/qml/CMakeFiles/CanvasDeskQml.dir/all: src/qml/CMakeFiles/CanvasDeskQml_copy_qml.dir/all
 src/qml/CMakeFiles/CanvasDeskQml.dir/all: src/qml/CMakeFiles/CanvasDeskQml_copy_res.dir/all
@@ -1044,12 +1230,12 @@ src/qml/CMakeFiles/CanvasDeskQml.dir/all: src/qml/CMakeFiles/CanvasDeskQml_autog
 src/qml/CMakeFiles/CanvasDeskQml.dir/all: src/qml/CMakeFiles/CanvasDeskQml_autogen.dir/all
 	$(MAKE) $(MAKESILENT) -f src/qml/CMakeFiles/CanvasDeskQml.dir/build.make src/qml/CMakeFiles/CanvasDeskQml.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/qml/CMakeFiles/CanvasDeskQml.dir/build.make src/qml/CMakeFiles/CanvasDeskQml.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44 "Built target CanvasDeskQml"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45 "Built target CanvasDeskQml"
 .PHONY : src/qml/CMakeFiles/CanvasDeskQml.dir/all
 
 # Build rule for subdir invocation for target.
 src/qml/CMakeFiles/CanvasDeskQml.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 38
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 43
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/qml/CMakeFiles/CanvasDeskQml.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 0
 .PHONY : src/qml/CMakeFiles/CanvasDeskQml.dir/rule
@@ -1062,7 +1248,7 @@ CanvasDeskQml: src/qml/CMakeFiles/CanvasDeskQml.dir/rule
 src/qml/CMakeFiles/CanvasDeskQml.dir/codegen: CMakeFiles/generate_qmlls_build_ini_file.dir/all
 src/qml/CMakeFiles/CanvasDeskQml.dir/codegen: src/qml/CMakeFiles/CanvasDeskQml_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f src/qml/CMakeFiles/CanvasDeskQml.dir/build.make src/qml/CMakeFiles/CanvasDeskQml.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44 "Finished codegen for target CanvasDeskQml"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45 "Finished codegen for target CanvasDeskQml"
 .PHONY : src/qml/CMakeFiles/CanvasDeskQml.dir/codegen
 
 # clean rule for target.
@@ -1077,12 +1263,12 @@ src/qml/CMakeFiles/CanvasDeskQml.dir/clean:
 src/qml/CMakeFiles/CanvasDeskQml_qmltyperegistration.dir/all: src/qml/CMakeFiles/CanvasDeskQml_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f src/qml/CMakeFiles/CanvasDeskQml_qmltyperegistration.dir/build.make src/qml/CMakeFiles/CanvasDeskQml_qmltyperegistration.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/qml/CMakeFiles/CanvasDeskQml_qmltyperegistration.dir/build.make src/qml/CMakeFiles/CanvasDeskQml_qmltyperegistration.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=48,49,50,51,52 "Built target CanvasDeskQml_qmltyperegistration"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=49,50,51,52 "Built target CanvasDeskQml_qmltyperegistration"
 .PHONY : src/qml/CMakeFiles/CanvasDeskQml_qmltyperegistration.dir/all
 
 # Build rule for subdir invocation for target.
 src/qml/CMakeFiles/CanvasDeskQml_qmltyperegistration.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 26
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 30
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/qml/CMakeFiles/CanvasDeskQml_qmltyperegistration.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 0
 .PHONY : src/qml/CMakeFiles/CanvasDeskQml_qmltyperegistration.dir/rule
@@ -1094,7 +1280,7 @@ CanvasDeskQml_qmltyperegistration: src/qml/CMakeFiles/CanvasDeskQml_qmltyperegis
 # codegen rule for target.
 src/qml/CMakeFiles/CanvasDeskQml_qmltyperegistration.dir/codegen: src/qml/CMakeFiles/CanvasDeskQml_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f src/qml/CMakeFiles/CanvasDeskQml_qmltyperegistration.dir/build.make src/qml/CMakeFiles/CanvasDeskQml_qmltyperegistration.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=48,49,50,51,52 "Finished codegen for target CanvasDeskQml_qmltyperegistration"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=49,50,51,52 "Finished codegen for target CanvasDeskQml_qmltyperegistration"
 .PHONY : src/qml/CMakeFiles/CanvasDeskQml_qmltyperegistration.dir/codegen
 
 # clean rule for target.
@@ -1116,7 +1302,7 @@ src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/all: src/qml/CMakeFiles/CanvasDeskQml
 
 # Build rule for subdir invocation for target.
 src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 43
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 48
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 0
 .PHONY : src/qml/CMakeFiles/CanvasDeskQmlplugin.dir/rule
@@ -1148,7 +1334,7 @@ src/qml/CMakeFiles/CanvasDeskQml_qmllint.dir/all: src/core/CMakeFiles/all_qmltyp
 
 # Build rule for subdir invocation for target.
 src/qml/CMakeFiles/CanvasDeskQml_qmllint.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 56
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 60
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/qml/CMakeFiles/CanvasDeskQml_qmllint.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 0
 .PHONY : src/qml/CMakeFiles/CanvasDeskQml_qmllint.dir/rule
@@ -1180,7 +1366,7 @@ src/qml/CMakeFiles/CanvasDeskQml_qmllint_json.dir/all: src/core/CMakeFiles/all_q
 
 # Build rule for subdir invocation for target.
 src/qml/CMakeFiles/CanvasDeskQml_qmllint_json.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 56
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 60
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/qml/CMakeFiles/CanvasDeskQml_qmllint_json.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 0
 .PHONY : src/qml/CMakeFiles/CanvasDeskQml_qmllint_json.dir/rule
@@ -1212,7 +1398,7 @@ src/qml/CMakeFiles/CanvasDeskQml_qmllint_module.dir/all: src/core/CMakeFiles/all
 
 # Build rule for subdir invocation for target.
 src/qml/CMakeFiles/CanvasDeskQml_qmllint_module.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 56
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 60
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/qml/CMakeFiles/CanvasDeskQml_qmllint_module.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 0
 .PHONY : src/qml/CMakeFiles/CanvasDeskQml_qmllint_module.dir/rule
@@ -1239,7 +1425,7 @@ src/qml/CMakeFiles/CanvasDeskQml_qmllint_module.dir/clean:
 src/qml/CMakeFiles/CanvasDeskQml_copy_qml.dir/all:
 	$(MAKE) $(MAKESILENT) -f src/qml/CMakeFiles/CanvasDeskQml_copy_qml.dir/build.make src/qml/CMakeFiles/CanvasDeskQml_copy_qml.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/qml/CMakeFiles/CanvasDeskQml_copy_qml.dir/build.make src/qml/CMakeFiles/CanvasDeskQml_copy_qml.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=46 "Built target CanvasDeskQml_copy_qml"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=47 "Built target CanvasDeskQml_copy_qml"
 .PHONY : src/qml/CMakeFiles/CanvasDeskQml_copy_qml.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1256,7 +1442,7 @@ CanvasDeskQml_copy_qml: src/qml/CMakeFiles/CanvasDeskQml_copy_qml.dir/rule
 # codegen rule for target.
 src/qml/CMakeFiles/CanvasDeskQml_copy_qml.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f src/qml/CMakeFiles/CanvasDeskQml_copy_qml.dir/build.make src/qml/CMakeFiles/CanvasDeskQml_copy_qml.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=46 "Finished codegen for target CanvasDeskQml_copy_qml"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=47 "Finished codegen for target CanvasDeskQml_copy_qml"
 .PHONY : src/qml/CMakeFiles/CanvasDeskQml_copy_qml.dir/codegen
 
 # clean rule for target.
@@ -1271,7 +1457,7 @@ src/qml/CMakeFiles/CanvasDeskQml_copy_qml.dir/clean:
 src/qml/CMakeFiles/CanvasDeskQml_copy_res.dir/all:
 	$(MAKE) $(MAKESILENT) -f src/qml/CMakeFiles/CanvasDeskQml_copy_res.dir/build.make src/qml/CMakeFiles/CanvasDeskQml_copy_res.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/qml/CMakeFiles/CanvasDeskQml_copy_res.dir/build.make src/qml/CMakeFiles/CanvasDeskQml_copy_res.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=47 "Built target CanvasDeskQml_copy_res"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=48 "Built target CanvasDeskQml_copy_res"
 .PHONY : src/qml/CMakeFiles/CanvasDeskQml_copy_res.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1288,7 +1474,7 @@ CanvasDeskQml_copy_res: src/qml/CMakeFiles/CanvasDeskQml_copy_res.dir/rule
 # codegen rule for target.
 src/qml/CMakeFiles/CanvasDeskQml_copy_res.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f src/qml/CMakeFiles/CanvasDeskQml_copy_res.dir/build.make src/qml/CMakeFiles/CanvasDeskQml_copy_res.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=47 "Finished codegen for target CanvasDeskQml_copy_res"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=48 "Finished codegen for target CanvasDeskQml_copy_res"
 .PHONY : src/qml/CMakeFiles/CanvasDeskQml_copy_res.dir/codegen
 
 # clean rule for target.
@@ -1311,7 +1497,7 @@ src/qml/CMakeFiles/CanvasDeskQml_autogen_timestamp_deps.dir/all: src/qml/CMakeFi
 
 # Build rule for subdir invocation for target.
 src/qml/CMakeFiles/CanvasDeskQml_autogen_timestamp_deps.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 21
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 26
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/qml/CMakeFiles/CanvasDeskQml_autogen_timestamp_deps.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 0
 .PHONY : src/qml/CMakeFiles/CanvasDeskQml_autogen_timestamp_deps.dir/rule
@@ -1338,12 +1524,12 @@ src/qml/CMakeFiles/CanvasDeskQml_autogen_timestamp_deps.dir/clean:
 src/qml/CMakeFiles/CanvasDeskQml_autogen.dir/all: src/qml/CMakeFiles/CanvasDeskQml_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f src/qml/CMakeFiles/CanvasDeskQml_autogen.dir/build.make src/qml/CMakeFiles/CanvasDeskQml_autogen.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/qml/CMakeFiles/CanvasDeskQml_autogen.dir/build.make src/qml/CMakeFiles/CanvasDeskQml_autogen.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=45 "Built target CanvasDeskQml_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=46 "Built target CanvasDeskQml_autogen"
 .PHONY : src/qml/CMakeFiles/CanvasDeskQml_autogen.dir/all
 
 # Build rule for subdir invocation for target.
 src/qml/CMakeFiles/CanvasDeskQml_autogen.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 22
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 27
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/qml/CMakeFiles/CanvasDeskQml_autogen.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 0
 .PHONY : src/qml/CMakeFiles/CanvasDeskQml_autogen.dir/rule
@@ -1355,7 +1541,7 @@ CanvasDeskQml_autogen: src/qml/CMakeFiles/CanvasDeskQml_autogen.dir/rule
 # codegen rule for target.
 src/qml/CMakeFiles/CanvasDeskQml_autogen.dir/codegen: src/qml/CMakeFiles/CanvasDeskQml_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f src/qml/CMakeFiles/CanvasDeskQml_autogen.dir/build.make src/qml/CMakeFiles/CanvasDeskQml_autogen.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=45 "Finished codegen for target CanvasDeskQml_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=46 "Finished codegen for target CanvasDeskQml_autogen"
 .PHONY : src/qml/CMakeFiles/CanvasDeskQml_autogen.dir/codegen
 
 # clean rule for target.
@@ -1375,7 +1561,7 @@ src/qml/CMakeFiles/CanvasDeskQmlplugin_autogen_timestamp_deps.dir/all: src/qml/C
 
 # Build rule for subdir invocation for target.
 src/qml/CMakeFiles/CanvasDeskQmlplugin_autogen_timestamp_deps.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 38
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 43
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/qml/CMakeFiles/CanvasDeskQmlplugin_autogen_timestamp_deps.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 0
 .PHONY : src/qml/CMakeFiles/CanvasDeskQmlplugin_autogen_timestamp_deps.dir/rule
@@ -1407,7 +1593,7 @@ src/qml/CMakeFiles/CanvasDeskQmlplugin_autogen.dir/all: src/qml/CMakeFiles/Canva
 
 # Build rule for subdir invocation for target.
 src/qml/CMakeFiles/CanvasDeskQmlplugin_autogen.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 39
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 44
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/qml/CMakeFiles/CanvasDeskQmlplugin_autogen.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 0
 .PHONY : src/qml/CMakeFiles/CanvasDeskQmlplugin_autogen.dir/rule
@@ -1432,6 +1618,7 @@ src/qml/CMakeFiles/CanvasDeskQmlplugin_autogen.dir/clean:
 
 # All Build rule for target.
 src/editor/CMakeFiles/canvasdesk-editor.dir/all: CMakeFiles/generate_qmlls_build_ini_file.dir/all
+src/editor/CMakeFiles/canvasdesk-editor.dir/all: src/core/CMakeFiles/wlr_protocol.dir/all
 src/editor/CMakeFiles/canvasdesk-editor.dir/all: src/core/CMakeFiles/CanvasDeskCore.dir/all
 src/editor/CMakeFiles/canvasdesk-editor.dir/all: src/qml/CMakeFiles/CanvasDeskQml.dir/all
 src/editor/CMakeFiles/canvasdesk-editor.dir/all: src/editor/CMakeFiles/canvasdesk-editor_copy_qml.dir/all
@@ -1441,12 +1628,12 @@ src/editor/CMakeFiles/canvasdesk-editor.dir/all: src/editor/CMakeFiles/canvasdes
 src/editor/CMakeFiles/canvasdesk-editor.dir/all: src/editor/CMakeFiles/canvasdesk-editor_autogen.dir/all
 	$(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor.dir/build.make src/editor/CMakeFiles/canvasdesk-editor.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor.dir/build.make src/editor/CMakeFiles/canvasdesk-editor.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75 "Built target canvasdesk-editor"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78 "Built target canvasdesk-editor"
 .PHONY : src/editor/CMakeFiles/canvasdesk-editor.dir/all
 
 # Build rule for subdir invocation for target.
 src/editor/CMakeFiles/canvasdesk-editor.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 59
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 63
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/editor/CMakeFiles/canvasdesk-editor.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 0
 .PHONY : src/editor/CMakeFiles/canvasdesk-editor.dir/rule
@@ -1460,7 +1647,7 @@ src/editor/CMakeFiles/canvasdesk-editor.dir/codegen: CMakeFiles/generate_qmlls_b
 src/editor/CMakeFiles/canvasdesk-editor.dir/codegen: src/editor/CMakeFiles/canvasdesk-editor_qmlimportscan.dir/all
 src/editor/CMakeFiles/canvasdesk-editor.dir/codegen: src/editor/CMakeFiles/canvasdesk-editor_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor.dir/build.make src/editor/CMakeFiles/canvasdesk-editor.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75 "Finished codegen for target canvasdesk-editor"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78 "Finished codegen for target canvasdesk-editor"
 .PHONY : src/editor/CMakeFiles/canvasdesk-editor.dir/codegen
 
 # clean rule for target.
@@ -1475,12 +1662,12 @@ src/editor/CMakeFiles/canvasdesk-editor.dir/clean:
 src/editor/CMakeFiles/canvasdesk-editor_qmltyperegistration.dir/all: src/editor/CMakeFiles/canvasdesk-editor_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor_qmltyperegistration.dir/build.make src/editor/CMakeFiles/canvasdesk-editor_qmltyperegistration.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor_qmltyperegistration.dir/build.make src/editor/CMakeFiles/canvasdesk-editor_qmltyperegistration.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=80,81,82,83,84 "Built target canvasdesk-editor_qmltyperegistration"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=83,84,85,86,87 "Built target canvasdesk-editor_qmltyperegistration"
 .PHONY : src/editor/CMakeFiles/canvasdesk-editor_qmltyperegistration.dir/all
 
 # Build rule for subdir invocation for target.
 src/editor/CMakeFiles/canvasdesk-editor_qmltyperegistration.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 46
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 51
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/editor/CMakeFiles/canvasdesk-editor_qmltyperegistration.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 0
 .PHONY : src/editor/CMakeFiles/canvasdesk-editor_qmltyperegistration.dir/rule
@@ -1492,7 +1679,7 @@ canvasdesk-editor_qmltyperegistration: src/editor/CMakeFiles/canvasdesk-editor_q
 # codegen rule for target.
 src/editor/CMakeFiles/canvasdesk-editor_qmltyperegistration.dir/codegen: src/editor/CMakeFiles/canvasdesk-editor_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor_qmltyperegistration.dir/build.make src/editor/CMakeFiles/canvasdesk-editor_qmltyperegistration.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=80,81,82,83,84 "Finished codegen for target canvasdesk-editor_qmltyperegistration"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=83,84,85,86,87 "Finished codegen for target canvasdesk-editor_qmltyperegistration"
 .PHONY : src/editor/CMakeFiles/canvasdesk-editor_qmltyperegistration.dir/codegen
 
 # clean rule for target.
@@ -1512,7 +1699,7 @@ src/editor/CMakeFiles/canvasdesk-editor_qmllint.dir/all: src/core/CMakeFiles/all
 
 # Build rule for subdir invocation for target.
 src/editor/CMakeFiles/canvasdesk-editor_qmllint.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 56
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 60
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/editor/CMakeFiles/canvasdesk-editor_qmllint.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 0
 .PHONY : src/editor/CMakeFiles/canvasdesk-editor_qmllint.dir/rule
@@ -1544,7 +1731,7 @@ src/editor/CMakeFiles/canvasdesk-editor_qmllint_json.dir/all: src/core/CMakeFile
 
 # Build rule for subdir invocation for target.
 src/editor/CMakeFiles/canvasdesk-editor_qmllint_json.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 56
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 60
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/editor/CMakeFiles/canvasdesk-editor_qmllint_json.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 0
 .PHONY : src/editor/CMakeFiles/canvasdesk-editor_qmllint_json.dir/rule
@@ -1576,7 +1763,7 @@ src/editor/CMakeFiles/canvasdesk-editor_qmllint_module.dir/all: src/core/CMakeFi
 
 # Build rule for subdir invocation for target.
 src/editor/CMakeFiles/canvasdesk-editor_qmllint_module.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 56
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 60
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/editor/CMakeFiles/canvasdesk-editor_qmllint_module.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 0
 .PHONY : src/editor/CMakeFiles/canvasdesk-editor_qmllint_module.dir/rule
@@ -1603,7 +1790,7 @@ src/editor/CMakeFiles/canvasdesk-editor_qmllint_module.dir/clean:
 src/editor/CMakeFiles/canvasdesk-editor_copy_qml.dir/all:
 	$(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor_copy_qml.dir/build.make src/editor/CMakeFiles/canvasdesk-editor_copy_qml.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor_copy_qml.dir/build.make src/editor/CMakeFiles/canvasdesk-editor_copy_qml.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=77 "Built target canvasdesk-editor_copy_qml"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=80 "Built target canvasdesk-editor_copy_qml"
 .PHONY : src/editor/CMakeFiles/canvasdesk-editor_copy_qml.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1620,7 +1807,7 @@ canvasdesk-editor_copy_qml: src/editor/CMakeFiles/canvasdesk-editor_copy_qml.dir
 # codegen rule for target.
 src/editor/CMakeFiles/canvasdesk-editor_copy_qml.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor_copy_qml.dir/build.make src/editor/CMakeFiles/canvasdesk-editor_copy_qml.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=77 "Finished codegen for target canvasdesk-editor_copy_qml"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=80 "Finished codegen for target canvasdesk-editor_copy_qml"
 .PHONY : src/editor/CMakeFiles/canvasdesk-editor_copy_qml.dir/codegen
 
 # clean rule for target.
@@ -1635,7 +1822,7 @@ src/editor/CMakeFiles/canvasdesk-editor_copy_qml.dir/clean:
 src/editor/CMakeFiles/canvasdesk-editor_copy_res.dir/all:
 	$(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor_copy_res.dir/build.make src/editor/CMakeFiles/canvasdesk-editor_copy_res.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor_copy_res.dir/build.make src/editor/CMakeFiles/canvasdesk-editor_copy_res.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=78 "Built target canvasdesk-editor_copy_res"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=81 "Built target canvasdesk-editor_copy_res"
 .PHONY : src/editor/CMakeFiles/canvasdesk-editor_copy_res.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1652,7 +1839,7 @@ canvasdesk-editor_copy_res: src/editor/CMakeFiles/canvasdesk-editor_copy_res.dir
 # codegen rule for target.
 src/editor/CMakeFiles/canvasdesk-editor_copy_res.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor_copy_res.dir/build.make src/editor/CMakeFiles/canvasdesk-editor_copy_res.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=78 "Finished codegen for target canvasdesk-editor_copy_res"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=81 "Finished codegen for target canvasdesk-editor_copy_res"
 .PHONY : src/editor/CMakeFiles/canvasdesk-editor_copy_res.dir/codegen
 
 # clean rule for target.
@@ -1667,7 +1854,7 @@ src/editor/CMakeFiles/canvasdesk-editor_copy_res.dir/clean:
 src/editor/CMakeFiles/canvasdesk-editor_qmlimportscan.dir/all:
 	$(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor_qmlimportscan.dir/build.make src/editor/CMakeFiles/canvasdesk-editor_qmlimportscan.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor_qmlimportscan.dir/build.make src/editor/CMakeFiles/canvasdesk-editor_qmlimportscan.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=79 "Built target canvasdesk-editor_qmlimportscan"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=82 "Built target canvasdesk-editor_qmlimportscan"
 .PHONY : src/editor/CMakeFiles/canvasdesk-editor_qmlimportscan.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1684,7 +1871,7 @@ canvasdesk-editor_qmlimportscan: src/editor/CMakeFiles/canvasdesk-editor_qmlimpo
 # codegen rule for target.
 src/editor/CMakeFiles/canvasdesk-editor_qmlimportscan.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor_qmlimportscan.dir/build.make src/editor/CMakeFiles/canvasdesk-editor_qmlimportscan.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=79 "Finished codegen for target canvasdesk-editor_qmlimportscan"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=82 "Finished codegen for target canvasdesk-editor_qmlimportscan"
 .PHONY : src/editor/CMakeFiles/canvasdesk-editor_qmlimportscan.dir/codegen
 
 # clean rule for target.
@@ -1709,7 +1896,7 @@ src/editor/CMakeFiles/canvasdesk-editor_autogen_timestamp_deps.dir/all: src/edit
 
 # Build rule for subdir invocation for target.
 src/editor/CMakeFiles/canvasdesk-editor_autogen_timestamp_deps.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 41
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 46
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/editor/CMakeFiles/canvasdesk-editor_autogen_timestamp_deps.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 0
 .PHONY : src/editor/CMakeFiles/canvasdesk-editor_autogen_timestamp_deps.dir/rule
@@ -1736,12 +1923,12 @@ src/editor/CMakeFiles/canvasdesk-editor_autogen_timestamp_deps.dir/clean:
 src/editor/CMakeFiles/canvasdesk-editor_autogen.dir/all: src/editor/CMakeFiles/canvasdesk-editor_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor_autogen.dir/build.make src/editor/CMakeFiles/canvasdesk-editor_autogen.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor_autogen.dir/build.make src/editor/CMakeFiles/canvasdesk-editor_autogen.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=76 "Built target canvasdesk-editor_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=79 "Built target canvasdesk-editor_autogen"
 .PHONY : src/editor/CMakeFiles/canvasdesk-editor_autogen.dir/all
 
 # Build rule for subdir invocation for target.
 src/editor/CMakeFiles/canvasdesk-editor_autogen.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 42
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 47
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/editor/CMakeFiles/canvasdesk-editor_autogen.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles 0
 .PHONY : src/editor/CMakeFiles/canvasdesk-editor_autogen.dir/rule
@@ -1753,7 +1940,7 @@ canvasdesk-editor_autogen: src/editor/CMakeFiles/canvasdesk-editor_autogen.dir/r
 # codegen rule for target.
 src/editor/CMakeFiles/canvasdesk-editor_autogen.dir/codegen: src/editor/CMakeFiles/canvasdesk-editor_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f src/editor/CMakeFiles/canvasdesk-editor_autogen.dir/build.make src/editor/CMakeFiles/canvasdesk-editor_autogen.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=76 "Finished codegen for target canvasdesk-editor_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=79 "Finished codegen for target canvasdesk-editor_autogen"
 .PHONY : src/editor/CMakeFiles/canvasdesk-editor_autogen.dir/codegen
 
 # clean rule for target.

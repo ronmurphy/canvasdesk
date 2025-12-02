@@ -121,12 +121,14 @@ src/app/canvasdesk-runtime: src/app/CMakeFiles/canvasdesk-runtime.dir/compiler_d
 src/app/canvasdesk-runtime: src/qml/libCanvasDeskQml.so
 src/app/canvasdesk-runtime: /usr/lib/libQt6Quick.so.6.10.1
 src/app/canvasdesk-runtime: /usr/lib/libQt6OpenGL.so.6.10.1
-src/app/canvasdesk-runtime: /usr/lib/libQt6Gui.so.6.10.1
-src/app/canvasdesk-runtime: /usr/lib/libGLX.so
-src/app/canvasdesk-runtime: /usr/lib/libOpenGL.so
 src/app/canvasdesk-runtime: src/core/libCanvasDeskCore.so
 src/app/canvasdesk-runtime: /usr/lib/libQt6Qml.so.6.10.1
 src/app/canvasdesk-runtime: /usr/lib/libQt6Network.so.6.10.1
+src/app/canvasdesk-runtime: src/core/libwlr_protocol.a
+src/app/canvasdesk-runtime: /usr/lib/libQt6Gui.so.6.10.1
+src/app/canvasdesk-runtime: /usr/lib/libGLX.so
+src/app/canvasdesk-runtime: /usr/lib/libOpenGL.so
+src/app/canvasdesk-runtime: /usr/lib/libwayland-client.so
 src/app/canvasdesk-runtime: /usr/lib/libQt6Core.so.6.10.1
 src/app/canvasdesk-runtime: src/app/CMakeFiles/canvasdesk-runtime.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable canvasdesk-runtime"

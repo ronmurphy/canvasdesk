@@ -121,6 +121,8 @@ src/core/libCanvasDeskCoreplugin.so: src/core/CMakeFiles/CanvasDeskCoreplugin.di
 src/core/libCanvasDeskCoreplugin.so: src/core/libCanvasDeskCore.so
 src/core/libCanvasDeskCoreplugin.so: /usr/lib/libQt6Qml.so.6.10.1
 src/core/libCanvasDeskCoreplugin.so: /usr/lib/libQt6Network.so.6.10.1
+src/core/libCanvasDeskCoreplugin.so: src/core/libwlr_protocol.a
+src/core/libCanvasDeskCoreplugin.so: /usr/lib/libwayland-client.so
 src/core/libCanvasDeskCoreplugin.so: /usr/lib/libQt6Core.so.6.10.1
 src/core/libCanvasDeskCoreplugin.so: src/core/CMakeFiles/CanvasDeskCoreplugin.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX shared module libCanvasDeskCoreplugin.so"

@@ -556,6 +556,7 @@ src/app/CMakeFiles/canvasdesk-runtime.dir/main.cpp.o: /home/brad/Documents/canva
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/syslimits.h
 
 src/app/canvasdesk-runtime: src/core/libCanvasDeskCore.so \
+  src/core/libwlr_protocol.a \
   src/qml/libCanvasDeskQml.so \
   /usr/lib/Scrt1.o \
   /usr/lib/crti.o \
@@ -639,7 +640,7 @@ src/app/canvasdesk-runtime: src/core/libCanvasDeskCore.so \
   /usr/lib/libssl.so.3 \
   /usr/lib/libsystemd.so.0 \
   /usr/lib/libunistring.so.5 \
-  /usr/lib/libwayland-client.so.0 \
+  /usr/lib/libwayland-client.so \
   /usr/lib/libwayland-cursor.so.0 \
   /usr/lib/libxcb.so.1 \
   /usr/lib/libxkbcommon.so.0 \
@@ -677,7 +678,7 @@ src/app/canvasdesk-runtime: src/core/libCanvasDeskCore.so \
   /usr/lib32/libssh2.so.1 \
   /usr/lib32/libssl.so.3 \
   /usr/lib32/libunistring.so.5 \
-  /usr/lib32/libwayland-client.so.0 \
+  /usr/lib32/libwayland-cursor.so.0 \
   /usr/lib32/libxcb.so.1 \
   src/app/CMakeFiles/canvasdesk-runtime.dir/canvasdesk-runtime_autogen/mocs_compilation.cpp.o \
   src/app/CMakeFiles/canvasdesk-runtime.dir/main.cpp.o
@@ -688,8 +689,6 @@ src/app/CMakeFiles/canvasdesk-runtime.dir/main.cpp.o:
 src/app/CMakeFiles/canvasdesk-runtime.dir/canvasdesk-runtime_autogen/mocs_compilation.cpp.o:
 
 /usr/lib32/libxcb.so.1:
-
-/usr/lib32/libwayland-client.so.0:
 
 /usr/lib32/libssl.so.3:
 
@@ -828,6 +827,8 @@ src/app/CMakeFiles/canvasdesk-runtime.dir/canvasdesk-runtime_autogen/mocs_compil
 /usr/lib/crti.o:
 
 /usr/lib/Scrt1.o:
+
+src/core/libwlr_protocol.a:
 
 /usr/lib32/libunistring.so.5:
 
@@ -1060,8 +1061,6 @@ src/core/libCanvasDeskCore.so:
 /usr/include/c++/15.2.1/bits/hash_bytes.h:
 
 /usr/include/qt6/QtCore/qmap.h:
-
-/usr/lib/libwayland-client.so.0:
 
 /usr/include/c++/15.2.1/bits/stl_relops.h:
 
@@ -1669,6 +1668,8 @@ src/qml/libCanvasDeskQml.so:
 
 /usr/include/qt6/QtCore/qtversionchecks.h:
 
+/usr/lib/libwayland-client.so:
+
 /usr/include/qt6/QtCore/qtconfigmacros.h:
 
 /usr/include/gnu/stubs.h:
@@ -1996,6 +1997,8 @@ src/qml/libCanvasDeskQml.so:
 /usr/include/c++/15.2.1/ratio:
 
 /usr/include/qt6/QtQml/qqmlapplicationengine.h:
+
+/usr/lib32/libwayland-cursor.so.0:
 
 /usr/include/qt6/QtQml/qqmlengine.h:
 

@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -DCanvasDeskCoreplugin_EXPORTS -DQT_CORE_LIB -DQT_DEPRECATED_WARNINGS -DQT_NETWORK_LIB -DQT_NO_DEBUG -DQT_PLUGIN -DQT_QMLINTEGRATION_LIB -DQT_QML_LIB
 
-CXX_INCLUDES = -I/home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCoreplugin_autogen/include -I/home/brad/Documents/canvasdesk/src/core -isystem /usr/include/qt6/QtQml -isystem /usr/include/qt6 -isystem /usr/include/qt6/QtCore -isystem /usr/lib/qt6/mkspecs/linux-g++ -isystem /usr/include/qt6/QtQmlIntegration -isystem /usr/include/qt6/QtNetwork
+CXX_INCLUDES = -I/home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCoreplugin_autogen/include -I/home/brad/Documents/canvasdesk/src/core -I/home/brad/Documents/canvasdesk/build/src/core -isystem /usr/include/qt6/QtQml -isystem /usr/include/qt6 -isystem /usr/include/qt6/QtCore -isystem /usr/lib/qt6/mkspecs/linux-g++ -isystem /usr/include/qt6/QtQmlIntegration -isystem /usr/include/qt6/QtNetwork
 
 CXX_FLAGS = -std=gnu++20 -fPIC -mno-direct-extern-access
 

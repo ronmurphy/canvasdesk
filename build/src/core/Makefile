@@ -85,6 +85,51 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
 
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+.PHONY : list_install_components/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
+
 # The main all target
 all: cmake_check_build_system
 	cd /home/brad/Documents/canvasdesk/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/brad/Documents/canvasdesk/build/CMakeFiles /home/brad/Documents/canvasdesk/build/src/core//CMakeFiles/progress.marks
@@ -115,6 +160,20 @@ preinstall/fast:
 depend:
 	cd /home/brad/Documents/canvasdesk/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
+
+# Convenience name for target.
+src/core/CMakeFiles/wlr_protocol.dir/rule:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/core/CMakeFiles/wlr_protocol.dir/rule
+.PHONY : src/core/CMakeFiles/wlr_protocol.dir/rule
+
+# Convenience name for target.
+wlr_protocol: src/core/CMakeFiles/wlr_protocol.dir/rule
+.PHONY : wlr_protocol
+
+# fast build rule for target.
+wlr_protocol/fast:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/wlr_protocol.dir/build.make src/core/CMakeFiles/wlr_protocol.dir/build
+.PHONY : wlr_protocol/fast
 
 # Convenience name for target.
 src/core/CMakeFiles/CanvasDeskCore.dir/rule:
@@ -570,6 +629,30 @@ WindowManager.cpp.s:
 	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore.dir/build.make src/core/CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.s
 .PHONY : WindowManager.cpp.s
 
+WlrWindowManager.o: WlrWindowManager.cpp.o
+.PHONY : WlrWindowManager.o
+
+# target to build an object file
+WlrWindowManager.cpp.o:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore.dir/build.make src/core/CMakeFiles/CanvasDeskCore.dir/WlrWindowManager.cpp.o
+.PHONY : WlrWindowManager.cpp.o
+
+WlrWindowManager.i: WlrWindowManager.cpp.i
+.PHONY : WlrWindowManager.i
+
+# target to preprocess a source file
+WlrWindowManager.cpp.i:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore.dir/build.make src/core/CMakeFiles/CanvasDeskCore.dir/WlrWindowManager.cpp.i
+.PHONY : WlrWindowManager.cpp.i
+
+WlrWindowManager.s: WlrWindowManager.cpp.s
+.PHONY : WlrWindowManager.s
+
+# target to generate assembly for a file
+WlrWindowManager.cpp.s:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore.dir/build.make src/core/CMakeFiles/CanvasDeskCore.dir/WlrWindowManager.cpp.s
+.PHONY : WlrWindowManager.cpp.s
+
 canvasdeskcore_qmltyperegistrations.o: canvasdeskcore_qmltyperegistrations.cpp.o
 .PHONY : canvasdeskcore_qmltyperegistrations.o
 
@@ -594,6 +677,30 @@ canvasdeskcore_qmltyperegistrations.cpp.s:
 	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore.dir/build.make src/core/CMakeFiles/CanvasDeskCore.dir/canvasdeskcore_qmltyperegistrations.cpp.s
 .PHONY : canvasdeskcore_qmltyperegistrations.cpp.s
 
+wlr-foreign-toplevel-management-unstable-v1-protocol.o: wlr-foreign-toplevel-management-unstable-v1-protocol.c.o
+.PHONY : wlr-foreign-toplevel-management-unstable-v1-protocol.o
+
+# target to build an object file
+wlr-foreign-toplevel-management-unstable-v1-protocol.c.o:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/wlr_protocol.dir/build.make src/core/CMakeFiles/wlr_protocol.dir/wlr-foreign-toplevel-management-unstable-v1-protocol.c.o
+.PHONY : wlr-foreign-toplevel-management-unstable-v1-protocol.c.o
+
+wlr-foreign-toplevel-management-unstable-v1-protocol.i: wlr-foreign-toplevel-management-unstable-v1-protocol.c.i
+.PHONY : wlr-foreign-toplevel-management-unstable-v1-protocol.i
+
+# target to preprocess a source file
+wlr-foreign-toplevel-management-unstable-v1-protocol.c.i:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/wlr_protocol.dir/build.make src/core/CMakeFiles/wlr_protocol.dir/wlr-foreign-toplevel-management-unstable-v1-protocol.c.i
+.PHONY : wlr-foreign-toplevel-management-unstable-v1-protocol.c.i
+
+wlr-foreign-toplevel-management-unstable-v1-protocol.s: wlr-foreign-toplevel-management-unstable-v1-protocol.c.s
+.PHONY : wlr-foreign-toplevel-management-unstable-v1-protocol.s
+
+# target to generate assembly for a file
+wlr-foreign-toplevel-management-unstable-v1-protocol.c.s:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/wlr_protocol.dir/build.make src/core/CMakeFiles/wlr_protocol.dir/wlr-foreign-toplevel-management-unstable-v1-protocol.c.s
+.PHONY : wlr-foreign-toplevel-management-unstable-v1-protocol.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -601,6 +708,10 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... install"
+	@echo "... install/local"
+	@echo "... install/strip"
+	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... CanvasDeskCore_autogen"
 	@echo "... CanvasDeskCore_autogen_timestamp_deps"
@@ -619,6 +730,7 @@ help:
 	@echo "... qt_internal_plugins"
 	@echo "... CanvasDeskCore"
 	@echo "... CanvasDeskCoreplugin"
+	@echo "... wlr_protocol"
 	@echo "... .qt/rcc/qrc_qmake_CanvasDesk.o"
 	@echo "... .qt/rcc/qrc_qmake_CanvasDesk.i"
 	@echo "... .qt/rcc/qrc_qmake_CanvasDesk.s"
@@ -646,9 +758,15 @@ help:
 	@echo "... WindowManager.o"
 	@echo "... WindowManager.i"
 	@echo "... WindowManager.s"
+	@echo "... WlrWindowManager.o"
+	@echo "... WlrWindowManager.i"
+	@echo "... WlrWindowManager.s"
 	@echo "... canvasdeskcore_qmltyperegistrations.o"
 	@echo "... canvasdeskcore_qmltyperegistrations.i"
 	@echo "... canvasdeskcore_qmltyperegistrations.s"
+	@echo "... wlr-foreign-toplevel-management-unstable-v1-protocol.o"
+	@echo "... wlr-foreign-toplevel-management-unstable-v1-protocol.i"
+	@echo "... wlr-foreign-toplevel-management-unstable-v1-protocol.s"
 .PHONY : help
 
 
