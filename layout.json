@@ -2,8 +2,8 @@
   "components": [
     {
       "type": "Taskbar",
-      "x": 365,
-      "y": 294
+      "x": 280,
+      "y": 197
     }
   ]
 }

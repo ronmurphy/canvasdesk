@@ -13,36 +13,20 @@ WindowManager::WindowManager(QObject *parent) : QObject(parent) {
     return;
   }
 
-  // Delay Wayland initialization to avoid crashes during early QML setup
-  QMetaObject::invokeMethod(this, [this, waylandDisplay]() {
-    // Initialize KWayland connection
-    m_connection = new ConnectionThread(this);
-    m_connection->setSocketName(QString::fromUtf8(waylandDisplay));
-
-    // Create registry to discover Wayland interfaces
-    m_registry = new Registry(this);
-
-    // Connect to signals before starting connection
-    connect(m_connection, &ConnectionThread::connected, this, [this]() {
-      qDebug() << "Connected to Wayland display";
-      
-      // Now setup registry after connection is established
-      m_registry->create(m_connection);
-      
-      // Connect to PlasmaWindowManagement announcement
-      connect(m_registry, &Registry::plasmaWindowManagementAnnounced, this,
-              &WindowManager::setupPlasmaWindowManagement);
-      
-      m_registry->setup();
-    });
-    
-    connect(m_connection, &ConnectionThread::failed, this, []() {
-      qWarning() << "Failed to connect to Wayland display";
-    });
-
-    // Start connection
-    m_connection->initConnection();
-  }, Qt::QueuedConnection);
+  // KWin 6.x removed PlasmaWindowManagement protocol and hasn't yet implemented
+  // the standard replacement protocols (ext_foreign_toplevel_list_v1, wlr_foreign_toplevel_management_v1)
+  // 
+  // Workarounds:
+  // 1. Use X11 session (log out, select "Plasma (X11)" instead of "Plasma (Wayland)")
+  // 2. Wait for KWin to implement standard protocols (tracked in KDE bug reports)
+  // 3. Use a wlroots-based compositor (Sway, Hyprland) with wlr_foreign_toplevel_management_v1
+  //
+  // For now, window management is disabled to prevent crashes
+  qInfo() << "Window management disabled: KWin 6.x doesn't expose window protocols yet";
+  qInfo() << "Use X11 session for working window management, or wait for KWin updates";
+  
+  // TODO: Add wlr_foreign_toplevel_management_v1 support for wlroots compositors
+  // TODO: Add ext_foreign_toplevel_list_v1 support when KWin implements it
 }
 
 void WindowManager::setupPlasmaWindowManagement(quint32 name, quint32 version) {
@@ -99,7 +83,6 @@ void WindowManager::onWindowUnmapped() {
 
 QVariantList WindowManager::windows() const {
   QVariantList result;
-  qDebug() << "WindowManager::windows() called, count:" << m_plasmaWindows.size();
 
   for (auto *window : m_plasmaWindows) {
     if (!window) {
