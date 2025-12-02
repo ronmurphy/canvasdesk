@@ -20,7 +20,7 @@ add_custom_command(
 
 # Create a library for the protocol
 add_library(wlr_protocol STATIC ${WLR_PROTO_C})
-set_target_properties(wlr_protocol PROPERTIES 
+set_target_properties(wlr_protocol PROPERTIES
     AUTOMOC OFF
     AUTORCC OFF
     AUTOUIC OFF
@@ -28,6 +28,36 @@ set_target_properties(wlr_protocol PROPERTIES
 )
 target_include_directories(wlr_protocol PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
 target_link_libraries(wlr_protocol PUBLIC Wayland::Client)
+
+# Generate ext_foreign_toplevel_list_v1 protocol (for KWin/Plasma)
+set(EXT_PROTO_XML "/usr/share/wayland-protocols/staging/ext-foreign-toplevel-list/ext-foreign-toplevel-list-v1.xml")
+set(EXT_PROTO_C ${CMAKE_CURRENT_BINARY_DIR}/ext-foreign-toplevel-list-v1-protocol.c)
+set(EXT_PROTO_H ${CMAKE_CURRENT_BINARY_DIR}/ext-foreign-toplevel-list-v1-client-protocol.h)
+
+add_custom_command(
+    OUTPUT ${EXT_PROTO_H}
+    COMMAND ${WAYLAND_SCANNER} client-header ${EXT_PROTO_XML} ${EXT_PROTO_H}
+    DEPENDS ${EXT_PROTO_XML}
+    COMMENT "Generating ext foreign toplevel list header"
+)
+
+add_custom_command(
+    OUTPUT ${EXT_PROTO_C}
+    COMMAND ${WAYLAND_SCANNER} private-code ${EXT_PROTO_XML} ${EXT_PROTO_C}
+    DEPENDS ${EXT_PROTO_XML}
+    COMMENT "Generating ext foreign toplevel list code"
+)
+
+# Create a library for the ext protocol
+add_library(ext_protocol STATIC ${EXT_PROTO_C})
+set_target_properties(ext_protocol PROPERTIES
+    AUTOMOC OFF
+    AUTORCC OFF
+    AUTOUIC OFF
+    LINKER_LANGUAGE C
+)
+target_include_directories(ext_protocol PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
+target_link_libraries(ext_protocol PUBLIC Wayland::Client)
 
 qt_add_library(CanvasDeskCore SHARED)
 
@@ -47,13 +77,16 @@ qt_add_qml_module(CanvasDeskCore
         WindowManager.h
         WlrWindowManager.cpp
         WlrWindowManager.h
+        ExtForeignToplevelManager.cpp
+        ExtForeignToplevelManager.h
         ${WLR_PROTO_H}
+        ${EXT_PROTO_H}
 )
 
 # Add dependency on protocol generation
-add_dependencies(CanvasDeskCore wlr_protocol)
+add_dependencies(CanvasDeskCore wlr_protocol ext_protocol)
 
-target_link_libraries(CanvasDeskCore 
+target_link_libraries(CanvasDeskCore
     PRIVATE
         Qt6::Core
         Qt6::Qml
@@ -62,6 +95,7 @@ target_link_libraries(CanvasDeskCore
     PUBLIC
         Wayland::Client
         wlr_protocol
+        ext_protocol
 )
 
 target_include_directories(CanvasDeskCore 

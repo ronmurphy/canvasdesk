@@ -54,6 +54,7 @@ canvasdesk-runtime: \
   /usr/lib/libzstd.so.1 \
   /usr/lib/libz.so.1 \
   /usr/lib/libproxy.so.1 \
+  /usr/lib32/libproxy.so.1 \
   /usr/lib/libproxy.so.1 \
   /usr/lib/libproxy.so.1 \
   /usr/lib/libcrypto.so.3 \
@@ -93,11 +94,13 @@ canvasdesk-runtime: \
   /usr/lib32/libbrotlicommon.so.1 \
   /usr/lib/libbrotlicommon.so.1 \
   /usr/lib/libproxy/libpxbackend-1.0.so \
+  /usr/lib32/libgobject-2.0.so.0 \
   /usr/lib/libgobject-2.0.so.0 \
   /usr/lib32/libexpat.so.1 \
   /usr/lib/libexpat.so.1 \
   /usr/lib32/libxcb.so.1 \
   /usr/lib/libxcb.so.1 \
+  /usr/lib32/libpcre2-8.so.0 \
   /usr/lib/libpcre2-8.so.0 \
   /usr/lib/libdbus-1.so.3 \
   /usr/lib/libgraphite2.so.3 \
@@ -111,7 +114,9 @@ canvasdesk-runtime: \
   /usr/lib/libgomp.so.1 \
   /usr/lib32/libcurl.so.4 \
   /usr/lib/libcurl.so.4 \
+  /usr/lib32/libgio-2.0.so.0 \
   /usr/lib/libgio-2.0.so.0 \
+  /usr/lib32/libduktape.so.207 \
   /usr/lib/libduktape.so.207 \
   /usr/lib32/libXau.so.6 \
   /usr/lib/libXau.so.6 \
@@ -129,10 +134,13 @@ canvasdesk-runtime: \
   /usr/lib/libpsl.so.5 \
   /usr/lib32/libssl.so.3 \
   /usr/lib/libssl.so.3 \
+  /usr/lib32/libgmodule-2.0.so.0 \
   /usr/lib/libgmodule-2.0.so.0 \
+  /usr/lib32/libmount.so.1 \
   /usr/lib/libmount.so.1 \
   /usr/lib32/libunistring.so.5 \
   /usr/lib/libunistring.so.5 \
+  /usr/lib32/libblkid.so.1 \
   /usr/lib/libblkid.so.1
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/Scrt1.o:
@@ -245,6 +253,8 @@ CMakeFiles/canvasdesk-runtime.dir/main.cpp.o:
 
 /usr/lib/libproxy.so.1:
 
+/usr/lib32/libproxy.so.1:
+
 /usr/lib/libproxy.so.1:
 
 /usr/lib/libproxy.so.1:
@@ -323,6 +333,8 @@ CMakeFiles/canvasdesk-runtime.dir/main.cpp.o:
 
 /usr/lib/libproxy/libpxbackend-1.0.so:
 
+/usr/lib32/libgobject-2.0.so.0:
+
 /usr/lib/libgobject-2.0.so.0:
 
 /usr/lib32/libexpat.so.1:
@@ -332,6 +344,8 @@ CMakeFiles/canvasdesk-runtime.dir/main.cpp.o:
 /usr/lib32/libxcb.so.1:
 
 /usr/lib/libxcb.so.1:
+
+/usr/lib32/libpcre2-8.so.0:
 
 /usr/lib/libpcre2-8.so.0:
 
@@ -359,7 +373,11 @@ CMakeFiles/canvasdesk-runtime.dir/main.cpp.o:
 
 /usr/lib/libcurl.so.4:
 
+/usr/lib32/libgio-2.0.so.0:
+
 /usr/lib/libgio-2.0.so.0:
+
+/usr/lib32/libduktape.so.207:
 
 /usr/lib/libduktape.so.207:
 
@@ -395,12 +413,18 @@ CMakeFiles/canvasdesk-runtime.dir/main.cpp.o:
 
 /usr/lib/libssl.so.3:
 
+/usr/lib32/libgmodule-2.0.so.0:
+
 /usr/lib/libgmodule-2.0.so.0:
+
+/usr/lib32/libmount.so.1:
 
 /usr/lib/libmount.so.1:
 
 /usr/lib32/libunistring.so.5:
 
 /usr/lib/libunistring.so.5:
+
+/usr/lib32/libblkid.so.1:
 
 /usr/lib/libblkid.so.1:

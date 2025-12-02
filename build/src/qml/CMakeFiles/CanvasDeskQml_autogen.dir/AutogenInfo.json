@@ -94,7 +94,7 @@
 		"/home/brad/Documents/canvasdesk/build/src/qml/canvasdeskqml_qmltyperegistrations.cpp"
 	],
 	"MULTI_CONFIG" : false,
-	"PARALLEL" : 4,
+	"PARALLEL" : 8,
 	"PARSE_CACHE_FILE" : "/home/brad/Documents/canvasdesk/build/src/qml/CMakeFiles/CanvasDeskQml_autogen.dir/ParseCache.txt",
 	"QT_MOC_EXECUTABLE" : "/usr/lib/qt6/moc",
 	"QT_UIC_EXECUTABLE" : "",

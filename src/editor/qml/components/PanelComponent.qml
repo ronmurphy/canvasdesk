@@ -16,6 +16,10 @@ Rectangle {
     // Editor support
     property bool editorOpen: false
 
+    // Internal state for auto-hide
+    property bool revealed: !autoHide || editorOpen
+    property bool mouseInside: false
+
     // Computed orientation for layout
     readonly property bool isHorizontal: edge === "top" || edge === "bottom"
 
@@ -23,11 +27,23 @@ Rectangle {
     property alias dockedContainer: contentContainer
 
     color: panelColor
-    opacity: panelOpacity
+    opacity: autoHide && !revealed && !editorOpen ? 0.3 : panelOpacity
     border.color: panelBorderColor
     border.width: 2
     radius: panelRadius
     clip: false  // Allow child popups to render outside panel bounds
+
+    // Smooth opacity animation for auto-hide
+    Behavior on opacity {
+        NumberAnimation { duration: 200; easing.type: Easing.InOutQuad }
+    }
+
+    // Always show in editor mode
+    onEditorOpenChanged: {
+        if (editorOpen) {
+            revealed = true
+        }
+    }
 
     // Container for docked components
     Item {
@@ -49,6 +65,66 @@ Rectangle {
             visible: !isHorizontal
             anchors.fill: parent
             spacing: 8
+        }
+    }
+
+    // Panel hover area for auto-hide
+    MouseArea {
+        id: panelHoverArea
+        anchors.fill: parent
+        enabled: autoHide && !editorOpen
+        hoverEnabled: true
+        propagateComposedEvents: true
+        acceptedButtons: Qt.NoButton  // Don't capture clicks, just hover
+
+        onEntered: {
+            mouseInside = true
+            revealed = true
+        }
+
+        onExited: {
+            mouseInside = false
+            hideTimer.restart()
+        }
+    }
+
+    // Timer to hide panel when mouse leaves
+    Timer {
+        id: hideTimer
+        interval: 500
+        onTriggered: {
+            if (!mouseInside && autoHide && !editorOpen) {
+                revealed = false
+            }
+        }
+    }
+
+    // Trigger area at screen edge (for revealing hidden panel)
+    // This is positioned at the parent level to catch edge hovers
+    MouseArea {
+        id: edgeTrigger
+        enabled: autoHide && !revealed && !editorOpen
+        hoverEnabled: true
+        z: -1  // Below panel
+
+        // Position depends on edge
+        x: {
+            if (edge === "left") return -5
+            if (edge === "right") return root.width
+            return 0
+        }
+        y: {
+            if (edge === "top") return -5
+            if (edge === "bottom") return root.height
+            return 0
+        }
+        width: isHorizontal ? root.width : 5
+        height: isHorizontal ? 5 : root.height
+
+        onEntered: {
+            if (autoHide && !editorOpen) {
+                revealed = true
+            }
         }
     }
 
