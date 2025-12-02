@@ -8,7 +8,7 @@
                         {
                             "codegenResult": 0,
                             "column": 27,
-                            "durationMicroseconds": 112,
+                            "durationMicroseconds": 164,
                             "functionName": "onPreviewModeChanged",
                             "line": 19,
                             "message": ""
@@ -16,7 +16,7 @@
                         {
                             "codegenResult": 2,
                             "column": 5,
-                            "durationMicroseconds": 532,
+                            "durationMicroseconds": 944,
                             "functionName": "saveLayout",
                             "line": 27,
                             "message": "Cannot retrieve a non-object type by ID: layoutManager"
@@ -24,7 +24,7 @@
                         {
                             "codegenResult": 2,
                             "column": 5,
-                            "durationMicroseconds": 646,
+                            "durationMicroseconds": 1210,
                             "functionName": "loadLayout",
                             "line": 46,
                             "message": "Cannot retrieve a non-object type by ID: layoutManager"
@@ -32,7 +32,7 @@
                         {
                             "codegenResult": 2,
                             "column": 5,
-                            "durationMicroseconds": 888,
+                            "durationMicroseconds": 1331,
                             "functionName": "loadPreview",
                             "line": 339,
                             "message": "Cannot retrieve a non-object type by ID: layoutManager"
@@ -40,7 +40,7 @@
                         {
                             "codegenResult": 0,
                             "column": 5,
-                            "durationMicroseconds": 288,
+                            "durationMicroseconds": 339,
                             "functionName": "clearPreview",
                             "line": 357,
                             "message": ""
@@ -136,7 +136,7 @@
                         {
                             "codegenResult": 2,
                             "column": 23,
-                            "durationMicroseconds": 20,
+                            "durationMicroseconds": 22,
                             "functionName": "currentIndex",
                             "line": 108,
                             "message": "Cannot access value for name previewMode"
@@ -144,7 +144,7 @@
                         {
                             "codegenResult": 0,
                             "column": 23,
-                            "durationMicroseconds": 34,
+                            "durationMicroseconds": 36,
                             "functionName": "fill",
                             "line": 107,
                             "message": ""
@@ -168,7 +168,7 @@
                         {
                             "codegenResult": 2,
                             "column": 39,
-                            "durationMicroseconds": 14,
+                            "durationMicroseconds": 15,
                             "functionName": "currentIndex",
                             "line": 140,
                             "message": "Cannot retrieve a non-object type by ID: leftTabBar"
@@ -200,7 +200,7 @@
                         {
                             "codegenResult": 0,
                             "column": 46,
-                            "durationMicroseconds": 34,
+                            "durationMicroseconds": 37,
                             "functionName": "active",
                             "line": 162,
                             "message": ""
@@ -208,7 +208,7 @@
                         {
                             "codegenResult": 0,
                             "column": 48,
-                            "durationMicroseconds": 33,
+                            "durationMicroseconds": 38,
                             "functionName": "dragType",
                             "line": 163,
                             "message": ""
@@ -216,7 +216,7 @@
                         {
                             "codegenResult": 2,
                             "column": 48,
-                            "durationMicroseconds": 13,
+                            "durationMicroseconds": 14,
                             "functionName": "mimeData",
                             "line": 164,
                             "message": "Cannot access value for name type"
@@ -224,7 +224,7 @@
                         {
                             "codegenResult": 2,
                             "column": 54,
-                            "durationMicroseconds": 118,
+                            "durationMicroseconds": 129,
                             "functionName": "onActiveChanged",
                             "line": 168,
                             "message": "Cannot generate efficient code for LoadClosure"
@@ -232,7 +232,7 @@
                         {
                             "codegenResult": 2,
                             "column": 36,
-                            "durationMicroseconds": 391,
+                            "durationMicroseconds": 454,
                             "functionName": "model",
                             "line": 175,
                             "message": "Cannot access value for name AppManager"
@@ -264,7 +264,7 @@
                         {
                             "codegenResult": 0,
                             "column": 46,
-                            "durationMicroseconds": 36,
+                            "durationMicroseconds": 39,
                             "functionName": "active",
                             "line": 182,
                             "message": ""
@@ -272,7 +272,7 @@
                         {
                             "codegenResult": 0,
                             "column": 48,
-                            "durationMicroseconds": 34,
+                            "durationMicroseconds": 25,
                             "functionName": "dragType",
                             "line": 183,
                             "message": ""
@@ -288,7 +288,7 @@
                         {
                             "codegenResult": 2,
                             "column": 54,
-                            "durationMicroseconds": 84,
+                            "durationMicroseconds": 89,
                             "functionName": "onActiveChanged",
                             "line": 198,
                             "message": "Cannot generate efficient code for LoadClosure"
@@ -296,7 +296,7 @@
                         {
                             "codegenResult": 0,
                             "column": 35,
-                            "durationMicroseconds": 21,
+                            "durationMicroseconds": 20,
                             "functionName": "centerIn",
                             "line": 221,
                             "message": ""
@@ -304,7 +304,7 @@
                         {
                             "codegenResult": 2,
                             "column": 32,
-                            "durationMicroseconds": 809,
+                            "durationMicroseconds": 889,
                             "functionName": "onDropped",
                             "line": 227,
                             "message": "Cannot generate efficient code for call to untyped JavaScript function"
@@ -312,7 +312,7 @@
                         {
                             "codegenResult": 0,
                             "column": 32,
-                            "durationMicroseconds": 17,
+                            "durationMicroseconds": 21,
                             "functionName": "onDropped",
                             "line": 227,
                             "message": ""
@@ -320,7 +320,7 @@
                         {
                             "codegenResult": 0,
                             "column": 35,
-                            "durationMicroseconds": 21,
+                            "durationMicroseconds": 29,
                             "functionName": "fill",
                             "line": 226,
                             "message": ""
@@ -328,7 +328,7 @@
                         {
                             "codegenResult": 0,
                             "column": 28,
-                            "durationMicroseconds": 21,
+                            "durationMicroseconds": 31,
                             "functionName": "model",
                             "line": 254,
                             "message": ""
@@ -336,7 +336,7 @@
                         {
                             "codegenResult": 2,
                             "column": 28,
-                            "durationMicroseconds": 14,
+                            "durationMicroseconds": 15,
                             "functionName": "x",
                             "line": 257,
                             "message": "Cannot access value for name model"
@@ -352,7 +352,7 @@
                         {
                             "codegenResult": 2,
                             "column": 35,
-                            "durationMicroseconds": 12,
+                            "durationMicroseconds": 16,
                             "functionName": "text",
                             "line": 266,
                             "message": "Cannot access value for name model"
@@ -376,7 +376,7 @@
                         {
                             "codegenResult": 2,
                             "column": 41,
-                            "durationMicroseconds": 210,
+                            "durationMicroseconds": 228,
                             "functionName": "onReleased",
                             "line": 276,
                             "message": "Cannot access value for name canvasModel"
@@ -384,7 +384,7 @@
                         {
                             "codegenResult": 0,
                             "column": 43,
-                            "durationMicroseconds": 22,
+                            "durationMicroseconds": 23,
                             "functionName": "fill",
                             "line": 270,
                             "message": ""

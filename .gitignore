@@ -1,0 +1,35 @@
+# Ignore everything in build
+build/*
+
+# But don't ignore these directories (so we can whitelist files inside them)
+!build/src/
+!build/src/editor/
+!build/src/core/
+!build/src/qml/
+
+# Ignore everything inside those directories by default
+build/src/*
+build/src/editor/*
+build/src/core/*
+build/src/qml/*
+
+# Whitelist the specific binaries
+!build/src/editor/canvasdesk-editor
+!build/src/core/libCanvasDeskCore.so
+!build/src/qml/libCanvasDeskQml.so
+
+# Ignore other common build artifacts
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake
+*.cmake
+*.o
+*.a
+*.so
+*.dylib
+*.dll
+*.exe
+.DS_Store
+.vscode/
+*.user

@@ -407,4 +407,19 @@ src/editor/CMakeFiles/canvasdesk-editor.dir/main.cpp.o: \
  /usr/include/qt6/QtQmlIntegration/qqmlintegration.h \
  /usr/include/qt6/QtQml/qqmlerror.h \
  /usr/include/qt6/QtQml/qqmlabstracturlinterceptor.h \
- /usr/include/qt6/QtCore/QUrl /usr/include/qt6/QtCore/qurl.h
+ /usr/include/qt6/QtCore/QUrl /usr/include/qt6/QtCore/qurl.h \
+ /usr/include/qt6/QtQuick/QQuickImageProvider \
+ /usr/include/qt6/QtQuick/qquickimageprovider.h \
+ /usr/include/qt6/QtQuick/qtquickglobal.h \
+ /usr/include/qt6/QtQuick/qtquick-config.h \
+ /usr/include/qt6/QtQuick/qtquickexports.h \
+ /usr/include/qt6/QtGui/qimage.h /usr/include/qt6/QtGui/qcolor.h \
+ /usr/include/qt6/QtGui/qrgb.h /usr/include/qt6/QtGui/qrgba64.h \
+ /usr/include/qt6/QtGui/qpaintdevice.h /usr/include/qt6/QtCore/qrect.h \
+ /usr/include/qt6/QtGui/qpixelformat.h \
+ /usr/include/qt6/QtGui/qtransform.h /usr/include/qt6/QtGui/qpolygon.h \
+ /usr/include/qt6/QtGui/qregion.h /usr/include/qt6/QtCore/qline.h \
+ /usr/include/qt6/QtGui/qpixmap.h /usr/include/qt6/QtGui/QIcon \
+ /usr/include/qt6/QtGui/qicon.h /usr/include/qt6/QtGui/QPixmap \
+ /usr/include/qt6/QtGui/qpixmap.h /usr/include/qt6/QtCore/QDebug \
+ /usr/include/qt6/QtCore/qdebug.h

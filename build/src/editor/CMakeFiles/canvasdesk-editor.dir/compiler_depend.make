@@ -1887,6 +1887,7 @@ src/editor/CMakeFiles/canvasdesk-editor.dir/main.cpp.o: /home/brad/Documents/can
   /usr/include/math.h \
   /usr/include/pthread.h \
   /usr/include/qt6/QtCore/QCoreApplication \
+  /usr/include/qt6/QtCore/QDebug \
   /usr/include/qt6/QtCore/QUrl \
   /usr/include/qt6/QtCore/q17memory.h \
   /usr/include/qt6/QtCore/q20functional.h \
@@ -1950,6 +1951,7 @@ src/editor/CMakeFiles/canvasdesk-editor.dir/main.cpp.o: /home/brad/Documents/can
   /usr/include/qt6/QtCore/qiterable.h \
   /usr/include/qt6/QtCore/qiterator.h \
   /usr/include/qt6/QtCore/qlatin1stringview.h \
+  /usr/include/qt6/QtCore/qline.h \
   /usr/include/qt6/QtCore/qlist.h \
   /usr/include/qt6/QtCore/qlocale.h \
   /usr/include/qt6/QtCore/qlogging.h \
@@ -1973,6 +1975,7 @@ src/editor/CMakeFiles/canvasdesk-editor.dir/main.cpp.o: /home/brad/Documents/can
   /usr/include/qt6/QtCore/qpoint.h \
   /usr/include/qt6/QtCore/qpointer.h \
   /usr/include/qt6/QtCore/qprocessordetection.h \
+  /usr/include/qt6/QtCore/qrect.h \
   /usr/include/qt6/QtCore/qrefcount.h \
   /usr/include/qt6/QtCore/qscopedpointer.h \
   /usr/include/qt6/QtCore/qscopeguard.h \
@@ -2030,12 +2033,25 @@ src/editor/CMakeFiles/canvasdesk-editor.dir/main.cpp.o: /home/brad/Documents/can
   /usr/include/qt6/QtCore/qxptype_traits.h \
   /usr/include/qt6/QtCore/qyieldcpu.h \
   /usr/include/qt6/QtGui/QGuiApplication \
+  /usr/include/qt6/QtGui/QIcon \
+  /usr/include/qt6/QtGui/QPixmap \
+  /usr/include/qt6/QtGui/qcolor.h \
   /usr/include/qt6/QtGui/qguiapplication.h \
   /usr/include/qt6/QtGui/qguiapplication_platform.h \
+  /usr/include/qt6/QtGui/qicon.h \
+  /usr/include/qt6/QtGui/qimage.h \
   /usr/include/qt6/QtGui/qinputmethod.h \
+  /usr/include/qt6/QtGui/qpaintdevice.h \
+  /usr/include/qt6/QtGui/qpixelformat.h \
+  /usr/include/qt6/QtGui/qpixmap.h \
+  /usr/include/qt6/QtGui/qpolygon.h \
+  /usr/include/qt6/QtGui/qregion.h \
+  /usr/include/qt6/QtGui/qrgb.h \
+  /usr/include/qt6/QtGui/qrgba64.h \
   /usr/include/qt6/QtGui/qtgui-config.h \
   /usr/include/qt6/QtGui/qtguiexports.h \
   /usr/include/qt6/QtGui/qtguiglobal.h \
+  /usr/include/qt6/QtGui/qtransform.h \
   /usr/include/qt6/QtGui/qwindowdefs.h \
   /usr/include/qt6/QtNetwork/qtnetwork-config.h \
   /usr/include/qt6/QtNetwork/qtnetworkexports.h \
@@ -2061,6 +2077,11 @@ src/editor/CMakeFiles/canvasdesk-editor.dir/main.cpp.o: /home/brad/Documents/can
   /usr/include/qt6/QtQml/qtqmlexports.h \
   /usr/include/qt6/QtQml/qtqmlglobal.h \
   /usr/include/qt6/QtQmlIntegration/qqmlintegration.h \
+  /usr/include/qt6/QtQuick/QQuickImageProvider \
+  /usr/include/qt6/QtQuick/qquickimageprovider.h \
+  /usr/include/qt6/QtQuick/qtquick-config.h \
+  /usr/include/qt6/QtQuick/qtquickexports.h \
+  /usr/include/qt6/QtQuick/qtquickglobal.h \
   /usr/include/sched.h \
   /usr/include/stdc-predef.h \
   /usr/include/stdint.h \
@@ -2256,15 +2277,11 @@ src/editor/CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_canvasdesk-editor_raw_qm
 
 /usr/lib32/libduktape.so.207:
 
-/usr/lib32/libcurl.so.4:
-
 /usr/lib32/libcom_err.so.2:
 
 /usr/lib32/libbrotlicommon.so.1:
 
 /usr/lib32/libblkid.so.1:
-
-/usr/lib32/libXdmcp.so.6:
 
 /usr/lib32/libXau.so.6:
 
@@ -2376,19 +2393,49 @@ src/editor/CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_qmake_CanvasDeskEditor.c
 
 src/core/libCanvasDeskCore.so:
 
+/usr/include/qt6/QtQuick/qtquickexports.h:
+
+/usr/include/qt6/QtQuick/qquickimageprovider.h:
+
+/usr/include/qt6/QtQuick/QQuickImageProvider:
+
 /usr/include/qt6/QtQml/QQmlApplicationEngine:
 
+/usr/include/qt6/QtGui/qtransform.h:
+
+/usr/lib32/libcurl.so.4:
+
+/usr/include/qt6/QtGui/qrgba64.h:
+
+/usr/include/qt6/QtGui/qregion.h:
+
+/usr/include/qt6/QtGui/qpixelformat.h:
+
+/usr/include/qt6/QtGui/qpaintdevice.h:
+
 /usr/include/qt6/QtGui/qinputmethod.h:
+
+/usr/include/qt6/QtGui/qimage.h:
+
+/usr/include/qt6/QtGui/qicon.h:
 
 /usr/include/qt6/QtGui/qguiapplication_platform.h:
 
 /usr/include/qt6/QtGui/qguiapplication.h:
+
+/usr/include/qt6/QtGui/qcolor.h:
+
+/usr/include/qt6/QtGui/QPixmap:
 
 /usr/include/qt6/QtCore/qsize.h:
 
 /usr/include/qt6/QtCore/qpoint.h:
 
 /usr/include/qt6/QtCore/qnativeinterface.h:
+
+/usr/lib32/libXdmcp.so.6:
+
+/usr/include/qt6/QtCore/qline.h:
 
 /usr/include/qt6/QtCore/qeventloop.h:
 
@@ -2668,6 +2715,8 @@ src/editor/.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp:
 
 /usr/include/c++/15.2.1/bits/fs_fwd.h:
 
+/usr/include/qt6/QtGui/qpixmap.h:
+
 /usr/include/qt6/QtCore/qstringconverter_base.h:
 
 /usr/include/bits/pthread_stack_min-dynamic.h:
@@ -2706,6 +2755,10 @@ src/editor/.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp:
 
 /usr/include/errno.h:
 
+/usr/include/qt6/QtCore/qbasictimer.h:
+
+/usr/include/c++/15.2.1/array:
+
 /usr/include/asm/unistd.h:
 
 /usr/include/bits/floatn.h:
@@ -2713,6 +2766,8 @@ src/editor/.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp:
 /usr/lib/libgomp.so.1:
 
 /usr/include/c++/15.2.1/atomic:
+
+/usr/include/qt6/QtGui/qrgb.h:
 
 /usr/bin/cmake:
 
@@ -2744,6 +2799,8 @@ src/editor/.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp:
 
 /usr/include/c++/15.2.1/limits:
 
+/usr/include/qt6/QtGui/qpolygon.h:
+
 /usr/include/bits/getopt_posix.h:
 
 /usr/include/qt6/QtCore/qfunctionaltools_impl.h:
@@ -2769,6 +2826,8 @@ src/editor/.rcc/qmlcache/canvasdesk-editor_qml/EditorMain_qml.cpp:
 src/editor/.qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp:
 
 /usr/include/asm/posix_types_64.h:
+
+/usr/include/qt6/QtQuick/qtquickglobal.h:
 
 /usr/include/bits/types.h:
 
@@ -2827,6 +2886,8 @@ src/editor/.qt/rcc/qrc_qmake_CanvasDeskEditor.cpp:
 /usr/include/stdc-predef.h:
 
 /usr/include/c++/15.2.1/bits/stl_tempbuf.h:
+
+/usr/include/qt6/QtQuick/qtquick-config.h:
 
 /usr/include/asm-generic/posix_types.h:
 
@@ -2955,6 +3016,8 @@ src/editor/.qt/qml_imports/canvasdesk-editor_conf.cmake:
 /usr/include/qt6/QtQml/qqmlparserstatus.h:
 
 /usr/include/c++/15.2.1/bits/fs_dir.h:
+
+/usr/include/qt6/QtGui/QIcon:
 
 /usr/include/c++/15.2.1/bits/shared_ptr_atomic.h:
 
@@ -3280,10 +3343,6 @@ src/editor/.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp:
 
 /usr/include/qt6/QtCore/q20memory.h:
 
-/usr/include/c++/15.2.1/array:
-
-/usr/include/qt6/QtCore/qbasictimer.h:
-
 /usr/include/qt6/QtCore/q20utility.h:
 
 /usr/include/c++/15.2.1/bits/streambuf_iterator.h:
@@ -3375,6 +3434,8 @@ src/editor/.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp:
 /usr/include/qt6/QtCore/qfloat16.h:
 
 /usr/include/qt6/QtCore/qlatin1stringview.h:
+
+/usr/include/qt6/QtCore/QDebug:
 
 /usr/include/qt6/QtCore/qforeach.h:
 
@@ -3553,6 +3614,8 @@ src/editor/.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp:
 /usr/include/c++/15.2.1/bits/version.h:
 
 /usr/include/qt6/QtQmlIntegration/qqmlintegration.h:
+
+/usr/include/qt6/QtCore/qrect.h:
 
 /usr/include/stdlib.h:
 
