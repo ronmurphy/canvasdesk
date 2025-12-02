@@ -33,6 +33,9 @@ if [ -z "$WAYLAND_DISPLAY" ] && [ -z "$DISPLAY" ]; then
     # Export the Wayland display (labwc typically uses wayland-0)
     export WAYLAND_DISPLAY=wayland-0
 
+    # Tell CanvasDesk we're running as a full desktop session
+    export CANVASDESK_SESSION_MODE=1
+
     echo "Compositor started with PID: $COMPOSITOR_PID"
 else
     echo "Display server already running (WAYLAND_DISPLAY=$WAYLAND_DISPLAY, DISPLAY=$DISPLAY)"

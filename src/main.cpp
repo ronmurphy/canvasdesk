@@ -152,7 +152,11 @@ int main(int argc, char *argv[]) {
   // Load appropriate QML based on mode
   QString qmlFile = runtimeMode ? "DesktopMode.qml" : "EditorMain.qml";
   const QUrl url(QUrl::fromLocalFile(QCoreApplication::applicationDirPath() + "/../src/editor/qml/" + qmlFile));
-  
+
+  // Check if we're running as a full desktop session (not in a dev environment)
+  bool isSessionMode = qEnvironmentVariableIsSet("CANVASDESK_SESSION_MODE");
+  engine.rootContext()->setContextProperty("isSessionMode", isSessionMode);
+
   // Set preview mode for editor
   if (!runtimeMode && previewMode) {
     engine.rootContext()->setContextProperty("startInPreview", true);

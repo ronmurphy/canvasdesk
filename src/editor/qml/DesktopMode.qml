@@ -9,7 +9,18 @@ ApplicationWindow {
     width: Screen.width
     height: Screen.height
     visibility: Window.FullScreen
-    flags: Qt.FramelessWindowHint
+    flags: {
+        // Base flags for frameless fullscreen window
+        var baseFlags = Qt.FramelessWindowHint
+
+        // When running as a login session (not in dev environment like Plasma),
+        // add flags to make this behave like a desktop/background window
+        if (typeof isSessionMode !== 'undefined' && isSessionMode) {
+            return baseFlags | Qt.WindowStaysOnBottomHint | Qt.Tool
+        }
+
+        return baseFlags
+    }
     title: "CanvasDesk"
     color: "#1a1a1a"
 
