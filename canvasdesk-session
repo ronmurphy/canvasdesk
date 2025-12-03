@@ -27,6 +27,10 @@ COMPOSITOR_PID=""
 if [ -z "$WAYLAND_DISPLAY" ] && [ -z "$DISPLAY" ]; then
     echo "No display server detected, starting wayfire compositor..."
 
+    # Set cursor theme for Wayfire and clients
+    export XCURSOR_THEME=Adwaita
+    export XCURSOR_SIZE=24
+
     # Check if wayfire is installed
     if ! command -v wayfire &> /dev/null; then
         echo "ERROR: wayfire compositor not found!"
@@ -35,7 +39,7 @@ if [ -z "$WAYLAND_DISPLAY" ] && [ -z "$DISPLAY" ]; then
     fi
 
     # Start wayfire in the background
-    wayfire &
+    wayfire -c "${SCRIPT_DIR}/config/wayfire.ini" &
     COMPOSITOR_PID=$!
 
     # Give the compositor time to start

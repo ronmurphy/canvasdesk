@@ -1,9 +1,9 @@
 #include "WindowManager.h"
-#include "WlrWindowManager.h"
 #include "ExtForeignToplevelManager.h"
+#include "WlrWindowManager.h"
 #include <QDebug>
-#include <QMetaObject>
 #include <QIcon>
+#include <QMetaObject>
 
 using namespace KWayland::Client;
 
@@ -16,21 +16,28 @@ WindowManager::WindowManager(QObject *parent) : QObject(parent) {
   QByteArray waylandDisplay = qgetenv("WAYLAND_DISPLAY");
   qInfo() << "=== WindowManager initialization starting ===";
   qInfo() << "WAYLAND_DISPLAY:" << waylandDisplay;
+  qInfo() << "XDG_SESSION_TYPE:" << qgetenv("XDG_SESSION_TYPE");
+  qInfo() << "XDG_CURRENT_DESKTOP:" << qgetenv("XDG_CURRENT_DESKTOP");
   if (waylandDisplay.isEmpty()) {
     qWarning() << "WAYLAND_DISPLAY not set, window management unavailable";
     return;
   }
 
-  // Try wlr_foreign_toplevel_management_v1 first (works on Sway, Hyprland, labwc, etc.)
+  // Try wlr_foreign_toplevel_management_v1 first (works on Sway, Hyprland,
+  // labwc, etc.)
   qInfo() << "Trying wlr_foreign_toplevel_management_v1...";
   m_wlrManager = new WlrWindowManager(this);
   if (m_wlrManager->initialize()) {
     m_usingWlr = true;
-    qInfo() << "✓ Using wlr_foreign_toplevel_management_v1 for window management";
+    qInfo()
+        << "✓ Using wlr_foreign_toplevel_management_v1 for window management";
 
-    connect(m_wlrManager, &WlrWindowManager::windowAdded, this, &WindowManager::onWlrWindowChanged);
-    connect(m_wlrManager, &WlrWindowManager::windowRemoved, this, &WindowManager::onWlrWindowChanged);
-    connect(m_wlrManager, &WlrWindowManager::windowChanged, this, &WindowManager::onWlrWindowChanged);
+    connect(m_wlrManager, &WlrWindowManager::windowAdded, this,
+            &WindowManager::onWlrWindowChanged);
+    connect(m_wlrManager, &WlrWindowManager::windowRemoved, this,
+            &WindowManager::onWlrWindowChanged);
+    connect(m_wlrManager, &WlrWindowManager::windowChanged, this,
+            &WindowManager::onWlrWindowChanged);
 
     emit windowsChanged();
     qInfo() << "=== WindowManager initialization complete (wlr) ===";
@@ -38,7 +45,8 @@ WindowManager::WindowManager(QObject *parent) : QObject(parent) {
   }
   qInfo() << "✗ wlr_foreign_toplevel_management_v1 not available";
 
-  // Try ext_foreign_toplevel_list_v1 (works on KWin/Plasma 6 and other modern compositors)
+  // Try ext_foreign_toplevel_list_v1 (works on KWin/Plasma 6 and other modern
+  // compositors)
   qInfo() << "Trying ext_foreign_toplevel_list_v1...";
   delete m_wlrManager;
   m_wlrManager = nullptr;
@@ -48,9 +56,12 @@ WindowManager::WindowManager(QObject *parent) : QObject(parent) {
     m_usingExt = true;
     qInfo() << "✓ Using ext_foreign_toplevel_list_v1 for window management";
 
-    connect(m_extManager, &ExtForeignToplevelManager::windowAdded, this, &WindowManager::onWlrWindowChanged);
-    connect(m_extManager, &ExtForeignToplevelManager::windowRemoved, this, &WindowManager::onWlrWindowChanged);
-    connect(m_extManager, &ExtForeignToplevelManager::windowChanged, this, &WindowManager::onWlrWindowChanged);
+    connect(m_extManager, &ExtForeignToplevelManager::windowAdded, this,
+            &WindowManager::onWlrWindowChanged);
+    connect(m_extManager, &ExtForeignToplevelManager::windowRemoved, this,
+            &WindowManager::onWlrWindowChanged);
+    connect(m_extManager, &ExtForeignToplevelManager::windowChanged, this,
+            &WindowManager::onWlrWindowChanged);
 
     emit windowsChanged();
     qInfo() << "=== WindowManager initialization complete (ext) ===";
@@ -58,57 +69,62 @@ WindowManager::WindowManager(QObject *parent) : QObject(parent) {
   }
   qInfo() << "✗ ext_foreign_toplevel_list_v1 not available";
 
-  // Fall back to trying KWayland PlasmaWindowManagement (for older KDE or special cases)
+  // Fall back to trying KWayland PlasmaWindowManagement (for older KDE or
+  // special cases)
   qInfo() << "Trying KWayland PlasmaWindowManagement...";
   delete m_extManager;
   m_extManager = nullptr;
-  
+
   // Delay Wayland initialization to avoid crashes during early QML setup
-  QMetaObject::invokeMethod(this, [this, waylandDisplay]() {
-    // Initialize KWayland connection
-    m_connection = new ConnectionThread(this);
-    m_connection->setSocketName(QString::fromUtf8(waylandDisplay));
+  QMetaObject::invokeMethod(
+      this,
+      [this, waylandDisplay]() {
+        // Initialize KWayland connection
+        m_connection = new ConnectionThread(this);
+        m_connection->setSocketName(QString::fromUtf8(waylandDisplay));
 
-    // Create registry to discover Wayland interfaces
-    m_registry = new Registry(this);
+        // Create registry to discover Wayland interfaces
+        m_registry = new Registry(this);
 
-    // Connect to signals before starting connection
-    connect(m_connection, &ConnectionThread::connected, this, [this]() {
-      if (!m_connection || !m_registry) {
-        qWarning() << "Connection or registry null after connect";
-        return;
-      }
-      
-      qDebug() << "Wayland connected, setting up registry...";
-      
-      // Now setup registry after connection is established
-      m_registry->create(m_connection);
-      m_registry->setParent(m_connection);
-      
-      // Connect to PlasmaWindowManagement announcement
-      connect(m_registry, &Registry::plasmaWindowManagementAnnounced, this,
-              &WindowManager::setupPlasmaWindowManagement);
-      
-      connect(m_registry, &Registry::interfacesAnnounced, this, [this]() {
-        qDebug() << "All Wayland interfaces announced";
-        
-        // Check if PlasmaWindowManagement is available
-        if (!m_registry->hasInterface(Registry::Interface::PlasmaWindowManagement)) {
-          qWarning() << "PlasmaWindowManagement not available";
-          qWarning() << "Window management unavailable - use X11 session or wlroots compositor";
-        }
-      });
-      
-      m_registry->setup();
-    });
-    
-    connect(m_connection, &ConnectionThread::failed, this, []() {
-      qWarning() << "Failed to connect to Wayland display";
-    });
+        // Connect to signals before starting connection
+        connect(m_connection, &ConnectionThread::connected, this, [this]() {
+          if (!m_connection || !m_registry) {
+            qWarning() << "Connection or registry null after connect";
+            return;
+          }
 
-    // Start connection
-    m_connection->initConnection();
-  }, Qt::QueuedConnection);
+          qDebug() << "Wayland connected, setting up registry...";
+
+          // Now setup registry after connection is established
+          m_registry->create(m_connection);
+          m_registry->setParent(m_connection);
+
+          // Connect to PlasmaWindowManagement announcement
+          connect(m_registry, &Registry::plasmaWindowManagementAnnounced, this,
+                  &WindowManager::setupPlasmaWindowManagement);
+
+          connect(m_registry, &Registry::interfacesAnnounced, this, [this]() {
+            qDebug() << "All Wayland interfaces announced";
+
+            // Check if PlasmaWindowManagement is available
+            if (!m_registry->hasInterface(
+                    Registry::Interface::PlasmaWindowManagement)) {
+              qWarning() << "PlasmaWindowManagement not available";
+              qWarning() << "Window management unavailable - use X11 session "
+                            "or wlroots compositor";
+            }
+          });
+
+          m_registry->setup();
+        });
+
+        connect(m_connection, &ConnectionThread::failed, this,
+                []() { qWarning() << "Failed to connect to Wayland display"; });
+
+        // Start connection
+        m_connection->initConnection();
+      },
+      Qt::QueuedConnection);
 }
 
 void WindowManager::setupPlasmaWindowManagement(quint32 name, quint32 version) {
@@ -145,8 +161,8 @@ void WindowManager::onWindowCreated(PlasmaWindow *window) {
   // Safety against dangling pointers
   connect(window, &QObject::destroyed, this, [this, uuid]() {
     if (m_plasmaWindows.contains(uuid)) {
-        m_plasmaWindows.remove(uuid);
-        emit windowsChanged();
+      m_plasmaWindows.remove(uuid);
+      emit windowsChanged();
     }
   });
 
@@ -164,6 +180,7 @@ void WindowManager::onWindowUnmapped() {
 }
 
 void WindowManager::onWlrWindowChanged() {
+  qInfo() << "WindowManager::onWlrWindowChanged() called";
   emit windowsChanged();
 }
 
@@ -173,6 +190,12 @@ QVariantList WindowManager::windows() const {
   // If using wlr backend
   if (m_usingWlr && m_wlrManager) {
     for (auto *wlrWindow : m_wlrManager->windows()) {
+      // Filter out the desktop window itself
+      if (wlrWindow->appId == "canvasdesk" ||
+          wlrWindow->title == "CanvasDesk") {
+        continue;
+      }
+
       QVariantMap win;
       win["id"] = wlrWindow->id;
       win["title"] = wlrWindow->title;
@@ -203,8 +226,8 @@ QVariantList WindowManager::windows() const {
   // KWayland backend
   for (auto *window : m_plasmaWindows) {
     if (!window) {
-        qWarning() << "Null window pointer in m_plasmaWindows";
-        continue;
+      qWarning() << "Null window pointer in m_plasmaWindows";
+      continue;
     }
     // TODO: Implement proper virtual desktop filtering
     // For now, show all windows
@@ -213,18 +236,23 @@ QVariantList WindowManager::windows() const {
     win["id"] = window->uuid();
     win["title"] = window->title();
     win["appId"] = window->appId();
-    
+
     // Safely get icon
     QString iconName;
     if (!window->icon().isNull()) {
-        iconName = window->icon().name();
+      iconName = window->icon().name();
     }
     win["icon"] = iconName;
-    
+
     win["active"] = window->isActive();
     win["workspace"] = 0; // Default to workspace 0 for now
 
     qDebug() << "Window:" << win["title"] << "Icon:" << win["icon"];
+    // Filter out the desktop window itself
+    if (win["title"] == "CanvasDesk" || win["appId"] == "CanvasDesk") {
+      continue;
+    }
+
     result.append(win);
   }
 
