@@ -105,8 +105,8 @@ int main(int argc, char *argv[]) {
       qInfo() << "Session wrapper:" << wrapperScript;
       qInfo() << "CanvasDesk should now appear in your login manager.";
       qInfo() << "";
-      qInfo() << "NOTE: If logging in as a standalone session, labwc compositor is required.";
-      qInfo() << "      Install it with: sudo pacman -S labwc";
+      qInfo() << "NOTE: If logging in as a standalone session, wayfire compositor is required.";
+      qInfo() << "      Install it with: sudo pacman -S wayfire";
       return 0;
     } else {
       qWarning() << "Failed to write to" << sessionFile;

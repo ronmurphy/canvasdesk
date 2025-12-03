@@ -1028,6 +1028,7 @@ src/core/libCanvasDeskCoreplugin.so: /usr/lib/crti.o \
   src/core/CMakeFiles/CanvasDeskCoreplugin.dir/CanvasDeskCoreplugin_CanvasDeskPlugin.cpp.o \
   src/core/CMakeFiles/CanvasDeskCoreplugin.dir/CanvasDeskCoreplugin_autogen/mocs_compilation.cpp.o \
   src/core/libCanvasDeskCore.so \
+  src/core/libext_protocol.a \
   src/core/libwlr_protocol.a
 
 
@@ -1908,6 +1909,8 @@ src/core/CMakeFiles/CanvasDeskCoreplugin.dir/CanvasDeskCoreplugin_CanvasDeskPlug
 /usr/include/c++/15.2.1/bits/basic_string.tcc:
 
 /usr/include/c++/15.2.1/bits/node_handle.h:
+
+src/core/libext_protocol.a:
 
 /usr/include/c++/15.2.1/bits/refwrap.h:
 

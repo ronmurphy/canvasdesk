@@ -43,6 +43,7 @@ public:
     static void toplevelState(void *data, struct zwlr_foreign_toplevel_handle_v1 *handle, struct wl_array *state);
     static void toplevelDone(void *data, struct zwlr_foreign_toplevel_handle_v1 *handle);
     static void toplevelClosed(void *data, struct zwlr_foreign_toplevel_handle_v1 *handle);
+    static void toplevelParent(void *data, struct zwlr_foreign_toplevel_handle_v1 *handle, struct zwlr_foreign_toplevel_handle_v1 *parent);
     
 signals:
     void windowAdded(WlrWindow *window);

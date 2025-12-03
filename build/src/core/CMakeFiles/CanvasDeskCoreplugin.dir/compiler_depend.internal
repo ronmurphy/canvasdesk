@@ -1032,5 +1032,6 @@ src/core/libCanvasDeskCoreplugin.so
  /home/brad/Documents/canvasdesk/build/src/core/CMakeFiles/CanvasDeskCoreplugin.dir/CanvasDeskCoreplugin_CanvasDeskPlugin.cpp.o
  /home/brad/Documents/canvasdesk/build/src/core/CMakeFiles/CanvasDeskCoreplugin.dir/CanvasDeskCoreplugin_autogen/mocs_compilation.cpp.o
  /home/brad/Documents/canvasdesk/build/src/core/libCanvasDeskCore.so
+ /home/brad/Documents/canvasdesk/build/src/core/libext_protocol.a
  /home/brad/Documents/canvasdesk/build/src/core/libwlr_protocol.a
 

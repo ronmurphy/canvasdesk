@@ -1551,6 +1551,7 @@ src/qml/CMakeFiles/CanvasDeskQml.dir/canvasdeskqml_qmltyperegistrations.cpp.o: s
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/syslimits.h
 
 src/qml/libCanvasDeskQml.so: src/core/libCanvasDeskCore.so \
+  src/core/libext_protocol.a \
   src/core/libwlr_protocol.a \
   /usr/lib/crti.o \
   /usr/lib/crtn.o \
@@ -1735,6 +1736,8 @@ src/qml/CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_CanvasDeskQml_raw_qml_0.cpp.o:
 /usr/include/bits/cpu-set.h:
 
 /usr/include/c++/15.2.1/bits/refwrap.h:
+
+src/core/libext_protocol.a:
 
 /usr/include/c++/15.2.1/bits/basic_string.tcc:
 

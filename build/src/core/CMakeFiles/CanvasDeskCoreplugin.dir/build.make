@@ -122,6 +122,7 @@ src/core/libCanvasDeskCoreplugin.so: src/core/libCanvasDeskCore.so
 src/core/libCanvasDeskCoreplugin.so: /usr/lib/libQt6Qml.so.6.10.1
 src/core/libCanvasDeskCoreplugin.so: /usr/lib/libQt6Network.so.6.10.1
 src/core/libCanvasDeskCoreplugin.so: src/core/libwlr_protocol.a
+src/core/libCanvasDeskCoreplugin.so: src/core/libext_protocol.a
 src/core/libCanvasDeskCoreplugin.so: /usr/lib/libwayland-client.so
 src/core/libCanvasDeskCoreplugin.so: /usr/lib/libQt6Core.so.6.10.1
 src/core/libCanvasDeskCoreplugin.so: src/core/CMakeFiles/CanvasDeskCoreplugin.dir/link.txt

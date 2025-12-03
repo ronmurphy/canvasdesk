@@ -125,6 +125,7 @@ src/app/canvasdesk-runtime: src/core/libCanvasDeskCore.so
 src/app/canvasdesk-runtime: /usr/lib/libQt6Qml.so.6.10.1
 src/app/canvasdesk-runtime: /usr/lib/libQt6Network.so.6.10.1
 src/app/canvasdesk-runtime: src/core/libwlr_protocol.a
+src/app/canvasdesk-runtime: src/core/libext_protocol.a
 src/app/canvasdesk-runtime: /usr/lib/libQt6Gui.so.6.10.1
 src/app/canvasdesk-runtime: /usr/lib/libGLX.so
 src/app/canvasdesk-runtime: /usr/lib/libOpenGL.so

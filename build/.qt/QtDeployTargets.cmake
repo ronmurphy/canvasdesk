@@ -2,6 +2,8 @@ set(__QT_DEPLOY_TARGET_canvasdesk-runtime_FILE /home/brad/Documents/canvasdesk/b
 set(__QT_DEPLOY_TARGET_canvasdesk-runtime_TYPE EXECUTABLE)
 set(__QT_DEPLOY_TARGET_wlr_protocol_FILE /home/brad/Documents/canvasdesk/build/src/core/libwlr_protocol.a)
 set(__QT_DEPLOY_TARGET_wlr_protocol_TYPE STATIC_LIBRARY)
+set(__QT_DEPLOY_TARGET_ext_protocol_FILE /home/brad/Documents/canvasdesk/build/src/core/libext_protocol.a)
+set(__QT_DEPLOY_TARGET_ext_protocol_TYPE STATIC_LIBRARY)
 set(__QT_DEPLOY_TARGET_CanvasDeskCore_FILE /home/brad/Documents/canvasdesk/build/src/core/libCanvasDeskCore.so)
 set(__QT_DEPLOY_TARGET_CanvasDeskCore_TYPE SHARED_LIBRARY)
 set(__QT_DEPLOY_TARGET_CanvasDeskCoreplugin_FILE /home/brad/Documents/canvasdesk/build/src/core/libCanvasDeskCoreplugin.so)

@@ -2108,6 +2108,7 @@ src/editor/CMakeFiles/canvasdesk-editor.dir/main.cpp.o: /home/brad/Documents/can
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/syslimits.h
 
 src/editor/canvasdesk-editor: src/core/libCanvasDeskCore.so \
+  src/core/libext_protocol.a \
   src/core/libwlr_protocol.a \
   src/qml/libCanvasDeskQml.so \
   /usr/lib/Scrt1.o \
@@ -2388,6 +2389,8 @@ src/editor/CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qmlc
 /usr/lib/Scrt1.o:
 
 src/core/libwlr_protocol.a:
+
+src/core/libext_protocol.a:
 
 src/editor/CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_qmake_CanvasDeskEditor.cpp.o:
 

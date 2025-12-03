@@ -2117,6 +2117,7 @@ src/editor/CMakeFiles/canvasdesk-editor.dir/main.cpp.o
 
 src/editor/canvasdesk-editor
  /home/brad/Documents/canvasdesk/build/src/core/libCanvasDeskCore.so
+ /home/brad/Documents/canvasdesk/build/src/core/libext_protocol.a
  /home/brad/Documents/canvasdesk/build/src/core/libwlr_protocol.a
  /home/brad/Documents/canvasdesk/build/src/qml/libCanvasDeskQml.so
  /usr/lib/Scrt1.o

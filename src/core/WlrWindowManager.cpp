@@ -23,7 +23,7 @@ static const struct zwlr_foreign_toplevel_handle_v1_listener toplevel_listener =
     .state = WlrWindowManager::toplevelState,
     .done = WlrWindowManager::toplevelDone,
     .closed = WlrWindowManager::toplevelClosed,
-    .parent = nullptr
+    .parent = WlrWindowManager::toplevelParent
 };
 
 WlrWindowManager::WlrWindowManager(QObject *parent) : QObject(parent) {
@@ -43,43 +43,52 @@ WlrWindowManager::~WlrWindowManager() {
 }
 
 bool WlrWindowManager::initialize() {
+    qInfo() << "[WLR] Attempting to initialize wlr window management...";
+
     m_display = wl_display_connect(nullptr);
     if (!m_display) {
-        qWarning() << "Failed to connect to Wayland display";
+        qWarning() << "[WLR] Failed to connect to Wayland display";
         return false;
     }
-    
+    qInfo() << "[WLR] Connected to Wayland display";
+
     m_registry = wl_display_get_registry(m_display);
     if (!m_registry) {
-        qWarning() << "Failed to get Wayland registry";
+        qWarning() << "[WLR] Failed to get Wayland registry";
         return false;
     }
-    
+    qInfo() << "[WLR] Got Wayland registry";
+
     wl_registry_add_listener(m_registry, &registry_listener, this);
+    qInfo() << "[WLR] Registry listener added, performing roundtrip...";
     wl_display_roundtrip(m_display);
-    
+
     if (!m_manager) {
-        qWarning() << "wlr_foreign_toplevel_management_v1 not available";
+        qWarning() << "[WLR] wlr_foreign_toplevel_management_v1 protocol not advertised by compositor";
         return false;
     }
-    
+    qInfo() << "[WLR] Protocol found! Getting initial window list...";
+
     // Initial roundtrip to get all toplevels
     wl_display_roundtrip(m_display);
-    
-    qInfo() << "wlr_foreign_toplevel_management_v1 initialized successfully";
+
+    qInfo() << "[WLR] ✓ wlr_foreign_toplevel_management_v1 initialized successfully";
+    qInfo() << "[WLR] Initial window count:" << m_windows.count();
     return true;
 }
 
 void WlrWindowManager::registryGlobal(void *data, struct wl_registry *registry,
                                       uint32_t name, const char *interface, uint32_t version) {
     auto *self = static_cast<WlrWindowManager*>(data);
-    
+
+    qDebug() << "[WLR] Registry global:" << interface << "version:" << version;
+
     if (strcmp(interface, zwlr_foreign_toplevel_manager_v1_interface.name) == 0) {
         self->m_manager = static_cast<zwlr_foreign_toplevel_manager_v1*>(
             wl_registry_bind(registry, name, &zwlr_foreign_toplevel_manager_v1_interface, version)
         );
         zwlr_foreign_toplevel_manager_v1_add_listener(self->m_manager, &manager_listener, self);
-        qDebug() << "Bound to wlr_foreign_toplevel_manager_v1";
+        qInfo() << "[WLR] ✓ Bound to wlr_foreign_toplevel_manager_v1";
     }
 }
 
@@ -93,15 +102,15 @@ void WlrWindowManager::handleToplevel(void *data, struct zwlr_foreign_toplevel_m
                                       struct zwlr_foreign_toplevel_handle_v1 *handle) {
     Q_UNUSED(manager)
     auto *self = static_cast<WlrWindowManager*>(data);
-    
+
     auto *window = new WlrWindow(self);
     window->id = self->m_nextId++;
     window->handle = handle;
-    
+
     self->m_windows.insert(window->id, window);
     zwlr_foreign_toplevel_handle_v1_add_listener(handle, &toplevel_listener, window);
-    
-    qDebug() << "New toplevel window ID:" << window->id;
+
+    qInfo() << "[WLR] 🪟 New toplevel window detected! ID:" << window->id;
 }
 
 void WlrWindowManager::handleFinished(void *data, struct zwlr_foreign_toplevel_manager_v1 *manager) {
@@ -164,4 +173,12 @@ void WlrWindowManager::toplevelClosed(void *data, struct zwlr_foreign_toplevel_h
     }
     
     zwlr_foreign_toplevel_handle_v1_destroy(handle);
+}
+
+void WlrWindowManager::toplevelParent(void *data, struct zwlr_foreign_toplevel_handle_v1 *handle,
+                                      struct zwlr_foreign_toplevel_handle_v1 *parent) {
+    Q_UNUSED(data)
+    Q_UNUSED(handle)
+    Q_UNUSED(parent)
+    // Parent relationship event - not currently used, but handler required by protocol
 }

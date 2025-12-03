@@ -16,6 +16,7 @@ canvasdesk-editor: \
   /usr/lib/libQt6Qml.so.6.10.1 \
   /usr/lib/libQt6Network.so.6.10.1 \
   ../core/libwlr_protocol.a \
+  ../core/libext_protocol.a \
   /usr/lib/libQt6Gui.so.6.10.1 \
   /usr/lib/libGLX.so \
   /usr/lib/libOpenGL.so \
@@ -181,6 +182,8 @@ CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp.o:
 /usr/lib/libQt6Network.so.6.10.1:
 
 ../core/libwlr_protocol.a:
+
+../core/libext_protocol.a:
 
 /usr/lib/libQt6Gui.so.6.10.1:
 

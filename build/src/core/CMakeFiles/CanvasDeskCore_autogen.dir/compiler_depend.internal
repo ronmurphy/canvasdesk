@@ -4,6 +4,7 @@
 /home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/timestamp
  /home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/moc_predefs.h
  /home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCoreplugin_CanvasDeskPlugin_in.cpp
+ /home/brad/Documents/canvasdesk/build/src/core/ext-foreign-toplevel-list-v1-client-protocol.h
  /home/brad/Documents/canvasdesk/build/src/core/wlr-foreign-toplevel-management-unstable-v1-client-protocol.h
  /home/brad/Documents/canvasdesk/src/core/AppManager.cpp
  /home/brad/Documents/canvasdesk/src/core/AppManager.h
@@ -12,6 +13,8 @@
  /home/brad/Documents/canvasdesk/src/core/CanvasDeskCore.h
  /home/brad/Documents/canvasdesk/src/core/Component.cpp
  /home/brad/Documents/canvasdesk/src/core/Component.h
+ /home/brad/Documents/canvasdesk/src/core/ExtForeignToplevelManager.cpp
+ /home/brad/Documents/canvasdesk/src/core/ExtForeignToplevelManager.h
  /home/brad/Documents/canvasdesk/src/core/LayoutManager.cpp
  /home/brad/Documents/canvasdesk/src/core/LayoutManager.h
  /home/brad/Documents/canvasdesk/src/core/WindowManager.cpp

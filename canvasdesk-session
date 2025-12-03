@@ -1,10 +1,21 @@
 #!/bin/bash
 # CanvasDesk Session Wrapper
 # This script launches CanvasDesk as a desktop environment.
-# If no display server is running, it starts labwc compositor first.
+# If no display server is running, it starts wayfire compositor first.
 
 # Get the directory where this script is located
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Set up debug log file
+LOG_FILE="/tmp/canvasdesk-session-$(date +%Y%m%d-%H%M%S).log"
+echo "CanvasDesk Session Log - $(date)" > "$LOG_FILE"
+echo "======================================" >> "$LOG_FILE"
+echo "" >> "$LOG_FILE"
+
+# Redirect all output to log file AND console
+exec > >(tee -a "$LOG_FILE") 2>&1
+
+echo "Debug log will be saved to: $LOG_FILE"
 
 # Path to the CanvasDesk binary
 # When installed system-wide, this will be in /usr/bin or similar
@@ -14,24 +25,46 @@ CANVASDESK_BIN="${SCRIPT_DIR}/build/canvasdesk"
 COMPOSITOR_PID=""
 
 if [ -z "$WAYLAND_DISPLAY" ] && [ -z "$DISPLAY" ]; then
-    echo "No display server detected, starting labwc compositor..."
+    echo "No display server detected, starting wayfire compositor..."
 
-    # Check if labwc is installed
-    if ! command -v labwc &> /dev/null; then
-        echo "ERROR: labwc compositor not found!"
-        echo "Please install it: sudo pacman -S labwc"
+    # Check if wayfire is installed
+    if ! command -v wayfire &> /dev/null; then
+        echo "ERROR: wayfire compositor not found!"
+        echo "Please install it: sudo pacman -S wayfire"
         exit 1
     fi
 
-    # Start labwc in the background
-    labwc &
+    # Start wayfire in the background
+    wayfire &
     COMPOSITOR_PID=$!
 
     # Give the compositor time to start
     sleep 2
 
-    # Export the Wayland display (labwc typically uses wayland-0)
-    export WAYLAND_DISPLAY=wayland-0
+    # Detect which Wayland socket wayfire created
+    # Check XDG_RUNTIME_DIR for wayland-* sockets created in the last 5 seconds
+    RUNTIME_DIR="${XDG_RUNTIME_DIR:-/run/user/$(id -u)}"
+    DETECTED_DISPLAY=$(find "$RUNTIME_DIR" -maxdepth 1 -name "wayland-*" -type s -newermt "5 seconds ago" 2>/dev/null | head -1 | xargs basename 2>/dev/null)
+
+    if [ -n "$DETECTED_DISPLAY" ]; then
+        export WAYLAND_DISPLAY="$DETECTED_DISPLAY"
+        echo "Detected Wayland display: $WAYLAND_DISPLAY"
+    else
+        # Fallback: try wayland-0, wayland-1, etc.
+        for i in {0..5}; do
+            if [ -S "$RUNTIME_DIR/wayland-$i" ]; then
+                export WAYLAND_DISPLAY="wayland-$i"
+                echo "Found Wayland display: $WAYLAND_DISPLAY"
+                break
+            fi
+        done
+    fi
+
+    if [ -z "$WAYLAND_DISPLAY" ]; then
+        echo "ERROR: Could not detect Wayland display socket!"
+        kill $COMPOSITOR_PID 2>/dev/null
+        exit 1
+    fi
 
     # Tell CanvasDesk we're running as a full desktop session
     export CANVASDESK_SESSION_MODE=1
@@ -56,3 +89,7 @@ if [ -n "$COMPOSITOR_PID" ]; then
 fi
 
 echo "CanvasDesk session ended."
+echo ""
+echo "======================================"
+echo "Debug log saved to: $LOG_FILE"
+echo "======================================"

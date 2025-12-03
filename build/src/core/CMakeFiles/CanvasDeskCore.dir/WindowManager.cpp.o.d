@@ -425,6 +425,8 @@ src/core/CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.o: \
  /usr/include/inttypes.h /usr/include/wayland-version.h \
  /usr/include/wayland-client-protocol.h /usr/include/wayland-client.h \
  /home/brad/Documents/canvasdesk/build/src/core/wlr-foreign-toplevel-management-unstable-v1-client-protocol.h \
+ /home/brad/Documents/canvasdesk/src/core/ExtForeignToplevelManager.h \
+ /home/brad/Documents/canvasdesk/build/src/core/ext-foreign-toplevel-list-v1-client-protocol.h \
  /usr/include/qt6/QtCore/QDebug /usr/include/qt6/QtCore/qdebug.h \
  /usr/include/qt6/QtCore/QMetaObject \
  /usr/include/qt6/QtCore/qobjectdefs.h

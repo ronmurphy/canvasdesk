@@ -271,6 +271,7 @@ src/editor/canvasdesk-editor: src/core/libCanvasDeskCore.so
 src/editor/canvasdesk-editor: /usr/lib/libQt6Qml.so.6.10.1
 src/editor/canvasdesk-editor: /usr/lib/libQt6Network.so.6.10.1
 src/editor/canvasdesk-editor: src/core/libwlr_protocol.a
+src/editor/canvasdesk-editor: src/core/libext_protocol.a
 src/editor/canvasdesk-editor: /usr/lib/libQt6Gui.so.6.10.1
 src/editor/canvasdesk-editor: /usr/lib/libGLX.so
 src/editor/canvasdesk-editor: /usr/lib/libOpenGL.so

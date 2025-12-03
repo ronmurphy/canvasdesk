@@ -10,10 +10,12 @@ libCanvasDeskCore.so: \
   CMakeFiles/CanvasDeskCore.dir/AppManager.cpp.o \
   CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.o \
   CMakeFiles/CanvasDeskCore.dir/WlrWindowManager.cpp.o \
+  CMakeFiles/CanvasDeskCore.dir/ExtForeignToplevelManager.cpp.o \
   /usr/lib/libQt6Qml.so.6.10.1 \
   /usr/lib/libQt6WaylandClient.so.6.10.1 \
   /usr/lib/libwayland-client.so \
   libwlr_protocol.a \
+  libext_protocol.a \
   /usr/lib/libQt6Network.so.6.10.1 \
   /usr/lib/libQt6Gui.so.6.10.1 \
   /usr/lib/libGLX.so \
@@ -71,6 +73,8 @@ CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.o:
 
 CMakeFiles/CanvasDeskCore.dir/WlrWindowManager.cpp.o:
 
+CMakeFiles/CanvasDeskCore.dir/ExtForeignToplevelManager.cpp.o:
+
 /usr/lib/libQt6Qml.so.6.10.1:
 
 /usr/lib/libQt6WaylandClient.so.6.10.1:
@@ -78,6 +82,8 @@ CMakeFiles/CanvasDeskCore.dir/WlrWindowManager.cpp.o:
 /usr/lib/libwayland-client.so:
 
 libwlr_protocol.a:
+
+libext_protocol.a:
 
 /usr/lib/libQt6Network.so.6.10.1:
 

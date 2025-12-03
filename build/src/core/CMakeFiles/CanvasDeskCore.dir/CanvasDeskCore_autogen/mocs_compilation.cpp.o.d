@@ -400,12 +400,19 @@ src/core/CMakeFiles/CanvasDeskCore.dir/CanvasDeskCore_autogen/mocs_compilation.c
  /usr/include/qt6/QtCore/q20algorithm.h \
  /home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/EWIEGA46WW/moc_Component.cpp \
  /home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/EWIEGA46WW/../../../../../src/core/Component.h \
+ /home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/EWIEGA46WW/moc_ExtForeignToplevelManager.cpp \
+ /home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/EWIEGA46WW/../../../../../src/core/ExtForeignToplevelManager.h \
+ /usr/include/qt6/QtCore/QHash /usr/include/qt6/QtCore/qhash.h \
+ /usr/include/wayland-client.h /usr/include/wayland-client-core.h \
+ /usr/include/wayland-util.h /usr/include/c++/15.2.1/math.h \
+ /usr/include/inttypes.h /usr/include/wayland-version.h \
+ /usr/include/wayland-client-protocol.h /usr/include/wayland-client.h \
+ /home/brad/Documents/canvasdesk/build/src/core/ext-foreign-toplevel-list-v1-client-protocol.h \
  /home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/EWIEGA46WW/moc_LayoutManager.cpp \
  /home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/EWIEGA46WW/../../../../../src/core/LayoutManager.h \
  /usr/include/qt6/QtCore/QString \
  /home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/EWIEGA46WW/moc_WindowManager.cpp \
  /home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/EWIEGA46WW/../../../../../src/core/WindowManager.h \
- /usr/include/qt6/QtCore/QHash /usr/include/qt6/QtCore/qhash.h \
  /usr/include/KWayland/KWayland/Client/connection_thread.h \
  /usr/include/qt6/QtCore/QList \
  /usr/include/KWayland/KWayland/Client/kwaylandclient_export.h \
@@ -428,8 +435,4 @@ src/core/CMakeFiles/CanvasDeskCore.dir/CanvasDeskCore_autogen/mocs_compilation.c
  /usr/include/KWayland/KWayland/Client/registry.h \
  /home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/EWIEGA46WW/moc_WlrWindowManager.cpp \
  /home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/EWIEGA46WW/../../../../../src/core/WlrWindowManager.h \
- /usr/include/wayland-client.h /usr/include/wayland-client-core.h \
- /usr/include/wayland-util.h /usr/include/c++/15.2.1/math.h \
- /usr/include/inttypes.h /usr/include/wayland-version.h \
- /usr/include/wayland-client-protocol.h /usr/include/wayland-client.h \
  /home/brad/Documents/canvasdesk/build/src/core/wlr-foreign-toplevel-management-unstable-v1-client-protocol.h

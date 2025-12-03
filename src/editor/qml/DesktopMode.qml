@@ -6,8 +6,13 @@ import CanvasDesk
 ApplicationWindow {
     id: desktopWindow
     visible: true
-    width: Screen.width
-    height: Screen.height
+
+    // Try to span all monitors by using desktop available dimensions
+    width: Screen.desktopAvailableWidth
+    height: Screen.desktopAvailableHeight
+    x: 0
+    y: 0
+
     visibility: Window.FullScreen
     flags: {
         // Base flags for frameless fullscreen window
@@ -64,7 +69,7 @@ ApplicationWindow {
     Item {
         id: desktopContainer
         anchors.fill: parent
-        
+
         // Expose selectComponent so child components can find it
         function selectComponent(component) {
             // Use direct ID reference to the window
@@ -670,8 +675,69 @@ ApplicationWindow {
                 console.log("Error loading layout: " + e)
             }
         } else {
-            console.log("No layout found, starting with empty desktop")
+            console.log("No layout found, creating default desktop layout")
+            createDefaultLayout()
         }
+    }
+
+    function createDefaultLayout() {
+        console.log("Creating default desktop with panel and basic components")
+
+        // Create a bottom panel
+        var panelData = {
+            type: "Panel",
+            x: desktopContainer.width / 2 - 800,  // Center a 1600px panel
+            y: desktopContainer.height - 80,      // Near bottom with margin
+            width: 1600,
+            height: 64,
+            props: {
+                edge: "bottom",
+                autoHide: false
+            },
+            dockedComponents: [
+                // App Launcher on the left
+                {
+                    type: "AppLauncher",
+                    width: 80,
+                    height: 40,
+                    props: {}
+                },
+                // Taskbar in the middle
+                {
+                    type: "Taskbar",
+                    width: 400,
+                    height: 40,
+                    props: {}
+                },
+                // Clock on the right
+                {
+                    type: "Clock",
+                    width: 120,
+                    height: 40,
+                    props: {}
+                },
+                // Session Manager on the far right
+                {
+                    type: "SessionManager",
+                    width: 100,
+                    height: 40,
+                    props: {}
+                }
+            ]
+        }
+
+        // Create the panel component
+        var panel = createDesktopComponent(panelData)
+
+        // Dock the components to the panel after a short delay
+        // to ensure panel is fully initialized
+        Qt.callLater(function() {
+            if (panel && panelData.dockedComponents) {
+                restoreDockedComponents(panel, panelData.dockedComponents)
+            }
+        })
+
+        console.log("Default layout created")
     }
 
     function restoreDockedComponents(panelComponent, dockedData) {

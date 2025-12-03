@@ -176,6 +176,20 @@ wlr_protocol/fast:
 .PHONY : wlr_protocol/fast
 
 # Convenience name for target.
+src/core/CMakeFiles/ext_protocol.dir/rule:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/core/CMakeFiles/ext_protocol.dir/rule
+.PHONY : src/core/CMakeFiles/ext_protocol.dir/rule
+
+# Convenience name for target.
+ext_protocol: src/core/CMakeFiles/ext_protocol.dir/rule
+.PHONY : ext_protocol
+
+# fast build rule for target.
+ext_protocol/fast:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/ext_protocol.dir/build.make src/core/CMakeFiles/ext_protocol.dir/build
+.PHONY : ext_protocol/fast
+
+# Convenience name for target.
 src/core/CMakeFiles/CanvasDeskCore.dir/rule:
 	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/core/CMakeFiles/CanvasDeskCore.dir/rule
 .PHONY : src/core/CMakeFiles/CanvasDeskCore.dir/rule
@@ -581,6 +595,30 @@ Component.cpp.s:
 	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore.dir/build.make src/core/CMakeFiles/CanvasDeskCore.dir/Component.cpp.s
 .PHONY : Component.cpp.s
 
+ExtForeignToplevelManager.o: ExtForeignToplevelManager.cpp.o
+.PHONY : ExtForeignToplevelManager.o
+
+# target to build an object file
+ExtForeignToplevelManager.cpp.o:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore.dir/build.make src/core/CMakeFiles/CanvasDeskCore.dir/ExtForeignToplevelManager.cpp.o
+.PHONY : ExtForeignToplevelManager.cpp.o
+
+ExtForeignToplevelManager.i: ExtForeignToplevelManager.cpp.i
+.PHONY : ExtForeignToplevelManager.i
+
+# target to preprocess a source file
+ExtForeignToplevelManager.cpp.i:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore.dir/build.make src/core/CMakeFiles/CanvasDeskCore.dir/ExtForeignToplevelManager.cpp.i
+.PHONY : ExtForeignToplevelManager.cpp.i
+
+ExtForeignToplevelManager.s: ExtForeignToplevelManager.cpp.s
+.PHONY : ExtForeignToplevelManager.s
+
+# target to generate assembly for a file
+ExtForeignToplevelManager.cpp.s:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore.dir/build.make src/core/CMakeFiles/CanvasDeskCore.dir/ExtForeignToplevelManager.cpp.s
+.PHONY : ExtForeignToplevelManager.cpp.s
+
 LayoutManager.o: LayoutManager.cpp.o
 .PHONY : LayoutManager.o
 
@@ -677,6 +715,30 @@ canvasdeskcore_qmltyperegistrations.cpp.s:
 	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore.dir/build.make src/core/CMakeFiles/CanvasDeskCore.dir/canvasdeskcore_qmltyperegistrations.cpp.s
 .PHONY : canvasdeskcore_qmltyperegistrations.cpp.s
 
+ext-foreign-toplevel-list-v1-protocol.o: ext-foreign-toplevel-list-v1-protocol.c.o
+.PHONY : ext-foreign-toplevel-list-v1-protocol.o
+
+# target to build an object file
+ext-foreign-toplevel-list-v1-protocol.c.o:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/ext_protocol.dir/build.make src/core/CMakeFiles/ext_protocol.dir/ext-foreign-toplevel-list-v1-protocol.c.o
+.PHONY : ext-foreign-toplevel-list-v1-protocol.c.o
+
+ext-foreign-toplevel-list-v1-protocol.i: ext-foreign-toplevel-list-v1-protocol.c.i
+.PHONY : ext-foreign-toplevel-list-v1-protocol.i
+
+# target to preprocess a source file
+ext-foreign-toplevel-list-v1-protocol.c.i:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/ext_protocol.dir/build.make src/core/CMakeFiles/ext_protocol.dir/ext-foreign-toplevel-list-v1-protocol.c.i
+.PHONY : ext-foreign-toplevel-list-v1-protocol.c.i
+
+ext-foreign-toplevel-list-v1-protocol.s: ext-foreign-toplevel-list-v1-protocol.c.s
+.PHONY : ext-foreign-toplevel-list-v1-protocol.s
+
+# target to generate assembly for a file
+ext-foreign-toplevel-list-v1-protocol.c.s:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/ext_protocol.dir/build.make src/core/CMakeFiles/ext_protocol.dir/ext-foreign-toplevel-list-v1-protocol.c.s
+.PHONY : ext-foreign-toplevel-list-v1-protocol.c.s
+
 wlr-foreign-toplevel-management-unstable-v1-protocol.o: wlr-foreign-toplevel-management-unstable-v1-protocol.c.o
 .PHONY : wlr-foreign-toplevel-management-unstable-v1-protocol.o
 
@@ -730,6 +792,7 @@ help:
 	@echo "... qt_internal_plugins"
 	@echo "... CanvasDeskCore"
 	@echo "... CanvasDeskCoreplugin"
+	@echo "... ext_protocol"
 	@echo "... wlr_protocol"
 	@echo "... .qt/rcc/qrc_qmake_CanvasDesk.o"
 	@echo "... .qt/rcc/qrc_qmake_CanvasDesk.i"
@@ -752,6 +815,9 @@ help:
 	@echo "... Component.o"
 	@echo "... Component.i"
 	@echo "... Component.s"
+	@echo "... ExtForeignToplevelManager.o"
+	@echo "... ExtForeignToplevelManager.i"
+	@echo "... ExtForeignToplevelManager.s"
 	@echo "... LayoutManager.o"
 	@echo "... LayoutManager.i"
 	@echo "... LayoutManager.s"
@@ -764,6 +830,9 @@ help:
 	@echo "... canvasdeskcore_qmltyperegistrations.o"
 	@echo "... canvasdeskcore_qmltyperegistrations.i"
 	@echo "... canvasdeskcore_qmltyperegistrations.s"
+	@echo "... ext-foreign-toplevel-list-v1-protocol.o"
+	@echo "... ext-foreign-toplevel-list-v1-protocol.i"
+	@echo "... ext-foreign-toplevel-list-v1-protocol.s"
 	@echo "... wlr-foreign-toplevel-management-unstable-v1-protocol.o"
 	@echo "... wlr-foreign-toplevel-management-unstable-v1-protocol.i"
 	@echo "... wlr-foreign-toplevel-management-unstable-v1-protocol.s"

@@ -1559,6 +1559,7 @@ src/qml/CMakeFiles/CanvasDeskQml.dir/canvasdeskqml_qmltyperegistrations.cpp.o
 
 src/qml/libCanvasDeskQml.so
  /home/brad/Documents/canvasdesk/build/src/core/libCanvasDeskCore.so
+ /home/brad/Documents/canvasdesk/build/src/core/libext_protocol.a
  /home/brad/Documents/canvasdesk/build/src/core/libwlr_protocol.a
  /usr/lib/crti.o
  /usr/lib/crtn.o

@@ -13,6 +13,7 @@
 #include <KWayland/Client/registry.h>
 
 class WlrWindowManager;
+class ExtForeignToplevelManager;
 
 class WindowManager : public QObject {
   Q_OBJECT
@@ -69,6 +70,10 @@ private:
   // wlr backend
   WlrWindowManager *m_wlrManager = nullptr;
   bool m_usingWlr = false;
+
+  // ext_foreign_toplevel_list_v1 backend (for KWin)
+  ExtForeignToplevelManager *m_extManager = nullptr;
+  bool m_usingExt = false;
 
   // Workspace tracking
   int m_currentWorkspace = 0;

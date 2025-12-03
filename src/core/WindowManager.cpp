@@ -1,5 +1,6 @@
 #include "WindowManager.h"
 #include "WlrWindowManager.h"
+#include "ExtForeignToplevelManager.h"
 #include <QDebug>
 #include <QMetaObject>
 #include <QIcon>
@@ -7,31 +8,60 @@
 using namespace KWayland::Client;
 
 WindowManager::WindowManager(QObject *parent) : QObject(parent) {
+  qWarning() << "╔══════════════════════════════════════════╗";
+  qWarning() << "║ WindowManager::WindowManager() CALLED   ║";
+  qWarning() << "╚══════════════════════════════════════════╝";
+
   // Use the Wayland display from environment
   QByteArray waylandDisplay = qgetenv("WAYLAND_DISPLAY");
+  qInfo() << "=== WindowManager initialization starting ===";
+  qInfo() << "WAYLAND_DISPLAY:" << waylandDisplay;
   if (waylandDisplay.isEmpty()) {
     qWarning() << "WAYLAND_DISPLAY not set, window management unavailable";
     return;
   }
 
-  // Try wlr_foreign_toplevel_management_v1 first (works on Sway, Hyprland, etc.)
+  // Try wlr_foreign_toplevel_management_v1 first (works on Sway, Hyprland, labwc, etc.)
+  qInfo() << "Trying wlr_foreign_toplevel_management_v1...";
   m_wlrManager = new WlrWindowManager(this);
   if (m_wlrManager->initialize()) {
     m_usingWlr = true;
-    qInfo() << "Using wlr_foreign_toplevel_management_v1 for window management";
-    
+    qInfo() << "✓ Using wlr_foreign_toplevel_management_v1 for window management";
+
     connect(m_wlrManager, &WlrWindowManager::windowAdded, this, &WindowManager::onWlrWindowChanged);
     connect(m_wlrManager, &WlrWindowManager::windowRemoved, this, &WindowManager::onWlrWindowChanged);
     connect(m_wlrManager, &WlrWindowManager::windowChanged, this, &WindowManager::onWlrWindowChanged);
-    
+
     emit windowsChanged();
+    qInfo() << "=== WindowManager initialization complete (wlr) ===";
     return;
   }
-  
-  // Fall back to trying KWayland PlasmaWindowManagement (KDE Plasma X11)
-  qInfo() << "wlr protocols not available, trying KWayland...";
+  qInfo() << "✗ wlr_foreign_toplevel_management_v1 not available";
+
+  // Try ext_foreign_toplevel_list_v1 (works on KWin/Plasma 6 and other modern compositors)
+  qInfo() << "Trying ext_foreign_toplevel_list_v1...";
   delete m_wlrManager;
   m_wlrManager = nullptr;
+
+  m_extManager = new ExtForeignToplevelManager(this);
+  if (m_extManager->initialize()) {
+    m_usingExt = true;
+    qInfo() << "✓ Using ext_foreign_toplevel_list_v1 for window management";
+
+    connect(m_extManager, &ExtForeignToplevelManager::windowAdded, this, &WindowManager::onWlrWindowChanged);
+    connect(m_extManager, &ExtForeignToplevelManager::windowRemoved, this, &WindowManager::onWlrWindowChanged);
+    connect(m_extManager, &ExtForeignToplevelManager::windowChanged, this, &WindowManager::onWlrWindowChanged);
+
+    emit windowsChanged();
+    qInfo() << "=== WindowManager initialization complete (ext) ===";
+    return;
+  }
+  qInfo() << "✗ ext_foreign_toplevel_list_v1 not available";
+
+  // Fall back to trying KWayland PlasmaWindowManagement (for older KDE or special cases)
+  qInfo() << "Trying KWayland PlasmaWindowManagement...";
+  delete m_extManager;
+  m_extManager = nullptr;
   
   // Delay Wayland initialization to avoid crashes during early QML setup
   QMetaObject::invokeMethod(this, [this, waylandDisplay]() {
@@ -149,6 +179,21 @@ QVariantList WindowManager::windows() const {
       win["appId"] = wlrWindow->appId;
       win["icon"] = wlrWindow->appId; // Use appId as icon name
       win["active"] = wlrWindow->active;
+      win["workspace"] = 0;
+      result.append(win);
+    }
+    return result;
+  }
+
+  // If using ext_foreign_toplevel_list_v1 backend
+  if (m_usingExt && m_extManager) {
+    for (auto *extWindow : m_extManager->windows()) {
+      QVariantMap win;
+      win["id"] = extWindow->identifier; // Use identifier as ID
+      win["title"] = extWindow->title;
+      win["appId"] = extWindow->appId;
+      win["icon"] = extWindow->appId; // Use appId as icon name
+      win["active"] = false; // ext protocol doesn't provide active state
       win["workspace"] = 0;
       result.append(win);
     }

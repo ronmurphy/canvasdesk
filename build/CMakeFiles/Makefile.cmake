@@ -1020,6 +1020,7 @@ set(CMAKE_DEPEND_INFO_FILES
   "src/app/CMakeFiles/canvasdesk-runtime_autogen_timestamp_deps.dir/DependInfo.cmake"
   "src/app/CMakeFiles/canvasdesk-runtime_autogen.dir/DependInfo.cmake"
   "src/core/CMakeFiles/wlr_protocol.dir/DependInfo.cmake"
+  "src/core/CMakeFiles/ext_protocol.dir/DependInfo.cmake"
   "src/core/CMakeFiles/CanvasDeskCore.dir/DependInfo.cmake"
   "src/core/CMakeFiles/CanvasDeskCore_qmltyperegistration.dir/DependInfo.cmake"
   "src/core/CMakeFiles/all_qmltyperegistrations.dir/DependInfo.cmake"

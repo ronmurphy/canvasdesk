@@ -10,7 +10,7 @@
                             "column": 12,
                             "durationMicroseconds": 0,
                             "functionName": "width",
-                            "line": 8,
+                            "line": 9,
                             "message": "Could not find property \"width\"."
                         },
                         {
@@ -18,7 +18,7 @@
                             "column": 13,
                             "durationMicroseconds": 0,
                             "functionName": "height",
-                            "line": 9,
+                            "line": 10,
                             "message": "Could not find property \"height\"."
                         },
                         {
@@ -26,7 +26,7 @@
                             "column": 12,
                             "durationMicroseconds": 0,
                             "functionName": "title",
-                            "line": 10,
+                            "line": 11,
                             "message": "Could not find property \"title\"."
                         },
                         {
@@ -34,7 +34,7 @@
                             "column": 17,
                             "durationMicroseconds": 0,
                             "functionName": "visibility",
-                            "line": 11,
+                            "line": 12,
                             "message": "Could not find property \"visibility\"."
                         },
                         {
@@ -42,63 +42,63 @@
                             "column": 12,
                             "durationMicroseconds": 0,
                             "functionName": "flags",
-                            "line": 12,
+                            "line": 13,
                             "message": "Could not find property \"flags\"."
                         },
                         {
                             "codegenResult": 0,
                             "column": 29,
-                            "durationMicroseconds": 115,
+                            "durationMicroseconds": 123,
                             "functionName": "onIsRuntimeModeChanged",
-                            "line": 23,
+                            "line": 24,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 32,
-                            "durationMicroseconds": 46,
+                            "durationMicroseconds": 48,
                             "functionName": "previewMode",
-                            "line": 34,
+                            "line": 35,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 27,
-                            "durationMicroseconds": 56,
+                            "durationMicroseconds": 57,
                             "functionName": "onPreviewModeChanged",
-                            "line": 35,
+                            "line": 36,
                             "message": ""
                         },
                         {
                             "codegenResult": 2,
                             "column": 5,
-                            "durationMicroseconds": 528,
+                            "durationMicroseconds": 495,
                             "functionName": "saveLayout",
-                            "line": 43,
+                            "line": 44,
                             "message": "Cannot retrieve a non-object type by ID: layoutManager"
                         },
                         {
                             "codegenResult": 2,
                             "column": 5,
-                            "durationMicroseconds": 629,
+                            "durationMicroseconds": 641,
                             "functionName": "loadLayout",
-                            "line": 62,
+                            "line": 63,
                             "message": "Cannot retrieve a non-object type by ID: layoutManager"
                         },
                         {
                             "codegenResult": 2,
                             "column": 5,
-                            "durationMicroseconds": 1086,
+                            "durationMicroseconds": 1121,
                             "functionName": "loadPreview",
-                            "line": 564,
+                            "line": 565,
                             "message": "Cannot retrieve a non-object type by ID: layoutManager"
                         },
                         {
                             "codegenResult": 0,
                             "column": 5,
-                            "durationMicroseconds": 307,
+                            "durationMicroseconds": 291,
                             "functionName": "clearPreview",
-                            "line": 582,
+                            "line": 583,
                             "message": ""
                         },
                         {
@@ -106,7 +106,7 @@
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "createPreviewObject",
-                            "line": 589,
+                            "line": 590,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -114,7 +114,7 @@
                             "column": 18,
                             "durationMicroseconds": 0,
                             "functionName": "visible",
-                            "line": 86,
+                            "line": 87,
                             "message": "Could not find property \"visible\"."
                         },
                         {
@@ -122,7 +122,7 @@
                             "column": 17,
                             "durationMicroseconds": 0,
                             "functionName": "height",
-                            "line": 87,
+                            "line": 88,
                             "message": "Could not find property \"height\"."
                         },
                         {
@@ -130,7 +130,7 @@
                             "column": 28,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 92,
+                            "line": 93,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -138,7 +138,7 @@
                             "column": 26,
                             "durationMicroseconds": 0,
                             "functionName": "enabled",
-                            "line": 93,
+                            "line": 94,
                             "message": "Could not find property \"enabled\"."
                         },
                         {
@@ -146,7 +146,7 @@
                             "column": 28,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 97,
+                            "line": 98,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -154,7 +154,7 @@
                             "column": 26,
                             "durationMicroseconds": 0,
                             "functionName": "enabled",
-                            "line": 98,
+                            "line": 99,
                             "message": "Could not find property \"enabled\"."
                         },
                         {
@@ -162,7 +162,7 @@
                             "column": 23,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 101,
+                            "line": 102,
                             "message": "Could not find property \"text\"."
                         },
                         {
@@ -170,7 +170,7 @@
                             "column": 30,
                             "durationMicroseconds": 0,
                             "functionName": "highlighted",
-                            "line": 102,
+                            "line": 103,
                             "message": "Could not find property \"highlighted\"."
                         },
                         {
@@ -178,7 +178,7 @@
                             "column": 28,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 103,
+                            "line": 104,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -186,7 +186,7 @@
                             "column": 28,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 113,
+                            "line": 114,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -194,7 +194,7 @@
                             "column": 26,
                             "durationMicroseconds": 0,
                             "functionName": "enabled",
-                            "line": 114,
+                            "line": 115,
                             "message": "Could not find property \"enabled\"."
                         },
                         {
@@ -202,31 +202,31 @@
                             "column": 23,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 118,
+                            "line": 119,
                             "message": "Could not find property \"text\"."
                         },
                         {
                             "codegenResult": 2,
                             "column": 23,
-                            "durationMicroseconds": 23,
+                            "durationMicroseconds": 19,
                             "functionName": "currentIndex",
-                            "line": 127,
+                            "line": 128,
                             "message": "Cannot access value for name previewMode"
                         },
                         {
                             "codegenResult": 0,
                             "column": 23,
-                            "durationMicroseconds": 37,
+                            "durationMicroseconds": 35,
                             "functionName": "fill",
-                            "line": 126,
+                            "line": 127,
                             "message": ""
                         },
                         {
                             "codegenResult": 2,
                             "column": 22,
-                            "durationMicroseconds": 13,
+                            "durationMicroseconds": 20,
                             "functionName": "visible",
-                            "line": 132,
+                            "line": 133,
                             "message": "Cannot access value for name isRuntimeMode"
                         },
                         {
@@ -234,7 +234,7 @@
                             "column": 30,
                             "durationMicroseconds": 0,
                             "functionName": "orientation",
-                            "line": 144,
+                            "line": 145,
                             "message": "Could not find property \"orientation\"."
                         },
                         {
@@ -242,7 +242,7 @@
                             "column": 31,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 143,
+                            "line": 144,
                             "message": "Could not find property \"fill\"."
                         },
                         {
@@ -250,7 +250,7 @@
                             "column": 39,
                             "durationMicroseconds": 13,
                             "functionName": "currentIndex",
-                            "line": 160,
+                            "line": 161,
                             "message": "Cannot retrieve a non-object type by ID: leftTabBar"
                         },
                         {
@@ -258,7 +258,7 @@
                             "column": 40,
                             "durationMicroseconds": 0,
                             "functionName": "width",
-                            "line": 178,
+                            "line": 179,
                             "message": "Could not find property \"width\"."
                         },
                         {
@@ -266,7 +266,7 @@
                             "column": 39,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 179,
+                            "line": 180,
                             "message": "Could not find property \"text\"."
                         },
                         {
@@ -274,15 +274,15 @@
                             "column": 44,
                             "durationMicroseconds": 0,
                             "functionName": "name",
-                            "line": 180,
+                            "line": 181,
                             "message": "Could not find property \"name\"."
                         },
                         {
                             "codegenResult": 0,
                             "column": 46,
-                            "durationMicroseconds": 41,
+                            "durationMicroseconds": 40,
                             "functionName": "active",
-                            "line": 182,
+                            "line": 183,
                             "message": ""
                         },
                         {
@@ -290,31 +290,31 @@
                             "column": 48,
                             "durationMicroseconds": 38,
                             "functionName": "dragType",
-                            "line": 183,
+                            "line": 184,
                             "message": ""
                         },
                         {
                             "codegenResult": 2,
                             "column": 48,
-                            "durationMicroseconds": 13,
+                            "durationMicroseconds": 12,
                             "functionName": "mimeData",
-                            "line": 184,
+                            "line": 185,
                             "message": "Cannot access value for name type"
                         },
                         {
                             "codegenResult": 2,
                             "column": 54,
-                            "durationMicroseconds": 127,
+                            "durationMicroseconds": 116,
                             "functionName": "onActiveChanged",
-                            "line": 188,
+                            "line": 189,
                             "message": "Cannot generate efficient code for LoadClosure"
                         },
                         {
                             "codegenResult": 2,
                             "column": 36,
-                            "durationMicroseconds": 403,
+                            "durationMicroseconds": 407,
                             "functionName": "model",
-                            "line": 195,
+                            "line": 196,
                             "message": "Cannot access value for name AppManager"
                         },
                         {
@@ -322,7 +322,7 @@
                             "column": 40,
                             "durationMicroseconds": 0,
                             "functionName": "width",
-                            "line": 198,
+                            "line": 199,
                             "message": "Could not find property \"width\"."
                         },
                         {
@@ -330,7 +330,7 @@
                             "column": 39,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 199,
+                            "line": 200,
                             "message": "Could not find property \"text\"."
                         },
                         {
@@ -338,7 +338,7 @@
                             "column": 44,
                             "durationMicroseconds": 0,
                             "functionName": "name",
-                            "line": 200,
+                            "line": 201,
                             "message": "Could not find property \"name\"."
                         },
                         {
@@ -346,7 +346,7 @@
                             "column": 46,
                             "durationMicroseconds": 37,
                             "functionName": "active",
-                            "line": 202,
+                            "line": 203,
                             "message": ""
                         },
                         {
@@ -354,23 +354,23 @@
                             "column": 48,
                             "durationMicroseconds": 25,
                             "functionName": "dragType",
-                            "line": 203,
+                            "line": 204,
                             "message": ""
                         },
                         {
                             "codegenResult": 2,
                             "column": 48,
-                            "durationMicroseconds": 41,
+                            "durationMicroseconds": 47,
                             "functionName": "mimeData",
-                            "line": 205,
+                            "line": 206,
                             "message": "Cannot access value for name modelData"
                         },
                         {
                             "codegenResult": 2,
                             "column": 54,
-                            "durationMicroseconds": 87,
+                            "durationMicroseconds": 84,
                             "functionName": "onActiveChanged",
-                            "line": 218,
+                            "line": 219,
                             "message": "Cannot generate efficient code for LoadClosure"
                         },
                         {
@@ -378,23 +378,23 @@
                             "column": 35,
                             "durationMicroseconds": 20,
                             "functionName": "centerIn",
-                            "line": 241,
+                            "line": 242,
                             "message": ""
                         },
                         {
                             "codegenResult": 2,
                             "column": 32,
-                            "durationMicroseconds": 766,
+                            "durationMicroseconds": 753,
                             "functionName": "onDropped",
-                            "line": 247,
+                            "line": 248,
                             "message": "Cannot generate efficient code for call to untyped JavaScript function"
                         },
                         {
                             "codegenResult": 0,
                             "column": 32,
-                            "durationMicroseconds": 16,
+                            "durationMicroseconds": 17,
                             "functionName": "onDropped",
-                            "line": 247,
+                            "line": 248,
                             "message": ""
                         },
                         {
@@ -402,15 +402,15 @@
                             "column": 35,
                             "durationMicroseconds": 21,
                             "functionName": "fill",
-                            "line": 246,
+                            "line": 247,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 28,
-                            "durationMicroseconds": 26,
+                            "durationMicroseconds": 20,
                             "functionName": "model",
-                            "line": 274,
+                            "line": 275,
                             "message": ""
                         },
                         {
@@ -418,7 +418,7 @@
                             "column": 28,
                             "durationMicroseconds": 14,
                             "functionName": "x",
-                            "line": 277,
+                            "line": 278,
                             "message": "Cannot access value for name model"
                         },
                         {
@@ -426,15 +426,15 @@
                             "column": 28,
                             "durationMicroseconds": 8,
                             "functionName": "y",
-                            "line": 278,
+                            "line": 279,
                             "message": "Cannot access value for name model"
                         },
                         {
                             "codegenResult": 2,
                             "column": 35,
-                            "durationMicroseconds": 13,
+                            "durationMicroseconds": 12,
                             "functionName": "text",
-                            "line": 286,
+                            "line": 287,
                             "message": "Cannot access value for name model"
                         },
                         {
@@ -442,39 +442,39 @@
                             "column": 47,
                             "durationMicroseconds": 19,
                             "functionName": "centerIn",
-                            "line": 285,
+                            "line": 286,
                             "message": ""
                         },
                         {
                             "codegenResult": 2,
                             "column": 40,
-                            "durationMicroseconds": 44,
+                            "durationMicroseconds": 42,
                             "functionName": "onClicked",
-                            "line": 292,
+                            "line": 293,
                             "message": "Cannot access value for name model"
                         },
                         {
                             "codegenResult": 2,
                             "column": 41,
-                            "durationMicroseconds": 226,
+                            "durationMicroseconds": 210,
                             "functionName": "onReleased",
-                            "line": 296,
+                            "line": 297,
                             "message": "Cannot access value for name canvasModel"
                         },
                         {
                             "codegenResult": 0,
                             "column": 43,
-                            "durationMicroseconds": 23,
+                            "durationMicroseconds": 22,
                             "functionName": "fill",
-                            "line": 290,
+                            "line": 291,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 42,
-                            "durationMicroseconds": 15,
+                            "durationMicroseconds": 16,
                             "functionName": "target",
-                            "line": 291,
+                            "line": 292,
                             "message": ""
                         },
                         {
@@ -482,15 +482,15 @@
                             "column": 31,
                             "durationMicroseconds": 15,
                             "functionName": "fill",
-                            "line": 319,
+                            "line": 320,
                             "message": ""
                         },
                         {
                             "codegenResult": 2,
                             "column": 27,
-                            "durationMicroseconds": 16,
+                            "durationMicroseconds": 15,
                             "functionName": "text",
-                            "line": 329,
+                            "line": 330,
                             "message": "Cannot load property type from (component in /home/brad/Documents/canvasdesk/src/editor/qml/EditorMain.qml)::selectedComponent with type QVariant."
                         },
                         {
@@ -498,15 +498,15 @@
                             "column": 31,
                             "durationMicroseconds": 16,
                             "functionName": "fill",
-                            "line": 344,
+                            "line": 345,
                             "message": ""
                         },
                         {
                             "codegenResult": 2,
                             "column": 18,
-                            "durationMicroseconds": 9,
+                            "durationMicroseconds": 10,
                             "functionName": "visible",
-                            "line": 352,
+                            "line": 353,
                             "message": "Cannot access value for name isRuntimeMode"
                         },
                         {
@@ -514,7 +514,7 @@
                             "column": 16,
                             "durationMicroseconds": 16,
                             "functionName": "color",
-                            "line": 359,
+                            "line": 360,
                             "message": "Cannot access value for name showFloatingEditor"
                         },
                         {
@@ -522,15 +522,15 @@
                             "column": 24,
                             "durationMicroseconds": 34,
                             "functionName": "right",
-                            "line": 353,
+                            "line": 354,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 22,
-                            "durationMicroseconds": 35,
+                            "durationMicroseconds": 31,
                             "functionName": "top",
-                            "line": 354,
+                            "line": 355,
                             "message": ""
                         },
                         {
@@ -538,31 +538,31 @@
                             "column": 31,
                             "durationMicroseconds": 20,
                             "functionName": "centerIn",
-                            "line": 366,
+                            "line": 367,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 24,
-                            "durationMicroseconds": 49,
+                            "durationMicroseconds": 50,
                             "functionName": "onEntered",
-                            "line": 375,
+                            "line": 376,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 23,
-                            "durationMicroseconds": 40,
+                            "durationMicroseconds": 45,
                             "functionName": "onExited",
-                            "line": 376,
+                            "line": 377,
                             "message": ""
                         },
                         {
                             "codegenResult": 2,
                             "column": 24,
-                            "durationMicroseconds": 19,
+                            "durationMicroseconds": 20,
                             "functionName": "onClicked",
-                            "line": 377,
+                            "line": 378,
                             "message": "Cannot access value for name showFloatingEditor"
                         },
                         {
@@ -570,7 +570,7 @@
                             "column": 27,
                             "durationMicroseconds": 21,
                             "functionName": "fill",
-                            "line": 373,
+                            "line": 374,
                             "message": ""
                         },
                         {
@@ -578,31 +578,31 @@
                             "column": 18,
                             "durationMicroseconds": 18,
                             "functionName": "visible",
-                            "line": 384,
+                            "line": 385,
                             "message": "Cannot access value for name isRuntimeMode"
                         },
                         {
                             "codegenResult": 0,
                             "column": 12,
-                            "durationMicroseconds": 82,
+                            "durationMicroseconds": 79,
                             "functionName": "x",
-                            "line": 387,
+                            "line": 388,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 20,
-                            "durationMicroseconds": 34,
+                            "durationMicroseconds": 27,
                             "functionName": "width",
-                            "line": 399,
+                            "line": 400,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 31,
-                            "durationMicroseconds": 21,
+                            "durationMicroseconds": 25,
                             "functionName": "fill",
-                            "line": 406,
+                            "line": 407,
                             "message": ""
                         },
                         {
@@ -610,31 +610,31 @@
                             "column": 32,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 420,
+                            "line": 421,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
                             "codegenResult": 0,
                             "column": 31,
-                            "durationMicroseconds": 22,
+                            "durationMicroseconds": 21,
                             "functionName": "fill",
-                            "line": 426,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 30,
-                            "durationMicroseconds": 22,
-                            "functionName": "target",
                             "line": 427,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
+                            "column": 30,
+                            "durationMicroseconds": 23,
+                            "functionName": "target",
+                            "line": 428,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
                             "column": 32,
-                            "durationMicroseconds": 84,
+                            "durationMicroseconds": 85,
                             "functionName": "maximumX",
-                            "line": 429,
+                            "line": 430,
                             "message": ""
                         },
                         {
@@ -642,23 +642,23 @@
                             "column": 32,
                             "durationMicroseconds": 71,
                             "functionName": "maximumY",
-                            "line": 431,
+                            "line": 432,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 27,
-                            "durationMicroseconds": 18,
+                            "durationMicroseconds": 17,
                             "functionName": "fill",
-                            "line": 437,
+                            "line": 438,
                             "message": ""
                         },
                         {
                             "codegenResult": 2,
                             "column": 31,
-                            "durationMicroseconds": 16,
+                            "durationMicroseconds": 13,
                             "functionName": "currentIndex",
-                            "line": 454,
+                            "line": 455,
                             "message": "Cannot retrieve a non-object type by ID: floatingTabBar"
                         },
                         {
@@ -666,7 +666,7 @@
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "width",
-                            "line": 468,
+                            "line": 469,
                             "message": "Could not find property \"width\"."
                         },
                         {
@@ -674,7 +674,7 @@
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 469,
+                            "line": 470,
                             "message": "Could not find property \"text\"."
                         },
                         {
@@ -682,7 +682,7 @@
                             "column": 40,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 472,
+                            "line": 473,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -690,15 +690,15 @@
                             "column": 40,
                             "durationMicroseconds": 0,
                             "functionName": "name",
-                            "line": 470,
+                            "line": 471,
                             "message": "Could not find property \"name\"."
                         },
                         {
                             "codegenResult": 0,
                             "column": 32,
-                            "durationMicroseconds": 33,
+                            "durationMicroseconds": 34,
                             "functionName": "width",
-                            "line": 491,
+                            "line": 492,
                             "message": ""
                         },
                         {
@@ -706,7 +706,7 @@
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 495,
+                            "line": 496,
                             "message": "Could not find property \"text\"."
                         },
                         {
@@ -714,7 +714,7 @@
                             "column": 38,
                             "durationMicroseconds": 0,
                             "functionName": "visible",
-                            "line": 501,
+                            "line": 502,
                             "message": "Could not find property \"visible\"."
                         },
                         {
@@ -722,7 +722,7 @@
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 502,
+                            "line": 503,
                             "message": "Could not find property \"text\"."
                         },
                         {
@@ -730,7 +730,7 @@
                             "column": 38,
                             "durationMicroseconds": 0,
                             "functionName": "visible",
-                            "line": 508,
+                            "line": 509,
                             "message": "Could not find property \"visible\"."
                         },
                         {
@@ -738,7 +738,7 @@
                             "column": 39,
                             "durationMicroseconds": 0,
                             "functionName": "wrapMode",
-                            "line": 511,
+                            "line": 512,
                             "message": "Could not find property \"wrapMode\"."
                         },
                         {
@@ -746,7 +746,7 @@
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 525,
+                            "line": 526,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -754,7 +754,7 @@
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 531,
+                            "line": 532,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -762,23 +762,23 @@
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 542,
+                            "line": 543,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
                             "codegenResult": 2,
                             "column": 18,
-                            "durationMicroseconds": 13,
+                            "durationMicroseconds": 12,
                             "functionName": "visible",
-                            "line": 560,
+                            "line": 561,
                             "message": "Cannot access value for name previewMode"
                         },
                         {
                             "codegenResult": 0,
                             "column": 23,
-                            "durationMicroseconds": 27,
+                            "durationMicroseconds": 31,
                             "functionName": "fill",
-                            "line": 558,
+                            "line": 559,
                             "message": ""
                         }
                     ],

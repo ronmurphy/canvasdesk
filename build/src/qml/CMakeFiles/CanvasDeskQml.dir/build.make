@@ -250,6 +250,7 @@ src/qml/libCanvasDeskQml.so: src/qml/CMakeFiles/CanvasDeskQml.dir/compiler_depen
 src/qml/libCanvasDeskQml.so: src/core/libCanvasDeskCore.so
 src/qml/libCanvasDeskQml.so: /usr/lib/libQt6Quick.so.6.10.1
 src/qml/libCanvasDeskQml.so: src/core/libwlr_protocol.a
+src/qml/libCanvasDeskQml.so: src/core/libext_protocol.a
 src/qml/libCanvasDeskQml.so: /usr/lib/libwayland-client.so
 src/qml/libCanvasDeskQml.so: /usr/lib/libQt6OpenGL.so.6.10.1
 src/qml/libCanvasDeskQml.so: /usr/lib/libQt6Gui.so.6.10.1

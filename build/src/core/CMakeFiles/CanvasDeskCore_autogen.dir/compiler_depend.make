@@ -3,6 +3,7 @@
 
 src/core/CanvasDeskCore_autogen/timestamp: src/core/CanvasDeskCore_autogen/moc_predefs.h \
   src/core/CanvasDeskCoreplugin_CanvasDeskPlugin_in.cpp \
+  src/core/ext-foreign-toplevel-list-v1-client-protocol.h \
   src/core/wlr-foreign-toplevel-management-unstable-v1-client-protocol.h \
   /home/brad/Documents/canvasdesk/src/core/AppManager.cpp \
   /home/brad/Documents/canvasdesk/src/core/AppManager.h \
@@ -11,6 +12,8 @@ src/core/CanvasDeskCore_autogen/timestamp: src/core/CanvasDeskCore_autogen/moc_p
   /home/brad/Documents/canvasdesk/src/core/CanvasDeskCore.h \
   /home/brad/Documents/canvasdesk/src/core/Component.cpp \
   /home/brad/Documents/canvasdesk/src/core/Component.h \
+  /home/brad/Documents/canvasdesk/src/core/ExtForeignToplevelManager.cpp \
+  /home/brad/Documents/canvasdesk/src/core/ExtForeignToplevelManager.h \
   /home/brad/Documents/canvasdesk/src/core/LayoutManager.cpp \
   /home/brad/Documents/canvasdesk/src/core/LayoutManager.h \
   /home/brad/Documents/canvasdesk/src/core/WindowManager.cpp \
@@ -588,7 +591,7 @@ src/core/CanvasDeskCore_autogen/timestamp: src/core/CanvasDeskCore_autogen/moc_p
 
 /usr/include/sys/cdefs.h:
 
-/usr/include/c++/15.2.1/bits/shared_ptr_base.h:
+/usr/include/strings.h:
 
 /usr/include/bits/timex.h:
 
@@ -786,15 +789,13 @@ src/core/CanvasDeskCore_autogen/timestamp: src/core/CanvasDeskCore_autogen/moc_p
 
 /usr/include/c++/15.2.1/bits/atomic_base.h:
 
-/usr/include/c++/15.2.1/cwctype:
-
-/usr/include/c++/15.2.1/compare:
-
 /usr/include/c++/15.2.1/bits/functexcept.h:
 
 /usr/include/c++/15.2.1/bits/align.h:
 
 /usr/include/c++/15.2.1/debug/debug.h:
+
+/usr/include/c++/15.2.1/array:
 
 /usr/include/c++/15.2.1/bits/stl_iterator_base_funcs.h:
 
@@ -807,8 +808,6 @@ src/core/CanvasDeskCore_autogen/timestamp: src/core/CanvasDeskCore_autogen/moc_p
 /usr/include/c++/15.2.1/tuple:
 
 /usr/include/errno.h:
-
-/usr/include/c++/15.2.1/array:
 
 /usr/include/bits/posix1_lim.h:
 
@@ -836,6 +835,8 @@ src/core/CanvasDeskCore_autogen/moc_predefs.h:
 
 /usr/include/bits/struct_mutex.h:
 
+/home/brad/Documents/canvasdesk/src/core/ExtForeignToplevelManager.h:
+
 /usr/include/c++/15.2.1/limits:
 
 /usr/include/qt6/QtCore/qbytearray.h:
@@ -862,18 +863,6 @@ src/core/CanvasDeskCore_autogen/moc_predefs.h:
 
 /usr/include/c++/15.2.1/system_error:
 
-/usr/include/bits/long-double.h:
-
-/usr/include/asm/unistd_64.h:
-
-/usr/include/c++/15.2.1/bits/string_view.tcc:
-
-/usr/include/bits/types/__fpos_t.h:
-
-/usr/include/c++/15.2.1/tr1/riemann_zeta.tcc:
-
-/usr/include/qt6/QtCore/qvariantmap.h:
-
 /usr/include/bits/types/struct_FILE.h:
 
 /usr/include/bits/environments.h:
@@ -888,33 +877,23 @@ src/core/CanvasDeskCore_autogen/moc_predefs.h:
 
 /usr/include/asm/bitsperlong.h:
 
-/usr/include/asm/posix_types_64.h:
+/usr/include/asm-generic/posix_types.h:
 
-/usr/include/bits/types.h:
+/usr/include/c++/15.2.1/bits/stl_map.h:
 
-/usr/include/c++/15.2.1/bits/locale_facets.tcc:
+/usr/include/wchar.h:
 
-src/core/CanvasDeskCoreplugin_CanvasDeskPlugin_in.cpp:
+/home/brad/Documents/canvasdesk/src/core/LayoutManager.h:
 
-/home/brad/Documents/canvasdesk/src/core/CMakeLists.txt:
+/usr/include/qt6/QtCore/qstringlist.h:
 
-/usr/include/qt6/QtQml/qjsengine.h:
+/usr/include/bits/types/__sigset_t.h:
 
-/usr/include/bits/uintn-identity.h:
+/usr/include/c++/15.2.1/bits/ostream.tcc:
 
-/usr/include/qt6/QtCore/qlist.h:
+/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++config.h:
 
-/usr/include/c++/15.2.1/bits/char_traits.h:
-
-/usr/include/c++/15.2.1/cassert:
-
-/usr/include/qt6/QtQml/qtqmlexports.h:
-
-/usr/include/bits/math-vector.h:
-
-/usr/include/KWayland/KWayland/Client/connection_thread.h:
-
-/usr/include/bits/uio_lim.h:
+/usr/include/c++/15.2.1/bits/stl_iterator.h:
 
 /usr/include/bits/confname.h:
 
@@ -926,27 +905,13 @@ src/core/CanvasDeskCoreplugin_CanvasDeskPlugin_in.cpp:
 
 /usr/include/qt6/QtCore/qtcoreexports.h:
 
-/usr/include/c++/15.2.1/bits/stl_iterator.h:
+src/core/ext-foreign-toplevel-list-v1-client-protocol.h:
 
-/usr/include/qt6/QtCore/qsharedpointer_impl.h:
+/usr/include/qt6/QtCore/qmetacontainer.h:
 
-/usr/include/c++/15.2.1/bits/locale_facets_nonio.h:
+/usr/include/bits/thread-shared-types.h:
 
-/usr/include/syscall.h:
-
-/usr/include/qt6/QtCore/qswap.h:
-
-/usr/include/bits/fp-fast.h:
-
-/usr/include/sched.h:
-
-/usr/include/qt6/QtCore/qpointer.h:
-
-/usr/include/bits/pthreadtypes-arch.h:
-
-/usr/include/c++/15.2.1/bits/stl_map.h:
-
-/usr/include/asm-generic/posix_types.h:
+/usr/include/c++/15.2.1/ios:
 
 /usr/include/bits/byteswap.h:
 
@@ -970,17 +935,7 @@ src/core/CanvasDeskCoreplugin_CanvasDeskPlugin_in.cpp:
 
 /usr/include/bits/stdint-intn.h:
 
-/usr/include/wchar.h:
-
-/home/brad/Documents/canvasdesk/src/core/LayoutManager.h:
-
-/usr/include/qt6/QtCore/qstringlist.h:
-
-/usr/include/bits/types/__sigset_t.h:
-
-/usr/include/c++/15.2.1/bits/ostream.tcc:
-
-/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++config.h:
+/usr/include/c++/15.2.1/bits/shared_ptr_base.h:
 
 /home/brad/Documents/canvasdesk/src/core/CanvasDeskCore.h:
 
@@ -988,13 +943,35 @@ src/core/wlr-foreign-toplevel-management-unstable-v1-client-protocol.h:
 
 /home/brad/Documents/canvasdesk/src/core/WlrWindowManager.cpp:
 
+/usr/include/stdlib.h:
+
+/usr/include/qt6/QtCore/qrect.h:
+
 /usr/include/c++/15.2.1/bits/ostream.h:
 
-/usr/include/qt6/QtCore/qstringconverter.h:
+/usr/include/qt6/QtCore/qsharedpointer_impl.h:
 
-/usr/include/c++/15.2.1/bits/charconv.h:
+/usr/include/c++/15.2.1/bits/locale_facets_nonio.h:
 
-/usr/include/bits/mathcalls-helper-functions.h:
+/usr/include/syscall.h:
+
+/usr/include/qt6/QtCore/qswap.h:
+
+/usr/include/qt6/QtQml/qjsengine.h:
+
+/usr/include/bits/uintn-identity.h:
+
+/home/brad/Documents/canvasdesk/src/core/CMakeLists.txt:
+
+/usr/include/qt6/QtCore/qlist.h:
+
+/usr/include/bits/fp-fast.h:
+
+/usr/include/sched.h:
+
+/usr/include/qt6/QtCore/qpointer.h:
+
+/usr/include/bits/pthreadtypes-arch.h:
 
 /usr/include/bits/floatn.h:
 
@@ -1002,9 +979,49 @@ src/core/wlr-foreign-toplevel-management-unstable-v1-client-protocol.h:
 
 /usr/include/qt6/QtCore/qsharedpointer.h:
 
+/usr/include/asm/unistd_64.h:
+
+/usr/include/c++/15.2.1/bits/string_view.tcc:
+
+/usr/include/bits/types/__fpos_t.h:
+
+/usr/include/c++/15.2.1/tr1/riemann_zeta.tcc:
+
+/usr/include/qt6/QtCore/qvariantmap.h:
+
+/usr/include/bits/long-double.h:
+
+/usr/include/bits/errno.h:
+
+/usr/include/qt6/QtCore/qstdlibdetection.h:
+
+/usr/include/qt6/QtQml/qqmlabstracturlinterceptor.h:
+
+/usr/include/string.h:
+
+/home/brad/Documents/canvasdesk/src/core/ExtForeignToplevelManager.cpp:
+
+/usr/include/c++/15.2.1/compare:
+
+/usr/include/c++/15.2.1/cwctype:
+
+/usr/include/asm/posix_types_64.h:
+
+/usr/include/bits/types.h:
+
+/usr/include/c++/15.2.1/bits/locale_facets.tcc:
+
+src/core/CanvasDeskCoreplugin_CanvasDeskPlugin_in.cpp:
+
 /usr/include/c++/15.2.1/ctime:
 
 /usr/include/qt6/QtGui/qtguiexports.h:
+
+/usr/include/KWayland/KWayland/Client/connection_thread.h:
+
+/usr/include/bits/math-vector.h:
+
+/usr/include/bits/uio_lim.h:
 
 /usr/include/c++/15.2.1/bits/algorithmfwd.h:
 
@@ -1012,13 +1029,11 @@ src/core/wlr-foreign-toplevel-management-unstable-v1-client-protocol.h:
 
 /usr/include/bits/types/wint_t.h:
 
-/usr/include/bits/iscanonical.h:
+/usr/include/qt6/QtCore/qstringconverter.h:
 
-/home/brad/Documents/canvasdesk/src/core/AppManager.cpp:
+/usr/include/c++/15.2.1/bits/charconv.h:
 
-/usr/include/qt6/QtCore/qdatastream.h:
-
-/usr/include/bits/syscall.h:
+/usr/include/bits/mathcalls-helper-functions.h:
 
 /usr/include/asm/types.h:
 
@@ -1061,6 +1076,20 @@ src/core/wlr-foreign-toplevel-management-unstable-v1-client-protocol.h:
 /usr/include/features-time64.h:
 
 /usr/include/qt6/QtCore/q17memory.h:
+
+/usr/include/bits/iscanonical.h:
+
+/home/brad/Documents/canvasdesk/src/core/AppManager.cpp:
+
+/usr/include/qt6/QtCore/qdatastream.h:
+
+/usr/include/bits/syscall.h:
+
+/usr/include/c++/15.2.1/bits/char_traits.h:
+
+/usr/include/c++/15.2.1/cassert:
+
+/usr/include/qt6/QtQml/qtqmlexports.h:
 
 /usr/include/bits/types/time_t.h:
 
@@ -1132,23 +1161,17 @@ src/core/wlr-foreign-toplevel-management-unstable-v1-client-protocol.h:
 
 /usr/include/qt6/QtQml/qqmlparserstatus.h:
 
-/usr/include/bits/thread-shared-types.h:
-
-/usr/include/c++/15.2.1/ios:
-
 /usr/include/bits/stdlib-float.h:
 
 /usr/include/qt6/QtGui/qtransform.h:
 
 /usr/include/bits/time64.h:
 
-/usr/include/bits/errno.h:
-
-/usr/include/qt6/QtCore/qstdlibdetection.h:
-
-/usr/include/qt6/QtQml/qqmlabstracturlinterceptor.h:
-
 /usr/include/bits/flt-eval-method.h:
+
+/usr/include/qt6/QtCore/qversiontagging.h:
+
+/usr/include/c++/15.2.1/bits/ranges_algobase.h:
 
 /usr/include/c++/15.2.1/streambuf:
 
@@ -1310,8 +1333,6 @@ src/core/wlr-foreign-toplevel-management-unstable-v1-client-protocol.h:
 
 /usr/include/qt6/QtCore/qtdeprecationdefinitions.h:
 
-/usr/include/strings.h:
-
 /usr/include/c++/15.2.1/bits/std_abs.h:
 
 /usr/include/c++/15.2.1/tr1/special_function_util.h:
@@ -1353,6 +1374,12 @@ src/core/wlr-foreign-toplevel-management-unstable-v1-client-protocol.h:
 /usr/include/c++/15.2.1/format:
 
 /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/gthr-default.h:
+
+/usr/include/qt6/QtCore/qttranslation.h:
+
+/home/brad/Documents/canvasdesk/src/core/AppManager.h:
+
+/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/os_defines.h:
 
 /usr/bin/cmake:
 
@@ -1532,8 +1559,6 @@ src/core/wlr-foreign-toplevel-management-unstable-v1-client-protocol.h:
 
 /usr/include/qt6/QtCore/qmath.h:
 
-/usr/include/qt6/QtCore/qmetacontainer.h:
-
 /usr/include/qt6/QtCore/qnamespace.h:
 
 /usr/include/qt6/QtCore/qnumeric.h:
@@ -1604,16 +1629,6 @@ src/core/wlr-foreign-toplevel-management-unstable-v1-client-protocol.h:
 
 /usr/include/qt6/QtCore/qtresource.h:
 
-/home/brad/Documents/canvasdesk/src/core/AppManager.h:
-
-/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/os_defines.h:
-
-/usr/include/qt6/QtCore/qttranslation.h:
-
-/usr/include/c++/15.2.1/bits/ranges_algobase.h:
-
-/usr/include/qt6/QtCore/qversiontagging.h:
-
 /usr/include/qt6/QtCore/qttypetraits.h:
 
 /usr/include/qt6/QtCore/qtversion.h:
@@ -1682,12 +1697,6 @@ src/core/wlr-foreign-toplevel-management-unstable-v1-client-protocol.h:
 
 /usr/include/qt6/QtQml/qtqml-config.h:
 
-/usr/include/string.h:
-
 /usr/include/c++/15.2.1/bits/version.h:
 
 /usr/include/qt6/QtQmlIntegration/qqmlintegration.h:
-
-/usr/include/qt6/QtCore/qrect.h:
-
-/usr/include/stdlib.h:
