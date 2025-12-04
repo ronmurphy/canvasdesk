@@ -853,6 +853,19 @@ ApplicationWindow {
                                 Rectangle { width: 16; height: 16; color: Theme.uiTitleBarRightColor; border.color: Theme.uiTitleBarLeftColor } Label { text: "TitleBar Right"; color: Theme.uiTextColor }
                             }
 
+                            CheckBox {
+                                text: "Titlebar Text on Left"
+                                checked: Theme.titleBarTextLeft
+                                onCheckedChanged: Theme.titleBarTextLeft = checked
+                                contentItem: Text {
+                                    text: parent.text
+                                    color: Theme.uiTextColor
+                                    font: parent.font
+                                    verticalAlignment: Text.AlignVCenter
+                                    leftPadding: parent.indicator.width + parent.spacing
+                                }
+                            }
+
                             // Manual Background Color (Fallback)
                             RowLayout {
                                 Layout.fillWidth: true

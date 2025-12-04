@@ -1,12 +1,13 @@
 import QtQuick
 import QtQuick.Controls
+import CanvasDesk
 
 Rectangle {
     id: root
     
     // Configurable properties
     property color backgroundColor: "#2a2a2a"
-    property color textColor: "white"
+    property color textColor: Theme.uiTextColor
     property int fontSize: 16
     property string fontFamily: "monospace"
     

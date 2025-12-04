@@ -668,13 +668,25 @@ void X11WindowManager::drawTitleBarText(X11Frame *frame, const QString &title) {
   // Note: We do NOT clear the window here because it would erase the gradient background.
   // The background is handled by drawTitleBar().
 
+  // Set Text Color
+  if (auto theme = ThemeManager::instance()) {
+      unsigned long textColor = theme->uiTextColor().rgb() & 0xFFFFFF;
+      XSetForeground(m_display, frame->gc, textColor);
+  }
+
   // Draw title text (simple X11 text for now, no Xft yet)
   QByteArray titleBytes = title.toUtf8();
   
-  // Center text
+  // Calculate Position
   int textLen = titleBytes.length();
   int textWidth = textLen * 6; // Approximate width
-  int textX = (frame->width - textWidth) / 2;
+  int textX = 0;
+
+  if (ThemeManager::instance() && ThemeManager::instance()->titleBarTextLeft()) {
+      textX = PADDING + 4; // Left aligned
+  } else {
+      textX = (frame->width - textWidth) / 2; // Centered
+  }
   
   XDrawString(m_display, frame->titleBar, frame->gc, textX,
               TITLE_HEIGHT - PADDING - 4, // y position for text baseline

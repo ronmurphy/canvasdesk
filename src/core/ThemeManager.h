@@ -37,6 +37,9 @@ public:
     Q_PROPERTY(QColor uiTitleBarLeftColor READ uiTitleBarLeftColor WRITE setUiTitleBarLeftColor NOTIFY uiColorsChanged)
     Q_PROPERTY(QColor uiTitleBarRightColor READ uiTitleBarRightColor WRITE setUiTitleBarRightColor NOTIFY uiColorsChanged)
 
+    // Settings
+    Q_PROPERTY(bool titleBarTextLeft READ titleBarTextLeft WRITE setTitleBarTextLeft NOTIFY titleBarTextLeftChanged)
+
 public:
     explicit ThemeManager(QObject *parent = nullptr);
 
@@ -76,6 +79,9 @@ public:
     QColor uiTitleBarRightColor() const { return m_uiTitleBarRight; }
     void setUiTitleBarRightColor(const QColor &c);
 
+    bool titleBarTextLeft() const { return m_titleBarTextLeft; }
+    void setTitleBarTextLeft(bool left);
+
     QColor whiteColor() const { return QColor("#ffffff"); }
     QColor greyColor() const { return QColor("#808080"); }
     QColor blackColor() const { return QColor("#000000"); }
@@ -92,10 +98,12 @@ signals:
     void wallpaperFillModeChanged();
     void colorsChanged();
     void uiColorsChanged();
+    void titleBarTextLeftChanged();
 
 private:
     QString m_wallpaperPath;
     int m_wallpaperFillMode = 1; // PreserveAspectCrop (default)
+    bool m_titleBarTextLeft = false;
     
     // Extracted
     QColor m_primary = "#3a3a3a";

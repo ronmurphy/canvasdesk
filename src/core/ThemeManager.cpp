@@ -45,6 +45,14 @@ void ThemeManager::setWallpaperFillMode(int mode) {
     }
 }
 
+void ThemeManager::setTitleBarTextLeft(bool left) {
+    if (m_titleBarTextLeft != left) {
+        m_titleBarTextLeft = left;
+        emit titleBarTextLeftChanged();
+        saveColors();
+    }
+}
+
 QColor ThemeManager::primaryColor() const { return m_primary; }
 QColor ThemeManager::secondaryColor() const { return m_secondary; }
 QColor ThemeManager::tertiaryColor() const { return m_tertiary; }
@@ -214,6 +222,7 @@ void ThemeManager::saveColors() {
     QJsonObject root;
     root["wallpaper"] = m_wallpaperPath;
     root["fillMode"] = m_wallpaperFillMode;
+    root["titleBarTextLeft"] = m_titleBarTextLeft;
 
     QJsonObject colors;
     colors["primary"] = m_primary.name();
@@ -249,6 +258,7 @@ void ThemeManager::loadColors() {
 
         m_wallpaperPath = root["wallpaper"].toString();
         m_wallpaperFillMode = root["fillMode"].toInt(1);
+        m_titleBarTextLeft = root["titleBarTextLeft"].toBool(false);
 
         QJsonObject colors = root["colors"].toObject();
         if (!colors.isEmpty()) {
@@ -284,5 +294,6 @@ void ThemeManager::loadColors() {
         emit uiColorsChanged();
         emit wallpaperPathChanged();
         emit wallpaperFillModeChanged();
+        emit titleBarTextLeftChanged();
     }
 }

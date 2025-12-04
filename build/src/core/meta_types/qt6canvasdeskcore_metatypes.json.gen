@@ -277,22 +277,22 @@
                                 "type": "QString"
                             }
                         ],
-                        "index": 4,
-                        "lineNumber": 83,
+                        "index": 5,
+                        "lineNumber": 89,
                         "name": "analyzeWallpaper",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
-                        "index": 5,
-                        "lineNumber": 84,
+                        "index": 6,
+                        "lineNumber": 90,
                         "name": "saveColors",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
-                        "index": 6,
-                        "lineNumber": 85,
+                        "index": 7,
+                        "lineNumber": 91,
                         "name": "loadColors",
                         "returnType": "void"
                     },
@@ -308,8 +308,8 @@
                                 "type": "QString"
                             }
                         ],
-                        "index": 7,
-                        "lineNumber": 88,
+                        "index": 8,
+                        "lineNumber": 94,
                         "name": "assignColorToRole",
                         "returnType": "void"
                     }
@@ -591,6 +591,22 @@
                         "type": "QColor",
                         "user": false,
                         "write": "setUiTitleBarRightColor"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 18,
+                        "lineNumber": 41,
+                        "name": "titleBarTextLeft",
+                        "notify": "titleBarTextLeftChanged",
+                        "read": "titleBarTextLeft",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "write": "setTitleBarTextLeft"
                     }
                 ],
                 "qualifiedClassName": "ThemeManager",
@@ -598,29 +614,36 @@
                     {
                         "access": "public",
                         "index": 0,
-                        "lineNumber": 91,
+                        "lineNumber": 97,
                         "name": "wallpaperPathChanged",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
                         "index": 1,
-                        "lineNumber": 92,
+                        "lineNumber": 98,
                         "name": "wallpaperFillModeChanged",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
                         "index": 2,
-                        "lineNumber": 93,
+                        "lineNumber": 99,
                         "name": "colorsChanged",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
                         "index": 3,
-                        "lineNumber": 94,
+                        "lineNumber": 100,
                         "name": "uiColorsChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 4,
+                        "lineNumber": 101,
+                        "name": "titleBarTextLeftChanged",
                         "returnType": "void"
                     }
                 ],
