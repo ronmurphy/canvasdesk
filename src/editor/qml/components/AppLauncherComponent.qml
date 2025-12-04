@@ -60,7 +60,7 @@ Rectangle {
         width: positionHelper.popupWidth
         height: positionHelper.popupHeight
         color: popupColor
-        border.color: "#555"
+        border.color: Theme.uiHighlightColor
         border.width: 2
         radius: 6
         z: 2000  // Very high z to be above everything

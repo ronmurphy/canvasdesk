@@ -1,5 +1,7 @@
+#include "ThemeManager.h"
 #include "X11WindowManager.h"
 #include <QDebug>
+#include <QSet>
 // #include <QTimer>  // DISABLED: Compositing disabled for now
 #include <X11/Xatom.h>
 #include <X11/Xutil.h>
@@ -56,6 +58,11 @@ bool X11WindowManager::initialize() {
   XSetErrorHandler(nullptr);
 
   qInfo() << "[X11] Successfully registered as window manager";
+
+  // Connect to ThemeManager for color updates
+  if (auto theme = ThemeManager::instance()) {
+      connect(theme, &ThemeManager::uiColorsChanged, this, &X11WindowManager::updateThemeColors);
+  }
 
   // DISABLED: Compositing disabled for now
   // // Initialize Extensions
@@ -170,6 +177,15 @@ void X11WindowManager::processXEvents() {
       // Window property changed (title, etc.)
       if (m_windows.contains(event.xproperty.window)) {
         updateWindowProperties(m_windows[event.xproperty.window]);
+      }
+      break;
+    case Expose:
+      if (m_frames.contains(event.xexpose.window)) {
+          X11Frame* frame = m_frames[event.xexpose.window];
+          // Only redraw if it's the titlebar that was exposed
+          if (frame && frame->titleBar == event.xexpose.window) {
+              drawTitleBar(frame);
+          }
       }
       break;
     // DISABLED: Compositing disabled for now
@@ -309,8 +325,8 @@ void X11WindowManager::handleMapRequest(XMapRequestEvent *event) {
   // Create titlebar buttons
   createTitleBarButtons(frame);
 
-  // Draw initial title
-  drawTitleBarText(frame, window->title);
+  // Draw initial titlebar (gradient + text)
+  drawTitleBar(frame);
 
   emit windowAdded(window);
 
@@ -456,6 +472,34 @@ void X11WindowManager::updateWindowProperties(X11Window *win) {
   emit windowChanged(win);
 }
 
+void X11WindowManager::updateThemeColors() {
+    auto theme = ThemeManager::instance();
+    if (!theme) return;
+
+    unsigned long frameBg = theme->uiSecondaryColor().rgb() & 0xFFFFFF;
+    unsigned long textColor = theme->uiTextColor().rgb() & 0xFFFFFF;
+
+    QSet<X11Frame*> processedFrames;
+
+    for (auto it = m_frames.begin(); it != m_frames.end(); ++it) {
+        X11Frame* frame = it.value();
+        if (processedFrames.contains(frame)) continue;
+        processedFrames.insert(frame);
+
+        // Update Frame Background
+        XSetWindowBackground(m_display, frame->frame, frameBg);
+        XClearWindow(m_display, frame->frame);
+
+        // Update Text Color in GC
+        XSetForeground(m_display, frame->gc, textColor);
+
+        // Redraw TitleBar (Gradient + Text + Buttons)
+        drawTitleBar(frame);
+    }
+    
+    XFlush(m_display);
+}
+
 // ========== Frame Management Functions ==========
 
 X11Frame *X11WindowManager::createFrame(Window client, int x, int y, int width,
@@ -470,10 +514,20 @@ X11Frame *X11WindowManager::createFrame(Window client, int x, int y, int width,
   frame->height = height + TITLE_HEIGHT;
 
   // Create the frame window (outer container)
+  unsigned long frameBg = 0x2b2b2b;
+  unsigned long titleBg = 0x3c3c3c;
+  unsigned long textColor = 0xffffff;
+  
+  if (auto theme = ThemeManager::instance()) {
+      frameBg = theme->uiSecondaryColor().rgb() & 0xFFFFFF;
+      titleBg = theme->uiTitleBarLeftColor().rgb() & 0xFFFFFF; // Use Left for solid color
+      textColor = theme->uiTextColor().rgb() & 0xFFFFFF;
+  }
+
   frame->frame = XCreateSimpleWindow(m_display, m_root, x, y, width,
                                      height + TITLE_HEIGHT, BORDER_WIDTH,
                                      0x444444, // border color (dark gray)
-                                     0x2b2b2b  // background color (darker gray)
+                                     frameBg
   );
 
   // DISABLED: Compositing disabled, no need for override_redirect now
@@ -486,7 +540,7 @@ X11Frame *X11WindowManager::createFrame(Window client, int x, int y, int width,
   frame->titleBar =
       XCreateSimpleWindow(m_display, frame->frame, 0, 0, width, TITLE_HEIGHT, 0,
                           0x000000, // border
-                          0x3c3c3c  // title bar background (lighter gray)
+                          titleBg
       );
 
   // DISABLED: Compositing disabled, no need for override_redirect now
@@ -495,7 +549,7 @@ X11Frame *X11WindowManager::createFrame(Window client, int x, int y, int width,
 
   // Create graphics context for drawing text
   frame->gc = XCreateGC(m_display, frame->titleBar, 0, nullptr);
-  XSetForeground(m_display, frame->gc, 0xffffff); // white text
+  XSetForeground(m_display, frame->gc, textColor); // text color
 
   // Select events we care about
   XSelectInput(m_display, frame->frame,
@@ -562,18 +616,69 @@ X11Frame *X11WindowManager::findFrame(Window window) {
   return m_frames.value(window, nullptr);
 }
 
+void X11WindowManager::drawTitleBar(X11Frame *frame) {
+    if (!frame || !frame->gc) return;
+
+    int width = frame->width;
+    int height = TITLE_HEIGHT;
+
+    // Get colors from ThemeManager
+    QColor leftColor = QColor("#3c3c3c");
+    QColor rightColor = QColor("#3c3c3c");
+    QColor textColor = QColor("#ffffff");
+
+    if (auto theme = ThemeManager::instance()) {
+        leftColor = theme->uiTitleBarLeftColor();
+        rightColor = theme->uiTitleBarRightColor();
+        textColor = theme->uiTextColor();
+    }
+
+    // Gradient drawing
+    // We draw 2-pixel wide strips to be slightly faster than 1-pixel
+    int step = 2;
+    for (int x = 0; x < width; x += step) {
+        float t = (float)x / (float)width;
+        int r = leftColor.red() + t * (rightColor.red() - leftColor.red());
+        int g = leftColor.green() + t * (rightColor.green() - leftColor.green());
+        int b = leftColor.blue() + t * (rightColor.blue() - leftColor.blue());
+        
+        unsigned long pixel = (r << 16) | (g << 8) | b;
+        XSetForeground(m_display, frame->gc, pixel);
+        XFillRectangle(m_display, frame->titleBar, frame->gc, x, 0, step, height);
+    }
+
+    // Redraw text and buttons
+    QString title = "Window";
+    if (X11Window* win = m_windows.value(frame->client)) {
+        title = win->title;
+    }
+    
+    drawTitleBarText(frame, title);
+    
+    // Redraw buttons
+    for (const auto& btn : frame->buttons) {
+        drawTitleBarButton(frame, btn);
+    }
+}
+
 void X11WindowManager::drawTitleBarText(X11Frame *frame, const QString &title) {
   if (!frame || !frame->gc)
     return;
 
-  // Clear the titlebar
-  XClearWindow(m_display, frame->titleBar);
+  // Note: We do NOT clear the window here because it would erase the gradient background.
+  // The background is handled by drawTitleBar().
 
   // Draw title text (simple X11 text for now, no Xft yet)
   QByteArray titleBytes = title.toUtf8();
-  XDrawString(m_display, frame->titleBar, frame->gc, PADDING,
+  
+  // Center text
+  int textLen = titleBytes.length();
+  int textWidth = textLen * 6; // Approximate width
+  int textX = (frame->width - textWidth) / 2;
+  
+  XDrawString(m_display, frame->titleBar, frame->gc, textX,
               TITLE_HEIGHT - PADDING - 4, // y position for text baseline
-              titleBytes.constData(), titleBytes.length());
+              titleBytes.constData(), textLen);
 
   // Redraw buttons
   for (const X11Button &btn : frame->buttons) {

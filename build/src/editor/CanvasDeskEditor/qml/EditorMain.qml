@@ -240,8 +240,8 @@ ApplicationWindow {
                 width: 800
                 height: 600
                 anchors.centerIn: parent
-                color: "white"
-                border.color: "#999"
+                color: Theme.uiSecondaryColor
+                border.color: Theme.uiTitleBarLeftColor
                 
                 DropArea {
                     anchors.fill: parent
@@ -358,7 +358,7 @@ ApplicationWindow {
         width: 32
         height: 32
         color: showFloatingEditor ? "#4a90e2" : "#2a2a2a"
-        border.color: "#555"
+        border.color: Theme.uiTitleBarLeftColor
         border.width: 1
         radius: 4
         opacity: 0.8
@@ -366,7 +366,7 @@ ApplicationWindow {
         Text {
             anchors.centerIn: parent
             text: "✎"
-            color: "white"
+            color: Theme.uiTextColor
             font.pixelSize: 18
         }
         
@@ -388,8 +388,8 @@ ApplicationWindow {
         x: parent.width - width - 50
         y: 50
         z: 250
-        color: "#2a2a2a"
-        border.color: "#555"
+        color: Theme.uiSecondaryColor
+        border.color: Theme.uiTitleBarLeftColor
         border.width: 1
         radius: 6
         opacity: 0.95
@@ -399,8 +399,8 @@ ApplicationWindow {
             id: panelHeader
             width: parent.width
             height: 40
-            color: "#1a1a1a"
-            border.color: "#555"
+            color: Theme.uiPrimaryColor
+            border.color: Theme.uiTitleBarLeftColor
             radius: 6
             
             RowLayout {
@@ -409,7 +409,7 @@ ApplicationWindow {
                 
                 Text {
                     text: "CanvasDesk Editor"
-                    color: "white"
+                    color: Theme.uiTextColor
                     font.bold: true
                     Layout.fillWidth: true
                 }
@@ -494,7 +494,7 @@ ApplicationWindow {
                         
                         Label {
                             text: selectedComponent ? "Component Properties" : "Select a component"
-                            color: "white"
+                            color: Theme.uiTextColor
                             font.bold: true
                         }
                         
@@ -592,15 +592,15 @@ ApplicationWindow {
         if (data.type === "Button") {
             qml = 'import QtQuick; import QtQuick.Controls; import CanvasDesk; Rectangle { width: 100; height: 40; color: "lightgray"; border.color: "gray"; radius: 4; x: ' + data.x + '; y: ' + data.y + '; Text { anchors.centerIn: parent; text: "' + (data.text || "Button") + '" } MouseArea { anchors.fill: parent; onClicked: AppManager.launch("' + (data.exec || "") + '") } }'
         } else if (data.type === "Clock") {
-            qml = 'import QtQuick; import QtQuick.Controls; Rectangle { width: 120; height: 40; color: "#2a2a2a"; border.color: "#555"; radius: 4; x: ' + data.x + '; y: ' + data.y + '; Text { id: clockText; anchors.centerIn: parent; color: "white"; font.pixelSize: 16; font.family: "monospace"; text: Qt.formatTime(new Date(), "hh:mm:ss"); } Timer { interval: 1000; running: true; repeat: true; onTriggered: clockText.text = Qt.formatTime(new Date(), "hh:mm:ss") } }'
+            qml = 'import QtQuick; import QtQuick.Controls; Rectangle { width: 120; height: 40; color: Theme.uiSecondaryColor; border.color: Theme.uiTitleBarLeftColor; radius: 4; x: ' + data.x + '; y: ' + data.y + '; Text { id: clockText; anchors.centerIn: parent; color: Theme.uiTextColor; font.pixelSize: 16; font.family: "monospace"; text: Qt.formatTime(new Date(), "hh:mm:ss"); } Timer { interval: 1000; running: true; repeat: true; onTriggered: clockText.text = Qt.formatTime(new Date(), "hh:mm:ss") } }'
         } else if (data.type === "Taskbar") {
-            qml = 'import QtQuick; import QtQuick.Controls; import QtQuick.Layouts; import CanvasDesk; Rectangle { width: 400; height: 40; x: ' + data.x + '; y: ' + data.y + '; color: "#1a1a1a"; border.color: "#444"; border.width: 1; radius: 4; ListView { anchors.fill: parent; anchors.margins: 2; orientation: ListView.Horizontal; spacing: 4; model: WindowManager.windows; delegate: Rectangle { width: 100; height: 30; color: modelData.active ? "#3a3a3a" : "#2a2a2a"; border.color: "#555"; radius: 2; Text { anchors.centerIn: parent; text: modelData.title; color: "white"; elide: Text.ElideRight; width: parent.width - 10; horizontalAlignment: Text.AlignHCenter } MouseArea { anchors.fill: parent; onClicked: WindowManager.activate(modelData.id) } } Text { visible: parent.count === 0; anchors.centerIn: parent; text: "Taskbar (no windows)"; color: "#888"; font.pixelSize: 12 } } }'
+            qml = 'import QtQuick; import QtQuick.Controls; import QtQuick.Layouts; import CanvasDesk; Rectangle { width: 400; height: 40; x: ' + data.x + '; y: ' + data.y + '; color: Theme.uiPrimaryColor; border.color: "#444"; border.width: 1; radius: 4; ListView { anchors.fill: parent; anchors.margins: 2; orientation: ListView.Horizontal; spacing: 4; model: WindowManager.windows; delegate: Rectangle { width: 100; height: 30; color: modelData.active ? "#3a3a3a" : "#2a2a2a"; border.color: Theme.uiTitleBarLeftColor; radius: 2; Text { anchors.centerIn: parent; text: modelData.title; color: Theme.uiTextColor; elide: Text.ElideRight; width: parent.width - 10; horizontalAlignment: Text.AlignHCenter } MouseArea { anchors.fill: parent; onClicked: WindowManager.activate(modelData.id) } } Text { visible: parent.count === 0; anchors.centerIn: parent; text: "Taskbar (no windows)"; color: "#888"; font.pixelSize: 12 } } }'
         } else if (data.type === "AppGrid") {
-            qml = 'import QtQuick; import QtQuick.Controls; import CanvasDesk; Rectangle { width: 300; height: 400; x: ' + data.x + '; y: ' + data.y + '; color: "#1a1a1a"; border.color: "#444"; border.width: 1; radius: 4; GridView { anchors.fill: parent; anchors.margins: 8; cellWidth: 80; cellHeight: 80; clip: true; model: AppManager.apps; delegate: Item { width: 80; height: 80; Column { anchors.centerIn: parent; spacing: 5; Rectangle { width: 48; height: 48; color: "transparent"; Image { anchors.fill: parent; source: "image://theme/" + (modelData.icon || "application-x-executable"); sourceSize.width: 48; sourceSize.height: 48; fillMode: Image.PreserveAspectFit } MouseArea { anchors.fill: parent; onClicked: AppManager.launch(modelData.exec) } } Text { text: modelData.name; width: 70; elide: Text.ElideRight; horizontalAlignment: Text.AlignHCenter; font.pixelSize: 10; color: "white" } } } } }'
+            qml = 'import QtQuick; import QtQuick.Controls; import CanvasDesk; Rectangle { width: 300; height: 400; x: ' + data.x + '; y: ' + data.y + '; color: Theme.uiPrimaryColor; border.color: "#444"; border.width: 1; radius: 4; GridView { anchors.fill: parent; anchors.margins: 8; cellWidth: 80; cellHeight: 80; clip: true; model: AppManager.apps; delegate: Item { width: 80; height: 80; Column { anchors.centerIn: parent; spacing: 5; Rectangle { width: 48; height: 48; color: "transparent"; Image { anchors.fill: parent; source: "image://theme/" + (modelData.icon || "application-x-executable"); sourceSize.width: 48; sourceSize.height: 48; fillMode: Image.PreserveAspectFit } MouseArea { anchors.fill: parent; onClicked: AppManager.launch(modelData.exec) } } Text { text: modelData.name; width: 70; elide: Text.ElideRight; horizontalAlignment: Text.AlignHCenter; font.pixelSize: 10; color: Theme.uiTextColor } } } } }'
         } else if (data.type === "WorkspaceSwitcher") {
-            qml = 'import QtQuick; import QtQuick.Controls; import QtQuick.Layouts; import CanvasDesk; Rectangle { width: 180; height: 40; x: ' + data.x + '; y: ' + data.y + '; color: "#1a1a1a"; border.color: "#444"; border.width: 1; radius: 4; Row { anchors.centerIn: parent; spacing: 5; Repeater { model: WindowManager.workspaceCount; delegate: Rectangle { width: 40; height: 30; color: WindowManager.currentWorkspace === index ? "#3a3a3a" : "#2a2a2a"; border.color: "#555"; radius: 2; Text { anchors.centerIn: parent; text: (index + 1).toString(); color: "white" } MouseArea { anchors.fill: parent; onClicked: WindowManager.switchToWorkspace(index) } } } } }'
+            qml = 'import QtQuick; import QtQuick.Controls; import QtQuick.Layouts; import CanvasDesk; Rectangle { width: 180; height: 40; x: ' + data.x + '; y: ' + data.y + '; color: Theme.uiPrimaryColor; border.color: "#444"; border.width: 1; radius: 4; Row { anchors.centerIn: parent; spacing: 5; Repeater { model: WindowManager.workspaceCount; delegate: Rectangle { width: 40; height: 30; color: WindowManager.currentWorkspace === index ? "#3a3a3a" : "#2a2a2a"; border.color: Theme.uiTitleBarLeftColor; radius: 2; Text { anchors.centerIn: parent; text: (index + 1).toString(); color: Theme.uiTextColor } MouseArea { anchors.fill: parent; onClicked: WindowManager.switchToWorkspace(index) } } } } }'
         } else if (data.type === "FileManager") {
-            qml = 'import QtQuick; import QtQuick.Controls; import Qt.labs.folderlistmodel; import CanvasDesk; Rectangle { width: 250; height: 300; x: ' + data.x + '; y: ' + data.y + '; color: "#1a1a1a"; border.color: "#444"; border.width: 1; radius: 4; ListView { anchors.fill: parent; anchors.margins: 4; clip: true; model: FolderListModel { folder: "file://" + AppManager.homeDir(); showDirsFirst: true; nameFilters: ["*"] } delegate: Rectangle { width: parent.width; height: 30; color: "transparent"; Row { anchors.fill: parent; spacing: 5; leftPadding: 5; Image { source: "image://theme/" + (fileIsDir ? "folder" : "text-x-generic"); width: 20; height: 20; anchors.verticalCenter: parent.verticalCenter } Text { text: fileName; color: "white"; anchors.verticalCenter: parent.verticalCenter } } } } }'
+            qml = 'import QtQuick; import QtQuick.Controls; import Qt.labs.folderlistmodel; import CanvasDesk; Rectangle { width: 250; height: 300; x: ' + data.x + '; y: ' + data.y + '; color: Theme.uiPrimaryColor; border.color: "#444"; border.width: 1; radius: 4; ListView { anchors.fill: parent; anchors.margins: 4; clip: true; model: FolderListModel { folder: "file://" + AppManager.homeDir(); showDirsFirst: true; nameFilters: ["*"] } delegate: Rectangle { width: parent.width; height: 30; color: "transparent"; Row { anchors.fill: parent; spacing: 5; leftPadding: 5; Image { source: "image://theme/" + (fileIsDir ? "folder" : "text-x-generic"); width: 20; height: 20; anchors.verticalCenter: parent.verticalCenter } Text { text: fileName; color: Theme.uiTextColor; anchors.verticalCenter: parent.verticalCenter } } } } }'
         } else {
             qml = 'import QtQuick; Rectangle { color: "#ddeeff"; border.color: "blue"; width: 100; height: 50; x: ' + data.x + '; y: ' + data.y + '; Text { anchors.centerIn: parent; text: "' + data.type + '"; color: "black" } }'
         }

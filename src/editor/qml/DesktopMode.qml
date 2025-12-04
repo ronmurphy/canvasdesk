@@ -53,7 +53,7 @@ ApplicationWindow {
     property bool showGrid: false
     property bool snapToGrid: false
     property int gridSize: 20
-    property string backgroundColor: "#1a1a1a"
+    property color backgroundColor: Theme.uiSecondaryColor
     
     // Update property fields when selection changes
     onSelectedComponentChanged: {
@@ -149,8 +149,8 @@ ApplicationWindow {
         z: 200
         width: 32
         height: 32
-        color: showFloatingEditor ? "#4a90e2" : "#2a2a2a"
-        border.color: "#555"
+        color: showFloatingEditor ? Theme.uiHighlightColor : Theme.uiSecondaryColor
+        border.color: Theme.uiTitleBarLeftColor
         border.width: 1
         radius: 4
         opacity: 0.8
@@ -158,7 +158,7 @@ ApplicationWindow {
         Text {
             anchors.centerIn: parent
             text: "✎"
-            color: "white"
+            color: Theme.uiTextColor
             font.pixelSize: 18
         }
         
@@ -180,8 +180,8 @@ ApplicationWindow {
         x: parent.width - width - 50
         y: 50
         z: 250
-        color: "#2a2a2a"
-        border.color: "#555"
+        color: Theme.uiSecondaryColor
+        border.color: Theme.uiTitleBarLeftColor
         border.width: 1
         radius: 6
         opacity: 0.95
@@ -191,8 +191,8 @@ ApplicationWindow {
             id: panelHeader
             width: parent.width
             height: 40
-            color: "#1a1a1a"
-            border.color: "#555"
+            color: Theme.uiTitleBarLeftColor
+            border.color: Theme.uiTitleBarLeftColor
             radius: 6
             
             RowLayout {
@@ -201,7 +201,7 @@ ApplicationWindow {
                 
                 Text {
                     text: "CanvasDesk Editor"
-                    color: "white"
+                    color: Theme.uiTextColor
                     font.bold: true
                     Layout.fillWidth: true
                 }
@@ -276,7 +276,7 @@ ApplicationWindow {
                                 
                                 Text {
                                     text: name
-                                    color: "white"
+                                    color: Theme.uiTextColor
                                     Layout.fillWidth: true
                                 }
                                 
@@ -330,13 +330,13 @@ ApplicationWindow {
                         Rectangle {
                             Layout.fillWidth: true
                             height: 40
-                            color: "#2a2a2a"
+                            color: Theme.uiSecondaryColor
                             radius: 4
 
                             Label {
                                 anchors.centerIn: parent
                                 text: selectedComponent ? selectedComponent.componentType + " Properties" : "Select a Component"
-                                color: "white"
+                                color: Theme.uiTextColor
                                 font.bold: true
                                 font.pixelSize: 14
                             }
@@ -365,14 +365,14 @@ ApplicationWindow {
 
                                 Label {
                                     text: "Position & Size"
-                                    color: "#4a90e2"
+                                    color: Theme.uiHighlightColor
                                     font.bold: true
                                 }
 
                                 Rectangle {
                                     Layout.fillWidth: true
                                     height: 1
-                                    color: "#333"
+                                    color: Theme.uiTitleBarLeftColor
                                 }
 
                                 // X position
@@ -380,7 +380,7 @@ ApplicationWindow {
                                     Layout.fillWidth: true
                                     Label {
                                         text: "X:"
-                                        color: "#ccc"
+                                        color: Theme.uiTextColor
                                         Layout.preferredWidth: 60
                                     }
                                     TextField {
@@ -400,7 +400,7 @@ ApplicationWindow {
                                     Layout.fillWidth: true
                                     Label {
                                         text: "Y:"
-                                        color: "#ccc"
+                                        color: Theme.uiTextColor
                                         Layout.preferredWidth: 60
                                     }
                                     TextField {
@@ -420,7 +420,7 @@ ApplicationWindow {
                                     Layout.fillWidth: true
                                     Label {
                                         text: "Width:"
-                                        color: "#ccc"
+                                        color: Theme.uiTextColor
                                         Layout.preferredWidth: 60
                                     }
                                     TextField {
@@ -440,7 +440,7 @@ ApplicationWindow {
                                     Layout.fillWidth: true
                                     Label {
                                         text: "Height:"
-                                        color: "#ccc"
+                                        color: Theme.uiTextColor
                                         Layout.preferredWidth: 60
                                     }
                                     TextField {
@@ -470,14 +470,14 @@ ApplicationWindow {
 
                                     Label {
                                         text: "Panel Settings"
-                                        color: "#4a90e2"
+                                        color: Theme.uiHighlightColor
                                         font.bold: true
                                     }
 
                                     Rectangle {
                                         Layout.fillWidth: true
                                         height: 1
-                                        color: "#333"
+                                        color: Theme.uiTitleBarLeftColor
                                     }
 
                                     // Edge
@@ -485,7 +485,7 @@ ApplicationWindow {
                                         Layout.fillWidth: true
                                         Label {
                                             text: "Edge:"
-                                            color: "#ccc"
+                                            color: Theme.uiTextColor
                                             Layout.preferredWidth: 100
                                         }
                                         ComboBox {
@@ -509,7 +509,7 @@ ApplicationWindow {
                                         Layout.fillWidth: true
                                         Label {
                                             text: "Auto Hide:"
-                                            color: "#ccc"
+                                            color: Theme.uiTextColor
                                             Layout.preferredWidth: 100
                                         }
                                         CheckBox {
@@ -533,14 +533,14 @@ ApplicationWindow {
 
                                     Label {
                                         text: "Clock Settings"
-                                        color: "#4a90e2"
+                                        color: Theme.uiHighlightColor
                                         font.bold: true
                                     }
 
                                     Rectangle {
                                         Layout.fillWidth: true
                                         height: 1
-                                        color: "#333"
+                                        color: Theme.uiTitleBarLeftColor
                                     }
 
                                     Item { Layout.fillHeight: true }
@@ -554,14 +554,14 @@ ApplicationWindow {
 
                                     Label {
                                         text: "App Launcher Settings"
-                                        color: "#4a90e2"
+                                        color: Theme.uiHighlightColor
                                         font.bold: true
                                     }
 
                                     Rectangle {
                                         Layout.fillWidth: true
                                         height: 1
-                                        color: "#333"
+                                        color: Theme.uiTitleBarLeftColor
                                     }
 
                                     // Button Text
@@ -569,7 +569,7 @@ ApplicationWindow {
                                         Layout.fillWidth: true
                                         Label {
                                             text: "Button Text:"
-                                            color: "#ccc"
+                                            color: Theme.uiTextColor
                                             Layout.preferredWidth: 100
                                         }
                                         TextField {
@@ -644,21 +644,21 @@ ApplicationWindow {
 
                             Label {
                                 text: "Grid Settings"
-                                color: "#4a90e2"
+                                color: Theme.uiHighlightColor
                                 font.bold: true
                             }
 
                             Rectangle {
                                 Layout.fillWidth: true
                                 height: 1
-                                color: "#333"
+                                color: Theme.uiTitleBarLeftColor
                             }
 
                             RowLayout {
                                 Layout.fillWidth: true
                                 Label {
                                     text: "Show Grid"
-                                    color: "white"
+                                    color: Theme.uiTextColor
                                     Layout.fillWidth: true
                                 }
                                 Switch {
@@ -671,7 +671,7 @@ ApplicationWindow {
                                 Layout.fillWidth: true
                                 Label {
                                     text: "Snap to Grid"
-                                    color: "white"
+                                    color: Theme.uiTextColor
                                     Layout.fillWidth: true
                                 }
                                 Switch {
@@ -684,7 +684,7 @@ ApplicationWindow {
                                 Layout.fillWidth: true
                                 Label {
                                     text: "Grid Size: " + gridSize + "px"
-                                    color: "#ccc"
+                                    color: Theme.uiTextColor
                                     Layout.fillWidth: true
                                 }
                                 Slider {
@@ -705,20 +705,20 @@ ApplicationWindow {
 
                             Label {
                                 text: "Appearance"
-                                color: "#4a90e2"
+                                color: Theme.uiHighlightColor
                                 font.bold: true
                             }
 
                             Rectangle {
                                 Layout.fillWidth: true
                                 height: 1
-                                color: "#333"
+                                color: Theme.uiTitleBarLeftColor
                             }
 
                             // Wallpaper
                             Label {
                                 text: "Wallpaper"
-                                color: "white"
+                                color: Theme.uiTextColor
                             }
 
                             RowLayout {
@@ -750,7 +750,7 @@ ApplicationWindow {
                                 Layout.fillWidth: true
                                 Label {
                                     text: "Fill Mode"
-                                    color: "#ccc"
+                                    color: Theme.uiTextColor
                                     Layout.preferredWidth: 80
                                 }
                                 ComboBox {
@@ -775,7 +775,7 @@ ApplicationWindow {
                             // Extracted Colors Preview
                             Label {
                                 text: "Theme Colors (Click to Assign)"
-                                color: "white"
+                                color: Theme.uiTextColor
                                 topPadding: 8
                             }
 
@@ -789,7 +789,7 @@ ApplicationWindow {
                                     width: 30
                                     height: 30
                                     color: colorValue
-                                    border.color: "#555"
+                                    border.color: Theme.uiTitleBarLeftColor
                                     
                                     ToolTip.visible: ma.containsMouse
                                     ToolTip.text: label
@@ -811,6 +811,12 @@ ApplicationWindow {
                                 ColorBox { label: "Accent"; colorValue: Theme.accentColor }
                                 ColorBox { label: "Neutral"; colorValue: Theme.neutralColor }
                                 ColorBox { label: "Brightest"; colorValue: Theme.brightestColor }
+                                
+                                // Universal Colors
+                                Rectangle { width: 1; height: 30; color: Theme.uiTitleBarLeftColor }
+                                ColorBox { label: "White"; colorValue: Theme.whiteColor }
+                                ColorBox { label: "Grey"; colorValue: Theme.greyColor }
+                                ColorBox { label: "Black"; colorValue: Theme.blackColor }
                             }
 
                             Menu {
@@ -829,7 +835,7 @@ ApplicationWindow {
                             // Current Assignments Display
                             Label {
                                 text: "Current UI Assignments"
-                                color: "white"
+                                color: Theme.uiTextColor
                                 topPadding: 8
                             }
                             
@@ -838,13 +844,13 @@ ApplicationWindow {
                                 rowSpacing: 4
                                 columnSpacing: 8
                                 
-                                Rectangle { width: 16; height: 16; color: Theme.uiPrimaryColor; border.color: "#555" } Label { text: "Primary UI"; color: "#ccc" }
-                                Rectangle { width: 16; height: 16; color: Theme.uiSecondaryColor; border.color: "#555" } Label { text: "Secondary UI"; color: "#ccc" }
-                                Rectangle { width: 16; height: 16; color: Theme.uiTertiaryColor; border.color: "#555" } Label { text: "Tertiary UI"; color: "#ccc" }
-                                Rectangle { width: 16; height: 16; color: Theme.uiHighlightColor; border.color: "#555" } Label { text: "Highlight"; color: "#ccc" }
-                                Rectangle { width: 16; height: 16; color: Theme.uiTextColor; border.color: "#555" } Label { text: "Text"; color: "#ccc" }
-                                Rectangle { width: 16; height: 16; color: Theme.uiTitleBarLeftColor; border.color: "#555" } Label { text: "TitleBar Left"; color: "#ccc" }
-                                Rectangle { width: 16; height: 16; color: Theme.uiTitleBarRightColor; border.color: "#555" } Label { text: "TitleBar Right"; color: "#ccc" }
+                                Rectangle { width: 16; height: 16; color: Theme.uiPrimaryColor; border.color: Theme.uiTitleBarLeftColor } Label { text: "Primary UI"; color: Theme.uiTextColor }
+                                Rectangle { width: 16; height: 16; color: Theme.uiSecondaryColor; border.color: Theme.uiTitleBarLeftColor } Label { text: "Secondary UI"; color: Theme.uiTextColor }
+                                Rectangle { width: 16; height: 16; color: Theme.uiTertiaryColor; border.color: Theme.uiTitleBarLeftColor } Label { text: "Tertiary UI"; color: Theme.uiTextColor }
+                                Rectangle { width: 16; height: 16; color: Theme.uiHighlightColor; border.color: Theme.uiTitleBarLeftColor } Label { text: "Highlight"; color: Theme.uiTextColor }
+                                Rectangle { width: 16; height: 16; color: Theme.uiTextColor; border.color: Theme.uiTitleBarLeftColor } Label { text: "Text"; color: Theme.uiTextColor }
+                                Rectangle { width: 16; height: 16; color: Theme.uiTitleBarLeftColor; border.color: Theme.uiTitleBarLeftColor } Label { text: "TitleBar Left"; color: Theme.uiTextColor }
+                                Rectangle { width: 16; height: 16; color: Theme.uiTitleBarRightColor; border.color: Theme.uiTitleBarLeftColor } Label { text: "TitleBar Right"; color: Theme.uiTextColor }
                             }
 
                             // Manual Background Color (Fallback)
@@ -852,14 +858,14 @@ ApplicationWindow {
                                 Layout.fillWidth: true
                                 Label {
                                     text: "Fallback Color"
-                                    color: "white"
+                                    color: Theme.uiTextColor
                                     Layout.fillWidth: true
                                 }
                                 Rectangle {
                                     width: 24
                                     height: 24
                                     color: backgroundColor
-                                    border.color: "#555"
+                                    border.color: Theme.uiTitleBarLeftColor
                                     border.width: 1
                                 }
                             }

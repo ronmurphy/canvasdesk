@@ -164,7 +164,7 @@ Item {
             width: 12
             height: 12
             radius: 6
-            color: "#4a90e2"
+            color: Theme.uiHighlightColor
             border.color: "#2980b9"
             border.width: 1
             z: 1000

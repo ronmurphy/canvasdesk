@@ -96,10 +96,14 @@ private:
   void handleMotionNotify(XMotionEvent *event);
   void updateWindowProperties(X11Window *win);
 
+  // Theme updates
+  void updateThemeColors();
+
   // Frame management
   X11Frame *createFrame(Window client, int x, int y, int width, int height);
   void destroyFrame(X11Frame *frame);
   X11Frame *findFrame(Window window); // Find frame by any of its windows
+  void drawTitleBar(X11Frame *frame); // Draw gradient titlebar
   void drawTitleBarText(X11Frame *frame, const QString &title);
   void createTitleBarButtons(X11Frame *frame);
   void drawTitleBarButton(X11Frame *frame, const X11Button &button);

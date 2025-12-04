@@ -9,6 +9,9 @@
 
 class ThemeManager : public QObject {
     Q_OBJECT
+public:
+    static ThemeManager* instance();
+
     Q_PROPERTY(QString wallpaperPath READ wallpaperPath WRITE setWallpaperPath NOTIFY wallpaperPathChanged)
     Q_PROPERTY(int wallpaperFillMode READ wallpaperFillMode WRITE setWallpaperFillMode NOTIFY wallpaperFillModeChanged)
     

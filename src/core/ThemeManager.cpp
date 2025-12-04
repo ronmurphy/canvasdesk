@@ -10,7 +10,14 @@
 #include <algorithm>
 #include <cmath>
 
+static ThemeManager* s_instance = nullptr;
+
+ThemeManager* ThemeManager::instance() {
+    return s_instance;
+}
+
 ThemeManager::ThemeManager(QObject *parent) : QObject(parent) {
+    s_instance = this;
     loadColors();
 }
 
