@@ -933,11 +933,8 @@ void X11WindowManager::handleButtonPress(XButtonEvent *event) {
         break;
       }
       case X11Button::Maximize: {
-        qInfo() << "[X11] Maximize button clicked";
-
         if (frame->isFullscreen) {
           // Restore to original size
-          qInfo() << "[X11] Restoring window from fullscreen";
 
           // Restore position and size from saved values
           frame->x = frame->savedX;
@@ -976,7 +973,6 @@ void X11WindowManager::handleButtonPress(XButtonEvent *event) {
           }
         } else {
           // Save current size and position before going fullscreen
-          qInfo() << "[X11] Maximizing window to fullscreen";
 
           frame->savedX = frame->x;
           frame->savedY = frame->y;
@@ -1028,8 +1024,6 @@ void X11WindowManager::handleButtonPress(XButtonEvent *event) {
         break;
       }
       case X11Button::Minimize: {
-        qInfo() << "[X11] Minimize button clicked";
-
         // Use XIconifyWindow to minimize (iconify) the window
         // This hides the window and typically shows it in a taskbar
         int screen = DefaultScreen(m_display);
@@ -1067,8 +1061,6 @@ void X11WindowManager::handleButtonPress(XButtonEvent *event) {
       m_resizeStartHeight = frame->height;
       m_resizeStartFrameX = frame->x;
       m_resizeStartFrameY = frame->y;
-
-      qInfo() << "[X11] Started resizing window, edge:" << edge;
       return;
     }
   }
@@ -1081,9 +1073,6 @@ void X11WindowManager::handleButtonPress(XButtonEvent *event) {
     m_dragStartY = event->y_root;
     m_dragFrameStartX = frame->x;
     m_dragFrameStartY = frame->y;
-
-    qInfo() << "[X11] Started dragging window at" << m_dragStartX << ","
-            << m_dragStartY;
   }
 }
 
@@ -1092,13 +1081,11 @@ void X11WindowManager::handleButtonRelease(XButtonEvent *event) {
     m_resizing = false;
     m_resizeFrame = nullptr;
     m_resizeEdge = 0;
-    qInfo() << "[X11] Stopped resizing";
   }
 
   if (m_dragging) {
     m_dragging = false;
     m_dragFrame = nullptr;
-    qInfo() << "[X11] Stopped dragging";
   }
 }
 
@@ -1245,11 +1232,8 @@ void X11WindowManager::activateWindow(Window window) {
     return;
   }
 
-  qInfo() << "[X11] Activating window" << window << "state:" << win->state;
-
   // If window is minimized, restore it
   if (win->state == X11Window::Minimized) {
-    qInfo() << "[X11] Restoring minimized window";
 
     // Map the frame and client windows
     XMapWindow(m_display, frame->frame);
@@ -1264,8 +1248,6 @@ void X11WindowManager::activateWindow(Window window) {
 
   // Set focus to the window (raises and focuses)
   setFocus(window);
-
-  qInfo() << "[X11] Window activated and raised";
 }
 
 void X11WindowManager::minimizeWindow(Window window) {
@@ -1282,8 +1264,6 @@ void X11WindowManager::minimizeWindow(Window window) {
     return;
   }
 
-  qInfo() << "[X11] Minimizing window" << window;
-
   // Use XIconifyWindow to minimize (iconify) the window
   int screen = DefaultScreen(m_display);
   XIconifyWindow(m_display, frame->client, screen);
@@ -1296,8 +1276,6 @@ void X11WindowManager::minimizeWindow(Window window) {
   emit windowChanged(win);
 
   XFlush(m_display);
-
-  qInfo() << "[X11] Window minimized";
 }
 
 void X11WindowManager::closeWindow(Window window) {
@@ -1314,8 +1292,6 @@ void X11WindowManager::closeWindow(Window window) {
     return;
   }
 
-  qInfo() << "[X11] Closing window" << window;
-
   // Send WM_DELETE_WINDOW protocol message
   Atom wmProtocols = XInternAtom(m_display, "WM_PROTOCOLS", False);
   Atom wmDeleteWindow = XInternAtom(m_display, "WM_DELETE_WINDOW", False);
@@ -1331,8 +1307,6 @@ void X11WindowManager::closeWindow(Window window) {
 
   XSendEvent(m_display, frame->client, False, NoEventMask, &ev);
   XFlush(m_display);
-
-  qInfo() << "[X11] Close request sent to window" << window;
 }
 
 void X11WindowManager::setFocus(Window window) {
@@ -1348,8 +1322,6 @@ void X11WindowManager::setFocus(Window window) {
     qWarning() << "[X11] Cannot focus window" << window << "- no frame";
     return;
   }
-
-  qInfo() << "[X11] Setting focus to window" << window;
 
   // Update active window tracking
   m_activeWindow = window;

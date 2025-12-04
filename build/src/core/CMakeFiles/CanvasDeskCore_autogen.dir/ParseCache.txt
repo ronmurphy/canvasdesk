@@ -2482,7 +2482,6 @@
  mdp:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stddef.h
 /home/brad/Documents/canvasdesk/src/core/CanvasDeskCore.cpp
 /home/brad/Documents/canvasdesk/src/core/ThemeManager.cpp
-/home/brad/Documents/canvasdesk/src/core/AppManager.cpp
 /home/brad/Documents/canvasdesk/src/core/ThemeManager.h
  mmc:Q_OBJECT
  mdp:/home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/moc_predefs.h
@@ -2982,3 +2981,4 @@
  mdp:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdarg.h
  mdp:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdbool.h
  mdp:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stddef.h
+/home/brad/Documents/canvasdesk/src/core/AppManager.cpp
