@@ -2,7 +2,7 @@
 
 ## **1. Project Overview**
 
-**CanvasDesk** is a next-generation **no-code desktop environment builder** and **runtime shell** for Linux.
+**CanvasDesk** is a next-generation **no-code desktop environment builder** and **runtime shell** for X11 on Linux.
 It allows users to visually construct a fully functional desktop environment using a drag-and-drop interface—no programming required.
 
 Users design:
@@ -25,6 +25,9 @@ CanvasDesk combines:
 * **Qt Quick (QML)** for user interface rendering
 * **C++ backend** for system integrations (window manager, app indexing, file systems)
 * A **component + role system** that binds visual elements to system functions
+
+
+<img width="1080" height="720" alt="CanvasDesk-98" src="https://github.com/user-attachments/assets/a4b75ca8-f4af-457e-a045-ee57c140ab73" />
 
 ---
 
