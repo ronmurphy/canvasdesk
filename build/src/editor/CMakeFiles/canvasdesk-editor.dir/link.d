@@ -60,6 +60,8 @@ canvasdesk-editor: \
   /usr/lib/libXdamage.so.1 \
   /usr/lib32/libXfixes.so.3 \
   /usr/lib/libXfixes.so.3 \
+  /usr/lib32/libXft.so.2 \
+  /usr/lib/libXft.so.2 \
   /usr/lib/libgssapi_krb5.so.2 \
   /usr/lib/libbrotlidec.so.1 \
   /usr/lib/libzstd.so.1 \
@@ -272,6 +274,10 @@ CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp.o:
 /usr/lib32/libXfixes.so.3:
 
 /usr/lib/libXfixes.so.3:
+
+/usr/lib32/libXft.so.2:
+
+/usr/lib/libXft.so.2:
 
 /usr/lib/libgssapi_krb5.so.2:
 

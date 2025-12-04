@@ -26,26 +26,54 @@ Rectangle {
         spacing: 4
         model: WindowManager.windows
         
-        delegate: Button {
+        delegate: Item {
             width: 120
             height: parent.height
-            
-            background: Rectangle {
+
+            Rectangle {
+                id: buttonBackground
+                anchors.fill: parent
                 color: modelData.active ? root.activeColor : root.inactiveColor
-                border.color: parent.down ? Theme.uiHighlightColor : Theme.uiTitleBarRightColor
+                border.color: mouseArea.pressed ? Theme.uiHighlightColor : Theme.uiTitleBarRightColor
                 radius: 2
+                opacity: modelData.state === "minimized" ? 0.5 : 1.0
             }
-            
-            contentItem: Text {
-                text: modelData.title
+
+            Text {
+                anchors.fill: parent
+                text: {
+                    let prefix = "";
+                    if (modelData.state === "minimized") prefix = "_ ";
+                    else if (modelData.state === "maximized") prefix = "□ ";
+                    return prefix + modelData.title;
+                }
                 color: Theme.uiTextColor
                 elide: Text.ElideRight
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
+                font.italic: modelData.state === "minimized"
             }
-            
-            enabled: !root.editorOpen
-            onClicked: WindowManager.activate(modelData.id)
+
+            MouseArea {
+                id: mouseArea
+                anchors.fill: parent
+                enabled: !root.editorOpen
+                acceptedButtons: Qt.LeftButton | Qt.MiddleButton
+
+                onClicked: (mouse) => {
+                    if (mouse.button === Qt.MiddleButton) {
+                        // Middle click: close window
+                        WindowManager.close(modelData.id);
+                    } else if (mouse.button === Qt.LeftButton) {
+                        // Left click: toggle minimize/restore
+                        if (modelData.state === "minimized") {
+                            WindowManager.activate(modelData.id);
+                        } else {
+                            WindowManager.minimize(modelData.id);
+                        }
+                    }
+                }
+            }
         }
 
         // Empty state

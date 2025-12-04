@@ -551,6 +551,39 @@ X11Frame *X11WindowManager::createFrame(Window client, int x, int y, int width,
   frame->gc = XCreateGC(m_display, frame->titleBar, 0, nullptr);
   XSetForeground(m_display, frame->gc, textColor); // text color
 
+  // Initialize Xft for Unicode text rendering
+  int screen = DefaultScreen(m_display);
+  Visual *visual = DefaultVisual(m_display, screen);
+  Colormap colormap = DefaultColormap(m_display, screen);
+
+  // Create Xft font (using Noto Sans Symbols for best Unicode support)
+  frame->xftFont = XftFontOpen(m_display, screen,
+                               XFT_FAMILY, XftTypeString, "Noto Sans Symbols",
+                               XFT_SIZE, XftTypeDouble, 12.0,
+                               nullptr);
+  if (!frame->xftFont) {
+    qWarning() << "[X11] Failed to load Noto Sans Symbols, trying DejaVu Sans";
+    frame->xftFont = XftFontOpen(m_display, screen,
+                                 XFT_FAMILY, XftTypeString, "DejaVu Sans",
+                                 XFT_SIZE, XftTypeDouble, 10.0,
+                                 nullptr);
+  }
+  if (!frame->xftFont) {
+    qWarning() << "[X11] Failed to load DejaVu Sans, using system default";
+    frame->xftFont = XftFontOpenName(m_display, screen, "sans-10");
+  }
+
+  // Create Xft draw object for titlebar
+  frame->xftDraw = XftDrawCreate(m_display, frame->titleBar, visual, colormap);
+
+  // Create Xft color for text
+  XRenderColor renderColor;
+  renderColor.red = ((textColor >> 16) & 0xFF) * 257;
+  renderColor.green = ((textColor >> 8) & 0xFF) * 257;
+  renderColor.blue = (textColor & 0xFF) * 257;
+  renderColor.alpha = 0xFFFF;
+  XftColorAllocValue(m_display, visual, colormap, &renderColor, &frame->xftTextColor);
+
   // Select events we care about
   XSelectInput(m_display, frame->frame,
                SubstructureRedirectMask | SubstructureNotifyMask |
@@ -558,6 +591,8 @@ X11Frame *X11WindowManager::createFrame(Window client, int x, int y, int width,
   XSelectInput(m_display, frame->titleBar,
                ButtonPressMask | ButtonReleaseMask | ExposureMask |
                    PointerMotionMask);
+  // Note: Don't select ButtonPressMask on client - apps may already have it selected
+  // which causes BadAccess error. We'll catch clicks on the frame instead.
   XSelectInput(m_display, client, StructureNotifyMask | PropertyChangeMask);
 
   // Reparent the client window into the frame
@@ -600,8 +635,23 @@ void X11WindowManager::destroyFrame(X11Frame *frame) {
     XFreeGC(m_display, frame->gc);
   }
 
-  // Destroy button windows
+  // Free Xft resources
+  if (frame->xftDraw) {
+    XftDrawDestroy(frame->xftDraw);
+  }
+  if (frame->xftFont) {
+    XftFontClose(m_display, frame->xftFont);
+  }
+  int screen = DefaultScreen(m_display);
+  Visual *visual = DefaultVisual(m_display, screen);
+  Colormap colormap = DefaultColormap(m_display, screen);
+  XftColorFree(m_display, visual, colormap, &frame->xftTextColor);
+
+  // Destroy button windows (and free their Xft resources)
   for (const X11Button &btn : frame->buttons) {
+    if (btn.xftDraw) {
+      XftDrawDestroy(btn.xftDraw);
+    }
     XDestroyWindow(m_display, btn.window);
   }
 
@@ -662,35 +712,53 @@ void X11WindowManager::drawTitleBar(X11Frame *frame) {
 }
 
 void X11WindowManager::drawTitleBarText(X11Frame *frame, const QString &title) {
-  if (!frame || !frame->gc)
+  if (!frame || !frame->xftDraw || !frame->xftFont)
     return;
 
   // Note: We do NOT clear the window here because it would erase the gradient background.
   // The background is handled by drawTitleBar().
 
-  // Set Text Color
+  // Update Xft text color if theme changed
   if (auto theme = ThemeManager::instance()) {
       unsigned long textColor = theme->uiTextColor().rgb() & 0xFFFFFF;
-      XSetForeground(m_display, frame->gc, textColor);
+      int screen = DefaultScreen(m_display);
+      Visual *visual = DefaultVisual(m_display, screen);
+      Colormap colormap = DefaultColormap(m_display, screen);
+
+      // Free old color and allocate new one
+      XftColorFree(m_display, visual, colormap, &frame->xftTextColor);
+      XRenderColor renderColor;
+      renderColor.red = ((textColor >> 16) & 0xFF) * 257;
+      renderColor.green = ((textColor >> 8) & 0xFF) * 257;
+      renderColor.blue = (textColor & 0xFF) * 257;
+      renderColor.alpha = 0xFFFF;
+      XftColorAllocValue(m_display, visual, colormap, &renderColor, &frame->xftTextColor);
   }
 
-  // Draw title text (simple X11 text for now, no Xft yet)
+  // Convert QString to UTF-8 for Xft
   QByteArray titleBytes = title.toUtf8();
-  
-  // Calculate Position
-  int textLen = titleBytes.length();
-  int textWidth = textLen * 6; // Approximate width
-  int textX = 0;
 
+  // Calculate text width using Xft
+  XGlyphInfo extents;
+  XftTextExtentsUtf8(m_display, frame->xftFont,
+                     (const FcChar8 *)titleBytes.constData(),
+                     titleBytes.length(), &extents);
+
+  // Calculate Position
+  int textX = 0;
   if (ThemeManager::instance() && ThemeManager::instance()->titleBarTextLeft()) {
       textX = PADDING + 4; // Left aligned
   } else {
-      textX = (frame->width - textWidth) / 2; // Centered
+      textX = (frame->width - extents.width) / 2; // Centered
   }
-  
-  XDrawString(m_display, frame->titleBar, frame->gc, textX,
-              TITLE_HEIGHT - PADDING - 4, // y position for text baseline
-              titleBytes.constData(), textLen);
+
+  int textY = TITLE_HEIGHT - PADDING - 4; // Y position for text baseline
+
+  // Draw title text using Xft (supports Unicode)
+  XftDrawStringUtf8(frame->xftDraw, &frame->xftTextColor, frame->xftFont,
+                    textX, textY,
+                    (const FcChar8 *)titleBytes.constData(),
+                    titleBytes.length());
 
   // Redraw buttons
   for (const X11Button &btn : frame->buttons) {
@@ -706,6 +774,10 @@ void X11WindowManager::createTitleBarButtons(X11Frame *frame) {
 
   int buttonY = (TITLE_HEIGHT - BUTTON_SIZE) / 2;
   int rightEdge = frame->width - PADDING;
+
+  int screen = DefaultScreen(m_display);
+  Visual *visual = DefaultVisual(m_display, screen);
+  Colormap colormap = DefaultColormap(m_display, screen);
 
   // DISABLED: Compositing disabled, no need for override_redirect now
   // // Set override_redirect for button windows
@@ -724,6 +796,7 @@ void X11WindowManager::createTitleBarButtons(X11Frame *frame) {
                                         closeBtn.y, BUTTON_SIZE, BUTTON_SIZE, 0,
                                         0x000000, closeBtn.color);
   // XChangeWindowAttributes(m_display, closeBtn.window, CWOverrideRedirect, &attrs);  // DISABLED
+  closeBtn.xftDraw = XftDrawCreate(m_display, closeBtn.window, visual, colormap);
   XSelectInput(m_display, closeBtn.window,
                ButtonPressMask | ButtonReleaseMask | ExposureMask);
   XMapWindow(m_display, closeBtn.window);
@@ -742,6 +815,7 @@ void X11WindowManager::createTitleBarButtons(X11Frame *frame) {
       XCreateSimpleWindow(m_display, frame->titleBar, maxBtn.x, maxBtn.y,
                           BUTTON_SIZE, BUTTON_SIZE, 0, 0x000000, maxBtn.color);
   // XChangeWindowAttributes(m_display, maxBtn.window, CWOverrideRedirect, &attrs);  // DISABLED
+  maxBtn.xftDraw = XftDrawCreate(m_display, maxBtn.window, visual, colormap);
   XSelectInput(m_display, maxBtn.window,
                ButtonPressMask | ButtonReleaseMask | ExposureMask);
   XMapWindow(m_display, maxBtn.window);
@@ -760,6 +834,7 @@ void X11WindowManager::createTitleBarButtons(X11Frame *frame) {
       XCreateSimpleWindow(m_display, frame->titleBar, minBtn.x, minBtn.y,
                           BUTTON_SIZE, BUTTON_SIZE, 0, 0x000000, minBtn.color);
   // XChangeWindowAttributes(m_display, minBtn.window, CWOverrideRedirect, &attrs);  // DISABLED
+  minBtn.xftDraw = XftDrawCreate(m_display, minBtn.window, visual, colormap);
   XSelectInput(m_display, minBtn.window,
                ButtonPressMask | ButtonReleaseMask | ExposureMask);
   XMapWindow(m_display, minBtn.window);
@@ -771,29 +846,44 @@ void X11WindowManager::createTitleBarButtons(X11Frame *frame) {
 
 void X11WindowManager::drawTitleBarButton(X11Frame *frame,
                                           const X11Button &button) {
-  if (!frame || !frame->gc)
+  if (!frame)
     return;
 
-  // Create a GC for the button
+  // Create a GC for drawing shapes
   GC buttonGC = XCreateGC(m_display, button.window, 0, nullptr);
-  XSetForeground(m_display, buttonGC, 0x000000); // Black text
+  XSetForeground(m_display, buttonGC, 0x000000); // Black
+  XSetLineAttributes(m_display, buttonGC, 2, LineSolid, CapRound, JoinRound);
 
-  const char *symbol = "";
+  int centerX = BUTTON_SIZE / 2;
+  int centerY = BUTTON_SIZE / 2;
+  int margin = 4;
+
   switch (button.type) {
-  case X11Button::Close:
-    symbol = "X";
-    break;
-  case X11Button::Maximize:
-    symbol = "O";
-    break;
-  case X11Button::Minimize:
-    symbol = "_";
+  case X11Button::Close: {
+    // Draw X using two diagonal lines
+    XDrawLine(m_display, button.window, buttonGC,
+              margin, margin,
+              BUTTON_SIZE - margin, BUTTON_SIZE - margin);
+    XDrawLine(m_display, button.window, buttonGC,
+              BUTTON_SIZE - margin, margin,
+              margin, BUTTON_SIZE - margin);
     break;
   }
-
-  // Draw symbol centered in button
-  XDrawString(m_display, button.window, buttonGC, BUTTON_SIZE / 2 - 4,
-              BUTTON_SIZE / 2 + 4, symbol, 1);
+  case X11Button::Maximize: {
+    // Draw a square outline
+    XDrawRectangle(m_display, button.window, buttonGC,
+                   margin, margin,
+                   BUTTON_SIZE - margin * 2, BUTTON_SIZE - margin * 2);
+    break;
+  }
+  case X11Button::Minimize: {
+    // Draw a horizontal line at the bottom
+    XDrawLine(m_display, button.window, buttonGC,
+              margin, BUTTON_SIZE - margin - 2,
+              BUTTON_SIZE - margin, BUTTON_SIZE - margin - 2);
+    break;
+  }
+  }
 
   XFreeGC(m_display, buttonGC);
 }
@@ -802,6 +892,11 @@ void X11WindowManager::handleButtonPress(XButtonEvent *event) {
   X11Frame *frame = findFrame(event->window);
   if (!frame)
     return;
+
+  // Focus the window on any click (titlebar, client area, or buttons)
+  if (m_activeWindow != frame->client) {
+    setFocus(frame->client);
+  }
 
   // Check if it's a button click
   for (const X11Button &btn : frame->buttons) {
@@ -827,14 +922,121 @@ void X11WindowManager::handleButtonPress(XButtonEvent *event) {
         XFlush(m_display);
         break;
       }
-      case X11Button::Maximize:
-        qInfo() << "[X11] Maximize not yet implemented";
-        // TODO: Implement maximize
+      case X11Button::Maximize: {
+        qInfo() << "[X11] Maximize button clicked";
+
+        if (frame->isFullscreen) {
+          // Restore to original size
+          qInfo() << "[X11] Restoring window from fullscreen";
+
+          // Restore position and size from saved values
+          frame->x = frame->savedX;
+          frame->y = frame->savedY;
+          frame->width = frame->savedWidth;
+          frame->height = frame->savedHeight;
+
+          // Resize the frame back to original size
+          XMoveResizeWindow(m_display, frame->frame,
+                           frame->x, frame->y,
+                           frame->width, frame->height);
+
+          // Resize the titlebar
+          XResizeWindow(m_display, frame->titleBar, frame->width, TITLE_HEIGHT);
+
+          // Resize the client window (subtract titlebar height)
+          XResizeWindow(m_display, frame->client, frame->width, frame->height - TITLE_HEIGHT);
+
+          // Recreate buttons for restored width
+          for (const X11Button &btn : frame->buttons) {
+            XDestroyWindow(m_display, btn.window);
+            m_frames.remove(btn.window);
+          }
+          frame->buttons.clear();
+          createTitleBarButtons(frame);
+
+          // Redraw titlebar
+          drawTitleBar(frame);
+
+          frame->isFullscreen = false;
+
+          // Update window state
+          if (m_windows.contains(frame->client)) {
+            m_windows[frame->client]->state = X11Window::Normal;
+            emit windowChanged(m_windows[frame->client]);
+          }
+        } else {
+          // Save current size and position before going fullscreen
+          qInfo() << "[X11] Maximizing window to fullscreen";
+
+          frame->savedX = frame->x;
+          frame->savedY = frame->y;
+          frame->savedWidth = frame->width;
+          frame->savedHeight = frame->height;
+
+          // Get screen dimensions
+          int screenWidth = DisplayWidth(m_display, DefaultScreen(m_display));
+          int screenHeight = DisplayHeight(m_display, DefaultScreen(m_display));
+
+          // Update current dimensions
+          frame->x = 0;
+          frame->y = 0;
+          frame->width = screenWidth;
+          frame->height = screenHeight;
+
+          // Move and resize frame to fill screen
+          XMoveResizeWindow(m_display, frame->frame,
+                           0, 0,
+                           screenWidth, screenHeight);
+
+          // Resize the titlebar to match screen width
+          XResizeWindow(m_display, frame->titleBar, screenWidth, TITLE_HEIGHT);
+
+          // Resize the client window
+          XResizeWindow(m_display, frame->client, screenWidth, screenHeight - TITLE_HEIGHT);
+
+          // Recreate buttons for fullscreen width
+          for (const X11Button &btn : frame->buttons) {
+            XDestroyWindow(m_display, btn.window);
+            m_frames.remove(btn.window);
+          }
+          frame->buttons.clear();
+          createTitleBarButtons(frame);
+
+          // Redraw titlebar
+          drawTitleBar(frame);
+
+          frame->isFullscreen = true;
+
+          // Update window state
+          if (m_windows.contains(frame->client)) {
+            m_windows[frame->client]->state = X11Window::Maximized;
+            emit windowChanged(m_windows[frame->client]);
+          }
+        }
+
+        XFlush(m_display);
         break;
-      case X11Button::Minimize:
-        qInfo() << "[X11] Minimize not yet implemented";
-        // TODO: Implement minimize (iconify)
+      }
+      case X11Button::Minimize: {
+        qInfo() << "[X11] Minimize button clicked";
+
+        // Use XIconifyWindow to minimize (iconify) the window
+        // This hides the window and typically shows it in a taskbar
+        int screen = DefaultScreen(m_display);
+        XIconifyWindow(m_display, frame->client, screen);
+
+        // Also unmap our frame
+        XUnmapWindow(m_display, frame->frame);
+
+        // Update window state
+        if (m_windows.contains(frame->client)) {
+          m_windows[frame->client]->state = X11Window::Minimized;
+          emit windowChanged(m_windows[frame->client]);
+        }
+
+        XFlush(m_display);
         break;
+      }
       }
       return;
     }
@@ -882,4 +1084,139 @@ void X11WindowManager::handleMotionNotify(XMotionEvent *event) {
 
   // Don't XFlush here - let the paint timer handle it at 60 FPS
   // This eliminates flickering during window drag
+}
+
+void X11WindowManager::activateWindow(Window window) {
+  if (!m_windows.contains(window)) {
+    qWarning() << "[X11] Cannot activate window" << window << "- not found";
+    return;
+  }
+
+  X11Window *win = m_windows[window];
+  X11Frame *frame = win->frame;
+
+  if (!frame) {
+    qWarning() << "[X11] Cannot activate window" << window << "- no frame";
+    return;
+  }
+
+  qInfo() << "[X11] Activating window" << window << "state:" << win->state;
+
+  // If window is minimized, restore it
+  if (win->state == X11Window::Minimized) {
+    qInfo() << "[X11] Restoring minimized window";
+
+    // Map the frame and client windows
+    XMapWindow(m_display, frame->frame);
+    XMapWindow(m_display, frame->client);
+
+    // Update window state
+    win->state = frame->isFullscreen ? X11Window::Maximized : X11Window::Normal;
+    win->mapped = true;
+
+    emit windowChanged(win);
+  }
+
+  // Set focus to the window (raises and focuses)
+  setFocus(window);
+
+  qInfo() << "[X11] Window activated and raised";
+}
+
+void X11WindowManager::minimizeWindow(Window window) {
+  if (!m_windows.contains(window)) {
+    qWarning() << "[X11] Cannot minimize window" << window << "- not found";
+    return;
+  }
+
+  X11Window *win = m_windows[window];
+  X11Frame *frame = win->frame;
+
+  if (!frame) {
+    qWarning() << "[X11] Cannot minimize window" << window << "- no frame";
+    return;
+  }
+
+  qInfo() << "[X11] Minimizing window" << window;
+
+  // Use XIconifyWindow to minimize (iconify) the window
+  int screen = DefaultScreen(m_display);
+  XIconifyWindow(m_display, frame->client, screen);
+
+  // Also unmap our frame
+  XUnmapWindow(m_display, frame->frame);
+
+  // Update window state
+  win->state = X11Window::Minimized;
+  emit windowChanged(win);
+
+  XFlush(m_display);
+
+  qInfo() << "[X11] Window minimized";
+}
+
+void X11WindowManager::closeWindow(Window window) {
+  if (!m_windows.contains(window)) {
+    qWarning() << "[X11] Cannot close window" << window << "- not found";
+    return;
+  }
+
+  X11Window *win = m_windows[window];
+  X11Frame *frame = win->frame;
+
+  if (!frame) {
+    qWarning() << "[X11] Cannot close window" << window << "- no frame";
+    return;
+  }
+
+  qInfo() << "[X11] Closing window" << window;
+
+  // Send WM_DELETE_WINDOW protocol message
+  Atom wmProtocols = XInternAtom(m_display, "WM_PROTOCOLS", False);
+  Atom wmDeleteWindow = XInternAtom(m_display, "WM_DELETE_WINDOW", False);
+
+  XEvent ev;
+  memset(&ev, 0, sizeof(ev));
+  ev.type = ClientMessage;
+  ev.xclient.window = frame->client;
+  ev.xclient.message_type = wmProtocols;
+  ev.xclient.format = 32;
+  ev.xclient.data.l[0] = wmDeleteWindow;
+  ev.xclient.data.l[1] = CurrentTime;
+
+  XSendEvent(m_display, frame->client, False, NoEventMask, &ev);
+  XFlush(m_display);
+
+  qInfo() << "[X11] Close request sent to window" << window;
+}
+
+void X11WindowManager::setFocus(Window window) {
+  if (!m_windows.contains(window)) {
+    qWarning() << "[X11] Cannot focus window" << window << "- not found";
+    return;
+  }
+
+  X11Window *win = m_windows[window];
+  X11Frame *frame = win->frame;
+
+  if (!frame) {
+    qWarning() << "[X11] Cannot focus window" << window << "- no frame";
+    return;
+  }
+
+  qInfo() << "[X11] Setting focus to window" << window;
+
+  // Update active window tracking
+  m_activeWindow = window;
+
+  // Raise the window to the top
+  XRaiseWindow(m_display, frame->frame);
+
+  // Set input focus
+  XSetInputFocus(m_display, frame->client, RevertToPointerRoot, CurrentTime);
+
+  XFlush(m_display);
+
+  // Notify QML that window state changed (for taskbar highlighting)
+  emit windowChanged(win);
 }

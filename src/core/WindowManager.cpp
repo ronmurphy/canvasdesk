@@ -43,8 +43,10 @@ QVariantList WindowManager::windows() const {
       continue;
     }
 
-    // Only show mapped windows
-    if (!x11Window->mapped) {
+    // Show all windows (including minimized ones) so taskbar can restore them
+    // Note: We previously only showed mapped windows, but minimized windows
+    // need to appear in taskbar so user can click to restore
+    if (!x11Window->mapped && x11Window->state != X11Window::Minimized) {
       continue;
     }
 
@@ -53,8 +55,21 @@ QVariantList WindowManager::windows() const {
     win["title"] = x11Window->title;
     win["appId"] = x11Window->appId;
     win["icon"] = x11Window->appId; // Use appId as icon name
-    win["active"] = false;          // TODO: track active window
+
+    // Check if this is the active window
+    bool isActive = (m_x11Manager && m_x11Manager->activeWindow() == x11Window->window);
+    win["active"] = isActive;
     win["workspace"] = 0;
+
+    // Expose window state to QML
+    QString stateStr = "normal";
+    if (x11Window->state == X11Window::Minimized) {
+      stateStr = "minimized";
+    } else if (x11Window->state == X11Window::Maximized) {
+      stateStr = "maximized";
+    }
+    win["state"] = stateStr;
+
     result.append(win);
   }
 
@@ -79,18 +94,33 @@ int WindowManager::workspaceCount() const {
 }
 
 void WindowManager::activate(int id) {
-  Q_UNUSED(id)
-  qDebug() << "TODO: Activate window" << id;
+  if (!m_x11Manager) {
+    qWarning() << "[WindowManager] Cannot activate window - X11 manager not initialized";
+    return;
+  }
+
+  qInfo() << "[WindowManager] Activating window" << id;
+  m_x11Manager->activateWindow((Window)id);
 }
 
 void WindowManager::close(int id) {
-  Q_UNUSED(id)
-  qDebug() << "TODO: Close window" << id;
+  if (!m_x11Manager) {
+    qWarning() << "[WindowManager] Cannot close window - X11 manager not initialized";
+    return;
+  }
+
+  qInfo() << "[WindowManager] Closing window" << id;
+  m_x11Manager->closeWindow((Window)id);
 }
 
 void WindowManager::minimize(int id) {
-  Q_UNUSED(id)
-  qDebug() << "TODO: Minimize window" << id;
+  if (!m_x11Manager) {
+    qWarning() << "[WindowManager] Cannot minimize window - X11 manager not initialized";
+    return;
+  }
+
+  qInfo() << "[WindowManager] Minimizing window" << id;
+  m_x11Manager->minimizeWindow((Window)id);
 }
 
 void WindowManager::switchToWorkspace(int index) {

@@ -30,6 +30,7 @@ target_link_libraries(CanvasDeskCore
         PkgConfig::XComposite
         PkgConfig::XRender
         PkgConfig::XDamage
+        PkgConfig::Xft
 )
 
 target_include_directories(CanvasDeskCore 

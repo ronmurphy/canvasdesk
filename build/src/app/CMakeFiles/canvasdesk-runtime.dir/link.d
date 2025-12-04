@@ -55,6 +55,8 @@ canvasdesk-runtime: \
   /usr/lib/libXdamage.so.1 \
   /usr/lib32/libXfixes.so.3 \
   /usr/lib/libXfixes.so.3 \
+  /usr/lib32/libXft.so.2 \
+  /usr/lib/libXft.so.2 \
   /usr/lib/libEGL.so.1 \
   /usr/lib/libfontconfig.so.1 \
   /usr/lib/libglib-2.0.so.0 \
@@ -257,6 +259,10 @@ CMakeFiles/canvasdesk-runtime.dir/main.cpp.o:
 /usr/lib32/libXfixes.so.3:
 
 /usr/lib/libXfixes.so.3:
+
+/usr/lib32/libXft.so.2:
+
+/usr/lib/libXft.so.2:
 
 /usr/lib/libEGL.so.1:
 

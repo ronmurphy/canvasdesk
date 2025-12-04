@@ -4,9 +4,17 @@
  mdp:/home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/moc_predefs.h
  mdp:/home/brad/Documents/canvasdesk/src/core/X11WindowManager.h
  mdp:/usr/include/X11/X.h
+ mdp:/usr/include/X11/Xdefs.h
+ mdp:/usr/include/X11/Xft/Xft.h
+ mdp:/usr/include/X11/Xft/XftCompat.h
  mdp:/usr/include/X11/Xfuncproto.h
  mdp:/usr/include/X11/Xlib.h
  mdp:/usr/include/X11/Xosdefs.h
+ mdp:/usr/include/X11/Xutil.h
+ mdp:/usr/include/X11/extensions/Xrender.h
+ mdp:/usr/include/X11/extensions/render.h
+ mdp:/usr/include/X11/keysym.h
+ mdp:/usr/include/X11/keysymdef.h
  mdp:/usr/include/alloca.h
  mdp:/usr/include/asm-generic/bitsperlong.h
  mdp:/usr/include/asm-generic/errno-base.h
@@ -47,6 +55,9 @@
  mdp:/usr/include/bits/sched.h
  mdp:/usr/include/bits/select.h
  mdp:/usr/include/bits/setjmp.h
+ mdp:/usr/include/bits/stat.h
+ mdp:/usr/include/bits/statx-generic.h
+ mdp:/usr/include/bits/statx.h
  mdp:/usr/include/bits/stdint-intn.h
  mdp:/usr/include/bits/stdint-least.h
  mdp:/usr/include/bits/stdint-uintn.h
@@ -54,6 +65,7 @@
  mdp:/usr/include/bits/stdlib-float.h
  mdp:/usr/include/bits/struct_mutex.h
  mdp:/usr/include/bits/struct_rwlock.h
+ mdp:/usr/include/bits/struct_stat.h
  mdp:/usr/include/bits/syscall.h
  mdp:/usr/include/bits/thread-shared-types.h
  mdp:/usr/include/bits/time.h
@@ -79,6 +91,8 @@
  mdp:/usr/include/bits/types/struct___jmp_buf_tag.h
  mdp:/usr/include/bits/types/struct_itimerspec.h
  mdp:/usr/include/bits/types/struct_sched_param.h
+ mdp:/usr/include/bits/types/struct_statx.h
+ mdp:/usr/include/bits/types/struct_statx_timestamp.h
  mdp:/usr/include/bits/types/struct_timespec.h
  mdp:/usr/include/bits/types/struct_timeval.h
  mdp:/usr/include/bits/types/struct_tm.h
@@ -307,6 +321,9 @@
  mdp:/usr/include/errno.h
  mdp:/usr/include/features-time64.h
  mdp:/usr/include/features.h
+ mdp:/usr/include/fontconfig/fontconfig.h
+ mdp:/usr/include/freetype2/freetype/config/ftheader.h
+ mdp:/usr/include/freetype2/ft2build.h
  mdp:/usr/include/gnu/stubs-64.h
  mdp:/usr/include/gnu/stubs.h
  mdp:/usr/include/libintl.h
@@ -316,6 +333,7 @@
  mdp:/usr/include/linux/limits.h
  mdp:/usr/include/linux/posix_types.h
  mdp:/usr/include/linux/sched/types.h
+ mdp:/usr/include/linux/stat.h
  mdp:/usr/include/linux/stddef.h
  mdp:/usr/include/linux/types.h
  mdp:/usr/include/locale.h
@@ -457,6 +475,7 @@
  mdp:/usr/include/sys/cdefs.h
  mdp:/usr/include/sys/select.h
  mdp:/usr/include/sys/single_threaded.h
+ mdp:/usr/include/sys/stat.h
  mdp:/usr/include/sys/syscall.h
  mdp:/usr/include/sys/types.h
  mdp:/usr/include/syscall.h
@@ -2463,7 +2482,6 @@
  mdp:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stddef.h
 /home/brad/Documents/canvasdesk/src/core/CanvasDeskCore.cpp
 /home/brad/Documents/canvasdesk/src/core/ThemeManager.cpp
-/home/brad/Documents/canvasdesk/src/core/AppManager.cpp
 /home/brad/Documents/canvasdesk/src/core/ThemeManager.h
  mmc:Q_OBJECT
  mdp:/home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/moc_predefs.h
@@ -2963,3 +2981,4 @@
  mdp:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdarg.h
  mdp:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdbool.h
  mdp:/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stddef.h
+/home/brad/Documents/canvasdesk/src/core/AppManager.cpp

@@ -71,6 +71,7 @@
 		"QT_CORE_LIB",
 		"QT_GUI_LIB",
 		"QT_NETWORK_LIB",
+		"QT_NO_DEBUG",
 		"QT_QMLINTEGRATION_LIB",
 		"QT_QML_LIB"
 	],
@@ -92,6 +93,8 @@
 		"/usr/include/qt6/QtQmlIntegration",
 		"/usr/include/qt6/QtNetwork",
 		"/usr/include/qt6/QtGui",
+		"/usr/include/freetype2",
+		"/usr/include/libpng16",
 		"/usr/include",
 		"/usr/include/c++/15.2.1",
 		"/usr/include/c++/15.2.1/x86_64-pc-linux-gnu",

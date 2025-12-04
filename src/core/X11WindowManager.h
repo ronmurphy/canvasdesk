@@ -6,6 +6,7 @@
 // #include <QTimer>  // DISABLED: Compositing disabled for now
 #include <QVariantMap>
 #include <X11/Xlib.h>
+#include <X11/Xft/Xft.h>
 // DISABLED: Compositing extensions disabled for now
 // #include <X11/extensions/Xcomposite.h>
 // #include <X11/extensions/Xdamage.h>
@@ -23,10 +24,17 @@ struct X11Frame;
 class X11Window : public QObject {
   Q_OBJECT
 public:
+  enum State {
+    Normal,
+    Minimized,
+    Maximized
+  };
+
   Window window;
   QString title;
   QString appId;
   bool mapped = false;
+  State state = Normal;
   X11Frame *frame = nullptr; // Associated frame (if any)
 
   explicit X11Window(QObject *parent = nullptr) : QObject(parent) {}
@@ -39,6 +47,9 @@ struct X11Button {
   unsigned int width, height;
   unsigned long color;
   enum Type { Close, Maximize, Minimize } type;
+
+  // Xft resources for button icon
+  XftDraw *xftDraw = nullptr;
 };
 
 // Frame structure - wraps client windows with decorations
@@ -48,14 +59,23 @@ struct X11Frame {
   Window client;   // The actual client window
   GC gc;           // Graphics context for drawing
 
+  // Xft resources for Unicode text rendering
+  XftFont *xftFont = nullptr;
+  XftDraw *xftDraw = nullptr;
+  XftColor xftTextColor;
+
   QList<X11Button> buttons; // Titlebar buttons
 
-  int x, y;          // Saved position (for fullscreen restore)
-  int width, height; // Saved size (for fullscreen restore)
+  int x, y;          // Current position
+  int width, height; // Current size (includes titlebar)
+
+  // Saved dimensions for fullscreen restore
+  int savedX = 0, savedY = 0;
+  int savedWidth = 0, savedHeight = 0;
   bool isFullscreen = false;
 
   ~X11Frame() {
-    // GC will be freed in X11WindowManager cleanup
+    // GC and Xft resources will be freed in X11WindowManager cleanup
   }
 };
 
@@ -75,6 +95,12 @@ public:
 
   bool initialize();
   QList<X11Window *> windows() const { return m_windows.values(); }
+  Window activeWindow() const { return m_activeWindow; }
+
+  void activateWindow(Window window);
+  void minimizeWindow(Window window);
+  void closeWindow(Window window);
+  void setFocus(Window window);
 
 signals:
   void windowAdded(X11Window *window);
@@ -118,6 +144,9 @@ private:
   QSocketNotifier *m_notifier = nullptr;
   QHash<Window, X11Window *> m_windows;
   QHash<Window, X11Frame *> m_frames; // Maps frame/titlebar/client to frame
+
+  // Focus tracking
+  Window m_activeWindow = None;
 
   // Drag state
   bool m_dragging = false;

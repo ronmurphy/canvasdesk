@@ -20,8 +20,9 @@ CMAKE_ADDR2LINE:FILEPATH=/usr/bin/addr2line
 //Path to a program.
 CMAKE_AR:FILEPATH=/usr/bin/ar
 
-//No help, variable specified on the command line.
-CMAKE_BUILD_TYPE:STRING=Debug
+//Choose the type of build, options are: None Debug Release RelWithDebInfo
+// MinSizeRel ...
+CMAKE_BUILD_TYPE:STRING=
 
 //Enable/Disable color output during build.
 CMAKE_COLOR_MAKEFILE:BOOL=ON
@@ -96,8 +97,8 @@ CMAKE_EXE_LINKER_FLAGS_RELEASE:STRING=
 //Flags used by the linker during RELWITHDEBINFO builds.
 CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 
-//No help, variable specified on the command line.
-CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE
+//Enable/Disable output of compile commands during generation.
+CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=
 
 //Value Computed by CMake.
 CMAKE_FIND_PACKAGE_REDIRECTS_DIR:STATIC=/home/brad/Documents/canvasdesk/build/CMakeFiles/pkgRedirects
@@ -440,6 +441,9 @@ pkgcfg_lib_XRender_X11:FILEPATH=/usr/lib/libX11.so
 //Path to a library.
 pkgcfg_lib_XRender_Xrender:FILEPATH=/usr/lib/libXrender.so
 
+//Path to a library.
+pkgcfg_lib_Xft_Xft:FILEPATH=/usr/lib/libXft.so
+
 
 ########################
 # INTERNAL cache entries
@@ -513,6 +517,8 @@ CMAKE_EXE_LINKER_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
 CMAKE_EXE_LINKER_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO
 CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_EXPORT_COMPILE_COMMANDS
+CMAKE_EXPORT_COMPILE_COMMANDS-ADVANCED:INTERNAL=1
 //Name of external makefile project generator.
 CMAKE_EXTRA_GENERATOR:INTERNAL=
 //Name of generator.
@@ -1662,6 +1668,41 @@ XRender_xrender_INCLUDEDIR:INTERNAL=
 XRender_xrender_LIBDIR:INTERNAL=
 XRender_xrender_PREFIX:INTERNAL=
 XRender_xrender_VERSION:INTERNAL=
+Xft_CFLAGS:INTERNAL=-I/usr/include;-I/usr/include/freetype2;-I/usr/include/libpng16;-DWITH_GZFILEOP
+Xft_CFLAGS_I:INTERNAL=
+Xft_CFLAGS_OTHER:INTERNAL=-DWITH_GZFILEOP
+Xft_FOUND:INTERNAL=1
+Xft_INCLUDEDIR:INTERNAL=/usr/include
+Xft_INCLUDE_DIRS:INTERNAL=/usr/include;/usr/include/freetype2;/usr/include/libpng16
+Xft_LDFLAGS:INTERNAL=-L/usr/lib;-lXft
+Xft_LDFLAGS_OTHER:INTERNAL=
+Xft_LIBDIR:INTERNAL=/usr/lib
+Xft_LIBRARIES:INTERNAL=Xft
+Xft_LIBRARY_DIRS:INTERNAL=/usr/lib
+Xft_LIBS:INTERNAL=
+Xft_LIBS_L:INTERNAL=
+Xft_LIBS_OTHER:INTERNAL=
+Xft_LIBS_PATHS:INTERNAL=
+Xft_MODULE_NAME:INTERNAL=xft
+Xft_PREFIX:INTERNAL=/usr
+Xft_STATIC_CFLAGS:INTERNAL=-I/usr/include;-I/usr/include/freetype2;-I/usr/include/libpng16;-DWITH_GZFILEOP;-DXML_STATIC
+Xft_STATIC_CFLAGS_I:INTERNAL=
+Xft_STATIC_CFLAGS_OTHER:INTERNAL=-DWITH_GZFILEOP;-DXML_STATIC
+Xft_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include;/usr/include/freetype2;/usr/include/libpng16
+Xft_STATIC_LDFLAGS:INTERNAL=-L/usr/lib;-lXft;-lXrender;-lX11;-lpthread;-lxcb;-lXau;-lXdmcp;-lfontconfig;-pthread;-lm;-lexpat;-lm;-lfreetype;-ldl;-lbz2;-lpng16;-lm;-lm;-lz;-lbrotlidec;-lbrotlicommon
+Xft_STATIC_LDFLAGS_OTHER:INTERNAL=-pthread
+Xft_STATIC_LIBDIR:INTERNAL=
+Xft_STATIC_LIBRARIES:INTERNAL=Xft;Xrender;X11;pthread;xcb;Xau;Xdmcp;fontconfig;m;expat;m;freetype;dl;bz2;png16;m;m;z;brotlidec;brotlicommon
+Xft_STATIC_LIBRARY_DIRS:INTERNAL=/usr/lib
+Xft_STATIC_LIBS:INTERNAL=
+Xft_STATIC_LIBS_L:INTERNAL=
+Xft_STATIC_LIBS_OTHER:INTERNAL=
+Xft_STATIC_LIBS_PATHS:INTERNAL=
+Xft_VERSION:INTERNAL=2.3.9
+Xft_xft_INCLUDEDIR:INTERNAL=
+Xft_xft_LIBDIR:INTERNAL=
+Xft_xft_PREFIX:INTERNAL=
+Xft_xft_VERSION:INTERNAL=
 //CMAKE_INSTALL_PREFIX during last run
 _GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=/usr/local
 __pkg_config_arguments_X11:INTERNAL=REQUIRED;IMPORTED_TARGET;x11
@@ -1669,11 +1710,13 @@ __pkg_config_arguments_XCB:INTERNAL=REQUIRED;IMPORTED_TARGET;xcb
 __pkg_config_arguments_XComposite:INTERNAL=REQUIRED;IMPORTED_TARGET;xcomposite
 __pkg_config_arguments_XDamage:INTERNAL=REQUIRED;IMPORTED_TARGET;xdamage
 __pkg_config_arguments_XRender:INTERNAL=REQUIRED;IMPORTED_TARGET;xrender
+__pkg_config_arguments_Xft:INTERNAL=REQUIRED;IMPORTED_TARGET;xft
 __pkg_config_checked_X11:INTERNAL=1
 __pkg_config_checked_XCB:INTERNAL=1
 __pkg_config_checked_XComposite:INTERNAL=1
 __pkg_config_checked_XDamage:INTERNAL=1
 __pkg_config_checked_XRender:INTERNAL=1
+__pkg_config_checked_Xft:INTERNAL=1
 __qt_qml_macros_module_base_dir:INTERNAL=/usr/lib/cmake/Qt6Qml
 //ADVANCED property for variable: pkgcfg_lib_X11_X11
 pkgcfg_lib_X11_X11-ADVANCED:INTERNAL=1
@@ -1689,5 +1732,7 @@ pkgcfg_lib_XDamage_Xfixes-ADVANCED:INTERNAL=1
 pkgcfg_lib_XRender_X11-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: pkgcfg_lib_XRender_Xrender
 pkgcfg_lib_XRender_Xrender-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_Xft_Xft
+pkgcfg_lib_Xft_Xft-ADVANCED:INTERNAL=1
 prefix_result:INTERNAL=/usr/lib
 

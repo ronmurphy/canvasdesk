@@ -99,7 +99,7 @@ src/core/.qt/rcc/qrc_qmake_CanvasDesk.cpp: /usr/lib/qt6/rcc
 src/core/CanvasDeskCore_autogen/timestamp: /usr/lib/qt6/moc
 src/core/CanvasDeskCore_autogen/timestamp: src/core/CMakeFiles/CanvasDeskCore.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Automatic MOC and UIC for target CanvasDeskCore"
-	cd /home/brad/Documents/canvasdesk/build/src/core && /usr/bin/cmake -E cmake_autogen /home/brad/Documents/canvasdesk/build/src/core/CMakeFiles/CanvasDeskCore_autogen.dir/AutogenInfo.json Debug
+	cd /home/brad/Documents/canvasdesk/build/src/core && /usr/bin/cmake -E cmake_autogen /home/brad/Documents/canvasdesk/build/src/core/CMakeFiles/CanvasDeskCore_autogen.dir/AutogenInfo.json ""
 	cd /home/brad/Documents/canvasdesk/build/src/core && /usr/bin/cmake -E touch /home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/timestamp
 
 src/core/meta_types/CanvasDeskCore_json_file_list.txt: /usr/lib/qt6/cmake_automoc_parser
@@ -294,6 +294,7 @@ src/core/libCanvasDeskCore.so: /usr/lib/libXrender.so
 src/core/libCanvasDeskCore.so: /usr/lib/libX11.so
 src/core/libCanvasDeskCore.so: /usr/lib/libXdamage.so
 src/core/libCanvasDeskCore.so: /usr/lib/libXfixes.so
+src/core/libCanvasDeskCore.so: /usr/lib/libXft.so
 src/core/libCanvasDeskCore.so: src/core/CMakeFiles/CanvasDeskCore.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Linking CXX shared library libCanvasDeskCore.so"
 	cd /home/brad/Documents/canvasdesk/build/src/core && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/CanvasDeskCore.dir/link.txt --verbose=$(VERBOSE)

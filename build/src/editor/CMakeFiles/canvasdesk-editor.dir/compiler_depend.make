@@ -2141,6 +2141,7 @@ src/editor/canvasdesk-editor: src/core/libCanvasDeskCore.so \
   /usr/lib/libXdamage.so.1 \
   /usr/lib/libXdmcp.so.6 \
   /usr/lib/libXfixes.so.3 \
+  /usr/lib/libXft.so.2 \
   /usr/lib/libXrender.so.1 \
   /usr/lib/libb2.so.1 \
   /usr/lib/libblkid.so.1 \
@@ -2204,6 +2205,7 @@ src/editor/canvasdesk-editor: src/core/libCanvasDeskCore.so \
   /usr/lib32/libXdamage.so.1 \
   /usr/lib32/libXdmcp.so.6 \
   /usr/lib32/libXfixes.so.3 \
+  /usr/lib32/libXft.so.2 \
   /usr/lib32/libXrender.so.1 \
   /usr/lib32/libblkid.so.1 \
   /usr/lib32/libbrotlicommon.so.1 \
@@ -3044,6 +3046,8 @@ src/editor/.qt/qml_imports/canvasdesk-editor_conf.cmake:
 
 /usr/include/c++/15.2.1/ios:
 
+/usr/lib/libXft.so.2:
+
 /usr/include/bits/stdlib-float.h:
 
 /usr/include/bits/time64.h:
@@ -3303,6 +3307,8 @@ src/editor/.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp:
 /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/gthr.h:
 
 /usr/include/qt6/QtCore/qmetaobject.h:
+
+/usr/lib32/libXft.so.2:
 
 /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/time_members.h:
 
