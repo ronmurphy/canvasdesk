@@ -4,7 +4,7 @@
 
 Install all dependencies with:
 ```bash
-sudo pacman -S qt6-base qt6-declarative libx11 libxcb cmake gcc pkgconf make
+sudo pacman -S qt6-base qt6-declarative libx11 libxcb libxcomposite libxrender libxdamage libxft cmake gcc pkgconf make
 ```
 
 ## Package Breakdown
@@ -14,8 +14,12 @@ sudo pacman -S qt6-base qt6-declarative libx11 libxcb cmake gcc pkgconf make
 - qt6-declarative   # Provides Qt6::Qml, Qt6::Quick
 
 ### X11 Support
-- libx11            # X11 client library
-- libxcb            # X11 C Bindings (alternative to Xlib)
+- libx11            # X11 client library (Xlib)
+- libxcb            # X11 C Bindings
+- libxcomposite     # X Composite extension (for window composition)
+- libxrender        # X Render extension (for rendering operations)
+- libxdamage        # X Damage extension (for window damage tracking)
+- libxft            # X FreeType interface (for font rendering with Unicode support)
 - xorg-server       # X11 server (should already be installed if you have X11 sessions)
 
 ### Build Tools
@@ -26,6 +30,7 @@ sudo pacman -S qt6-base qt6-declarative libx11 libxcb cmake gcc pkgconf make
 
 ## Optional Tools
 - ninja             # Faster alternative to make (optional but recommended)
+- xorg-server-xephyr # Nested X server for testing (useful for testing on Wayland)
 
 ## Build Instructions
 
@@ -54,3 +59,15 @@ After installing dependencies:
 - This project requires an X11 session (not Wayland)
 - CanvasDesk includes its own X11 window manager
 - No external window manager is needed when running as a session
+
+## Testing on Wayland
+
+If you're running a Wayland session (like KDE Wayland), you can test CanvasDesk using Xephyr:
+
+```bash
+# Start Xephyr nested X server on display :1
+Xephyr :1 -screen 1920x1080 &
+
+# Run CanvasDesk in the Xephyr session
+env DISPLAY=:1 QT_QPA_PLATFORM=xcb ./build/canvasdesk --runtime
+```
