@@ -16,7 +16,7 @@
                         {
                             "codegenResult": 0,
                             "column": 23,
-                            "durationMicroseconds": 69,
+                            "durationMicroseconds": 77,
                             "functionName": "fill",
                             "line": 17,
                             "message": ""
@@ -24,7 +24,7 @@
                         {
                             "codegenResult": 2,
                             "column": 32,
-                            "durationMicroseconds": 1515,
+                            "durationMicroseconds": 1254,
                             "functionName": "onCompleted",
                             "line": 19,
                             "message": "Cannot retrieve a non-object type by ID: layoutManager"

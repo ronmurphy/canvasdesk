@@ -67,6 +67,11 @@ struct X11Frame {
 
   QList<X11Button> buttons; // Titlebar buttons
 
+  // App icon
+  Pixmap iconPixmap = None;
+  int iconWidth = 0;
+  int iconHeight = 0;
+
   int x, y;          // Current position
   int width, height; // Current size (includes titlebar)
 
@@ -134,6 +139,10 @@ private:
   void drawTitleBarText(X11Frame *frame, const QString &title);
   void createTitleBarButtons(X11Frame *frame);
   void drawTitleBarButton(X11Frame *frame, const X11Button &button);
+
+  // Icon management
+  void loadWindowIcon(X11Frame *frame, Window client);
+  void drawTitleBarIcon(X11Frame *frame);
 
   // Resize helpers
   int detectResizeEdge(X11Frame *frame, int x, int y);

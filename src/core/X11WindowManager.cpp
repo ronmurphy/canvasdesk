@@ -331,6 +331,9 @@ void X11WindowManager::handleMapRequest(XMapRequestEvent *event) {
   X11Frame *frame = createFrame(w, 100, 100, width, height);
   window->frame = frame;
 
+  // Load window icon
+  loadWindowIcon(frame, w);
+
   // Create titlebar buttons
   createTitleBarButtons(frame);
 
@@ -657,6 +660,11 @@ void X11WindowManager::destroyFrame(X11Frame *frame) {
   Colormap colormap = DefaultColormap(m_display, screen);
   XftColorFree(m_display, visual, colormap, &frame->xftTextColor);
 
+  // Free icon pixmap
+  if (frame->iconPixmap != None) {
+    XFreePixmap(m_display, frame->iconPixmap);
+  }
+
   // Destroy button windows (and free their Xft resources)
   for (const X11Button &btn : frame->buttons) {
     if (btn.xftDraw) {
@@ -707,14 +715,16 @@ void X11WindowManager::drawTitleBar(X11Frame *frame) {
         XFillRectangle(m_display, frame->titleBar, frame->gc, x, 0, step, height);
     }
 
-    // Redraw text and buttons
+    // Draw icon, text and buttons
+    drawTitleBarIcon(frame);
+
     QString title = "Window";
     if (X11Window* win = m_windows.value(frame->client)) {
         title = win->title;
     }
-    
+
     drawTitleBarText(frame, title);
-    
+
     // Redraw buttons
     for (const auto& btn : frame->buttons) {
         drawTitleBarButton(frame, btn);
@@ -755,11 +765,21 @@ void X11WindowManager::drawTitleBarText(X11Frame *frame, const QString &title) {
                      titleBytes.length(), &extents);
 
   // Calculate Position
+  // Leave space for icon if it exists
+  int iconSpace = 0;
+  if (frame->iconPixmap != None && frame->iconWidth > 0) {
+    iconSpace = PADDING + frame->iconWidth + PADDING; // Icon + padding on both sides
+  }
+
   int textX = 0;
   if (ThemeManager::instance() && ThemeManager::instance()->titleBarTextLeft()) {
-      textX = PADDING + 4; // Left aligned
+      textX = iconSpace + PADDING; // Left aligned, after icon
   } else {
       textX = (frame->width - extents.width) / 2; // Centered
+      // Make sure centered text doesn't overlap icon
+      if (textX < iconSpace) {
+        textX = iconSpace + PADDING;
+      }
   }
 
   int textY = TITLE_HEIGHT - PADDING - 4; // Y position for text baseline
@@ -896,6 +916,168 @@ void X11WindowManager::drawTitleBarButton(X11Frame *frame,
   }
 
   XFreeGC(m_display, buttonGC);
+}
+
+void X11WindowManager::loadWindowIcon(X11Frame *frame, Window client) {
+  if (!frame || !m_display) return;
+
+  // Clean up old icon if it exists
+  if (frame->iconPixmap != None) {
+    XFreePixmap(m_display, frame->iconPixmap);
+    frame->iconPixmap = None;
+    frame->iconWidth = 0;
+    frame->iconHeight = 0;
+  }
+
+  // Get _NET_WM_ICON atom
+  Atom netWmIcon = XInternAtom(m_display, "_NET_WM_ICON", False);
+  Atom actualType;
+  int actualFormat;
+  unsigned long nItems, bytesAfter;
+  unsigned char *data = nullptr;
+
+  // Try to get the icon property
+  int result = XGetWindowProperty(m_display, client, netWmIcon,
+                                  0, LONG_MAX, False, XA_CARDINAL,
+                                  &actualType, &actualFormat,
+                                  &nItems, &bytesAfter, &data);
+
+  if (result != Success || !data || nItems < 2) {
+    if (data) XFree(data);
+    return;
+  }
+
+  // _NET_WM_ICON format: width, height, ARGB pixel data
+  unsigned long *iconData = (unsigned long *)data;
+  unsigned long width = iconData[0];
+  unsigned long height = iconData[1];
+
+  // We want a small icon for the titlebar (16x16)
+  const int TARGET_SIZE = 16;
+
+  // Find the best matching icon size
+  unsigned long bestIdx = 0;
+  unsigned long bestSize = width;
+  unsigned long idx = 0;
+
+  while (idx < nItems) {
+    if (idx + 2 >= nItems) break;
+
+    unsigned long w = iconData[idx];
+    unsigned long h = iconData[idx + 1];
+    unsigned long pixels = w * h;
+
+    if (idx + 2 + pixels > nItems) break;
+
+    // Prefer icons close to TARGET_SIZE
+    if (w >= TARGET_SIZE && w <= bestSize) {
+      bestSize = w;
+      bestIdx = idx;
+    }
+
+    idx += 2 + pixels;
+  }
+
+  // Use the best icon found
+  width = iconData[bestIdx];
+  height = iconData[bestIdx + 1];
+  unsigned long *pixels = &iconData[bestIdx + 2];
+
+  // Get titlebar left color for alpha blending background
+  QColor bgColor = QColor("#3c3c3c"); // Default fallback
+  if (auto theme = ThemeManager::instance()) {
+    bgColor = theme->uiTitleBarLeftColor();
+  }
+  unsigned char bgR = bgColor.red();
+  unsigned char bgG = bgColor.green();
+  unsigned char bgB = bgColor.blue();
+
+  // Create a pixmap for the icon
+  int screen = DefaultScreen(m_display);
+  int depth = DefaultDepth(m_display, screen);
+  Window root = DefaultRootWindow(m_display);
+
+  frame->iconPixmap = XCreatePixmap(m_display, root, TARGET_SIZE, TARGET_SIZE, depth);
+
+  if (frame->iconPixmap == None) {
+    XFree(data);
+    return;
+  }
+
+  // Create an XImage to convert ARGB data
+  XImage *image = XCreateImage(m_display, DefaultVisual(m_display, screen),
+                               depth, ZPixmap, 0, nullptr,
+                               TARGET_SIZE, TARGET_SIZE, 32, 0);
+
+  if (!image) {
+    XFreePixmap(m_display, frame->iconPixmap);
+    frame->iconPixmap = None;
+    XFree(data);
+    return;
+  }
+
+  // Allocate image data
+  image->data = (char *)malloc(TARGET_SIZE * TARGET_SIZE * 4);
+  if (!image->data) {
+    XDestroyImage(image);
+    XFreePixmap(m_display, frame->iconPixmap);
+    frame->iconPixmap = None;
+    XFree(data);
+    return;
+  }
+
+  // Scale and convert ARGB to RGB with titlebar background color
+  for (int y = 0; y < TARGET_SIZE; y++) {
+    for (int x = 0; x < TARGET_SIZE; x++) {
+      // Simple nearest-neighbor scaling
+      int srcX = (x * width) / TARGET_SIZE;
+      int srcY = (y * height) / TARGET_SIZE;
+      unsigned long pixel = pixels[srcY * width + srcX];
+
+      // Extract ARGB components
+      unsigned char a = (pixel >> 24) & 0xFF;
+      unsigned char r = (pixel >> 16) & 0xFF;
+      unsigned char g = (pixel >> 8) & 0xFF;
+      unsigned char b = pixel & 0xFF;
+
+      // Alpha blending with titlebar left color background
+      if (a < 255) {
+        r = (r * a + bgR * (255 - a)) / 255;
+        g = (g * a + bgG * (255 - a)) / 255;
+        b = (b * a + bgB * (255 - a)) / 255;
+      }
+
+      unsigned long rgbPixel = (r << 16) | (g << 8) | b;
+      XPutPixel(image, x, y, rgbPixel);
+    }
+  }
+
+  // Draw the image to the pixmap
+  GC gc = XCreateGC(m_display, frame->iconPixmap, 0, nullptr);
+  XPutImage(m_display, frame->iconPixmap, gc, image, 0, 0, 0, 0, TARGET_SIZE, TARGET_SIZE);
+  XFreeGC(m_display, gc);
+
+  frame->iconWidth = TARGET_SIZE;
+  frame->iconHeight = TARGET_SIZE;
+
+  // Clean up
+  free(image->data);
+  image->data = nullptr;
+  XDestroyImage(image);
+  XFree(data);
+}
+
+void X11WindowManager::drawTitleBarIcon(X11Frame *frame) {
+  if (!frame || frame->iconPixmap == None || frame->iconWidth == 0)
+    return;
+
+  // Draw icon on the left side of the titlebar
+  int iconX = PADDING;
+  int iconY = (TITLE_HEIGHT - frame->iconHeight) / 2;
+
+  XCopyArea(m_display, frame->iconPixmap, frame->titleBar, frame->gc,
+            0, 0, frame->iconWidth, frame->iconHeight,
+            iconX, iconY);
 }
 
 void X11WindowManager::handleButtonPress(XButtonEvent *event) {

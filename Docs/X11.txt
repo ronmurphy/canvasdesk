@@ -1,8 +1,95 @@
 # CanvasDesk X11 Window Manager Migration
 
-**Last Updated:** 2025-12-03 (CRASH FIX APPLIED)
-**Status:** Phase 3 - Simple Stacking Window Manager (No Compositing)
+**Last Updated:** 2025-12-04 (WINDOW MANAGER ENHANCEMENTS)
+**Status:** Phase 3 - Fully Functional Stacking Window Manager
 **See also:** do.txt (original Wayland progress notes - OUTDATED, Wayland removed)
+
+---
+
+## MAJOR SESSION (Dec 4) - WINDOW MANAGER COMPLETE:
+
+### What Was Implemented Today:
+
+1. **Minimize/Maximize Functionality** ✅
+   - Minimize button: Iconifies window, updates state to "Minimized"
+   - Maximize button: Toggles fullscreen with saved dimensions
+   - Both buttons update window state and emit signals to QML
+   - Proper dimension tracking (savedX, savedY, savedWidth, savedHeight)
+
+2. **Window State Tracking** ✅
+   - Added State enum: Normal, Minimized, Maximized
+   - State exposed to QML via "state" field
+   - Minimized windows stay in taskbar for restoration
+   - Taskbar shows visual indicators (dimmed for minimized, □ prefix for maximized)
+
+3. **Taskbar Toggle Behavior** ✅
+   - Left-click taskbar button: Toggle minimize/restore
+   - Middle-click taskbar button: Close window gracefully
+   - Visual feedback: 50% opacity + italic text + "_ " prefix for minimized windows
+
+4. **Click-to-Focus** ✅
+   - Any click on window (titlebar, buttons, frame) focuses it
+   - Active window tracking with m_activeWindow
+   - Focused windows raised to top automatically
+   - Active state exposed to QML for taskbar highlighting
+
+5. **Window Resizing by Edges/Corners** ✅
+   - 5-pixel grab area at all edges
+   - Drag any edge or corner to resize
+   - Minimum size enforcement (100x74 pixels)
+   - Real-time titlebar/button recreation during resize
+
+6. **Resize Cursor Feedback** ✅
+   - Cursor changes when hovering over resize edges:
+     - Horizontal arrows (↔) for left/right edges
+     - Vertical arrows (↕) for top/bottom edges
+     - Diagonal arrows (↖↘ and ↗↙) for corners
+   - Normal cursor on titlebar and interior
+   - Created using standard X11 cursor fonts
+
+7. **Titlebar Button Icons** ✅
+   - Replaced Unicode symbols with X11 drawn primitives
+   - Close: X shape using two diagonal lines
+   - Maximize: Square outline
+   - Minimize: Horizontal line
+   - Clean, professional look with no font dependencies
+
+8. **Bug Fixes** ✅
+   - Fixed BadAccess error when selecting events on client windows
+   - Prevented cursor changes on titlebar area (only edges)
+   - Cleaned up verbose debug logging
+   - All operations work smoothly without crashes
+
+### Files Modified:
+- `src/core/X11WindowManager.h` - Added state tracking, resize/cursor state, helper methods
+- `src/core/X11WindowManager.cpp` - ~400 lines of new code for all features
+- `src/core/WindowManager.cpp` - Added activate(), close(), minimize() implementations
+- `src/editor/qml/components/TaskbarComponent.qml` - Added middle-click, state indicators
+
+### Current Feature Set:
+✅ Window reparenting with titlebars
+✅ Window dragging by titlebar
+✅ Window resizing by edges/corners with cursor feedback
+✅ Minimize/Maximize/Close buttons (all functional)
+✅ Click-to-focus
+✅ Auto-focus on restore from taskbar
+✅ Window state tracking (Normal/Minimized/Maximized)
+✅ Taskbar integration with state indicators
+✅ Middle-click to close from taskbar
+✅ Clean geometric button icons (no fonts)
+✅ Theme-aware titlebar colors
+
+### TODO - Next Session:
+- [ ] Add app icons to titlebar (left side before title text)
+- [ ] Get icon from X11 window properties or desktop file
+- [ ] Render icon as small pixmap (16x16 or 24x24)
+
+### Build Status:
+✅ All features tested and working
+✅ No crashes or errors
+✅ Dolphin and other apps work correctly
+✅ Resize cursors display properly
+✅ Binary ready: `/home/brad/Documents/canvasdesk/build/canvasdesk`
 
 ---
 
