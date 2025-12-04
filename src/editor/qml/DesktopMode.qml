@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import QtQuick.Dialogs
 import CanvasDesk
 
 ApplicationWindow {
@@ -27,7 +28,17 @@ ApplicationWindow {
         return baseFlags
     }
     title: "CanvasDesk"
-    color: "#1a1a1a"
+    color: Theme.wallpaperPath ? "black" : Theme.secondaryColor
+
+    // Wallpaper
+    Image {
+        id: wallpaperImage
+        anchors.fill: parent
+        z: -200
+        source: Theme.wallpaperPath ? (Theme.wallpaperPath.startsWith("/") ? "file://" + Theme.wallpaperPath : Theme.wallpaperPath) : ""
+        fillMode: Theme.wallpaperFillMode
+        visible: Theme.wallpaperPath !== ""
+    }
 
     // LayoutManager instance
     LayoutManager {
@@ -37,6 +48,12 @@ ApplicationWindow {
     // Selected component for property editing
     property var selectedComponent: null
     property bool isManuallyEditing: false
+    
+    // Editor Settings
+    property bool showGrid: false
+    property bool snapToGrid: false
+    property int gridSize: 20
+    property string backgroundColor: "#1a1a1a"
     
     // Update property fields when selection changes
     onSelectedComponentChanged: {
@@ -69,6 +86,45 @@ ApplicationWindow {
     Item {
         id: desktopContainer
         anchors.fill: parent
+
+        // Grid Visualization
+        Canvas {
+            id: gridCanvas
+            anchors.fill: parent
+            z: -100 // Behind everything
+            visible: showGrid
+            
+            onPaint: {
+                var ctx = getContext("2d")
+                ctx.clearRect(0, 0, width, height)
+                ctx.strokeStyle = "rgba(255, 255, 255, 0.1)"
+                ctx.lineWidth = 1
+                
+                ctx.beginPath()
+                
+                // Vertical lines
+                for (var x = 0; x < width; x += gridSize) {
+                    ctx.moveTo(x, 0)
+                    ctx.lineTo(x, height)
+                }
+                
+                // Horizontal lines
+                for (var y = 0; y < height; y += gridSize) {
+                    ctx.moveTo(0, y)
+                    ctx.lineTo(width, y)
+                }
+                
+                ctx.stroke()
+            }
+            
+            // Repaint when grid size changes
+            Connections {
+                target: desktopWindow
+                function onGridSizeChanged() { gridCanvas.requestPaint() }
+            }
+            onWidthChanged: requestPaint()
+            onHeightChanged: requestPaint()
+        }
 
         // Expose selectComponent so child components can find it
         function selectComponent(component) {
@@ -183,6 +239,7 @@ ApplicationWindow {
                 TabButton { text: "Components" }
                 TabButton { text: "Properties" }
                 TabButton { text: "Layout" }
+                TabButton { text: "Settings" }
             }
             
             StackLayout {
@@ -569,6 +626,202 @@ ApplicationWindow {
                     }
                     
                     Item { Layout.fillHeight: true }
+                }
+
+                // Settings Tab
+                ScrollView {
+                    clip: true
+                    
+                    ColumnLayout {
+                        width: parent ? parent.width : 300
+                        spacing: 16
+                        anchors.margins: 8
+
+                        // Grid Settings
+                        ColumnLayout {
+                            Layout.fillWidth: true
+                            spacing: 8
+
+                            Label {
+                                text: "Grid Settings"
+                                color: "#4a90e2"
+                                font.bold: true
+                            }
+
+                            Rectangle {
+                                Layout.fillWidth: true
+                                height: 1
+                                color: "#333"
+                            }
+
+                            RowLayout {
+                                Layout.fillWidth: true
+                                Label {
+                                    text: "Show Grid"
+                                    color: "white"
+                                    Layout.fillWidth: true
+                                }
+                                Switch {
+                                    checked: showGrid
+                                    onToggled: showGrid = checked
+                                }
+                            }
+
+                            RowLayout {
+                                Layout.fillWidth: true
+                                Label {
+                                    text: "Snap to Grid"
+                                    color: "white"
+                                    Layout.fillWidth: true
+                                }
+                                Switch {
+                                    checked: snapToGrid
+                                    onToggled: snapToGrid = checked
+                                }
+                            }
+                            
+                            RowLayout {
+                                Layout.fillWidth: true
+                                Label {
+                                    text: "Grid Size: " + gridSize + "px"
+                                    color: "#ccc"
+                                    Layout.fillWidth: true
+                                }
+                                Slider {
+                                    from: 10
+                                    to: 100
+                                    stepSize: 5
+                                    value: gridSize
+                                    onMoved: gridSize = value
+                                    Layout.preferredWidth: 120
+                                }
+                            }
+                        }
+
+                        // Appearance Settings
+                        ColumnLayout {
+                            Layout.fillWidth: true
+                            spacing: 8
+
+                            Label {
+                                text: "Appearance"
+                                color: "#4a90e2"
+                                font.bold: true
+                            }
+
+                            Rectangle {
+                                Layout.fillWidth: true
+                                height: 1
+                                color: "#333"
+                            }
+
+                            // Wallpaper
+                            Label {
+                                text: "Wallpaper"
+                                color: "white"
+                            }
+
+                            RowLayout {
+                                Layout.fillWidth: true
+                                TextField {
+                                    id: wallpaperPathField
+                                    Layout.fillWidth: true
+                                    text: Theme.wallpaperPath
+                                    placeholderText: "Path to image..."
+                                    onEditingFinished: Theme.wallpaperPath = text
+                                }
+                                Button {
+                                    text: "..."
+                                    onClicked: wallpaperDialog.open()
+                                }
+                            }
+
+                            FileDialog {
+                                id: wallpaperDialog
+                                title: "Select Wallpaper"
+                                nameFilters: ["Image files (*.jpg *.png *.jpeg *.bmp)"]
+                                onAccepted: {
+                                    Theme.wallpaperPath = selectedFile
+                                }
+                            }
+
+                            // Fill Mode
+                            RowLayout {
+                                Layout.fillWidth: true
+                                Label {
+                                    text: "Fill Mode"
+                                    color: "#ccc"
+                                    Layout.preferredWidth: 80
+                                }
+                                ComboBox {
+                                    Layout.fillWidth: true
+                                    model: ["Stretch", "Preserve Aspect Fit", "Preserve Aspect Crop", "Tile", "Center"]
+                                    currentIndex: {
+                                        var mode = Theme.wallpaperFillMode
+                                        if (mode === Image.Stretch) return 0
+                                        if (mode === Image.PreserveAspectFit) return 1
+                                        if (mode === Image.PreserveAspectCrop) return 2
+                                        if (mode === Image.Tile) return 3
+                                        if (mode === Image.Pad) return 4
+                                        return 2 // Default to Crop
+                                    }
+                                    onActivated: {
+                                        var modes = [Image.Stretch, Image.PreserveAspectFit, Image.PreserveAspectCrop, Image.Tile, Image.Pad]
+                                        Theme.wallpaperFillMode = modes[index]
+                                    }
+                                }
+                            }
+
+                            // Extracted Colors Preview
+                            Label {
+                                text: "Theme Colors (Auto-extracted)"
+                                color: "white"
+                                topPadding: 8
+                            }
+
+                            RowLayout {
+                                spacing: 4
+                                Rectangle { width: 30; height: 30; color: Theme.primaryColor; border.color: "#555"; ToolTip.visible: ma1.containsMouse; ToolTip.text: "Primary"; MouseArea { id: ma1; anchors.fill: parent; hoverEnabled: true } }
+                                Rectangle { width: 30; height: 30; color: Theme.secondaryColor; border.color: "#555"; ToolTip.visible: ma2.containsMouse; ToolTip.text: "Secondary"; MouseArea { id: ma2; anchors.fill: parent; hoverEnabled: true } }
+                                Rectangle { width: 30; height: 30; color: Theme.tertiaryColor; border.color: "#555"; ToolTip.visible: ma3.containsMouse; ToolTip.text: "Tertiary"; MouseArea { id: ma3; anchors.fill: parent; hoverEnabled: true } }
+                                Rectangle { width: 30; height: 30; color: Theme.accentColor; border.color: "#555"; ToolTip.visible: ma4.containsMouse; ToolTip.text: "Accent"; MouseArea { id: ma4; anchors.fill: parent; hoverEnabled: true } }
+                                Rectangle { width: 30; height: 30; color: Theme.neutralColor; border.color: "#555"; ToolTip.visible: ma5.containsMouse; ToolTip.text: "Neutral"; MouseArea { id: ma5; anchors.fill: parent; hoverEnabled: true } }
+                                Rectangle { width: 30; height: 30; color: Theme.brightestColor; border.color: "#555"; ToolTip.visible: ma6.containsMouse; ToolTip.text: "Brightest"; MouseArea { id: ma6; anchors.fill: parent; hoverEnabled: true } }
+                            }
+
+                            // Manual Background Color (Fallback)
+                            RowLayout {
+                                Layout.fillWidth: true
+                                Label {
+                                    text: "Fallback Color"
+                                    color: "white"
+                                    Layout.fillWidth: true
+                                }
+                                Rectangle {
+                                    width: 24
+                                    height: 24
+                                    color: backgroundColor
+                                    border.color: "#555"
+                                    border.width: 1
+                                }
+                            }
+                            
+                            TextField {
+                                Layout.fillWidth: true
+                                text: backgroundColor
+                                placeholderText: "#RRGGBB"
+                                onEditingFinished: {
+                                    backgroundColor = text
+                                    // Only apply if no wallpaper
+                                    if (Theme.wallpaperPath === "") {
+                                        desktopWindow.color = text
+                                    }
+                                }
+                            }
+                        }
+
+                        Item { Layout.fillHeight: true }
+                    }
                 }
             }
         }

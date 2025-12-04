@@ -283,6 +283,15 @@ Item {
             if (editorOpen) {
                 cursorShape = Qt.OpenHandCursor
 
+                // Snap to grid if enabled
+                // We need to find the desktopWindow to check settings
+                var win = desktopParent ? desktopParent.parent : null
+                if (win && win.snapToGrid && win.gridSize > 0) {
+                    var gs = win.gridSize
+                    root.x = Math.round(root.x / gs) * gs
+                    root.y = Math.round(root.y / gs) * gs
+                }
+
                 // Try to dock if over a panel
                 if (canDock) {
                     attemptDock()

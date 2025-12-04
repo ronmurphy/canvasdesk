@@ -12,6 +12,7 @@
 #include <QDir>
 #include <QDebug>
 #include <QStandardPaths>
+#include "core/ThemeManager.h"
 
 class ThemeImageProvider : public QQuickImageProvider {
 public:
@@ -143,6 +144,13 @@ int main(int argc, char *argv[]) {
 
   QQmlApplicationEngine engine;
   engine.addImageProvider("theme", new ThemeImageProvider);
+
+  // Register ThemeManager
+  qmlRegisterType<ThemeManager>("CanvasDesk", 1, 0, "ThemeManager");
+  
+  // Create global theme instance
+  ThemeManager* themeManager = new ThemeManager(&app);
+  engine.rootContext()->setContextProperty("Theme", themeManager);
 
   // Add import paths for CanvasDesk modules
   engine.addImportPath("qrc:/");

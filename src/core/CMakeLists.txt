@@ -16,12 +16,15 @@ qt_add_qml_module(CanvasDeskCore
         WindowManager.h
         X11WindowManager.cpp
         X11WindowManager.h
+        ThemeManager.cpp
+        ThemeManager.h
 )
 
 target_link_libraries(CanvasDeskCore
     PRIVATE
         Qt6::Core
         Qt6::Qml
+        Qt6::Gui
         PkgConfig::X11
         PkgConfig::XCB
         PkgConfig::XComposite

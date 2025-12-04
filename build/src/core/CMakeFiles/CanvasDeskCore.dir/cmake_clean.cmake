@@ -16,6 +16,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/CanvasDeskCore.dir/Component.cpp.o.d"
   "CMakeFiles/CanvasDeskCore.dir/LayoutManager.cpp.o"
   "CMakeFiles/CanvasDeskCore.dir/LayoutManager.cpp.o.d"
+  "CMakeFiles/CanvasDeskCore.dir/ThemeManager.cpp.o"
+  "CMakeFiles/CanvasDeskCore.dir/ThemeManager.cpp.o.d"
   "CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.o"
   "CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.o.d"
   "CMakeFiles/CanvasDeskCore.dir/X11WindowManager.cpp.o"

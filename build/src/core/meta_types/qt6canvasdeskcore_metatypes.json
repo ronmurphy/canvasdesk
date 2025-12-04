@@ -266,6 +266,242 @@
     {
         "classes": [
             {
+                "className": "ThemeManager",
+                "lineNumber": 10,
+                "methods": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "path",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 3,
+                        "lineNumber": 48,
+                        "name": "analyzeWallpaper",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 4,
+                        "lineNumber": 49,
+                        "name": "saveColors",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 5,
+                        "lineNumber": 50,
+                        "name": "loadColors",
+                        "returnType": "void"
+                    }
+                ],
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 0,
+                        "lineNumber": 12,
+                        "name": "wallpaperPath",
+                        "notify": "wallpaperPathChanged",
+                        "read": "wallpaperPath",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QString",
+                        "user": false,
+                        "write": "setWallpaperPath"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 1,
+                        "lineNumber": 13,
+                        "name": "wallpaperFillMode",
+                        "notify": "wallpaperFillModeChanged",
+                        "read": "wallpaperFillMode",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "write": "setWallpaperFillMode"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 2,
+                        "lineNumber": 16,
+                        "name": "primaryColor",
+                        "notify": "colorsChanged",
+                        "read": "primaryColor",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 3,
+                        "lineNumber": 17,
+                        "name": "secondaryColor",
+                        "notify": "colorsChanged",
+                        "read": "secondaryColor",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 4,
+                        "lineNumber": 18,
+                        "name": "tertiaryColor",
+                        "notify": "colorsChanged",
+                        "read": "tertiaryColor",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 5,
+                        "lineNumber": 19,
+                        "name": "accentColor",
+                        "notify": "colorsChanged",
+                        "read": "accentColor",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 6,
+                        "lineNumber": 20,
+                        "name": "neutralColor",
+                        "notify": "colorsChanged",
+                        "read": "neutralColor",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 7,
+                        "lineNumber": 21,
+                        "name": "brightestColor",
+                        "notify": "colorsChanged",
+                        "read": "brightestColor",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false
+                    },
+                    {
+                        "constant": true,
+                        "designable": true,
+                        "final": false,
+                        "index": 8,
+                        "lineNumber": 24,
+                        "name": "whiteColor",
+                        "read": "whiteColor",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false
+                    },
+                    {
+                        "constant": true,
+                        "designable": true,
+                        "final": false,
+                        "index": 9,
+                        "lineNumber": 25,
+                        "name": "greyColor",
+                        "read": "greyColor",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false
+                    },
+                    {
+                        "constant": true,
+                        "designable": true,
+                        "final": false,
+                        "index": 10,
+                        "lineNumber": 26,
+                        "name": "blackColor",
+                        "read": "blackColor",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QColor",
+                        "user": false
+                    }
+                ],
+                "qualifiedClassName": "ThemeManager",
+                "signals": [
+                    {
+                        "access": "public",
+                        "index": 0,
+                        "lineNumber": 53,
+                        "name": "wallpaperPathChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 1,
+                        "lineNumber": 54,
+                        "name": "wallpaperFillModeChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 2,
+                        "lineNumber": 55,
+                        "name": "colorsChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "ThemeManager.h",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
                 "classInfos": [
                     {
                         "name": "QML.Element",

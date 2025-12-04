@@ -7,10 +7,10 @@ canvasdesk-runtime: \
   ../qml/libCanvasDeskQml.so \
   /usr/lib/libQt6Quick.so.6.10.1 \
   /usr/lib/libQt6OpenGL.so.6.10.1 \
+  ../core/libCanvasDeskCore.so \
   /usr/lib/libQt6Gui.so.6.10.1 \
   /usr/lib/libGLX.so \
   /usr/lib/libOpenGL.so \
-  ../core/libCanvasDeskCore.so \
   /usr/lib/libQt6Qml.so.6.10.1 \
   /usr/lib/libQt6Network.so.6.10.1 \
   /usr/lib/libQt6Core.so.6.10.1 \
@@ -43,9 +43,20 @@ canvasdesk-runtime: \
   /usr/lib/libQt6QmlMeta.so.6 \
   /usr/lib/libQt6QmlModels.so.6 \
   /usr/lib/ld-linux-x86-64.so.2 \
+  /usr/lib32/libxcb.so.1 \
+  /usr/lib/libxcb.so.1 \
+  /usr/lib32/libXcomposite.so.1 \
+  /usr/lib/libXcomposite.so.1 \
+  /usr/lib32/libXrender.so.1 \
+  /usr/lib/libXrender.so.1 \
+  /usr/lib32/libX11.so.6 \
+  /usr/lib/libX11.so.6 \
+  /usr/lib32/libXdamage.so.1 \
+  /usr/lib/libXdamage.so.1 \
+  /usr/lib32/libXfixes.so.3 \
+  /usr/lib/libXfixes.so.3 \
   /usr/lib/libEGL.so.1 \
   /usr/lib/libfontconfig.so.1 \
-  /usr/lib/libX11.so.6 \
   /usr/lib/libglib-2.0.so.0 \
   /usr/lib/libQt6DBus.so.6 \
   /usr/lib/libxkbcommon.so.0 \
@@ -56,16 +67,6 @@ canvasdesk-runtime: \
   /usr/lib/libz.so.1 \
   /usr/lib32/libGLdispatch.so.0 \
   /usr/lib/libGLdispatch.so.0 \
-  /usr/lib32/libxcb.so.1 \
-  /usr/lib/libxcb.so.1 \
-  /usr/lib32/libXcomposite.so.1 \
-  /usr/lib/libXcomposite.so.1 \
-  /usr/lib32/libXrender.so.1 \
-  /usr/lib/libXrender.so.1 \
-  /usr/lib32/libXdamage.so.1 \
-  /usr/lib/libXdamage.so.1 \
-  /usr/lib32/libXfixes.so.3 \
-  /usr/lib/libXfixes.so.3 \
   /usr/lib/libgssapi_krb5.so.2 \
   /usr/lib/libbrotlidec.so.1 \
   /usr/lib/libzstd.so.1 \
@@ -81,6 +82,10 @@ canvasdesk-runtime: \
   /usr/lib/libb2.so.1 \
   /usr/lib/libpcre2-16.so.0 \
   /usr/lib/libQt6QmlWorkerScript.so.6 \
+  /usr/lib32/libXau.so.6 \
+  /usr/lib/libXau.so.6 \
+  /usr/lib32/libXdmcp.so.6 \
+  /usr/lib/libXdmcp.so.6 \
   /usr/lib32/libexpat.so.1 \
   /usr/lib/libexpat.so.1 \
   /usr/lib32/libpcre2-8.so.0 \
@@ -89,10 +94,6 @@ canvasdesk-runtime: \
   /usr/lib/libgraphite2.so.3 \
   /usr/lib32/libbz2.so.1.0 \
   /usr/lib/libbz2.so.1.0 \
-  /usr/lib32/libXau.so.6 \
-  /usr/lib/libXau.so.6 \
-  /usr/lib32/libXdmcp.so.6 \
-  /usr/lib/libXdmcp.so.6 \
   /usr/lib32/libkrb5.so.3 \
   /usr/lib/libkrb5.so.3 \
   /usr/lib32/libk5crypto.so.3 \
@@ -161,13 +162,13 @@ CMakeFiles/canvasdesk-runtime.dir/main.cpp.o:
 
 /usr/lib/libQt6OpenGL.so.6.10.1:
 
+../core/libCanvasDeskCore.so:
+
 /usr/lib/libQt6Gui.so.6.10.1:
 
 /usr/lib/libGLX.so:
 
 /usr/lib/libOpenGL.so:
-
-../core/libCanvasDeskCore.so:
 
 /usr/lib/libQt6Qml.so.6.10.1:
 
@@ -233,11 +234,33 @@ CMakeFiles/canvasdesk-runtime.dir/main.cpp.o:
 
 /usr/lib/ld-linux-x86-64.so.2:
 
+/usr/lib32/libxcb.so.1:
+
+/usr/lib/libxcb.so.1:
+
+/usr/lib32/libXcomposite.so.1:
+
+/usr/lib/libXcomposite.so.1:
+
+/usr/lib32/libXrender.so.1:
+
+/usr/lib/libXrender.so.1:
+
+/usr/lib32/libX11.so.6:
+
+/usr/lib/libX11.so.6:
+
+/usr/lib32/libXdamage.so.1:
+
+/usr/lib/libXdamage.so.1:
+
+/usr/lib32/libXfixes.so.3:
+
+/usr/lib/libXfixes.so.3:
+
 /usr/lib/libEGL.so.1:
 
 /usr/lib/libfontconfig.so.1:
-
-/usr/lib/libX11.so.6:
 
 /usr/lib/libglib-2.0.so.0:
 
@@ -258,26 +281,6 @@ CMakeFiles/canvasdesk-runtime.dir/main.cpp.o:
 /usr/lib32/libGLdispatch.so.0:
 
 /usr/lib/libGLdispatch.so.0:
-
-/usr/lib32/libxcb.so.1:
-
-/usr/lib/libxcb.so.1:
-
-/usr/lib32/libXcomposite.so.1:
-
-/usr/lib/libXcomposite.so.1:
-
-/usr/lib32/libXrender.so.1:
-
-/usr/lib/libXrender.so.1:
-
-/usr/lib32/libXdamage.so.1:
-
-/usr/lib/libXdamage.so.1:
-
-/usr/lib32/libXfixes.so.3:
-
-/usr/lib/libXfixes.so.3:
 
 /usr/lib/libgssapi_krb5.so.2:
 
@@ -309,6 +312,14 @@ CMakeFiles/canvasdesk-runtime.dir/main.cpp.o:
 
 /usr/lib/libQt6QmlWorkerScript.so.6:
 
+/usr/lib32/libXau.so.6:
+
+/usr/lib/libXau.so.6:
+
+/usr/lib32/libXdmcp.so.6:
+
+/usr/lib/libXdmcp.so.6:
+
 /usr/lib32/libexpat.so.1:
 
 /usr/lib/libexpat.so.1:
@@ -324,14 +335,6 @@ CMakeFiles/canvasdesk-runtime.dir/main.cpp.o:
 /usr/lib32/libbz2.so.1.0:
 
 /usr/lib/libbz2.so.1.0:
-
-/usr/lib32/libXau.so.6:
-
-/usr/lib/libXau.so.6:
-
-/usr/lib32/libXdmcp.so.6:
-
-/usr/lib/libXdmcp.so.6:
 
 /usr/lib32/libkrb5.so.3:
 

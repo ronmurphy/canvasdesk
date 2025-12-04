@@ -7,8 +7,8 @@ Rectangle {
     id: root
 
     // Configurable properties
-    property color buttonColor: "#3a3a3a"
-    property color popupColor: "#1a1a1a"
+    property color buttonColor: Theme.primaryColor
+    property color popupColor: Theme.secondaryColor
     property string buttonText: "Apps"
 
     // Editor support
@@ -29,26 +29,27 @@ Rectangle {
     color: "transparent"
     
     // Launcher button
-    Rectangle {
-        anchors.centerIn: parent
-        width: parent.width - 8
-        height: parent.height - 8
-        color: buttonColor
-        border.color: "#555"
-        radius: 4
+    Button {
+        anchors.fill: parent
+        anchors.margins: 4
+        text: root.buttonText
         
-        Text {
-            anchors.centerIn: parent
-            text: root.buttonText
-            color: "white"
+        background: Rectangle {
+            color: parent.down ? Qt.darker(root.buttonColor, 1.2) : root.buttonColor
+            border.color: Theme.neutralColor
+            radius: 4
+        }
+        
+        contentItem: Text {
+            text: parent.text
+            color: Theme.brightestColor
             font.pixelSize: 14
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
         }
         
-        MouseArea {
-            anchors.fill: parent
-            enabled: !root.editorOpen
-            onClicked: root.showPopup = !root.showPopup
-        }
+        enabled: !root.editorOpen
+        onClicked: root.showPopup = !root.showPopup
     }
     
     // App grid popup (parented to desktop to escape panel clipping)

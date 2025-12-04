@@ -81,6 +81,7 @@ src/core/canvasdeskcore_qmltyperegistrations.cpp: /usr/lib/qt6/qmltyperegistrar
 src/core/canvasdeskcore_qmltyperegistrations.cpp: /usr/lib/qt6/metatypes/qt6qml_metatypes.json
 src/core/canvasdeskcore_qmltyperegistrations.cpp: /usr/lib/qt6/metatypes/qt6core_metatypes.json
 src/core/canvasdeskcore_qmltyperegistrations.cpp: /usr/lib/qt6/metatypes/qt6network_metatypes.json
+src/core/canvasdeskcore_qmltyperegistrations.cpp: /usr/lib/qt6/metatypes/qt6gui_metatypes.json
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Automatic QML type registration for target CanvasDeskCore"
 	cd /home/brad/Documents/canvasdesk/build/src/core && /usr/lib/qt6/qmltyperegistrar --generate-qmltypes=/home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore.qmltypes --import-name=CanvasDesk --major-version=1 --minor-version=0 @/home/brad/Documents/canvasdesk/build/src/core/qmltypes/CanvasDeskCore_foreign_types.txt -o /home/brad/Documents/canvasdesk/build/src/core/canvasdeskcore_qmltyperegistrations.cpp /home/brad/Documents/canvasdesk/build/src/core/meta_types/qt6canvasdeskcore_metatypes.json
 	cd /home/brad/Documents/canvasdesk/build/src/core && /usr/bin/cmake -E make_directory /home/brad/Documents/canvasdesk/build/src/core/.qt/qmltypes
@@ -239,6 +240,20 @@ src/core/CMakeFiles/CanvasDeskCore.dir/X11WindowManager.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CanvasDeskCore.dir/X11WindowManager.cpp.s"
 	cd /home/brad/Documents/canvasdesk/build/src/core && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/brad/Documents/canvasdesk/src/core/X11WindowManager.cpp -o CMakeFiles/CanvasDeskCore.dir/X11WindowManager.cpp.s
 
+src/core/CMakeFiles/CanvasDeskCore.dir/ThemeManager.cpp.o: src/core/CMakeFiles/CanvasDeskCore.dir/flags.make
+src/core/CMakeFiles/CanvasDeskCore.dir/ThemeManager.cpp.o: /home/brad/Documents/canvasdesk/src/core/ThemeManager.cpp
+src/core/CMakeFiles/CanvasDeskCore.dir/ThemeManager.cpp.o: src/core/CMakeFiles/CanvasDeskCore.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object src/core/CMakeFiles/CanvasDeskCore.dir/ThemeManager.cpp.o"
+	cd /home/brad/Documents/canvasdesk/build/src/core && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/core/CMakeFiles/CanvasDeskCore.dir/ThemeManager.cpp.o -MF CMakeFiles/CanvasDeskCore.dir/ThemeManager.cpp.o.d -o CMakeFiles/CanvasDeskCore.dir/ThemeManager.cpp.o -c /home/brad/Documents/canvasdesk/src/core/ThemeManager.cpp
+
+src/core/CMakeFiles/CanvasDeskCore.dir/ThemeManager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CanvasDeskCore.dir/ThemeManager.cpp.i"
+	cd /home/brad/Documents/canvasdesk/build/src/core && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/brad/Documents/canvasdesk/src/core/ThemeManager.cpp > CMakeFiles/CanvasDeskCore.dir/ThemeManager.cpp.i
+
+src/core/CMakeFiles/CanvasDeskCore.dir/ThemeManager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CanvasDeskCore.dir/ThemeManager.cpp.s"
+	cd /home/brad/Documents/canvasdesk/build/src/core && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/brad/Documents/canvasdesk/src/core/ThemeManager.cpp -o CMakeFiles/CanvasDeskCore.dir/ThemeManager.cpp.s
+
 # Object files for target CanvasDeskCore
 CanvasDeskCore_OBJECTS = \
 "CMakeFiles/CanvasDeskCore.dir/CanvasDeskCore_autogen/mocs_compilation.cpp.o" \
@@ -249,7 +264,8 @@ CanvasDeskCore_OBJECTS = \
 "CMakeFiles/CanvasDeskCore.dir/LayoutManager.cpp.o" \
 "CMakeFiles/CanvasDeskCore.dir/AppManager.cpp.o" \
 "CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.o" \
-"CMakeFiles/CanvasDeskCore.dir/X11WindowManager.cpp.o"
+"CMakeFiles/CanvasDeskCore.dir/X11WindowManager.cpp.o" \
+"CMakeFiles/CanvasDeskCore.dir/ThemeManager.cpp.o"
 
 # External object files for target CanvasDeskCore
 CanvasDeskCore_EXTERNAL_OBJECTS =
@@ -263,10 +279,14 @@ src/core/libCanvasDeskCore.so: src/core/CMakeFiles/CanvasDeskCore.dir/LayoutMana
 src/core/libCanvasDeskCore.so: src/core/CMakeFiles/CanvasDeskCore.dir/AppManager.cpp.o
 src/core/libCanvasDeskCore.so: src/core/CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.o
 src/core/libCanvasDeskCore.so: src/core/CMakeFiles/CanvasDeskCore.dir/X11WindowManager.cpp.o
+src/core/libCanvasDeskCore.so: src/core/CMakeFiles/CanvasDeskCore.dir/ThemeManager.cpp.o
 src/core/libCanvasDeskCore.so: src/core/CMakeFiles/CanvasDeskCore.dir/build.make
 src/core/libCanvasDeskCore.so: src/core/CMakeFiles/CanvasDeskCore.dir/compiler_depend.ts
 src/core/libCanvasDeskCore.so: /usr/lib/libQt6Qml.so.6.10.1
+src/core/libCanvasDeskCore.so: /usr/lib/libQt6Gui.so.6.10.1
 src/core/libCanvasDeskCore.so: /usr/lib/libQt6Network.so.6.10.1
+src/core/libCanvasDeskCore.so: /usr/lib/libGLX.so
+src/core/libCanvasDeskCore.so: /usr/lib/libOpenGL.so
 src/core/libCanvasDeskCore.so: /usr/lib/libQt6Core.so.6.10.1
 src/core/libCanvasDeskCore.so: /usr/lib/libxcb.so
 src/core/libCanvasDeskCore.so: /usr/lib/libXcomposite.so
@@ -275,7 +295,7 @@ src/core/libCanvasDeskCore.so: /usr/lib/libX11.so
 src/core/libCanvasDeskCore.so: /usr/lib/libXdamage.so
 src/core/libCanvasDeskCore.so: /usr/lib/libXfixes.so
 src/core/libCanvasDeskCore.so: src/core/CMakeFiles/CanvasDeskCore.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Linking CXX shared library libCanvasDeskCore.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Linking CXX shared library libCanvasDeskCore.so"
 	cd /home/brad/Documents/canvasdesk/build/src/core && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/CanvasDeskCore.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

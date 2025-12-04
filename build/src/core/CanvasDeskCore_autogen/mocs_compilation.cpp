@@ -2,5 +2,6 @@
 #include "EWIEGA46WW/moc_AppManager.cpp"
 #include "EWIEGA46WW/moc_Component.cpp"
 #include "EWIEGA46WW/moc_LayoutManager.cpp"
+#include "EWIEGA46WW/moc_ThemeManager.cpp"
 #include "EWIEGA46WW/moc_WindowManager.cpp"
 #include "EWIEGA46WW/moc_X11WindowManager.cpp"

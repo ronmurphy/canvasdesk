@@ -1,5 +1,6 @@
 /home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/include/../EWIEGA46WW/moc_AppManager.cpp.json
 /home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/include/../EWIEGA46WW/moc_Component.cpp.json
 /home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/include/../EWIEGA46WW/moc_LayoutManager.cpp.json
+/home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/include/../EWIEGA46WW/moc_ThemeManager.cpp.json
 /home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/include/../EWIEGA46WW/moc_WindowManager.cpp.json
 /home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/include/../EWIEGA46WW/moc_X11WindowManager.cpp.json

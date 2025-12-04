@@ -403,6 +403,30 @@ src/core/CMakeFiles/CanvasDeskCore.dir/CanvasDeskCore_autogen/mocs_compilation.c
  /home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/EWIEGA46WW/moc_LayoutManager.cpp \
  /home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/EWIEGA46WW/../../../../../src/core/LayoutManager.h \
  /usr/include/qt6/QtCore/QString \
+ /home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/EWIEGA46WW/moc_ThemeManager.cpp \
+ /home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/EWIEGA46WW/../../../../../src/core/ThemeManager.h \
+ /usr/include/qt6/QtGui/QColor /usr/include/qt6/QtGui/qcolor.h \
+ /usr/include/qt6/QtGui/qtguiglobal.h \
+ /usr/include/qt6/QtGui/qtgui-config.h \
+ /usr/include/qt6/QtGui/qtguiexports.h /usr/include/qt6/QtGui/qrgb.h \
+ /usr/include/qt6/QtGui/qrgba64.h /usr/include/qt6/QtGui/QImage \
+ /usr/include/qt6/QtGui/qimage.h /usr/include/qt6/QtGui/qcolor.h \
+ /usr/include/qt6/QtGui/qpaintdevice.h \
+ /usr/include/qt6/QtGui/qwindowdefs.h /usr/include/qt6/QtCore/qrect.h \
+ /usr/include/qt6/QtCore/qcheckedint_impl.h \
+ /usr/include/qt6/QtCore/qmargins.h /usr/include/qt6/QtCore/qsize.h \
+ /usr/include/qt6/QtCore/qpoint.h /usr/include/qt6/QtGui/qpixelformat.h \
+ /usr/include/qt6/QtGui/qtransform.h /usr/include/qt6/QtGui/qpolygon.h \
+ /usr/include/qt6/QtGui/qregion.h /usr/include/qt6/QtCore/qline.h \
+ /usr/include/qt6/QtCore/QJsonObject \
+ /usr/include/qt6/QtCore/qjsonobject.h \
+ /usr/include/qt6/QtCore/qjsonvalue.h \
+ /usr/include/qt6/QtCore/qcborvalue.h \
+ /usr/include/qt6/QtCore/qcborcommon.h \
+ /usr/include/qt6/QtCore/qregularexpression.h \
+ /usr/include/qt6/QtCore/quuid.h /usr/include/qt6/QtCore/qendian.h \
+ /usr/include/qt6/QtCore/qjsondocument.h \
+ /usr/include/qt6/QtCore/qjsonparseerror.h \
  /home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/EWIEGA46WW/moc_WindowManager.cpp \
  /home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/EWIEGA46WW/../../../../../src/core/WindowManager.h \
  /usr/include/qt6/QtCore/QHash /usr/include/qt6/QtCore/qhash.h \

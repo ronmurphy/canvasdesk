@@ -10,8 +10,12 @@ libCanvasDeskCore.so: \
   CMakeFiles/CanvasDeskCore.dir/AppManager.cpp.o \
   CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.o \
   CMakeFiles/CanvasDeskCore.dir/X11WindowManager.cpp.o \
+  CMakeFiles/CanvasDeskCore.dir/ThemeManager.cpp.o \
   /usr/lib/libQt6Qml.so.6.10.1 \
+  /usr/lib/libQt6Gui.so.6.10.1 \
   /usr/lib/libQt6Network.so.6.10.1 \
+  /usr/lib/libGLX.so \
+  /usr/lib/libOpenGL.so \
   /usr/lib/libQt6Core.so.6.10.1 \
   /usr/lib/libxcb.so \
   /usr/lib/libXcomposite.so \
@@ -66,9 +70,17 @@ CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.o:
 
 CMakeFiles/CanvasDeskCore.dir/X11WindowManager.cpp.o:
 
+CMakeFiles/CanvasDeskCore.dir/ThemeManager.cpp.o:
+
 /usr/lib/libQt6Qml.so.6.10.1:
 
+/usr/lib/libQt6Gui.so.6.10.1:
+
 /usr/lib/libQt6Network.so.6.10.1:
+
+/usr/lib/libGLX.so:
+
+/usr/lib/libOpenGL.so:
 
 /usr/lib/libQt6Core.so.6.10.1:
 

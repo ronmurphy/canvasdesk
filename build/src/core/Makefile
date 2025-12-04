@@ -591,6 +591,30 @@ LayoutManager.cpp.s:
 	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore.dir/build.make src/core/CMakeFiles/CanvasDeskCore.dir/LayoutManager.cpp.s
 .PHONY : LayoutManager.cpp.s
 
+ThemeManager.o: ThemeManager.cpp.o
+.PHONY : ThemeManager.o
+
+# target to build an object file
+ThemeManager.cpp.o:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore.dir/build.make src/core/CMakeFiles/CanvasDeskCore.dir/ThemeManager.cpp.o
+.PHONY : ThemeManager.cpp.o
+
+ThemeManager.i: ThemeManager.cpp.i
+.PHONY : ThemeManager.i
+
+# target to preprocess a source file
+ThemeManager.cpp.i:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore.dir/build.make src/core/CMakeFiles/CanvasDeskCore.dir/ThemeManager.cpp.i
+.PHONY : ThemeManager.cpp.i
+
+ThemeManager.s: ThemeManager.cpp.s
+.PHONY : ThemeManager.s
+
+# target to generate assembly for a file
+ThemeManager.cpp.s:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore.dir/build.make src/core/CMakeFiles/CanvasDeskCore.dir/ThemeManager.cpp.s
+.PHONY : ThemeManager.cpp.s
+
 WindowManager.o: WindowManager.cpp.o
 .PHONY : WindowManager.o
 
@@ -716,6 +740,9 @@ help:
 	@echo "... LayoutManager.o"
 	@echo "... LayoutManager.i"
 	@echo "... LayoutManager.s"
+	@echo "... ThemeManager.o"
+	@echo "... ThemeManager.i"
+	@echo "... ThemeManager.s"
 	@echo "... WindowManager.o"
 	@echo "... WindowManager.i"
 	@echo "... WindowManager.s"
