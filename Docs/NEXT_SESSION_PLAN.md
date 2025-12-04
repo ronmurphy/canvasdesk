@@ -29,15 +29,17 @@ Improve QML components with "atom" versions (minimal, icon-only) and enhance "al
 
 ### Atom Components (Minimal, Function-Focused)
 - [ ] SessionAtomComponent.qml - Icon-only session controls
-- [ ] VolumeAtomComponent.qml - Icon-only volume slider
+- [ ] VolumeAtomComponent.qml - Icon-only volume slider - mouse wheel for volume adjustment?
 - [ ] ClockAtomComponent.qml - Time-only display
 - [ ] CalendarAtomComponent.qml - Date display with popup
 
 ### All-In-One Components (Feature-Rich)
 - [ ] Improve AppLauncherComponent.qml - Better app discovery, search, categories
 - [ ] Improve FileBrowserComponent.qml - Better file navigation, icons, preview
-- [ ] VolumeComponent.qml - Volume slider with app mixer
+- [ ] VolumeComponent.qml - Volume slider with app mixer -  
 - [ ] CalendarComponent.qml - Full calendar view with events
+- [ ] Improve ClockComponent.qml - time format choice, click to chow Calendar
+
 
 ## Design Philosophy
 
@@ -121,3 +123,12 @@ property string orientation: width > height ? "horizontal" : "vertical"
 
 ## Timeline
 Expected session start: ~4-5 hours from now (around evening)
+
+## Must Fix - Medium Priority
+X11 shows "no display" on external monitors when logged in to CanvasDesk, need multiple monitor support. Make out won version of XRandR?
+
+## Nice to have - "Control Center" window modal like the Editor
+ - Figure out how both KDE and Gnome assign themed icons sets.
+ - Migrate the Theme area to it's own sub-windows, like the Editor settings, as how it needs more space.
+ - Figure out assigning Cursor sets, again, like Gnome and KDE.
+ - make use of KDE and Gnomme Icons and Cursors.
