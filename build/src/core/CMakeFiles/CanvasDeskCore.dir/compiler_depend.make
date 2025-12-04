@@ -3918,6 +3918,7 @@ src/core/CMakeFiles/CanvasDeskCore.dir/X11WindowManager.cpp.o: /home/brad/Docume
   /usr/include/X11/Xlib.h \
   /usr/include/X11/Xosdefs.h \
   /usr/include/X11/Xutil.h \
+  /usr/include/X11/cursorfont.h \
   /usr/include/X11/extensions/Xrender.h \
   /usr/include/X11/extensions/render.h \
   /usr/include/X11/keysym.h \
@@ -5085,6 +5086,8 @@ src/core/CMakeFiles/CanvasDeskCore.dir/CanvasDeskCore_autogen/mocs_compilation.c
 src/core/canvasdeskcore_qmltyperegistrations.cpp:
 
 /usr/include/qt6/QtCore/QSet:
+
+/usr/include/X11/cursorfont.h:
 
 /usr/include/qt6/QtCore/QJsonDocument:
 

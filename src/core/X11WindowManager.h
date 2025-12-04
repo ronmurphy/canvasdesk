@@ -17,6 +17,7 @@
 #define TITLE_HEIGHT 24
 #define BUTTON_SIZE 16
 #define PADDING 4
+#define RESIZE_BORDER 5  // Size of resize grab area at edges
 
 // Forward declaration
 struct X11Frame;
@@ -134,6 +135,9 @@ private:
   void createTitleBarButtons(X11Frame *frame);
   void drawTitleBarButton(X11Frame *frame, const X11Button &button);
 
+  // Resize helpers
+  int detectResizeEdge(X11Frame *frame, int x, int y);
+
   // DISABLED: Compositing disabled for now
   // void paint();
   // void requestPaint(); // Queue a paint request with rate limiting
@@ -148,6 +152,13 @@ private:
   // Focus tracking
   Window m_activeWindow = None;
 
+  // Resize cursors
+  Cursor m_cursorNormal = None;
+  Cursor m_cursorResizeH = None;   // Horizontal resize (left-right)
+  Cursor m_cursorResizeV = None;   // Vertical resize (top-bottom)
+  Cursor m_cursorResizeNWSE = None; // Diagonal resize (top-left to bottom-right)
+  Cursor m_cursorResizeNESW = None; // Diagonal resize (top-right to bottom-left)
+
   // Drag state
   bool m_dragging = false;
   X11Frame *m_dragFrame = nullptr;
@@ -155,6 +166,17 @@ private:
   int m_dragStartY = 0;
   int m_dragFrameStartX = 0;
   int m_dragFrameStartY = 0;
+
+  // Resize state
+  bool m_resizing = false;
+  X11Frame *m_resizeFrame = nullptr;
+  int m_resizeEdge = 0; // Bitmask: 1=left, 2=right, 4=top, 8=bottom
+  int m_resizeStartX = 0;
+  int m_resizeStartY = 0;
+  int m_resizeStartWidth = 0;
+  int m_resizeStartHeight = 0;
+  int m_resizeStartFrameX = 0;
+  int m_resizeStartFrameY = 0;
 
   // DISABLED: Compositing disabled for now
   // // Extension bases

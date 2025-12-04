@@ -5,6 +5,7 @@
 // #include <QTimer>  // DISABLED: Compositing disabled for now
 #include <X11/Xatom.h>
 #include <X11/Xutil.h>
+#include <X11/cursorfont.h>
 
 X11WindowManager::X11WindowManager(QObject *parent) : QObject(parent) {}
 
@@ -58,6 +59,14 @@ bool X11WindowManager::initialize() {
   XSetErrorHandler(nullptr);
 
   qInfo() << "[X11] Successfully registered as window manager";
+
+  // Create resize cursors
+  m_cursorNormal = XCreateFontCursor(m_display, XC_left_ptr);
+  m_cursorResizeH = XCreateFontCursor(m_display, XC_sb_h_double_arrow);
+  m_cursorResizeV = XCreateFontCursor(m_display, XC_sb_v_double_arrow);
+  m_cursorResizeNWSE = XCreateFontCursor(m_display, XC_bottom_right_corner);
+  m_cursorResizeNESW = XCreateFontCursor(m_display, XC_bottom_left_corner);
+  qInfo() << "[X11] Created resize cursors";
 
   // Connect to ThemeManager for color updates
   if (auto theme = ThemeManager::instance()) {
@@ -587,7 +596,8 @@ X11Frame *X11WindowManager::createFrame(Window client, int x, int y, int width,
   // Select events we care about
   XSelectInput(m_display, frame->frame,
                SubstructureRedirectMask | SubstructureNotifyMask |
-                   ButtonPressMask | ExposureMask);
+                   ButtonPressMask | ButtonReleaseMask | ExposureMask |
+                   PointerMotionMask);  // Added motion for resize cursor and dragging
   XSelectInput(m_display, frame->titleBar,
                ButtonPressMask | ButtonReleaseMask | ExposureMask |
                    PointerMotionMask);
@@ -1042,6 +1052,27 @@ void X11WindowManager::handleButtonPress(XButtonEvent *event) {
     }
   }
 
+  // Check if clicking on frame edge for resizing
+  if (event->window == frame->frame) {
+    int edge = detectResizeEdge(frame, event->x, event->y);
+
+    if (edge != 0) {
+      // Start resizing
+      m_resizing = true;
+      m_resizeFrame = frame;
+      m_resizeEdge = edge;
+      m_resizeStartX = event->x_root;
+      m_resizeStartY = event->y_root;
+      m_resizeStartWidth = frame->width;
+      m_resizeStartHeight = frame->height;
+      m_resizeStartFrameX = frame->x;
+      m_resizeStartFrameY = frame->y;
+
+      qInfo() << "[X11] Started resizing window, edge:" << edge;
+      return;
+    }
+  }
+
   // If it's the titlebar (not a button), start dragging
   if (event->window == frame->titleBar) {
     m_dragging = true;
@@ -1057,6 +1088,13 @@ void X11WindowManager::handleButtonPress(XButtonEvent *event) {
 }
 
 void X11WindowManager::handleButtonRelease(XButtonEvent *event) {
+  if (m_resizing) {
+    m_resizing = false;
+    m_resizeFrame = nullptr;
+    m_resizeEdge = 0;
+    qInfo() << "[X11] Stopped resizing";
+  }
+
   if (m_dragging) {
     m_dragging = false;
     m_dragFrame = nullptr;
@@ -1064,26 +1102,133 @@ void X11WindowManager::handleButtonRelease(XButtonEvent *event) {
   }
 }
 
+int X11WindowManager::detectResizeEdge(X11Frame *frame, int x, int y) {
+  // Returns bitmask: 1=left, 2=right, 4=top, 8=bottom
+  int edge = 0;
+
+  if (x < RESIZE_BORDER)
+    edge |= 1; // Left
+  else if (x > frame->width - RESIZE_BORDER)
+    edge |= 2; // Right
+
+  if (y < RESIZE_BORDER)
+    edge |= 4; // Top
+  else if (y > frame->height - RESIZE_BORDER)
+    edge |= 8; // Bottom
+
+  return edge;
+}
+
 void X11WindowManager::handleMotionNotify(XMotionEvent *event) {
-  if (!m_dragging || !m_dragFrame)
+  // Update cursor when hovering over edges (not while dragging/resizing)
+  if (!m_dragging && !m_resizing) {
+    X11Frame *frame = findFrame(event->window);
+    if (frame && event->window == frame->frame) {
+      // Only detect resize on the actual frame edges, not on titlebar area
+      // The titlebar occupies y=0 to TITLE_HEIGHT
+      if (event->y < TITLE_HEIGHT) {
+        // We're in the titlebar area, use normal cursor
+        XDefineCursor(m_display, frame->frame, m_cursorNormal);
+      } else {
+        // We're below the titlebar, check for resize edges
+        int edge = detectResizeEdge(frame, event->x, event->y);
+
+        Cursor cursor = m_cursorNormal;
+        if (edge == (1|4) || edge == (2|8)) { // Top-left or bottom-right corner
+          cursor = m_cursorResizeNWSE;
+        } else if (edge == (2|4) || edge == (1|8)) { // Top-right or bottom-left corner
+          cursor = m_cursorResizeNESW;
+        } else if (edge & (1|2)) { // Left or right edge
+          cursor = m_cursorResizeH;
+        } else if (edge & (4|8)) { // Top or bottom edge
+          cursor = m_cursorResizeV;
+        }
+
+        XDefineCursor(m_display, frame->frame, cursor);
+      }
+    }
+  }
+
+  // Handle window resizing
+  if (m_resizing && m_resizeFrame) {
+    int deltaX = event->x_root - m_resizeStartX;
+    int deltaY = event->y_root - m_resizeStartY;
+
+    int newX = m_resizeStartFrameX;
+    int newY = m_resizeStartFrameY;
+    int newWidth = m_resizeStartWidth;
+    int newHeight = m_resizeStartHeight;
+
+    // Adjust based on which edge is being dragged
+    if (m_resizeEdge & 1) { // Left edge
+      newX = m_resizeStartFrameX + deltaX;
+      newWidth = m_resizeStartWidth - deltaX;
+    }
+    if (m_resizeEdge & 2) { // Right edge
+      newWidth = m_resizeStartWidth + deltaX;
+    }
+    if (m_resizeEdge & 4) { // Top edge
+      newY = m_resizeStartFrameY + deltaY;
+      newHeight = m_resizeStartHeight - deltaY;
+    }
+    if (m_resizeEdge & 8) { // Bottom edge
+      newHeight = m_resizeStartHeight + deltaY;
+    }
+
+    // Enforce minimum size
+    const int minWidth = 100;
+    const int minHeight = TITLE_HEIGHT + 50;
+    if (newWidth < minWidth) newWidth = minWidth;
+    if (newHeight < minHeight) newHeight = minHeight;
+
+    // Apply the resize
+    XMoveResizeWindow(m_display, m_resizeFrame->frame, newX, newY, newWidth, newHeight);
+
+    // Update frame dimensions
+    m_resizeFrame->x = newX;
+    m_resizeFrame->y = newY;
+    m_resizeFrame->width = newWidth;
+    m_resizeFrame->height = newHeight;
+
+    // Resize titlebar
+    XResizeWindow(m_display, m_resizeFrame->titleBar, newWidth, TITLE_HEIGHT);
+
+    // Resize client window
+    XResizeWindow(m_display, m_resizeFrame->client, newWidth, newHeight - TITLE_HEIGHT);
+
+    // Recreate buttons for new width
+    for (const X11Button &btn : m_resizeFrame->buttons) {
+      XDestroyWindow(m_display, btn.window);
+      m_frames.remove(btn.window);
+    }
+    m_resizeFrame->buttons.clear();
+    createTitleBarButtons(m_resizeFrame);
+
+    // Redraw titlebar
+    drawTitleBar(m_resizeFrame);
+
     return;
+  }
 
-  // Calculate new position
-  int deltaX = event->x_root - m_dragStartX;
-  int deltaY = event->y_root - m_dragStartY;
+  // Handle window dragging
+  if (m_dragging && m_dragFrame) {
+    // Calculate new position
+    int deltaX = event->x_root - m_dragStartX;
+    int deltaY = event->y_root - m_dragStartY;
 
-  int newX = m_dragFrameStartX + deltaX;
-  int newY = m_dragFrameStartY + deltaY;
+    int newX = m_dragFrameStartX + deltaX;
+    int newY = m_dragFrameStartY + deltaY;
 
-  // Move the frame window
-  XMoveWindow(m_display, m_dragFrame->frame, newX, newY);
+    // Move the frame window
+    XMoveWindow(m_display, m_dragFrame->frame, newX, newY);
 
-  // Update saved position
-  m_dragFrame->x = newX;
-  m_dragFrame->y = newY;
+    // Update saved position
+    m_dragFrame->x = newX;
+    m_dragFrame->y = newY;
 
-  // Don't XFlush here - let the paint timer handle it at 60 FPS
-  // This eliminates flickering during window drag
+    // Don't XFlush here - let the paint timer handle it at 60 FPS
+    // This eliminates flickering during window drag
+  }
 }
 
 void X11WindowManager::activateWindow(Window window) {

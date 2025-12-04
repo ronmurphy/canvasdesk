@@ -824,7 +824,7 @@
         "classes": [
             {
                 "className": "X11Window",
-                "lineNumber": 24,
+                "lineNumber": 25,
                 "object": true,
                 "qualifiedClassName": "X11Window",
                 "superClasses": [
@@ -836,7 +836,7 @@
             },
             {
                 "className": "X11WindowManager",
-                "lineNumber": 90,
+                "lineNumber": 91,
                 "object": true,
                 "qualifiedClassName": "X11WindowManager",
                 "signals": [
@@ -849,7 +849,7 @@
                             }
                         ],
                         "index": 0,
-                        "lineNumber": 106,
+                        "lineNumber": 107,
                         "name": "windowAdded",
                         "returnType": "void"
                     },
@@ -862,7 +862,7 @@
                             }
                         ],
                         "index": 1,
-                        "lineNumber": 107,
+                        "lineNumber": 108,
                         "name": "windowRemoved",
                         "returnType": "void"
                     },
@@ -875,7 +875,7 @@
                             }
                         ],
                         "index": 2,
-                        "lineNumber": 108,
+                        "lineNumber": 109,
                         "name": "windowChanged",
                         "returnType": "void"
                     }
@@ -884,7 +884,7 @@
                     {
                         "access": "private",
                         "index": 3,
-                        "lineNumber": 111,
+                        "lineNumber": 112,
                         "name": "processXEvents",
                         "returnType": "void"
                     }
