@@ -7,15 +7,15 @@ Rectangle {
     id: root
     
     // Configurable properties
-    property color backgroundColor: Theme.secondaryColor
-    property color activeColor: Theme.primaryColor
-    property color inactiveColor: Theme.tertiaryColor
+    property color backgroundColor: Theme.uiSecondaryColor
+    property color activeColor: Theme.uiPrimaryColor
+    property color inactiveColor: Theme.uiTertiaryColor
     
     // Editor support
     property bool editorOpen: false
     
     color: backgroundColor
-    border.color: Theme.neutralColor
+    border.color: Theme.uiTitleBarLeftColor
     border.width: 1
     radius: 4
     
@@ -32,13 +32,13 @@ Rectangle {
             
             background: Rectangle {
                 color: modelData.active ? root.activeColor : root.inactiveColor
-                border.color: parent.down ? Theme.accentColor : Theme.neutralColor
+                border.color: parent.down ? Theme.uiHighlightColor : Theme.uiTitleBarRightColor
                 radius: 2
             }
             
             contentItem: Text {
                 text: modelData.title
-                color: Theme.brightestColor
+                color: Theme.uiTextColor
                 elide: Text.ElideRight
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
@@ -53,7 +53,7 @@ Rectangle {
             visible: parent.count === 0
             anchors.centerIn: parent
             text: "(no windows)"
-            color: Theme.neutralColor
+            color: Theme.uiTextColor
             font.pixelSize: 12
         }
     }

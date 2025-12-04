@@ -7,8 +7,8 @@ Rectangle {
     id: root
 
     // Configurable properties
-    property color buttonColor: Theme.primaryColor
-    property color popupColor: Theme.secondaryColor
+    property color buttonColor: Theme.uiPrimaryColor
+    property color popupColor: Theme.uiSecondaryColor
     property string buttonText: "Apps"
 
     // Editor support
@@ -36,13 +36,13 @@ Rectangle {
         
         background: Rectangle {
             color: parent.down ? Qt.darker(root.buttonColor, 1.2) : root.buttonColor
-            border.color: Theme.neutralColor
+            border.color: Theme.uiTitleBarLeftColor
             radius: 4
         }
         
         contentItem: Text {
             text: parent.text
-            color: Theme.brightestColor
+            color: Theme.uiTextColor
             font.pixelSize: 14
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter

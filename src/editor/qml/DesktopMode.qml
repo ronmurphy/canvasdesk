@@ -28,7 +28,7 @@ ApplicationWindow {
         return baseFlags
     }
     title: "CanvasDesk"
-    color: Theme.wallpaperPath ? "black" : Theme.secondaryColor
+    color: Theme.wallpaperPath ? "black" : Theme.uiSecondaryColor
 
     // Wallpaper
     Image {
@@ -774,19 +774,77 @@ ApplicationWindow {
 
                             // Extracted Colors Preview
                             Label {
-                                text: "Theme Colors (Auto-extracted)"
+                                text: "Theme Colors (Click to Assign)"
                                 color: "white"
                                 topPadding: 8
                             }
 
                             RowLayout {
                                 spacing: 4
-                                Rectangle { width: 30; height: 30; color: Theme.primaryColor; border.color: "#555"; ToolTip.visible: ma1.containsMouse; ToolTip.text: "Primary"; MouseArea { id: ma1; anchors.fill: parent; hoverEnabled: true } }
-                                Rectangle { width: 30; height: 30; color: Theme.secondaryColor; border.color: "#555"; ToolTip.visible: ma2.containsMouse; ToolTip.text: "Secondary"; MouseArea { id: ma2; anchors.fill: parent; hoverEnabled: true } }
-                                Rectangle { width: 30; height: 30; color: Theme.tertiaryColor; border.color: "#555"; ToolTip.visible: ma3.containsMouse; ToolTip.text: "Tertiary"; MouseArea { id: ma3; anchors.fill: parent; hoverEnabled: true } }
-                                Rectangle { width: 30; height: 30; color: Theme.accentColor; border.color: "#555"; ToolTip.visible: ma4.containsMouse; ToolTip.text: "Accent"; MouseArea { id: ma4; anchors.fill: parent; hoverEnabled: true } }
-                                Rectangle { width: 30; height: 30; color: Theme.neutralColor; border.color: "#555"; ToolTip.visible: ma5.containsMouse; ToolTip.text: "Neutral"; MouseArea { id: ma5; anchors.fill: parent; hoverEnabled: true } }
-                                Rectangle { width: 30; height: 30; color: Theme.brightestColor; border.color: "#555"; ToolTip.visible: ma6.containsMouse; ToolTip.text: "Brightest"; MouseArea { id: ma6; anchors.fill: parent; hoverEnabled: true } }
+                                
+                                // Helper component for color box
+                                component ColorBox: Rectangle {
+                                    property string label
+                                    property color colorValue
+                                    width: 30
+                                    height: 30
+                                    color: colorValue
+                                    border.color: "#555"
+                                    
+                                    ToolTip.visible: ma.containsMouse
+                                    ToolTip.text: label
+                                    
+                                    MouseArea {
+                                        id: ma
+                                        anchors.fill: parent
+                                        hoverEnabled: true
+                                        onClicked: {
+                                            assignMenu.targetColor = parent.colorValue
+                                            assignMenu.popup()
+                                        }
+                                    }
+                                }
+
+                                ColorBox { label: "Primary"; colorValue: Theme.primaryColor }
+                                ColorBox { label: "Secondary"; colorValue: Theme.secondaryColor }
+                                ColorBox { label: "Tertiary"; colorValue: Theme.tertiaryColor }
+                                ColorBox { label: "Accent"; colorValue: Theme.accentColor }
+                                ColorBox { label: "Neutral"; colorValue: Theme.neutralColor }
+                                ColorBox { label: "Brightest"; colorValue: Theme.brightestColor }
+                            }
+
+                            Menu {
+                                id: assignMenu
+                                property color targetColor
+                                
+                                MenuItem { text: "Set as Primary UI Color"; onTriggered: Theme.assignColorToRole(assignMenu.targetColor, "Primary") }
+                                MenuItem { text: "Set as Secondary UI Color"; onTriggered: Theme.assignColorToRole(assignMenu.targetColor, "Secondary") }
+                                MenuItem { text: "Set as Tertiary UI Color"; onTriggered: Theme.assignColorToRole(assignMenu.targetColor, "Tertiary") }
+                                MenuItem { text: "Set as Highlight Color"; onTriggered: Theme.assignColorToRole(assignMenu.targetColor, "Highlight") }
+                                MenuItem { text: "Set as Text Color"; onTriggered: Theme.assignColorToRole(assignMenu.targetColor, "Text") }
+                                MenuItem { text: "Set as TitleBar Left"; onTriggered: Theme.assignColorToRole(assignMenu.targetColor, "TitleBarLeft") }
+                                MenuItem { text: "Set as TitleBar Right"; onTriggered: Theme.assignColorToRole(assignMenu.targetColor, "TitleBarRight") }
+                            }
+
+                            // Current Assignments Display
+                            Label {
+                                text: "Current UI Assignments"
+                                color: "white"
+                                topPadding: 8
+                            }
+                            
+                            GridLayout {
+                                columns: 2
+                                rowSpacing: 4
+                                columnSpacing: 8
+                                
+                                Rectangle { width: 16; height: 16; color: Theme.uiPrimaryColor; border.color: "#555" } Label { text: "Primary UI"; color: "#ccc" }
+                                Rectangle { width: 16; height: 16; color: Theme.uiSecondaryColor; border.color: "#555" } Label { text: "Secondary UI"; color: "#ccc" }
+                                Rectangle { width: 16; height: 16; color: Theme.uiTertiaryColor; border.color: "#555" } Label { text: "Tertiary UI"; color: "#ccc" }
+                                Rectangle { width: 16; height: 16; color: Theme.uiHighlightColor; border.color: "#555" } Label { text: "Highlight"; color: "#ccc" }
+                                Rectangle { width: 16; height: 16; color: Theme.uiTextColor; border.color: "#555" } Label { text: "Text"; color: "#ccc" }
+                                Rectangle { width: 16; height: 16; color: Theme.uiTitleBarLeftColor; border.color: "#555" } Label { text: "TitleBar Left"; color: "#ccc" }
+                                Rectangle { width: 16; height: 16; color: Theme.uiTitleBarRightColor; border.color: "#555" } Label { text: "TitleBar Right"; color: "#ccc" }
                             }
 
                             // Manual Background Color (Fallback)

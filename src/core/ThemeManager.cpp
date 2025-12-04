@@ -165,7 +165,35 @@ void ThemeManager::extractColors(const QImage &sourceImage) {
         m_accent = m_primary.lighter(150);
     }
 
+    // Auto-assign UI roles based on extracted colors
+    m_uiPrimary = m_primary;
+    m_uiSecondary = m_secondary;
+    m_uiTertiary = m_tertiary;
+    m_uiHighlight = m_accent;
+    m_uiText = m_brightest;
+    m_uiTitleBarLeft = m_secondary;
+    m_uiTitleBarRight = m_primary;
+
     emit colorsChanged();
+    emit uiColorsChanged();
+}
+
+void ThemeManager::setUiPrimaryColor(const QColor &c) { if (m_uiPrimary != c) { m_uiPrimary = c; emit uiColorsChanged(); saveColors(); } }
+void ThemeManager::setUiSecondaryColor(const QColor &c) { if (m_uiSecondary != c) { m_uiSecondary = c; emit uiColorsChanged(); saveColors(); } }
+void ThemeManager::setUiTertiaryColor(const QColor &c) { if (m_uiTertiary != c) { m_uiTertiary = c; emit uiColorsChanged(); saveColors(); } }
+void ThemeManager::setUiHighlightColor(const QColor &c) { if (m_uiHighlight != c) { m_uiHighlight = c; emit uiColorsChanged(); saveColors(); } }
+void ThemeManager::setUiTextColor(const QColor &c) { if (m_uiText != c) { m_uiText = c; emit uiColorsChanged(); saveColors(); } }
+void ThemeManager::setUiTitleBarLeftColor(const QColor &c) { if (m_uiTitleBarLeft != c) { m_uiTitleBarLeft = c; emit uiColorsChanged(); saveColors(); } }
+void ThemeManager::setUiTitleBarRightColor(const QColor &c) { if (m_uiTitleBarRight != c) { m_uiTitleBarRight = c; emit uiColorsChanged(); saveColors(); } }
+
+void ThemeManager::assignColorToRole(const QColor &color, const QString &roleName) {
+    if (roleName == "Primary") setUiPrimaryColor(color);
+    else if (roleName == "Secondary") setUiSecondaryColor(color);
+    else if (roleName == "Tertiary") setUiTertiaryColor(color);
+    else if (roleName == "Highlight") setUiHighlightColor(color);
+    else if (roleName == "Text") setUiTextColor(color);
+    else if (roleName == "TitleBarLeft") setUiTitleBarLeftColor(color);
+    else if (roleName == "TitleBarRight") setUiTitleBarRightColor(color);
 }
 
 QString ThemeManager::getColorsFilePath() const {
@@ -188,7 +216,17 @@ void ThemeManager::saveColors() {
     colors["neutral"] = m_neutral.name();
     colors["brightest"] = m_brightest.name();
 
+    QJsonObject uiColors;
+    uiColors["primary"] = m_uiPrimary.name();
+    uiColors["secondary"] = m_uiSecondary.name();
+    uiColors["tertiary"] = m_uiTertiary.name();
+    uiColors["highlight"] = m_uiHighlight.name();
+    uiColors["text"] = m_uiText.name();
+    uiColors["titleBarLeft"] = m_uiTitleBarLeft.name();
+    uiColors["titleBarRight"] = m_uiTitleBarRight.name();
+
     root["colors"] = colors;
+    root["uiColors"] = uiColors;
 
     QFile file(getColorsFilePath());
     if (file.open(QIODevice::WriteOnly)) {
@@ -214,7 +252,29 @@ void ThemeManager::loadColors() {
             m_neutral = QColor(colors["neutral"].toString(m_neutral.name()));
             m_brightest = QColor(colors["brightest"].toString(m_brightest.name()));
         }
+
+        QJsonObject uiColors = root["uiColors"].toObject();
+        if (!uiColors.isEmpty()) {
+            m_uiPrimary = QColor(uiColors["primary"].toString(m_primary.name()));
+            m_uiSecondary = QColor(uiColors["secondary"].toString(m_secondary.name()));
+            m_uiTertiary = QColor(uiColors["tertiary"].toString(m_tertiary.name()));
+            m_uiHighlight = QColor(uiColors["highlight"].toString(m_accent.name()));
+            m_uiText = QColor(uiColors["text"].toString(m_brightest.name()));
+            m_uiTitleBarLeft = QColor(uiColors["titleBarLeft"].toString(m_secondary.name()));
+            m_uiTitleBarRight = QColor(uiColors["titleBarRight"].toString(m_primary.name()));
+        } else {
+            // Fallback to extracted colors if no UI colors saved
+            m_uiPrimary = m_primary;
+            m_uiSecondary = m_secondary;
+            m_uiTertiary = m_tertiary;
+            m_uiHighlight = m_accent;
+            m_uiText = m_brightest;
+            m_uiTitleBarLeft = m_secondary;
+            m_uiTitleBarRight = m_primary;
+        }
+
         emit colorsChanged();
+        emit uiColorsChanged();
         emit wallpaperPathChanged();
         emit wallpaperFillModeChanged();
     }
