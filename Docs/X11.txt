@@ -6,6 +6,21 @@
 
 ---
 
+## BRAD UPDATE (Dec 3, 23:55) - BASIC THEMING SYSTEM:
+
+### Decided to add in color theming:
+Addded in wallpaper support, we pull several specific colors from the wallpaper, and then the user can click to assign a color to a theme element, we also have three "Universal" colors, White, Medium Grey and Black.
+
+MOST of the QML UI elements are themed now, but not all, i am aware that the Session QML needs to be updated for the colors, Need to look in to a better font for the WindowManager's titlebar front and to make use of whatever "material icons" that KDE / Plasma may offer to replace the standard text in the control buttons in the titlebar (minimize, maximize, close)
+
+NEED TO DO:
+ - Figure out how both KDE and Gnome assign themed icons sets.
+ - Migrate the Theme area to it's own sub-windows, like the Editor settings, as how it needs more space.
+ - Figure out assigning Cursor sets, again, like Gnome and KDE.
+ - make use of KDE and Gnomme Icons and Cursors.
+
+---
+
 ## CRITICAL CRASH FIX (Dec 3, 23:15) - BUTTON WINDOW CLEANUP BUG:
 
 ### Bug Found:
