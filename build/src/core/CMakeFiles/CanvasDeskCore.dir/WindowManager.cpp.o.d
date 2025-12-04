@@ -399,34 +399,17 @@ src/core/CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.o: \
  /usr/include/qt6/QtCore/qvariantmap.h /usr/include/qt6/QtCore/QMap \
  /usr/include/qt6/QtCore/qmap.h /usr/include/qt6/QtCore/QString \
  /usr/include/qt6/QtCore/qstring.h \
- /usr/include/KWayland/KWayland/Client/connection_thread.h \
- /usr/include/qt6/QtCore/QList \
- /usr/include/KWayland/KWayland/Client/kwaylandclient_export.h \
- /usr/include/KWayland/kwayland_version.h \
- /usr/include/KWayland/KWayland/Client/plasmawindowmanagement.h \
- /usr/include/qt6/QtGui/QIcon /usr/include/qt6/QtGui/qicon.h \
- /usr/include/qt6/QtGui/qtguiglobal.h \
- /usr/include/qt6/QtGui/qtgui-config.h \
- /usr/include/qt6/QtGui/qtguiexports.h /usr/include/qt6/QtCore/qsize.h \
- /usr/include/qt6/QtCore/qcheckedint_impl.h \
- /usr/include/qt6/QtCore/qmargins.h /usr/include/qt6/QtGui/qpixmap.h \
- /usr/include/qt6/QtGui/qpaintdevice.h \
- /usr/include/qt6/QtGui/qwindowdefs.h /usr/include/qt6/QtCore/qrect.h \
- /usr/include/qt6/QtCore/qpoint.h /usr/include/qt6/QtGui/qcolor.h \
- /usr/include/qt6/QtGui/qrgb.h /usr/include/qt6/QtGui/qrgba64.h \
- /usr/include/qt6/QtGui/qimage.h /usr/include/qt6/QtGui/qpixelformat.h \
- /usr/include/qt6/QtGui/qtransform.h /usr/include/qt6/QtGui/qpolygon.h \
- /usr/include/qt6/QtGui/qregion.h /usr/include/qt6/QtCore/qline.h \
- /usr/include/qt6/QtCore/QSize /usr/include/qt6/QtCore/qsize.h \
- /usr/include/KWayland/KWayland/Client/registry.h \
- /home/brad/Documents/canvasdesk/src/core/WlrWindowManager.h \
- /usr/include/wayland-client.h /usr/include/wayland-client-core.h \
- /usr/include/wayland-util.h /usr/include/c++/15.2.1/math.h \
- /usr/include/inttypes.h /usr/include/wayland-version.h \
- /usr/include/wayland-client-protocol.h /usr/include/wayland-client.h \
- /home/brad/Documents/canvasdesk/build/src/core/wlr-foreign-toplevel-management-unstable-v1-client-protocol.h \
- /home/brad/Documents/canvasdesk/src/core/ExtForeignToplevelManager.h \
- /home/brad/Documents/canvasdesk/build/src/core/ext-foreign-toplevel-list-v1-client-protocol.h \
- /usr/include/qt6/QtCore/QDebug /usr/include/qt6/QtCore/qdebug.h \
- /usr/include/qt6/QtCore/QMetaObject \
- /usr/include/qt6/QtCore/qobjectdefs.h
+ /home/brad/Documents/canvasdesk/src/core/X11WindowManager.h \
+ /usr/include/qt6/QtCore/QSocketNotifier \
+ /usr/include/qt6/QtCore/qsocketnotifier.h /usr/include/X11/Xlib.h \
+ /usr/include/X11/X.h /usr/include/X11/Xfuncproto.h \
+ /usr/include/X11/Xosdefs.h /usr/include/X11/extensions/Xcomposite.h \
+ /usr/include/X11/extensions/composite.h \
+ /usr/include/X11/extensions/xfixeswire.h \
+ /usr/include/X11/extensions/Xfixes.h \
+ /usr/include/X11/extensions/Xdamage.h \
+ /usr/include/X11/extensions/damagewire.h \
+ /usr/include/X11/extensions/Xrender.h /usr/include/X11/Xutil.h \
+ /usr/include/X11/keysym.h /usr/include/X11/keysymdef.h \
+ /usr/include/X11/extensions/render.h /usr/include/X11/Xdefs.h \
+ /usr/include/qt6/QtCore/QDebug /usr/include/qt6/QtCore/qdebug.h

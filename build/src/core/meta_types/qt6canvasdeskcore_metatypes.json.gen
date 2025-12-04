@@ -197,77 +197,6 @@
     {
         "classes": [
             {
-                "className": "ExtWindow",
-                "lineNumber": 12,
-                "object": true,
-                "qualifiedClassName": "ExtWindow",
-                "superClasses": [
-                    {
-                        "access": "public",
-                        "name": "QObject"
-                    }
-                ]
-            },
-            {
-                "className": "ExtForeignToplevelManager",
-                "lineNumber": 23,
-                "object": true,
-                "qualifiedClassName": "ExtForeignToplevelManager",
-                "signals": [
-                    {
-                        "access": "public",
-                        "arguments": [
-                            {
-                                "name": "window",
-                                "type": "ExtWindow*"
-                            }
-                        ],
-                        "index": 0,
-                        "lineNumber": 47,
-                        "name": "windowAdded",
-                        "returnType": "void"
-                    },
-                    {
-                        "access": "public",
-                        "arguments": [
-                            {
-                                "name": "identifier",
-                                "type": "QString"
-                            }
-                        ],
-                        "index": 1,
-                        "lineNumber": 48,
-                        "name": "windowRemoved",
-                        "returnType": "void"
-                    },
-                    {
-                        "access": "public",
-                        "arguments": [
-                            {
-                                "name": "window",
-                                "type": "ExtWindow*"
-                            }
-                        ],
-                        "index": 2,
-                        "lineNumber": 49,
-                        "name": "windowChanged",
-                        "returnType": "void"
-                    }
-                ],
-                "superClasses": [
-                    {
-                        "access": "public",
-                        "name": "QObject"
-                    }
-                ]
-            }
-        ],
-        "inputFile": "ExtForeignToplevelManager.h",
-        "outputRevision": 69
-    },
-    {
-        "classes": [
-            {
                 "classInfos": [
                     {
                         "name": "QML.Element",
@@ -348,7 +277,7 @@
                     }
                 ],
                 "className": "WindowManager",
-                "lineNumber": 18,
+                "lineNumber": 12,
                 "methods": [
                     {
                         "access": "public",
@@ -358,8 +287,8 @@
                                 "type": "int"
                             }
                         ],
-                        "index": 5,
-                        "lineNumber": 44,
+                        "index": 2,
+                        "lineNumber": 38,
                         "name": "activate",
                         "returnType": "void"
                     },
@@ -371,8 +300,8 @@
                                 "type": "int"
                             }
                         ],
-                        "index": 6,
-                        "lineNumber": 45,
+                        "index": 3,
+                        "lineNumber": 39,
                         "name": "close",
                         "returnType": "void"
                     },
@@ -384,8 +313,8 @@
                                 "type": "int"
                             }
                         ],
-                        "index": 7,
-                        "lineNumber": 46,
+                        "index": 4,
+                        "lineNumber": 40,
                         "name": "minimize",
                         "returnType": "void"
                     },
@@ -397,8 +326,8 @@
                                 "type": "int"
                             }
                         ],
-                        "index": 8,
-                        "lineNumber": 47,
+                        "index": 5,
+                        "lineNumber": 41,
                         "name": "switchToWorkspace",
                         "returnType": "void"
                     },
@@ -414,8 +343,8 @@
                                 "type": "int"
                             }
                         ],
-                        "index": 9,
-                        "lineNumber": 48,
+                        "index": 6,
+                        "lineNumber": 42,
                         "name": "moveWindowToWorkspace",
                         "returnType": "void"
                     }
@@ -427,7 +356,7 @@
                         "designable": true,
                         "final": false,
                         "index": 0,
-                        "lineNumber": 23,
+                        "lineNumber": 17,
                         "name": "windows",
                         "notify": "windowsChanged",
                         "read": "windows",
@@ -442,7 +371,7 @@
                         "designable": true,
                         "final": false,
                         "index": 1,
-                        "lineNumber": 24,
+                        "lineNumber": 18,
                         "name": "currentWorkspace",
                         "notify": "currentWorkspaceChanged",
                         "read": "currentWorkspace",
@@ -458,7 +387,7 @@
                         "designable": true,
                         "final": false,
                         "index": 2,
-                        "lineNumber": 26,
+                        "lineNumber": 20,
                         "name": "workspaceCount",
                         "read": "workspaceCount",
                         "required": false,
@@ -473,54 +402,15 @@
                     {
                         "access": "public",
                         "index": 0,
-                        "lineNumber": 51,
+                        "lineNumber": 45,
                         "name": "windowsChanged",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
                         "index": 1,
-                        "lineNumber": 52,
+                        "lineNumber": 46,
                         "name": "currentWorkspaceChanged",
-                        "returnType": "void"
-                    }
-                ],
-                "slots": [
-                    {
-                        "access": "private",
-                        "arguments": [
-                            {
-                                "name": "name",
-                                "type": "quint32"
-                            },
-                            {
-                                "name": "version",
-                                "type": "quint32"
-                            }
-                        ],
-                        "index": 2,
-                        "lineNumber": 55,
-                        "name": "setupPlasmaWindowManagement",
-                        "returnType": "void"
-                    },
-                    {
-                        "access": "private",
-                        "arguments": [
-                            {
-                                "name": "window",
-                                "type": "KWayland::Client::PlasmaWindow*"
-                            }
-                        ],
-                        "index": 3,
-                        "lineNumber": 56,
-                        "name": "onWindowCreated",
-                        "returnType": "void"
-                    },
-                    {
-                        "access": "private",
-                        "index": 4,
-                        "lineNumber": 57,
-                        "name": "onWindowUnmapped",
                         "returnType": "void"
                     }
                 ],
@@ -538,10 +428,10 @@
     {
         "classes": [
             {
-                "className": "WlrWindow",
-                "lineNumber": 12,
+                "className": "X11Window",
+                "lineNumber": 21,
                 "object": true,
-                "qualifiedClassName": "WlrWindow",
+                "qualifiedClassName": "X11Window",
                 "superClasses": [
                     {
                         "access": "public",
@@ -550,21 +440,21 @@
                 ]
             },
             {
-                "className": "WlrWindowManager",
-                "lineNumber": 24,
+                "className": "X11WindowManager",
+                "lineNumber": 67,
                 "object": true,
-                "qualifiedClassName": "WlrWindowManager",
+                "qualifiedClassName": "X11WindowManager",
                 "signals": [
                     {
                         "access": "public",
                         "arguments": [
                             {
                                 "name": "window",
-                                "type": "WlrWindow*"
+                                "type": "X11Window*"
                             }
                         ],
                         "index": 0,
-                        "lineNumber": 49,
+                        "lineNumber": 77,
                         "name": "windowAdded",
                         "returnType": "void"
                     },
@@ -572,12 +462,12 @@
                         "access": "public",
                         "arguments": [
                             {
-                                "name": "id",
-                                "type": "uint32_t"
+                                "name": "window",
+                                "type": "Window"
                             }
                         ],
                         "index": 1,
-                        "lineNumber": 50,
+                        "lineNumber": 78,
                         "name": "windowRemoved",
                         "returnType": "void"
                     },
@@ -586,12 +476,21 @@
                         "arguments": [
                             {
                                 "name": "window",
-                                "type": "WlrWindow*"
+                                "type": "X11Window*"
                             }
                         ],
                         "index": 2,
-                        "lineNumber": 51,
+                        "lineNumber": 79,
                         "name": "windowChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "private",
+                        "index": 3,
+                        "lineNumber": 82,
+                        "name": "processXEvents",
                         "returnType": "void"
                     }
                 ],
@@ -603,7 +502,7 @@
                 ]
             }
         ],
-        "inputFile": "WlrWindowManager.h",
+        "inputFile": "X11WindowManager.h",
         "outputRevision": 69
     }
 ]

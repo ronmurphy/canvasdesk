@@ -7,13 +7,7 @@
 #include <QVariantList>
 #include <QVariantMap>
 
-// KWayland includes
-#include <KWayland/Client/connection_thread.h>
-#include <KWayland/Client/plasmawindowmanagement.h>
-#include <KWayland/Client/registry.h>
-
-class WlrWindowManager;
-class ExtForeignToplevelManager;
+class X11WindowManager;
 
 class WindowManager : public QObject {
   Q_OBJECT
@@ -51,29 +45,11 @@ signals:
   void windowsChanged();
   void currentWorkspaceChanged();
 
-private slots:
-  void setupPlasmaWindowManagement(quint32 name, quint32 version);
-  void onWindowCreated(KWayland::Client::PlasmaWindow *window);
-  void onWindowUnmapped();
-
 private:
-  KWayland::Client::PlasmaWindow *findWindow(const QString &uuid) const;
-  void updateMockWindows();
-  void onWlrWindowChanged();
+  void onX11WindowChanged();
 
-  // KWayland members
-  KWayland::Client::ConnectionThread *m_connection = nullptr;
-  KWayland::Client::Registry *m_registry = nullptr;
-  KWayland::Client::PlasmaWindowManagement *m_windowManagement = nullptr;
-  QHash<QString, KWayland::Client::PlasmaWindow *> m_plasmaWindows;
-
-  // wlr backend
-  WlrWindowManager *m_wlrManager = nullptr;
-  bool m_usingWlr = false;
-
-  // ext_foreign_toplevel_list_v1 backend (for KWin)
-  ExtForeignToplevelManager *m_extManager = nullptr;
-  bool m_usingExt = false;
+  // X11 window manager
+  X11WindowManager *m_x11Manager = nullptr;
 
   // Workspace tracking
   int m_currentWorkspace = 0;

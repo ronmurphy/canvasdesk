@@ -1,64 +1,3 @@
-
-# Generate wlr foreign toplevel protocol
-set(WLR_PROTO_XML "/usr/share/wlr-protocols/unstable/wlr-foreign-toplevel-management-unstable-v1.xml")
-set(WLR_PROTO_C ${CMAKE_CURRENT_BINARY_DIR}/wlr-foreign-toplevel-management-unstable-v1-protocol.c)
-set(WLR_PROTO_H ${CMAKE_CURRENT_BINARY_DIR}/wlr-foreign-toplevel-management-unstable-v1-client-protocol.h)
-
-add_custom_command(
-    OUTPUT ${WLR_PROTO_H}
-    COMMAND ${WAYLAND_SCANNER} client-header ${WLR_PROTO_XML} ${WLR_PROTO_H}
-    DEPENDS ${WLR_PROTO_XML}
-    COMMENT "Generating wlr foreign toplevel header"
-)
-
-add_custom_command(
-    OUTPUT ${WLR_PROTO_C}
-    COMMAND ${WAYLAND_SCANNER} private-code ${WLR_PROTO_XML} ${WLR_PROTO_C}
-    DEPENDS ${WLR_PROTO_XML}
-    COMMENT "Generating wlr foreign toplevel code"
-)
-
-# Create a library for the protocol
-add_library(wlr_protocol STATIC ${WLR_PROTO_C})
-set_target_properties(wlr_protocol PROPERTIES
-    AUTOMOC OFF
-    AUTORCC OFF
-    AUTOUIC OFF
-    LINKER_LANGUAGE C
-)
-target_include_directories(wlr_protocol PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
-target_link_libraries(wlr_protocol PUBLIC Wayland::Client)
-
-# Generate ext_foreign_toplevel_list_v1 protocol (for KWin/Plasma)
-set(EXT_PROTO_XML "/usr/share/wayland-protocols/staging/ext-foreign-toplevel-list/ext-foreign-toplevel-list-v1.xml")
-set(EXT_PROTO_C ${CMAKE_CURRENT_BINARY_DIR}/ext-foreign-toplevel-list-v1-protocol.c)
-set(EXT_PROTO_H ${CMAKE_CURRENT_BINARY_DIR}/ext-foreign-toplevel-list-v1-client-protocol.h)
-
-add_custom_command(
-    OUTPUT ${EXT_PROTO_H}
-    COMMAND ${WAYLAND_SCANNER} client-header ${EXT_PROTO_XML} ${EXT_PROTO_H}
-    DEPENDS ${EXT_PROTO_XML}
-    COMMENT "Generating ext foreign toplevel list header"
-)
-
-add_custom_command(
-    OUTPUT ${EXT_PROTO_C}
-    COMMAND ${WAYLAND_SCANNER} private-code ${EXT_PROTO_XML} ${EXT_PROTO_C}
-    DEPENDS ${EXT_PROTO_XML}
-    COMMENT "Generating ext foreign toplevel list code"
-)
-
-# Create a library for the ext protocol
-add_library(ext_protocol STATIC ${EXT_PROTO_C})
-set_target_properties(ext_protocol PROPERTIES
-    AUTOMOC OFF
-    AUTORCC OFF
-    AUTOUIC OFF
-    LINKER_LANGUAGE C
-)
-target_include_directories(ext_protocol PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
-target_link_libraries(ext_protocol PUBLIC Wayland::Client)
-
 qt_add_library(CanvasDeskCore SHARED)
 
 qt_add_qml_module(CanvasDeskCore
@@ -75,27 +14,19 @@ qt_add_qml_module(CanvasDeskCore
         AppManager.h
         WindowManager.cpp
         WindowManager.h
-        WlrWindowManager.cpp
-        WlrWindowManager.h
-        ExtForeignToplevelManager.cpp
-        ExtForeignToplevelManager.h
-        ${WLR_PROTO_H}
-        ${EXT_PROTO_H}
+        X11WindowManager.cpp
+        X11WindowManager.h
 )
-
-# Add dependency on protocol generation
-add_dependencies(CanvasDeskCore wlr_protocol ext_protocol)
 
 target_link_libraries(CanvasDeskCore
     PRIVATE
         Qt6::Core
         Qt6::Qml
-        Qt6::WaylandClient
-        PkgConfig::KWAYLAND
-    PUBLIC
-        Wayland::Client
-        wlr_protocol
-        ext_protocol
+        PkgConfig::X11
+        PkgConfig::XCB
+        PkgConfig::XComposite
+        PkgConfig::XRender
+        PkgConfig::XDamage
 )
 
 target_include_directories(CanvasDeskCore 

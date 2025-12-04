@@ -27,8 +27,6 @@
 /home/brad/Documents/canvasdesk/build/src/app/CMakeFiles/install/strip.dir
 /home/brad/Documents/canvasdesk/build/src/app/CMakeFiles/canvasdesk-runtime_autogen_timestamp_deps.dir
 /home/brad/Documents/canvasdesk/build/src/app/CMakeFiles/canvasdesk-runtime_autogen.dir
-/home/brad/Documents/canvasdesk/build/src/core/CMakeFiles/wlr_protocol.dir
-/home/brad/Documents/canvasdesk/build/src/core/CMakeFiles/ext_protocol.dir
 /home/brad/Documents/canvasdesk/build/src/core/CMakeFiles/CanvasDeskCore.dir
 /home/brad/Documents/canvasdesk/build/src/core/CMakeFiles/CanvasDeskCore_qmltyperegistration.dir
 /home/brad/Documents/canvasdesk/build/src/core/CMakeFiles/all_qmltyperegistrations.dir

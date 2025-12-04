@@ -20,18 +20,6 @@
 	"HEADERS" : 
 	[
 		[
-			"/home/brad/Documents/canvasdesk/build/src/core/ext-foreign-toplevel-list-v1-client-protocol.h",
-			"MU",
-			"EJRQKI7XPS/moc_ext-foreign-toplevel-list-v1-client-protocol.cpp",
-			null
-		],
-		[
-			"/home/brad/Documents/canvasdesk/build/src/core/wlr-foreign-toplevel-management-unstable-v1-client-protocol.h",
-			"MU",
-			"EJRQKI7XPS/moc_wlr-foreign-toplevel-management-unstable-v1-client-protocol.cpp",
-			null
-		],
-		[
 			"/home/brad/Documents/canvasdesk/src/core/AppManager.h",
 			"MU",
 			"EWIEGA46WW/moc_AppManager.cpp",
@@ -50,12 +38,6 @@
 			null
 		],
 		[
-			"/home/brad/Documents/canvasdesk/src/core/ExtForeignToplevelManager.h",
-			"MU",
-			"EWIEGA46WW/moc_ExtForeignToplevelManager.cpp",
-			null
-		],
-		[
 			"/home/brad/Documents/canvasdesk/src/core/LayoutManager.h",
 			"MU",
 			"EWIEGA46WW/moc_LayoutManager.cpp",
@@ -68,9 +50,9 @@
 			null
 		],
 		[
-			"/home/brad/Documents/canvasdesk/src/core/WlrWindowManager.h",
+			"/home/brad/Documents/canvasdesk/src/core/X11WindowManager.h",
 			"MU",
-			"EWIEGA46WW/moc_WlrWindowManager.cpp",
+			"EWIEGA46WW/moc_X11WindowManager.cpp",
 			null
 		]
 	],
@@ -81,12 +63,10 @@
 	[
 		"CanvasDeskCore_EXPORTS",
 		"QT_CORE_LIB",
-		"QT_GUI_LIB",
 		"QT_NETWORK_LIB",
 		"QT_NO_DEBUG",
 		"QT_QMLINTEGRATION_LIB",
-		"QT_QML_LIB",
-		"QT_WAYLANDCLIENT_LIB"
+		"QT_QML_LIB"
 	],
 	"MOC_DEPEND_FILTERS" : 
 	[
@@ -105,9 +85,6 @@
 		"/usr/lib/qt6/mkspecs/linux-g++",
 		"/usr/include/qt6/QtQmlIntegration",
 		"/usr/include/qt6/QtNetwork",
-		"/usr/include/qt6/QtWaylandClient",
-		"/usr/include/qt6/QtGui",
-		"/usr/include/KWayland",
 		"/usr/include",
 		"/usr/include/c++/15.2.1",
 		"/usr/include/c++/15.2.1/x86_64-pc-linux-gnu",
@@ -161,11 +138,6 @@
 		],
 		[ "/home/brad/Documents/canvasdesk/src/core/Component.cpp", "MU", null ],
 		[
-			"/home/brad/Documents/canvasdesk/src/core/ExtForeignToplevelManager.cpp",
-			"MU",
-			null
-		],
-		[
 			"/home/brad/Documents/canvasdesk/src/core/LayoutManager.cpp",
 			"MU",
 			null
@@ -176,7 +148,7 @@
 			null
 		],
 		[
-			"/home/brad/Documents/canvasdesk/src/core/WlrWindowManager.cpp",
+			"/home/brad/Documents/canvasdesk/src/core/X11WindowManager.cpp",
 			"MU",
 			null
 		]

@@ -68,13 +68,13 @@ int main(int argc, char *argv[]) {
     QString execPath = QCoreApplication::applicationFilePath();
     QString execDir = QFileInfo(execPath).absolutePath();
     QString wrapperScript = execDir + "/../canvasdesk-session";
-    QString sessionDir = "/usr/share/wayland-sessions";
+    QString sessionDir = "/usr/share/xsessions";
     QString sessionFile = sessionDir + "/canvasdesk.desktop";
 
     // Check if directory exists
     if (!QDir(sessionDir).exists()) {
       qWarning() << "Directory" << sessionDir << "does not exist.";
-      qWarning() << "You may need to create it first or check your compositor support.";
+      qWarning() << "You may need to create it first or check your X11 support.";
       return 1;
     }
 
@@ -89,7 +89,7 @@ int main(int argc, char *argv[]) {
     QString desktopEntry =
       "[Desktop Entry]\n"
       "Name=CanvasDesk\n"
-      "Comment=Customizable Wayland Desktop Environment\n"
+      "Comment=Customizable X11 Desktop Environment with Built-in Window Manager\n"
       "Exec=" + wrapperScript + "\n"
       "Type=Application\n"
       "DesktopNames=CanvasDesk\n"
@@ -103,10 +103,10 @@ int main(int argc, char *argv[]) {
       file.close();
       qInfo() << "Successfully installed session file to" << sessionFile;
       qInfo() << "Session wrapper:" << wrapperScript;
-      qInfo() << "CanvasDesk should now appear in your login manager.";
+      qInfo() << "CanvasDesk should now appear in your login manager (as an X11 session).";
       qInfo() << "";
-      qInfo() << "NOTE: If logging in as a standalone session, wayfire compositor is required.";
-      qInfo() << "      Install it with: sudo pacman -S wayfire";
+      qInfo() << "NOTE: Ensure xcb-cursor library is installed:";
+      qInfo() << "      sudo pacman -S xcb-util-cursor";
       return 0;
     } else {
       qWarning() << "Failed to write to" << sessionFile;
@@ -119,7 +119,7 @@ int main(int argc, char *argv[]) {
   
   // Handle session uninstallation
   if (parser.isSet(uninstallSessionOption)) {
-    QString sessionFile = "/usr/share/wayland-sessions/canvasdesk.desktop";
+    QString sessionFile = "/usr/share/xsessions/canvasdesk.desktop";
     
     if (!QFile::exists(sessionFile)) {
       qInfo() << "Session file" << sessionFile << "does not exist. Nothing to uninstall.";

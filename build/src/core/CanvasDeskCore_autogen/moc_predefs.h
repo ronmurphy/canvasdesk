@@ -22,7 +22,6 @@
 #define __cpp_static_assert 201411L
 #define __BFLT16_MIN_10_EXP__ (-37)
 #define __cpp_inheriting_constructors 201511L
-#define QT_GUI_LIB 1
 #define __ORDER_LITTLE_ENDIAN__ 1234
 #define __WCHAR_MAX__ 0x7fffffff
 #define __GCC_HAVE_SYNC_COMPARE_AND_SWAP_2 1
@@ -151,7 +150,6 @@
 #define __FLT64_MAX_10_EXP__ 308
 #define __BFLT16_IS_IEC_60559__ 0
 #define __FLT16_MAX_10_EXP__ 4
-#define QT_WAYLANDCLIENT_LIB 1
 #define __cpp_delegating_constructors 200604L
 #define __DBL_MAX__ double(1.79769313486231570814527423731704357e+308L)
 #define __cpp_raw_strings 200710L

@@ -1,8 +1,3 @@
-file(REMOVE_RECURSE
-  "CMakeFiles/CanvasDeskCore_autogen_timestamp_deps"
-  "ext-foreign-toplevel-list-v1-client-protocol.h"
-  "wlr-foreign-toplevel-management-unstable-v1-client-protocol.h"
-)
 
 # Per-language clean rules from dependency scanning.
 foreach(lang )

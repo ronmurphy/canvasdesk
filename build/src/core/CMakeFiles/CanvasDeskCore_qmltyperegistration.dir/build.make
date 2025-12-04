@@ -75,8 +75,6 @@ src/core/canvasdeskcore_qmltyperegistrations.cpp: /usr/lib/qt6/qmltyperegistrar
 src/core/canvasdeskcore_qmltyperegistrations.cpp: /usr/lib/qt6/metatypes/qt6qml_metatypes.json
 src/core/canvasdeskcore_qmltyperegistrations.cpp: /usr/lib/qt6/metatypes/qt6core_metatypes.json
 src/core/canvasdeskcore_qmltyperegistrations.cpp: /usr/lib/qt6/metatypes/qt6network_metatypes.json
-src/core/canvasdeskcore_qmltyperegistrations.cpp: /usr/lib/qt6/metatypes/qt6waylandclient_metatypes.json
-src/core/canvasdeskcore_qmltyperegistrations.cpp: /usr/lib/qt6/metatypes/qt6gui_metatypes.json
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic QML type registration for target CanvasDeskCore"
 	cd /home/brad/Documents/canvasdesk/build/src/core && /usr/lib/qt6/qmltyperegistrar --generate-qmltypes=/home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore.qmltypes --import-name=CanvasDesk --major-version=1 --minor-version=0 @/home/brad/Documents/canvasdesk/build/src/core/qmltypes/CanvasDeskCore_foreign_types.txt -o /home/brad/Documents/canvasdesk/build/src/core/canvasdeskcore_qmltyperegistrations.cpp /home/brad/Documents/canvasdesk/build/src/core/meta_types/qt6canvasdeskcore_metatypes.json
 	cd /home/brad/Documents/canvasdesk/build/src/core && /usr/bin/cmake -E make_directory /home/brad/Documents/canvasdesk/build/src/core/.qt/qmltypes

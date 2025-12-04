@@ -81,8 +81,6 @@ src/core/canvasdeskcore_qmltyperegistrations.cpp: /usr/lib/qt6/qmltyperegistrar
 src/core/canvasdeskcore_qmltyperegistrations.cpp: /usr/lib/qt6/metatypes/qt6qml_metatypes.json
 src/core/canvasdeskcore_qmltyperegistrations.cpp: /usr/lib/qt6/metatypes/qt6core_metatypes.json
 src/core/canvasdeskcore_qmltyperegistrations.cpp: /usr/lib/qt6/metatypes/qt6network_metatypes.json
-src/core/canvasdeskcore_qmltyperegistrations.cpp: /usr/lib/qt6/metatypes/qt6waylandclient_metatypes.json
-src/core/canvasdeskcore_qmltyperegistrations.cpp: /usr/lib/qt6/metatypes/qt6gui_metatypes.json
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Automatic QML type registration for target CanvasDeskCore"
 	cd /home/brad/Documents/canvasdesk/build/src/core && /usr/lib/qt6/qmltyperegistrar --generate-qmltypes=/home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore.qmltypes --import-name=CanvasDesk --major-version=1 --minor-version=0 @/home/brad/Documents/canvasdesk/build/src/core/qmltypes/CanvasDeskCore_foreign_types.txt -o /home/brad/Documents/canvasdesk/build/src/core/canvasdeskcore_qmltyperegistrations.cpp /home/brad/Documents/canvasdesk/build/src/core/meta_types/qt6canvasdeskcore_metatypes.json
 	cd /home/brad/Documents/canvasdesk/build/src/core && /usr/bin/cmake -E make_directory /home/brad/Documents/canvasdesk/build/src/core/.qt/qmltypes
@@ -97,27 +95,19 @@ src/core/.qt/rcc/qrc_qmake_CanvasDesk.cpp: /usr/lib/qt6/rcc
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Running rcc for resource qmake_CanvasDesk"
 	cd /home/brad/Documents/canvasdesk/build/src/core && /usr/lib/qt6/rcc --output /home/brad/Documents/canvasdesk/build/src/core/.qt/rcc/qrc_qmake_CanvasDesk.cpp --name qmake_CanvasDesk /home/brad/Documents/canvasdesk/build/src/core/.qt/rcc/qmake_CanvasDesk.qrc
 
-src/core/wlr-foreign-toplevel-management-unstable-v1-client-protocol.h: /usr/share/wlr-protocols/unstable/wlr-foreign-toplevel-management-unstable-v1.xml
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating wlr foreign toplevel header"
-	cd /home/brad/Documents/canvasdesk/build/src/core && /usr/bin/wayland-scanner client-header /usr/share/wlr-protocols/unstable/wlr-foreign-toplevel-management-unstable-v1.xml /home/brad/Documents/canvasdesk/build/src/core/wlr-foreign-toplevel-management-unstable-v1-client-protocol.h
-
-src/core/ext-foreign-toplevel-list-v1-client-protocol.h: /usr/share/wayland-protocols/staging/ext-foreign-toplevel-list/ext-foreign-toplevel-list-v1.xml
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating ext foreign toplevel list header"
-	cd /home/brad/Documents/canvasdesk/build/src/core && /usr/bin/wayland-scanner client-header /usr/share/wayland-protocols/staging/ext-foreign-toplevel-list/ext-foreign-toplevel-list-v1.xml /home/brad/Documents/canvasdesk/build/src/core/ext-foreign-toplevel-list-v1-client-protocol.h
-
 src/core/CanvasDeskCore_autogen/timestamp: /usr/lib/qt6/moc
 src/core/CanvasDeskCore_autogen/timestamp: src/core/CMakeFiles/CanvasDeskCore.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Automatic MOC and UIC for target CanvasDeskCore"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Automatic MOC and UIC for target CanvasDeskCore"
 	cd /home/brad/Documents/canvasdesk/build/src/core && /usr/bin/cmake -E cmake_autogen /home/brad/Documents/canvasdesk/build/src/core/CMakeFiles/CanvasDeskCore_autogen.dir/AutogenInfo.json ""
 	cd /home/brad/Documents/canvasdesk/build/src/core && /usr/bin/cmake -E touch /home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/timestamp
 
 src/core/meta_types/CanvasDeskCore_json_file_list.txt: /usr/lib/qt6/cmake_automoc_parser
 src/core/meta_types/CanvasDeskCore_json_file_list.txt: src/core/CanvasDeskCore_autogen/timestamp
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Running AUTOMOC file extraction for target CanvasDeskCore"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Running AUTOMOC file extraction for target CanvasDeskCore"
 	cd /home/brad/Documents/canvasdesk/build/src/core && /usr/lib/qt6/cmake_automoc_parser --cmake-autogen-cache-file /home/brad/Documents/canvasdesk/build/src/core/CMakeFiles/CanvasDeskCore_autogen.dir/ParseCache.txt --cmake-autogen-info-file /home/brad/Documents/canvasdesk/build/src/core/CMakeFiles/CanvasDeskCore_autogen.dir/AutogenInfo.json --output-file-path /home/brad/Documents/canvasdesk/build/src/core/meta_types/CanvasDeskCore_json_file_list.txt --timestamp-file-path /home/brad/Documents/canvasdesk/build/src/core/meta_types/CanvasDeskCore_json_file_list.txt.timestamp --cmake-autogen-include-dir-path /home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/include
 
 src/core/meta_types/qt6canvasdeskcore_metatypes.json: src/core/meta_types/qt6canvasdeskcore_metatypes.json.gen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Generating meta_types/qt6canvasdeskcore_metatypes.json"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating meta_types/qt6canvasdeskcore_metatypes.json"
 	cd /home/brad/Documents/canvasdesk/build/src/core && /usr/bin/cmake -E true
 
 src/core/CMakeFiles/CanvasDeskCore.dir/codegen:
@@ -126,7 +116,7 @@ src/core/CMakeFiles/CanvasDeskCore.dir/codegen:
 src/core/CMakeFiles/CanvasDeskCore.dir/CanvasDeskCore_autogen/mocs_compilation.cpp.o: src/core/CMakeFiles/CanvasDeskCore.dir/flags.make
 src/core/CMakeFiles/CanvasDeskCore.dir/CanvasDeskCore_autogen/mocs_compilation.cpp.o: src/core/CanvasDeskCore_autogen/mocs_compilation.cpp
 src/core/CMakeFiles/CanvasDeskCore.dir/CanvasDeskCore_autogen/mocs_compilation.cpp.o: src/core/CMakeFiles/CanvasDeskCore.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object src/core/CMakeFiles/CanvasDeskCore.dir/CanvasDeskCore_autogen/mocs_compilation.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/core/CMakeFiles/CanvasDeskCore.dir/CanvasDeskCore_autogen/mocs_compilation.cpp.o"
 	cd /home/brad/Documents/canvasdesk/build/src/core && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/core/CMakeFiles/CanvasDeskCore.dir/CanvasDeskCore_autogen/mocs_compilation.cpp.o -MF CMakeFiles/CanvasDeskCore.dir/CanvasDeskCore_autogen/mocs_compilation.cpp.o.d -o CMakeFiles/CanvasDeskCore.dir/CanvasDeskCore_autogen/mocs_compilation.cpp.o -c /home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/mocs_compilation.cpp
 
 src/core/CMakeFiles/CanvasDeskCore.dir/CanvasDeskCore_autogen/mocs_compilation.cpp.i: cmake_force
@@ -140,7 +130,7 @@ src/core/CMakeFiles/CanvasDeskCore.dir/CanvasDeskCore_autogen/mocs_compilation.c
 src/core/CMakeFiles/CanvasDeskCore.dir/canvasdeskcore_qmltyperegistrations.cpp.o: src/core/CMakeFiles/CanvasDeskCore.dir/flags.make
 src/core/CMakeFiles/CanvasDeskCore.dir/canvasdeskcore_qmltyperegistrations.cpp.o: src/core/canvasdeskcore_qmltyperegistrations.cpp
 src/core/CMakeFiles/CanvasDeskCore.dir/canvasdeskcore_qmltyperegistrations.cpp.o: src/core/CMakeFiles/CanvasDeskCore.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object src/core/CMakeFiles/CanvasDeskCore.dir/canvasdeskcore_qmltyperegistrations.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object src/core/CMakeFiles/CanvasDeskCore.dir/canvasdeskcore_qmltyperegistrations.cpp.o"
 	cd /home/brad/Documents/canvasdesk/build/src/core && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/core/CMakeFiles/CanvasDeskCore.dir/canvasdeskcore_qmltyperegistrations.cpp.o -MF CMakeFiles/CanvasDeskCore.dir/canvasdeskcore_qmltyperegistrations.cpp.o.d -o CMakeFiles/CanvasDeskCore.dir/canvasdeskcore_qmltyperegistrations.cpp.o -c /home/brad/Documents/canvasdesk/build/src/core/canvasdeskcore_qmltyperegistrations.cpp
 
 src/core/CMakeFiles/CanvasDeskCore.dir/canvasdeskcore_qmltyperegistrations.cpp.i: cmake_force
@@ -154,7 +144,7 @@ src/core/CMakeFiles/CanvasDeskCore.dir/canvasdeskcore_qmltyperegistrations.cpp.s
 src/core/CMakeFiles/CanvasDeskCore.dir/.qt/rcc/qrc_qmake_CanvasDesk.cpp.o: src/core/CMakeFiles/CanvasDeskCore.dir/flags.make
 src/core/CMakeFiles/CanvasDeskCore.dir/.qt/rcc/qrc_qmake_CanvasDesk.cpp.o: src/core/.qt/rcc/qrc_qmake_CanvasDesk.cpp
 src/core/CMakeFiles/CanvasDeskCore.dir/.qt/rcc/qrc_qmake_CanvasDesk.cpp.o: src/core/CMakeFiles/CanvasDeskCore.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object src/core/CMakeFiles/CanvasDeskCore.dir/.qt/rcc/qrc_qmake_CanvasDesk.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object src/core/CMakeFiles/CanvasDeskCore.dir/.qt/rcc/qrc_qmake_CanvasDesk.cpp.o"
 	cd /home/brad/Documents/canvasdesk/build/src/core && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/core/CMakeFiles/CanvasDeskCore.dir/.qt/rcc/qrc_qmake_CanvasDesk.cpp.o -MF CMakeFiles/CanvasDeskCore.dir/.qt/rcc/qrc_qmake_CanvasDesk.cpp.o.d -o CMakeFiles/CanvasDeskCore.dir/.qt/rcc/qrc_qmake_CanvasDesk.cpp.o -c /home/brad/Documents/canvasdesk/build/src/core/.qt/rcc/qrc_qmake_CanvasDesk.cpp
 
 src/core/CMakeFiles/CanvasDeskCore.dir/.qt/rcc/qrc_qmake_CanvasDesk.cpp.i: cmake_force
@@ -168,7 +158,7 @@ src/core/CMakeFiles/CanvasDeskCore.dir/.qt/rcc/qrc_qmake_CanvasDesk.cpp.s: cmake
 src/core/CMakeFiles/CanvasDeskCore.dir/CanvasDeskCore.cpp.o: src/core/CMakeFiles/CanvasDeskCore.dir/flags.make
 src/core/CMakeFiles/CanvasDeskCore.dir/CanvasDeskCore.cpp.o: /home/brad/Documents/canvasdesk/src/core/CanvasDeskCore.cpp
 src/core/CMakeFiles/CanvasDeskCore.dir/CanvasDeskCore.cpp.o: src/core/CMakeFiles/CanvasDeskCore.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object src/core/CMakeFiles/CanvasDeskCore.dir/CanvasDeskCore.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object src/core/CMakeFiles/CanvasDeskCore.dir/CanvasDeskCore.cpp.o"
 	cd /home/brad/Documents/canvasdesk/build/src/core && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/core/CMakeFiles/CanvasDeskCore.dir/CanvasDeskCore.cpp.o -MF CMakeFiles/CanvasDeskCore.dir/CanvasDeskCore.cpp.o.d -o CMakeFiles/CanvasDeskCore.dir/CanvasDeskCore.cpp.o -c /home/brad/Documents/canvasdesk/src/core/CanvasDeskCore.cpp
 
 src/core/CMakeFiles/CanvasDeskCore.dir/CanvasDeskCore.cpp.i: cmake_force
@@ -182,7 +172,7 @@ src/core/CMakeFiles/CanvasDeskCore.dir/CanvasDeskCore.cpp.s: cmake_force
 src/core/CMakeFiles/CanvasDeskCore.dir/Component.cpp.o: src/core/CMakeFiles/CanvasDeskCore.dir/flags.make
 src/core/CMakeFiles/CanvasDeskCore.dir/Component.cpp.o: /home/brad/Documents/canvasdesk/src/core/Component.cpp
 src/core/CMakeFiles/CanvasDeskCore.dir/Component.cpp.o: src/core/CMakeFiles/CanvasDeskCore.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object src/core/CMakeFiles/CanvasDeskCore.dir/Component.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object src/core/CMakeFiles/CanvasDeskCore.dir/Component.cpp.o"
 	cd /home/brad/Documents/canvasdesk/build/src/core && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/core/CMakeFiles/CanvasDeskCore.dir/Component.cpp.o -MF CMakeFiles/CanvasDeskCore.dir/Component.cpp.o.d -o CMakeFiles/CanvasDeskCore.dir/Component.cpp.o -c /home/brad/Documents/canvasdesk/src/core/Component.cpp
 
 src/core/CMakeFiles/CanvasDeskCore.dir/Component.cpp.i: cmake_force
@@ -196,7 +186,7 @@ src/core/CMakeFiles/CanvasDeskCore.dir/Component.cpp.s: cmake_force
 src/core/CMakeFiles/CanvasDeskCore.dir/LayoutManager.cpp.o: src/core/CMakeFiles/CanvasDeskCore.dir/flags.make
 src/core/CMakeFiles/CanvasDeskCore.dir/LayoutManager.cpp.o: /home/brad/Documents/canvasdesk/src/core/LayoutManager.cpp
 src/core/CMakeFiles/CanvasDeskCore.dir/LayoutManager.cpp.o: src/core/CMakeFiles/CanvasDeskCore.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object src/core/CMakeFiles/CanvasDeskCore.dir/LayoutManager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object src/core/CMakeFiles/CanvasDeskCore.dir/LayoutManager.cpp.o"
 	cd /home/brad/Documents/canvasdesk/build/src/core && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/core/CMakeFiles/CanvasDeskCore.dir/LayoutManager.cpp.o -MF CMakeFiles/CanvasDeskCore.dir/LayoutManager.cpp.o.d -o CMakeFiles/CanvasDeskCore.dir/LayoutManager.cpp.o -c /home/brad/Documents/canvasdesk/src/core/LayoutManager.cpp
 
 src/core/CMakeFiles/CanvasDeskCore.dir/LayoutManager.cpp.i: cmake_force
@@ -210,7 +200,7 @@ src/core/CMakeFiles/CanvasDeskCore.dir/LayoutManager.cpp.s: cmake_force
 src/core/CMakeFiles/CanvasDeskCore.dir/AppManager.cpp.o: src/core/CMakeFiles/CanvasDeskCore.dir/flags.make
 src/core/CMakeFiles/CanvasDeskCore.dir/AppManager.cpp.o: /home/brad/Documents/canvasdesk/src/core/AppManager.cpp
 src/core/CMakeFiles/CanvasDeskCore.dir/AppManager.cpp.o: src/core/CMakeFiles/CanvasDeskCore.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object src/core/CMakeFiles/CanvasDeskCore.dir/AppManager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object src/core/CMakeFiles/CanvasDeskCore.dir/AppManager.cpp.o"
 	cd /home/brad/Documents/canvasdesk/build/src/core && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/core/CMakeFiles/CanvasDeskCore.dir/AppManager.cpp.o -MF CMakeFiles/CanvasDeskCore.dir/AppManager.cpp.o.d -o CMakeFiles/CanvasDeskCore.dir/AppManager.cpp.o -c /home/brad/Documents/canvasdesk/src/core/AppManager.cpp
 
 src/core/CMakeFiles/CanvasDeskCore.dir/AppManager.cpp.i: cmake_force
@@ -224,7 +214,7 @@ src/core/CMakeFiles/CanvasDeskCore.dir/AppManager.cpp.s: cmake_force
 src/core/CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.o: src/core/CMakeFiles/CanvasDeskCore.dir/flags.make
 src/core/CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.o: /home/brad/Documents/canvasdesk/src/core/WindowManager.cpp
 src/core/CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.o: src/core/CMakeFiles/CanvasDeskCore.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object src/core/CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object src/core/CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.o"
 	cd /home/brad/Documents/canvasdesk/build/src/core && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/core/CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.o -MF CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.o.d -o CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.o -c /home/brad/Documents/canvasdesk/src/core/WindowManager.cpp
 
 src/core/CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.i: cmake_force
@@ -235,33 +225,19 @@ src/core/CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.s"
 	cd /home/brad/Documents/canvasdesk/build/src/core && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/brad/Documents/canvasdesk/src/core/WindowManager.cpp -o CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.s
 
-src/core/CMakeFiles/CanvasDeskCore.dir/WlrWindowManager.cpp.o: src/core/CMakeFiles/CanvasDeskCore.dir/flags.make
-src/core/CMakeFiles/CanvasDeskCore.dir/WlrWindowManager.cpp.o: /home/brad/Documents/canvasdesk/src/core/WlrWindowManager.cpp
-src/core/CMakeFiles/CanvasDeskCore.dir/WlrWindowManager.cpp.o: src/core/CMakeFiles/CanvasDeskCore.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object src/core/CMakeFiles/CanvasDeskCore.dir/WlrWindowManager.cpp.o"
-	cd /home/brad/Documents/canvasdesk/build/src/core && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/core/CMakeFiles/CanvasDeskCore.dir/WlrWindowManager.cpp.o -MF CMakeFiles/CanvasDeskCore.dir/WlrWindowManager.cpp.o.d -o CMakeFiles/CanvasDeskCore.dir/WlrWindowManager.cpp.o -c /home/brad/Documents/canvasdesk/src/core/WlrWindowManager.cpp
+src/core/CMakeFiles/CanvasDeskCore.dir/X11WindowManager.cpp.o: src/core/CMakeFiles/CanvasDeskCore.dir/flags.make
+src/core/CMakeFiles/CanvasDeskCore.dir/X11WindowManager.cpp.o: /home/brad/Documents/canvasdesk/src/core/X11WindowManager.cpp
+src/core/CMakeFiles/CanvasDeskCore.dir/X11WindowManager.cpp.o: src/core/CMakeFiles/CanvasDeskCore.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object src/core/CMakeFiles/CanvasDeskCore.dir/X11WindowManager.cpp.o"
+	cd /home/brad/Documents/canvasdesk/build/src/core && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/core/CMakeFiles/CanvasDeskCore.dir/X11WindowManager.cpp.o -MF CMakeFiles/CanvasDeskCore.dir/X11WindowManager.cpp.o.d -o CMakeFiles/CanvasDeskCore.dir/X11WindowManager.cpp.o -c /home/brad/Documents/canvasdesk/src/core/X11WindowManager.cpp
 
-src/core/CMakeFiles/CanvasDeskCore.dir/WlrWindowManager.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CanvasDeskCore.dir/WlrWindowManager.cpp.i"
-	cd /home/brad/Documents/canvasdesk/build/src/core && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/brad/Documents/canvasdesk/src/core/WlrWindowManager.cpp > CMakeFiles/CanvasDeskCore.dir/WlrWindowManager.cpp.i
+src/core/CMakeFiles/CanvasDeskCore.dir/X11WindowManager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CanvasDeskCore.dir/X11WindowManager.cpp.i"
+	cd /home/brad/Documents/canvasdesk/build/src/core && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/brad/Documents/canvasdesk/src/core/X11WindowManager.cpp > CMakeFiles/CanvasDeskCore.dir/X11WindowManager.cpp.i
 
-src/core/CMakeFiles/CanvasDeskCore.dir/WlrWindowManager.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CanvasDeskCore.dir/WlrWindowManager.cpp.s"
-	cd /home/brad/Documents/canvasdesk/build/src/core && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/brad/Documents/canvasdesk/src/core/WlrWindowManager.cpp -o CMakeFiles/CanvasDeskCore.dir/WlrWindowManager.cpp.s
-
-src/core/CMakeFiles/CanvasDeskCore.dir/ExtForeignToplevelManager.cpp.o: src/core/CMakeFiles/CanvasDeskCore.dir/flags.make
-src/core/CMakeFiles/CanvasDeskCore.dir/ExtForeignToplevelManager.cpp.o: /home/brad/Documents/canvasdesk/src/core/ExtForeignToplevelManager.cpp
-src/core/CMakeFiles/CanvasDeskCore.dir/ExtForeignToplevelManager.cpp.o: src/core/CMakeFiles/CanvasDeskCore.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object src/core/CMakeFiles/CanvasDeskCore.dir/ExtForeignToplevelManager.cpp.o"
-	cd /home/brad/Documents/canvasdesk/build/src/core && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/core/CMakeFiles/CanvasDeskCore.dir/ExtForeignToplevelManager.cpp.o -MF CMakeFiles/CanvasDeskCore.dir/ExtForeignToplevelManager.cpp.o.d -o CMakeFiles/CanvasDeskCore.dir/ExtForeignToplevelManager.cpp.o -c /home/brad/Documents/canvasdesk/src/core/ExtForeignToplevelManager.cpp
-
-src/core/CMakeFiles/CanvasDeskCore.dir/ExtForeignToplevelManager.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CanvasDeskCore.dir/ExtForeignToplevelManager.cpp.i"
-	cd /home/brad/Documents/canvasdesk/build/src/core && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/brad/Documents/canvasdesk/src/core/ExtForeignToplevelManager.cpp > CMakeFiles/CanvasDeskCore.dir/ExtForeignToplevelManager.cpp.i
-
-src/core/CMakeFiles/CanvasDeskCore.dir/ExtForeignToplevelManager.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CanvasDeskCore.dir/ExtForeignToplevelManager.cpp.s"
-	cd /home/brad/Documents/canvasdesk/build/src/core && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/brad/Documents/canvasdesk/src/core/ExtForeignToplevelManager.cpp -o CMakeFiles/CanvasDeskCore.dir/ExtForeignToplevelManager.cpp.s
+src/core/CMakeFiles/CanvasDeskCore.dir/X11WindowManager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CanvasDeskCore.dir/X11WindowManager.cpp.s"
+	cd /home/brad/Documents/canvasdesk/build/src/core && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/brad/Documents/canvasdesk/src/core/X11WindowManager.cpp -o CMakeFiles/CanvasDeskCore.dir/X11WindowManager.cpp.s
 
 # Object files for target CanvasDeskCore
 CanvasDeskCore_OBJECTS = \
@@ -273,8 +249,7 @@ CanvasDeskCore_OBJECTS = \
 "CMakeFiles/CanvasDeskCore.dir/LayoutManager.cpp.o" \
 "CMakeFiles/CanvasDeskCore.dir/AppManager.cpp.o" \
 "CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.o" \
-"CMakeFiles/CanvasDeskCore.dir/WlrWindowManager.cpp.o" \
-"CMakeFiles/CanvasDeskCore.dir/ExtForeignToplevelManager.cpp.o"
+"CMakeFiles/CanvasDeskCore.dir/X11WindowManager.cpp.o"
 
 # External object files for target CanvasDeskCore
 CanvasDeskCore_EXTERNAL_OBJECTS =
@@ -287,27 +262,20 @@ src/core/libCanvasDeskCore.so: src/core/CMakeFiles/CanvasDeskCore.dir/Component.
 src/core/libCanvasDeskCore.so: src/core/CMakeFiles/CanvasDeskCore.dir/LayoutManager.cpp.o
 src/core/libCanvasDeskCore.so: src/core/CMakeFiles/CanvasDeskCore.dir/AppManager.cpp.o
 src/core/libCanvasDeskCore.so: src/core/CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.o
-src/core/libCanvasDeskCore.so: src/core/CMakeFiles/CanvasDeskCore.dir/WlrWindowManager.cpp.o
-src/core/libCanvasDeskCore.so: src/core/CMakeFiles/CanvasDeskCore.dir/ExtForeignToplevelManager.cpp.o
+src/core/libCanvasDeskCore.so: src/core/CMakeFiles/CanvasDeskCore.dir/X11WindowManager.cpp.o
 src/core/libCanvasDeskCore.so: src/core/CMakeFiles/CanvasDeskCore.dir/build.make
 src/core/libCanvasDeskCore.so: src/core/CMakeFiles/CanvasDeskCore.dir/compiler_depend.ts
 src/core/libCanvasDeskCore.so: /usr/lib/libQt6Qml.so.6.10.1
-src/core/libCanvasDeskCore.so: /usr/lib/libQt6WaylandClient.so.6.10.1
-src/core/libCanvasDeskCore.so: /usr/lib/libwayland-client.so
-src/core/libCanvasDeskCore.so: src/core/libwlr_protocol.a
-src/core/libCanvasDeskCore.so: src/core/libext_protocol.a
 src/core/libCanvasDeskCore.so: /usr/lib/libQt6Network.so.6.10.1
-src/core/libCanvasDeskCore.so: /usr/lib/libQt6Gui.so.6.10.1
-src/core/libCanvasDeskCore.so: /usr/lib/libGLX.so
-src/core/libCanvasDeskCore.so: /usr/lib/libOpenGL.so
 src/core/libCanvasDeskCore.so: /usr/lib/libQt6Core.so.6.10.1
-src/core/libCanvasDeskCore.so: /usr/lib/libwayland-cursor.so
-src/core/libCanvasDeskCore.so: /usr/lib/libKWaylandClient.so
-src/core/libCanvasDeskCore.so: /usr/lib/libQt6Gui.so
-src/core/libCanvasDeskCore.so: /usr/lib/libQt6Core.so
-src/core/libCanvasDeskCore.so: /usr/lib/libwayland-client.so
+src/core/libCanvasDeskCore.so: /usr/lib/libxcb.so
+src/core/libCanvasDeskCore.so: /usr/lib/libXcomposite.so
+src/core/libCanvasDeskCore.so: /usr/lib/libXrender.so
+src/core/libCanvasDeskCore.so: /usr/lib/libX11.so
+src/core/libCanvasDeskCore.so: /usr/lib/libXdamage.so
+src/core/libCanvasDeskCore.so: /usr/lib/libXfixes.so
 src/core/libCanvasDeskCore.so: src/core/CMakeFiles/CanvasDeskCore.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Linking CXX shared library libCanvasDeskCore.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Linking CXX shared library libCanvasDeskCore.so"
 	cd /home/brad/Documents/canvasdesk/build/src/core && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/CanvasDeskCore.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -322,11 +290,9 @@ src/core/CMakeFiles/CanvasDeskCore.dir/depend: src/core/.qt/rcc/qrc_qmake_Canvas
 src/core/CMakeFiles/CanvasDeskCore.dir/depend: src/core/CanvasDeskCore.qmltypes
 src/core/CMakeFiles/CanvasDeskCore.dir/depend: src/core/CanvasDeskCore_autogen/timestamp
 src/core/CMakeFiles/CanvasDeskCore.dir/depend: src/core/canvasdeskcore_qmltyperegistrations.cpp
-src/core/CMakeFiles/CanvasDeskCore.dir/depend: src/core/ext-foreign-toplevel-list-v1-client-protocol.h
 src/core/CMakeFiles/CanvasDeskCore.dir/depend: src/core/meta_types/CanvasDeskCore_json_file_list.txt
 src/core/CMakeFiles/CanvasDeskCore.dir/depend: src/core/meta_types/qt6canvasdeskcore_metatypes.json
 src/core/CMakeFiles/CanvasDeskCore.dir/depend: src/core/meta_types/qt6canvasdeskcore_metatypes.json.gen
-src/core/CMakeFiles/CanvasDeskCore.dir/depend: src/core/wlr-foreign-toplevel-management-unstable-v1-client-protocol.h
 	cd /home/brad/Documents/canvasdesk/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/brad/Documents/canvasdesk /home/brad/Documents/canvasdesk/src/core /home/brad/Documents/canvasdesk/build /home/brad/Documents/canvasdesk/build/src/core /home/brad/Documents/canvasdesk/build/src/core/CMakeFiles/CanvasDeskCore.dir/DependInfo.cmake "--color=$(COLOR)" CanvasDeskCore
 .PHONY : src/core/CMakeFiles/CanvasDeskCore.dir/depend
 

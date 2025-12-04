@@ -14,10 +14,9 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/brad/Documents/canvasdesk/src/core/CanvasDeskCore.cpp" "src/core/CMakeFiles/CanvasDeskCore.dir/CanvasDeskCore.cpp.o" "gcc" "src/core/CMakeFiles/CanvasDeskCore.dir/CanvasDeskCore.cpp.o.d"
   "/home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/mocs_compilation.cpp" "src/core/CMakeFiles/CanvasDeskCore.dir/CanvasDeskCore_autogen/mocs_compilation.cpp.o" "gcc" "src/core/CMakeFiles/CanvasDeskCore.dir/CanvasDeskCore_autogen/mocs_compilation.cpp.o.d"
   "/home/brad/Documents/canvasdesk/src/core/Component.cpp" "src/core/CMakeFiles/CanvasDeskCore.dir/Component.cpp.o" "gcc" "src/core/CMakeFiles/CanvasDeskCore.dir/Component.cpp.o.d"
-  "/home/brad/Documents/canvasdesk/src/core/ExtForeignToplevelManager.cpp" "src/core/CMakeFiles/CanvasDeskCore.dir/ExtForeignToplevelManager.cpp.o" "gcc" "src/core/CMakeFiles/CanvasDeskCore.dir/ExtForeignToplevelManager.cpp.o.d"
   "/home/brad/Documents/canvasdesk/src/core/LayoutManager.cpp" "src/core/CMakeFiles/CanvasDeskCore.dir/LayoutManager.cpp.o" "gcc" "src/core/CMakeFiles/CanvasDeskCore.dir/LayoutManager.cpp.o.d"
   "/home/brad/Documents/canvasdesk/src/core/WindowManager.cpp" "src/core/CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.o" "gcc" "src/core/CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.o.d"
-  "/home/brad/Documents/canvasdesk/src/core/WlrWindowManager.cpp" "src/core/CMakeFiles/CanvasDeskCore.dir/WlrWindowManager.cpp.o" "gcc" "src/core/CMakeFiles/CanvasDeskCore.dir/WlrWindowManager.cpp.o.d"
+  "/home/brad/Documents/canvasdesk/src/core/X11WindowManager.cpp" "src/core/CMakeFiles/CanvasDeskCore.dir/X11WindowManager.cpp.o" "gcc" "src/core/CMakeFiles/CanvasDeskCore.dir/X11WindowManager.cpp.o.d"
   "/home/brad/Documents/canvasdesk/build/src/core/canvasdeskcore_qmltyperegistrations.cpp" "src/core/CMakeFiles/CanvasDeskCore.dir/canvasdeskcore_qmltyperegistrations.cpp.o" "gcc" "src/core/CMakeFiles/CanvasDeskCore.dir/canvasdeskcore_qmltyperegistrations.cpp.o.d"
   "" "src/core/libCanvasDeskCore.so" "gcc" "src/core/CMakeFiles/CanvasDeskCore.dir/link.d"
   )

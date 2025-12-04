@@ -4,7 +4,7 @@
 
 Install all dependencies with:
 ```bash
-sudo pacman -S qt6-base qt6-declarative qt6-wayland wayland wlr-protocols kwayland cmake gcc pkgconf make
+sudo pacman -S qt6-base qt6-declarative libx11 libxcb cmake gcc pkgconf make
 ```
 
 ## Package Breakdown
@@ -12,14 +12,11 @@ sudo pacman -S qt6-base qt6-declarative qt6-wayland wayland wlr-protocols kwayla
 ### Qt 6 Framework (minimum version 6.5)
 - qt6-base          # Provides Qt6::Core, Qt6::Gui
 - qt6-declarative   # Provides Qt6::Qml, Qt6::Quick
-- qt6-wayland       # Provides Qt6::WaylandClient
 
-### Wayland Support
-- wayland           # Wayland client libraries (includes wayland-protocols as dependency)
-- wlr-protocols     # wlroots protocols (wlr-foreign-toplevel-management)
-
-### KDE Frameworks
-- kwayland          # KWaylandClient for Plasma window management
+### X11 Support
+- libx11            # X11 client library
+- libxcb            # X11 C Bindings (alternative to Xlib)
+- xorg-server       # X11 server (should already be installed if you have X11 sessions)
 
 ### Build Tools
 - cmake             # Build system (minimum version 3.16)
@@ -47,13 +44,13 @@ After installing dependencies:
 
 ## System Requirements
 
-- Linux with Wayland compositor
+- Linux with X11 server
 - C++20 compatible compiler
 - CMake 3.16 or newer
 - Qt 6.5 or newer
 
 ## Notes
 
-- This project requires a Wayland session (not X11)
-- KWaylandClient is needed for window management integration with Plasma
-- wlr-protocols provides support for wlroots-based compositors (Sway, Hyprland, etc.)
+- This project requires an X11 session (not Wayland)
+- CanvasDesk includes its own X11 window manager
+- No external window manager is needed when running as a session

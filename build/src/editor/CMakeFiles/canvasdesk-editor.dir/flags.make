@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_NO_DEBUG -DQT_OPENGL_LIB -DQT_QMLINTEGRATION_LIB -DQT_QML_LIB -DQT_QUICK_LIB
 
-CXX_INCLUDES = -I/home/brad/Documents/canvasdesk/build/src/editor/canvasdesk-editor_autogen/include -I/home/brad/Documents/canvasdesk/src/editor -I/home/brad/Documents/canvasdesk/src/core -I/home/brad/Documents/canvasdesk/build/src/core -isystem /usr/include/qt6/QtQml -isystem /usr/include/qt6 -isystem /usr/include/qt6/QtCore -isystem /usr/lib/qt6/mkspecs/linux-g++ -isystem /usr/include/qt6/QtQmlIntegration -isystem /usr/include/qt6/QtNetwork -isystem /usr/include/qt6/QtQuick -isystem /usr/include/qt6/QtGui -isystem /usr/include/qt6/QtOpenGL
+CXX_INCLUDES = -I/home/brad/Documents/canvasdesk/build/src/editor/canvasdesk-editor_autogen/include -I/home/brad/Documents/canvasdesk/src/editor -I/home/brad/Documents/canvasdesk/src/core -isystem /usr/include/qt6/QtQml -isystem /usr/include/qt6 -isystem /usr/include/qt6/QtCore -isystem /usr/lib/qt6/mkspecs/linux-g++ -isystem /usr/include/qt6/QtQmlIntegration -isystem /usr/include/qt6/QtNetwork -isystem /usr/include/qt6/QtQuick -isystem /usr/include/qt6/QtGui -isystem /usr/include/qt6/QtOpenGL
 
 CXX_FLAGS = -std=gnu++20 -mno-direct-extern-access
 

@@ -2108,8 +2108,6 @@ src/editor/CMakeFiles/canvasdesk-editor.dir/main.cpp.o: /home/brad/Documents/can
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/syslimits.h
 
 src/editor/canvasdesk-editor: src/core/libCanvasDeskCore.so \
-  src/core/libext_protocol.a \
-  src/core/libwlr_protocol.a \
   src/qml/libCanvasDeskQml.so \
   /usr/lib/Scrt1.o \
   /usr/lib/crti.o \
@@ -2126,7 +2124,6 @@ src/editor/canvasdesk-editor: src/core/libCanvasDeskCore.so \
   /usr/lib/libEGL.so.1 \
   /usr/lib/libGLX.so \
   /usr/lib/libGLdispatch.so.0 \
-  /usr/lib/libKWaylandClient.so.6 \
   /usr/lib/libOpenGL.so \
   /usr/lib/libQt6Core.so.6.10.1 \
   /usr/lib/libQt6DBus.so.6 \
@@ -2138,10 +2135,13 @@ src/editor/canvasdesk-editor: src/core/libCanvasDeskCore.so \
   /usr/lib/libQt6QmlModels.so.6 \
   /usr/lib/libQt6QmlWorkerScript.so.6 \
   /usr/lib/libQt6Quick.so.6.10.1 \
-  /usr/lib/libQt6WaylandClient.so.6 \
   /usr/lib/libX11.so.6 \
   /usr/lib/libXau.so.6 \
+  /usr/lib/libXcomposite.so.1 \
+  /usr/lib/libXdamage.so.1 \
   /usr/lib/libXdmcp.so.6 \
+  /usr/lib/libXfixes.so.3 \
+  /usr/lib/libXrender.so.1 \
   /usr/lib/libb2.so.1 \
   /usr/lib/libblkid.so.1 \
   /usr/lib/libbrotlicommon.so.1 \
@@ -2193,15 +2193,17 @@ src/editor/canvasdesk-editor: src/core/libCanvasDeskCore.so \
   /usr/lib/libssl.so.3 \
   /usr/lib/libsystemd.so.0 \
   /usr/lib/libunistring.so.5 \
-  /usr/lib/libwayland-client.so \
-  /usr/lib/libwayland-cursor.so.0 \
   /usr/lib/libxcb.so.1 \
   /usr/lib/libxkbcommon.so.0 \
   /usr/lib/libz.so.1 \
   /usr/lib/libzstd.so.1 \
   /usr/lib32/libGLdispatch.so.0 \
   /usr/lib32/libXau.so.6 \
+  /usr/lib32/libXcomposite.so.1 \
+  /usr/lib32/libXdamage.so.1 \
   /usr/lib32/libXdmcp.so.6 \
+  /usr/lib32/libXfixes.so.3 \
+  /usr/lib32/libXrender.so.1 \
   /usr/lib32/libblkid.so.1 \
   /usr/lib32/libbrotlicommon.so.1 \
   /usr/lib32/libbz2.so.1.0 \
@@ -2231,7 +2233,6 @@ src/editor/canvasdesk-editor: src/core/libCanvasDeskCore.so \
   /usr/lib32/libssh2.so.1 \
   /usr/lib32/libssl.so.3 \
   /usr/lib32/libunistring.so.5 \
-  /usr/lib32/libwayland-cursor.so.0 \
   /usr/lib32/libxcb.so.1 \
   src/editor/CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp.o \
   src/editor/CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_qmake_CanvasDeskEditor.cpp.o \
@@ -2284,13 +2285,17 @@ src/editor/CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_canvasdesk-editor_raw_qm
 
 /usr/lib32/libblkid.so.1:
 
+/usr/lib32/libXrender.so.1:
+
+/usr/lib32/libXfixes.so.3:
+
+/usr/lib32/libXdamage.so.1:
+
 /usr/lib32/libXau.so.6:
 
 /usr/lib32/libidn2.so.0:
 
 /usr/lib32/libGLdispatch.so.0:
-
-/usr/lib/libwayland-cursor.so.0:
 
 /usr/lib/libssh2.so.1:
 
@@ -2348,7 +2353,7 @@ src/editor/CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qmlc
 
 /usr/lib/libb2.so.1:
 
-/usr/lib/libQt6WaylandClient.so.6:
+/usr/lib/libXfixes.so.3:
 
 /usr/lib/libQt6Quick.so.6.10.1:
 
@@ -2387,10 +2392,6 @@ src/editor/CMakeFiles/canvasdesk-editor.dir/.rcc/qmlcache/canvasdesk-editor_qmlc
 /usr/lib/crti.o:
 
 /usr/lib/Scrt1.o:
-
-src/core/libwlr_protocol.a:
-
-src/core/libext_protocol.a:
 
 src/editor/CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_qmake_CanvasDeskEditor.cpp.o:
 
@@ -2583,6 +2584,8 @@ src/core/libCanvasDeskCore.so:
 /usr/include/bits/cpu-set.h:
 
 /usr/include/c++/15.2.1/bits/refwrap.h:
+
+/usr/lib/libXrender.so.1:
 
 /usr/include/c++/15.2.1/bits/basic_string.tcc:
 
@@ -3108,8 +3111,6 @@ src/editor/.qt/qml_imports/canvasdesk-editor_conf.cmake:
 
 /usr/include/bits/types/wint_t.h:
 
-/usr/lib/libKWaylandClient.so.6:
-
 /usr/include/bits/stdint-intn.h:
 
 /usr/include/bits/wctype-wchar.h:
@@ -3308,11 +3309,11 @@ src/editor/.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp:
 
 /usr/lib/libgio-2.0.so.0:
 
+/usr/lib/libXdamage.so.1:
+
 /usr/include/gnu/stubs-64.h:
 
 /usr/include/qt6/QtCore/qtversionchecks.h:
-
-/usr/lib/libwayland-client.so:
 
 /usr/include/qt6/QtCore/qtconfigmacros.h:
 
@@ -3444,6 +3445,8 @@ src/editor/.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp:
 
 /usr/include/qt6/QtCore/QDebug:
 
+/usr/lib/libXcomposite.so.1:
+
 /usr/include/qt6/QtCore/qforeach.h:
 
 /usr/lib/libsystemd.so.0:
@@ -3523,6 +3526,8 @@ src/editor/.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp:
 /usr/include/qt6/QtCore/qstringmatcher.h:
 
 /usr/include/qt6/QtCore/qstringtokenizer.h:
+
+/usr/lib32/libXcomposite.so.1:
 
 /usr/include/qt6/QtCore/qsysinfo.h:
 
@@ -3607,8 +3612,6 @@ src/editor/.rcc/qmlcache/canvasdesk-editor_qmlcache_loader.cpp:
 /usr/include/bits/types/sigset_t.h:
 
 /usr/include/qt6/QtQml/qqml.h:
-
-/usr/lib32/libwayland-cursor.so.0:
 
 /usr/include/qt6/QtQml/qqmlengine.h:
 

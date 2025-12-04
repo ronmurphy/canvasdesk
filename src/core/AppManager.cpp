@@ -25,7 +25,12 @@ void AppManager::launch(const QString &exec) {
   cleanExec = cleanExec.trimmed();
 
   qDebug() << "Launching:" << cleanExec;
-  QProcess::startDetached("/bin/sh", QStringList() << "-c" << cleanExec);
+
+  // Create process with current environment (inherits DISPLAY, etc.)
+  QProcess process;
+  process.setProgram("/bin/sh");
+  process.setArguments(QStringList() << "-c" << cleanExec);
+  process.startDetached();
 }
 
 void AppManager::rescan() { scanApps(); }

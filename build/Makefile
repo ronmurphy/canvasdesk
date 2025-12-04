@@ -305,32 +305,6 @@ canvasdesk-runtime_autogen/fast:
 .PHONY : canvasdesk-runtime_autogen/fast
 
 #=============================================================================
-# Target rules for targets named wlr_protocol
-
-# Build rule for target.
-wlr_protocol: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 wlr_protocol
-.PHONY : wlr_protocol
-
-# fast build rule for target.
-wlr_protocol/fast:
-	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/wlr_protocol.dir/build.make src/core/CMakeFiles/wlr_protocol.dir/build
-.PHONY : wlr_protocol/fast
-
-#=============================================================================
-# Target rules for targets named ext_protocol
-
-# Build rule for target.
-ext_protocol: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ext_protocol
-.PHONY : ext_protocol
-
-# fast build rule for target.
-ext_protocol/fast:
-	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/ext_protocol.dir/build.make src/core/CMakeFiles/ext_protocol.dir/build
-.PHONY : ext_protocol/fast
-
-#=============================================================================
 # Target rules for targets named CanvasDeskCore
 
 # Build rule for target.
@@ -947,8 +921,6 @@ help:
 	@echo "... canvasdesk"
 	@echo "... canvasdesk-editor"
 	@echo "... canvasdesk-runtime"
-	@echo "... ext_protocol"
-	@echo "... wlr_protocol"
 	@echo "... canvasdesk_autogen/mocs_compilation.o"
 	@echo "... canvasdesk_autogen/mocs_compilation.i"
 	@echo "... canvasdesk_autogen/mocs_compilation.s"

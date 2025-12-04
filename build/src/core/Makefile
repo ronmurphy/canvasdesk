@@ -162,34 +162,6 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-src/core/CMakeFiles/wlr_protocol.dir/rule:
-	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/core/CMakeFiles/wlr_protocol.dir/rule
-.PHONY : src/core/CMakeFiles/wlr_protocol.dir/rule
-
-# Convenience name for target.
-wlr_protocol: src/core/CMakeFiles/wlr_protocol.dir/rule
-.PHONY : wlr_protocol
-
-# fast build rule for target.
-wlr_protocol/fast:
-	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/wlr_protocol.dir/build.make src/core/CMakeFiles/wlr_protocol.dir/build
-.PHONY : wlr_protocol/fast
-
-# Convenience name for target.
-src/core/CMakeFiles/ext_protocol.dir/rule:
-	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/core/CMakeFiles/ext_protocol.dir/rule
-.PHONY : src/core/CMakeFiles/ext_protocol.dir/rule
-
-# Convenience name for target.
-ext_protocol: src/core/CMakeFiles/ext_protocol.dir/rule
-.PHONY : ext_protocol
-
-# fast build rule for target.
-ext_protocol/fast:
-	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/ext_protocol.dir/build.make src/core/CMakeFiles/ext_protocol.dir/build
-.PHONY : ext_protocol/fast
-
-# Convenience name for target.
 src/core/CMakeFiles/CanvasDeskCore.dir/rule:
 	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/core/CMakeFiles/CanvasDeskCore.dir/rule
 .PHONY : src/core/CMakeFiles/CanvasDeskCore.dir/rule
@@ -595,30 +567,6 @@ Component.cpp.s:
 	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore.dir/build.make src/core/CMakeFiles/CanvasDeskCore.dir/Component.cpp.s
 .PHONY : Component.cpp.s
 
-ExtForeignToplevelManager.o: ExtForeignToplevelManager.cpp.o
-.PHONY : ExtForeignToplevelManager.o
-
-# target to build an object file
-ExtForeignToplevelManager.cpp.o:
-	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore.dir/build.make src/core/CMakeFiles/CanvasDeskCore.dir/ExtForeignToplevelManager.cpp.o
-.PHONY : ExtForeignToplevelManager.cpp.o
-
-ExtForeignToplevelManager.i: ExtForeignToplevelManager.cpp.i
-.PHONY : ExtForeignToplevelManager.i
-
-# target to preprocess a source file
-ExtForeignToplevelManager.cpp.i:
-	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore.dir/build.make src/core/CMakeFiles/CanvasDeskCore.dir/ExtForeignToplevelManager.cpp.i
-.PHONY : ExtForeignToplevelManager.cpp.i
-
-ExtForeignToplevelManager.s: ExtForeignToplevelManager.cpp.s
-.PHONY : ExtForeignToplevelManager.s
-
-# target to generate assembly for a file
-ExtForeignToplevelManager.cpp.s:
-	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore.dir/build.make src/core/CMakeFiles/CanvasDeskCore.dir/ExtForeignToplevelManager.cpp.s
-.PHONY : ExtForeignToplevelManager.cpp.s
-
 LayoutManager.o: LayoutManager.cpp.o
 .PHONY : LayoutManager.o
 
@@ -667,29 +615,29 @@ WindowManager.cpp.s:
 	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore.dir/build.make src/core/CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.s
 .PHONY : WindowManager.cpp.s
 
-WlrWindowManager.o: WlrWindowManager.cpp.o
-.PHONY : WlrWindowManager.o
+X11WindowManager.o: X11WindowManager.cpp.o
+.PHONY : X11WindowManager.o
 
 # target to build an object file
-WlrWindowManager.cpp.o:
-	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore.dir/build.make src/core/CMakeFiles/CanvasDeskCore.dir/WlrWindowManager.cpp.o
-.PHONY : WlrWindowManager.cpp.o
+X11WindowManager.cpp.o:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore.dir/build.make src/core/CMakeFiles/CanvasDeskCore.dir/X11WindowManager.cpp.o
+.PHONY : X11WindowManager.cpp.o
 
-WlrWindowManager.i: WlrWindowManager.cpp.i
-.PHONY : WlrWindowManager.i
+X11WindowManager.i: X11WindowManager.cpp.i
+.PHONY : X11WindowManager.i
 
 # target to preprocess a source file
-WlrWindowManager.cpp.i:
-	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore.dir/build.make src/core/CMakeFiles/CanvasDeskCore.dir/WlrWindowManager.cpp.i
-.PHONY : WlrWindowManager.cpp.i
+X11WindowManager.cpp.i:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore.dir/build.make src/core/CMakeFiles/CanvasDeskCore.dir/X11WindowManager.cpp.i
+.PHONY : X11WindowManager.cpp.i
 
-WlrWindowManager.s: WlrWindowManager.cpp.s
-.PHONY : WlrWindowManager.s
+X11WindowManager.s: X11WindowManager.cpp.s
+.PHONY : X11WindowManager.s
 
 # target to generate assembly for a file
-WlrWindowManager.cpp.s:
-	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore.dir/build.make src/core/CMakeFiles/CanvasDeskCore.dir/WlrWindowManager.cpp.s
-.PHONY : WlrWindowManager.cpp.s
+X11WindowManager.cpp.s:
+	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore.dir/build.make src/core/CMakeFiles/CanvasDeskCore.dir/X11WindowManager.cpp.s
+.PHONY : X11WindowManager.cpp.s
 
 canvasdeskcore_qmltyperegistrations.o: canvasdeskcore_qmltyperegistrations.cpp.o
 .PHONY : canvasdeskcore_qmltyperegistrations.o
@@ -714,54 +662,6 @@ canvasdeskcore_qmltyperegistrations.s: canvasdeskcore_qmltyperegistrations.cpp.s
 canvasdeskcore_qmltyperegistrations.cpp.s:
 	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/CanvasDeskCore.dir/build.make src/core/CMakeFiles/CanvasDeskCore.dir/canvasdeskcore_qmltyperegistrations.cpp.s
 .PHONY : canvasdeskcore_qmltyperegistrations.cpp.s
-
-ext-foreign-toplevel-list-v1-protocol.o: ext-foreign-toplevel-list-v1-protocol.c.o
-.PHONY : ext-foreign-toplevel-list-v1-protocol.o
-
-# target to build an object file
-ext-foreign-toplevel-list-v1-protocol.c.o:
-	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/ext_protocol.dir/build.make src/core/CMakeFiles/ext_protocol.dir/ext-foreign-toplevel-list-v1-protocol.c.o
-.PHONY : ext-foreign-toplevel-list-v1-protocol.c.o
-
-ext-foreign-toplevel-list-v1-protocol.i: ext-foreign-toplevel-list-v1-protocol.c.i
-.PHONY : ext-foreign-toplevel-list-v1-protocol.i
-
-# target to preprocess a source file
-ext-foreign-toplevel-list-v1-protocol.c.i:
-	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/ext_protocol.dir/build.make src/core/CMakeFiles/ext_protocol.dir/ext-foreign-toplevel-list-v1-protocol.c.i
-.PHONY : ext-foreign-toplevel-list-v1-protocol.c.i
-
-ext-foreign-toplevel-list-v1-protocol.s: ext-foreign-toplevel-list-v1-protocol.c.s
-.PHONY : ext-foreign-toplevel-list-v1-protocol.s
-
-# target to generate assembly for a file
-ext-foreign-toplevel-list-v1-protocol.c.s:
-	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/ext_protocol.dir/build.make src/core/CMakeFiles/ext_protocol.dir/ext-foreign-toplevel-list-v1-protocol.c.s
-.PHONY : ext-foreign-toplevel-list-v1-protocol.c.s
-
-wlr-foreign-toplevel-management-unstable-v1-protocol.o: wlr-foreign-toplevel-management-unstable-v1-protocol.c.o
-.PHONY : wlr-foreign-toplevel-management-unstable-v1-protocol.o
-
-# target to build an object file
-wlr-foreign-toplevel-management-unstable-v1-protocol.c.o:
-	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/wlr_protocol.dir/build.make src/core/CMakeFiles/wlr_protocol.dir/wlr-foreign-toplevel-management-unstable-v1-protocol.c.o
-.PHONY : wlr-foreign-toplevel-management-unstable-v1-protocol.c.o
-
-wlr-foreign-toplevel-management-unstable-v1-protocol.i: wlr-foreign-toplevel-management-unstable-v1-protocol.c.i
-.PHONY : wlr-foreign-toplevel-management-unstable-v1-protocol.i
-
-# target to preprocess a source file
-wlr-foreign-toplevel-management-unstable-v1-protocol.c.i:
-	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/wlr_protocol.dir/build.make src/core/CMakeFiles/wlr_protocol.dir/wlr-foreign-toplevel-management-unstable-v1-protocol.c.i
-.PHONY : wlr-foreign-toplevel-management-unstable-v1-protocol.c.i
-
-wlr-foreign-toplevel-management-unstable-v1-protocol.s: wlr-foreign-toplevel-management-unstable-v1-protocol.c.s
-.PHONY : wlr-foreign-toplevel-management-unstable-v1-protocol.s
-
-# target to generate assembly for a file
-wlr-foreign-toplevel-management-unstable-v1-protocol.c.s:
-	cd /home/brad/Documents/canvasdesk/build && $(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/wlr_protocol.dir/build.make src/core/CMakeFiles/wlr_protocol.dir/wlr-foreign-toplevel-management-unstable-v1-protocol.c.s
-.PHONY : wlr-foreign-toplevel-management-unstable-v1-protocol.c.s
 
 # Help Target
 help:
@@ -792,8 +692,6 @@ help:
 	@echo "... qt_internal_plugins"
 	@echo "... CanvasDeskCore"
 	@echo "... CanvasDeskCoreplugin"
-	@echo "... ext_protocol"
-	@echo "... wlr_protocol"
 	@echo "... .qt/rcc/qrc_qmake_CanvasDesk.o"
 	@echo "... .qt/rcc/qrc_qmake_CanvasDesk.i"
 	@echo "... .qt/rcc/qrc_qmake_CanvasDesk.s"
@@ -815,27 +713,18 @@ help:
 	@echo "... Component.o"
 	@echo "... Component.i"
 	@echo "... Component.s"
-	@echo "... ExtForeignToplevelManager.o"
-	@echo "... ExtForeignToplevelManager.i"
-	@echo "... ExtForeignToplevelManager.s"
 	@echo "... LayoutManager.o"
 	@echo "... LayoutManager.i"
 	@echo "... LayoutManager.s"
 	@echo "... WindowManager.o"
 	@echo "... WindowManager.i"
 	@echo "... WindowManager.s"
-	@echo "... WlrWindowManager.o"
-	@echo "... WlrWindowManager.i"
-	@echo "... WlrWindowManager.s"
+	@echo "... X11WindowManager.o"
+	@echo "... X11WindowManager.i"
+	@echo "... X11WindowManager.s"
 	@echo "... canvasdeskcore_qmltyperegistrations.o"
 	@echo "... canvasdeskcore_qmltyperegistrations.i"
 	@echo "... canvasdeskcore_qmltyperegistrations.s"
-	@echo "... ext-foreign-toplevel-list-v1-protocol.o"
-	@echo "... ext-foreign-toplevel-list-v1-protocol.i"
-	@echo "... ext-foreign-toplevel-list-v1-protocol.s"
-	@echo "... wlr-foreign-toplevel-management-unstable-v1-protocol.o"
-	@echo "... wlr-foreign-toplevel-management-unstable-v1-protocol.i"
-	@echo "... wlr-foreign-toplevel-management-unstable-v1-protocol.s"
 .PHONY : help
 
 

@@ -66,23 +66,9 @@ include src/core/CMakeFiles/CanvasDeskCore_autogen_timestamp_deps.dir/compiler_d
 # Include the progress variables for this target.
 include src/core/CMakeFiles/CanvasDeskCore_autogen_timestamp_deps.dir/progress.make
 
-src/core/CMakeFiles/CanvasDeskCore_autogen_timestamp_deps: src/core/ext-foreign-toplevel-list-v1-client-protocol.h
-src/core/CMakeFiles/CanvasDeskCore_autogen_timestamp_deps: src/core/wlr-foreign-toplevel-management-unstable-v1-client-protocol.h
-
-src/core/ext-foreign-toplevel-list-v1-client-protocol.h: /usr/share/wayland-protocols/staging/ext-foreign-toplevel-list/ext-foreign-toplevel-list-v1.xml
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating ext foreign toplevel list header"
-	cd /home/brad/Documents/canvasdesk/build/src/core && /usr/bin/wayland-scanner client-header /usr/share/wayland-protocols/staging/ext-foreign-toplevel-list/ext-foreign-toplevel-list-v1.xml /home/brad/Documents/canvasdesk/build/src/core/ext-foreign-toplevel-list-v1-client-protocol.h
-
-src/core/wlr-foreign-toplevel-management-unstable-v1-client-protocol.h: /usr/share/wlr-protocols/unstable/wlr-foreign-toplevel-management-unstable-v1.xml
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating wlr foreign toplevel header"
-	cd /home/brad/Documents/canvasdesk/build/src/core && /usr/bin/wayland-scanner client-header /usr/share/wlr-protocols/unstable/wlr-foreign-toplevel-management-unstable-v1.xml /home/brad/Documents/canvasdesk/build/src/core/wlr-foreign-toplevel-management-unstable-v1-client-protocol.h
-
 src/core/CMakeFiles/CanvasDeskCore_autogen_timestamp_deps.dir/codegen:
 .PHONY : src/core/CMakeFiles/CanvasDeskCore_autogen_timestamp_deps.dir/codegen
 
-CanvasDeskCore_autogen_timestamp_deps: src/core/CMakeFiles/CanvasDeskCore_autogen_timestamp_deps
-CanvasDeskCore_autogen_timestamp_deps: src/core/ext-foreign-toplevel-list-v1-client-protocol.h
-CanvasDeskCore_autogen_timestamp_deps: src/core/wlr-foreign-toplevel-management-unstable-v1-client-protocol.h
 CanvasDeskCore_autogen_timestamp_deps: src/core/CMakeFiles/CanvasDeskCore_autogen_timestamp_deps.dir/build.make
 .PHONY : CanvasDeskCore_autogen_timestamp_deps
 

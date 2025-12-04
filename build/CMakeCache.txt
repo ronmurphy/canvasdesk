@@ -54,7 +54,7 @@ CMAKE_CXX_FLAGS_RELEASE:STRING=-O3 -DNDEBUG
 CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
 
 //C compiler
-CMAKE_C_COMPILER:STRING=/usr/bin/cc
+CMAKE_C_COMPILER:FILEPATH=/usr/bin/cc
 
 //A wrapper around 'ar' adding the appropriate '--plugin' option
 // for the GCC compiler
@@ -405,15 +405,6 @@ Qt6QuickTools_DIR:PATH=/usr/lib/cmake/Qt6QuickTools
 //The directory containing a CMake configuration file for Qt6Quick.
 Qt6Quick_DIR:PATH=/usr/lib/cmake/Qt6Quick
 
-//The directory containing a CMake configuration file for Qt6WaylandClient.
-Qt6WaylandClient_DIR:PATH=/usr/lib/cmake/Qt6WaylandClient
-
-//The directory containing a CMake configuration file for Qt6WaylandGlobalPrivate.
-Qt6WaylandGlobalPrivate_DIR:PATH=/usr/lib/cmake/Qt6WaylandGlobalPrivate
-
-//The directory containing a CMake configuration file for Qt6WaylandScannerTools.
-Qt6WaylandScannerTools_DIR:PATH=/usr/lib/cmake/Qt6WaylandScannerTools
-
 //The directory containing a CMake configuration file for Qt6.
 Qt6_DIR:PATH=/usr/lib/cmake/Qt6
 
@@ -429,65 +420,26 @@ Vulkan_INCLUDE_DIR:PATH=/usr/include
 //Path to a library.
 Vulkan_LIBRARY:FILEPATH=/lib/libvulkan.so
 
-//Path to a program.
-WaylandScanner_EXECUTABLE:FILEPATH=/usr/bin/wayland-scanner
-
-//Path to a file.
-Wayland_Client_INCLUDE_DIR:PATH=/usr/include
+//Path to a library.
+pkgcfg_lib_X11_X11:FILEPATH=/usr/lib/libX11.so
 
 //Path to a library.
-Wayland_Client_LIBRARY:FILEPATH=/usr/lib/libwayland-client.so
-
-//Path to a file.
-Wayland_Cursor_INCLUDE_DIR:PATH=/usr/include
+pkgcfg_lib_XCB_xcb:FILEPATH=/usr/lib/libxcb.so
 
 //Path to a library.
-Wayland_Cursor_LIBRARY:FILEPATH=/usr/lib/libwayland-cursor.so
-
-//Path to a file.
-Wayland_Egl_INCLUDE_DIR:PATH=/usr/include
+pkgcfg_lib_XComposite_Xcomposite:FILEPATH=/usr/lib/libXcomposite.so
 
 //Path to a library.
-Wayland_Egl_LIBRARY:FILEPATH=/usr/lib/libwayland-egl.so
-
-//Path to a file.
-Wayland_Server_INCLUDE_DIR:PATH=/usr/include
+pkgcfg_lib_XDamage_Xdamage:FILEPATH=/usr/lib/libXdamage.so
 
 //Path to a library.
-Wayland_Server_LIBRARY:FILEPATH=/usr/lib/libwayland-server.so
+pkgcfg_lib_XDamage_Xfixes:FILEPATH=/usr/lib/libXfixes.so
 
 //Path to a library.
-pkgcfg_lib_KWAYLAND_KWaylandClient:FILEPATH=/usr/lib/libKWaylandClient.so
+pkgcfg_lib_XRender_X11:FILEPATH=/usr/lib/libX11.so
 
 //Path to a library.
-pkgcfg_lib_KWAYLAND_Qt6Core:FILEPATH=/usr/lib/libQt6Core.so
-
-//Path to a library.
-pkgcfg_lib_KWAYLAND_Qt6Gui:FILEPATH=/usr/lib/libQt6Gui.so
-
-//Path to a library.
-pkgcfg_lib_PKG_Wayland_Client_m:FILEPATH=/usr/lib/libm.so
-
-//Path to a library.
-pkgcfg_lib_PKG_Wayland_Client_wayland-client:FILEPATH=/usr/lib/libwayland-client.so
-
-//Path to a library.
-pkgcfg_lib_PKG_Wayland_Cursor_wayland-cursor:FILEPATH=/usr/lib/libwayland-cursor.so
-
-//Path to a library.
-pkgcfg_lib_PKG_Wayland_Egl_m:FILEPATH=/usr/lib/libm.so
-
-//Path to a library.
-pkgcfg_lib_PKG_Wayland_Egl_wayland-client:FILEPATH=/usr/lib/libwayland-client.so
-
-//Path to a library.
-pkgcfg_lib_PKG_Wayland_Egl_wayland-egl:FILEPATH=/usr/lib/libwayland-egl.so
-
-//Path to a library.
-pkgcfg_lib_PKG_Wayland_Server_m:FILEPATH=/usr/lib/libm.so
-
-//Path to a library.
-pkgcfg_lib_PKG_Wayland_Server_wayland-server:FILEPATH=/usr/lib/libwayland-server.so
+pkgcfg_lib_XRender_Xrender:FILEPATH=/usr/lib/libXrender.so
 
 
 ########################
@@ -683,18 +635,6 @@ FIND_PACKAGE_MESSAGE_DETAILS_OpenGL:INTERNAL=[/usr/lib/libOpenGL.so][/usr/lib/li
 FIND_PACKAGE_MESSAGE_DETAILS_PkgConfig:INTERNAL=[/usr/bin/pkg-config][v2.5.1()]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
-//Details about finding Wayland
-FIND_PACKAGE_MESSAGE_DETAILS_Wayland:INTERNAL=[/usr/lib/libwayland-client.so;/usr/lib/libwayland-server.so;/usr/lib/libwayland-cursor.so;/usr/lib/libwayland-egl.so][found components: Client ][v1.24.0()]
-//Details about finding WaylandScanner
-FIND_PACKAGE_MESSAGE_DETAILS_WaylandScanner:INTERNAL=[/usr/bin/wayland-scanner][v()]
-//Details about finding Wayland_Client
-FIND_PACKAGE_MESSAGE_DETAILS_Wayland_Client:INTERNAL=[/usr/lib/libwayland-client.so][/usr/include][v1.24.0()]
-//Details about finding Wayland_Cursor
-FIND_PACKAGE_MESSAGE_DETAILS_Wayland_Cursor:INTERNAL=[/usr/lib/libwayland-cursor.so][/usr/include][v1.24.0()]
-//Details about finding Wayland_Egl
-FIND_PACKAGE_MESSAGE_DETAILS_Wayland_Egl:INTERNAL=[/usr/lib/libwayland-egl.so][/usr/include][TRUE][v18.1.0()]
-//Details about finding Wayland_Server
-FIND_PACKAGE_MESSAGE_DETAILS_Wayland_Server:INTERNAL=[/usr/lib/libwayland-server.so][/usr/include][v1.24.0()]
 //Details about finding WrapAtomic
 FIND_PACKAGE_MESSAGE_DETAILS_WrapAtomic:INTERNAL=[1][v()]
 //Details about finding WrapOpenGL
@@ -703,41 +643,6 @@ FIND_PACKAGE_MESSAGE_DETAILS_WrapOpenGL:INTERNAL=[ON][v()]
 FIND_PACKAGE_MESSAGE_DETAILS_WrapVulkanHeaders:INTERNAL=[/usr/include][v()]
 //Test HAVE_STDATOMIC
 HAVE_STDATOMIC:INTERNAL=1
-KWAYLAND_CFLAGS:INTERNAL=-I/usr/include/KWayland;-I/usr/include/qt6/QtGui;-I/usr/include/qt6;-DQT_GUI_LIB;-I/usr/include/qt6/QtCore;-DQT_CORE_LIB;-I/usr/lib/qt6/mkspecs/linux-g++
-KWAYLAND_CFLAGS_I:INTERNAL=
-KWAYLAND_CFLAGS_OTHER:INTERNAL=-DQT_GUI_LIB;-DQT_CORE_LIB
-KWAYLAND_FOUND:INTERNAL=1
-KWAYLAND_INCLUDEDIR:INTERNAL=/usr/include/KWayland
-KWAYLAND_INCLUDE_DIRS:INTERNAL=/usr/include/KWayland;/usr/include/qt6/QtGui;/usr/include/qt6;/usr/include/qt6/QtCore;/usr/lib/qt6/mkspecs/linux-g++
-KWAYLAND_KWaylandClient_INCLUDEDIR:INTERNAL=
-KWAYLAND_KWaylandClient_LIBDIR:INTERNAL=
-KWAYLAND_KWaylandClient_PREFIX:INTERNAL=
-KWAYLAND_KWaylandClient_VERSION:INTERNAL=
-KWAYLAND_LDFLAGS:INTERNAL=-L/usr/lib;-lKWaylandClient;-lQt6Gui;-lQt6Core
-KWAYLAND_LDFLAGS_OTHER:INTERNAL=
-KWAYLAND_LIBDIR:INTERNAL=/usr/lib
-KWAYLAND_LIBRARIES:INTERNAL=KWaylandClient;Qt6Gui;Qt6Core
-KWAYLAND_LIBRARY_DIRS:INTERNAL=/usr/lib
-KWAYLAND_LIBS:INTERNAL=
-KWAYLAND_LIBS_L:INTERNAL=
-KWAYLAND_LIBS_OTHER:INTERNAL=
-KWAYLAND_LIBS_PATHS:INTERNAL=
-KWAYLAND_MODULE_NAME:INTERNAL=KWaylandClient
-KWAYLAND_PREFIX:INTERNAL=/usr
-KWAYLAND_STATIC_CFLAGS:INTERNAL=-I/usr/include/KWayland;-I/usr/include/qt6/QtGui;-I/usr/include/qt6;-DQT_GUI_LIB;-I/usr/include/qt6/QtCore;-DQT_CORE_LIB;-I/usr/lib/qt6/mkspecs/linux-g++
-KWAYLAND_STATIC_CFLAGS_I:INTERNAL=
-KWAYLAND_STATIC_CFLAGS_OTHER:INTERNAL=-DQT_GUI_LIB;-DQT_CORE_LIB
-KWAYLAND_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include/KWayland;/usr/include/qt6/QtGui;/usr/include/qt6;/usr/include/qt6/QtCore;/usr/lib/qt6/mkspecs/linux-g++
-KWAYLAND_STATIC_LDFLAGS:INTERNAL=-L/usr/lib;-lKWaylandClient;-lQt6Gui;-lQt6Core
-KWAYLAND_STATIC_LDFLAGS_OTHER:INTERNAL=
-KWAYLAND_STATIC_LIBDIR:INTERNAL=
-KWAYLAND_STATIC_LIBRARIES:INTERNAL=KWaylandClient;Qt6Gui;Qt6Core
-KWAYLAND_STATIC_LIBRARY_DIRS:INTERNAL=/usr/lib
-KWAYLAND_STATIC_LIBS:INTERNAL=
-KWAYLAND_STATIC_LIBS_L:INTERNAL=
-KWAYLAND_STATIC_LIBS_OTHER:INTERNAL=
-KWAYLAND_STATIC_LIBS_PATHS:INTERNAL=
-KWAYLAND_VERSION:INTERNAL=6.5.3
 //ADVANCED property for variable: OPENGL_EGL_INCLUDE_DIR
 OPENGL_EGL_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: OPENGL_GLES2_INCLUDE_DIR
@@ -768,146 +673,6 @@ OPENGL_xmesa_INCLUDE_DIR-ADVANCED:INTERNAL=1
 PKG_CONFIG_ARGN-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
 PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
-PKG_Wayland_Client_CFLAGS:INTERNAL=-I/usr/include
-PKG_Wayland_Client_CFLAGS_I:INTERNAL=
-PKG_Wayland_Client_CFLAGS_OTHER:INTERNAL=
-PKG_Wayland_Client_FOUND:INTERNAL=1
-PKG_Wayland_Client_INCLUDEDIR:INTERNAL=/usr/include
-PKG_Wayland_Client_INCLUDE_DIRS:INTERNAL=/usr/include
-PKG_Wayland_Client_LDFLAGS:INTERNAL=-L/usr/lib;-lwayland-client;-lm
-PKG_Wayland_Client_LDFLAGS_OTHER:INTERNAL=
-PKG_Wayland_Client_LIBDIR:INTERNAL=/usr/lib
-PKG_Wayland_Client_LIBRARIES:INTERNAL=wayland-client;m
-PKG_Wayland_Client_LIBRARY_DIRS:INTERNAL=/usr/lib
-PKG_Wayland_Client_LIBS:INTERNAL=
-PKG_Wayland_Client_LIBS_L:INTERNAL=
-PKG_Wayland_Client_LIBS_OTHER:INTERNAL=
-PKG_Wayland_Client_LIBS_PATHS:INTERNAL=
-PKG_Wayland_Client_MODULE_NAME:INTERNAL=wayland-client
-PKG_Wayland_Client_PREFIX:INTERNAL=/usr
-PKG_Wayland_Client_STATIC_CFLAGS:INTERNAL=-I/usr/include
-PKG_Wayland_Client_STATIC_CFLAGS_I:INTERNAL=
-PKG_Wayland_Client_STATIC_CFLAGS_OTHER:INTERNAL=
-PKG_Wayland_Client_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include
-PKG_Wayland_Client_STATIC_LDFLAGS:INTERNAL=-L/usr/lib;-lwayland-client;-lm;-pthread;-lrt;-lffi
-PKG_Wayland_Client_STATIC_LDFLAGS_OTHER:INTERNAL=-pthread
-PKG_Wayland_Client_STATIC_LIBDIR:INTERNAL=
-PKG_Wayland_Client_STATIC_LIBRARIES:INTERNAL=wayland-client;m;rt;ffi
-PKG_Wayland_Client_STATIC_LIBRARY_DIRS:INTERNAL=/usr/lib
-PKG_Wayland_Client_STATIC_LIBS:INTERNAL=
-PKG_Wayland_Client_STATIC_LIBS_L:INTERNAL=
-PKG_Wayland_Client_STATIC_LIBS_OTHER:INTERNAL=
-PKG_Wayland_Client_STATIC_LIBS_PATHS:INTERNAL=
-PKG_Wayland_Client_VERSION:INTERNAL=1.24.0
-PKG_Wayland_Client_wayland-client_INCLUDEDIR:INTERNAL=
-PKG_Wayland_Client_wayland-client_LIBDIR:INTERNAL=
-PKG_Wayland_Client_wayland-client_PREFIX:INTERNAL=
-PKG_Wayland_Client_wayland-client_VERSION:INTERNAL=
-PKG_Wayland_Cursor_CFLAGS:INTERNAL=-I/usr/include
-PKG_Wayland_Cursor_CFLAGS_I:INTERNAL=
-PKG_Wayland_Cursor_CFLAGS_OTHER:INTERNAL=
-PKG_Wayland_Cursor_FOUND:INTERNAL=1
-PKG_Wayland_Cursor_INCLUDEDIR:INTERNAL=/usr/include
-PKG_Wayland_Cursor_INCLUDE_DIRS:INTERNAL=/usr/include
-PKG_Wayland_Cursor_LDFLAGS:INTERNAL=-L/usr/lib;-lwayland-cursor
-PKG_Wayland_Cursor_LDFLAGS_OTHER:INTERNAL=
-PKG_Wayland_Cursor_LIBDIR:INTERNAL=/usr/lib
-PKG_Wayland_Cursor_LIBRARIES:INTERNAL=wayland-cursor
-PKG_Wayland_Cursor_LIBRARY_DIRS:INTERNAL=/usr/lib
-PKG_Wayland_Cursor_LIBS:INTERNAL=
-PKG_Wayland_Cursor_LIBS_L:INTERNAL=
-PKG_Wayland_Cursor_LIBS_OTHER:INTERNAL=
-PKG_Wayland_Cursor_LIBS_PATHS:INTERNAL=
-PKG_Wayland_Cursor_MODULE_NAME:INTERNAL=wayland-cursor
-PKG_Wayland_Cursor_PREFIX:INTERNAL=/usr
-PKG_Wayland_Cursor_STATIC_CFLAGS:INTERNAL=-I/usr/include
-PKG_Wayland_Cursor_STATIC_CFLAGS_I:INTERNAL=
-PKG_Wayland_Cursor_STATIC_CFLAGS_OTHER:INTERNAL=
-PKG_Wayland_Cursor_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include
-PKG_Wayland_Cursor_STATIC_LDFLAGS:INTERNAL=-L/usr/lib;-lwayland-cursor;-lwayland-client;-lm;-pthread;-lrt;-lffi
-PKG_Wayland_Cursor_STATIC_LDFLAGS_OTHER:INTERNAL=-pthread
-PKG_Wayland_Cursor_STATIC_LIBDIR:INTERNAL=
-PKG_Wayland_Cursor_STATIC_LIBRARIES:INTERNAL=wayland-cursor;wayland-client;m;rt;ffi
-PKG_Wayland_Cursor_STATIC_LIBRARY_DIRS:INTERNAL=/usr/lib
-PKG_Wayland_Cursor_STATIC_LIBS:INTERNAL=
-PKG_Wayland_Cursor_STATIC_LIBS_L:INTERNAL=
-PKG_Wayland_Cursor_STATIC_LIBS_OTHER:INTERNAL=
-PKG_Wayland_Cursor_STATIC_LIBS_PATHS:INTERNAL=
-PKG_Wayland_Cursor_VERSION:INTERNAL=1.24.0
-PKG_Wayland_Cursor_wayland-cursor_INCLUDEDIR:INTERNAL=
-PKG_Wayland_Cursor_wayland-cursor_LIBDIR:INTERNAL=
-PKG_Wayland_Cursor_wayland-cursor_PREFIX:INTERNAL=
-PKG_Wayland_Cursor_wayland-cursor_VERSION:INTERNAL=
-PKG_Wayland_Egl_CFLAGS:INTERNAL=-I/usr/include
-PKG_Wayland_Egl_CFLAGS_I:INTERNAL=
-PKG_Wayland_Egl_CFLAGS_OTHER:INTERNAL=
-PKG_Wayland_Egl_FOUND:INTERNAL=1
-PKG_Wayland_Egl_INCLUDEDIR:INTERNAL=/usr/include
-PKG_Wayland_Egl_INCLUDE_DIRS:INTERNAL=/usr/include
-PKG_Wayland_Egl_LDFLAGS:INTERNAL=-L/usr/lib;-lwayland-egl;-lwayland-client;-lm
-PKG_Wayland_Egl_LDFLAGS_OTHER:INTERNAL=
-PKG_Wayland_Egl_LIBDIR:INTERNAL=/usr/lib
-PKG_Wayland_Egl_LIBRARIES:INTERNAL=wayland-egl;wayland-client;m
-PKG_Wayland_Egl_LIBRARY_DIRS:INTERNAL=/usr/lib
-PKG_Wayland_Egl_LIBS:INTERNAL=
-PKG_Wayland_Egl_LIBS_L:INTERNAL=
-PKG_Wayland_Egl_LIBS_OTHER:INTERNAL=
-PKG_Wayland_Egl_LIBS_PATHS:INTERNAL=
-PKG_Wayland_Egl_MODULE_NAME:INTERNAL=wayland-egl
-PKG_Wayland_Egl_PREFIX:INTERNAL=/usr
-PKG_Wayland_Egl_STATIC_CFLAGS:INTERNAL=-I/usr/include
-PKG_Wayland_Egl_STATIC_CFLAGS_I:INTERNAL=
-PKG_Wayland_Egl_STATIC_CFLAGS_OTHER:INTERNAL=
-PKG_Wayland_Egl_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include
-PKG_Wayland_Egl_STATIC_LDFLAGS:INTERNAL=-L/usr/lib;-lwayland-egl;-lwayland-client;-lm;-pthread;-lrt;-lffi
-PKG_Wayland_Egl_STATIC_LDFLAGS_OTHER:INTERNAL=-pthread
-PKG_Wayland_Egl_STATIC_LIBDIR:INTERNAL=
-PKG_Wayland_Egl_STATIC_LIBRARIES:INTERNAL=wayland-egl;wayland-client;m;rt;ffi
-PKG_Wayland_Egl_STATIC_LIBRARY_DIRS:INTERNAL=/usr/lib
-PKG_Wayland_Egl_STATIC_LIBS:INTERNAL=
-PKG_Wayland_Egl_STATIC_LIBS_L:INTERNAL=
-PKG_Wayland_Egl_STATIC_LIBS_OTHER:INTERNAL=
-PKG_Wayland_Egl_STATIC_LIBS_PATHS:INTERNAL=
-PKG_Wayland_Egl_VERSION:INTERNAL=18.1.0
-PKG_Wayland_Egl_wayland-egl_INCLUDEDIR:INTERNAL=
-PKG_Wayland_Egl_wayland-egl_LIBDIR:INTERNAL=
-PKG_Wayland_Egl_wayland-egl_PREFIX:INTERNAL=
-PKG_Wayland_Egl_wayland-egl_VERSION:INTERNAL=
-PKG_Wayland_Server_CFLAGS:INTERNAL=-I/usr/include
-PKG_Wayland_Server_CFLAGS_I:INTERNAL=
-PKG_Wayland_Server_CFLAGS_OTHER:INTERNAL=
-PKG_Wayland_Server_FOUND:INTERNAL=1
-PKG_Wayland_Server_INCLUDEDIR:INTERNAL=/usr/include
-PKG_Wayland_Server_INCLUDE_DIRS:INTERNAL=/usr/include
-PKG_Wayland_Server_LDFLAGS:INTERNAL=-L/usr/lib;-lwayland-server;-lm
-PKG_Wayland_Server_LDFLAGS_OTHER:INTERNAL=
-PKG_Wayland_Server_LIBDIR:INTERNAL=/usr/lib
-PKG_Wayland_Server_LIBRARIES:INTERNAL=wayland-server;m
-PKG_Wayland_Server_LIBRARY_DIRS:INTERNAL=/usr/lib
-PKG_Wayland_Server_LIBS:INTERNAL=
-PKG_Wayland_Server_LIBS_L:INTERNAL=
-PKG_Wayland_Server_LIBS_OTHER:INTERNAL=
-PKG_Wayland_Server_LIBS_PATHS:INTERNAL=
-PKG_Wayland_Server_MODULE_NAME:INTERNAL=wayland-server
-PKG_Wayland_Server_PREFIX:INTERNAL=/usr
-PKG_Wayland_Server_STATIC_CFLAGS:INTERNAL=-I/usr/include
-PKG_Wayland_Server_STATIC_CFLAGS_I:INTERNAL=
-PKG_Wayland_Server_STATIC_CFLAGS_OTHER:INTERNAL=
-PKG_Wayland_Server_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include
-PKG_Wayland_Server_STATIC_LDFLAGS:INTERNAL=-L/usr/lib;-lwayland-server;-lm;-pthread;-lrt;-lffi
-PKG_Wayland_Server_STATIC_LDFLAGS_OTHER:INTERNAL=-pthread
-PKG_Wayland_Server_STATIC_LIBDIR:INTERNAL=
-PKG_Wayland_Server_STATIC_LIBRARIES:INTERNAL=wayland-server;m;rt;ffi
-PKG_Wayland_Server_STATIC_LIBRARY_DIRS:INTERNAL=/usr/lib
-PKG_Wayland_Server_STATIC_LIBS:INTERNAL=
-PKG_Wayland_Server_STATIC_LIBS_L:INTERNAL=
-PKG_Wayland_Server_STATIC_LIBS_OTHER:INTERNAL=
-PKG_Wayland_Server_STATIC_LIBS_PATHS:INTERNAL=
-PKG_Wayland_Server_VERSION:INTERNAL=1.24.0
-PKG_Wayland_Server_wayland-server_INCLUDEDIR:INTERNAL=
-PKG_Wayland_Server_wayland-server_LIBDIR:INTERNAL=
-PKG_Wayland_Server_wayland-server_PREFIX:INTERNAL=
-PKG_Wayland_Server_wayland-server_VERSION:INTERNAL=
 //Qt feature: accept4 (from target Qt6::Core)
 QT_FEATURE_accept4:INTERNAL=ON
 //Qt feature: accessibility (from target Qt6::Gui)
@@ -1725,58 +1490,207 @@ Vulkan_GLSLC_EXECUTABLE-ADVANCED:INTERNAL=1
 Vulkan_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: Vulkan_LIBRARY
 Vulkan_LIBRARY-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: WaylandScanner_EXECUTABLE
-WaylandScanner_EXECUTABLE-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: Wayland_Client_INCLUDE_DIR
-Wayland_Client_INCLUDE_DIR-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: Wayland_Client_LIBRARY
-Wayland_Client_LIBRARY-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: Wayland_Cursor_INCLUDE_DIR
-Wayland_Cursor_INCLUDE_DIR-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: Wayland_Cursor_LIBRARY
-Wayland_Cursor_LIBRARY-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: Wayland_Egl_INCLUDE_DIR
-Wayland_Egl_INCLUDE_DIR-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: Wayland_Egl_LIBRARY
-Wayland_Egl_LIBRARY-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: Wayland_Server_INCLUDE_DIR
-Wayland_Server_INCLUDE_DIR-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: Wayland_Server_LIBRARY
-Wayland_Server_LIBRARY-ADVANCED:INTERNAL=1
+X11_CFLAGS:INTERNAL=-I/usr/include
+X11_CFLAGS_I:INTERNAL=
+X11_CFLAGS_OTHER:INTERNAL=
+X11_FOUND:INTERNAL=1
+X11_INCLUDEDIR:INTERNAL=/usr/include
+X11_INCLUDE_DIRS:INTERNAL=/usr/include
+X11_LDFLAGS:INTERNAL=-L/usr/lib;-lX11
+X11_LDFLAGS_OTHER:INTERNAL=
+X11_LIBDIR:INTERNAL=/usr/lib
+X11_LIBRARIES:INTERNAL=X11
+X11_LIBRARY_DIRS:INTERNAL=/usr/lib
+X11_LIBS:INTERNAL=
+X11_LIBS_L:INTERNAL=
+X11_LIBS_OTHER:INTERNAL=
+X11_LIBS_PATHS:INTERNAL=
+X11_MODULE_NAME:INTERNAL=x11
+X11_PREFIX:INTERNAL=/usr
+X11_STATIC_CFLAGS:INTERNAL=-I/usr/include
+X11_STATIC_CFLAGS_I:INTERNAL=
+X11_STATIC_CFLAGS_OTHER:INTERNAL=
+X11_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include
+X11_STATIC_LDFLAGS:INTERNAL=-L/usr/lib;-lX11;-lpthread;-lxcb;-lXau;-lXdmcp
+X11_STATIC_LDFLAGS_OTHER:INTERNAL=
+X11_STATIC_LIBDIR:INTERNAL=
+X11_STATIC_LIBRARIES:INTERNAL=X11;pthread;xcb;Xau;Xdmcp
+X11_STATIC_LIBRARY_DIRS:INTERNAL=/usr/lib
+X11_STATIC_LIBS:INTERNAL=
+X11_STATIC_LIBS_L:INTERNAL=
+X11_STATIC_LIBS_OTHER:INTERNAL=
+X11_STATIC_LIBS_PATHS:INTERNAL=
+X11_VERSION:INTERNAL=1.8.12
+X11_x11_INCLUDEDIR:INTERNAL=
+X11_x11_LIBDIR:INTERNAL=
+X11_x11_PREFIX:INTERNAL=
+X11_x11_VERSION:INTERNAL=
+XCB_CFLAGS:INTERNAL=-I/usr/include
+XCB_CFLAGS_I:INTERNAL=
+XCB_CFLAGS_OTHER:INTERNAL=
+XCB_FOUND:INTERNAL=1
+XCB_INCLUDEDIR:INTERNAL=/usr/include
+XCB_INCLUDE_DIRS:INTERNAL=/usr/include
+XCB_LDFLAGS:INTERNAL=-L/usr/lib;-lxcb
+XCB_LDFLAGS_OTHER:INTERNAL=
+XCB_LIBDIR:INTERNAL=/usr/lib
+XCB_LIBRARIES:INTERNAL=xcb
+XCB_LIBRARY_DIRS:INTERNAL=/usr/lib
+XCB_LIBS:INTERNAL=
+XCB_LIBS_L:INTERNAL=
+XCB_LIBS_OTHER:INTERNAL=
+XCB_LIBS_PATHS:INTERNAL=
+XCB_MODULE_NAME:INTERNAL=xcb
+XCB_PREFIX:INTERNAL=/usr
+XCB_STATIC_CFLAGS:INTERNAL=-I/usr/include
+XCB_STATIC_CFLAGS_I:INTERNAL=
+XCB_STATIC_CFLAGS_OTHER:INTERNAL=
+XCB_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include
+XCB_STATIC_LDFLAGS:INTERNAL=-L/usr/lib;-lxcb;-lXau;-lXdmcp
+XCB_STATIC_LDFLAGS_OTHER:INTERNAL=
+XCB_STATIC_LIBDIR:INTERNAL=
+XCB_STATIC_LIBRARIES:INTERNAL=xcb;Xau;Xdmcp
+XCB_STATIC_LIBRARY_DIRS:INTERNAL=/usr/lib
+XCB_STATIC_LIBS:INTERNAL=
+XCB_STATIC_LIBS_L:INTERNAL=
+XCB_STATIC_LIBS_OTHER:INTERNAL=
+XCB_STATIC_LIBS_PATHS:INTERNAL=
+XCB_VERSION:INTERNAL=1.17.0
+XCB_xcb_INCLUDEDIR:INTERNAL=
+XCB_xcb_LIBDIR:INTERNAL=
+XCB_xcb_PREFIX:INTERNAL=
+XCB_xcb_VERSION:INTERNAL=
+XComposite_CFLAGS:INTERNAL=-I/usr/include
+XComposite_CFLAGS_I:INTERNAL=
+XComposite_CFLAGS_OTHER:INTERNAL=
+XComposite_FOUND:INTERNAL=1
+XComposite_INCLUDEDIR:INTERNAL=/usr/include
+XComposite_INCLUDE_DIRS:INTERNAL=/usr/include
+XComposite_LDFLAGS:INTERNAL=-L/usr/lib;-lXcomposite
+XComposite_LDFLAGS_OTHER:INTERNAL=
+XComposite_LIBDIR:INTERNAL=/usr/lib
+XComposite_LIBRARIES:INTERNAL=Xcomposite
+XComposite_LIBRARY_DIRS:INTERNAL=/usr/lib
+XComposite_LIBS:INTERNAL=
+XComposite_LIBS_L:INTERNAL=
+XComposite_LIBS_OTHER:INTERNAL=
+XComposite_LIBS_PATHS:INTERNAL=
+XComposite_MODULE_NAME:INTERNAL=xcomposite
+XComposite_PREFIX:INTERNAL=/usr
+XComposite_STATIC_CFLAGS:INTERNAL=-I/usr/include
+XComposite_STATIC_CFLAGS_I:INTERNAL=
+XComposite_STATIC_CFLAGS_OTHER:INTERNAL=
+XComposite_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include
+XComposite_STATIC_LDFLAGS:INTERNAL=-L/usr/lib;-lXcomposite;-lXfixes;-lX11;-lpthread;-lxcb;-lXau;-lXdmcp
+XComposite_STATIC_LDFLAGS_OTHER:INTERNAL=
+XComposite_STATIC_LIBDIR:INTERNAL=
+XComposite_STATIC_LIBRARIES:INTERNAL=Xcomposite;Xfixes;X11;pthread;xcb;Xau;Xdmcp
+XComposite_STATIC_LIBRARY_DIRS:INTERNAL=/usr/lib
+XComposite_STATIC_LIBS:INTERNAL=
+XComposite_STATIC_LIBS_L:INTERNAL=
+XComposite_STATIC_LIBS_OTHER:INTERNAL=
+XComposite_STATIC_LIBS_PATHS:INTERNAL=
+XComposite_VERSION:INTERNAL=0.4.6
+XComposite_xcomposite_INCLUDEDIR:INTERNAL=
+XComposite_xcomposite_LIBDIR:INTERNAL=
+XComposite_xcomposite_PREFIX:INTERNAL=
+XComposite_xcomposite_VERSION:INTERNAL=
+XDamage_CFLAGS:INTERNAL=-I/usr/include
+XDamage_CFLAGS_I:INTERNAL=
+XDamage_CFLAGS_OTHER:INTERNAL=
+XDamage_FOUND:INTERNAL=1
+XDamage_INCLUDEDIR:INTERNAL=/usr/include
+XDamage_INCLUDE_DIRS:INTERNAL=/usr/include
+XDamage_LDFLAGS:INTERNAL=-L/usr/lib;-lXdamage;-lXfixes
+XDamage_LDFLAGS_OTHER:INTERNAL=
+XDamage_LIBDIR:INTERNAL=/usr/lib
+XDamage_LIBRARIES:INTERNAL=Xdamage;Xfixes
+XDamage_LIBRARY_DIRS:INTERNAL=/usr/lib
+XDamage_LIBS:INTERNAL=
+XDamage_LIBS_L:INTERNAL=
+XDamage_LIBS_OTHER:INTERNAL=
+XDamage_LIBS_PATHS:INTERNAL=
+XDamage_MODULE_NAME:INTERNAL=xdamage
+XDamage_PREFIX:INTERNAL=/usr
+XDamage_STATIC_CFLAGS:INTERNAL=-I/usr/include
+XDamage_STATIC_CFLAGS_I:INTERNAL=
+XDamage_STATIC_CFLAGS_OTHER:INTERNAL=
+XDamage_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include
+XDamage_STATIC_LDFLAGS:INTERNAL=-L/usr/lib;-lXdamage;-lXfixes;-lX11;-lpthread;-lxcb;-lXau;-lXdmcp
+XDamage_STATIC_LDFLAGS_OTHER:INTERNAL=
+XDamage_STATIC_LIBDIR:INTERNAL=
+XDamage_STATIC_LIBRARIES:INTERNAL=Xdamage;Xfixes;X11;pthread;xcb;Xau;Xdmcp
+XDamage_STATIC_LIBRARY_DIRS:INTERNAL=/usr/lib
+XDamage_STATIC_LIBS:INTERNAL=
+XDamage_STATIC_LIBS_L:INTERNAL=
+XDamage_STATIC_LIBS_OTHER:INTERNAL=
+XDamage_STATIC_LIBS_PATHS:INTERNAL=
+XDamage_VERSION:INTERNAL=1.1.6
+XDamage_xdamage_INCLUDEDIR:INTERNAL=
+XDamage_xdamage_LIBDIR:INTERNAL=
+XDamage_xdamage_PREFIX:INTERNAL=
+XDamage_xdamage_VERSION:INTERNAL=
+XRender_CFLAGS:INTERNAL=-I/usr/include
+XRender_CFLAGS_I:INTERNAL=
+XRender_CFLAGS_OTHER:INTERNAL=
+XRender_FOUND:INTERNAL=1
+XRender_INCLUDEDIR:INTERNAL=/usr/include
+XRender_INCLUDE_DIRS:INTERNAL=/usr/include
+XRender_LDFLAGS:INTERNAL=-L/usr/lib;-lXrender;-lX11
+XRender_LDFLAGS_OTHER:INTERNAL=
+XRender_LIBDIR:INTERNAL=/usr/lib
+XRender_LIBRARIES:INTERNAL=Xrender;X11
+XRender_LIBRARY_DIRS:INTERNAL=/usr/lib
+XRender_LIBS:INTERNAL=
+XRender_LIBS_L:INTERNAL=
+XRender_LIBS_OTHER:INTERNAL=
+XRender_LIBS_PATHS:INTERNAL=
+XRender_MODULE_NAME:INTERNAL=xrender
+XRender_PREFIX:INTERNAL=/usr
+XRender_STATIC_CFLAGS:INTERNAL=-I/usr/include
+XRender_STATIC_CFLAGS_I:INTERNAL=
+XRender_STATIC_CFLAGS_OTHER:INTERNAL=
+XRender_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include
+XRender_STATIC_LDFLAGS:INTERNAL=-L/usr/lib;-lXrender;-lX11;-lpthread;-lxcb;-lXau;-lXdmcp
+XRender_STATIC_LDFLAGS_OTHER:INTERNAL=
+XRender_STATIC_LIBDIR:INTERNAL=
+XRender_STATIC_LIBRARIES:INTERNAL=Xrender;X11;pthread;xcb;Xau;Xdmcp
+XRender_STATIC_LIBRARY_DIRS:INTERNAL=/usr/lib
+XRender_STATIC_LIBS:INTERNAL=
+XRender_STATIC_LIBS_L:INTERNAL=
+XRender_STATIC_LIBS_OTHER:INTERNAL=
+XRender_STATIC_LIBS_PATHS:INTERNAL=
+XRender_VERSION:INTERNAL=0.9.12
+XRender_xrender_INCLUDEDIR:INTERNAL=
+XRender_xrender_LIBDIR:INTERNAL=
+XRender_xrender_PREFIX:INTERNAL=
+XRender_xrender_VERSION:INTERNAL=
 //CMAKE_INSTALL_PREFIX during last run
 _GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=/usr/local
-__pkg_config_arguments_KWAYLAND:INTERNAL=REQUIRED;IMPORTED_TARGET;KWaylandClient
-__pkg_config_arguments_PKG_Wayland_Client:INTERNAL=QUIET;wayland-client
-__pkg_config_arguments_PKG_Wayland_Cursor:INTERNAL=QUIET;wayland-cursor
-__pkg_config_arguments_PKG_Wayland_Egl:INTERNAL=QUIET;wayland-egl
-__pkg_config_arguments_PKG_Wayland_Server:INTERNAL=QUIET;wayland-server
-__pkg_config_checked_KWAYLAND:INTERNAL=1
-__pkg_config_checked_PKG_Wayland_Client:INTERNAL=1
-__pkg_config_checked_PKG_Wayland_Cursor:INTERNAL=1
-__pkg_config_checked_PKG_Wayland_Egl:INTERNAL=1
-__pkg_config_checked_PKG_Wayland_Server:INTERNAL=1
+__pkg_config_arguments_X11:INTERNAL=REQUIRED;IMPORTED_TARGET;x11
+__pkg_config_arguments_XCB:INTERNAL=REQUIRED;IMPORTED_TARGET;xcb
+__pkg_config_arguments_XComposite:INTERNAL=REQUIRED;IMPORTED_TARGET;xcomposite
+__pkg_config_arguments_XDamage:INTERNAL=REQUIRED;IMPORTED_TARGET;xdamage
+__pkg_config_arguments_XRender:INTERNAL=REQUIRED;IMPORTED_TARGET;xrender
+__pkg_config_checked_X11:INTERNAL=1
+__pkg_config_checked_XCB:INTERNAL=1
+__pkg_config_checked_XComposite:INTERNAL=1
+__pkg_config_checked_XDamage:INTERNAL=1
+__pkg_config_checked_XRender:INTERNAL=1
 __qt_qml_macros_module_base_dir:INTERNAL=/usr/lib/cmake/Qt6Qml
-//ADVANCED property for variable: pkgcfg_lib_KWAYLAND_KWaylandClient
-pkgcfg_lib_KWAYLAND_KWaylandClient-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_KWAYLAND_Qt6Core
-pkgcfg_lib_KWAYLAND_Qt6Core-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_KWAYLAND_Qt6Gui
-pkgcfg_lib_KWAYLAND_Qt6Gui-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_PKG_Wayland_Client_m
-pkgcfg_lib_PKG_Wayland_Client_m-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_PKG_Wayland_Client_wayland-client
-pkgcfg_lib_PKG_Wayland_Client_wayland-client-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_PKG_Wayland_Cursor_wayland-cursor
-pkgcfg_lib_PKG_Wayland_Cursor_wayland-cursor-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_PKG_Wayland_Egl_m
-pkgcfg_lib_PKG_Wayland_Egl_m-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_PKG_Wayland_Egl_wayland-client
-pkgcfg_lib_PKG_Wayland_Egl_wayland-client-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_PKG_Wayland_Egl_wayland-egl
-pkgcfg_lib_PKG_Wayland_Egl_wayland-egl-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_PKG_Wayland_Server_m
-pkgcfg_lib_PKG_Wayland_Server_m-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_PKG_Wayland_Server_wayland-server
-pkgcfg_lib_PKG_Wayland_Server_wayland-server-ADVANCED:INTERNAL=1
-prefix_result:INTERNAL=/usr/bin/wayland-scanner
+//ADVANCED property for variable: pkgcfg_lib_X11_X11
+pkgcfg_lib_X11_X11-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_XCB_xcb
+pkgcfg_lib_XCB_xcb-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_XComposite_Xcomposite
+pkgcfg_lib_XComposite_Xcomposite-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_XDamage_Xdamage
+pkgcfg_lib_XDamage_Xdamage-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_XDamage_Xfixes
+pkgcfg_lib_XDamage_Xfixes-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_XRender_X11
+pkgcfg_lib_XRender_X11-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_XRender_Xrender
+pkgcfg_lib_XRender_Xrender-ADVANCED:INTERNAL=1
+prefix_result:INTERNAL=/usr/lib
 

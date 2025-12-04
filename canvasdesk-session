@@ -1,7 +1,7 @@
 #!/bin/bash
 # CanvasDesk Session Wrapper
 # This script launches CanvasDesk as a desktop environment.
-# If no display server is running, it starts wayfire compositor first.
+# CanvasDesk includes its own X11 window manager, so no external WM is needed.
 
 # Get the directory where this script is located
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -21,76 +21,36 @@ echo "Debug log will be saved to: $LOG_FILE"
 # When installed system-wide, this will be in /usr/bin or similar
 CANVASDESK_BIN="${SCRIPT_DIR}/build/canvasdesk"
 
-# Check if we need to start a compositor
-COMPOSITOR_PID=""
+# Debug: Print environment
+echo "Environment check:"
+echo "  DISPLAY=$DISPLAY"
+echo "  XDG_SESSION_TYPE=$XDG_SESSION_TYPE"
+echo "  USER=$USER"
+echo ""
 
-if [ -z "$WAYLAND_DISPLAY" ] && [ -z "$DISPLAY" ]; then
-    echo "No display server detected, starting wayfire compositor..."
-
-    # Set cursor theme for Wayfire and clients
-    export XCURSOR_THEME=Adwaita
-    export XCURSOR_SIZE=24
-
-    # Check if wayfire is installed
-    if ! command -v wayfire &> /dev/null; then
-        echo "ERROR: wayfire compositor not found!"
-        echo "Please install it: sudo pacman -S wayfire"
-        exit 1
-    fi
-
-    # Start wayfire in the background
-    wayfire -c "${SCRIPT_DIR}/config/wayfire.ini" &
-    COMPOSITOR_PID=$!
-
-    # Give the compositor time to start
-    sleep 2
-
-    # Detect which Wayland socket wayfire created
-    # Check XDG_RUNTIME_DIR for wayland-* sockets created in the last 5 seconds
-    RUNTIME_DIR="${XDG_RUNTIME_DIR:-/run/user/$(id -u)}"
-    DETECTED_DISPLAY=$(find "$RUNTIME_DIR" -maxdepth 1 -name "wayland-*" -type s -newermt "5 seconds ago" 2>/dev/null | head -1 | xargs basename 2>/dev/null)
-
-    if [ -n "$DETECTED_DISPLAY" ]; then
-        export WAYLAND_DISPLAY="$DETECTED_DISPLAY"
-        echo "Detected Wayland display: $WAYLAND_DISPLAY"
-    else
-        # Fallback: try wayland-0, wayland-1, etc.
-        for i in {0..5}; do
-            if [ -S "$RUNTIME_DIR/wayland-$i" ]; then
-                export WAYLAND_DISPLAY="wayland-$i"
-                echo "Found Wayland display: $WAYLAND_DISPLAY"
-                break
-            fi
-        done
-    fi
-
-    if [ -z "$WAYLAND_DISPLAY" ]; then
-        echo "ERROR: Could not detect Wayland display socket!"
-        kill $COMPOSITOR_PID 2>/dev/null
-        exit 1
-    fi
-
-    # Tell CanvasDesk we're running as a full desktop session
-    export CANVASDESK_SESSION_MODE=1
-
-    echo "Compositor started with PID: $COMPOSITOR_PID"
-else
-    echo "Display server already running (WAYLAND_DISPLAY=$WAYLAND_DISPLAY, DISPLAY=$DISPLAY)"
+# Ensure DISPLAY is set (should be set by display manager)
+if [ -z "$DISPLAY" ]; then
+  echo "ERROR: DISPLAY environment variable not set!"
+  echo "This script should be launched by a display manager (SDDM/GDM) which starts X server."
+  exit 1
 fi
 
-# Set Qt platform to Wayland
-export QT_QPA_PLATFORM=wayland
+# Set cursor theme
+export XCURSOR_THEME=Adwaita
+export XCURSOR_SIZE=24
 
-# Launch CanvasDesk
-echo "Starting CanvasDesk..."
+# Set Qt platform to X11
+export QT_QPA_PLATFORM=xcb
+
+# Tell CanvasDesk we're running as a full desktop session
+export CANVASDESK_SESSION_MODE=1
+
+# Set XDG session type
+export XDG_SESSION_TYPE=x11
+
+# Launch CanvasDesk - it will act as the X11 window manager
+echo "Starting CanvasDesk X11 session..."
 "$CANVASDESK_BIN" --runtime
-
-# If we started a compositor, kill it when CanvasDesk exits
-if [ -n "$COMPOSITOR_PID" ]; then
-    echo "Stopping compositor (PID: $COMPOSITOR_PID)..."
-    kill $COMPOSITOR_PID 2>/dev/null
-    wait $COMPOSITOR_PID 2>/dev/null
-fi
 
 echo "CanvasDesk session ended."
 echo ""

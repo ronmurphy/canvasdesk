@@ -8,16 +8,15 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Core Gui Qml Quick WaylandClient)
-find_package(Wayland REQUIRED COMPONENTS Client)
-find_package(WaylandScanner REQUIRED)
-
-# Add KWayland for Plasma window management
+find_package(Qt6 REQUIRED COMPONENTS Core Gui Qml Quick)
 find_package(PkgConfig REQUIRED)
-pkg_check_modules(KWAYLAND REQUIRED IMPORTED_TARGET KWaylandClient)
 
-# Find wayland-scanner
-pkg_get_variable(WAYLAND_SCANNER wayland-scanner wayland_scanner)
+# X11 libraries for window management
+pkg_check_modules(X11 REQUIRED IMPORTED_TARGET x11)
+pkg_check_modules(XCB REQUIRED IMPORTED_TARGET xcb)
+pkg_check_modules(XComposite REQUIRED IMPORTED_TARGET xcomposite)
+pkg_check_modules(XRender REQUIRED IMPORTED_TARGET xrender)
+pkg_check_modules(XDamage REQUIRED IMPORTED_TARGET xdamage)
 
 if(POLICY QTP0001)
     qt_policy(SET QTP0001 NEW)

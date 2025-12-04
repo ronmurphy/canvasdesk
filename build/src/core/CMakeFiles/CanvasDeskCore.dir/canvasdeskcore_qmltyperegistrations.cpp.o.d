@@ -400,24 +400,4 @@ src/core/CMakeFiles/CanvasDeskCore.dir/canvasdeskcore_qmltyperegistrations.cpp.o
  /home/brad/Documents/canvasdesk/src/core/LayoutManager.h \
  /usr/include/qt6/QtCore/QString \
  /home/brad/Documents/canvasdesk/src/core/WindowManager.h \
- /usr/include/qt6/QtCore/QHash /usr/include/qt6/QtCore/qhash.h \
- /usr/include/KWayland/KWayland/Client/connection_thread.h \
- /usr/include/qt6/QtCore/QList \
- /usr/include/KWayland/KWayland/Client/kwaylandclient_export.h \
- /usr/include/KWayland/kwayland_version.h \
- /usr/include/KWayland/KWayland/Client/plasmawindowmanagement.h \
- /usr/include/qt6/QtGui/QIcon /usr/include/qt6/QtGui/qicon.h \
- /usr/include/qt6/QtGui/qtguiglobal.h \
- /usr/include/qt6/QtGui/qtgui-config.h \
- /usr/include/qt6/QtGui/qtguiexports.h /usr/include/qt6/QtCore/qsize.h \
- /usr/include/qt6/QtCore/qcheckedint_impl.h \
- /usr/include/qt6/QtCore/qmargins.h /usr/include/qt6/QtGui/qpixmap.h \
- /usr/include/qt6/QtGui/qpaintdevice.h \
- /usr/include/qt6/QtGui/qwindowdefs.h /usr/include/qt6/QtCore/qrect.h \
- /usr/include/qt6/QtCore/qpoint.h /usr/include/qt6/QtGui/qcolor.h \
- /usr/include/qt6/QtGui/qrgb.h /usr/include/qt6/QtGui/qrgba64.h \
- /usr/include/qt6/QtGui/qimage.h /usr/include/qt6/QtGui/qpixelformat.h \
- /usr/include/qt6/QtGui/qtransform.h /usr/include/qt6/QtGui/qpolygon.h \
- /usr/include/qt6/QtGui/qregion.h /usr/include/qt6/QtCore/qline.h \
- /usr/include/qt6/QtCore/QSize /usr/include/qt6/QtCore/qsize.h \
- /usr/include/KWayland/KWayland/Client/registry.h
+ /usr/include/qt6/QtCore/QHash /usr/include/qt6/QtCore/qhash.h

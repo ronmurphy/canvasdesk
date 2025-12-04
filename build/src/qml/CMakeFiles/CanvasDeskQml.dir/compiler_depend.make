@@ -1551,8 +1551,6 @@ src/qml/CMakeFiles/CanvasDeskQml.dir/canvasdeskqml_qmltyperegistrations.cpp.o: s
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/syslimits.h
 
 src/qml/libCanvasDeskQml.so: src/core/libCanvasDeskCore.so \
-  src/core/libext_protocol.a \
-  src/core/libwlr_protocol.a \
   /usr/lib/crti.o \
   /usr/lib/crtn.o \
   /usr/lib/libc.so \
@@ -1576,7 +1574,6 @@ src/qml/libCanvasDeskQml.so: src/core/libCanvasDeskCore.so \
   /usr/lib/libc_nonshared.a \
   /usr/lib/libm.so.6 \
   /usr/lib/libmvec.so.1 \
-  /usr/lib/libwayland-client.so \
   src/qml/CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_CanvasDeskQml_raw_qml_0.cpp.o \
   src/qml/CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp.o \
   src/qml/CMakeFiles/CanvasDeskQml.dir/.rcc/qmlcache/CanvasDeskQml_Main_qml.cpp.o \
@@ -1679,12 +1676,6 @@ src/qml/CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_CanvasDeskQml_raw_qml_0.cpp.o:
 
 /usr/include/c++/15.2.1/bits/ranges_util.h:
 
-/usr/lib/libc.so:
-
-/usr/include/c++/15.2.1/bits/basic_string.h:
-
-/usr/include/asm-generic/types.h:
-
 /usr/include/c++/15.2.1/bits/stl_heap.h:
 
 /usr/include/asm-generic/bitsperlong.h:
@@ -1736,8 +1727,6 @@ src/qml/CMakeFiles/CanvasDeskQml.dir/.qt/rcc/qrc_CanvasDeskQml_raw_qml_0.cpp.o:
 /usr/include/bits/cpu-set.h:
 
 /usr/include/c++/15.2.1/bits/refwrap.h:
-
-src/core/libext_protocol.a:
 
 /usr/include/c++/15.2.1/bits/basic_string.tcc:
 
@@ -1860,6 +1849,12 @@ src/qml/.qt/rcc/qrc_qmake_CanvasDeskRuntime.cpp:
 /usr/include/bits/pthreadtypes.h:
 
 /usr/include/c++/15.2.1/tr1/beta_function.tcc:
+
+/usr/include/c++/15.2.1/bits/basic_string.h:
+
+/usr/include/asm-generic/types.h:
+
+/usr/lib/libc.so:
 
 /usr/include/qt6/QtCore/qpointer.h:
 
@@ -2397,8 +2392,6 @@ src/qml/CMakeFiles/CanvasDeskQml.dir/canvasdeskqml_qmltyperegistrations.cpp.o:
 
 /usr/include/qt6/QtCore/qtversionchecks.h:
 
-/usr/lib/libwayland-client.so:
-
 /usr/include/qt6/QtCore/qtconfigmacros.h:
 
 /usr/include/gnu/stubs.h:
@@ -2722,5 +2715,3 @@ src/qml/.rcc/qmlcache/CanvasDeskQml_qmlcache_loader.cpp:
 /usr/include/qt6/QtCore/qfile.h:
 
 /usr/include/qt6/QtCore/qfileinfo.h:
-
-src/core/libwlr_protocol.a:

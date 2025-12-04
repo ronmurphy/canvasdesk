@@ -46,13 +46,6 @@ template <> constexpr inline auto WindowManager::qt_create_metaobjectdata<qt_met
         "windowsChanged",
         "",
         "currentWorkspaceChanged",
-        "setupPlasmaWindowManagement",
-        "name",
-        "version",
-        "onWindowCreated",
-        "KWayland::Client::PlasmaWindow*",
-        "window",
-        "onWindowUnmapped",
         "activate",
         "id",
         "close",
@@ -73,44 +66,34 @@ template <> constexpr inline auto WindowManager::qt_create_metaobjectdata<qt_met
         QtMocHelpers::SignalData<void()>(5, 6, QMC::AccessPublic, QMetaType::Void),
         // Signal 'currentWorkspaceChanged'
         QtMocHelpers::SignalData<void()>(7, 6, QMC::AccessPublic, QMetaType::Void),
-        // Slot 'setupPlasmaWindowManagement'
-        QtMocHelpers::SlotData<void(quint32, quint32)>(8, 6, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::UInt, 9 }, { QMetaType::UInt, 10 },
-        }}),
-        // Slot 'onWindowCreated'
-        QtMocHelpers::SlotData<void(KWayland::Client::PlasmaWindow *)>(11, 6, QMC::AccessPrivate, QMetaType::Void, {{
-            { 0x80000000 | 12, 13 },
-        }}),
-        // Slot 'onWindowUnmapped'
-        QtMocHelpers::SlotData<void()>(14, 6, QMC::AccessPrivate, QMetaType::Void),
         // Method 'activate'
-        QtMocHelpers::MethodData<void(int)>(15, 6, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::Int, 16 },
+        QtMocHelpers::MethodData<void(int)>(8, 6, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Int, 9 },
         }}),
         // Method 'close'
-        QtMocHelpers::MethodData<void(int)>(17, 6, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::Int, 16 },
+        QtMocHelpers::MethodData<void(int)>(10, 6, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Int, 9 },
         }}),
         // Method 'minimize'
-        QtMocHelpers::MethodData<void(int)>(18, 6, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::Int, 16 },
+        QtMocHelpers::MethodData<void(int)>(11, 6, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Int, 9 },
         }}),
         // Method 'switchToWorkspace'
-        QtMocHelpers::MethodData<void(int)>(19, 6, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::Int, 20 },
+        QtMocHelpers::MethodData<void(int)>(12, 6, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Int, 13 },
         }}),
         // Method 'moveWindowToWorkspace'
-        QtMocHelpers::MethodData<void(int, int)>(21, 6, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::Int, 22 }, { QMetaType::Int, 23 },
+        QtMocHelpers::MethodData<void(int, int)>(14, 6, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Int, 15 }, { QMetaType::Int, 16 },
         }}),
     };
     QtMocHelpers::UintData qt_properties {
         // property 'windows'
-        QtMocHelpers::PropertyData<QVariantList>(24, 0x80000000 | 25, QMC::DefaultPropertyFlags | QMC::EnumOrFlag, 0),
+        QtMocHelpers::PropertyData<QVariantList>(17, 0x80000000 | 18, QMC::DefaultPropertyFlags | QMC::EnumOrFlag, 0),
         // property 'currentWorkspace'
-        QtMocHelpers::PropertyData<int>(26, QMetaType::Int, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 1),
+        QtMocHelpers::PropertyData<int>(19, QMetaType::Int, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 1),
         // property 'workspaceCount'
-        QtMocHelpers::PropertyData<int>(27, QMetaType::Int, QMC::DefaultPropertyFlags | QMC::Constant),
+        QtMocHelpers::PropertyData<int>(20, QMetaType::Int, QMC::DefaultPropertyFlags | QMC::Constant),
     };
     QtMocHelpers::UintData qt_enums {
     };
@@ -139,27 +122,12 @@ void WindowManager::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         switch (_id) {
         case 0: _t->windowsChanged(); break;
         case 1: _t->currentWorkspaceChanged(); break;
-        case 2: _t->setupPlasmaWindowManagement((*reinterpret_cast<std::add_pointer_t<quint32>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<quint32>>(_a[2]))); break;
-        case 3: _t->onWindowCreated((*reinterpret_cast<std::add_pointer_t<KWayland::Client::PlasmaWindow*>>(_a[1]))); break;
-        case 4: _t->onWindowUnmapped(); break;
-        case 5: _t->activate((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
-        case 6: _t->close((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
-        case 7: _t->minimize((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
-        case 8: _t->switchToWorkspace((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
-        case 9: _t->moveWindowToWorkspace((*reinterpret_cast<std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<int>>(_a[2]))); break;
+        case 2: _t->activate((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
+        case 3: _t->close((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
+        case 4: _t->minimize((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
+        case 5: _t->switchToWorkspace((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
+        case 6: _t->moveWindowToWorkspace((*reinterpret_cast<std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<int>>(_a[2]))); break;
         default: ;
-        }
-    }
-    if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        switch (_id) {
-        default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
-        case 3:
-            switch (*reinterpret_cast<int*>(_a[1])) {
-            default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
-            case 0:
-                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< KWayland::Client::PlasmaWindow* >(); break;
-            }
-            break;
         }
     }
     if (_c == QMetaObject::IndexOfMethod) {
@@ -205,14 +173,14 @@ int WindowManager::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 10)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 10;
+        _id -= 7;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 10)
-            qt_static_metacall(this, _c, _id, _a);
-        _id -= 10;
+        if (_id < 7)
+            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
+        _id -= 7;
     }
     if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty
             || _c == QMetaObject::ResetProperty || _c == QMetaObject::BindableProperty
