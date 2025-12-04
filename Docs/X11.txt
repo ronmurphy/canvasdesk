@@ -78,11 +78,23 @@
 ✅ Middle-click to close from taskbar
 ✅ Clean geometric button icons (no fonts)
 ✅ Theme-aware titlebar colors
+✅ App icons in titlebars (16x16, themed alpha blending)
+
+9. **App Icons in Titlebar** ✅ (Added later in session)
+   - Retrieves _NET_WM_ICON from X11 window properties
+   - Scales to 16x16 using nearest-neighbor interpolation
+   - Converts ARGB to RGB with alpha blending
+   - Blends transparent pixels with titlebar left color (matches gradient)
+   - Positioned on left side with PADDING
+   - Text automatically adjusts to prevent overlap
+   - Pixmaps properly freed on frame destruction
 
 ### TODO - Next Session:
-- [ ] Add app icons to titlebar (left side before title text)
-- [ ] Get icon from X11 window properties or desktop file
-- [ ] Render icon as small pixmap (16x16 or 24x24)
+- [ ] Add icons to taskbar QML
+- [ ] Create "atom" QML components (minimal, icon-only versions)
+- [ ] Make panels orientation-aware (horizontal vs vertical)
+- [ ] Add more QML components (volume, calendar, etc.)
+- [ ] Begin dogfooding (using CanvasDesk as daily DE)
 
 ### Build Status:
 ✅ All features tested and working
