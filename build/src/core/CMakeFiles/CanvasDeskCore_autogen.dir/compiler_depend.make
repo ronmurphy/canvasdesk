@@ -18,21 +18,9 @@ src/core/CanvasDeskCore_autogen/timestamp: src/core/CanvasDeskCore_autogen/moc_p
   /home/brad/Documents/canvasdesk/src/core/X11WindowManager.h \
   /usr/bin/cmake \
   /usr/include/X11/X.h \
-  /usr/include/X11/Xdefs.h \
   /usr/include/X11/Xfuncproto.h \
   /usr/include/X11/Xlib.h \
   /usr/include/X11/Xosdefs.h \
-  /usr/include/X11/Xutil.h \
-  /usr/include/X11/extensions/Xcomposite.h \
-  /usr/include/X11/extensions/Xdamage.h \
-  /usr/include/X11/extensions/Xfixes.h \
-  /usr/include/X11/extensions/Xrender.h \
-  /usr/include/X11/extensions/composite.h \
-  /usr/include/X11/extensions/damagewire.h \
-  /usr/include/X11/extensions/render.h \
-  /usr/include/X11/extensions/xfixeswire.h \
-  /usr/include/X11/keysym.h \
-  /usr/include/X11/keysymdef.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/bitsperlong.h \
   /usr/include/asm-generic/errno-base.h \
@@ -540,9 +528,13 @@ src/core/CanvasDeskCore_autogen/timestamp: src/core/CanvasDeskCore_autogen/moc_p
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdbool.h:
 
+/usr/lib/cmake/Qt6Qml/Qt6qmldirTemplate.cmake.in:
+
 /usr/lib/cmake/Qt6Qml/Qt6QmlPluginTemplate.cpp.in:
 
 /usr/lib/cmake/Qt6Qml/Qt6QmlModuleDirMappingTemplate.qrc.in:
+
+/usr/lib/cmake/Qt6Core/Qt6CoreConfigureFileTemplate.in:
 
 /usr/include/unistd.h:
 
@@ -726,6 +718,8 @@ src/core/CanvasDeskCore_autogen/timestamp: src/core/CanvasDeskCore_autogen/moc_p
 
 /usr/include/qt6/QtCore/q20memory.h:
 
+/usr/include/qt6/QtCore/q20iterator.h:
+
 /usr/include/qt6/QtCore/q20functional.h:
 
 /usr/include/qt6/QtCore/QVariantList:
@@ -779,6 +773,8 @@ src/core/CanvasDeskCore_autogen/timestamp: src/core/CanvasDeskCore_autogen/moc_p
 /usr/include/qt6/QtCore/qmetaobject.h:
 
 /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/gthr.h:
+
+/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/gthr-default.h:
 
 /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/error_constants.h:
 
@@ -862,21 +858,13 @@ src/core/CanvasDeskCore_autogen/timestamp: src/core/CanvasDeskCore_autogen/moc_p
 
 /usr/include/c++/15.2.1/iomanip:
 
-/usr/include/c++/15.2.1/variant:
+/usr/include/c++/15.2.1/bits/basic_ios.tcc:
 
-/usr/include/c++/15.2.1/initializer_list:
+/usr/include/c++/15.2.1/cerrno:
 
-/usr/include/c++/15.2.1/functional:
+/usr/include/c++/15.2.1/bits/alloc_traits.h:
 
-/usr/include/c++/15.2.1/ext/type_traits.h:
-
-/usr/include/c++/15.2.1/ext/string_conversions.h:
-
-/usr/include/qt6/QtCore/qoverload.h:
-
-/usr/include/c++/15.2.1/locale:
-
-/usr/include/c++/15.2.1/ext/aligned_buffer.h:
+/usr/include/asm/bitsperlong.h:
 
 /usr/include/c++/15.2.1/backward/auto_ptr.h:
 
@@ -892,8 +880,6 @@ src/core/CanvasDeskCore_autogen/timestamp: src/core/CanvasDeskCore_autogen/moc_p
 
 /usr/include/bits/wordsize.h:
 
-/usr/include/X11/extensions/Xdamage.h:
-
 /usr/include/c++/15.2.1/array:
 
 /usr/include/c++/15.2.1/bits/algorithmfwd.h:
@@ -901,10 +887,6 @@ src/core/CanvasDeskCore_autogen/timestamp: src/core/CanvasDeskCore_autogen/moc_p
 /usr/include/qt6/QtCore/qminmax.h:
 
 /usr/include/bits/timesize.h:
-
-/usr/include/c++/15.2.1/ext/alloc_traits.h:
-
-/usr/include/bits/unistd_ext.h:
 
 /usr/include/c++/15.2.1/bits/exception.h:
 
@@ -921,6 +903,10 @@ src/core/CanvasDeskCore_autogen/timestamp: src/core/CanvasDeskCore_autogen/moc_p
 /usr/include/bits/types/timer_t.h:
 
 /usr/include/c++/15.2.1/climits:
+
+/usr/include/qt6/QtQml/qtqmlexports.h:
+
+/usr/include/c++/15.2.1/bits/char_traits.h:
 
 /usr/include/stdc-predef.h:
 
@@ -944,6 +930,8 @@ src/core/CanvasDeskCore_autogen/timestamp: src/core/CanvasDeskCore_autogen/moc_p
 
 /usr/include/bits/types/struct_sched_param.h:
 
+/usr/include/bits/struct_rwlock.h:
+
 /usr/include/bits/types/mbstate_t.h:
 
 /usr/include/bits/types/locale_t.h:
@@ -951,6 +939,8 @@ src/core/CanvasDeskCore_autogen/timestamp: src/core/CanvasDeskCore_autogen/moc_p
 /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/atomic_word.h:
 
 /usr/include/c++/15.2.1/bits/parse_numbers.h:
+
+/usr/include/c++/15.2.1/bits/allocated_ptr.h:
 
 /usr/include/bits/types/clock_t.h:
 
@@ -961,10 +951,6 @@ src/core/CanvasDeskCore_autogen/timestamp: src/core/CanvasDeskCore_autogen/moc_p
 /usr/include/qt6/QtNetwork/qtnetworkexports.h:
 
 /usr/include/bits/types/__fpos64_t.h:
-
-/usr/include/qt6/QtCore/q20iterator.h:
-
-/usr/include/X11/extensions/damagewire.h:
 
 /usr/include/qt6/QtQml/qqmlerror.h:
 
@@ -988,7 +974,7 @@ src/core/CanvasDeskCore_autogen/timestamp: src/core/CanvasDeskCore_autogen/moc_p
 
 /usr/include/bits/types/time_t.h:
 
-/usr/include/bits/struct_rwlock.h:
+/usr/include/bits/stdio_lim.h:
 
 /usr/include/qt6/QtQml/qqmlparserstatus.h:
 
@@ -1010,35 +996,19 @@ src/core/CanvasDeskCore_autogen/timestamp: src/core/CanvasDeskCore_autogen/moc_p
 
 /usr/include/c++/15.2.1/bits/requires_hosted.h:
 
-/usr/include/bits/types/cookie_io_functions_t.h:
+/usr/include/bits/waitstatus.h:
 
-/usr/include/qt6/QtQml/qqmldebug.h:
+/usr/include/bits/wchar.h:
 
-/usr/include/c++/15.2.1/cstdlib:
+/usr/include/bits/types/struct___jmp_buf_tag.h:
 
-/usr/include/sys/syscall.h:
+/usr/include/bits/setjmp.h:
 
-/usr/include/c++/15.2.1/bits/stl_algobase.h:
+/usr/include/c++/15.2.1/debug/debug.h:
 
-/usr/include/c++/15.2.1/tr1/beta_function.tcc:
+/usr/include/c++/15.2.1/bits/align.h:
 
-/usr/include/bits/pthreadtypes.h:
-
-/usr/include/bits/pthread_stack_min-dynamic.h:
-
-/usr/include/bits/posix2_lim.h:
-
-/usr/include/c++/15.2.1/bits/stl_bvector.h:
-
-/usr/include/bits/syscall.h:
-
-/usr/include/X11/X.h:
-
-/usr/include/c++/15.2.1/map:
-
-/usr/include/bits/locale.h:
-
-/usr/include/X11/Xutil.h:
+/usr/include/c++/15.2.1/bits/functexcept.h:
 
 /usr/include/qt6/QtCore/q17memory.h:
 
@@ -1046,13 +1016,21 @@ src/core/CanvasDeskCore_autogen/timestamp: src/core/CanvasDeskCore_autogen/moc_p
 
 /usr/include/c++/15.2.1/bits/quoted_string.h:
 
+/usr/include/qt6/QtCore/qconfig.h:
+
+/usr/include/c++/15.2.1/iterator:
+
+/usr/include/asm-generic/errno-base.h:
+
+/usr/include/asm/unistd.h:
+
+/usr/include/bits/posix2_lim.h:
+
+/usr/include/c++/15.2.1/bits/stl_bvector.h:
+
 /usr/include/c++/15.2.1/bits/ostream.h:
 
 /usr/include/X11/Xlib.h:
-
-/usr/include/bits/posix_opt.h:
-
-/usr/include/bits/atomic_wide_counter.h:
 
 /usr/include/bits/byteswap.h:
 
@@ -1060,19 +1038,9 @@ src/core/CanvasDeskCore_autogen/timestamp: src/core/CanvasDeskCore_autogen/moc_p
 
 /usr/include/X11/Xfuncproto.h:
 
-/usr/include/bits/stdio_lim.h:
+/usr/include/X11/X.h:
 
-/usr/include/X11/Xdefs.h:
-
-/usr/include/qt6/QtCore/qstringfwd.h:
-
-/usr/include/c++/15.2.1/bits/nested_exception.h:
-
-/usr/include/features.h:
-
-/usr/include/bits/sched.h:
-
-/usr/include/bits/types/__FILE.h:
+/usr/include/bits/syscall.h:
 
 /usr/include/qt6/QtCore/qtversion.h:
 
@@ -1080,171 +1048,35 @@ src/core/CanvasDeskCore_autogen/timestamp: src/core/CanvasDeskCore_autogen/moc_p
 
 /usr/include/c++/15.2.1/bits/stl_multiset.h:
 
-/usr/lib/cmake/Qt6Qml/Qt6qmldirTemplate.cmake.in:
+/usr/include/c++/15.2.1/tr1/beta_function.tcc:
 
-/usr/include/X11/extensions/composite.h:
-
-/usr/include/wchar.h:
-
-/usr/include/bits/posix1_lim.h:
-
-/home/brad/Documents/canvasdesk/src/core/Component.cpp:
-
-/usr/include/bits/pthreadtypes-arch.h:
+/usr/include/bits/pthreadtypes.h:
 
 /usr/include/bits/stdint-intn.h:
 
 /usr/include/bits/types/clockid_t.h:
 
-/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++config.h:
+/usr/include/bits/atomic_wide_counter.h:
 
-/usr/include/bits/types/__sigset_t.h:
+/usr/include/bits/posix_opt.h:
 
-/usr/include/c++/15.2.1/bits/stl_map.h:
+/usr/include/c++/15.2.1/map:
 
-/usr/include/asm-generic/posix_types.h:
-
-/usr/include/qt6/QtCore/qstringlist.h:
-
-/home/brad/Documents/canvasdesk/src/core/LayoutManager.h:
-
-/usr/include/bits/libc-header-start.h:
-
-/usr/include/qt6/QtQml/qjsprimitivevalue.h:
-
-/usr/include/qt6/QtCore/qcontainertools_impl.h:
-
-/home/brad/Documents/canvasdesk/src/core/LayoutManager.cpp:
+/usr/include/bits/locale.h:
 
 /usr/include/c++/15.2.1/ext/numeric_traits.h:
 
 /usr/include/bits/getopt_core.h:
 
-/usr/include/bits/long-double.h:
-
-/usr/include/qt6/QtCore/qvariantmap.h:
-
-/usr/include/c++/15.2.1/tr1/riemann_zeta.tcc:
-
-/usr/include/bits/types/__fpos_t.h:
-
-/usr/include/asm/unistd_64.h:
-
 /usr/include/qt6/QtCore/qsharedpointer.h:
 
-/usr/include/c++/15.2.1/format:
-
 /usr/bin/cmake:
+
+/usr/include/c++/15.2.1/format:
 
 /usr/include/c++/15.2.1/atomic:
 
 /usr/include/bits/floatn.h:
-
-/usr/include/bits/setjmp.h:
-
-/usr/include/bits/endian.h:
-
-/usr/include/c++/15.2.1/bits/invoke.h:
-
-/usr/include/qt6/QtCore/qscopedpointer.h:
-
-/usr/include/c++/15.2.1/bits/stl_function.h:
-
-/usr/include/c++/15.2.1/exception:
-
-/usr/include/asm-generic/bitsperlong.h:
-
-/usr/include/c++/15.2.1/bits/stl_heap.h:
-
-/usr/include/c++/15.2.1/bits/ranges_util.h:
-
-/usr/include/asm-generic/types.h:
-
-/usr/include/qt6/QtCore/qconfig.h:
-
-/usr/include/c++/15.2.1/iterator:
-
-/usr/include/asm-generic/errno-base.h:
-
-/home/brad/Documents/canvasdesk/src/core/AppManager.cpp:
-
-/usr/include/c++/15.2.1/bits/erase_if.h:
-
-/usr/include/c++/15.2.1/cstdint:
-
-/home/brad/Documents/canvasdesk/src/core/AppManager.h:
-
-/usr/include/c++/15.2.1/bits/charconv.h:
-
-/usr/include/qt6/QtCore/qstringconverter.h:
-
-/usr/include/c++/15.2.1/bits/stream_iterator.h:
-
-/usr/include/asm/unistd.h:
-
-/usr/include/qt6/QtCore/qtmetamacros.h:
-
-/usr/include/c++/15.2.1/bits/version.h:
-
-/usr/include/c++/15.2.1/system_error:
-
-/usr/include/bits/stdint-uintn.h:
-
-/usr/include/asm/errno.h:
-
-/usr/include/c++/15.2.1/bits/stl_iterator.h:
-
-/usr/include/bits/wctype-wchar.h:
-
-/usr/include/qt6/QtCore/qtcoreexports.h:
-
-/usr/include/bits/local_lim.h:
-
-/home/brad/Documents/canvasdesk/src/core/Component.h:
-
-/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/gthr-default.h:
-
-/usr/include/X11/keysymdef.h:
-
-/usr/include/c++/15.2.1/bits/localefwd.h:
-
-/usr/include/bits/confname.h:
-
-src/core/CanvasDeskCoreplugin_CanvasDeskPlugin_in.cpp:
-
-/usr/include/c++/15.2.1/bits/locale_facets.tcc:
-
-/usr/include/asm/posix_types_64.h:
-
-/usr/include/qt6/QtCore/qscopeguard.h:
-
-/usr/include/c++/15.2.1/bits/chrono.h:
-
-/usr/include/X11/extensions/Xcomposite.h:
-
-/usr/include/qt6/QtNetwork/qtnetworkglobal.h:
-
-/usr/include/c++/15.2.1/vector:
-
-/usr/include/c++/15.2.1/bits/exception_defines.h:
-
-/usr/include/X11/keysym.h:
-
-/usr/include/asm/bitsperlong.h:
-
-/usr/include/c++/15.2.1/bits/alloc_traits.h:
-
-/usr/include/bits/waitstatus.h:
-
-/usr/include/bits/wchar.h:
-
-/usr/include/bits/types/struct___jmp_buf_tag.h:
-
-/usr/include/X11/extensions/render.h:
-
-/usr/include/c++/15.2.1/bits/stringfwd.h:
-
-/usr/include/c++/15.2.1/bits/enable_special_members.h:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stddef.h:
 
@@ -1256,6 +1088,72 @@ src/core/CanvasDeskCoreplugin_CanvasDeskPlugin_in.cpp:
 
 /usr/include/c++/15.2.1/bits/stl_set.h:
 
+/usr/include/c++/15.2.1/bits/atomic_wait.h:
+
+/usr/include/c++/15.2.1/bits/exception_ptr.h:
+
+/usr/include/c++/15.2.1/bits/stl_multimap.h:
+
+/home/brad/Documents/canvasdesk/src/core/AppManager.cpp:
+
+/usr/include/c++/15.2.1/bits/erase_if.h:
+
+/usr/include/qt6/QtCore/qstringconverter_base.h:
+
+/usr/include/c++/15.2.1/bits/atomic_base.h:
+
+/usr/include/bits/pthreadtypes-arch.h:
+
+/usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++config.h:
+
+/usr/include/bits/types/__sigset_t.h:
+
+/usr/include/qt6/QtCore/qstringlist.h:
+
+/home/brad/Documents/canvasdesk/src/core/LayoutManager.h:
+
+/usr/include/c++/15.2.1/bits/stl_map.h:
+
+/usr/include/asm-generic/posix_types.h:
+
+/usr/include/c++/15.2.1/cstdint:
+
+/home/brad/Documents/canvasdesk/src/core/AppManager.h:
+
+/usr/include/c++/15.2.1/bits/charconv.h:
+
+/usr/include/qt6/QtCore/qstringconverter.h:
+
+/usr/include/c++/15.2.1/bits/stream_iterator.h:
+
+/usr/include/c++/15.2.1/bits/stl_iterator.h:
+
+/usr/include/bits/wctype-wchar.h:
+
+/usr/include/qt6/QtCore/qtcoreexports.h:
+
+/usr/include/bits/local_lim.h:
+
+/home/brad/Documents/canvasdesk/src/core/Component.h:
+
+/usr/include/bits/confname.h:
+
+src/core/CanvasDeskCoreplugin_CanvasDeskPlugin_in.cpp:
+
+/usr/include/c++/15.2.1/bits/locale_facets.tcc:
+
+/usr/include/asm/posix_types_64.h:
+
+/usr/include/c++/15.2.1/cwctype:
+
+/usr/include/c++/15.2.1/compare:
+
+/usr/include/wchar.h:
+
+/home/brad/Documents/canvasdesk/src/core/Component.cpp:
+
+/usr/include/bits/posix1_lim.h:
+
 /usr/include/bits/time.h:
 
 /usr/include/asm/posix_types.h:
@@ -1265,6 +1163,24 @@ src/core/CanvasDeskCoreplugin_CanvasDeskPlugin_in.cpp:
 /usr/include/bits/types/struct_FILE.h:
 
 /usr/include/asm/types.h:
+
+/usr/include/qt6/QtCore/qvariantmap.h:
+
+/usr/include/c++/15.2.1/tr1/riemann_zeta.tcc:
+
+/usr/include/bits/types/__fpos_t.h:
+
+/usr/include/asm/unistd_64.h:
+
+/usr/include/bits/long-double.h:
+
+/usr/include/bits/endian.h:
+
+/usr/include/c++/15.2.1/bits/invoke.h:
+
+/usr/include/qt6/QtCore/qscopedpointer.h:
+
+/usr/include/c++/15.2.1/bits/stl_function.h:
 
 /usr/include/qt6/QtCore/qbytearray.h:
 
@@ -1277,6 +1193,12 @@ src/core/CanvasDeskCoreplugin_CanvasDeskPlugin_in.cpp:
 /home/brad/Documents/canvasdesk/src/core/CMakeLists.txt:
 
 /usr/include/bits/uintn-identity.h:
+
+/usr/include/c++/15.2.1/bits/basic_ios.h:
+
+/home/brad/Documents/canvasdesk/src/core/CanvasDeskCore.h:
+
+/usr/include/c++/15.2.1/bit:
 
 /usr/include/qt6/QtCore/qswap.h:
 
@@ -1302,10 +1224,6 @@ src/core/CanvasDeskCoreplugin_CanvasDeskPlugin_in.cpp:
 
 /usr/include/c++/15.2.1/bits/std_mutex.h:
 
-/usr/lib/cmake/Qt6Core/Qt6CoreConfigureFileTemplate.in:
-
-/usr/include/X11/extensions/xfixeswire.h:
-
 src/core/CanvasDeskCore_autogen/moc_predefs.h:
 
 /usr/include/qt6/QtCore/qshareddata_impl.h:
@@ -1322,43 +1240,41 @@ src/core/CanvasDeskCore_autogen/moc_predefs.h:
 
 /usr/include/c++/15.2.1/bits/vector.tcc:
 
-/usr/include/c++/15.2.1/debug/debug.h:
+/usr/include/qt6/QtQml/qjsprimitivevalue.h:
 
-/usr/include/c++/15.2.1/bits/align.h:
+/usr/include/qt6/QtCore/qcontainertools_impl.h:
 
-/usr/include/c++/15.2.1/bits/functexcept.h:
+/home/brad/Documents/canvasdesk/src/core/LayoutManager.cpp:
 
-/usr/include/X11/extensions/Xrender.h:
+/usr/include/qt6/QtCore/qscopeguard.h:
 
-/usr/include/c++/15.2.1/bits/allocated_ptr.h:
+/usr/include/c++/15.2.1/bits/chrono.h:
 
-/usr/include/c++/15.2.1/compare:
+/usr/include/bits/libc-header-start.h:
 
-/usr/include/c++/15.2.1/cwctype:
+/usr/include/bits/pthread_stack_min-dynamic.h:
 
-/usr/include/qt6/QtCore/qstringconverter_base.h:
+/usr/include/bits/types/cookie_io_functions_t.h:
 
-/usr/include/c++/15.2.1/bits/atomic_base.h:
+/usr/include/c++/15.2.1/system_error:
 
-/usr/include/c++/15.2.1/bits/atomic_wait.h:
+/usr/include/asm/errno.h:
 
-/usr/include/c++/15.2.1/bits/exception_ptr.h:
+/usr/include/bits/stdint-uintn.h:
 
-/usr/include/c++/15.2.1/bits/stl_multimap.h:
+/usr/include/qt6/QtQml/qqmldebug.h:
 
-/home/brad/Documents/canvasdesk/src/core/CanvasDeskCore.h:
+/usr/include/c++/15.2.1/cstdlib:
 
-/usr/include/c++/15.2.1/bit:
+/usr/include/features.h:
 
-/usr/include/c++/15.2.1/bits/basic_ios.h:
+/usr/include/bits/types/__FILE.h:
 
-/usr/include/c++/15.2.1/bits/basic_ios.tcc:
+/usr/include/bits/sched.h:
 
-/usr/include/c++/15.2.1/cerrno:
+/usr/include/sys/syscall.h:
 
-/usr/include/qt6/QtQml/qtqmlexports.h:
-
-/usr/include/c++/15.2.1/bits/char_traits.h:
+/usr/include/c++/15.2.1/bits/stl_algobase.h:
 
 /usr/include/c++/15.2.1/bits/chrono_io.h:
 
@@ -1370,13 +1286,19 @@ src/core/CanvasDeskCore_autogen/moc_predefs.h:
 
 /usr/include/qt6/QtQml/qjsnumbercoercion.h:
 
-/usr/include/c++/15.2.1/ext/concurrence.h:
-
 /usr/include/c++/15.2.1/bits/ranges_cmp.h:
+
+/usr/include/c++/15.2.1/ext/concurrence.h:
 
 /usr/include/c++/15.2.1/bits/cxxabi_forced.h:
 
 /usr/include/c++/15.2.1/bits/cxxabi_init_exception.h:
+
+/usr/include/qt6/QtNetwork/qtnetworkglobal.h:
+
+/usr/include/c++/15.2.1/vector:
+
+/usr/include/c++/15.2.1/bits/exception_defines.h:
 
 /usr/include/qt6/QtCore/qdebug.h:
 
@@ -1438,11 +1360,15 @@ src/core/CanvasDeskCore_autogen/moc_predefs.h:
 
 /usr/include/c++/15.2.1/bits/predefined_ops.h:
 
-/usr/include/bits/select.h:
+/usr/include/c++/15.2.1/ext/string_conversions.h:
 
 /home/brad/Documents/canvasdesk/src/core/CanvasDeskCore.cpp:
 
+/usr/include/bits/select.h:
+
 /usr/include/c++/15.2.1/bits/locale_facets_nonio.tcc:
+
+/usr/include/c++/15.2.1/bits/localefwd.h:
 
 /usr/include/qt6/QtCore/qrefcount.h:
 
@@ -1457,6 +1383,14 @@ src/core/CanvasDeskCore_autogen/moc_predefs.h:
 /usr/include/bits/types.h:
 
 /usr/include/c++/15.2.1/bits/move.h:
+
+/usr/include/qt6/QtCore/qstringfwd.h:
+
+/usr/include/c++/15.2.1/bits/nested_exception.h:
+
+/usr/include/c++/15.2.1/bits/enable_special_members.h:
+
+/usr/include/c++/15.2.1/bits/stringfwd.h:
 
 /usr/include/c++/15.2.1/bits/new_allocator.h:
 
@@ -1495,6 +1429,10 @@ src/core/CanvasDeskCore_autogen/moc_predefs.h:
 /usr/include/c++/15.2.1/bits/ranges_base.h:
 
 /usr/include/c++/15.2.1/bits/ranges_uninitialized.h:
+
+/usr/include/c++/15.2.1/variant:
+
+/usr/include/c++/15.2.1/initializer_list:
 
 /usr/include/sys/single_threaded.h:
 
@@ -1542,6 +1480,16 @@ src/core/CanvasDeskCore_autogen/moc_predefs.h:
 
 /usr/include/c++/15.2.1/bits/stl_vector.h:
 
+/usr/include/asm-generic/bitsperlong.h:
+
+/usr/include/c++/15.2.1/bits/stl_heap.h:
+
+/usr/include/asm-generic/types.h:
+
+/usr/include/c++/15.2.1/bits/ranges_util.h:
+
+/usr/include/c++/15.2.1/exception:
+
 /usr/include/c++/15.2.1/bits/streambuf_iterator.h:
 
 /usr/include/bits/typesizes.h:
@@ -1578,6 +1526,10 @@ src/core/CanvasDeskCore_autogen/moc_predefs.h:
 
 /usr/include/c++/15.2.1/bits/utility.h:
 
+/usr/include/qt6/QtCore/qtmetamacros.h:
+
+/usr/include/c++/15.2.1/bits/version.h:
+
 /usr/include/qt6/QtQml/qjsengine.h:
 
 /usr/include/qt6/QtCore/qpointer.h:
@@ -1600,10 +1552,22 @@ src/core/CanvasDeskCore_autogen/moc_predefs.h:
 
 /usr/include/bits/timex.h:
 
-/usr/include/X11/extensions/Xfixes.h:
-
 /usr/include/c++/15.2.1/ctime:
+
+/usr/include/qt6/QtCore/qoverload.h:
+
+/usr/include/c++/15.2.1/locale:
+
+/usr/include/c++/15.2.1/ext/aligned_buffer.h:
 
 /usr/include/c++/15.2.1/bits/shared_ptr_base.h:
 
 /usr/include/c++/15.2.1/debug/assertions.h:
+
+/usr/include/bits/unistd_ext.h:
+
+/usr/include/c++/15.2.1/ext/alloc_traits.h:
+
+/usr/include/c++/15.2.1/ext/type_traits.h:
+
+/usr/include/c++/15.2.1/functional:

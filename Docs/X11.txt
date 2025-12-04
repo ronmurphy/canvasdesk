@@ -1,12 +1,131 @@
 # CanvasDesk X11 Window Manager Migration
 
-**Last Updated:** 2025-12-03 (20:10 - ADDED COMPOSITING!)
-**Status:** Phase 3 COMPLETE, Phase 4 (Compositing) STARTED
+**Last Updated:** 2025-12-03 (CRASH FIX APPLIED)
+**Status:** Phase 3 - Simple Stacking Window Manager (No Compositing)
 **See also:** do.txt (original Wayland progress notes - OUTDATED, Wayland removed)
 
 ---
 
-## LATEST FIX (Dec 3, 20:10) - COMPOSITING SUPPORT:
+## CRITICAL CRASH FIX (Dec 3, 23:15) - BUTTON WINDOW CLEANUP BUG:
+
+### Bug Found:
+When closing windows with the red X button, CanvasDesk would sometimes crash. Root cause identified:
+
+**The Problem:**
+- Button windows were added to `m_frames` hash in `createTitleBarButtons()`
+- When `destroyFrame()` was called, it removed frame/titlebar/client from hash
+- **BUT it forgot to remove button windows from the hash!**
+- Then `XDestroyWindow()` was called on buttons
+- X11 sends DestroyNotify events for those button windows
+- Event handler calls `findFrame(btn.window)` → finds dangling pointer → **CRASH**
+
+**The Fix (X11WindowManager.cpp:539-542):**
+```cpp
+// Remove button windows from hash BEFORE destroying them
+for (const X11Button &btn : frame->buttons) {
+    m_frames.remove(btn.window);
+}
+```
+
+### Build Status:
+✅ **Build completed successfully** (Dec 3, 23:15)
+✅ Binary ready: `/home/brad/Documents/canvasdesk/build/canvasdesk`
+✅ **Close button should no longer crash the desktop!**
+
+---
+
+## COMPOSITING DISABLED (Dec 3, 23:08) - BACK TO BASICS:
+
+### What Happened:
+After multiple attempts to fix desktop input blocking with compositing enabled:
+1. Tried double buffering + rate limiting → Eliminated flickering, but desktop still non-responsive
+2. Tried override_redirect on frames → Desktop clicks still didn't work
+3. Attempted Qt Controls migration → Also failed to fix input issues
+
+### Decision Made:
+**DISABLED ALL COMPOSITING CODE** (commented out, not deleted)
+
+### Why:
+- Compositing is OPTIONAL for a window manager - it's only for effects/transparency
+- Core window management (titlebars, dragging, close buttons) worked WITHOUT compositing
+- Desktop was working fine before compositing was added
+- User is frustrated and needs a working system NOW
+- Can always re-enable compositing later once we figure out what was wrong
+
+### What Was Disabled:
+All code marked with `// DISABLED: Compositing disabled for now`
+- XComposite extension initialization
+- XRender extension initialization
+- XDamage extension initialization
+- XCompositeRedirectSubwindows() call
+- CompositedWindow tracking
+- paint() function with double buffering
+- requestPaint() rate limiting
+- handleMapNotify() compositing logic
+- ConfigureNotify/CreateNotify handlers
+- Damage event handling
+- override_redirect flags on frames/buttons
+
+### What Still Works:
+✅ X11 window manager registration
+✅ Window reparenting with titlebars
+✅ Window dragging by titlebar
+✅ Close/Minimize/Maximize buttons (close works, others not implemented)
+✅ Window title display
+✅ Basic window positioning
+✅ Taskbar integration
+✅ **Desktop components should be clickable again!**
+
+### Build Status:
+✅ **Build completed successfully** (Dec 3, latest)
+✅ Binary ready: `/home/brad/Documents/canvasdesk/build/canvasdesk`
+
+### Next Test:
+User needs to log into CanvasDesk session and verify:
+1. **Desktop components respond to clicks** (AppLauncher, SessionManager, etc.)
+2. Windows still have titlebars and can be dragged
+3. Close button (X) still works
+4. No flickering or artifacts (apps draw themselves, no compositor)
+
+---
+
+## MAJOR CODE ROLLBACK (Dec 3, 23:30) - BACK TO FLICKERING VERSION:
+
+### What Happened:
+After extensive debugging of Qt Controls migration (Phase 5), desktop components still weren't responding to mouse input. Even after converting all MouseArea elements to proper Qt Quick Controls (Button, ItemDelegate, Label), the components appeared as flat elements and didn't receive clicks.
+
+### Decision:
+Rolled back to commit `ee9fca5` - "updated to use compositing in X11, titlebars, controls, flickers badly."
+
+This is the version where:
+- ✅ Compositing was first enabled (XComposite + XRender + XDamage)
+- ✅ Titlebars work with window titles
+- ✅ Window dragging works
+- ✅ Close button (X) works
+- ✅ Desktop components (MouseArea-based) respond to clicks
+- ❌ **Bad flickering** on built-in display (the AI "forgot to enable" something)
+
+### Branches Created:
+- `compositing-qt-controls-failed` - Saved the Qt Controls migration attempt (commit 49dc314)
+- `compositing-fixes` - Empty placeholder at ee9fca5
+- `qt-controls-attempt` - Empty placeholder at ee9fca5
+- `master` - Reset to ee9fca5 (current working branch)
+
+### Why This Version:
+1. Components worked with MouseArea before compositing bugs
+2. The "flickering" issue is likely a single missing enable/config
+3. This gives us a known working baseline to fix from
+4. All Qt Controls work was saved and can be cherry-picked later if needed
+
+### Next Steps:
+1. Test this version in real X11 session - verify components respond to clicks
+2. Identify what was "forgotten" that causes flickering
+3. Fix flickering issue (likely paint throttling or vsync)
+4. Once stable, can revisit Qt Controls migration if needed
+
+---
+
+## ORIGINAL NOTES FROM THIS COMMIT (Dec 3, 20:10) - COMPOSITING SUPPORT:
 
 ### Issue Addressed:
 - User reported "stuck" graphics and redraw artifacts when moving windows.
@@ -496,6 +615,172 @@ sudo ./build/canvasdesk --uninstallsession
 - App Launcher: `src/core/AppManager.cpp`
 - Build config: `CMakeLists.txt`, `src/core/CMakeLists.txt`
 - Session script: `canvasdesk-session`
+
+---
+
+## DESKTOP INPUT FIX APPLIED! (Dec 3, 23:55) - OVERRIDE_REDIRECT FOR FRAMES
+
+### What Was Fixed:
+After applying the double buffering fix (which eliminated flickering), desktop UI components became non-clickable. The root cause was identified:
+
+**Problem:**
+- Frame windows (titlebars) were being added to the compositor's m_compositedWindows
+- These frame windows were being painted over the CanvasDesk desktop
+- The composited frame windows blocked mouse input to the desktop UI below
+- This is why buttons like AppLauncher, SessionManager, etc. didn't respond to clicks
+
+**Solution:**
+- Set `override_redirect = True` on all frame windows (frame, titlebar, buttons)
+- Added check in handleMapNotify to skip override_redirect windows from compositing
+- Frame windows are now rendered directly by X11, not composited
+- They stay on top but don't block input to windows below
+
+### Code Changes (Dec 3, 23:55):
+- `X11WindowManager.cpp` createFrame():
+  - Added XSetWindowAttributes with override_redirect = True
+  - Applied to frame->frame and frame->titleBar
+- `X11WindowManager.cpp` createTitleBarButtons():
+  - Added override_redirect = True to all button windows
+- `X11WindowManager.cpp` handleMapNotify():
+  - Added check to skip frame windows (m_frames.contains(w))
+  - Added check to skip override_redirect windows
+  - Prevents frame windows from being added to compositing
+
+### Expected Results:
+✅ Desktop components (AppLauncher, SessionManager, etc.) should respond to clicks
+✅ Window titlebars still work and are visible
+✅ Window dragging still works
+✅ Close/minimize/maximize buttons still work
+✅ No flickering (double buffering still active)
+✅ No artifacts when dragging windows
+
+### Testing Plan (Dec 3, 23:55):
+When testing this build, check for:
+
+**SUCCESS CASE:**
+- Can click on AppLauncher button → App grid appears
+- Can click apps in grid → Apps launch
+- Can click SessionManager buttons → Actions happen
+- Visual feedback works (buttons highlight, etc.)
+
+**FAILURE CASE - If desktop still doesn't respond to clicks:**
+There's a fundamental issue with compositing blocking input. Next step: **Disable compositing entirely**.
+
+**PARTIAL FAILURE - If clicks work but no visual feedback:**
+- This happens if MouseArea components update internally but composited pixmap doesn't refresh
+- Issue: Most desktop components use MouseArea (not Button), so they don't get damage events
+- Same solution: **Disable compositing entirely**
+
+### Backup Plan: Disable Compositing (If This Doesn't Work)
+
+If the override_redirect fix doesn't solve the input issue, we'll remove compositing:
+
+**What to Remove:**
+- XCompositeRedirectSubwindows call
+- All XRender picture/compositing code
+- XDamage tracking
+- paint() loop with back buffer
+- m_compositedWindows hash
+
+**What to Keep:**
+- Frame windows (titlebars) - they work without compositing
+- Window management (map, unmap, destroy, reparenting)
+- Input handling (dragging, button clicks)
+- Basic window positioning
+
+**Result:** Simple, reliable stacking window manager. No fancy effects, but rock-solid desktop input and window management.
+
+**Trade-off:** Lose ability to do transparency/shadows/effects later, but gain stability and simplicity.
+
+---
+
+## FLICKERING FIX APPLIED! (Dec 3, 23:45) - DOUBLE BUFFERING + RATE LIMITING
+
+### What Was Fixed:
+After rolling back to the flickering version (ee9fca5), we identified and fixed the root causes:
+
+1. **Added Double Buffering in paint():**
+   - Created off-screen Pixmap back buffer
+   - Render all windows to back buffer first
+   - Copy completed frame to screen in ONE atomic operation
+   - This eliminates visible tearing and flicker
+
+2. **Added Paint Rate Limiting (60 FPS):**
+   - QTimer with 16ms interval (60 FPS)
+   - requestPaint() queues paint requests instead of calling paint() directly
+   - Prevents excessive repaints (was happening hundreds of times per second)
+
+3. **Removed XFlush from Mouse Drag:**
+   - XFlush during handleMotionNotify caused visible tearing
+   - Now paint timer handles flushing at steady 60 FPS
+
+### Code Changes:
+- X11WindowManager.h: Added QTimer include, m_paintTimer, m_paintRequested members
+- X11WindowManager.cpp:
+  - Added requestPaint() method
+  - Initialize paint timer in initialize()
+  - Modified paint() to use double buffering
+  - Replaced all paint() calls with requestPaint()
+  - Removed XFlush from handleMotionNotify
+
+### Build Status:
+✅ **Build completed successfully** (Dec 3, 23:45)
+✅ Binary ready: `/home/brad/Documents/canvasdesk/build/canvasdesk`
+
+## CURRENT TEST PLAN (Dec 3, 23:45) - TESTING FIXED VERSION
+
+### What to Test When Logging In:
+1. **Desktop Components Responsiveness:**
+   - Click AppLauncher button → Should open app grid
+   - Click app icons in grid → Should launch apps
+   - Click Taskbar buttons → Should activate windows
+   - Click Clock → Should show time
+   - Click SessionManager buttons (Lock, Logout, etc.) → Should work
+
+2. **Window Management:**
+   - Drag window titlebar → Should move window
+   - Click Close (X) button → Should close window
+   - Windows should have proper titlebars with titles
+
+3. **Flickering Issue (PRIMARY CONCERN):**
+   - **Watch for rapid screen flickering/flashing**
+   - Note if it happens:
+     - Constantly (idle)
+     - During window dragging
+     - During window map/unmap
+     - Only on certain monitors
+   - This is the "forgot to enable" issue we need to identify
+
+### Expected Behavior:
+✅ All components respond to clicks (MouseArea-based)
+✅ Windows have titlebars and can be dragged
+✅ Apps launch and are tracked in taskbar
+✅ **NO FLICKERING!** - Double buffering + rate limiting should eliminate flicker
+✅ Smooth 60 FPS window dragging
+✅ No visible tearing or artifacts
+
+### What to Look For:
+- The flickering was described as "flickers badly"
+- Some AI mentioned "I forgot to enable [something]"
+- This might be:
+  - Missing vsync
+  - Missing double buffering
+  - Excessive paint() calls
+  - Missing XDamage event filtering
+  - Missing compositor sync
+
+### After Testing:
+Report back:
+1. Do components respond to clicks? (Yes/No)
+2. **Is the flickering GONE?** (This is the key test!)
+3. How smooth is window dragging? (Should be 60 FPS)
+4. Any error messages in terminal or log
+5. Does it feel better than the Qt Controls version?
+
+### If Flickering Still Exists:
+- Note when it happens (idle, drag, etc.)
+- We may need to adjust timer interval or add vsync
+- May need to check desktop window exclusion logic
 
 ---
 

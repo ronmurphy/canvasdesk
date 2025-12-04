@@ -403,13 +403,5 @@ src/core/CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.o: \
  /usr/include/qt6/QtCore/QSocketNotifier \
  /usr/include/qt6/QtCore/qsocketnotifier.h /usr/include/X11/Xlib.h \
  /usr/include/X11/X.h /usr/include/X11/Xfuncproto.h \
- /usr/include/X11/Xosdefs.h /usr/include/X11/extensions/Xcomposite.h \
- /usr/include/X11/extensions/composite.h \
- /usr/include/X11/extensions/xfixeswire.h \
- /usr/include/X11/extensions/Xfixes.h \
- /usr/include/X11/extensions/Xdamage.h \
- /usr/include/X11/extensions/damagewire.h \
- /usr/include/X11/extensions/Xrender.h /usr/include/X11/Xutil.h \
- /usr/include/X11/keysym.h /usr/include/X11/keysymdef.h \
- /usr/include/X11/extensions/render.h /usr/include/X11/Xdefs.h \
- /usr/include/qt6/QtCore/QDebug /usr/include/qt6/QtCore/qdebug.h
+ /usr/include/X11/Xosdefs.h /usr/include/qt6/QtCore/QDebug \
+ /usr/include/qt6/QtCore/qdebug.h

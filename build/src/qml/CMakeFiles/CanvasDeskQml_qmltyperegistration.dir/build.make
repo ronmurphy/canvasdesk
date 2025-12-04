@@ -105,7 +105,7 @@ src/qml/meta_types/CanvasDeskQml_json_file_list.txt: src/qml/CanvasDeskQml_autog
 src/qml/CanvasDeskQml_autogen/timestamp: /usr/lib/qt6/moc
 src/qml/CanvasDeskQml_autogen/timestamp: src/qml/CMakeFiles/CanvasDeskQml_qmltyperegistration.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Automatic MOC and UIC for target CanvasDeskQml"
-	cd /home/brad/Documents/canvasdesk/build/src/qml && /usr/bin/cmake -E cmake_autogen /home/brad/Documents/canvasdesk/build/src/qml/CMakeFiles/CanvasDeskQml_autogen.dir/AutogenInfo.json ""
+	cd /home/brad/Documents/canvasdesk/build/src/qml && /usr/bin/cmake -E cmake_autogen /home/brad/Documents/canvasdesk/build/src/qml/CMakeFiles/CanvasDeskQml_autogen.dir/AutogenInfo.json Debug
 	cd /home/brad/Documents/canvasdesk/build/src/qml && /usr/bin/cmake -E touch /home/brad/Documents/canvasdesk/build/src/qml/CanvasDeskQml_autogen/timestamp
 
 src/qml/CMakeFiles/CanvasDeskQml_qmltyperegistration.dir/codegen:

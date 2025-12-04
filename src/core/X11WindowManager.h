@@ -3,11 +3,13 @@
 #include <QHash>
 #include <QObject>
 #include <QSocketNotifier>
+// #include <QTimer>  // DISABLED: Compositing disabled for now
 #include <QVariantMap>
 #include <X11/Xlib.h>
-#include <X11/extensions/Xcomposite.h>
-#include <X11/extensions/Xdamage.h>
-#include <X11/extensions/Xrender.h>
+// DISABLED: Compositing extensions disabled for now
+// #include <X11/extensions/Xcomposite.h>
+// #include <X11/extensions/Xdamage.h>
+// #include <X11/extensions/Xrender.h>
 
 // Frame constants
 #define BORDER_WIDTH 2
@@ -57,12 +59,13 @@ struct X11Frame {
   }
 };
 
-struct CompositedWindow {
-  Window window;
-  Picture picture = 0;
-  Damage damage = 0;
-  XWindowAttributes attrs;
-};
+// DISABLED: Compositing disabled for now
+// struct CompositedWindow {
+//   Window window;
+//   Picture picture = 0;
+//   Damage damage = 0;
+//   XWindowAttributes attrs;
+// };
 
 class X11WindowManager : public QObject {
   Q_OBJECT
@@ -86,7 +89,8 @@ private:
   void handleUnmapNotify(XUnmapEvent *event);
   void handleDestroyNotify(XDestroyWindowEvent *event);
   void handleConfigureRequest(XConfigureRequestEvent *event);
-  void handleMapNotify(XMapEvent *event);
+  // DISABLED: Compositing disabled for now
+  // void handleMapNotify(XMapEvent *event);
   void handleButtonPress(XButtonEvent *event);
   void handleButtonRelease(XButtonEvent *event);
   void handleMotionNotify(XMotionEvent *event);
@@ -100,9 +104,10 @@ private:
   void createTitleBarButtons(X11Frame *frame);
   void drawTitleBarButton(X11Frame *frame, const X11Button &button);
 
-  // Compositing
-  void paint();
-  void damageWindow(X11Frame *frame);
+  // DISABLED: Compositing disabled for now
+  // void paint();
+  // void requestPaint(); // Queue a paint request with rate limiting
+  // void damageWindow(X11Frame *frame);
 
   Display *m_display = nullptr;
   Window m_root;
@@ -118,13 +123,18 @@ private:
   int m_dragFrameStartX = 0;
   int m_dragFrameStartY = 0;
 
-  // Extension bases
-  int m_compositeEventBase = 0;
-  int m_compositeErrorBase = 0;
-  int m_renderEventBase = 0;
-  int m_renderErrorBase = 0;
-  int m_damageEventBase = 0;
-  int m_damageErrorBase = 0;
-
-  QHash<Window, CompositedWindow *> m_compositedWindows;
+  // DISABLED: Compositing disabled for now
+  // // Extension bases
+  // int m_compositeEventBase = 0;
+  // int m_compositeErrorBase = 0;
+  // int m_renderEventBase = 0;
+  // int m_renderErrorBase = 0;
+  // int m_damageEventBase = 0;
+  // int m_damageErrorBase = 0;
+  //
+  // QHash<Window, CompositedWindow *> m_compositedWindows;
+  //
+  // // Paint rate limiting (60 FPS)
+  // QTimer *m_paintTimer = nullptr;
+  // bool m_paintRequested = false;
 };

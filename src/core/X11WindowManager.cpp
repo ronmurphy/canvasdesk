@@ -1,5 +1,6 @@
 #include "X11WindowManager.h"
 #include <QDebug>
+// #include <QTimer>  // DISABLED: Compositing disabled for now
 #include <X11/Xatom.h>
 #include <X11/Xutil.h>
 
@@ -56,55 +57,56 @@ bool X11WindowManager::initialize() {
 
   qInfo() << "[X11] Successfully registered as window manager";
 
-  // Initialize Extensions
-  if (!XCompositeQueryExtension(m_display, &m_compositeEventBase,
-                                &m_compositeErrorBase)) {
-    qCritical() << "[X11] XComposite extension not found!";
-    return false;
-  }
-  if (!XRenderQueryExtension(m_display, &m_renderEventBase,
-                             &m_renderErrorBase)) {
-    qCritical() << "[X11] XRender extension not found!";
-    return false;
-  }
-  if (!XDamageQueryExtension(m_display, &m_damageEventBase,
-                             &m_damageErrorBase)) {
-    qCritical() << "[X11] XDamage extension not found!";
-    return false;
-  }
-
-  // Redirect all subwindows of root (Manual Compositing)
-  XCompositeRedirectSubwindows(m_display, m_root, CompositeRedirectManual);
-  qInfo() << "[X11] Enabled Manual Compositing";
-
-  // Initialize existing windows
-  Window root_return, parent_return;
-  Window *children;
-  unsigned int nchildren;
-  if (XQueryTree(m_display, m_root, &root_return, &parent_return, &children,
-                 &nchildren)) {
-    for (unsigned int i = 0; i < nchildren; i++) {
-      XWindowAttributes attrs;
-      if (XGetWindowAttributes(m_display, children[i], &attrs) &&
-          attrs.map_state == IsViewable) {
-        // Create composited window wrapper
-        auto *cw = new CompositedWindow;
-        cw->window = children[i];
-        cw->attrs = attrs;
-
-        XRenderPictFormat *format =
-            XRenderFindVisualFormat(m_display, attrs.visual);
-        cw->picture =
-            XRenderCreatePicture(m_display, cw->window, format, 0, nullptr);
-        cw->damage =
-            XDamageCreate(m_display, cw->window, XDamageReportNonEmpty);
-
-        m_compositedWindows.insert(cw->window, cw);
-      }
-    }
-    if (children)
-      XFree(children);
-  }
+  // DISABLED: Compositing disabled for now
+  // // Initialize Extensions
+  // if (!XCompositeQueryExtension(m_display, &m_compositeEventBase,
+  //                               &m_compositeErrorBase)) {
+  //   qCritical() << "[X11] XComposite extension not found!";
+  //   return false;
+  // }
+  // if (!XRenderQueryExtension(m_display, &m_renderEventBase,
+  //                            &m_renderErrorBase)) {
+  //   qCritical() << "[X11] XRender extension not found!";
+  //   return false;
+  // }
+  // if (!XDamageQueryExtension(m_display, &m_damageEventBase,
+  //                            &m_damageErrorBase)) {
+  //   qCritical() << "[X11] XDamage extension not found!";
+  //   return false;
+  // }
+  //
+  // // Redirect all subwindows of root (Manual Compositing)
+  // XCompositeRedirectSubwindows(m_display, m_root, CompositeRedirectManual);
+  // qInfo() << "[X11] Enabled Manual Compositing";
+  //
+  // // Initialize existing windows
+  // Window root_return, parent_return;
+  // Window *children;
+  // unsigned int nchildren;
+  // if (XQueryTree(m_display, m_root, &root_return, &parent_return, &children,
+  //                &nchildren)) {
+  //   for (unsigned int i = 0; i < nchildren; i++) {
+  //     XWindowAttributes attrs;
+  //     if (XGetWindowAttributes(m_display, children[i], &attrs) &&
+  //         attrs.map_state == IsViewable) {
+  //       // Create composited window wrapper
+  //       auto *cw = new CompositedWindow;
+  //       cw->window = children[i];
+  //       cw->attrs = attrs;
+  //
+  //       XRenderPictFormat *format =
+  //           XRenderFindVisualFormat(m_display, attrs.visual);
+  //       cw->picture =
+  //           XRenderCreatePicture(m_display, cw->window, format, 0, nullptr);
+  //       cw->damage =
+  //           XDamageCreate(m_display, cw->window, XDamageReportNonEmpty);
+  //
+  //       m_compositedWindows.insert(cw->window, cw);
+  //     }
+  //   }
+  //   if (children)
+  //     XFree(children);
+  // }
 
   // Set up Qt integration for X event processing
   int x11_fd = ConnectionNumber(m_display);
@@ -112,10 +114,23 @@ bool X11WindowManager::initialize() {
   connect(m_notifier, &QSocketNotifier::activated, this,
           &X11WindowManager::processXEvents);
 
+  // DISABLED: Compositing disabled for now
+  // // Set up paint rate limiting (60 FPS = ~16ms interval)
+  // m_paintTimer = new QTimer(this);
+  // m_paintTimer->setInterval(16); // 60 FPS
+  // m_paintTimer->start();
+  // connect(m_paintTimer, &QTimer::timeout, this, [this]() {
+  //   if (m_paintRequested) {
+  //     m_paintRequested = false;
+  //     paint();
+  //   }
+  // });
+
   qInfo() << "[X11] ✓ X11 window manager initialized successfully";
 
-  // Initial paint
-  paint();
+  // DISABLED: Compositing disabled for now
+  // // Initial paint
+  // requestPaint();
 
   return true;
 }
@@ -129,9 +144,10 @@ void X11WindowManager::processXEvents() {
     case MapRequest:
       handleMapRequest(&event.xmaprequest);
       break;
-    case MapNotify:
-      handleMapNotify(&event.xmap);
-      break;
+    // DISABLED: Compositing disabled for now
+    // case MapNotify:
+    //   handleMapNotify(&event.xmap);
+    //   break;
     case UnmapNotify:
       handleUnmapNotify(&event.xunmap);
       break;
@@ -156,69 +172,93 @@ void X11WindowManager::processXEvents() {
         updateWindowProperties(m_windows[event.xproperty.window]);
       }
       break;
-    case CreateNotify:
-      // Track new windows for compositing
-      // (We might want to wait for MapNotify, but tracking here is safe)
-      break;
-    case ConfigureNotify: {
-      // Update window attributes for compositing
-      Window w = event.xconfigure.window;
-      if (m_compositedWindows.contains(w)) {
-        m_compositedWindows[w]->attrs.x = event.xconfigure.x;
-        m_compositedWindows[w]->attrs.y = event.xconfigure.y;
-        m_compositedWindows[w]->attrs.width = event.xconfigure.width;
-        m_compositedWindows[w]->attrs.height = event.xconfigure.height;
-        paint(); // Repaint on move/resize
-      }
-      break;
-    }
-    default:
-      // Check for Damage events
-      if (event.type == m_damageEventBase + XDamageNotify) {
-        XDamageNotifyEvent *de = (XDamageNotifyEvent *)&event;
-        XDamageSubtract(m_display, de->damage, None, None);
-        paint();
-      }
-      break;
+    // DISABLED: Compositing disabled for now
+    // case CreateNotify:
+    //   // Track new windows for compositing
+    //   // (We might want to wait for MapNotify, but tracking here is safe)
+    //   break;
+    // case ConfigureNotify: {
+    //   // Update window attributes for compositing
+    //   Window w = event.xconfigure.window;
+    //   if (m_compositedWindows.contains(w)) {
+    //     m_compositedWindows[w]->attrs.x = event.xconfigure.x;
+    //     m_compositedWindows[w]->attrs.y = event.xconfigure.y;
+    //     m_compositedWindows[w]->attrs.width = event.xconfigure.width;
+    //     m_compositedWindows[w]->attrs.height = event.xconfigure.height;
+    //     requestPaint(); // Queue repaint on move/resize
+    //   }
+    //   break;
+    // }
+    // default:
+    //   // Check for Damage events
+    //   if (event.type == m_damageEventBase + XDamageNotify) {
+    //     XDamageNotifyEvent *de = (XDamageNotifyEvent *)&event;
+    //     XDamageSubtract(m_display, de->damage, None, None);
+    //     requestPaint(); // Queue repaint on damage
+    //   }
+    //   break;
     }
   }
 }
 
-void X11WindowManager::paint() {
-  // Create root picture if needed (or just create every time for simplicity)
-  XRenderPictFormat *format = XRenderFindVisualFormat(
-      m_display, DefaultVisual(m_display, DefaultScreen(m_display)));
-  Picture rootPicture =
-      XRenderCreatePicture(m_display, m_root, format, 0, nullptr);
+// DISABLED: Compositing disabled for now
+// void X11WindowManager::requestPaint() {
+//   if (!m_paintRequested) {
+//     m_paintRequested = true;
+//   }
+// }
 
-  // Fill background (Dark Gray)
-  XRenderColor color = {0x2b2b, 0x2b2b, 0x2b2b, 0xffff};
-  XRenderFillRectangle(m_display, PictOpSrc, rootPicture, &color, 0, 0,
-                       DisplayWidth(m_display, 0), DisplayHeight(m_display, 0));
-
-  // Get windows in stacking order
-  Window root_return, parent_return;
-  Window *children;
-  unsigned int nchildren;
-  if (XQueryTree(m_display, m_root, &root_return, &parent_return, &children,
-                 &nchildren)) {
-    for (unsigned int i = 0; i < nchildren; i++) {
-      Window w = children[i];
-      if (m_compositedWindows.contains(w)) {
-        CompositedWindow *cw = m_compositedWindows[w];
-        // Composite window onto root
-        XRenderComposite(m_display, PictOpOver, cw->picture, None, rootPicture,
-                         0, 0, 0, 0, cw->attrs.x, cw->attrs.y, cw->attrs.width,
-                         cw->attrs.height);
-      }
-    }
-    if (children)
-      XFree(children);
-  }
-
-  XRenderFreePicture(m_display, rootPicture);
-  XFlush(m_display);
-}
+// void X11WindowManager::paint() {
+//   int screenWidth = DisplayWidth(m_display, 0);
+//   int screenHeight = DisplayHeight(m_display, 0);
+//   int depth = DefaultDepth(m_display, 0);
+//
+//   // Create back buffer pixmap for double buffering (ELIMINATES FLICKERING!)
+//   Pixmap backBuffer = XCreatePixmap(m_display, m_root, screenWidth, screenHeight, depth);
+//
+//   // Create pictures for rendering
+//   XRenderPictFormat *format = XRenderFindVisualFormat(
+//       m_display, DefaultVisual(m_display, DefaultScreen(m_display)));
+//   Picture backPicture = XRenderCreatePicture(m_display, backBuffer, format, 0, nullptr);
+//   Picture rootPicture = XRenderCreatePicture(m_display, m_root, format, 0, nullptr);
+//
+//   // Fill background (Dark Gray) - render to back buffer
+//   XRenderColor color = {0x2b2b, 0x2b2b, 0x2b2b, 0xffff};
+//   XRenderFillRectangle(m_display, PictOpSrc, backPicture, &color, 0, 0,
+//                        screenWidth, screenHeight);
+//
+//   // Get windows in stacking order
+//   Window root_return, parent_return;
+//   Window *children;
+//   unsigned int nchildren;
+//   if (XQueryTree(m_display, m_root, &root_return, &parent_return, &children,
+//                  &nchildren)) {
+//     for (unsigned int i = 0; i < nchildren; i++) {
+//       Window w = children[i];
+//       if (m_compositedWindows.contains(w)) {
+//         CompositedWindow *cw = m_compositedWindows[w];
+//         // Composite window onto BACK BUFFER (not directly to screen)
+//         XRenderComposite(m_display, PictOpOver, cw->picture, None, backPicture,
+//                          0, 0, 0, 0, cw->attrs.x, cw->attrs.y, cw->attrs.width,
+//                          cw->attrs.height);
+//       }
+//     }
+//     if (children)
+//       XFree(children);
+//   }
+//
+//   // NOW copy the complete back buffer to the screen in ONE OPERATION
+//   // This is what eliminates flickering - the screen updates atomically
+//   XRenderComposite(m_display, PictOpSrc, backPicture, None, rootPicture,
+//                    0, 0, 0, 0, 0, 0, screenWidth, screenHeight);
+//
+//   // Clean up
+//   XRenderFreePicture(m_display, backPicture);
+//   XRenderFreePicture(m_display, rootPicture);
+//   XFreePixmap(m_display, backBuffer);
+//
+//   XFlush(m_display);
+// }
 
 void X11WindowManager::handleMapRequest(XMapRequestEvent *event) {
   Window w = event->window;
@@ -278,50 +318,62 @@ void X11WindowManager::handleMapRequest(XMapRequestEvent *event) {
           << ")";
 }
 
-void X11WindowManager::handleMapNotify(XMapEvent *event) {
-  Window w = event->window;
-
-  // Create composited window if not exists
-  if (!m_compositedWindows.contains(w)) {
-    XWindowAttributes attrs;
-    if (XGetWindowAttributes(m_display, w, &attrs)) {
-      auto *cw = new CompositedWindow;
-      cw->window = w;
-      cw->attrs = attrs;
-
-      XRenderPictFormat *format =
-          XRenderFindVisualFormat(m_display, attrs.visual);
-      cw->picture =
-          XRenderCreatePicture(m_display, cw->window, format, 0, nullptr);
-      cw->damage = XDamageCreate(m_display, cw->window, XDamageReportNonEmpty);
-
-      m_compositedWindows.insert(w, cw);
-    }
-  }
-
-  paint(); // Repaint when window appears
-
-  if (m_windows.contains(w)) {
-    auto *window = m_windows.value(w);
-    if (!window->mapped) {
-      qInfo() << "[X11] Window mapped (MapNotify):" << w << window->title;
-      window->mapped = true;
-      emit windowChanged(window);
-    }
-  }
-}
+// DISABLED: Compositing disabled for now
+// void X11WindowManager::handleMapNotify(XMapEvent *event) {
+//   Window w = event->window;
+//
+//   // Skip frame windows (they have override_redirect and aren't composited)
+//   if (m_frames.contains(w)) {
+//     return;
+//   }
+//
+//   // Create composited window if not exists
+//   if (!m_compositedWindows.contains(w)) {
+//     XWindowAttributes attrs;
+//     if (XGetWindowAttributes(m_display, w, &attrs)) {
+//       // Skip override_redirect windows (like our frames)
+//       if (attrs.override_redirect) {
+//         return;
+//       }
+//
+//       auto *cw = new CompositedWindow;
+//       cw->window = w;
+//       cw->attrs = attrs;
+//
+//       XRenderPictFormat *format =
+//           XRenderFindVisualFormat(m_display, attrs.visual);
+//       cw->picture =
+//           XRenderCreatePicture(m_display, cw->window, format, 0, nullptr);
+//       cw->damage = XDamageCreate(m_display, cw->window, XDamageReportNonEmpty);
+//
+//       m_compositedWindows.insert(w, cw);
+//     }
+//   }
+//
+//   requestPaint(); // Queue repaint when window appears
+//
+//   if (m_windows.contains(w)) {
+//     auto *window = m_windows.value(w);
+//     if (!window->mapped) {
+//       qInfo() << "[X11] Window mapped (MapNotify):" << w << window->title;
+//       window->mapped = true;
+//       emit windowChanged(window);
+//     }
+//   }
+// }
 
 void X11WindowManager::handleUnmapNotify(XUnmapEvent *event) {
   Window w = event->window;
 
-  // Remove from compositing
-  if (m_compositedWindows.contains(w)) {
-    auto *cw = m_compositedWindows.take(w);
-    XRenderFreePicture(m_display, cw->picture);
-    XDamageDestroy(m_display, cw->damage);
-    delete cw;
-    paint(); // Repaint when window disappears
-  }
+  // DISABLED: Compositing disabled for now
+  // // Remove from compositing
+  // if (m_compositedWindows.contains(w)) {
+  //   auto *cw = m_compositedWindows.take(w);
+  //   XRenderFreePicture(m_display, cw->picture);
+  //   XDamageDestroy(m_display, cw->damage);
+  //   delete cw;
+  //   requestPaint(); // Queue repaint when window disappears
+  // }
 
   if (!m_windows.contains(w)) {
     // This might be a frame window or something else we don't track directly as
@@ -424,12 +476,22 @@ X11Frame *X11WindowManager::createFrame(Window client, int x, int y, int width,
                                      0x2b2b2b  // background color (darker gray)
   );
 
+  // DISABLED: Compositing disabled, no need for override_redirect now
+  // // Set override_redirect on frame so it's not managed/composited
+  // XSetWindowAttributes attrs;
+  // attrs.override_redirect = True;
+  // XChangeWindowAttributes(m_display, frame->frame, CWOverrideRedirect, &attrs);
+
   // Create title bar window
   frame->titleBar =
       XCreateSimpleWindow(m_display, frame->frame, 0, 0, width, TITLE_HEIGHT, 0,
                           0x000000, // border
                           0x3c3c3c  // title bar background (lighter gray)
       );
+
+  // DISABLED: Compositing disabled, no need for override_redirect now
+  // // Set override_redirect on titlebar too
+  // XChangeWindowAttributes(m_display, frame->titleBar, CWOverrideRedirect, &attrs);
 
   // Create graphics context for drawing text
   frame->gc = XCreateGC(m_display, frame->titleBar, 0, nullptr);
@@ -473,6 +535,11 @@ void X11WindowManager::destroyFrame(X11Frame *frame) {
   m_frames.remove(frame->frame);
   m_frames.remove(frame->titleBar);
   m_frames.remove(frame->client);
+
+  // Remove button windows from hash BEFORE destroying them
+  for (const X11Button &btn : frame->buttons) {
+    m_frames.remove(btn.window);
+  }
 
   // Free graphics context
   if (frame->gc) {
@@ -523,6 +590,11 @@ void X11WindowManager::createTitleBarButtons(X11Frame *frame) {
   int buttonY = (TITLE_HEIGHT - BUTTON_SIZE) / 2;
   int rightEdge = frame->width - PADDING;
 
+  // DISABLED: Compositing disabled, no need for override_redirect now
+  // // Set override_redirect for button windows
+  // XSetWindowAttributes attrs;
+  // attrs.override_redirect = True;
+
   // Close button (rightmost) - Red background
   X11Button closeBtn;
   closeBtn.type = X11Button::Close;
@@ -534,6 +606,7 @@ void X11WindowManager::createTitleBarButtons(X11Frame *frame) {
   closeBtn.window = XCreateSimpleWindow(m_display, frame->titleBar, closeBtn.x,
                                         closeBtn.y, BUTTON_SIZE, BUTTON_SIZE, 0,
                                         0x000000, closeBtn.color);
+  // XChangeWindowAttributes(m_display, closeBtn.window, CWOverrideRedirect, &attrs);  // DISABLED
   XSelectInput(m_display, closeBtn.window,
                ButtonPressMask | ButtonReleaseMask | ExposureMask);
   XMapWindow(m_display, closeBtn.window);
@@ -551,6 +624,7 @@ void X11WindowManager::createTitleBarButtons(X11Frame *frame) {
   maxBtn.window =
       XCreateSimpleWindow(m_display, frame->titleBar, maxBtn.x, maxBtn.y,
                           BUTTON_SIZE, BUTTON_SIZE, 0, 0x000000, maxBtn.color);
+  // XChangeWindowAttributes(m_display, maxBtn.window, CWOverrideRedirect, &attrs);  // DISABLED
   XSelectInput(m_display, maxBtn.window,
                ButtonPressMask | ButtonReleaseMask | ExposureMask);
   XMapWindow(m_display, maxBtn.window);
@@ -568,6 +642,7 @@ void X11WindowManager::createTitleBarButtons(X11Frame *frame) {
   minBtn.window =
       XCreateSimpleWindow(m_display, frame->titleBar, minBtn.x, minBtn.y,
                           BUTTON_SIZE, BUTTON_SIZE, 0, 0x000000, minBtn.color);
+  // XChangeWindowAttributes(m_display, minBtn.window, CWOverrideRedirect, &attrs);  // DISABLED
   XSelectInput(m_display, minBtn.window,
                ButtonPressMask | ButtonReleaseMask | ExposureMask);
   XMapWindow(m_display, minBtn.window);
@@ -688,5 +763,6 @@ void X11WindowManager::handleMotionNotify(XMotionEvent *event) {
   m_dragFrame->x = newX;
   m_dragFrame->y = newY;
 
-  XFlush(m_display);
+  // Don't XFlush here - let the paint timer handle it at 60 FPS
+  // This eliminates flickering during window drag
 }
