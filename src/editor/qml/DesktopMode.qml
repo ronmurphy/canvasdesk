@@ -677,10 +677,35 @@ ApplicationWindow {
                                             Layout.preferredWidth: 100
                                         }
                                         CheckBox {
+                                            id: centerCheckBox
+                                            enabled: selectedComponent && selectedComponent.loadedItem ? !selectedComponent.loadedItem.sizeToFit : true
                                             checked: selectedComponent && selectedComponent.loadedItem ? selectedComponent.loadedItem.centerComponents : false
                                             onToggled: {
                                                 if (selectedComponent && selectedComponent.loadedItem) {
                                                     selectedComponent.loadedItem.centerComponents = checked
+                                                }
+                                            }
+                                        }
+                                    }
+                                    
+                                    // Size to Fit (DISABLED - feature not working correctly)
+                                    RowLayout {
+                                        Layout.fillWidth: true
+                                        visible: false  // Hidden until feature is fixed
+                                        Label {
+                                            text: "Size to Fit:"
+                                            color: Theme.uiTextColor
+                                            Layout.preferredWidth: 100
+                                        }
+                                        CheckBox {
+                                            checked: selectedComponent && selectedComponent.loadedItem ? selectedComponent.loadedItem.sizeToFit : false
+                                            onToggled: {
+                                                if (selectedComponent && selectedComponent.loadedItem) {
+                                                    selectedComponent.loadedItem.sizeToFit = checked
+                                                    // Disable centering when size to fit is enabled
+                                                    if (checked && selectedComponent.loadedItem.centerComponents) {
+                                                        selectedComponent.loadedItem.centerComponents = false
+                                                    }
                                                 }
                                             }
                                         }
@@ -1757,6 +1782,7 @@ ApplicationWindow {
                             if (child.loadedItem.sectionRatios !== undefined) comp.props.sectionRatios = child.loadedItem.sectionRatios
                             if (child.loadedItem.centerComponents !== undefined) comp.props.centerComponents = child.loadedItem.centerComponents
                             if (child.loadedItem.sectionCount !== undefined) comp.props.sectionCount = child.loadedItem.sectionCount
+                            if (child.loadedItem.sizeToFit !== undefined) comp.props.sizeToFit = child.loadedItem.sizeToFit
                         }
                     }
 

@@ -1,8 +1,92 @@
 # CanvasDesk X11 Window Manager Migration
 
-**Last Updated:** 2025-12-04 (LOGIN CRASH FIX + DESKTOP WINDOW FIX + ENHANCED MONITOR UI)
-**Status:** Phase 4 - Multi-Monitor Support Complete + Desktop Session Fix
+**Last Updated:** 2025-12-05 (ENHANCED PANEL DOCKING FIXES)
+**Status:** Phase 4 - Multi-Monitor Support Complete + Enhanced Panel Improvements
 **See also:** do.txt (original Wayland progress notes - OUTDATED, Wayland removed)
+
+---
+
+## BUGFIX SESSION (Dec 5) - ENHANCED PANEL DOCKING FIXES ✅
+
+### Critical Bug Fixed: Docked Components Invisible with sizeToFit
+
+**Problem Reported:**
+- User enabled "Size to Fit" checkbox on EnhancedPanel
+- Dropped items (AppLauncher, Taskbar, Clock) into panel
+- Items successfully docked (debug logs showed "Successfully docked!")
+- BUT items were invisible - not showing on screen
+- Debug logs revealed: `height = -8` for all docked components
+
+**Root Cause #1: Circular Height Dependency**
+- When `sizeToFit: true`, sections had `Layout.preferredHeight: -1` (auto-size based on content)
+- During docking, component height was bound to: `targetSection.height - 8`
+- But section height was 0 (waiting for content to determine size)
+- Result: `0 - 8 = -8` → **components with negative height are invisible**
+
+**Fix Applied (EnhancedPanelComponent.qml:314-326):**
+```qml
+// Only bind height to section if NOT in sizeToFit mode
+if (root.sizeToFit) {
+    // In sizeToFit mode, keep component's natural height
+    component.Layout.fillHeight = false
+    component.Layout.preferredHeight = component.height
+} else {
+    // In normal mode, fill the section height
+    component.Layout.fillHeight = true
+    component.height = Qt.binding(function() { return targetSection.height - 8 })
+}
+```
+
+**Root Cause #2: Inner Layout Had No Size**
+- Section inner layouts (RowLayout/ColumnLayout) had `anchors.fill: undefined` when `sizeToFit: true`
+- Margins were set but anchors were undefined → layout collapsed to 0x0
+- Components were there but invisible due to collapsed container
+
+**Fix Applied (EnhancedPanelComponent.qml:109-143):**
+```qml
+// In sizeToFit mode, fill parent with margins
+anchors.fill: root.sizeToFit ? parent : (root.centerComponents ? undefined : parent)
+anchors.margins: root.sizeToFit ? 4 : 0
+```
+
+**Attempted: Simplified sizeToFit Implementation**
+- Tried forcing single section mode when `sizeToFit: true`
+- Added auto-resize bindings for panel width/height based on content
+- Items still didn't appear correctly
+
+**Final Decision: Disabled sizeToFit Feature**
+- Feature proved too complex with current layout architecture
+- Multiple interdependent sizing issues (sections, layouts, panel, components)
+- Risk of breaking the working multi-section panel functionality
+- Disabled checkbox in UI by setting `visible: false` (DesktopMode.qml:693)
+- Added comment: "DISABLED - feature not working correctly"
+
+**Files Modified:**
+- `src/editor/qml/components/EnhancedPanelComponent.qml` - Fixed height binding logic, layout anchors
+- `src/editor/qml/DesktopMode.qml` - Hid "Size to Fit" checkbox from properties panel
+
+**Result:**
+✅ EnhancedPanel works correctly with `sizeToFit: false` (default)
+✅ Components dock and appear visibly in panels
+✅ No negative heights - proper component sizing
+✅ Multi-section layout system intact and working
+✅ Z-axis fix from previous session still working (items drag above panels)
+⚠️ "Size to Fit" feature hidden from UI - can be revisited in future
+
+**What Still Works:**
+✅ EnhancedPanel with configurable sections (1-10)
+✅ Section ratios for proportional sizing
+✅ Center components mode
+✅ Docking items into specific sections
+✅ Auto-hide panels
+✅ Edge positioning (top/bottom/left/right)
+✅ Items remain visible when docked
+
+**Conversation Context:**
+- This was recovered after an Antigravity crash mid-session
+- User patiently reminded assistant of the work being done
+- Took ~2 hours to get EnhancedPanel working initially
+- User wisely chose to disable problematic feature rather than risk breaking working code
 
 ---
 

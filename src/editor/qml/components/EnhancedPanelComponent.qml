@@ -17,6 +17,10 @@ Rectangle {
     property int sectionCount: 3
     property var sectionRatios: [1, 1, 1] // Relative sizing
     property bool centerComponents: false // Center content in sections
+    property bool sizeToFit: false // Auto-size panel to content (forces single section, ignores ratios and centering)
+    
+    // When sizeToFit is enabled, force single section
+    readonly property int effectiveSectionCount: sizeToFit ? 1 : sectionCount
 
     // Editor support
     property bool editorOpen: false
@@ -37,6 +41,23 @@ Rectangle {
     border.width: 2
     radius: panelRadius
     clip: false  // Allow child popups to render outside panel bounds
+    
+    // Auto-resize panel when sizeToFit is enabled
+    width: {
+        if (sizeToFit) {
+            var layout = isHorizontal ? horizontalLayout : verticalLayout
+            return layout.implicitWidth + contentContainer.anchors.margins * 2 + border.width * 2
+        }
+        return width // Keep existing width binding if any
+    }
+    
+    height: {
+        if (sizeToFit) {
+            var layout = isHorizontal ? horizontalLayout : verticalLayout
+            return layout.implicitHeight + contentContainer.anchors.margins * 2 + border.width * 2
+        }
+        return height // Keep existing height binding if any
+    }
 
     // Smooth opacity animation for auto-hide
     Behavior on opacity {
@@ -65,7 +86,7 @@ Rectangle {
             
             Repeater {
                 id: horizontalRepeater
-                model: isHorizontal ? root.sectionCount : 0
+                model: isHorizontal ? root.effectiveSectionCount : 0
                 delegate: sectionDelegate
             }
         }
@@ -79,7 +100,7 @@ Rectangle {
             
             Repeater {
                 id: verticalRepeater
-                model: !isHorizontal ? root.sectionCount : 0
+                model: !isHorizontal ? root.effectiveSectionCount : 0
                 delegate: sectionDelegate
             }
         }
@@ -90,10 +111,10 @@ Rectangle {
                 id: sectionRect
                 
                 // Layout properties for the SECTION
-                Layout.fillWidth: true
-                Layout.fillHeight: true
-                Layout.preferredWidth: root.isHorizontal ? (root.sectionRatios[index] || 1) : -1
-                Layout.preferredHeight: !root.isHorizontal ? (root.sectionRatios[index] || 1) : -1
+                Layout.fillWidth: root.sizeToFit ? false : true
+                Layout.fillHeight: root.sizeToFit ? false : true
+                Layout.preferredWidth: root.sizeToFit ? -1 : (root.isHorizontal ? (root.sectionRatios[index] || 1) : -1)
+                Layout.preferredHeight: root.sizeToFit ? -1 : (!root.isHorizontal ? (root.sectionRatios[index] || 1) : -1)
                 
                 color: "transparent"
                 border.color: root.editorOpen ? "#444" : "transparent"
@@ -105,16 +126,20 @@ Rectangle {
                 RowLayout {
                     id: sectionRowLayout
                     visible: root.isHorizontal
-                    anchors.fill: root.centerComponents ? undefined : parent
-                    anchors.centerIn: root.centerComponents ? parent : undefined
+                    // In sizeToFit mode, fill parent with margins. In centerComponents mode, center. Otherwise fill completely.
+                    anchors.fill: root.sizeToFit ? parent : (root.centerComponents ? undefined : parent)
+                    anchors.centerIn: (!root.sizeToFit && root.centerComponents) ? parent : undefined
+                    anchors.margins: root.sizeToFit ? 4 : 0
                     spacing: 4
                 }
                 
                 ColumnLayout {
                     id: sectionColumnLayout
                     visible: !root.isHorizontal
-                    anchors.fill: root.centerComponents ? undefined : parent
-                    anchors.centerIn: root.centerComponents ? parent : undefined
+                    // In sizeToFit mode, fill parent with margins. In centerComponents mode, center. Otherwise fill completely.
+                    anchors.fill: root.sizeToFit ? parent : (root.centerComponents ? undefined : parent)
+                    anchors.centerIn: (!root.sizeToFit && root.centerComponents) ? parent : undefined
+                    anchors.margins: root.sizeToFit ? 4 : 0
                     spacing: 4
                 }
                 
@@ -230,12 +255,21 @@ Rectangle {
             var panelPos = root.mapFromItem(component.parent, component.x, component.y)
             var componentCenter = Qt.point(panelPos.x + component.width/2, panelPos.y + component.height/2)
             
+            console.log("Panel: Component center in panel coords:", componentCenter.x, componentCenter.y)
+            
             for (var i = 0; i < mainRepeater.count; i++) {
                 var section = mainRepeater.itemAt(i)
-                if (!section || !section.width) continue
+                if (!section || !section.width || !section.height) continue
                 
-                if (componentCenter.x >= section.x && componentCenter.x <= section.x + section.width &&
-                    componentCenter.y >= section.y && componentCenter.y <= section.y + section.height) {
+                // Map section position to panel coordinates
+                var sectionInPanel = contentContainer.mapToItem(root, section.x, section.y)
+                var sectionRect = Qt.rect(sectionInPanel.x, sectionInPanel.y, section.width, section.height)
+                
+                console.log("Panel: Section", i, "rect:", sectionRect.x, sectionRect.y, sectionRect.width, sectionRect.height)
+                
+                if (componentCenter.x >= sectionRect.x && componentCenter.x <= sectionRect.x + sectionRect.width &&
+                    componentCenter.y >= sectionRect.y && componentCenter.y <= sectionRect.y + sectionRect.height) {
+                    console.log("Panel: Found target section", i)
                     targetSection = section
                     break
                 }
@@ -274,16 +308,34 @@ Rectangle {
 
         // Adjust size for panel and set Layout properties
         if (isHorizontal) {
-            // In horizontal layout, maintain width but fill height
+            // In horizontal layout, maintain width
             component.Layout.preferredWidth = component.width
-            component.Layout.fillHeight = true
-            component.height = Qt.binding(function() { return targetSection.height - 8 })
+            
+            // Only bind height to section if NOT in sizeToFit mode
+            if (root.sizeToFit) {
+                // In sizeToFit mode, keep component's natural height
+                component.Layout.fillHeight = false
+                component.Layout.preferredHeight = component.height
+            } else {
+                // In normal mode, fill the section height
+                component.Layout.fillHeight = true
+                component.height = Qt.binding(function() { return targetSection.height - 8 })
+            }
             console.log("Panel: Set horizontal layout properties, width =", component.width, "height =", component.height)
         } else {
-            // In vertical layout, maintain height but fill width
+            // In vertical layout, maintain height
             component.Layout.preferredHeight = component.height
-            component.Layout.fillWidth = true
-            component.width = Qt.binding(function() { return targetSection.width - 8 })
+            
+            // Only bind width to section if NOT in sizeToFit mode
+            if (root.sizeToFit) {
+                // In sizeToFit mode, keep component's natural width
+                component.Layout.fillWidth = false
+                component.Layout.preferredWidth = component.width
+            } else {
+                // In normal mode, fill the section width
+                component.Layout.fillWidth = true
+                component.width = Qt.binding(function() { return targetSection.width - 8 })
+            }
             console.log("Panel: Set vertical layout properties, width =", component.width, "height =", component.height)
         }
 

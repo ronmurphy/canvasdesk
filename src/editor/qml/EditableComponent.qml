@@ -13,6 +13,9 @@ Item {
     property var dockedPanel: null  // Reference to the panel this is docked to
     property bool canDock: false  // Visual feedback during drag
 
+    // Raise z-index when dragging or selected
+    z: dragArea.pressed ? 10000 : (selected ? 100 : 0)
+
     // Store original parent for undocking
     property var desktopParent: null
 
