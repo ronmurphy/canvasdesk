@@ -265,6 +265,8 @@ ApplicationWindow {
                             ListElement { type: "FileManager"; name: "File Manager"; icon: "folder" }
                             ListElement { type: "SessionManager"; name: "Session Manager"; icon: "system-shutdown" }
                             ListElement { type: "Button"; name: "Button"; icon: "button" }
+                            ListElement { type: "AtomClock"; name: "Atom Clock"; icon: "clock" }
+                            ListElement { type: "AtomSysInfo"; name: "Atom SysInfo"; icon: "utilities-system-monitor" }
                         }
                         
                         delegate: ItemDelegate {
@@ -1776,7 +1778,9 @@ ApplicationWindow {
             "WorkspaceSwitcher": { width: 180, height: 40 },
             "FileManager": { width: 300, height: 400 },
             "SessionManager": { width: 150, height: 200 },
-            "Button": { width: 100, height: 40 }
+            "Button": { width: 100, height: 40 },
+            "AtomClock": { width: 150, height: 60 },
+            "AtomSysInfo": { width: 150, height: 80 }
         }
 
         var defaultSize = defaults[data.type] || { width: 100, height: 50 }

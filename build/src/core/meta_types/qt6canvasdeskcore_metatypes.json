@@ -514,6 +514,89 @@
     {
         "classes": [
             {
+                "className": "SystemMonitor",
+                "lineNumber": 7,
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 0,
+                        "lineNumber": 9,
+                        "name": "cpuUsage",
+                        "notify": "statsChanged",
+                        "read": "cpuUsage",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "double",
+                        "user": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 1,
+                        "lineNumber": 10,
+                        "name": "memoryUsage",
+                        "notify": "statsChanged",
+                        "read": "memoryUsage",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "double",
+                        "user": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 2,
+                        "lineNumber": 11,
+                        "name": "diskUsage",
+                        "notify": "statsChanged",
+                        "read": "diskUsage",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "double",
+                        "user": false
+                    }
+                ],
+                "qualifiedClassName": "SystemMonitor",
+                "signals": [
+                    {
+                        "access": "public",
+                        "index": 0,
+                        "lineNumber": 25,
+                        "name": "statsChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "public",
+                        "index": 1,
+                        "lineNumber": 22,
+                        "name": "updateStats",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "SystemMonitor.h",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
                 "className": "ThemeManager",
                 "lineNumber": 10,
                 "methods": [

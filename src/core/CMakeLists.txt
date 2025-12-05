@@ -20,6 +20,8 @@ qt_add_qml_module(CanvasDeskCore
         ThemeManager.h
         MonitorManager.cpp
         MonitorManager.h
+        SystemMonitor.cpp
+        SystemMonitor.h
 )
 
 target_link_libraries(CanvasDeskCore

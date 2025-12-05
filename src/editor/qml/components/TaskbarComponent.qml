@@ -39,19 +39,34 @@ Rectangle {
                 opacity: modelData.state === "minimized" ? 0.5 : 1.0
             }
 
-            Text {
+            RowLayout {
                 anchors.fill: parent
-                text: {
-                    let prefix = "";
-                    if (modelData.state === "minimized") prefix = "_ ";
-                    else if (modelData.state === "maximized") prefix = "□ ";
-                    return prefix + modelData.title;
+                anchors.margins: 4
+                spacing: 4
+                
+                Image {
+                    Layout.preferredWidth: 16
+                    Layout.preferredHeight: 16
+                    source: "image://theme/" + (modelData.appId || "application-x-executable")
+                    sourceSize.width: 16
+                    sourceSize.height: 16
+                    fillMode: Image.PreserveAspectFit
+                    visible: modelData.state !== "minimized" // Hide icon if minimized to save space? Or keep it? Let's keep it.
                 }
-                color: Theme.uiTextColor
-                elide: Text.ElideRight
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
-                font.italic: modelData.state === "minimized"
+
+                Text {
+                    Layout.fillWidth: true
+                    text: {
+                        let prefix = "";
+                        if (modelData.state === "minimized") prefix = "_ ";
+                        else if (modelData.state === "maximized") prefix = "□ ";
+                        return prefix + modelData.title;
+                    }
+                    color: Theme.uiTextColor
+                    elide: Text.ElideRight
+                    verticalAlignment: Text.AlignVCenter
+                    font.italic: modelData.state === "minimized"
+                }
             }
 
             MouseArea {

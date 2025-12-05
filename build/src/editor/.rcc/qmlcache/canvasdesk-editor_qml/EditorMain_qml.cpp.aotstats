@@ -48,7 +48,7 @@
                         {
                             "codegenResult": 0,
                             "column": 29,
-                            "durationMicroseconds": 117,
+                            "durationMicroseconds": 121,
                             "functionName": "onIsRuntimeModeChanged",
                             "line": 24,
                             "message": ""
@@ -56,7 +56,7 @@
                         {
                             "codegenResult": 0,
                             "column": 32,
-                            "durationMicroseconds": 46,
+                            "durationMicroseconds": 47,
                             "functionName": "previewMode",
                             "line": 35,
                             "message": ""
@@ -64,7 +64,7 @@
                         {
                             "codegenResult": 0,
                             "column": 27,
-                            "durationMicroseconds": 56,
+                            "durationMicroseconds": 58,
                             "functionName": "onPreviewModeChanged",
                             "line": 36,
                             "message": ""
@@ -72,7 +72,7 @@
                         {
                             "codegenResult": 2,
                             "column": 5,
-                            "durationMicroseconds": 471,
+                            "durationMicroseconds": 508,
                             "functionName": "saveLayout",
                             "line": 44,
                             "message": "Cannot retrieve a non-object type by ID: layoutManager"
@@ -80,7 +80,7 @@
                         {
                             "codegenResult": 2,
                             "column": 5,
-                            "durationMicroseconds": 614,
+                            "durationMicroseconds": 686,
                             "functionName": "loadLayout",
                             "line": 63,
                             "message": "Cannot retrieve a non-object type by ID: layoutManager"
@@ -88,7 +88,7 @@
                         {
                             "codegenResult": 2,
                             "column": 5,
-                            "durationMicroseconds": 1144,
+                            "durationMicroseconds": 1209,
                             "functionName": "loadPreview",
                             "line": 621,
                             "message": "Cannot retrieve a non-object type by ID: layoutManager"
@@ -96,7 +96,7 @@
                         {
                             "codegenResult": 0,
                             "column": 5,
-                            "durationMicroseconds": 298,
+                            "durationMicroseconds": 309,
                             "functionName": "clearPreview",
                             "line": 639,
                             "message": ""
@@ -208,7 +208,7 @@
                         {
                             "codegenResult": 2,
                             "column": 23,
-                            "durationMicroseconds": 23,
+                            "durationMicroseconds": 21,
                             "functionName": "currentIndex",
                             "line": 128,
                             "message": "Cannot access value for name previewMode"
@@ -216,7 +216,7 @@
                         {
                             "codegenResult": 0,
                             "column": 23,
-                            "durationMicroseconds": 34,
+                            "durationMicroseconds": 37,
                             "functionName": "fill",
                             "line": 127,
                             "message": ""
@@ -280,7 +280,7 @@
                         {
                             "codegenResult": 0,
                             "column": 46,
-                            "durationMicroseconds": 50,
+                            "durationMicroseconds": 54,
                             "functionName": "active",
                             "line": 184,
                             "message": ""
@@ -288,7 +288,7 @@
                         {
                             "codegenResult": 0,
                             "column": 48,
-                            "durationMicroseconds": 35,
+                            "durationMicroseconds": 38,
                             "functionName": "dragType",
                             "line": 185,
                             "message": ""
@@ -296,7 +296,7 @@
                         {
                             "codegenResult": 2,
                             "column": 48,
-                            "durationMicroseconds": 15,
+                            "durationMicroseconds": 14,
                             "functionName": "mimeData",
                             "line": 186,
                             "message": "Cannot access value for name type"
@@ -304,7 +304,7 @@
                         {
                             "codegenResult": 2,
                             "column": 54,
-                            "durationMicroseconds": 114,
+                            "durationMicroseconds": 133,
                             "functionName": "onActiveChanged",
                             "line": 190,
                             "message": "Cannot generate efficient code for LoadClosure"
@@ -312,7 +312,7 @@
                         {
                             "codegenResult": 2,
                             "column": 36,
-                            "durationMicroseconds": 2219,
+                            "durationMicroseconds": 410,
                             "functionName": "model",
                             "line": 197,
                             "message": "Cannot access value for name AppManager"
@@ -344,7 +344,7 @@
                         {
                             "codegenResult": 0,
                             "column": 46,
-                            "durationMicroseconds": 36,
+                            "durationMicroseconds": 38,
                             "functionName": "active",
                             "line": 204,
                             "message": ""
@@ -352,7 +352,7 @@
                         {
                             "codegenResult": 0,
                             "column": 48,
-                            "durationMicroseconds": 26,
+                            "durationMicroseconds": 27,
                             "functionName": "dragType",
                             "line": 205,
                             "message": ""
@@ -360,7 +360,7 @@
                         {
                             "codegenResult": 2,
                             "column": 48,
-                            "durationMicroseconds": 38,
+                            "durationMicroseconds": 41,
                             "functionName": "mimeData",
                             "line": 207,
                             "message": "Cannot access value for name modelData"
@@ -368,7 +368,7 @@
                         {
                             "codegenResult": 2,
                             "column": 54,
-                            "durationMicroseconds": 79,
+                            "durationMicroseconds": 94,
                             "functionName": "onActiveChanged",
                             "line": 220,
                             "message": "Cannot generate efficient code for LoadClosure"
@@ -384,7 +384,7 @@
                         {
                             "codegenResult": 2,
                             "column": 44,
-                            "durationMicroseconds": 199,
+                            "durationMicroseconds": 198,
                             "functionName": "color",
                             "line": 242,
                             "message": "Cannot load property down from (component in /home/brad/Documents/canvasdesk/src/editor/qml/EditorMain.qml)::parent with type QQuickItem."
@@ -392,7 +392,7 @@
                         {
                             "codegenResult": 2,
                             "column": 51,
-                            "durationMicroseconds": 63,
+                            "durationMicroseconds": 65,
                             "functionName": "color",
                             "line": 243,
                             "message": "Cannot access value for name Theme"
@@ -400,7 +400,7 @@
                         {
                             "codegenResult": 2,
                             "column": 43,
-                            "durationMicroseconds": 23,
+                            "durationMicroseconds": 25,
                             "functionName": "text",
                             "line": 249,
                             "message": "Cannot load property text from (component in /home/brad/Documents/canvasdesk/src/editor/qml/EditorMain.qml)::parent with type QQuickItem."
@@ -408,7 +408,7 @@
                         {
                             "codegenResult": 2,
                             "column": 44,
-                            "durationMicroseconds": 124,
+                            "durationMicroseconds": 131,
                             "functionName": "color",
                             "line": 250,
                             "message": "Cannot access value for name Theme"
@@ -416,7 +416,7 @@
                         {
                             "codegenResult": 0,
                             "column": 58,
-                            "durationMicroseconds": 28,
+                            "durationMicroseconds": 31,
                             "functionName": "horizontalAlignment",
                             "line": 251,
                             "message": ""
@@ -424,7 +424,7 @@
                         {
                             "codegenResult": 0,
                             "column": 56,
-                            "durationMicroseconds": 18,
+                            "durationMicroseconds": 20,
                             "functionName": "verticalAlignment",
                             "line": 252,
                             "message": ""
@@ -432,7 +432,7 @@
                         {
                             "codegenResult": 2,
                             "column": 40,
-                            "durationMicroseconds": 113,
+                            "durationMicroseconds": 126,
                             "functionName": "color",
                             "line": 272,
                             "message": "Cannot access value for name Theme"
@@ -440,7 +440,7 @@
                         {
                             "codegenResult": 0,
                             "column": 43,
-                            "durationMicroseconds": 27,
+                            "durationMicroseconds": 23,
                             "functionName": "wrapMode",
                             "line": 274,
                             "message": ""
@@ -448,7 +448,7 @@
                         {
                             "codegenResult": 2,
                             "column": 24,
-                            "durationMicroseconds": 68,
+                            "durationMicroseconds": 75,
                             "functionName": "color",
                             "line": 299,
                             "message": "Cannot access value for name Theme"
@@ -456,7 +456,7 @@
                         {
                             "codegenResult": 0,
                             "column": 35,
-                            "durationMicroseconds": 19,
+                            "durationMicroseconds": 20,
                             "functionName": "centerIn",
                             "line": 298,
                             "message": ""
@@ -464,7 +464,7 @@
                         {
                             "codegenResult": 2,
                             "column": 31,
-                            "durationMicroseconds": 67,
+                            "durationMicroseconds": 79,
                             "functionName": "color",
                             "line": 300,
                             "message": "Cannot access value for name Theme"
@@ -472,7 +472,7 @@
                         {
                             "codegenResult": 2,
                             "column": 32,
-                            "durationMicroseconds": 774,
+                            "durationMicroseconds": 800,
                             "functionName": "onDropped",
                             "line": 304,
                             "message": "Cannot generate efficient code for call to untyped JavaScript function"
@@ -496,7 +496,7 @@
                         {
                             "codegenResult": 0,
                             "column": 28,
-                            "durationMicroseconds": 21,
+                            "durationMicroseconds": 29,
                             "functionName": "model",
                             "line": 331,
                             "message": ""
@@ -504,7 +504,7 @@
                         {
                             "codegenResult": 2,
                             "column": 28,
-                            "durationMicroseconds": 17,
+                            "durationMicroseconds": 16,
                             "functionName": "x",
                             "line": 334,
                             "message": "Cannot access value for name model"
@@ -520,7 +520,7 @@
                         {
                             "codegenResult": 2,
                             "column": 35,
-                            "durationMicroseconds": 13,
+                            "durationMicroseconds": 14,
                             "functionName": "text",
                             "line": 343,
                             "message": "Cannot access value for name model"
@@ -536,7 +536,7 @@
                         {
                             "codegenResult": 2,
                             "column": 40,
-                            "durationMicroseconds": 45,
+                            "durationMicroseconds": 46,
                             "functionName": "onClicked",
                             "line": 349,
                             "message": "Cannot access value for name model"
@@ -544,7 +544,7 @@
                         {
                             "codegenResult": 2,
                             "column": 41,
-                            "durationMicroseconds": 213,
+                            "durationMicroseconds": 210,
                             "functionName": "onReleased",
                             "line": 353,
                             "message": "Cannot access value for name canvasModel"
@@ -552,7 +552,7 @@
                         {
                             "codegenResult": 0,
                             "column": 43,
-                            "durationMicroseconds": 23,
+                            "durationMicroseconds": 22,
                             "functionName": "fill",
                             "line": 347,
                             "message": ""
@@ -560,7 +560,7 @@
                         {
                             "codegenResult": 0,
                             "column": 42,
-                            "durationMicroseconds": 15,
+                            "durationMicroseconds": 16,
                             "functionName": "target",
                             "line": 348,
                             "message": ""
@@ -584,7 +584,7 @@
                         {
                             "codegenResult": 0,
                             "column": 31,
-                            "durationMicroseconds": 16,
+                            "durationMicroseconds": 15,
                             "functionName": "fill",
                             "line": 401,
                             "message": ""
@@ -592,7 +592,7 @@
                         {
                             "codegenResult": 2,
                             "column": 18,
-                            "durationMicroseconds": 12,
+                            "durationMicroseconds": 13,
                             "functionName": "visible",
                             "line": 409,
                             "message": "Cannot access value for name isRuntimeMode"
@@ -608,7 +608,7 @@
                         {
                             "codegenResult": 0,
                             "column": 24,
-                            "durationMicroseconds": 36,
+                            "durationMicroseconds": 35,
                             "functionName": "right",
                             "line": 410,
                             "message": ""
@@ -616,7 +616,7 @@
                         {
                             "codegenResult": 0,
                             "column": 22,
-                            "durationMicroseconds": 31,
+                            "durationMicroseconds": 34,
                             "functionName": "top",
                             "line": 411,
                             "message": ""
@@ -624,7 +624,7 @@
                         {
                             "codegenResult": 2,
                             "column": 23,
-                            "durationMicroseconds": 117,
+                            "durationMicroseconds": 97,
                             "functionName": "color",
                             "line": 417,
                             "message": "Cannot access value for name Theme"
@@ -632,7 +632,7 @@
                         {
                             "codegenResult": 2,
                             "column": 20,
-                            "durationMicroseconds": 131,
+                            "durationMicroseconds": 128,
                             "functionName": "color",
                             "line": 425,
                             "message": "Cannot access value for name Theme"
@@ -648,7 +648,7 @@
                         {
                             "codegenResult": 0,
                             "column": 24,
-                            "durationMicroseconds": 41,
+                            "durationMicroseconds": 39,
                             "functionName": "onEntered",
                             "line": 432,
                             "message": ""
@@ -664,7 +664,7 @@
                         {
                             "codegenResult": 2,
                             "column": 24,
-                            "durationMicroseconds": 18,
+                            "durationMicroseconds": 19,
                             "functionName": "onClicked",
                             "line": 434,
                             "message": "Cannot access value for name showFloatingEditor"
@@ -672,7 +672,7 @@
                         {
                             "codegenResult": 0,
                             "column": 27,
-                            "durationMicroseconds": 24,
+                            "durationMicroseconds": 20,
                             "functionName": "fill",
                             "line": 430,
                             "message": ""
@@ -688,7 +688,7 @@
                         {
                             "codegenResult": 0,
                             "column": 12,
-                            "durationMicroseconds": 79,
+                            "durationMicroseconds": 77,
                             "functionName": "x",
                             "line": 444,
                             "message": ""
@@ -696,7 +696,7 @@
                         {
                             "codegenResult": 2,
                             "column": 16,
-                            "durationMicroseconds": 95,
+                            "durationMicroseconds": 96,
                             "functionName": "color",
                             "line": 447,
                             "message": "Cannot access value for name Theme"
@@ -704,7 +704,7 @@
                         {
                             "codegenResult": 2,
                             "column": 23,
-                            "durationMicroseconds": 63,
+                            "durationMicroseconds": 64,
                             "functionName": "color",
                             "line": 448,
                             "message": "Cannot access value for name Theme"
@@ -720,7 +720,7 @@
                         {
                             "codegenResult": 2,
                             "column": 20,
-                            "durationMicroseconds": 78,
+                            "durationMicroseconds": 72,
                             "functionName": "color",
                             "line": 458,
                             "message": "Cannot access value for name Theme"
@@ -728,7 +728,7 @@
                         {
                             "codegenResult": 2,
                             "column": 27,
-                            "durationMicroseconds": 62,
+                            "durationMicroseconds": 59,
                             "functionName": "color",
                             "line": 459,
                             "message": "Cannot access value for name Theme"
@@ -736,7 +736,7 @@
                         {
                             "codegenResult": 0,
                             "column": 31,
-                            "durationMicroseconds": 21,
+                            "durationMicroseconds": 20,
                             "functionName": "fill",
                             "line": 463,
                             "message": ""
@@ -744,7 +744,7 @@
                         {
                             "codegenResult": 2,
                             "column": 28,
-                            "durationMicroseconds": 126,
+                            "durationMicroseconds": 131,
                             "functionName": "color",
                             "line": 468,
                             "message": "Cannot access value for name Theme"
@@ -768,7 +768,7 @@
                         {
                             "codegenResult": 0,
                             "column": 30,
-                            "durationMicroseconds": 20,
+                            "durationMicroseconds": 17,
                             "functionName": "target",
                             "line": 484,
                             "message": ""
@@ -776,7 +776,7 @@
                         {
                             "codegenResult": 0,
                             "column": 32,
-                            "durationMicroseconds": 69,
+                            "durationMicroseconds": 74,
                             "functionName": "maximumX",
                             "line": 486,
                             "message": ""
@@ -784,7 +784,7 @@
                         {
                             "codegenResult": 0,
                             "column": 32,
-                            "durationMicroseconds": 74,
+                            "durationMicroseconds": 75,
                             "functionName": "maximumY",
                             "line": 488,
                             "message": ""
@@ -792,7 +792,7 @@
                         {
                             "codegenResult": 0,
                             "column": 27,
-                            "durationMicroseconds": 18,
+                            "durationMicroseconds": 19,
                             "functionName": "fill",
                             "line": 494,
                             "message": ""
@@ -920,7 +920,7 @@
                         {
                             "codegenResult": 2,
                             "column": 18,
-                            "durationMicroseconds": 14,
+                            "durationMicroseconds": 12,
                             "functionName": "visible",
                             "line": 617,
                             "message": "Cannot access value for name previewMode"
@@ -928,7 +928,7 @@
                         {
                             "codegenResult": 0,
                             "column": 23,
-                            "durationMicroseconds": 23,
+                            "durationMicroseconds": 25,
                             "functionName": "fill",
                             "line": 615,
                             "message": ""

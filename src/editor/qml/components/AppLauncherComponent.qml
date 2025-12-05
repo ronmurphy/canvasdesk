@@ -76,51 +76,68 @@ Rectangle {
             }
         }
         
-        GridView {
+        ScrollView {
             anchors.fill: parent
             anchors.margins: 12
-            cellWidth: 80
-            cellHeight: 80
             clip: true
-            model: AppManager.apps
             
-            delegate: Item {
-                width: 80
-                height: 80
+            Flow {
+                width: parent.width
+                spacing: 10
                 
-                Column {
-                    anchors.centerIn: parent
-                    spacing: 5
+                Repeater {
+                    model: AppManager.apps
                     
-                    Rectangle {
-                        width: 48
-                        height: 48
+                    delegate: Rectangle {
+                        width: 80
+                        height: 90
                         color: "transparent"
+                        radius: 4
                         
-                        Image {
+                        // Hover effect
+                        property bool hovered: false
+                        
+                        Rectangle {
                             anchors.fill: parent
-                            source: "image://theme/" + (modelData.icon || "application-x-executable")
-                            sourceSize.width: 48
-                            sourceSize.height: 48
-                            fillMode: Image.PreserveAspectFit
+                            color: Theme.uiHighlightColor
+                            opacity: parent.hovered ? 0.3 : 0.0
+                            radius: 4
+                        }
+                        
+                        Column {
+                            anchors.centerIn: parent
+                            spacing: 5
+                            
+                            Image {
+                                anchors.horizontalCenter: parent.horizontalCenter
+                                source: "image://theme/" + (modelData.icon || "application-x-executable")
+                                sourceSize.width: 48
+                                sourceSize.height: 48
+                                width: 48
+                                height: 48
+                                fillMode: Image.PreserveAspectFit
+                            }
+                            
+                            Text {
+                                text: modelData.name
+                                width: 76
+                                elide: Text.ElideRight
+                                horizontalAlignment: Text.AlignHCenter
+                                font.pixelSize: 10
+                                color: Theme.uiTextColor
+                            }
                         }
                         
                         MouseArea {
                             anchors.fill: parent
+                            hoverEnabled: true
+                            onEntered: parent.hovered = true
+                            onExited: parent.hovered = false
                             onClicked: {
                                 AppManager.launch(modelData.exec)
                                 root.showPopup = false
                             }
                         }
-                    }
-                    
-                    Text {
-                        text: modelData.name
-                        width: 70
-                        elide: Text.ElideRight
-                        horizontalAlignment: Text.AlignHCenter
-                        font.pixelSize: 9
-                        color: "white"
                     }
                 }
             }

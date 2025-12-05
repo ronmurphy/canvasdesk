@@ -5,6 +5,10 @@ Bluetooth QML
 Better File Explorer - list or icons view, mini actual file explorer, or just a single folder in list or icons only mode
 "SysInfo" - shows GPU speed / usage, Free RAM, upload / download / etc <- each of these can be their own ATOM component also
 
+make a better Panel, with a splitter control when the Editor is open so that docked components can be positioned to specific areas in the panel and set their length, etc.
+
+basically make "Enhanced" components, Enhanced Panel, Enhanced Clock, Enhanced AppLauncher etc.
+
 
 
 

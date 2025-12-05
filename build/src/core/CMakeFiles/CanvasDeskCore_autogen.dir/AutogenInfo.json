@@ -50,6 +50,12 @@
 			null
 		],
 		[
+			"/home/brad/Documents/canvasdesk/src/core/SystemMonitor.h",
+			"MU",
+			"EWIEGA46WW/moc_SystemMonitor.cpp",
+			null
+		],
+		[
 			"/home/brad/Documents/canvasdesk/src/core/ThemeManager.h",
 			"MU",
 			"EWIEGA46WW/moc_ThemeManager.cpp",
@@ -159,6 +165,11 @@
 		],
 		[
 			"/home/brad/Documents/canvasdesk/src/core/MonitorManager.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/brad/Documents/canvasdesk/src/core/SystemMonitor.cpp",
 			"MU",
 			null
 		],

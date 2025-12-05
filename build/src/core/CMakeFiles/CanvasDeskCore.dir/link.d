@@ -12,6 +12,7 @@ libCanvasDeskCore.so: \
   CMakeFiles/CanvasDeskCore.dir/X11WindowManager.cpp.o \
   CMakeFiles/CanvasDeskCore.dir/ThemeManager.cpp.o \
   CMakeFiles/CanvasDeskCore.dir/MonitorManager.cpp.o \
+  CMakeFiles/CanvasDeskCore.dir/SystemMonitor.cpp.o \
   /usr/lib/libQt6Qml.so.6.10.1 \
   /usr/lib/libQt6Gui.so.6.10.1 \
   /usr/lib/libQt6Network.so.6.10.1 \
@@ -76,6 +77,8 @@ CMakeFiles/CanvasDeskCore.dir/X11WindowManager.cpp.o:
 CMakeFiles/CanvasDeskCore.dir/ThemeManager.cpp.o:
 
 CMakeFiles/CanvasDeskCore.dir/MonitorManager.cpp.o:
+
+CMakeFiles/CanvasDeskCore.dir/SystemMonitor.cpp.o:
 
 /usr/lib/libQt6Qml.so.6.10.1:
 
