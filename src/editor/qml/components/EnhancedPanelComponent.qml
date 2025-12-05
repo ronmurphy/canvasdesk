@@ -16,6 +16,7 @@ Rectangle {
     // Enhanced configuration
     property int sectionCount: 3
     property var sectionRatios: [1, 1, 1] // Relative sizing
+    property bool centerComponents: false // Center content in sections
 
     // Editor support
     property bool editorOpen: false
@@ -63,6 +64,7 @@ Rectangle {
             spacing: 4
             
             Repeater {
+                id: horizontalRepeater
                 model: isHorizontal ? root.sectionCount : 0
                 delegate: sectionDelegate
             }
@@ -76,6 +78,7 @@ Rectangle {
             spacing: 4
             
             Repeater {
+                id: verticalRepeater
                 model: !isHorizontal ? root.sectionCount : 0
                 delegate: sectionDelegate
             }
@@ -102,14 +105,16 @@ Rectangle {
                 RowLayout {
                     id: sectionRowLayout
                     visible: root.isHorizontal
-                    anchors.fill: parent
+                    anchors.fill: root.centerComponents ? undefined : parent
+                    anchors.centerIn: root.centerComponents ? parent : undefined
                     spacing: 4
                 }
                 
                 ColumnLayout {
                     id: sectionColumnLayout
                     visible: !root.isHorizontal
-                    anchors.fill: parent
+                    anchors.fill: root.centerComponents ? undefined : parent
+                    anchors.centerIn: root.centerComponents ? parent : undefined
                     spacing: 4
                 }
                 
@@ -201,45 +206,46 @@ Rectangle {
     }
 
     // Docking functions - called by EditableComponent
-    function dockComponent(component) {
+    function dockComponent(component, targetSectionIndex) {
         if (!component) {
             console.log("Panel: Cannot dock null component")
             return false
         }
 
         console.log("Panel: Docking component type:", component.componentType)
-        console.log("Panel: Component current parent:", component.parent)
-        console.log("Panel: Component position before dock:", component.x, component.y)
-
+        
         // Mark component as docked
         component.isDocked = true
         component.dockedPanel = root
 
-        // Find target section
-        var panelPos = root.mapFromItem(component.parent, component.x, component.y)
-        var componentCenter = Qt.point(panelPos.x + component.width/2, panelPos.y + component.height/2)
-        
-        var mainLayout = isHorizontal ? horizontalLayout : verticalLayout
+        var mainRepeater = isHorizontal ? horizontalRepeater : verticalRepeater
         var targetSection = null
-        
-        for (var i = 0; i < mainLayout.children.length; i++) {
-            var section = mainLayout.children[i]
-            if (!section.width) continue
+
+        // If explicit section index provided (e.g. from load), use it
+        if (targetSectionIndex !== undefined && targetSectionIndex >= 0 && targetSectionIndex < mainRepeater.count) {
+             targetSection = mainRepeater.itemAt(targetSectionIndex)
+             console.log("Panel: Using explicit target section index:", targetSectionIndex)
+        } else {
+            // Find target section based on position
+            var panelPos = root.mapFromItem(component.parent, component.x, component.y)
+            var componentCenter = Qt.point(panelPos.x + component.width/2, panelPos.y + component.height/2)
             
-            if (componentCenter.x >= section.x && componentCenter.x <= section.x + section.width &&
-                componentCenter.y >= section.y && componentCenter.y <= section.y + section.height) {
-                targetSection = section
-                break
+            for (var i = 0; i < mainRepeater.count; i++) {
+                var section = mainRepeater.itemAt(i)
+                if (!section || !section.width) continue
+                
+                if (componentCenter.x >= section.x && componentCenter.x <= section.x + section.width &&
+                    componentCenter.y >= section.y && componentCenter.y <= section.y + section.height) {
+                    targetSection = section
+                    break
+                }
             }
         }
         
-        // Default to first section
+        // Default to first section if nothing found
         if (!targetSection) {
-            for (var i = 0; i < mainLayout.children.length; i++) {
-                if (mainLayout.children[i].width > 0) {
-                    targetSection = mainLayout.children[i]
-                    break
-                }
+            if (mainRepeater.count > 0) {
+                targetSection = mainRepeater.itemAt(0)
             }
         }
         
@@ -323,17 +329,18 @@ Rectangle {
 
     function getDockedComponents() {
         var components = []
-        var mainLayout = isHorizontal ? horizontalLayout : verticalLayout
+        var mainRepeater = isHorizontal ? horizontalRepeater : verticalRepeater
 
-        for (var i = 0; i < mainLayout.children.length; i++) {
-            var section = mainLayout.children[i]
+        for (var i = 0; i < mainRepeater.count; i++) {
+            var section = mainRepeater.itemAt(i)
             // Check if it has the 'layout' property we defined
             if (section && section.layout) {
                 var innerLayout = section.layout
                 for (var j = 0; j < innerLayout.children.length; j++) {
                     var child = innerLayout.children[j]
                     if (child && child.componentType) {
-                        components.push(child)
+                        // Return object with item and section index
+                        components.push({ item: child, sectionIndex: i })
                     }
                 }
             }

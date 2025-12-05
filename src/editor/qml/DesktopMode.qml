@@ -1698,23 +1698,59 @@ ApplicationWindow {
                     comp.props = child.componentData.props
                 }
 
-                // If this is a Panel, save its docked components
-                if (child.componentType === "Panel") {
-                    console.log("Saving Panel with docked components...")
+                // If this is a Panel or EnhancedPanel, save its docked components
+                if (child.componentType === "Panel" || child.componentType === "EnhancedPanel") {
+                    console.log("Saving Panel/EnhancedPanel with docked components...")
+                    
+                    // Update props from loaded item to ensure changes are saved
+                    if (child.loadedItem) {
+                        if (!comp.props) comp.props = {}
+                        
+                        // Common properties
+                        if (child.loadedItem.edge !== undefined) comp.props.edge = child.loadedItem.edge
+                        if (child.loadedItem.autoHide !== undefined) comp.props.autoHide = child.loadedItem.autoHide
+                        
+                        // EnhancedPanel properties
+                        if (child.componentType === "EnhancedPanel") {
+                            if (child.loadedItem.sectionRatios !== undefined) comp.props.sectionRatios = child.loadedItem.sectionRatios
+                            if (child.loadedItem.centerComponents !== undefined) comp.props.centerComponents = child.loadedItem.centerComponents
+                            if (child.loadedItem.sectionCount !== undefined) comp.props.sectionCount = child.loadedItem.sectionCount
+                        }
+                    }
+
                     if (child.loadedItem && child.loadedItem.getDockedComponents) {
                         var dockedComps = child.loadedItem.getDockedComponents()
                         console.log("Panel has", dockedComps.length, "docked components")
                         if (dockedComps.length > 0) {
                             comp.dockedComponents = []
                             for (var j = 0; j < dockedComps.length; j++) {
-                                var dockedChild = dockedComps[j]
-                                console.log("  - Saving docked:", dockedChild.componentType)
-                                comp.dockedComponents.push({
-                                    type: dockedChild.componentType,
-                                    width: dockedChild.width,
-                                    height: dockedChild.height,
-                                    props: dockedChild.componentData ? dockedChild.componentData.props : {}
-                                })
+                                var dockedItemObj = dockedComps[j]
+                                var dockedChild = null
+                                var sectionIdx = -1
+                                
+                                // Handle EnhancedPanel object structure vs Panel item structure
+                                if (dockedItemObj.item) {
+                                    dockedChild = dockedItemObj.item
+                                    sectionIdx = dockedItemObj.sectionIndex
+                                } else {
+                                    dockedChild = dockedItemObj
+                                }
+                                
+                                if (dockedChild) {
+                                    console.log("  - Saving docked:", dockedChild.componentType)
+                                    var dockedData = {
+                                        type: dockedChild.componentType,
+                                        width: dockedChild.width,
+                                        height: dockedChild.height,
+                                        props: dockedChild.componentData ? dockedChild.componentData.props : {}
+                                    }
+                                    
+                                    if (sectionIdx !== -1) {
+                                        dockedData.sectionIndex = sectionIdx
+                                    }
+                                    
+                                    comp.dockedComponents.push(dockedData)
+                                }
                             }
                         }
                     }
@@ -1754,7 +1790,7 @@ ApplicationWindow {
                         var component = createDesktopComponent(data.components[i])
 
                         // Track panels for second pass
-                        if (component && data.components[i].type === "Panel" && data.components[i].dockedComponents) {
+                        if (component && (data.components[i].type === "Panel" || data.components[i].type === "EnhancedPanel") && data.components[i].dockedComponents) {
                             panels.push({
                                 panel: component,
                                 dockedData: data.components[i].dockedComponents
@@ -1873,7 +1909,8 @@ ApplicationWindow {
 
                 // Dock it immediately
                 if (newComponent) {
-                    var success = panel.dockComponent(newComponent)
+                    // Pass section index if available (for EnhancedPanel)
+                    var success = panel.dockComponent(newComponent, compData.sectionIndex)
                     console.log("  Docking result:", success)
                 }
             } catch (e) {

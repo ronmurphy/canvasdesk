@@ -51,7 +51,10 @@ ApplicationWindow {
                 y: item.y,
                 text: item.text,
                 icon: item.icon,
-                exec: item.exec
+                exec: item.exec,
+                // Enhanced properties
+                sectionRatios: item.sectionRatios,
+                centerComponents: item.centerComponents
             })
         }
         var json = JSON.stringify({ components: items }, null, 2)
@@ -176,6 +179,11 @@ ApplicationWindow {
                                 ListElement { type: "FileManager"; name: "File Manager"; icon: "system-file-manager" }
                                 ListElement { type: "WorkspaceSwitcher"; name: "Workspace Switcher"; icon: "view-multiple" }
                                 ListElement { type: "EnhancedPanel"; name: "Enhanced Panel"; icon: "view-dashboard" }
+                                ListElement { type: "AppLauncher"; name: "App Launcher"; icon: "system-search" }
+                                ListElement { type: "AtomClock"; name: "Atom Clock"; icon: "clock" }
+                                ListElement { type: "AtomCpu"; name: "Atom CPU"; icon: "cpu" }
+                                ListElement { type: "AtomRam"; name: "Atom RAM"; icon: "memory" }
+                                ListElement { type: "AtomDisk"; name: "Atom Disk"; icon: "drive-harddisk" }
                             }
                             delegate: ItemDelegate {
                                 width: parent.width
@@ -319,7 +327,9 @@ ApplicationWindow {
                                 // So we'll flatten important ones.
                                 text: data.properties.text,
                                 icon: data.properties.icon,
-                                exec: data.properties.exec
+                                exec: data.properties.exec,
+                                sectionRatios: data.properties.sectionRatios,
+                                centerComponents: data.properties.centerComponents
                             }
                             canvasModel.append(comp)
                             drop.accept()
@@ -593,6 +603,31 @@ ApplicationWindow {
                                 }
                             }
                         }
+                        
+                        // Center Components (for EnhancedPanel)
+                        RowLayout {
+                            visible: selectedComponent && selectedComponent.type === "EnhancedPanel"
+                            Layout.fillWidth: true
+                            
+                            CheckBox {
+                                text: "Center Components"
+                                checked: selectedComponent && selectedComponent.centerComponents ? selectedComponent.centerComponents : false
+                                onCheckedChanged: {
+                                    if (selectedComponent) {
+                                        selectedComponent.centerComponents = checked
+                                        // Force model update
+                                        var idx = -1
+                                        for(var i=0; i<canvasModel.count; i++) {
+                                            if(canvasModel.get(i) === selectedComponent) {
+                                                idx = i; break;
+                                            }
+                                        }
+                                        if(idx !== -1) canvasModel.setProperty(idx, "centerComponents", checked)
+                                    }
+                                }
+                            }
+                        }
+                        
                         Label {
                             visible: !selectedComponent
                             text: "Click a component on the desktop to edit its properties"
@@ -691,9 +726,19 @@ ApplicationWindow {
             qml = 'import QtQuick; import QtQuick.Controls; import Qt.labs.folderlistmodel; import CanvasDesk; Rectangle { width: 250; height: 300; x: ' + data.x + '; y: ' + data.y + '; color: Theme.uiPrimaryColor; border.color: "#444"; border.width: 1; radius: 4; ListView { anchors.fill: parent; anchors.margins: 4; clip: true; model: FolderListModel { folder: "file://" + AppManager.homeDir(); showDirsFirst: true; nameFilters: ["*"] } delegate: Rectangle { width: parent.width; height: 30; color: "transparent"; Row { anchors.fill: parent; spacing: 5; leftPadding: 5; Image { source: "image://theme/" + (fileIsDir ? "folder" : "text-x-generic"); width: 20; height: 20; anchors.verticalCenter: parent.verticalCenter } Text { text: fileName; color: Theme.uiTextColor; anchors.verticalCenter: parent.verticalCenter } } } } }'
         } else if (data.type === "EnhancedPanel") {
              var ratios = data.sectionRatios || "1,1,1"
-             // Parse ratios string to array string for QML
+             var center = data.centerComponents === true ? "true" : "false"
              var ratioArray = "[" + ratios + "]"
-             qml = 'import QtQuick; import QtQuick.Controls; import QtQuick.Layouts; import CanvasDesk; import "components"; EnhancedPanelComponent { width: 800; height: 100; x: ' + data.x + '; y: ' + data.y + '; sectionRatios: ' + ratioArray + '; sectionCount: ' + ratioArray + '.length }'
+             qml = 'import QtQuick; import QtQuick.Controls; import QtQuick.Layouts; import CanvasDesk; import "components"; EnhancedPanelComponent { width: 800; height: 100; x: ' + data.x + '; y: ' + data.y + '; sectionRatios: ' + ratioArray + '; sectionCount: ' + ratioArray + '.length; centerComponents: ' + center + ' }'
+        } else if (data.type === "AppLauncher") {
+             qml = 'import QtQuick; import QtQuick.Controls; import CanvasDesk; import "components"; AppLauncherComponent { width: 400; height: 500; x: ' + data.x + '; y: ' + data.y + ' }'
+        } else if (data.type === "AtomClock") {
+             qml = 'import QtQuick; import QtQuick.Controls; import CanvasDesk; import "components"; AtomClockComponent { x: ' + data.x + '; y: ' + data.y + ' }'
+        } else if (data.type === "AtomCpu") {
+             qml = 'import QtQuick; import QtQuick.Controls; import CanvasDesk; import "components"; AtomCpuComponent { x: ' + data.x + '; y: ' + data.y + ' }'
+        } else if (data.type === "AtomRam") {
+             qml = 'import QtQuick; import QtQuick.Controls; import CanvasDesk; import "components"; AtomRamComponent { x: ' + data.x + '; y: ' + data.y + ' }'
+        } else if (data.type === "AtomDisk") {
+             qml = 'import QtQuick; import QtQuick.Controls; import CanvasDesk; import "components"; AtomDiskComponent { x: ' + data.x + '; y: ' + data.y + ' }'
         } else {
             qml = 'import QtQuick; Rectangle { color: "#ddeeff"; border.color: "blue"; width: 100; height: 50; x: ' + data.x + '; y: ' + data.y + '; Text { anchors.centerIn: parent; text: "' + data.type + '"; color: "black" } }'
         }
