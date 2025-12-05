@@ -3,6 +3,7 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import QtQuick.Dialogs
 import CanvasDesk
+import "components"
 
 ApplicationWindow {
     id: desktopWindow
@@ -1086,10 +1087,19 @@ ApplicationWindow {
             // Monitors Tab
             Rectangle {
                 color: Theme.uiBackgroundColor
+                property string selectedMonitorName: ""
+                property var currentMonitor: {
+                    var mons = WindowManager.monitorManager ? WindowManager.monitorManager.monitors : []
+                    for (var i = 0; i < mons.length; i++) {
+                        if (mons[i].name === selectedMonitorName) return mons[i]
+                    }
+                    return null
+                }
 
                 ColumnLayout {
                     anchors.fill: parent
                     spacing: 10
+                    anchors.margins: 10
 
                     Text {
                         text: "Monitor Configuration"
@@ -1098,191 +1108,246 @@ ApplicationWindow {
                         color: Theme.uiTextColor
                     }
 
-                    Rectangle {
+                    // Main Content Area (Split View)
+                    RowLayout {
                         Layout.fillWidth: true
                         Layout.fillHeight: true
-                        color: Theme.uiSecondaryColor
-                        border.color: Theme.uiHighlightColor
-                        border.width: 1
-                        radius: 4
+                        spacing: 10
 
-                        ScrollView {
-                            anchors.fill: parent
-                            anchors.margins: 10
+                        // Left: Visual Arranger
+                        Rectangle {
+                            Layout.fillHeight: true
+                            Layout.fillWidth: true
+                            Layout.preferredWidth: 2
+                            color: Theme.uiSecondaryColor
+                            border.color: Theme.uiHighlightColor
+                            border.width: 1
+                            radius: 4
+                            clip: true
+
+                            MonitorArranger {
+                                anchors.fill: parent
+                                anchors.margins: 1
+                                monitors: WindowManager.monitorManager ? WindowManager.monitorManager.monitors : []
+                                selectedMonitor: parent.parent.parent.parent.selectedMonitorName // Access property from Monitors Tab Rectangle
+                                
+                                onMonitorSelected: {
+                                    parent.parent.parent.parent.selectedMonitorName = name
+                                }
+                                
+                                onMonitorMoved: {
+                                    if (WindowManager.monitorManager) {
+                                        WindowManager.monitorManager.setMonitorPosition(name, x, y)
+                                    }
+                                }
+                            }
+                            
+                            Text {
+                                anchors.bottom: parent.bottom
+                                anchors.horizontalCenter: parent.horizontalCenter
+                                anchors.margins: 10
+                                text: "Drag monitors to rearrange"
+                                color: Theme.uiTextColor
+                                opacity: 0.5
+                                font.pixelSize: 12
+                            }
+                        }
+
+                        // Right: Settings Panel
+                        Rectangle {
+                            Layout.fillHeight: true
+                            Layout.fillWidth: true
+                            Layout.preferredWidth: 1
+                            color: Theme.uiTertiaryColor
+                            border.color: Theme.uiTitleBarLeftColor
+                            border.width: 1
+                            radius: 4
 
                             ColumnLayout {
-                                width: parent.width
+                                anchors.fill: parent
+                                anchors.margins: 15
                                 spacing: 15
+                                
+                                visible: !!parent.parent.parent.parent.currentMonitor
+                                
+                                Text {
+                                    text: parent.parent.parent.parent.currentMonitor ? parent.parent.parent.parent.currentMonitor.name : ""
+                                    font.pixelSize: 18
+                                    font.bold: true
+                                    color: Theme.uiTextColor
+                                    Layout.fillWidth: true
+                                }
+                                
+                                Rectangle {
+                                    Layout.fillWidth: true
+                                    height: 1
+                                    color: Theme.uiTitleBarLeftColor
+                                }
 
-                                Repeater {
-                                    model: WindowManager.monitorManager ? WindowManager.monitorManager.monitors() : []
-
-                                    Rectangle {
+                                // Enable/Disable
+                                RowLayout {
+                                    Layout.fillWidth: true
+                                    Label { 
+                                        text: "Status"
+                                        color: Theme.uiTextColor
                                         Layout.fillWidth: true
-                                        height: 200
-                                        color: Theme.uiTertiaryColor
-                                        border.color: modelData.primary ? Theme.uiHighlightColor : Theme.uiPrimaryColor
-                                        border.width: modelData.primary ? 3 : 1
-                                        radius: 6
-
-                                        ColumnLayout {
-                                            anchors.fill: parent
-                                            anchors.margins: 15
-                                            spacing: 10
-
-                                            RowLayout {
-                                                Layout.fillWidth: true
-
-                                                Text {
-                                                    text: modelData.name
-                                                    font.pixelSize: 18
-                                                    font.bold: true
-                                                    color: Theme.uiTextColor
-                                                    Layout.fillWidth: true
-                                                }
-
-                                                Rectangle {
-                                                    visible: modelData.primary
-                                                    width: 80
-                                                    height: 25
-                                                    color: Theme.uiHighlightColor
-                                                    radius: 3
-
-                                                    Text {
-                                                        anchors.centerIn: parent
-                                                        text: "PRIMARY"
-                                                        color: Theme.uiTextColor
-                                                        font.pixelSize: 11
-                                                        font.bold: true
-                                                    }
-                                                }
+                                    }
+                                    Button {
+                                        text: (parent.parent.parent.parent.parent.currentMonitor && parent.parent.parent.parent.parent.currentMonitor.enabled) ? "Enabled" : "Disabled"
+                                        
+                                        background: Rectangle {
+                                            color: parent.down ? Theme.uiHighlightColor : ((parent.parent.parent.parent.parent.currentMonitor && parent.parent.parent.parent.parent.currentMonitor.enabled) ? Theme.uiPrimaryColor : "#F44336")
+                                            border.color: Theme.uiHighlightColor
+                                            border.width: 1
+                                            radius: 4
+                                        }
+                                        
+                                        contentItem: Text {
+                                            text: parent.text
+                                            color: "white"
+                                            horizontalAlignment: Text.AlignHCenter
+                                            verticalAlignment: Text.AlignVCenter
+                                        }
+                                        
+                                        onClicked: {
+                                            var mon = parent.parent.parent.parent.parent.currentMonitor
+                                            if (WindowManager.monitorManager && mon) {
+                                                WindowManager.monitorManager.setMonitorEnabled(mon.name, !mon.enabled)
                                             }
-
-                                            Grid {
-                                                columns: 2
-                                                rowSpacing: 8
-                                                columnSpacing: 20
-
-                                                Text {
-                                                    text: "Resolution:"
-                                                    color: Theme.uiTextColor
-                                                    font.pixelSize: 13
-                                                }
-                                                Text {
-                                                    text: modelData.width + " × " + modelData.height
-                                                    color: Theme.uiTextColor
-                                                    font.pixelSize: 13
-                                                    font.bold: true
-                                                }
-
-                                                Text {
-                                                    text: "Position:"
-                                                    color: Theme.uiTextColor
-                                                    font.pixelSize: 13
-                                                }
-                                                Text {
-                                                    text: "X: " + modelData.x + ", Y: " + modelData.y
-                                                    color: Theme.uiTextColor
-                                                    font.pixelSize: 13
-                                                    font.bold: true
-                                                }
-
-                                                Text {
-                                                    text: "Rotation:"
-                                                    color: Theme.uiTextColor
-                                                    font.pixelSize: 13
-                                                }
-                                                Text {
-                                                    text: modelData.rotation + "°"
-                                                    color: Theme.uiTextColor
-                                                    font.pixelSize: 13
-                                                    font.bold: true
-                                                }
-
-                                                Text {
-                                                    text: "Status:"
-                                                    color: Theme.uiTextColor
-                                                    font.pixelSize: 13
-                                                }
-                                                Text {
-                                                    text: modelData.enabled ? "Enabled" : "Disabled"
-                                                    color: modelData.enabled ? "#4CAF50" : "#F44336"
-                                                    font.pixelSize: 13
-                                                    font.bold: true
-                                                }
-                                            }
-
-                                            Item { Layout.fillHeight: true }
-
-                                            // Monitor Controls
-                                            RowLayout {
-                                                Layout.fillWidth: true
-                                                spacing: 8
-
-                                                Button {
-                                                    text: modelData.enabled ? "Disable" : "Enable"
-                                                    Layout.preferredWidth: 90
-
-                                                    background: Rectangle {
-                                                        color: parent.down ? Theme.uiHighlightColor : Theme.uiPrimaryColor
-                                                        border.color: Theme.uiHighlightColor
-                                                        border.width: 1
-                                                        radius: 4
-                                                    }
-
-                                                    contentItem: Text {
-                                                        text: parent.text
-                                                        color: Theme.uiTextColor
-                                                        horizontalAlignment: Text.AlignHCenter
-                                                        verticalAlignment: Text.AlignVCenter
-                                                        font.pixelSize: 12
-                                                    }
-
-                                                    onClicked: {
-                                                        if (WindowManager.monitorManager) {
-                                                            WindowManager.monitorManager.setMonitorEnabled(modelData.name, !modelData.enabled)
-                                                        }
-                                                    }
-                                                }
-
-                                                Button {
-                                                    text: "Set Primary"
-                                                    Layout.preferredWidth: 100
-                                                    enabled: !modelData.primary && modelData.enabled
-
-                                                    background: Rectangle {
-                                                        color: parent.down ? Theme.uiHighlightColor : (parent.enabled ? Theme.uiPrimaryColor : Theme.uiSecondaryColor)
-                                                        border.color: Theme.uiHighlightColor
-                                                        border.width: 1
-                                                        radius: 4
-                                                        opacity: parent.enabled ? 1.0 : 0.5
-                                                    }
-
-                                                    contentItem: Text {
-                                                        text: parent.text
-                                                        color: Theme.uiTextColor
-                                                        horizontalAlignment: Text.AlignHCenter
-                                                        verticalAlignment: Text.AlignVCenter
-                                                        font.pixelSize: 12
-                                                        opacity: parent.enabled ? 1.0 : 0.5
-                                                    }
-
-                                                    onClicked: {
-                                                        if (WindowManager.monitorManager) {
-                                                            WindowManager.monitorManager.setPrimaryMonitor(modelData.name)
-                                                        }
-                                                    }
-                                                }
-
-                                                Item { Layout.fillWidth: true }
+                                        }
+                                    }
+                                }
+                                
+                                // Primary
+                                RowLayout {
+                                    Layout.fillWidth: true
+                                    Label { 
+                                        text: "Primary Display"
+                                        color: Theme.uiTextColor
+                                        Layout.fillWidth: true
+                                    }
+                                    CheckBox {
+                                        checked: parent.parent.parent.parent.parent.currentMonitor ? parent.parent.parent.parent.parent.currentMonitor.primary : false
+                                        enabled: parent.parent.parent.parent.parent.currentMonitor ? parent.parent.parent.parent.parent.currentMonitor.enabled : false
+                                        onClicked: {
+                                            var mon = parent.parent.parent.parent.parent.currentMonitor
+                                            if (WindowManager.monitorManager && mon && !mon.primary) {
+                                                WindowManager.monitorManager.setPrimaryMonitor(mon.name)
                                             }
                                         }
                                     }
                                 }
 
-                                Item {
-                                    Layout.fillHeight: true
+                                // Resolution
+                                ColumnLayout {
+                                    Layout.fillWidth: true
+                                    Label { 
+                                        text: "Resolution"
+                                        color: Theme.uiTextColor
+                                    }
+                                    ComboBox {
+                                        Layout.fillWidth: true
+                                        model: parent.parent.parent.parent.parent.currentMonitor ? (parent.parent.parent.parent.parent.currentMonitor.availableModes || []) : []
+                                        currentIndex: {
+                                            var mon = parent.parent.parent.parent.parent.currentMonitor
+                                            if (!mon) return -1
+                                            var current = mon.width + "x" + mon.height
+                                            return model.indexOf(current)
+                                        }
+                                        enabled: parent.parent.parent.parent.parent.currentMonitor ? parent.parent.parent.parent.parent.currentMonitor.enabled : false
+                                        onActivated: {
+                                            var mon = parent.parent.parent.parent.parent.currentMonitor
+                                            if (WindowManager.monitorManager && mon) {
+                                                var parts = currentText.split("x")
+                                                if (parts.length === 2) {
+                                                    WindowManager.monitorManager.setMonitorResolution(
+                                                        mon.name,
+                                                        parseInt(parts[0]),
+                                                        parseInt(parts[1])
+                                                    )
+                                                }
+                                            }
+                                        }
+                                    }
                                 }
+                                
+                                // Rotation
+                                ColumnLayout {
+                                    Layout.fillWidth: true
+                                    Label { 
+                                        text: "Rotation"
+                                        color: Theme.uiTextColor
+                                    }
+                                    ComboBox {
+                                        Layout.fillWidth: true
+                                        model: ["0°", "90°", "180°", "270°"]
+                                        currentIndex: {
+                                            var mon = parent.parent.parent.parent.parent.currentMonitor
+                                            if (!mon) return 0
+                                            var rotations = [0, 90, 180, 270]
+                                            return rotations.indexOf(mon.rotation)
+                                        }
+                                        enabled: parent.parent.parent.parent.parent.currentMonitor ? parent.parent.parent.parent.parent.currentMonitor.enabled : false
+                                        onActivated: {
+                                            var mon = parent.parent.parent.parent.parent.currentMonitor
+                                            if (WindowManager.monitorManager && mon) {
+                                                var rotations = [0, 90, 180, 270]
+                                                WindowManager.monitorManager.setMonitorRotation(
+                                                    mon.name,
+                                                    rotations[currentIndex]
+                                                )
+                                            }
+                                        }
+                                    }
+                                }
+                                
+                                // Position Manual Override
+                                Label { 
+                                    text: "Manual Position"
+                                    color: Theme.uiTextColor
+                                }
+                                RowLayout {
+                                    Layout.fillWidth: true
+                                    Label { text: "X:"; color: Theme.uiTextColor }
+                                    SpinBox {
+                                        from: -8000; to: 8000; stepSize: 10
+                                        value: parent.parent.parent.parent.parent.currentMonitor ? parent.parent.parent.parent.parent.currentMonitor.x : 0
+                                        enabled: parent.parent.parent.parent.parent.currentMonitor ? parent.parent.parent.parent.parent.currentMonitor.enabled : false
+                                        onValueModified: {
+                                            var mon = parent.parent.parent.parent.parent.currentMonitor
+                                            if (WindowManager.monitorManager && mon) {
+                                                WindowManager.monitorManager.setMonitorPosition(mon.name, value, mon.y)
+                                            }
+                                        }
+                                    }
+                                }
+                                RowLayout {
+                                    Layout.fillWidth: true
+                                    Label { text: "Y:"; color: Theme.uiTextColor }
+                                    SpinBox {
+                                        from: -8000; to: 8000; stepSize: 10
+                                        value: parent.parent.parent.parent.parent.currentMonitor ? parent.parent.parent.parent.parent.currentMonitor.y : 0
+                                        enabled: parent.parent.parent.parent.parent.currentMonitor ? parent.parent.parent.parent.parent.currentMonitor.enabled : false
+                                        onValueModified: {
+                                            var mon = parent.parent.parent.parent.parent.currentMonitor
+                                            if (WindowManager.monitorManager && mon) {
+                                                WindowManager.monitorManager.setMonitorPosition(mon.name, mon.x, value)
+                                            }
+                                        }
+                                    }
+                                }
+                                
+                                Item { Layout.fillHeight: true }
+                            }
+                            
+                            // Placeholder when no monitor selected
+                            Text {
+                                anchors.centerIn: parent
+                                visible: !parent.parent.parent.parent.currentMonitor
+                                text: "Select a monitor\nto configure"
+                                color: Theme.uiTextColor
+                                opacity: 0.5
+                                horizontalAlignment: Text.AlignHCenter
                             }
                         }
                     }

@@ -271,22 +271,14 @@
                 "methods": [
                     {
                         "access": "public",
-                        "index": 5,
-                        "isConst": true,
-                        "lineNumber": 39,
-                        "name": "monitors",
-                        "returnType": "QVariantList"
-                    },
-                    {
-                        "access": "public",
                         "arguments": [
                             {
                                 "name": "monitorName",
                                 "type": "QString"
                             }
                         ],
-                        "index": 6,
-                        "lineNumber": 40,
+                        "index": 5,
+                        "lineNumber": 43,
                         "name": "getAvailableResolutions",
                         "returnType": "QVariantList"
                     },
@@ -306,8 +298,8 @@
                                 "type": "int"
                             }
                         ],
-                        "index": 7,
-                        "lineNumber": 41,
+                        "index": 6,
+                        "lineNumber": 44,
                         "name": "setMonitorPosition",
                         "returnType": "bool"
                     },
@@ -323,8 +315,8 @@
                                 "type": "int"
                             }
                         ],
-                        "index": 8,
-                        "lineNumber": 42,
+                        "index": 7,
+                        "lineNumber": 45,
                         "name": "setMonitorRotation",
                         "returnType": "bool"
                     },
@@ -344,8 +336,8 @@
                                 "type": "int"
                             }
                         ],
-                        "index": 9,
-                        "lineNumber": 43,
+                        "index": 8,
+                        "lineNumber": 46,
                         "name": "setMonitorResolution",
                         "returnType": "bool"
                     },
@@ -361,8 +353,8 @@
                                 "type": "bool"
                             }
                         ],
-                        "index": 10,
-                        "lineNumber": 44,
+                        "index": 9,
+                        "lineNumber": 47,
                         "name": "setMonitorEnabled",
                         "returnType": "bool"
                     },
@@ -374,15 +366,15 @@
                                 "type": "QString"
                             }
                         ],
-                        "index": 11,
-                        "lineNumber": 45,
+                        "index": 10,
+                        "lineNumber": 48,
                         "name": "setPrimaryMonitor",
                         "returnType": "bool"
                     },
                     {
                         "access": "public",
-                        "index": 12,
-                        "lineNumber": 46,
+                        "index": 11,
+                        "lineNumber": 49,
                         "name": "applyConfiguration",
                         "returnType": "bool"
                     },
@@ -394,8 +386,8 @@
                                 "type": "QString"
                             }
                         ],
-                        "index": 13,
-                        "lineNumber": 47,
+                        "index": 12,
+                        "lineNumber": 50,
                         "name": "saveConfiguration",
                         "returnType": "bool"
                     },
@@ -407,16 +399,16 @@
                                 "type": "QString"
                             }
                         ],
-                        "index": 14,
-                        "lineNumber": 48,
+                        "index": 13,
+                        "lineNumber": 51,
                         "name": "loadConfiguration",
                         "returnType": "bool"
                     },
                     {
                         "access": "public",
-                        "index": 15,
+                        "index": 14,
                         "isConst": true,
-                        "lineNumber": 49,
+                        "lineNumber": 52,
                         "name": "savedConfigurations",
                         "returnType": "QStringList"
                     },
@@ -428,26 +420,43 @@
                                 "type": "QString"
                             }
                         ],
-                        "index": 16,
-                        "lineNumber": 50,
+                        "index": 15,
+                        "lineNumber": 53,
                         "name": "deleteConfiguration",
                         "returnType": "bool"
                     }
                 ],
                 "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 0,
+                        "lineNumber": 39,
+                        "name": "monitors",
+                        "notify": "monitorsChanged",
+                        "read": "monitors",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVariantList",
+                        "user": false
+                    }
+                ],
                 "qualifiedClassName": "MonitorManager",
                 "signals": [
                     {
                         "access": "public",
                         "index": 0,
-                        "lineNumber": 56,
+                        "lineNumber": 59,
                         "name": "monitorsChanged",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
                         "index": 1,
-                        "lineNumber": 57,
+                        "lineNumber": 60,
                         "name": "configurationApplied",
                         "returnType": "void"
                     },
@@ -460,7 +469,7 @@
                             }
                         ],
                         "index": 2,
-                        "lineNumber": 58,
+                        "lineNumber": 61,
                         "name": "configurationSaved",
                         "returnType": "void"
                     },
@@ -473,7 +482,7 @@
                             }
                         ],
                         "index": 3,
-                        "lineNumber": 59,
+                        "lineNumber": 62,
                         "name": "configurationLoaded",
                         "returnType": "void"
                     },
@@ -486,7 +495,7 @@
                             }
                         ],
                         "index": 4,
-                        "lineNumber": 60,
+                        "lineNumber": 63,
                         "name": "errorOccurred",
                         "returnType": "void"
                     }

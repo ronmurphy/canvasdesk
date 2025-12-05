@@ -331,6 +331,15 @@ void X11WindowManager::handleMapRequest(XMapRequestEvent *event) {
   // Get window properties (title, class)
   updateWindowProperties(window);
 
+  // Skip CanvasDesk's own desktop window - don't frame it
+  if (window->appId.toLower() == "canvasdesk") {
+    qInfo() << "[X11] Skipping frame for CanvasDesk desktop window";
+    m_windows.insert(w, window);
+    XMapWindow(m_display, w);
+    emit windowAdded(window);
+    return;
+  }
+
   m_windows.insert(w, window);
 
   // Determine initial size

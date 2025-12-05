@@ -72,7 +72,7 @@ include src/app/CMakeFiles/canvasdesk-runtime.dir/flags.make
 src/app/canvasdesk-runtime_autogen/timestamp: /usr/lib/qt6/moc
 src/app/canvasdesk-runtime_autogen/timestamp: src/app/CMakeFiles/canvasdesk-runtime.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/brad/Documents/canvasdesk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target canvasdesk-runtime"
-	cd /home/brad/Documents/canvasdesk/build/src/app && /usr/bin/cmake -E cmake_autogen /home/brad/Documents/canvasdesk/build/src/app/CMakeFiles/canvasdesk-runtime_autogen.dir/AutogenInfo.json ""
+	cd /home/brad/Documents/canvasdesk/build/src/app && /usr/bin/cmake -E cmake_autogen /home/brad/Documents/canvasdesk/build/src/app/CMakeFiles/canvasdesk-runtime_autogen.dir/AutogenInfo.json Debug
 	cd /home/brad/Documents/canvasdesk/build/src/app && /usr/bin/cmake -E touch /home/brad/Documents/canvasdesk/build/src/app/canvasdesk-runtime_autogen/timestamp
 
 src/app/CMakeFiles/canvasdesk-runtime.dir/codegen:

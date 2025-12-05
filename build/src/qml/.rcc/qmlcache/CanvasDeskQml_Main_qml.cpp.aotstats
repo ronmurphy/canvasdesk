@@ -24,7 +24,7 @@
                         {
                             "codegenResult": 2,
                             "column": 32,
-                            "durationMicroseconds": 1085,
+                            "durationMicroseconds": 1069,
                             "functionName": "onCompleted",
                             "line": 19,
                             "message": "Cannot retrieve a non-object type by ID: layoutManager"

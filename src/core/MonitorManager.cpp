@@ -97,6 +97,21 @@ void MonitorManager::updateMonitors() {
           m_crtcMap[config.name] = outputInfo->crtc;
           XRRFreeCrtcInfo(crtcInfo);
         }
+      } else {
+        // Monitor is connected but not enabled - use first available mode as default
+        if (outputInfo->nmode > 0) {
+          for (int k = 0; k < res->nmode; k++) {
+            if (res->modes[k].id == outputInfo->modes[0]) {
+              config.width = res->modes[k].width;
+              config.height = res->modes[k].height;
+              break;
+            }
+          }
+        }
+        // Set default position (will be adjusted when enabled)
+        config.x = 0;
+        config.y = 0;
+        config.rotation = 0;
       }
 
       // Get available modes (resolutions)
@@ -356,6 +371,8 @@ bool MonitorManager::applyConfiguration() {
   XSync(m_display, False);
 
   if (success) {
+    // Re-scan monitors to update internal state after applying changes
+    updateMonitors();
     emit configurationApplied();
     qInfo() << "[MonitorManager] Configuration applied successfully";
   }

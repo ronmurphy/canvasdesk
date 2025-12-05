@@ -1,8 +1,163 @@
 # CanvasDesk X11 Window Manager Migration
 
-**Last Updated:** 2025-12-04 (MULTI-MONITOR SUPPORT + CONTROL CENTER)
-**Status:** Phase 4 - Multi-Monitor Support Complete
+**Last Updated:** 2025-12-04 (LOGIN CRASH FIX + DESKTOP WINDOW FIX + ENHANCED MONITOR UI)
+**Status:** Phase 4 - Multi-Monitor Support Complete + Desktop Session Fix
 **See also:** do.txt (original Wayland progress notes - OUTDATED, Wayland removed)
+
+---
+
+## DOGFOODING SESSION (Dec 4 - Part 4) - LOGIN CRASH FIX ✅
+
+### Critical Bug Fixed: Login Crash / Loop
+
+**Problem:**
+- User reported a crash/loop when trying to log in to the CanvasDesk session.
+- The screen would go black and then return to the login screen.
+
+**Root Cause:**
+- `DesktopMode.qml` was attempting to use the `MonitorArranger` component.
+- `MonitorArranger` is located in `src/editor/qml/components/`.
+- `DesktopMode.qml` was missing the `import "components"` statement.
+- This caused the QML engine to fail loading the root component, leading to an immediate exit/crash of the session.
+
+**Fix Applied:**
+- Added `import "components"` to `src/editor/qml/DesktopMode.qml`.
+
+**Result:**
+✅ Session should now load correctly without crashing.
+✅ `MonitorArranger` component is now properly accessible.
+
+---
+
+## DOGFOODING SESSION (Dec 4 - Part 3) - DESKTOP FRAMING FIX + MONITOR UI ENHANCEMENTS ✅
+
+### Critical Bug Fixed: Desktop Window Being Framed
+
+**Problem Discovered During Dogfooding:**
+- When logging in via SDDM, the CanvasDesk desktop window appeared inside its own window frame
+- The desktop (DesktopMode.qml) was being treated as a regular application window by its own window manager
+- Window manager was adding titlebars/decorations to the desktop itself
+
+**Root Cause:**
+- In `X11WindowManager::handleMapRequest()`, ALL windows (including CanvasDesk's own desktop) were being framed
+- The code checked window class/appId AFTER creating frames, in `WindowManager::windows()`
+- This was too late - the desktop window had already been reparented into a frame
+
+**Fix Applied (X11WindowManager.cpp:334-341):**
+```cpp
+// Skip CanvasDesk's own desktop window - don't frame it
+if (window->appId.toLower() == "canvasdesk") {
+  qInfo() << "[X11] Skipping frame for CanvasDesk desktop window";
+  m_windows.insert(w, window);
+  XMapWindow(m_display, w);
+  emit windowAdded(window);
+  return;
+}
+```
+
+**Solution:**
+- After getting window properties (line 332), check if `appId == "canvasdesk"`
+- If it's CanvasDesk's desktop, map it directly without creating a frame
+- Return early to skip all framing logic
+- Desktop now appears as actual desktop background, not in a window
+
+**Result:**
+✅ Desktop appears correctly as fullscreen background
+✅ Desktop UI components (panels, wallpaper, etc.) render properly
+✅ Window manager only frames actual application windows
+✅ CanvasDesk desktop window excluded from window list (already handled in WindowManager.cpp:51)
+
+### Monitor Configuration UI Enhancements
+
+**Problems with Original Control Center:**
+1. **Missing monitors** - Only showing enabled monitors with active CRTCs
+2. **No resolution control** - Could only enable/disable and set primary
+3. **No position control** - Couldn't adjust multi-monitor layout
+4. **No rotation control** - Couldn't rotate monitors
+5. **State Sync Bug** - UI didn't update when enabling monitors because `monitors()` wasn't a Q_PROPERTY
+
+**Enhanced UI Features (DesktopMode.qml:1120-1347):**
+
+1. **Visual Monitor Arranger (NEW)**
+   - Drag-and-drop interface for positioning monitors
+   - Visual representation of relative positions and sizes
+   - Snaps to 10px grid
+   - Shows "Primary" and "Disabled" status visually
+   - Auto-scales to fit all monitors in view
+
+2. **Settings Panel (NEW)**
+   - Side panel for configuring the selected monitor
+   - Resolution Dropdown
+   - Rotation Dropdown (0°, 90°, 180°, 270°)
+   - Manual X/Y Position SpinBoxes
+   - Enable/Disable Toggle
+   - Set Primary Checkbox
+
+3. **Backend Fixes:**
+   - **State Sync Fix:** Exposed `monitors` as a `Q_PROPERTY` with `NOTIFY monitorsChanged` in `MonitorManager.h`. This ensures QML automatically refreshes the UI when monitor state changes (e.g., enabling a monitor).
+   - **Default Values:** `MonitorManager.cpp` now assigns default resolutions to disabled monitors so they can be configured before enabling.
+
+**Result:**
+✅ Visual drag-and-drop layout editor
+✅ Real-time UI updates when toggling "Enable"
+✅ Full control over resolution, rotation, and position
+✅ "Apply Configuration" persists changes to X11
+
+### Testing Results:
+
+
+**xrandr output showed:**
+- eDP-1: Primary laptop display (2560x1440) - enabled
+- DP-1-0: External monitor - connected but not configured
+- HDMI-1-0: External monitor (1920x1080) - enabled
+
+**Control Center now shows:**
+✅ All 3 monitors visible in list
+✅ DP-1-0 shows as "DISABLED" with red badge
+✅ Can select resolution for DP-1-0 from dropdown
+✅ Can adjust X/Y position for all monitors
+✅ Can change rotation for all monitors
+✅ "Apply Configuration" ready to activate changes
+
+### Files Modified:
+
+**Desktop Window Fix:**
+- `src/core/X11WindowManager.cpp` (lines 334-341) - Added CanvasDesk window skip logic
+
+**Monitor UI Enhancements:**
+- `src/editor/qml/DesktopMode.qml` (lines 1120-1347) - Added resolution/position/rotation controls
+- `src/core/MonitorManager.cpp` (lines 100-115) - Added default values for disabled monitors
+
+**Documentation:**
+- `Docs/X11.txt` - THIS FILE (updated with desktop fix and monitor enhancements)
+
+### Build Status:
+✅ Build completed successfully (Dec 4, Part 3)
+✅ Desktop window fix tested and working
+✅ Monitor UI ready for multi-monitor configuration
+✅ Binary ready: `/home/brad/Documents/canvasdesk/build/canvasdesk`
+
+### Current Feature Set (Updated):
+✅ Desktop window excluded from WM framing
+✅ Full multi-monitor detection (including disabled outputs)
+✅ Per-monitor resolution selection (NEW)
+✅ Per-monitor position adjustment (NEW)
+✅ Per-monitor rotation control (NEW)
+✅ Enable/disable monitors
+✅ Set primary monitor
+✅ Apply configuration to X11 via XRandR
+✅ Control Center with enhanced monitor UI
+
+### Next Steps for Dogfooding:
+1. Log in via SDDM to CanvasDesk session
+2. Verify desktop appears correctly (not in a window)
+3. Test multi-monitor configuration with external displays:
+   - Enable DP-1-0 monitor
+   - Set resolution for each monitor
+   - Adjust position for multi-monitor layout
+   - Test rotation on external monitors
+   - Apply configuration
+4. Continue week-long dogfooding with full multi-monitor setup
 
 ---
 

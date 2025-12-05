@@ -35,8 +35,11 @@ public:
 
   bool initialize(Display *display);
 
+  // QML-accessible properties
+  Q_PROPERTY(QVariantList monitors READ monitors NOTIFY monitorsChanged)
+
   // QML-accessible methods
-  Q_INVOKABLE QVariantList monitors() const;
+  QVariantList monitors() const;
   Q_INVOKABLE QVariantList getAvailableResolutions(const QString &monitorName);
   Q_INVOKABLE bool setMonitorPosition(const QString &name, int x, int y);
   Q_INVOKABLE bool setMonitorRotation(const QString &name, int rotation);
