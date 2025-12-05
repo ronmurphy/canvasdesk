@@ -1,4 +1,5 @@
 import QtQuick
+import QtQml
 import QtQuick.Controls
 import QtQuick.Layouts
 import QtQuick.Dialogs
@@ -968,7 +969,7 @@ ApplicationWindow {
         x: parent.width / 2 - width / 2
         y: parent.height / 2 - height / 2
         z: 260
-        color: Theme.uiBackgroundColor
+        color: Theme.uiPrimaryColor // Was uiBackgroundColor which is invalid
         border.color: Theme.uiTitleBarLeftColor
         border.width: 1
         radius: 6
@@ -1086,7 +1087,7 @@ ApplicationWindow {
 
             // Monitors Tab
             Rectangle {
-                color: Theme.uiBackgroundColor
+                color: Theme.uiPrimaryColor
                 property string selectedMonitorName: ""
                 property var currentMonitor: {
                     var mons = WindowManager.monitorManager ? WindowManager.monitorManager.monitors : []
@@ -1365,6 +1366,27 @@ ApplicationWindow {
                         }
 
                         Item { Layout.fillWidth: true }
+                        
+                        Button {
+                            text: "Identify Displays"
+                            onClicked: {
+                                identifyTimer.start()
+                            }
+                            
+                            background: Rectangle {
+                                color: parent.down ? Theme.uiHighlightColor : Theme.uiSecondaryColor
+                                border.color: Theme.uiHighlightColor
+                                border.width: 1
+                                radius: 4
+                            }
+                            
+                            contentItem: Text {
+                                text: parent.text
+                                color: Theme.uiTextColor
+                                horizontalAlignment: Text.AlignHCenter
+                                verticalAlignment: Text.AlignVCenter
+                            }
+                        }
 
                         Button {
                             text: "Refresh"
@@ -1444,7 +1466,7 @@ ApplicationWindow {
 
             // Appearance Tab (placeholder)
             Rectangle {
-                color: Theme.uiBackgroundColor
+                color: Theme.uiPrimaryColor
 
                 Text {
                     anchors.centerIn: parent
@@ -1457,7 +1479,7 @@ ApplicationWindow {
 
             // System Tab (placeholder)
             Rectangle {
-                color: Theme.uiBackgroundColor
+                color: Theme.uiPrimaryColor
 
                 Text {
                     anchors.centerIn: parent
@@ -1465,6 +1487,70 @@ ApplicationWindow {
                     color: Theme.uiTextColor
                     font.pixelSize: 16
                     horizontalAlignment: Text.AlignHCenter
+                }
+            }
+        }
+    }
+
+    // Identify Overlay
+    Timer {
+        id: identifyTimer
+        interval: 3000
+        repeat: false
+    }
+    
+    Instantiator {
+        model: identifyTimer.running && WindowManager.monitorManager ? WindowManager.monitorManager.monitors : []
+        
+        delegate: Window {
+            x: modelData.x
+            y: modelData.y
+            width: modelData.width
+            height: modelData.height
+            flags: Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint | Qt.Tool
+            color: "transparent"
+            visible: true
+            
+            Rectangle {
+                anchors.fill: parent
+                color: "black"
+                opacity: 0.7
+                border.color: Theme.uiHighlightColor
+                border.width: 10
+                
+                ColumnLayout {
+                    anchors.centerIn: parent
+                    spacing: 20
+                    
+                    Text {
+                        text: modelData.name
+                        color: "white"
+                        font.pixelSize: 100
+                        font.bold: true
+                        style: Text.Outline
+                        styleColor: "black"
+                        Layout.alignment: Qt.AlignHCenter
+                    }
+                    
+                    Text {
+                        text: modelData.width + "x" + modelData.height
+                        color: "white"
+                        font.pixelSize: 60
+                        style: Text.Outline
+                        styleColor: "black"
+                        Layout.alignment: Qt.AlignHCenter
+                    }
+                    
+                    Text {
+                        text: modelData.primary ? "PRIMARY" : ""
+                        color: Theme.uiHighlightColor
+                        font.pixelSize: 60
+                        font.bold: true
+                        style: Text.Outline
+                        styleColor: "black"
+                        visible: modelData.primary
+                        Layout.alignment: Qt.AlignHCenter
+                    }
                 }
             }
         }

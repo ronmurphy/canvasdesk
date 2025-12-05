@@ -4,7 +4,7 @@ import QtQuick.Layouts 1.15
 import "../" // For Theme
 
 Rectangle {
-    id: root
+    id: arrangerRoot
     
     property var monitors: []
     property string selectedMonitor: ""
@@ -78,8 +78,8 @@ Rectangle {
         model: 20
         Rectangle {
             x: 0
-            y: (index * 1000 - root.minY) * root.scaleFactor + root.offsetY
-            width: root.width
+            y: (index * 1000 - arrangerRoot.minY) * arrangerRoot.scaleFactor + arrangerRoot.offsetY
+            width: arrangerRoot.width
             height: 1
             color: Theme.uiTitleBarLeftColor
             opacity: 0.3
@@ -89,10 +89,10 @@ Rectangle {
     Repeater {
         model: 20
         Rectangle {
-            x: (index * 1000 - root.minX) * root.scaleFactor + root.offsetX
+            x: (index * 1000 - arrangerRoot.minX) * arrangerRoot.scaleFactor + arrangerRoot.offsetX
             y: 0
             width: 1
-            height: root.height
+            height: arrangerRoot.height
             color: Theme.uiTitleBarLeftColor
             opacity: 0.3
         }
@@ -100,20 +100,20 @@ Rectangle {
     
     // Monitors
     Repeater {
-        model: root.monitors
+        model: arrangerRoot.monitors
         
         Rectangle {
             id: monitorRect
             
             // Calculate position and size
-            x: (modelData.x - root.minX) * root.scaleFactor + root.offsetX
-            y: (modelData.y - root.minY) * root.scaleFactor + root.offsetY
-            width: modelData.width * root.scaleFactor
-            height: modelData.height * root.scaleFactor
+            x: (modelData.x - arrangerRoot.minX) * arrangerRoot.scaleFactor + arrangerRoot.offsetX
+            y: (modelData.y - arrangerRoot.minY) * arrangerRoot.scaleFactor + arrangerRoot.offsetY
+            width: modelData.width * arrangerRoot.scaleFactor
+            height: modelData.height * arrangerRoot.scaleFactor
             
             color: modelData.enabled ? Theme.uiSecondaryColor : "#444444"
-            border.color: root.selectedMonitor === modelData.name ? Theme.uiHighlightColor : Theme.uiTitleBarLeftColor
-            border.width: root.selectedMonitor === modelData.name ? 3 : 1
+            border.color: arrangerRoot.selectedMonitor === modelData.name ? Theme.uiHighlightColor : Theme.uiTitleBarLeftColor
+            border.width: arrangerRoot.selectedMonitor === modelData.name ? 3 : 1
             
             opacity: modelData.enabled ? 1.0 : 0.5
             
@@ -126,14 +126,14 @@ Rectangle {
                     text: modelData.name
                     color: Theme.uiTextColor
                     font.bold: true
-                    font.pixelSize: Math.max(10, 140 * root.scaleFactor) // Scale font but keep min size
+                    font.pixelSize: Math.max(10, 140 * arrangerRoot.scaleFactor) // Scale font but keep min size
                     Layout.alignment: Qt.AlignHCenter
                 }
                 
                 Text {
                     text: modelData.width + "x" + modelData.height
                     color: Theme.uiTextColor
-                    font.pixelSize: Math.max(8, 100 * root.scaleFactor)
+                    font.pixelSize: Math.max(8, 100 * arrangerRoot.scaleFactor)
                     Layout.alignment: Qt.AlignHCenter
                     visible: modelData.enabled
                 }
@@ -152,7 +152,7 @@ Rectangle {
                         text: "PRIMARY"
                         color: Theme.uiTextColor
                         font.bold: true
-                        font.pixelSize: Math.max(8, 80 * root.scaleFactor)
+                        font.pixelSize: Math.max(8, 80 * arrangerRoot.scaleFactor)
                     }
                 }
             }
@@ -160,25 +160,25 @@ Rectangle {
             MouseArea {
                 anchors.fill: parent
                 drag.target: monitorRect
-                drag.axis: Drag.XAndY
-                enabled: modelData.enabled // Only drag enabled monitors
+                drag.axis: Drag.XAndYAxis
+                // enabled: modelData.enabled // Allow dragging even if disabled
                 
                 onPressed: {
-                    root.monitorSelected(modelData.name)
+                    arrangerRoot.monitorSelected(modelData.name)
                 }
                 
                 onReleased: {
                     // Snap to 10px grid
-                    var rawX = (monitorRect.x - root.offsetX) / root.scaleFactor + root.minX
-                    var rawY = (monitorRect.y - root.offsetY) / root.scaleFactor + root.minY
+                    var rawX = (monitorRect.x - arrangerRoot.offsetX) / arrangerRoot.scaleFactor + arrangerRoot.minX
+                    var rawY = (monitorRect.y - arrangerRoot.offsetY) / arrangerRoot.scaleFactor + arrangerRoot.minY
                     
                     var snappedX = Math.round(rawX / 10) * 10
                     var snappedY = Math.round(rawY / 10) * 10
                     
-                    root.monitorMoved(modelData.name, snappedX, snappedY)
+                    arrangerRoot.monitorMoved(modelData.name, snappedX, snappedY)
                     
                     // Force update to snap visually
-                    root.updateBounds()
+                    arrangerRoot.updateBounds()
                 }
             }
         }
@@ -186,8 +186,8 @@ Rectangle {
     
     // Center indicator (0,0)
     Rectangle {
-        x: (0 - root.minX) * root.scaleFactor + root.offsetX - 5
-        y: (0 - root.minY) * root.scaleFactor + root.offsetY - 5
+        x: (0 - arrangerRoot.minX) * arrangerRoot.scaleFactor + arrangerRoot.offsetX - 5
+        y: (0 - arrangerRoot.minY) * arrangerRoot.scaleFactor + arrangerRoot.offsetY - 5
         width: 10
         height: 10
         radius: 5
