@@ -175,6 +175,7 @@ ApplicationWindow {
                                 ListElement { type: "AppGrid"; name: "App Grid"; icon: "view-grid" }
                                 ListElement { type: "FileManager"; name: "File Manager"; icon: "system-file-manager" }
                                 ListElement { type: "WorkspaceSwitcher"; name: "Workspace Switcher"; icon: "view-multiple" }
+                                ListElement { type: "EnhancedPanel"; name: "Enhanced Panel"; icon: "view-dashboard" }
                             }
                             delegate: ItemDelegate {
                                 width: parent.width
@@ -560,7 +561,38 @@ ApplicationWindow {
                             color: "#aaa"
                         }
                         
-                        // TODO: Add property editors for width, height, color, etc.
+                        // Property Editors
+                        
+                        // Section Ratios (for EnhancedPanel)
+                        ColumnLayout {
+                            visible: selectedComponent && selectedComponent.type === "EnhancedPanel"
+                            Layout.fillWidth: true
+                            
+                            Text { 
+                                text: "Section Ratios (comma separated)" 
+                                font.pixelSize: 12
+                                color: "#555"
+                            }
+                            
+                            TextField {
+                                Layout.fillWidth: true
+                                text: selectedComponent && selectedComponent.sectionRatios ? selectedComponent.sectionRatios : "1,1,1"
+                                onEditingFinished: {
+                                    if (selectedComponent) {
+                                        // Update the model
+                                        selectedComponent.sectionRatios = text
+                                        // Force model update (hacky but works for ListModel)
+                                        var idx = -1
+                                        for(var i=0; i<canvasModel.count; i++) {
+                                            if(canvasModel.get(i) === selectedComponent) {
+                                                idx = i; break;
+                                            }
+                                        }
+                                        if(idx !== -1) canvasModel.setProperty(idx, "sectionRatios", text)
+                                    }
+                                }
+                            }
+                        }
                         Label {
                             visible: !selectedComponent
                             text: "Click a component on the desktop to edit its properties"
@@ -657,6 +689,11 @@ ApplicationWindow {
             qml = 'import QtQuick; import QtQuick.Controls; import QtQuick.Layouts; import CanvasDesk; Rectangle { width: 180; height: 40; x: ' + data.x + '; y: ' + data.y + '; color: Theme.uiPrimaryColor; border.color: "#444"; border.width: 1; radius: 4; Row { anchors.centerIn: parent; spacing: 5; Repeater { model: WindowManager.workspaceCount; delegate: Rectangle { width: 40; height: 30; color: WindowManager.currentWorkspace === index ? "#3a3a3a" : "#2a2a2a"; border.color: Theme.uiTitleBarLeftColor; radius: 2; Text { anchors.centerIn: parent; text: (index + 1).toString(); color: Theme.uiTextColor } MouseArea { anchors.fill: parent; onClicked: WindowManager.switchToWorkspace(index) } } } } }'
         } else if (data.type === "FileManager") {
             qml = 'import QtQuick; import QtQuick.Controls; import Qt.labs.folderlistmodel; import CanvasDesk; Rectangle { width: 250; height: 300; x: ' + data.x + '; y: ' + data.y + '; color: Theme.uiPrimaryColor; border.color: "#444"; border.width: 1; radius: 4; ListView { anchors.fill: parent; anchors.margins: 4; clip: true; model: FolderListModel { folder: "file://" + AppManager.homeDir(); showDirsFirst: true; nameFilters: ["*"] } delegate: Rectangle { width: parent.width; height: 30; color: "transparent"; Row { anchors.fill: parent; spacing: 5; leftPadding: 5; Image { source: "image://theme/" + (fileIsDir ? "folder" : "text-x-generic"); width: 20; height: 20; anchors.verticalCenter: parent.verticalCenter } Text { text: fileName; color: Theme.uiTextColor; anchors.verticalCenter: parent.verticalCenter } } } } }'
+        } else if (data.type === "EnhancedPanel") {
+             var ratios = data.sectionRatios || "1,1,1"
+             // Parse ratios string to array string for QML
+             var ratioArray = "[" + ratios + "]"
+             qml = 'import QtQuick; import QtQuick.Controls; import QtQuick.Layouts; import CanvasDesk; import "components"; EnhancedPanelComponent { width: 800; height: 100; x: ' + data.x + '; y: ' + data.y + '; sectionRatios: ' + ratioArray + '; sectionCount: ' + ratioArray + '.length }'
         } else {
             qml = 'import QtQuick; Rectangle { color: "#ddeeff"; border.color: "blue"; width: 100; height: 50; x: ' + data.x + '; y: ' + data.y + '; Text { anchors.centerIn: parent; text: "' + data.type + '"; color: "black" } }'
         }
