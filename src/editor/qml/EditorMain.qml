@@ -608,10 +608,22 @@ ApplicationWindow {
                         RowLayout {
                             visible: selectedComponent && selectedComponent.type === "EnhancedPanel"
                             Layout.fillWidth: true
+                            Layout.preferredHeight: 40
                             
                             CheckBox {
+                                id: centerCheckBox
                                 text: "Center Components"
                                 checked: selectedComponent && selectedComponent.centerComponents ? selectedComponent.centerComponents : false
+                                
+                                contentItem: Text {
+                                    text: centerCheckBox.text
+                                    font: centerCheckBox.font
+                                    opacity: enabled ? 1.0 : 0.3
+                                    color: Theme.uiTextColor
+                                    verticalAlignment: Text.AlignVCenter
+                                    leftPadding: centerCheckBox.indicator.width + centerCheckBox.spacing
+                                }
+
                                 onCheckedChanged: {
                                     if (selectedComponent) {
                                         selectedComponent.centerComponents = checked

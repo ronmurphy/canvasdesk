@@ -1,16 +1,13 @@
 All in one QLM idea components:
-Lockscreen / Screensaver QML
-Bluetooth QML
-"Quick Launch" - press meta key get a floating modal, like DMENU or ROFI or such for showing apps
-Better File Explorer - list or icons view, mini actual file explorer, or just a single folder in list or icons only mode
-"SysInfo" - shows GPU speed / usage, Free RAM, upload / download / etc <- each of these can be their own ATOM component also
+[x] Lockscreen / Screensaver QML (Basic implementation exists)
+[ ] Bluetooth QML
+[ ] "Quick Launch" - press meta key get a floating modal, like DMENU or ROFI or such for showing apps
+[ ] Better File Explorer - list or icons view, mini actual file explorer, or just a single folder in list or icons only mode
+[x] "SysInfo" - shows GPU speed / usage, Free RAM, upload / download / etc <- Implemented as Atom Components (CPU, RAM, Disk)
 
-make a better Panel, with a splitter control when the Editor is open so that docked components can be positioned to specific areas in the panel and set their length, etc.
+[x] make a better Panel, with a splitter control when the Editor is open so that docked components can be positioned to specific areas in the panel and set their length, etc. -> Implemented as EnhancedPanel
 
-basically make "Enhanced" components, Enhanced Panel, Enhanced Clock, Enhanced AppLauncher etc.
-
-
-
+[x] basically make "Enhanced" components, Enhanced Panel, Enhanced Clock, Enhanced AppLauncher etc. -> Implemented Atom components and EnhancedPanel
 
 ATOM Components : a atom component is just the basic, like an icon to show some info, or a label
 --

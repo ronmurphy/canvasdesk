@@ -610,7 +610,30 @@ ApplicationWindow {
                                             value: selectedComponent && selectedComponent.loadedItem ? selectedComponent.loadedItem.sectionCount : 3
                                             onValueModified: {
                                                 if (selectedComponent && selectedComponent.loadedItem) {
+                                                    var oldVal = selectedComponent.loadedItem.sectionCount
                                                     selectedComponent.loadedItem.sectionCount = value
+                                                    
+                                                    // Auto-update ratios
+                                                    var currentRatios = selectedComponent.loadedItem.sectionRatios || []
+                                                    // Convert to array if it's not (it should be)
+                                                    if (!Array.isArray(currentRatios)) currentRatios = [1]
+                                                    
+                                                    if (value > oldVal) {
+                                                        // Add 1s
+                                                        for (var i = 0; i < (value - oldVal); i++) {
+                                                            currentRatios.push(1)
+                                                        }
+                                                    } else if (value < oldVal) {
+                                                        // Remove from end
+                                                        for (var i = 0; i < (oldVal - value); i++) {
+                                                            if (currentRatios.length > 1) currentRatios.pop()
+                                                        }
+                                                    }
+                                                    
+                                                    // Trigger update
+                                                    selectedComponent.loadedItem.sectionRatios = currentRatios
+                                                    // Force TextField update by re-assigning
+                                                    ratioField.text = currentRatios.join(",")
                                                 }
                                             }
                                         }
@@ -625,6 +648,7 @@ ApplicationWindow {
                                             Layout.preferredWidth: 100
                                         }
                                         TextField {
+                                            id: ratioField
                                             Layout.fillWidth: true
                                             text: selectedComponent && selectedComponent.loadedItem ? selectedComponent.loadedItem.sectionRatios.join(",") : "1,1,1"
                                             placeholderText: "e.g. 1,2,1"
@@ -639,6 +663,24 @@ ApplicationWindow {
                                                     if (ratios.length > 0) {
                                                         selectedComponent.loadedItem.sectionRatios = ratios
                                                     }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    
+                                    // Center Components
+                                    RowLayout {
+                                        Layout.fillWidth: true
+                                        Label {
+                                            text: "Center:"
+                                            color: Theme.uiTextColor
+                                            Layout.preferredWidth: 100
+                                        }
+                                        CheckBox {
+                                            checked: selectedComponent && selectedComponent.loadedItem ? selectedComponent.loadedItem.centerComponents : false
+                                            onToggled: {
+                                                if (selectedComponent && selectedComponent.loadedItem) {
+                                                    selectedComponent.loadedItem.centerComponents = checked
                                                 }
                                             }
                                         }
