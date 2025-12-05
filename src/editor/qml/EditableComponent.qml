@@ -314,7 +314,7 @@ Item {
         for (var i = 0; i < desktopParent.children.length; i++) {
             var child = desktopParent.children[i]
             if (child === root) continue
-            if (child.componentType !== "Panel") continue
+            if (child.componentType !== "Panel" && child.componentType !== "EnhancedPanel") continue
 
             // Check if center is inside panel bounds
             if (centerX >= child.x && centerX <= child.x + child.width &&
@@ -335,7 +335,7 @@ Item {
         for (var i = 0; i < desktopParent.children.length; i++) {
             var child = desktopParent.children[i]
             if (child === root) continue
-            if (child.componentType !== "Panel") continue
+            if (child.componentType !== "Panel" && child.componentType !== "EnhancedPanel") continue
 
             // Check if center is inside panel bounds
             if (centerX >= child.x && centerX <= child.x + child.width &&

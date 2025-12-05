@@ -257,6 +257,7 @@ ApplicationWindow {
                     ListView {
                         model: ListModel {
                             ListElement { type: "Panel"; name: "Panel"; icon: "view-list-tree" }
+                            ListElement { type: "EnhancedPanel"; name: "Enhanced Panel"; icon: "view-split-left-right" }
                             ListElement { type: "AppLauncher"; name: "App Launcher"; icon: "application-menu" }
                             ListElement { type: "AppGrid"; name: "App Grid"; icon: "view-grid" }
                             ListElement { type: "Taskbar"; name: "Taskbar"; icon: "view-list-icons" }
@@ -266,7 +267,10 @@ ApplicationWindow {
                             ListElement { type: "SessionManager"; name: "Session Manager"; icon: "system-shutdown" }
                             ListElement { type: "Button"; name: "Button"; icon: "button" }
                             ListElement { type: "AtomClock"; name: "Atom Clock"; icon: "clock" }
-                            ListElement { type: "AtomSysInfo"; name: "Atom SysInfo"; icon: "utilities-system-monitor" }
+                            ListElement { type: "SysInfo"; name: "SysInfo"; icon: "utilities-system-monitor" }
+                            ListElement { type: "AtomCpu"; name: "Atom CPU"; icon: "cpu" }
+                            ListElement { type: "AtomRam"; name: "Atom RAM"; icon: "memory" }
+                            ListElement { type: "AtomDisk"; name: "Atom Disk"; icon: "drive-harddisk" }
                         }
                         
                         delegate: ItemDelegate {
@@ -301,7 +305,7 @@ ApplicationWindow {
                                         }
 
                                         // Special positioning for Panel
-                                        if (type === "Panel") {
+                                        if (type === "Panel" || type === "EnhancedPanel") {
                                             comp.x = desktopContainer.width / 2 - 400  // Center the 800px panel
                                             comp.y = desktopContainer.height - 80  // Near bottom with some margin
                                             comp.width = 800
@@ -524,6 +528,117 @@ ApplicationWindow {
                                             onToggled: {
                                                 if (selectedComponent && selectedComponent.loadedItem) {
                                                     selectedComponent.loadedItem.autoHide = checked
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    Item { Layout.fillHeight: true }
+                                }
+
+                                // Enhanced Panel properties
+                                ColumnLayout {
+                                    anchors.fill: parent
+                                    visible: selectedComponent && selectedComponent.componentType === "EnhancedPanel"
+                                    spacing: 8
+
+                                    Label {
+                                        text: "Enhanced Panel Settings"
+                                        color: Theme.uiHighlightColor
+                                        font.bold: true
+                                    }
+
+                                    Rectangle {
+                                        Layout.fillWidth: true
+                                        height: 1
+                                        color: Theme.uiTitleBarLeftColor
+                                    }
+
+                                    // Edge
+                                    RowLayout {
+                                        Layout.fillWidth: true
+                                        Label {
+                                            text: "Edge:"
+                                            color: Theme.uiTextColor
+                                            Layout.preferredWidth: 100
+                                        }
+                                        ComboBox {
+                                            Layout.fillWidth: true
+                                            model: ["top", "bottom", "left", "right"]
+                                            currentIndex: {
+                                                if (!selectedComponent || !selectedComponent.loadedItem) return 1
+                                                var edge = selectedComponent.loadedItem.edge || "bottom"
+                                                return model.indexOf(edge)
+                                            }
+                                            onActivated: {
+                                                if (selectedComponent && selectedComponent.loadedItem) {
+                                                    selectedComponent.loadedItem.edge = model[index]
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    // Auto Hide
+                                    RowLayout {
+                                        Layout.fillWidth: true
+                                        Label {
+                                            text: "Auto Hide:"
+                                            color: Theme.uiTextColor
+                                            Layout.preferredWidth: 100
+                                        }
+                                        CheckBox {
+                                            checked: selectedComponent && selectedComponent.loadedItem ? selectedComponent.loadedItem.autoHide : false
+                                            onToggled: {
+                                                if (selectedComponent && selectedComponent.loadedItem) {
+                                                    selectedComponent.loadedItem.autoHide = checked
+                                                }
+                                            }
+                                        }
+                                    }
+                                    
+                                    // Section Count
+                                    RowLayout {
+                                        Layout.fillWidth: true
+                                        Label {
+                                            text: "Sections:"
+                                            color: Theme.uiTextColor
+                                            Layout.preferredWidth: 100
+                                        }
+                                        SpinBox {
+                                            from: 1
+                                            to: 10
+                                            value: selectedComponent && selectedComponent.loadedItem ? selectedComponent.loadedItem.sectionCount : 3
+                                            onValueModified: {
+                                                if (selectedComponent && selectedComponent.loadedItem) {
+                                                    selectedComponent.loadedItem.sectionCount = value
+                                                }
+                                            }
+                                        }
+                                    }
+                                    
+                                    // Section Ratios
+                                    RowLayout {
+                                        Layout.fillWidth: true
+                                        Label {
+                                            text: "Ratios (csv):"
+                                            color: Theme.uiTextColor
+                                            Layout.preferredWidth: 100
+                                        }
+                                        TextField {
+                                            Layout.fillWidth: true
+                                            text: selectedComponent && selectedComponent.loadedItem ? selectedComponent.loadedItem.sectionRatios.join(",") : "1,1,1"
+                                            placeholderText: "e.g. 1,2,1"
+                                            onEditingFinished: {
+                                                if (selectedComponent && selectedComponent.loadedItem) {
+                                                    var parts = text.split(",")
+                                                    var ratios = []
+                                                    for (var i = 0; i < parts.length; i++) {
+                                                        var val = parseFloat(parts[i])
+                                                        if (!isNaN(val)) ratios.push(val)
+                                                    }
+                                                    if (ratios.length > 0) {
+                                                        selectedComponent.loadedItem.sectionRatios = ratios
+                                                    }
                                                 }
                                             }
                                         }
@@ -1771,6 +1886,7 @@ ApplicationWindow {
         // Default sizes for different component types
         var defaults = {
             "Panel": { width: 800, height: 64 },
+            "EnhancedPanel": { width: 800, height: 64 },
             "AppLauncher": { width: 80, height: 40 },
             "AppGrid": { width: 300, height: 400 },
             "Taskbar": { width: 400, height: 40 },
@@ -1780,7 +1896,10 @@ ApplicationWindow {
             "SessionManager": { width: 150, height: 200 },
             "Button": { width: 100, height: 40 },
             "AtomClock": { width: 150, height: 60 },
-            "AtomSysInfo": { width: 150, height: 80 }
+            "SysInfo": { width: 150, height: 80 },
+            "AtomCpu": { width: 120, height: 40 },
+            "AtomRam": { width: 120, height: 40 },
+            "AtomDisk": { width: 120, height: 40 }
         }
 
         var defaultSize = defaults[data.type] || { width: 100, height: 50 }

@@ -3712,6 +3712,7 @@ src/core/CMakeFiles/CanvasDeskCore.dir/SystemMonitor.cpp.o: /home/brad/Documents
   /usr/include/qt6/QtCore/QDebug \
   /usr/include/qt6/QtCore/QFile \
   /usr/include/qt6/QtCore/QObject \
+  /usr/include/qt6/QtCore/QRegularExpression \
   /usr/include/qt6/QtCore/QTextStream \
   /usr/include/qt6/QtCore/QTimer \
   /usr/include/qt6/QtCore/QVector \
@@ -3720,7 +3721,9 @@ src/core/CMakeFiles/CanvasDeskCore.dir/SystemMonitor.cpp.o: /home/brad/Documents
   /usr/include/qt6/QtCore/q20iterator.h \
   /usr/include/qt6/QtCore/q20memory.h \
   /usr/include/qt6/QtCore/q20type_traits.h \
+  /usr/include/qt6/QtCore/q20utility.h \
   /usr/include/qt6/QtCore/q23type_traits.h \
+  /usr/include/qt6/QtCore/q23utility.h \
   /usr/include/qt6/QtCore/qabstracteventdispatcher.h \
   /usr/include/qt6/QtCore/qalgorithms.h \
   /usr/include/qt6/QtCore/qalloc.h \
@@ -3790,6 +3793,7 @@ src/core/CMakeFiles/CanvasDeskCore.dir/SystemMonitor.cpp.o: /home/brad/Documents
   /usr/include/qt6/QtCore/qpair.h \
   /usr/include/qt6/QtCore/qprocessordetection.h \
   /usr/include/qt6/QtCore/qrefcount.h \
+  /usr/include/qt6/QtCore/qregularexpression.h \
   /usr/include/qt6/QtCore/qscopedpointer.h \
   /usr/include/qt6/QtCore/qscopeguard.h \
   /usr/include/qt6/QtCore/qset.h \
@@ -3836,6 +3840,7 @@ src/core/CMakeFiles/CanvasDeskCore.dir/SystemMonitor.cpp.o: /home/brad/Documents
   /usr/include/qt6/QtCore/qtypeinfo.h \
   /usr/include/qt6/QtCore/qtypes.h \
   /usr/include/qt6/QtCore/qutf8stringview.h \
+  /usr/include/qt6/QtCore/qvariant.h \
   /usr/include/qt6/QtCore/qvarlengtharray.h \
   /usr/include/qt6/QtCore/qvector.h \
   /usr/include/qt6/QtCore/qversiontagging.h \
@@ -6108,6 +6113,7 @@ src/core/libCanvasDeskCore.so: /usr/lib/crti.o \
   src/core/CMakeFiles/CanvasDeskCore.dir/Component.cpp.o \
   src/core/CMakeFiles/CanvasDeskCore.dir/LayoutManager.cpp.o \
   src/core/CMakeFiles/CanvasDeskCore.dir/MonitorManager.cpp.o \
+  src/core/CMakeFiles/CanvasDeskCore.dir/SystemMonitor.cpp.o \
   src/core/CMakeFiles/CanvasDeskCore.dir/ThemeManager.cpp.o \
   src/core/CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.o \
   src/core/CMakeFiles/CanvasDeskCore.dir/X11WindowManager.cpp.o \
@@ -6117,6 +6123,8 @@ src/core/libCanvasDeskCore.so: /usr/lib/crti.o \
 src/core/CMakeFiles/CanvasDeskCore.dir/canvasdeskcore_qmltyperegistrations.cpp.o:
 
 src/core/CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.o:
+
+src/core/CMakeFiles/CanvasDeskCore.dir/SystemMonitor.cpp.o:
 
 src/core/CMakeFiles/CanvasDeskCore.dir/LayoutManager.cpp.o:
 
