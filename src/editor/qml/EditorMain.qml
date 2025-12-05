@@ -155,6 +155,7 @@ ApplicationWindow {
                         Layout.fillWidth: true
                         TabButton { text: "Components" }
                         TabButton { text: "Apps" }
+                        TabButton { text: "Settings" }
                     }
 
                     StackLayout {
@@ -219,6 +220,61 @@ ApplicationWindow {
                                     onActiveChanged: if (active) parent.grabToImage(function(result) { parent.Drag.imageSource = result.url })
                                 }
                             }
+                        }
+
+                        // Settings Tab
+                        ColumnLayout {
+                            spacing: 10
+
+                            Text {
+                                text: "Settings"
+                                font.pixelSize: 16
+                                font.bold: true
+                                Layout.margins: 10
+                            }
+
+                            Button {
+                                Layout.fillWidth: true
+                                Layout.margins: 10
+                                text: "Open Control Center"
+
+                                background: Rectangle {
+                                    color: parent.down ? Theme.uiHighlightColor : Theme.uiPrimaryColor
+                                    border.color: Theme.uiHighlightColor
+                                    border.width: 1
+                                    radius: 4
+                                }
+
+                                contentItem: Text {
+                                    text: parent.text
+                                    color: Theme.uiTextColor
+                                    horizontalAlignment: Text.AlignHCenter
+                                    verticalAlignment: Text.AlignVCenter
+                                    font.pixelSize: 14
+                                }
+
+                                onClicked: {
+                                    var component = Qt.createComponent("ControlCenter.qml")
+                                    if (component.status === Component.Ready) {
+                                        var window = component.createObject(null)
+                                        window.show()
+                                    } else {
+                                        console.log("Error loading ControlCenter:", component.errorString())
+                                    }
+                                }
+                            }
+
+                            Text {
+                                Layout.margins: 10
+                                Layout.fillWidth: true
+                                text: "The Control Center provides:\n• Monitor Configuration\n• Appearance Settings\n• System Settings"
+                                font.pixelSize: 12
+                                color: Theme.uiTextColor
+                                opacity: 0.7
+                                wrapMode: Text.WordWrap
+                            }
+
+                            Item { Layout.fillHeight: true }
                         }
                     }
                 }

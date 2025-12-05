@@ -15,6 +15,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/mocs_compilation.cpp" "src/core/CMakeFiles/CanvasDeskCore.dir/CanvasDeskCore_autogen/mocs_compilation.cpp.o" "gcc" "src/core/CMakeFiles/CanvasDeskCore.dir/CanvasDeskCore_autogen/mocs_compilation.cpp.o.d"
   "/home/brad/Documents/canvasdesk/src/core/Component.cpp" "src/core/CMakeFiles/CanvasDeskCore.dir/Component.cpp.o" "gcc" "src/core/CMakeFiles/CanvasDeskCore.dir/Component.cpp.o.d"
   "/home/brad/Documents/canvasdesk/src/core/LayoutManager.cpp" "src/core/CMakeFiles/CanvasDeskCore.dir/LayoutManager.cpp.o" "gcc" "src/core/CMakeFiles/CanvasDeskCore.dir/LayoutManager.cpp.o.d"
+  "/home/brad/Documents/canvasdesk/src/core/MonitorManager.cpp" "src/core/CMakeFiles/CanvasDeskCore.dir/MonitorManager.cpp.o" "gcc" "src/core/CMakeFiles/CanvasDeskCore.dir/MonitorManager.cpp.o.d"
   "/home/brad/Documents/canvasdesk/src/core/ThemeManager.cpp" "src/core/CMakeFiles/CanvasDeskCore.dir/ThemeManager.cpp.o" "gcc" "src/core/CMakeFiles/CanvasDeskCore.dir/ThemeManager.cpp.o.d"
   "/home/brad/Documents/canvasdesk/src/core/WindowManager.cpp" "src/core/CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.o" "gcc" "src/core/CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.o.d"
   "/home/brad/Documents/canvasdesk/src/core/X11WindowManager.cpp" "src/core/CMakeFiles/CanvasDeskCore.dir/X11WindowManager.cpp.o" "gcc" "src/core/CMakeFiles/CanvasDeskCore.dir/X11WindowManager.cpp.o.d"

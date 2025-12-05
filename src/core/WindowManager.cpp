@@ -1,5 +1,6 @@
 #include "WindowManager.h"
 #include "X11WindowManager.h"
+#include "MonitorManager.h"
 #include <QDebug>
 
 WindowManager::WindowManager(QObject *parent) : QObject(parent) {
@@ -20,6 +21,14 @@ WindowManager::WindowManager(QObject *parent) : QObject(parent) {
             &WindowManager::onX11WindowChanged);
 
     emit windowsChanged();
+
+    // Initialize monitor manager (needs Display* from X11WindowManager)
+    m_monitorManager = new MonitorManager(this);
+    if (m_monitorManager->initialize(m_x11Manager->display())) {
+      qInfo() << "✓ Monitor manager initialized";
+    } else {
+      qWarning() << "✗ Monitor manager failed to initialize";
+    }
   } else {
     qWarning() << "✗ X11 window manager failed to initialize";
   }

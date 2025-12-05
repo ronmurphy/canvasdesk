@@ -403,6 +403,8 @@ src/core/CMakeFiles/CanvasDeskCore.dir/CanvasDeskCore_autogen/mocs_compilation.c
  /home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/EWIEGA46WW/moc_LayoutManager.cpp \
  /home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/EWIEGA46WW/../../../../../src/core/LayoutManager.h \
  /usr/include/qt6/QtCore/QString \
+ /home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/EWIEGA46WW/moc_MonitorManager.cpp \
+ /home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/EWIEGA46WW/../../../../../src/core/MonitorManager.h \
  /home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/EWIEGA46WW/moc_ThemeManager.cpp \
  /home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/EWIEGA46WW/../../../../../src/core/ThemeManager.h \
  /usr/include/qt6/QtGui/QColor /usr/include/qt6/QtGui/qcolor.h \
@@ -460,4 +462,5 @@ src/core/CMakeFiles/CanvasDeskCore.dir/CanvasDeskCore_autogen/mocs_compilation.c
  /usr/include/X11/extensions/Xrender.h /usr/include/X11/Xutil.h \
  /usr/include/X11/keysym.h /usr/include/X11/keysymdef.h \
  /usr/include/X11/extensions/render.h /usr/include/X11/Xdefs.h \
- /usr/include/X11/Xft/XftCompat.h
+ /usr/include/X11/Xft/XftCompat.h /usr/include/X11/extensions/Xrandr.h \
+ /usr/include/X11/extensions/randr.h

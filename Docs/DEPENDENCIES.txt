@@ -4,7 +4,7 @@
 
 Install all dependencies with:
 ```bash
-sudo pacman -S qt6-base qt6-declarative libx11 libxcb libxcomposite libxrender libxdamage libxft cmake gcc pkgconf make
+sudo pacman -S qt6-base qt6-declarative libx11 libxcb libxcomposite libxrender libxdamage libxft libxrandr cmake gcc pkgconf make
 ```
 
 ## Package Breakdown
@@ -20,6 +20,7 @@ sudo pacman -S qt6-base qt6-declarative libx11 libxcb libxcomposite libxrender l
 - libxrender        # X Render extension (for rendering operations)
 - libxdamage        # X Damage extension (for window damage tracking)
 - libxft            # X FreeType interface (for font rendering with Unicode support)
+- libxrandr         # X RandR extension (for multi-monitor support and detection)
 - xorg-server       # X11 server (should already be installed if you have X11 sessions)
 
 ### Build Tools

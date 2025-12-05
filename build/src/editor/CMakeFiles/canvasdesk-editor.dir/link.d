@@ -62,6 +62,8 @@ canvasdesk-editor: \
   /usr/lib/libXfixes.so.3 \
   /usr/lib32/libXft.so.2 \
   /usr/lib/libXft.so.2 \
+  /usr/lib32/libXrandr.so.2 \
+  /usr/lib/libXrandr.so.2 \
   /usr/lib/libgssapi_krb5.so.2 \
   /usr/lib/libbrotlidec.so.1 \
   /usr/lib/libzstd.so.1 \
@@ -93,6 +95,8 @@ canvasdesk-editor: \
   /usr/lib/libXau.so.6 \
   /usr/lib32/libXdmcp.so.6 \
   /usr/lib/libXdmcp.so.6 \
+  /usr/lib32/libXext.so.6 \
+  /usr/lib/libXext.so.6 \
   /usr/lib32/libkrb5.so.3 \
   /usr/lib/libkrb5.so.3 \
   /usr/lib32/libk5crypto.so.3 \
@@ -279,6 +283,10 @@ CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp.o:
 
 /usr/lib/libXft.so.2:
 
+/usr/lib32/libXrandr.so.2:
+
+/usr/lib/libXrandr.so.2:
+
 /usr/lib/libgssapi_krb5.so.2:
 
 /usr/lib/libbrotlidec.so.1:
@@ -340,6 +348,10 @@ CMakeFiles/canvasdesk-editor.dir/.qt/rcc/qrc_canvasdesk-editor_raw_qml_0.cpp.o:
 /usr/lib32/libXdmcp.so.6:
 
 /usr/lib/libXdmcp.so.6:
+
+/usr/lib32/libXext.so.6:
+
+/usr/lib/libXext.so.6:
 
 /usr/lib32/libkrb5.so.3:
 

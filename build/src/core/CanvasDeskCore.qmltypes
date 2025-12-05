@@ -111,7 +111,7 @@ Module {
     }
     Component {
         file: "WindowManager.h"
-        lineNumber: 12
+        lineNumber: 13
         name: "WindowManager"
         accessSemantics: "reference"
         prototype: "QObject"
@@ -125,7 +125,7 @@ Module {
             read: "windows"
             notify: "windowsChanged"
             index: 0
-            lineNumber: 17
+            lineNumber: 18
             isReadonly: true
         }
         Property {
@@ -135,42 +135,52 @@ Module {
             write: "setCurrentWorkspace"
             notify: "currentWorkspaceChanged"
             index: 1
-            lineNumber: 18
+            lineNumber: 19
         }
         Property {
             name: "workspaceCount"
             type: "int"
             read: "workspaceCount"
             index: 2
-            lineNumber: 20
+            lineNumber: 21
             isReadonly: true
             isPropertyConstant: true
         }
-        Signal { name: "windowsChanged"; lineNumber: 45 }
-        Signal { name: "currentWorkspaceChanged"; lineNumber: 46 }
+        Property {
+            name: "monitorManager"
+            type: "MonitorManager"
+            isPointer: true
+            read: "monitorManager"
+            index: 3
+            lineNumber: 22
+            isReadonly: true
+            isPropertyConstant: true
+        }
+        Signal { name: "windowsChanged"; lineNumber: 48 }
+        Signal { name: "currentWorkspaceChanged"; lineNumber: 49 }
         Method {
             name: "activate"
-            lineNumber: 38
+            lineNumber: 41
             Parameter { name: "id"; type: "int" }
         }
         Method {
             name: "close"
-            lineNumber: 39
+            lineNumber: 42
             Parameter { name: "id"; type: "int" }
         }
         Method {
             name: "minimize"
-            lineNumber: 40
+            lineNumber: 43
             Parameter { name: "id"; type: "int" }
         }
         Method {
             name: "switchToWorkspace"
-            lineNumber: 41
+            lineNumber: 44
             Parameter { name: "index"; type: "int" }
         }
         Method {
             name: "moveWindowToWorkspace"
-            lineNumber: 42
+            lineNumber: 45
             Parameter { name: "windowId"; type: "int" }
             Parameter { name: "workspaceIndex"; type: "int" }
         }

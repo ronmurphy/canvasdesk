@@ -436,6 +436,9 @@ pkgcfg_lib_XDamage_Xdamage:FILEPATH=/usr/lib/libXdamage.so
 pkgcfg_lib_XDamage_Xfixes:FILEPATH=/usr/lib/libXfixes.so
 
 //Path to a library.
+pkgcfg_lib_XRandR_Xrandr:FILEPATH=/usr/lib/libXrandr.so
+
+//Path to a library.
 pkgcfg_lib_XRender_X11:FILEPATH=/usr/lib/libX11.so
 
 //Path to a library.
@@ -1633,6 +1636,41 @@ XDamage_xdamage_INCLUDEDIR:INTERNAL=
 XDamage_xdamage_LIBDIR:INTERNAL=
 XDamage_xdamage_PREFIX:INTERNAL=
 XDamage_xdamage_VERSION:INTERNAL=
+XRandR_CFLAGS:INTERNAL=-I/usr/include
+XRandR_CFLAGS_I:INTERNAL=
+XRandR_CFLAGS_OTHER:INTERNAL=
+XRandR_FOUND:INTERNAL=1
+XRandR_INCLUDEDIR:INTERNAL=/usr/include
+XRandR_INCLUDE_DIRS:INTERNAL=/usr/include
+XRandR_LDFLAGS:INTERNAL=-L/usr/lib;-lXrandr
+XRandR_LDFLAGS_OTHER:INTERNAL=
+XRandR_LIBDIR:INTERNAL=/usr/lib
+XRandR_LIBRARIES:INTERNAL=Xrandr
+XRandR_LIBRARY_DIRS:INTERNAL=/usr/lib
+XRandR_LIBS:INTERNAL=
+XRandR_LIBS_L:INTERNAL=
+XRandR_LIBS_OTHER:INTERNAL=
+XRandR_LIBS_PATHS:INTERNAL=
+XRandR_MODULE_NAME:INTERNAL=xrandr
+XRandR_PREFIX:INTERNAL=/usr
+XRandR_STATIC_CFLAGS:INTERNAL=-I/usr/include
+XRandR_STATIC_CFLAGS_I:INTERNAL=
+XRandR_STATIC_CFLAGS_OTHER:INTERNAL=
+XRandR_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include
+XRandR_STATIC_LDFLAGS:INTERNAL=-L/usr/lib;-lXrandr;-lXext;-lXrender;-lX11;-lpthread;-lxcb;-lXau;-lXdmcp
+XRandR_STATIC_LDFLAGS_OTHER:INTERNAL=
+XRandR_STATIC_LIBDIR:INTERNAL=
+XRandR_STATIC_LIBRARIES:INTERNAL=Xrandr;Xext;Xrender;X11;pthread;xcb;Xau;Xdmcp
+XRandR_STATIC_LIBRARY_DIRS:INTERNAL=/usr/lib
+XRandR_STATIC_LIBS:INTERNAL=
+XRandR_STATIC_LIBS_L:INTERNAL=
+XRandR_STATIC_LIBS_OTHER:INTERNAL=
+XRandR_STATIC_LIBS_PATHS:INTERNAL=
+XRandR_VERSION:INTERNAL=1.5.4
+XRandR_xrandr_INCLUDEDIR:INTERNAL=
+XRandR_xrandr_LIBDIR:INTERNAL=
+XRandR_xrandr_PREFIX:INTERNAL=
+XRandR_xrandr_VERSION:INTERNAL=
 XRender_CFLAGS:INTERNAL=-I/usr/include
 XRender_CFLAGS_I:INTERNAL=
 XRender_CFLAGS_OTHER:INTERNAL=
@@ -1709,12 +1747,14 @@ __pkg_config_arguments_X11:INTERNAL=REQUIRED;IMPORTED_TARGET;x11
 __pkg_config_arguments_XCB:INTERNAL=REQUIRED;IMPORTED_TARGET;xcb
 __pkg_config_arguments_XComposite:INTERNAL=REQUIRED;IMPORTED_TARGET;xcomposite
 __pkg_config_arguments_XDamage:INTERNAL=REQUIRED;IMPORTED_TARGET;xdamage
+__pkg_config_arguments_XRandR:INTERNAL=REQUIRED;IMPORTED_TARGET;xrandr
 __pkg_config_arguments_XRender:INTERNAL=REQUIRED;IMPORTED_TARGET;xrender
 __pkg_config_arguments_Xft:INTERNAL=REQUIRED;IMPORTED_TARGET;xft
 __pkg_config_checked_X11:INTERNAL=1
 __pkg_config_checked_XCB:INTERNAL=1
 __pkg_config_checked_XComposite:INTERNAL=1
 __pkg_config_checked_XDamage:INTERNAL=1
+__pkg_config_checked_XRandR:INTERNAL=1
 __pkg_config_checked_XRender:INTERNAL=1
 __pkg_config_checked_Xft:INTERNAL=1
 __qt_qml_macros_module_base_dir:INTERNAL=/usr/lib/cmake/Qt6Qml
@@ -1728,6 +1768,8 @@ pkgcfg_lib_XComposite_Xcomposite-ADVANCED:INTERNAL=1
 pkgcfg_lib_XDamage_Xdamage-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: pkgcfg_lib_XDamage_Xfixes
 pkgcfg_lib_XDamage_Xfixes-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_XRandR_Xrandr
+pkgcfg_lib_XRandR_Xrandr-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: pkgcfg_lib_XRender_X11
 pkgcfg_lib_XRender_X11-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: pkgcfg_lib_XRender_Xrender

@@ -55,6 +55,13 @@ bool X11WindowManager::initialize() {
   XSelectInput(m_display, m_root, attrs.event_mask);
   XSync(m_display, False);
 
+  // Enable XRandR screen change notifications
+  int randrErrorBase;
+  if (XRRQueryExtension(m_display, &m_randrEventBase, &randrErrorBase)) {
+    XRRSelectInput(m_display, m_root, RRScreenChangeNotifyMask | RROutputChangeNotifyMask);
+    qInfo() << "[X11] XRandR events enabled (event base:" << m_randrEventBase << ")";
+  }
+
   // Restore default error handler
   XSetErrorHandler(nullptr);
 
@@ -142,6 +149,9 @@ bool X11WindowManager::initialize() {
   //   }
   // });
 
+  // Detect monitors
+  updateMonitors();
+
   qInfo() << "[X11] ✓ X11 window manager initialized successfully";
 
   // DISABLED: Compositing disabled for now
@@ -214,14 +224,24 @@ void X11WindowManager::processXEvents() {
     //   }
     //   break;
     // }
-    // default:
-    //   // Check for Damage events
-    //   if (event.type == m_damageEventBase + XDamageNotify) {
-    //     XDamageNotifyEvent *de = (XDamageNotifyEvent *)&event;
-    //     XDamageSubtract(m_display, de->damage, None, None);
-    //     requestPaint(); // Queue repaint on damage
-    //   }
-    //   break;
+    default:
+      // Check for XRandR events (monitor changes)
+      if (m_randrEventBase && event.type == m_randrEventBase + RRScreenChangeNotify) {
+        qInfo() << "[X11] Screen configuration changed, updating monitors";
+        updateMonitors();
+      } else if (m_randrEventBase && event.type == m_randrEventBase + RRNotify) {
+        // More specific RandR event (output change, etc.)
+        qInfo() << "[X11] Monitor configuration changed, updating monitors";
+        updateMonitors();
+      }
+      // DISABLED: Compositing disabled for now
+      // // Check for Damage events
+      // if (event.type == m_damageEventBase + XDamageNotify) {
+      //   XDamageNotifyEvent *de = (XDamageNotifyEvent *)&event;
+      //   XDamageSubtract(m_display, de->damage, None, None);
+      //   requestPaint(); // Queue repaint on damage
+      // }
+      break;
     }
   }
 }
@@ -1518,4 +1538,90 @@ void X11WindowManager::setFocus(Window window) {
 
   // Notify QML that window state changed (for taskbar highlighting)
   emit windowChanged(win);
+}
+
+void X11WindowManager::updateMonitors() {
+  if (!m_display) return;
+
+  m_monitors.clear();
+
+  // Check if XRandR is available
+  int eventBase, errorBase;
+  if (!XRRQueryExtension(m_display, &eventBase, &errorBase)) {
+    qWarning() << "[X11] XRandR extension not available";
+    // Fallback: use default screen dimensions
+    Monitor mon;
+    mon.name = "Default";
+    mon.x = 0;
+    mon.y = 0;
+    mon.width = DisplayWidth(m_display, DefaultScreen(m_display));
+    mon.height = DisplayHeight(m_display, DefaultScreen(m_display));
+    mon.primary = true;
+    m_monitors.append(mon);
+    qInfo() << "[X11] Using default screen:" << mon.width << "x" << mon.height;
+    emit monitorsChanged();
+    return;
+  }
+
+  // Get screen resources
+  XRRScreenResources *res = XRRGetScreenResources(m_display, m_root);
+  if (!res) {
+    qWarning() << "[X11] Failed to get screen resources";
+    return;
+  }
+
+  // Get primary output
+  RROutput primaryOutput = XRRGetOutputPrimary(m_display, m_root);
+
+  qInfo() << "[X11] Detecting monitors...";
+  qInfo() << "[X11] Found" << res->noutput << "outputs";
+
+  // Iterate through outputs
+  for (int i = 0; i < res->noutput; i++) {
+    XRROutputInfo *outputInfo = XRRGetOutputInfo(m_display, res, res->outputs[i]);
+
+    if (!outputInfo) continue;
+
+    // Only process connected outputs
+    if (outputInfo->connection == RR_Connected && outputInfo->crtc) {
+      XRRCrtcInfo *crtcInfo = XRRGetCrtcInfo(m_display, res, outputInfo->crtc);
+
+      if (crtcInfo) {
+        Monitor mon;
+        mon.name = QString::fromUtf8(outputInfo->name);
+        mon.x = crtcInfo->x;
+        mon.y = crtcInfo->y;
+        mon.width = crtcInfo->width;
+        mon.height = crtcInfo->height;
+        mon.primary = (res->outputs[i] == primaryOutput);
+
+        m_monitors.append(mon);
+
+        qInfo() << "[X11] Monitor:" << mon.name
+                << (mon.primary ? "(PRIMARY)" : "")
+                << "- Position:" << mon.x << "," << mon.y
+                << "Size:" << mon.width << "x" << mon.height;
+
+        XRRFreeCrtcInfo(crtcInfo);
+      }
+    }
+
+    XRRFreeOutputInfo(outputInfo);
+  }
+
+  XRRFreeScreenResources(res);
+
+  if (m_monitors.isEmpty()) {
+    qWarning() << "[X11] No monitors detected, using fallback";
+    Monitor mon;
+    mon.name = "Fallback";
+    mon.x = 0;
+    mon.y = 0;
+    mon.width = DisplayWidth(m_display, DefaultScreen(m_display));
+    mon.height = DisplayHeight(m_display, DefaultScreen(m_display));
+    mon.primary = true;
+    m_monitors.append(mon);
+  }
+
+  emit monitorsChanged();
 }

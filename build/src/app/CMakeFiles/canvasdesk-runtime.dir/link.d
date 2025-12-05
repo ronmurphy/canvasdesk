@@ -57,6 +57,8 @@ canvasdesk-runtime: \
   /usr/lib/libXfixes.so.3 \
   /usr/lib32/libXft.so.2 \
   /usr/lib/libXft.so.2 \
+  /usr/lib32/libXrandr.so.2 \
+  /usr/lib/libXrandr.so.2 \
   /usr/lib/libEGL.so.1 \
   /usr/lib/libfontconfig.so.1 \
   /usr/lib/libglib-2.0.so.0 \
@@ -88,6 +90,8 @@ canvasdesk-runtime: \
   /usr/lib/libXau.so.6 \
   /usr/lib32/libXdmcp.so.6 \
   /usr/lib/libXdmcp.so.6 \
+  /usr/lib32/libXext.so.6 \
+  /usr/lib/libXext.so.6 \
   /usr/lib32/libexpat.so.1 \
   /usr/lib/libexpat.so.1 \
   /usr/lib32/libpcre2-8.so.0 \
@@ -264,6 +268,10 @@ CMakeFiles/canvasdesk-runtime.dir/main.cpp.o:
 
 /usr/lib/libXft.so.2:
 
+/usr/lib32/libXrandr.so.2:
+
+/usr/lib/libXrandr.so.2:
+
 /usr/lib/libEGL.so.1:
 
 /usr/lib/libfontconfig.so.1:
@@ -325,6 +333,10 @@ CMakeFiles/canvasdesk-runtime.dir/main.cpp.o:
 /usr/lib32/libXdmcp.so.6:
 
 /usr/lib/libXdmcp.so.6:
+
+/usr/lib32/libXext.so.6:
+
+/usr/lib/libXext.so.6:
 
 /usr/lib32/libexpat.so.1:
 

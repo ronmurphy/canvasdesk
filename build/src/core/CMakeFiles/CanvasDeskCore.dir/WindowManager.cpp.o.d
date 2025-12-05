@@ -428,5 +428,8 @@ src/core/CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.o: \
  /usr/include/X11/extensions/Xrender.h /usr/include/X11/Xutil.h \
  /usr/include/X11/keysym.h /usr/include/X11/keysymdef.h \
  /usr/include/X11/extensions/render.h /usr/include/X11/Xdefs.h \
- /usr/include/X11/Xft/XftCompat.h /usr/include/qt6/QtCore/QDebug \
+ /usr/include/X11/Xft/XftCompat.h /usr/include/X11/extensions/Xrandr.h \
+ /usr/include/X11/extensions/randr.h \
+ /home/brad/Documents/canvasdesk/src/core/MonitorManager.h \
+ /usr/include/qt6/QtCore/QString /usr/include/qt6/QtCore/QDebug \
  /usr/include/qt6/QtCore/qdebug.h

@@ -8,6 +8,7 @@
 #include <QVariantMap>
 
 class X11WindowManager;
+class MonitorManager;
 
 class WindowManager : public QObject {
   Q_OBJECT
@@ -18,6 +19,7 @@ class WindowManager : public QObject {
   Q_PROPERTY(int currentWorkspace READ currentWorkspace WRITE
                  setCurrentWorkspace NOTIFY currentWorkspaceChanged)
   Q_PROPERTY(int workspaceCount READ workspaceCount CONSTANT)
+  Q_PROPERTY(MonitorManager* monitorManager READ monitorManager CONSTANT)
 
 public:
   static WindowManager *create(QQmlEngine *qmlEngine, QJSEngine *jsEngine) {
@@ -34,6 +36,7 @@ public:
   int currentWorkspace() const;
   void setCurrentWorkspace(int workspace);
   int workspaceCount() const;
+  MonitorManager* monitorManager() const { return m_monitorManager; }
 
   Q_INVOKABLE void activate(int id);
   Q_INVOKABLE void close(int id);
@@ -50,6 +53,9 @@ private:
 
   // X11 window manager
   X11WindowManager *m_x11Manager = nullptr;
+
+  // Monitor manager
+  MonitorManager *m_monitorManager = nullptr;
 
   // Workspace tracking
   int m_currentWorkspace = 0;

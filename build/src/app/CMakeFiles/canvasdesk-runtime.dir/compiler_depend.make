@@ -588,8 +588,10 @@ src/app/canvasdesk-runtime: src/core/libCanvasDeskCore.so \
   /usr/lib/libXcomposite.so.1 \
   /usr/lib/libXdamage.so.1 \
   /usr/lib/libXdmcp.so.6 \
+  /usr/lib/libXext.so.6 \
   /usr/lib/libXfixes.so.3 \
   /usr/lib/libXft.so.2 \
+  /usr/lib/libXrandr.so.2 \
   /usr/lib/libXrender.so.1 \
   /usr/lib/libb2.so.1 \
   /usr/lib/libblkid.so.1 \
@@ -652,8 +654,10 @@ src/app/canvasdesk-runtime: src/core/libCanvasDeskCore.so \
   /usr/lib32/libXcomposite.so.1 \
   /usr/lib32/libXdamage.so.1 \
   /usr/lib32/libXdmcp.so.6 \
+  /usr/lib32/libXext.so.6 \
   /usr/lib32/libXfixes.so.3 \
   /usr/lib32/libXft.so.2 \
+  /usr/lib32/libXrandr.so.2 \
   /usr/lib32/libXrender.so.1 \
   /usr/lib32/libblkid.so.1 \
   /usr/lib32/libbrotlicommon.so.1 \
@@ -733,6 +737,8 @@ src/app/CMakeFiles/canvasdesk-runtime.dir/canvasdesk-runtime_autogen/mocs_compil
 
 /usr/lib32/libXfixes.so.3:
 
+/usr/lib32/libXext.so.6:
+
 /usr/lib32/libXdmcp.so.6:
 
 /usr/lib32/libXdamage.so.1:
@@ -799,7 +805,11 @@ src/app/CMakeFiles/canvasdesk-runtime.dir/canvasdesk-runtime_autogen/mocs_compil
 
 /usr/lib/libb2.so.1:
 
+/usr/lib/libXrandr.so.2:
+
 /usr/lib/libXfixes.so.3:
+
+/usr/lib/libXext.so.6:
 
 /usr/lib/libQt6Quick.so.6.10.1:
 
@@ -1048,6 +1058,8 @@ src/core/libCanvasDeskCore.so:
 /usr/lib/libresolv.so.2:
 
 /usr/include/alloca.h:
+
+/usr/lib32/libXrandr.so.2:
 
 /usr/include/c++/15.2.1/bits/list.tcc:
 

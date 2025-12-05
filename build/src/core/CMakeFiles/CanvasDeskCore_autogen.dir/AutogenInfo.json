@@ -44,6 +44,12 @@
 			null
 		],
 		[
+			"/home/brad/Documents/canvasdesk/src/core/MonitorManager.h",
+			"MU",
+			"EWIEGA46WW/moc_MonitorManager.cpp",
+			null
+		],
+		[
 			"/home/brad/Documents/canvasdesk/src/core/ThemeManager.h",
 			"MU",
 			"EWIEGA46WW/moc_ThemeManager.cpp",
@@ -149,6 +155,11 @@
 		[ "/home/brad/Documents/canvasdesk/src/core/Component.cpp", "MU", null ],
 		[
 			"/home/brad/Documents/canvasdesk/src/core/LayoutManager.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/brad/Documents/canvasdesk/src/core/MonitorManager.cpp",
 			"MU",
 			null
 		],

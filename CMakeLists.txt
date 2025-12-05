@@ -18,6 +18,7 @@ pkg_check_modules(XComposite REQUIRED IMPORTED_TARGET xcomposite)
 pkg_check_modules(XRender REQUIRED IMPORTED_TARGET xrender)
 pkg_check_modules(XDamage REQUIRED IMPORTED_TARGET xdamage)
 pkg_check_modules(Xft REQUIRED IMPORTED_TARGET xft)
+pkg_check_modules(XRandR REQUIRED IMPORTED_TARGET xrandr)
 
 if(POLICY QTP0001)
     qt_policy(SET QTP0001 NEW)

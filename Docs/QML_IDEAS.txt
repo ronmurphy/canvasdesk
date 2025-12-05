@@ -1,0 +1,15 @@
+All in one QLM idea components:
+Lockscreen / Screensaver QML
+Bluetooth QML
+"Quick Launch" - press meta key get a floating modal, like DMENU or ROFI or such for showing apps
+Better File Explorer - list or icons view, mini actual file explorer, or just a single folder in list or icons only mode
+"SysInfo" - shows GPU speed / usage, Free RAM, upload / download / etc <- each of these can be their own ATOM component also
+
+
+
+
+ATOM Components : a atom component is just the basic, like an icon to show some info, or a label
+--
+Session Atom(s) - Logout, etc... idea: when a session atom is place din edit mode, use a msgbox to ask what the atom's ROLE is and assign this in the json save, like, the user drops a session atom qml, message box hav 5 buttons, choose it's role, 4 role buttons (Logout, power off, reboot, lock screen
+) and the 5th button is "cancel" <- Cancel is not added in to the Atom json meta, but in the json for it, we have "role" : "Power" <- this tells us to assign it the Session Power role and on click, for this role, show a msgbox asking if they want to power off the system, yes/no, and if clicked yes.. power off the system.  same for the "Logout" role, etc.
+

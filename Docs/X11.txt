@@ -1,8 +1,178 @@
 # CanvasDesk X11 Window Manager Migration
 
-**Last Updated:** 2025-12-04 (WINDOW MANAGER ENHANCEMENTS)
-**Status:** Phase 3 - Fully Functional Stacking Window Manager
+**Last Updated:** 2025-12-04 (MULTI-MONITOR SUPPORT + CONTROL CENTER)
+**Status:** Phase 4 - Multi-Monitor Support Complete
 **See also:** do.txt (original Wayland progress notes - OUTDATED, Wayland removed)
+
+---
+
+## MAJOR SESSION (Dec 4 - Part 2) - MULTI-MONITOR SUPPORT COMPLETE ✅
+
+### What Was Implemented:
+
+1. **XRandR Library Integration** ✅
+   - Added libxrandr dependency to CMakeLists.txt
+   - XRandR enables multi-monitor detection and configuration
+   - Full CRUD operations on monitor settings
+
+2. **MonitorManager C++ Backend** ✅
+   - Location: `src/core/MonitorManager.h` and `MonitorManager.cpp`
+   - Integrated with WindowManager (accessible via `WindowManager.monitorManager`)
+   - Forward-declared X11 types to avoid macro conflicts with Qt
+   - Fixed X11/Qt header conflicts (Unsorted, None, Bool macros)
+
+3. **Multi-Monitor Detection** ✅
+   - `updateMonitors()` - Scans all connected outputs using XRandR
+   - Detects resolution, position, rotation, enabled/disabled state
+   - Identifies primary monitor via XRRGetOutputPrimary
+   - Updates on monitor hotplug events (RRScreenChangeNotifyMask)
+
+4. **Monitor Management API** ✅
+   - `monitors()` - Returns QVariantList of all detected monitors
+   - `setMonitorEnabled(name, enabled)` - Enable/disable monitors
+   - `setPrimaryMonitor(name)` - Set which monitor is primary
+   - `setMonitorPosition(name, x, y)` - Adjust monitor positioning
+   - `setMonitorRotation(name, rotation)` - Rotate monitors (0/90/180/270)
+   - `setMonitorResolution(name, width, height)` - Change resolution
+   - `applyConfiguration()` - Applies all changes to X11 via XRandR
+
+5. **Configuration Persistence** ✅
+   - `saveConfiguration(name)` - Save current setup to JSON
+   - `loadConfiguration(name)` - Load saved configuration
+   - `savedConfigurations()` - List all saved configs
+   - `deleteConfiguration(name)` - Remove saved config
+   - Configs stored in `~/.config/canvasdesk/monitors/`
+
+6. **Control Center Floating Panel** ✅
+   - Location: `src/editor/qml/DesktopMode.qml` (lines 961-1313)
+   - Implemented as floating panel (similar to Editor panel)
+   - Accessible from Settings tab → "Open Control Center" button
+   - Draggable, centered, semi-transparent overlay (z: 260)
+
+7. **Control Center UI - Monitors Tab** ✅
+   - Shows all detected monitors with:
+     * Monitor name with PRIMARY badge for primary display
+     * Resolution (width × height)
+     * Position (X, Y coordinates)
+     * Rotation angle
+     * Status (Enabled/Disabled with color coding)
+   - Per-monitor controls:
+     * "Disable"/"Enable" button - Toggle monitor on/off
+     * "Set Primary" button - Make this the primary display
+   - Bottom controls:
+     * "Refresh" - Re-scan monitors from X11
+     * "Apply Configuration" (green) - Apply all changes to X11
+     * "Close" - Close Control Center
+   - Warning: "⚠ Changes require clicking 'Apply Configuration'"
+
+8. **Control Center UI - Appearance & System Tabs** ✅
+   - Placeholder tabs for future features
+   - Appearance: Will migrate theme settings from Editor
+   - System: Future keyboard, mouse, icons, cursors settings
+
+### Files Created/Modified:
+
+**New Files:**
+- `src/core/MonitorManager.h` - MonitorManager class definition
+- `src/core/MonitorManager.cpp` - XRandR integration implementation
+- `src/editor/qml/ControlCenter.qml` - DELETED (moved inline to DesktopMode)
+
+**Modified Files:**
+- `CMakeLists.txt` - Added XRandR dependency (pkg_check_modules)
+- `src/core/CMakeLists.txt` - Added MonitorManager sources, linked XRandR
+- `src/core/WindowManager.h` - Added monitorManager property
+- `src/core/WindowManager.cpp` - Initialize MonitorManager with Display
+- `src/core/X11WindowManager.h` - Added display() getter, Monitor struct
+- `src/core/X11WindowManager.cpp` - Added updateMonitors() implementation
+- `src/editor/qml/DesktopMode.qml` - Added Control Center floating panel (361 lines)
+- `Docs/DEPENDENCIES.txt` - Added libxrandr requirement
+- `Docs/NEXT_SESSION_PLAN.md` - Updated with completion status
+- `Docs/X11.txt` - THIS FILE (updated with multi-monitor documentation)
+
+### Technical Details:
+
+**X11/Qt Macro Conflicts - Resolution:**
+Problem: X11 headers define macros like `#define None 0` and `#define Unsorted 0` which conflict with Qt enums
+Solution: Forward-declare X11 types in header, include X11 headers only in .cpp, include Qt headers first
+
+```cpp
+// MonitorManager.h - Forward declarations
+typedef struct _XDisplay Display;
+typedef unsigned long Window;
+typedef unsigned long RROutput;
+typedef unsigned long RRCrtc;
+
+// MonitorManager.cpp - Include order matters!
+#include <QDebug>           // Qt headers FIRST
+#include <QDir>
+#include <QFile>
+// ... more Qt headers ...
+#include "MonitorManager.h"  // Our header
+#include <X11/Xlib.h>        // X11 headers LAST
+#include <X11/extensions/Xrandr.h>
+```
+
+**Monitor Detection Flow:**
+1. `WindowManager` creates `MonitorManager` and calls `initialize(display)`
+2. `MonitorManager::initialize()` gets RandR version, sets up screen change events
+3. `updateMonitors()` called automatically on init and when monitors change
+4. `XRRGetScreenResources()` queries all outputs and their CRTCs
+5. For each output: get XRROutputInfo, XRRCrtcInfo, build MonitorConfig
+6. Emit `monitorsChanged()` signal → QML updates automatically
+
+**Configuration Apply Flow:**
+1. User changes settings via Control Center UI
+2. `setMonitorEnabled()`, `setPrimaryMonitor()`, etc. update in-memory state
+3. User clicks "Apply Configuration" button
+4. `applyConfiguration()` uses XRandR to apply ALL changes:
+   - `XRRSetCrtcConfig()` for position, rotation, resolution
+   - `XRRSetOutputPrimary()` for primary display
+   - Disabled monitors get their CRTC set to None
+5. Success/failure logged to console
+
+### Current Feature Set:
+✅ Multi-monitor detection via XRandR
+✅ Enable/disable monitors
+✅ Set primary monitor
+✅ Monitor configuration apply
+✅ Control Center floating panel UI
+✅ Real-time monitor list updates
+✅ Configuration save/load/delete (JSON)
+✅ Monitor hotplug detection
+✅ Theme-aware Control Center styling
+
+### Known Limitations:
+- [ ] No visual drag-and-drop monitor layout editor yet (just listed view)
+- [ ] Resolution change not exposed in UI (API exists, just needs UI)
+- [ ] Monitor rotation not exposed in UI (API exists, just needs UI)
+- [ ] No undo/revert for configuration changes
+- [ ] Configuration must be manually applied (not auto-apply on change)
+
+### Testing Status:
+✅ Build successful
+✅ Control Center opens/closes correctly
+✅ Monitor list displays detected monitors
+✅ Enable/Disable buttons work
+✅ Set Primary button works
+⏳ Apply Configuration tested in Plasma (ready for real session test)
+⏳ Full dogfooding test in real CanvasDesk session (NEXT STEP)
+
+### Next Steps:
+1. **User logs out of Plasma and into CanvasDesk session**
+2. Test multi-monitor support with real external displays
+3. Verify monitors can be disabled/enabled successfully
+4. Test primary monitor switching
+5. Begin week-long dogfooding session using CanvasDesk full-time
+
+### Future Enhancements:
+- [ ] Visual drag-and-drop monitor layout editor
+- [ ] Resolution selection dropdown per monitor
+- [ ] Rotation selection (0/90/180/270) per monitor
+- [ ] Monitor position adjustment via spinboxes
+- [ ] Configuration profiles (home, work, presentation, etc.)
+- [ ] Auto-apply configuration on login
+- [ ] Detect and suggest optimal configurations
+- [ ] Mirror/extend mode presets
 
 ---
 

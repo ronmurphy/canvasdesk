@@ -7,6 +7,7 @@
 #include <QVariantMap>
 #include <X11/Xlib.h>
 #include <X11/Xft/Xft.h>
+#include <X11/extensions/Xrandr.h>
 // DISABLED: Compositing extensions disabled for now
 // #include <X11/extensions/Xcomposite.h>
 // #include <X11/extensions/Xdamage.h>
@@ -21,6 +22,14 @@
 
 // Forward declaration
 struct X11Frame;
+
+// Monitor information
+struct Monitor {
+  QString name;
+  int x, y;
+  int width, height;
+  bool primary;
+};
 
 class X11Window : public QObject {
   Q_OBJECT
@@ -102,16 +111,20 @@ public:
   bool initialize();
   QList<X11Window *> windows() const { return m_windows.values(); }
   Window activeWindow() const { return m_activeWindow; }
+  QList<Monitor> monitors() const { return m_monitors; }
+  Display* display() const { return m_display; }
 
   void activateWindow(Window window);
   void minimizeWindow(Window window);
   void closeWindow(Window window);
   void setFocus(Window window);
+  void updateMonitors();
 
 signals:
   void windowAdded(X11Window *window);
   void windowRemoved(Window window);
   void windowChanged(X11Window *window);
+  void monitorsChanged();
 
 private slots:
   void processXEvents();
@@ -157,6 +170,10 @@ private:
   QSocketNotifier *m_notifier = nullptr;
   QHash<Window, X11Window *> m_windows;
   QHash<Window, X11Frame *> m_frames; // Maps frame/titlebar/client to frame
+
+  // Monitor tracking
+  QList<Monitor> m_monitors;
+  int m_randrEventBase = 0;
 
   // Focus tracking
   Window m_activeWindow = None;

@@ -266,6 +266,245 @@
     {
         "classes": [
             {
+                "className": "MonitorManager",
+                "lineNumber": 29,
+                "methods": [
+                    {
+                        "access": "public",
+                        "index": 5,
+                        "isConst": true,
+                        "lineNumber": 39,
+                        "name": "monitors",
+                        "returnType": "QVariantList"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "monitorName",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 6,
+                        "lineNumber": 40,
+                        "name": "getAvailableResolutions",
+                        "returnType": "QVariantList"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "name",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "x",
+                                "type": "int"
+                            },
+                            {
+                                "name": "y",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 7,
+                        "lineNumber": 41,
+                        "name": "setMonitorPosition",
+                        "returnType": "bool"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "name",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "rotation",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 8,
+                        "lineNumber": 42,
+                        "name": "setMonitorRotation",
+                        "returnType": "bool"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "name",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "width",
+                                "type": "int"
+                            },
+                            {
+                                "name": "height",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 9,
+                        "lineNumber": 43,
+                        "name": "setMonitorResolution",
+                        "returnType": "bool"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "name",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "enabled",
+                                "type": "bool"
+                            }
+                        ],
+                        "index": 10,
+                        "lineNumber": 44,
+                        "name": "setMonitorEnabled",
+                        "returnType": "bool"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "name",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 11,
+                        "lineNumber": 45,
+                        "name": "setPrimaryMonitor",
+                        "returnType": "bool"
+                    },
+                    {
+                        "access": "public",
+                        "index": 12,
+                        "lineNumber": 46,
+                        "name": "applyConfiguration",
+                        "returnType": "bool"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "configName",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 13,
+                        "lineNumber": 47,
+                        "name": "saveConfiguration",
+                        "returnType": "bool"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "configName",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 14,
+                        "lineNumber": 48,
+                        "name": "loadConfiguration",
+                        "returnType": "bool"
+                    },
+                    {
+                        "access": "public",
+                        "index": 15,
+                        "isConst": true,
+                        "lineNumber": 49,
+                        "name": "savedConfigurations",
+                        "returnType": "QStringList"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "configName",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 16,
+                        "lineNumber": 50,
+                        "name": "deleteConfiguration",
+                        "returnType": "bool"
+                    }
+                ],
+                "object": true,
+                "qualifiedClassName": "MonitorManager",
+                "signals": [
+                    {
+                        "access": "public",
+                        "index": 0,
+                        "lineNumber": 56,
+                        "name": "monitorsChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 1,
+                        "lineNumber": 57,
+                        "name": "configurationApplied",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "name",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 2,
+                        "lineNumber": 58,
+                        "name": "configurationSaved",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "name",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 3,
+                        "lineNumber": 59,
+                        "name": "configurationLoaded",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "message",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 4,
+                        "lineNumber": 60,
+                        "name": "errorOccurred",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "MonitorManager.h",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
                 "className": "ThemeManager",
                 "lineNumber": 10,
                 "methods": [
@@ -672,7 +911,7 @@
                     }
                 ],
                 "className": "WindowManager",
-                "lineNumber": 12,
+                "lineNumber": 13,
                 "methods": [
                     {
                         "access": "public",
@@ -683,7 +922,7 @@
                             }
                         ],
                         "index": 2,
-                        "lineNumber": 38,
+                        "lineNumber": 41,
                         "name": "activate",
                         "returnType": "void"
                     },
@@ -696,7 +935,7 @@
                             }
                         ],
                         "index": 3,
-                        "lineNumber": 39,
+                        "lineNumber": 42,
                         "name": "close",
                         "returnType": "void"
                     },
@@ -709,7 +948,7 @@
                             }
                         ],
                         "index": 4,
-                        "lineNumber": 40,
+                        "lineNumber": 43,
                         "name": "minimize",
                         "returnType": "void"
                     },
@@ -722,7 +961,7 @@
                             }
                         ],
                         "index": 5,
-                        "lineNumber": 41,
+                        "lineNumber": 44,
                         "name": "switchToWorkspace",
                         "returnType": "void"
                     },
@@ -739,7 +978,7 @@
                             }
                         ],
                         "index": 6,
-                        "lineNumber": 42,
+                        "lineNumber": 45,
                         "name": "moveWindowToWorkspace",
                         "returnType": "void"
                     }
@@ -751,7 +990,7 @@
                         "designable": true,
                         "final": false,
                         "index": 0,
-                        "lineNumber": 17,
+                        "lineNumber": 18,
                         "name": "windows",
                         "notify": "windowsChanged",
                         "read": "windows",
@@ -766,7 +1005,7 @@
                         "designable": true,
                         "final": false,
                         "index": 1,
-                        "lineNumber": 18,
+                        "lineNumber": 19,
                         "name": "currentWorkspace",
                         "notify": "currentWorkspaceChanged",
                         "read": "currentWorkspace",
@@ -782,13 +1021,27 @@
                         "designable": true,
                         "final": false,
                         "index": 2,
-                        "lineNumber": 20,
+                        "lineNumber": 21,
                         "name": "workspaceCount",
                         "read": "workspaceCount",
                         "required": false,
                         "scriptable": true,
                         "stored": true,
                         "type": "int",
+                        "user": false
+                    },
+                    {
+                        "constant": true,
+                        "designable": true,
+                        "final": false,
+                        "index": 3,
+                        "lineNumber": 22,
+                        "name": "monitorManager",
+                        "read": "monitorManager",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "MonitorManager*",
                         "user": false
                     }
                 ],
@@ -797,14 +1050,14 @@
                     {
                         "access": "public",
                         "index": 0,
-                        "lineNumber": 45,
+                        "lineNumber": 48,
                         "name": "windowsChanged",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
                         "index": 1,
-                        "lineNumber": 46,
+                        "lineNumber": 49,
                         "name": "currentWorkspaceChanged",
                         "returnType": "void"
                     }
@@ -824,7 +1077,7 @@
         "classes": [
             {
                 "className": "X11Window",
-                "lineNumber": 25,
+                "lineNumber": 34,
                 "object": true,
                 "qualifiedClassName": "X11Window",
                 "superClasses": [
@@ -836,7 +1089,7 @@
             },
             {
                 "className": "X11WindowManager",
-                "lineNumber": 96,
+                "lineNumber": 105,
                 "object": true,
                 "qualifiedClassName": "X11WindowManager",
                 "signals": [
@@ -849,7 +1102,7 @@
                             }
                         ],
                         "index": 0,
-                        "lineNumber": 112,
+                        "lineNumber": 124,
                         "name": "windowAdded",
                         "returnType": "void"
                     },
@@ -862,7 +1115,7 @@
                             }
                         ],
                         "index": 1,
-                        "lineNumber": 113,
+                        "lineNumber": 125,
                         "name": "windowRemoved",
                         "returnType": "void"
                     },
@@ -875,16 +1128,23 @@
                             }
                         ],
                         "index": 2,
-                        "lineNumber": 114,
+                        "lineNumber": 126,
                         "name": "windowChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 3,
+                        "lineNumber": 127,
+                        "name": "monitorsChanged",
                         "returnType": "void"
                     }
                 ],
                 "slots": [
                     {
                         "access": "private",
-                        "index": 3,
-                        "lineNumber": 117,
+                        "index": 4,
+                        "lineNumber": 130,
                         "name": "processXEvents",
                         "returnType": "void"
                     }

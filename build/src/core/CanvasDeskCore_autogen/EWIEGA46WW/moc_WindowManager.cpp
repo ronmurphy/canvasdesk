@@ -58,7 +58,9 @@ template <> constexpr inline auto WindowManager::qt_create_metaobjectdata<qt_met
         "windows",
         "QVariantList",
         "currentWorkspace",
-        "workspaceCount"
+        "workspaceCount",
+        "monitorManager",
+        "MonitorManager*"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -94,6 +96,8 @@ template <> constexpr inline auto WindowManager::qt_create_metaobjectdata<qt_met
         QtMocHelpers::PropertyData<int>(19, QMetaType::Int, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 1),
         // property 'workspaceCount'
         QtMocHelpers::PropertyData<int>(20, QMetaType::Int, QMC::DefaultPropertyFlags | QMC::Constant),
+        // property 'monitorManager'
+        QtMocHelpers::PropertyData<MonitorManager*>(21, 0x80000000 | 22, QMC::DefaultPropertyFlags | QMC::EnumOrFlag | QMC::Constant),
     };
     QtMocHelpers::UintData qt_enums {
     };
@@ -142,6 +146,7 @@ void WindowManager::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         case 0: *reinterpret_cast<QVariantList*>(_v) = _t->windows(); break;
         case 1: *reinterpret_cast<int*>(_v) = _t->currentWorkspace(); break;
         case 2: *reinterpret_cast<int*>(_v) = _t->workspaceCount(); break;
+        case 3: *reinterpret_cast<MonitorManager**>(_v) = _t->monitorManager(); break;
         default: break;
         }
     }
@@ -186,7 +191,7 @@ int WindowManager::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
             || _c == QMetaObject::ResetProperty || _c == QMetaObject::BindableProperty
             || _c == QMetaObject::RegisterPropertyMetaType) {
         qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 4;
     }
     return _id;
 }

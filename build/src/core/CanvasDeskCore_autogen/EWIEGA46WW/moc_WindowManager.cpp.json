@@ -12,7 +12,7 @@
                 }
             ],
             "className": "WindowManager",
-            "lineNumber": 12,
+            "lineNumber": 13,
             "methods": [
                 {
                     "access": "public",
@@ -23,7 +23,7 @@
                         }
                     ],
                     "index": 2,
-                    "lineNumber": 38,
+                    "lineNumber": 41,
                     "name": "activate",
                     "returnType": "void"
                 },
@@ -36,7 +36,7 @@
                         }
                     ],
                     "index": 3,
-                    "lineNumber": 39,
+                    "lineNumber": 42,
                     "name": "close",
                     "returnType": "void"
                 },
@@ -49,7 +49,7 @@
                         }
                     ],
                     "index": 4,
-                    "lineNumber": 40,
+                    "lineNumber": 43,
                     "name": "minimize",
                     "returnType": "void"
                 },
@@ -62,7 +62,7 @@
                         }
                     ],
                     "index": 5,
-                    "lineNumber": 41,
+                    "lineNumber": 44,
                     "name": "switchToWorkspace",
                     "returnType": "void"
                 },
@@ -79,7 +79,7 @@
                         }
                     ],
                     "index": 6,
-                    "lineNumber": 42,
+                    "lineNumber": 45,
                     "name": "moveWindowToWorkspace",
                     "returnType": "void"
                 }
@@ -91,7 +91,7 @@
                     "designable": true,
                     "final": false,
                     "index": 0,
-                    "lineNumber": 17,
+                    "lineNumber": 18,
                     "name": "windows",
                     "notify": "windowsChanged",
                     "read": "windows",
@@ -106,7 +106,7 @@
                     "designable": true,
                     "final": false,
                     "index": 1,
-                    "lineNumber": 18,
+                    "lineNumber": 19,
                     "name": "currentWorkspace",
                     "notify": "currentWorkspaceChanged",
                     "read": "currentWorkspace",
@@ -122,13 +122,27 @@
                     "designable": true,
                     "final": false,
                     "index": 2,
-                    "lineNumber": 20,
+                    "lineNumber": 21,
                     "name": "workspaceCount",
                     "read": "workspaceCount",
                     "required": false,
                     "scriptable": true,
                     "stored": true,
                     "type": "int",
+                    "user": false
+                },
+                {
+                    "constant": true,
+                    "designable": true,
+                    "final": false,
+                    "index": 3,
+                    "lineNumber": 22,
+                    "name": "monitorManager",
+                    "read": "monitorManager",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "MonitorManager*",
                     "user": false
                 }
             ],
@@ -137,14 +151,14 @@
                 {
                     "access": "public",
                     "index": 0,
-                    "lineNumber": 45,
+                    "lineNumber": 48,
                     "name": "windowsChanged",
                     "returnType": "void"
                 },
                 {
                     "access": "public",
                     "index": 1,
-                    "lineNumber": 46,
+                    "lineNumber": 49,
                     "name": "currentWorkspaceChanged",
                     "returnType": "void"
                 }

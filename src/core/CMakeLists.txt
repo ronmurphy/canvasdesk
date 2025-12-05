@@ -18,6 +18,8 @@ qt_add_qml_module(CanvasDeskCore
         X11WindowManager.h
         ThemeManager.cpp
         ThemeManager.h
+        MonitorManager.cpp
+        MonitorManager.h
 )
 
 target_link_libraries(CanvasDeskCore
@@ -31,6 +33,7 @@ target_link_libraries(CanvasDeskCore
         PkgConfig::XRender
         PkgConfig::XDamage
         PkgConfig::Xft
+        PkgConfig::XRandR
 )
 
 target_include_directories(CanvasDeskCore 
