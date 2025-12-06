@@ -1,5 +1,5 @@
-#include "ThemeManager.h"
 #include "X11WindowManager.h"
+#include "ThemeManager.h"
 #include <QDebug>
 #include <QSet>
 // #include <QTimer>  // DISABLED: Compositing disabled for now
@@ -46,20 +46,22 @@ bool X11WindowManager::initialize() {
   attrs.event_mask =
       SubstructureRedirectMask | SubstructureNotifyMask | PropertyChangeMask;
 
-  XSync(m_display, False);
+  XSync(m_display, 0);
   XSetErrorHandler([](Display *, XErrorEvent *) -> int {
     qCritical() << "[X11] Another window manager is already running!";
     return 0;
   });
 
   XSelectInput(m_display, m_root, attrs.event_mask);
-  XSync(m_display, False);
+  XSync(m_display, 0);
 
   // Enable XRandR screen change notifications
   int randrErrorBase;
   if (XRRQueryExtension(m_display, &m_randrEventBase, &randrErrorBase)) {
-    XRRSelectInput(m_display, m_root, RRScreenChangeNotifyMask | RROutputChangeNotifyMask);
-    qInfo() << "[X11] XRandR events enabled (event base:" << m_randrEventBase << ")";
+    XRRSelectInput(m_display, m_root,
+                   RRScreenChangeNotifyMask | RROutputChangeNotifyMask);
+    qInfo() << QString("[X11] XRandR events enabled (event base: %1)")
+                   .arg(m_randrEventBase);
   }
 
   // Restore default error handler
@@ -77,7 +79,8 @@ bool X11WindowManager::initialize() {
 
   // Connect to ThemeManager for color updates
   if (auto theme = ThemeManager::instance()) {
-      connect(theme, &ThemeManager::uiColorsChanged, this, &X11WindowManager::updateThemeColors);
+    connect(theme, &ThemeManager::uiColorsChanged, this,
+            &X11WindowManager::updateThemeColors);
   }
 
   // DISABLED: Compositing disabled for now
@@ -193,6 +196,9 @@ void X11WindowManager::processXEvents() {
       handleMotionNotify(&event.xmotion);
       break;
     case PropertyNotify:
+      // Handle Dock/Strut changes
+      handlePropertyNotify(&event.xproperty);
+
       // Window property changed (title, etc.)
       if (m_windows.contains(event.xproperty.window)) {
         updateWindowProperties(m_windows[event.xproperty.window]);
@@ -200,11 +206,11 @@ void X11WindowManager::processXEvents() {
       break;
     case Expose:
       if (m_frames.contains(event.xexpose.window)) {
-          X11Frame* frame = m_frames[event.xexpose.window];
-          // Only redraw if it's the titlebar that was exposed
-          if (frame && frame->titleBar == event.xexpose.window) {
-              drawTitleBar(frame);
-          }
+        X11Frame *frame = m_frames[event.xexpose.window];
+        // Only redraw if it's the titlebar that was exposed
+        if (frame && frame->titleBar == event.xexpose.window) {
+          drawTitleBar(frame);
+        }
       }
       break;
     // DISABLED: Compositing disabled for now
@@ -226,10 +232,12 @@ void X11WindowManager::processXEvents() {
     // }
     default:
       // Check for XRandR events (monitor changes)
-      if (m_randrEventBase && event.type == m_randrEventBase + RRScreenChangeNotify) {
+      if (m_randrEventBase &&
+          event.type == m_randrEventBase + RRScreenChangeNotify) {
         qInfo() << "[X11] Screen configuration changed, updating monitors";
         updateMonitors();
-      } else if (m_randrEventBase && event.type == m_randrEventBase + RRNotify) {
+      } else if (m_randrEventBase &&
+                 event.type == m_randrEventBase + RRNotify) {
         // More specific RandR event (output change, etc.)
         qInfo() << "[X11] Monitor configuration changed, updating monitors";
         updateMonitors();
@@ -259,13 +267,15 @@ void X11WindowManager::processXEvents() {
 //   int depth = DefaultDepth(m_display, 0);
 //
 //   // Create back buffer pixmap for double buffering (ELIMINATES FLICKERING!)
-//   Pixmap backBuffer = XCreatePixmap(m_display, m_root, screenWidth, screenHeight, depth);
+//   Pixmap backBuffer = XCreatePixmap(m_display, m_root, screenWidth,
+//   screenHeight, depth);
 //
 //   // Create pictures for rendering
 //   XRenderPictFormat *format = XRenderFindVisualFormat(
 //       m_display, DefaultVisual(m_display, DefaultScreen(m_display)));
-//   Picture backPicture = XRenderCreatePicture(m_display, backBuffer, format, 0, nullptr);
-//   Picture rootPicture = XRenderCreatePicture(m_display, m_root, format, 0, nullptr);
+//   Picture backPicture = XRenderCreatePicture(m_display, backBuffer, format,
+//   0, nullptr); Picture rootPicture = XRenderCreatePicture(m_display, m_root,
+//   format, 0, nullptr);
 //
 //   // Fill background (Dark Gray) - render to back buffer
 //   XRenderColor color = {0x2b2b, 0x2b2b, 0x2b2b, 0xffff};
@@ -283,9 +293,10 @@ void X11WindowManager::processXEvents() {
 //       if (m_compositedWindows.contains(w)) {
 //         CompositedWindow *cw = m_compositedWindows[w];
 //         // Composite window onto BACK BUFFER (not directly to screen)
-//         XRenderComposite(m_display, PictOpOver, cw->picture, None, backPicture,
-//                          0, 0, 0, 0, cw->attrs.x, cw->attrs.y, cw->attrs.width,
-//                          cw->attrs.height);
+//         XRenderComposite(m_display, PictOpOver, cw->picture, None,
+//         backPicture,
+//                          0, 0, 0, 0, cw->attrs.x, cw->attrs.y,
+//                          cw->attrs.width, cw->attrs.height);
 //       }
 //     }
 //     if (children)
@@ -327,6 +338,7 @@ void X11WindowManager::handleMapRequest(XMapRequestEvent *event) {
   auto *window = new X11Window(this);
   window->window = w;
   window->mapped = true;
+  window->workspace = m_currentWorkspace;
 
   // Get window properties (title, class)
   updateWindowProperties(window);
@@ -337,6 +349,8 @@ void X11WindowManager::handleMapRequest(XMapRequestEvent *event) {
     m_windows.insert(w, window);
     XMapWindow(m_display, w);
     emit windowAdded(window);
+    // Trigger re-tile
+    tile(m_currentWorkspace);
     return;
   }
 
@@ -373,6 +387,9 @@ void X11WindowManager::handleMapRequest(XMapRequestEvent *event) {
 
   qInfo() << "[X11] Window added:" << window->title << "(" << window->appId
           << ")";
+
+  // Trigger re-tile
+  tile(m_currentWorkspace);
 }
 
 // DISABLED: Compositing disabled for now
@@ -401,7 +418,8 @@ void X11WindowManager::handleMapRequest(XMapRequestEvent *event) {
 //           XRenderFindVisualFormat(m_display, attrs.visual);
 //       cw->picture =
 //           XRenderCreatePicture(m_display, cw->window, format, 0, nullptr);
-//       cw->damage = XDamageCreate(m_display, cw->window, XDamageReportNonEmpty);
+//       cw->damage = XDamageCreate(m_display, cw->window,
+//       XDamageReportNonEmpty);
 //
 //       m_compositedWindows.insert(w, cw);
 //     }
@@ -445,9 +463,15 @@ void X11WindowManager::handleUnmapNotify(XUnmapEvent *event) {
     window->mapped = false;
     emit windowChanged(window);
   }
+  // Trigger re-tile
+  tile(m_currentWorkspace);
 }
 
 void X11WindowManager::handleDestroyNotify(XDestroyWindowEvent *event) {
+  // Similar to Unmap, but the window is gone
+  // We should already have handled it in UnmapNotify usually, but sometimes
+  // not.
+
   Window w = event->window;
 
   if (!m_windows.contains(w)) {
@@ -467,6 +491,9 @@ void X11WindowManager::handleDestroyNotify(XDestroyWindowEvent *event) {
 
   emit windowRemoved(w);
   window->deleteLater();
+
+  // Trigger re-tile
+  tile(m_currentWorkspace);
 }
 
 void X11WindowManager::handleConfigureRequest(XConfigureRequestEvent *event) {
@@ -514,31 +541,33 @@ void X11WindowManager::updateWindowProperties(X11Window *win) {
 }
 
 void X11WindowManager::updateThemeColors() {
-    auto theme = ThemeManager::instance();
-    if (!theme) return;
+  auto theme = ThemeManager::instance();
+  if (!theme)
+    return;
 
-    unsigned long frameBg = theme->uiSecondaryColor().rgb() & 0xFFFFFF;
-    unsigned long textColor = theme->uiTextColor().rgb() & 0xFFFFFF;
+  unsigned long frameBg = theme->uiSecondaryColor().rgb() & 0xFFFFFF;
+  unsigned long textColor = theme->uiTextColor().rgb() & 0xFFFFFF;
 
-    QSet<X11Frame*> processedFrames;
+  QSet<X11Frame *> processedFrames;
 
-    for (auto it = m_frames.begin(); it != m_frames.end(); ++it) {
-        X11Frame* frame = it.value();
-        if (processedFrames.contains(frame)) continue;
-        processedFrames.insert(frame);
+  for (auto it = m_frames.begin(); it != m_frames.end(); ++it) {
+    X11Frame *frame = it.value();
+    if (processedFrames.contains(frame))
+      continue;
+    processedFrames.insert(frame);
 
-        // Update Frame Background
-        XSetWindowBackground(m_display, frame->frame, frameBg);
-        XClearWindow(m_display, frame->frame);
+    // Update Frame Background
+    XSetWindowBackground(m_display, frame->frame, frameBg);
+    XClearWindow(m_display, frame->frame);
 
-        // Update Text Color in GC
-        XSetForeground(m_display, frame->gc, textColor);
+    // Update Text Color in GC
+    XSetForeground(m_display, frame->gc, textColor);
 
-        // Redraw TitleBar (Gradient + Text + Buttons)
-        drawTitleBar(frame);
-    }
-    
-    XFlush(m_display);
+    // Redraw TitleBar (Gradient + Text + Buttons)
+    drawTitleBar(frame);
+  }
+
+  XFlush(m_display);
 }
 
 // ========== Frame Management Functions ==========
@@ -554,39 +583,64 @@ X11Frame *X11WindowManager::createFrame(Window client, int x, int y, int width,
   frame->width = width;
   frame->height = height + TITLE_HEIGHT;
 
+  // Check for Dock/Panel type
+  getWindowTypeAndStrut(client, frame);
+
+  if (frame->isDock) {
+    qInfo() << "[X11] Window" << client << "is a Dock/Panel";
+    frame->frame = client; // Treat client as its own frame
+    frame->titleBar = None;
+    frame->gc = nullptr; // Important: prevent double free or garbage free
+    frame->x = x;
+    frame->y = y;
+    frame->width = width;
+    frame->height = height; // No titlebar height added
+
+    m_frames.insert(client, frame); // Map client to frame
+
+    applyDockGeometry(frame);
+    updateGlobalStruts();
+
+    XMapWindow(m_display, client);
+    XRaiseWindow(m_display, client);
+
+    return frame;
+  }
+
   // Create the frame window (outer container)
   unsigned long frameBg = 0x2b2b2b;
   unsigned long titleBg = 0x3c3c3c;
   unsigned long textColor = 0xffffff;
-  
+
   if (auto theme = ThemeManager::instance()) {
-      frameBg = theme->uiSecondaryColor().rgb() & 0xFFFFFF;
-      titleBg = theme->uiTitleBarLeftColor().rgb() & 0xFFFFFF; // Use Left for solid color
-      textColor = theme->uiTextColor().rgb() & 0xFFFFFF;
+    frameBg = theme->uiSecondaryColor().rgb() & 0xFFFFFF;
+    titleBg = theme->uiTitleBarLeftColor().rgb() &
+              0xFFFFFF; // Use Left for solid color
+    textColor = theme->uiTextColor().rgb() & 0xFFFFFF;
   }
 
   frame->frame = XCreateSimpleWindow(m_display, m_root, x, y, width,
                                      height + TITLE_HEIGHT, BORDER_WIDTH,
                                      0x444444, // border color (dark gray)
-                                     frameBg
-  );
+                                     frameBg);
 
   // DISABLED: Compositing disabled, no need for override_redirect now
   // // Set override_redirect on frame so it's not managed/composited
   // XSetWindowAttributes attrs;
   // attrs.override_redirect = True;
-  // XChangeWindowAttributes(m_display, frame->frame, CWOverrideRedirect, &attrs);
+  // XChangeWindowAttributes(m_display, frame->frame, CWOverrideRedirect,
+  // &attrs);
 
   // Create title bar window
   frame->titleBar =
       XCreateSimpleWindow(m_display, frame->frame, 0, 0, width, TITLE_HEIGHT, 0,
                           0x000000, // border
-                          titleBg
-      );
+                          titleBg);
 
   // DISABLED: Compositing disabled, no need for override_redirect now
   // // Set override_redirect on titlebar too
-  // XChangeWindowAttributes(m_display, frame->titleBar, CWOverrideRedirect, &attrs);
+  // XChangeWindowAttributes(m_display, frame->titleBar, CWOverrideRedirect,
+  // &attrs);
 
   // Create graphics context for drawing text
   frame->gc = XCreateGC(m_display, frame->titleBar, 0, nullptr);
@@ -598,16 +652,14 @@ X11Frame *X11WindowManager::createFrame(Window client, int x, int y, int width,
   Colormap colormap = DefaultColormap(m_display, screen);
 
   // Create Xft font (using Noto Sans Symbols for best Unicode support)
-  frame->xftFont = XftFontOpen(m_display, screen,
-                               XFT_FAMILY, XftTypeString, "Noto Sans Symbols",
-                               XFT_SIZE, XftTypeDouble, 12.0,
-                               nullptr);
+  frame->xftFont =
+      XftFontOpen(m_display, screen, XFT_FAMILY, XftTypeString,
+                  "Noto Sans Symbols", XFT_SIZE, XftTypeDouble, 12.0, nullptr);
   if (!frame->xftFont) {
     qWarning() << "[X11] Failed to load Noto Sans Symbols, trying DejaVu Sans";
-    frame->xftFont = XftFontOpen(m_display, screen,
-                                 XFT_FAMILY, XftTypeString, "DejaVu Sans",
-                                 XFT_SIZE, XftTypeDouble, 10.0,
-                                 nullptr);
+    frame->xftFont =
+        XftFontOpen(m_display, screen, XFT_FAMILY, XftTypeString, "DejaVu Sans",
+                    XFT_SIZE, XftTypeDouble, 10.0, nullptr);
   }
   if (!frame->xftFont) {
     qWarning() << "[X11] Failed to load DejaVu Sans, using system default";
@@ -623,18 +675,21 @@ X11Frame *X11WindowManager::createFrame(Window client, int x, int y, int width,
   renderColor.green = ((textColor >> 8) & 0xFF) * 257;
   renderColor.blue = (textColor & 0xFF) * 257;
   renderColor.alpha = 0xFFFF;
-  XftColorAllocValue(m_display, visual, colormap, &renderColor, &frame->xftTextColor);
+  XftColorAllocValue(m_display, visual, colormap, &renderColor,
+                     &frame->xftTextColor);
 
   // Select events we care about
-  XSelectInput(m_display, frame->frame,
-               SubstructureRedirectMask | SubstructureNotifyMask |
-                   ButtonPressMask | ButtonReleaseMask | ExposureMask |
-                   PointerMotionMask);  // Added motion for resize cursor and dragging
+  XSelectInput(
+      m_display, frame->frame,
+      SubstructureRedirectMask | SubstructureNotifyMask | ButtonPressMask |
+          ButtonReleaseMask | ExposureMask |
+          PointerMotionMask); // Added motion for resize cursor and dragging
   XSelectInput(m_display, frame->titleBar,
                ButtonPressMask | ButtonReleaseMask | ExposureMask |
                    PointerMotionMask);
-  // Note: Don't select ButtonPressMask on client - apps may already have it selected
-  // which causes BadAccess error. We'll catch clicks on the frame instead.
+  // Note: Don't select ButtonPressMask on client - apps may already have it
+  // selected which causes BadAccess error. We'll catch clicks on the frame
+  // instead.
   XSelectInput(m_display, client, StructureNotifyMask | PropertyChangeMask);
 
   // Reparent the client window into the frame
@@ -714,74 +769,76 @@ X11Frame *X11WindowManager::findFrame(Window window) {
 }
 
 void X11WindowManager::drawTitleBar(X11Frame *frame) {
-    if (!frame || !frame->gc) return;
+  if (!frame || !frame->gc)
+    return;
 
-    int width = frame->width;
-    int height = TITLE_HEIGHT;
+  int width = frame->width;
+  int height = TITLE_HEIGHT;
 
-    // Get colors from ThemeManager
-    QColor leftColor = QColor("#3c3c3c");
-    QColor rightColor = QColor("#3c3c3c");
-    QColor textColor = QColor("#ffffff");
+  // Get colors from ThemeManager
+  QColor leftColor = QColor("#3c3c3c");
+  QColor rightColor = QColor("#3c3c3c");
+  QColor textColor = QColor("#ffffff");
 
-    if (auto theme = ThemeManager::instance()) {
-        leftColor = theme->uiTitleBarLeftColor();
-        rightColor = theme->uiTitleBarRightColor();
-        textColor = theme->uiTextColor();
-    }
+  if (auto theme = ThemeManager::instance()) {
+    leftColor = theme->uiTitleBarLeftColor();
+    rightColor = theme->uiTitleBarRightColor();
+    textColor = theme->uiTextColor();
+  }
 
-    // Gradient drawing
-    // We draw 2-pixel wide strips to be slightly faster than 1-pixel
-    int step = 2;
-    for (int x = 0; x < width; x += step) {
-        float t = (float)x / (float)width;
-        int r = leftColor.red() + t * (rightColor.red() - leftColor.red());
-        int g = leftColor.green() + t * (rightColor.green() - leftColor.green());
-        int b = leftColor.blue() + t * (rightColor.blue() - leftColor.blue());
-        
-        unsigned long pixel = (r << 16) | (g << 8) | b;
-        XSetForeground(m_display, frame->gc, pixel);
-        XFillRectangle(m_display, frame->titleBar, frame->gc, x, 0, step, height);
-    }
+  // Gradient drawing
+  // We draw 2-pixel wide strips to be slightly faster than 1-pixel
+  int step = 2;
+  for (int x = 0; x < width; x += step) {
+    float t = (float)x / (float)width;
+    int r = leftColor.red() + t * (rightColor.red() - leftColor.red());
+    int g = leftColor.green() + t * (rightColor.green() - leftColor.green());
+    int b = leftColor.blue() + t * (rightColor.blue() - leftColor.blue());
 
-    // Draw icon, text and buttons
-    drawTitleBarIcon(frame);
+    unsigned long pixel = (r << 16) | (g << 8) | b;
+    XSetForeground(m_display, frame->gc, pixel);
+    XFillRectangle(m_display, frame->titleBar, frame->gc, x, 0, step, height);
+  }
 
-    QString title = "Window";
-    if (X11Window* win = m_windows.value(frame->client)) {
-        title = win->title;
-    }
+  // Draw icon, text and buttons
+  drawTitleBarIcon(frame);
 
-    drawTitleBarText(frame, title);
+  QString title = "Window";
+  if (X11Window *win = m_windows.value(frame->client)) {
+    title = win->title;
+  }
 
-    // Redraw buttons
-    for (const auto& btn : frame->buttons) {
-        drawTitleBarButton(frame, btn);
-    }
+  drawTitleBarText(frame, title);
+
+  // Redraw buttons
+  for (const auto &btn : frame->buttons) {
+    drawTitleBarButton(frame, btn);
+  }
 }
 
 void X11WindowManager::drawTitleBarText(X11Frame *frame, const QString &title) {
   if (!frame || !frame->xftDraw || !frame->xftFont)
     return;
 
-  // Note: We do NOT clear the window here because it would erase the gradient background.
-  // The background is handled by drawTitleBar().
+  // Note: We do NOT clear the window here because it would erase the gradient
+  // background. The background is handled by drawTitleBar().
 
   // Update Xft text color if theme changed
   if (auto theme = ThemeManager::instance()) {
-      unsigned long textColor = theme->uiTextColor().rgb() & 0xFFFFFF;
-      int screen = DefaultScreen(m_display);
-      Visual *visual = DefaultVisual(m_display, screen);
-      Colormap colormap = DefaultColormap(m_display, screen);
+    unsigned long textColor = theme->uiTextColor().rgb() & 0xFFFFFF;
+    int screen = DefaultScreen(m_display);
+    Visual *visual = DefaultVisual(m_display, screen);
+    Colormap colormap = DefaultColormap(m_display, screen);
 
-      // Free old color and allocate new one
-      XftColorFree(m_display, visual, colormap, &frame->xftTextColor);
-      XRenderColor renderColor;
-      renderColor.red = ((textColor >> 16) & 0xFF) * 257;
-      renderColor.green = ((textColor >> 8) & 0xFF) * 257;
-      renderColor.blue = (textColor & 0xFF) * 257;
-      renderColor.alpha = 0xFFFF;
-      XftColorAllocValue(m_display, visual, colormap, &renderColor, &frame->xftTextColor);
+    // Free old color and allocate new one
+    XftColorFree(m_display, visual, colormap, &frame->xftTextColor);
+    XRenderColor renderColor;
+    renderColor.red = ((textColor >> 16) & 0xFF) * 257;
+    renderColor.green = ((textColor >> 8) & 0xFF) * 257;
+    renderColor.blue = (textColor & 0xFF) * 257;
+    renderColor.alpha = 0xFFFF;
+    XftColorAllocValue(m_display, visual, colormap, &renderColor,
+                       &frame->xftTextColor);
   }
 
   // Convert QString to UTF-8 for Xft
@@ -797,26 +854,27 @@ void X11WindowManager::drawTitleBarText(X11Frame *frame, const QString &title) {
   // Leave space for icon if it exists
   int iconSpace = 0;
   if (frame->iconPixmap != None && frame->iconWidth > 0) {
-    iconSpace = PADDING + frame->iconWidth + PADDING; // Icon + padding on both sides
+    iconSpace =
+        PADDING + frame->iconWidth + PADDING; // Icon + padding on both sides
   }
 
   int textX = 0;
-  if (ThemeManager::instance() && ThemeManager::instance()->titleBarTextLeft()) {
-      textX = iconSpace + PADDING; // Left aligned, after icon
+  if (ThemeManager::instance() &&
+      ThemeManager::instance()->titleBarTextLeft()) {
+    textX = iconSpace + PADDING; // Left aligned, after icon
   } else {
-      textX = (frame->width - extents.width) / 2; // Centered
-      // Make sure centered text doesn't overlap icon
-      if (textX < iconSpace) {
-        textX = iconSpace + PADDING;
-      }
+    textX = (frame->width - extents.width) / 2; // Centered
+    // Make sure centered text doesn't overlap icon
+    if (textX < iconSpace) {
+      textX = iconSpace + PADDING;
+    }
   }
 
   int textY = TITLE_HEIGHT - PADDING - 4; // Y position for text baseline
 
   // Draw title text using Xft (supports Unicode)
-  XftDrawStringUtf8(frame->xftDraw, &frame->xftTextColor, frame->xftFont,
-                    textX, textY,
-                    (const FcChar8 *)titleBytes.constData(),
+  XftDrawStringUtf8(frame->xftDraw, &frame->xftTextColor, frame->xftFont, textX,
+                    textY, (const FcChar8 *)titleBytes.constData(),
                     titleBytes.length());
 
   // Redraw buttons
@@ -854,8 +912,10 @@ void X11WindowManager::createTitleBarButtons(X11Frame *frame) {
   closeBtn.window = XCreateSimpleWindow(m_display, frame->titleBar, closeBtn.x,
                                         closeBtn.y, BUTTON_SIZE, BUTTON_SIZE, 0,
                                         0x000000, closeBtn.color);
-  // XChangeWindowAttributes(m_display, closeBtn.window, CWOverrideRedirect, &attrs);  // DISABLED
-  closeBtn.xftDraw = XftDrawCreate(m_display, closeBtn.window, visual, colormap);
+  // XChangeWindowAttributes(m_display, closeBtn.window, CWOverrideRedirect,
+  // &attrs);  // DISABLED
+  closeBtn.xftDraw =
+      XftDrawCreate(m_display, closeBtn.window, visual, colormap);
   XSelectInput(m_display, closeBtn.window,
                ButtonPressMask | ButtonReleaseMask | ExposureMask);
   XMapWindow(m_display, closeBtn.window);
@@ -873,7 +933,8 @@ void X11WindowManager::createTitleBarButtons(X11Frame *frame) {
   maxBtn.window =
       XCreateSimpleWindow(m_display, frame->titleBar, maxBtn.x, maxBtn.y,
                           BUTTON_SIZE, BUTTON_SIZE, 0, 0x000000, maxBtn.color);
-  // XChangeWindowAttributes(m_display, maxBtn.window, CWOverrideRedirect, &attrs);  // DISABLED
+  // XChangeWindowAttributes(m_display, maxBtn.window, CWOverrideRedirect,
+  // &attrs);  // DISABLED
   maxBtn.xftDraw = XftDrawCreate(m_display, maxBtn.window, visual, colormap);
   XSelectInput(m_display, maxBtn.window,
                ButtonPressMask | ButtonReleaseMask | ExposureMask);
@@ -892,7 +953,8 @@ void X11WindowManager::createTitleBarButtons(X11Frame *frame) {
   minBtn.window =
       XCreateSimpleWindow(m_display, frame->titleBar, minBtn.x, minBtn.y,
                           BUTTON_SIZE, BUTTON_SIZE, 0, 0x000000, minBtn.color);
-  // XChangeWindowAttributes(m_display, minBtn.window, CWOverrideRedirect, &attrs);  // DISABLED
+  // XChangeWindowAttributes(m_display, minBtn.window, CWOverrideRedirect,
+  // &attrs);  // DISABLED
   minBtn.xftDraw = XftDrawCreate(m_display, minBtn.window, visual, colormap);
   XSelectInput(m_display, minBtn.window,
                ButtonPressMask | ButtonReleaseMask | ExposureMask);
@@ -920,26 +982,23 @@ void X11WindowManager::drawTitleBarButton(X11Frame *frame,
   switch (button.type) {
   case X11Button::Close: {
     // Draw X using two diagonal lines
-    XDrawLine(m_display, button.window, buttonGC,
-              margin, margin,
+    XDrawLine(m_display, button.window, buttonGC, margin, margin,
               BUTTON_SIZE - margin, BUTTON_SIZE - margin);
-    XDrawLine(m_display, button.window, buttonGC,
-              BUTTON_SIZE - margin, margin,
+    XDrawLine(m_display, button.window, buttonGC, BUTTON_SIZE - margin, margin,
               margin, BUTTON_SIZE - margin);
     break;
   }
   case X11Button::Maximize: {
     // Draw a square outline
-    XDrawRectangle(m_display, button.window, buttonGC,
-                   margin, margin,
+    XDrawRectangle(m_display, button.window, buttonGC, margin, margin,
                    BUTTON_SIZE - margin * 2, BUTTON_SIZE - margin * 2);
     break;
   }
   case X11Button::Minimize: {
     // Draw a horizontal line at the bottom
-    XDrawLine(m_display, button.window, buttonGC,
-              margin, BUTTON_SIZE - margin - 2,
-              BUTTON_SIZE - margin, BUTTON_SIZE - margin - 2);
+    XDrawLine(m_display, button.window, buttonGC, margin,
+              BUTTON_SIZE - margin - 2, BUTTON_SIZE - margin,
+              BUTTON_SIZE - margin - 2);
     break;
   }
   }
@@ -948,7 +1007,8 @@ void X11WindowManager::drawTitleBarButton(X11Frame *frame,
 }
 
 void X11WindowManager::loadWindowIcon(X11Frame *frame, Window client) {
-  if (!frame || !m_display) return;
+  if (!frame || !m_display)
+    return;
 
   // Clean up old icon if it exists
   if (frame->iconPixmap != None) {
@@ -959,20 +1019,20 @@ void X11WindowManager::loadWindowIcon(X11Frame *frame, Window client) {
   }
 
   // Get _NET_WM_ICON atom
-  Atom netWmIcon = XInternAtom(m_display, "_NET_WM_ICON", False);
+  Atom netWmIcon = XInternAtom(m_display, "_NET_WM_ICON", 0);
   Atom actualType;
   int actualFormat;
   unsigned long nItems, bytesAfter;
   unsigned char *data = nullptr;
 
   // Try to get the icon property
-  int result = XGetWindowProperty(m_display, client, netWmIcon,
-                                  0, LONG_MAX, False, XA_CARDINAL,
-                                  &actualType, &actualFormat,
+  int result = XGetWindowProperty(m_display, client, netWmIcon, 0, LONG_MAX, 0,
+                                  XA_CARDINAL, &actualType, &actualFormat,
                                   &nItems, &bytesAfter, &data);
 
   if (result != Success || !data || nItems < 2) {
-    if (data) XFree(data);
+    if (data)
+      XFree(data);
     return;
   }
 
@@ -990,13 +1050,15 @@ void X11WindowManager::loadWindowIcon(X11Frame *frame, Window client) {
   unsigned long idx = 0;
 
   while (idx < nItems) {
-    if (idx + 2 >= nItems) break;
+    if (idx + 2 >= nItems)
+      break;
 
     unsigned long w = iconData[idx];
     unsigned long h = iconData[idx + 1];
     unsigned long pixels = w * h;
 
-    if (idx + 2 + pixels > nItems) break;
+    if (idx + 2 + pixels > nItems)
+      break;
 
     // Prefer icons close to TARGET_SIZE
     if (w >= TARGET_SIZE && w <= bestSize) {
@@ -1026,7 +1088,8 @@ void X11WindowManager::loadWindowIcon(X11Frame *frame, Window client) {
   int depth = DefaultDepth(m_display, screen);
   Window root = DefaultRootWindow(m_display);
 
-  frame->iconPixmap = XCreatePixmap(m_display, root, TARGET_SIZE, TARGET_SIZE, depth);
+  frame->iconPixmap =
+      XCreatePixmap(m_display, root, TARGET_SIZE, TARGET_SIZE, depth);
 
   if (frame->iconPixmap == None) {
     XFree(data);
@@ -1034,9 +1097,9 @@ void X11WindowManager::loadWindowIcon(X11Frame *frame, Window client) {
   }
 
   // Create an XImage to convert ARGB data
-  XImage *image = XCreateImage(m_display, DefaultVisual(m_display, screen),
-                               depth, ZPixmap, 0, nullptr,
-                               TARGET_SIZE, TARGET_SIZE, 32, 0);
+  XImage *image =
+      XCreateImage(m_display, DefaultVisual(m_display, screen), depth, ZPixmap,
+                   0, nullptr, TARGET_SIZE, TARGET_SIZE, 32, 0);
 
   if (!image) {
     XFreePixmap(m_display, frame->iconPixmap);
@@ -1083,7 +1146,8 @@ void X11WindowManager::loadWindowIcon(X11Frame *frame, Window client) {
 
   // Draw the image to the pixmap
   GC gc = XCreateGC(m_display, frame->iconPixmap, 0, nullptr);
-  XPutImage(m_display, frame->iconPixmap, gc, image, 0, 0, 0, 0, TARGET_SIZE, TARGET_SIZE);
+  XPutImage(m_display, frame->iconPixmap, gc, image, 0, 0, 0, 0, TARGET_SIZE,
+            TARGET_SIZE);
   XFreeGC(m_display, gc);
 
   frame->iconWidth = TARGET_SIZE;
@@ -1104,9 +1168,8 @@ void X11WindowManager::drawTitleBarIcon(X11Frame *frame) {
   int iconX = PADDING;
   int iconY = (TITLE_HEIGHT - frame->iconHeight) / 2;
 
-  XCopyArea(m_display, frame->iconPixmap, frame->titleBar, frame->gc,
-            0, 0, frame->iconWidth, frame->iconHeight,
-            iconX, iconY);
+  XCopyArea(m_display, frame->iconPixmap, frame->titleBar, frame->gc, 0, 0,
+            frame->iconWidth, frame->iconHeight, iconX, iconY);
 }
 
 void X11WindowManager::handleButtonPress(XButtonEvent *event) {
@@ -1122,13 +1185,13 @@ void X11WindowManager::handleButtonPress(XButtonEvent *event) {
   // Check if it's a button click
   for (const X11Button &btn : frame->buttons) {
     if (btn.window == event->window) {
-      qInfo() << "[X11] Button clicked:" << btn.type;
+      qInfo() << QString("[X11] Button clicked: %1").arg((int)btn.type);
 
       switch (btn.type) {
       case X11Button::Close: {
         // Send WM_DELETE_WINDOW protocol message
-        Atom wmProtocols = XInternAtom(m_display, "WM_PROTOCOLS", False);
-        Atom wmDeleteWindow = XInternAtom(m_display, "WM_DELETE_WINDOW", False);
+        Atom wmProtocols = XInternAtom(m_display, "WM_PROTOCOLS", 0);
+        Atom wmDeleteWindow = XInternAtom(m_display, "WM_DELETE_WINDOW", 0);
 
         XEvent ev;
         memset(&ev, 0, sizeof(ev));
@@ -1139,7 +1202,7 @@ void X11WindowManager::handleButtonPress(XButtonEvent *event) {
         ev.xclient.data.l[0] = wmDeleteWindow;
         ev.xclient.data.l[1] = CurrentTime;
 
-        XSendEvent(m_display, frame->client, False, NoEventMask, &ev);
+        XSendEvent(m_display, frame->client, 0, NoEventMask, &ev);
         XFlush(m_display);
         break;
       }
@@ -1154,15 +1217,15 @@ void X11WindowManager::handleButtonPress(XButtonEvent *event) {
           frame->height = frame->savedHeight;
 
           // Resize the frame back to original size
-          XMoveResizeWindow(m_display, frame->frame,
-                           frame->x, frame->y,
-                           frame->width, frame->height);
+          XMoveResizeWindow(m_display, frame->frame, frame->x, frame->y,
+                            frame->width, frame->height);
 
           // Resize the titlebar
           XResizeWindow(m_display, frame->titleBar, frame->width, TITLE_HEIGHT);
 
           // Resize the client window (subtract titlebar height)
-          XResizeWindow(m_display, frame->client, frame->width, frame->height - TITLE_HEIGHT);
+          XResizeWindow(m_display, frame->client, frame->width,
+                        frame->height - TITLE_HEIGHT);
 
           // Recreate buttons for restored width
           for (const X11Button &btn : frame->buttons) {
@@ -1201,15 +1264,15 @@ void X11WindowManager::handleButtonPress(XButtonEvent *event) {
           frame->height = screenHeight;
 
           // Move and resize frame to fill screen
-          XMoveResizeWindow(m_display, frame->frame,
-                           0, 0,
-                           screenWidth, screenHeight);
+          XMoveResizeWindow(m_display, frame->frame, 0, 0, screenWidth,
+                            screenHeight);
 
           // Resize the titlebar to match screen width
           XResizeWindow(m_display, frame->titleBar, screenWidth, TITLE_HEIGHT);
 
           // Resize the client window
-          XResizeWindow(m_display, frame->client, screenWidth, screenHeight - TITLE_HEIGHT);
+          XResizeWindow(m_display, frame->client, screenWidth,
+                        screenHeight - TITLE_HEIGHT);
 
           // Recreate buttons for fullscreen width
           for (const X11Button &btn : frame->buttons) {
@@ -1332,13 +1395,15 @@ void X11WindowManager::handleMotionNotify(XMotionEvent *event) {
         int edge = detectResizeEdge(frame, event->x, event->y);
 
         Cursor cursor = m_cursorNormal;
-        if (edge == (1|4) || edge == (2|8)) { // Top-left or bottom-right corner
+        if (edge == (1 | 4) ||
+            edge == (2 | 8)) { // Top-left or bottom-right corner
           cursor = m_cursorResizeNWSE;
-        } else if (edge == (2|4) || edge == (1|8)) { // Top-right or bottom-left corner
+        } else if (edge == (2 | 4) ||
+                   edge == (1 | 8)) { // Top-right or bottom-left corner
           cursor = m_cursorResizeNESW;
-        } else if (edge & (1|2)) { // Left or right edge
+        } else if (edge & (1 | 2)) { // Left or right edge
           cursor = m_cursorResizeH;
-        } else if (edge & (4|8)) { // Top or bottom edge
+        } else if (edge & (4 | 8)) { // Top or bottom edge
           cursor = m_cursorResizeV;
         }
 
@@ -1376,11 +1441,14 @@ void X11WindowManager::handleMotionNotify(XMotionEvent *event) {
     // Enforce minimum size
     const int minWidth = 100;
     const int minHeight = TITLE_HEIGHT + 50;
-    if (newWidth < minWidth) newWidth = minWidth;
-    if (newHeight < minHeight) newHeight = minHeight;
+    if (newWidth < minWidth)
+      newWidth = minWidth;
+    if (newHeight < minHeight)
+      newHeight = minHeight;
 
     // Apply the resize
-    XMoveResizeWindow(m_display, m_resizeFrame->frame, newX, newY, newWidth, newHeight);
+    XMoveResizeWindow(m_display, m_resizeFrame->frame, newX, newY, newWidth,
+                      newHeight);
 
     // Update frame dimensions
     m_resizeFrame->x = newX;
@@ -1392,7 +1460,8 @@ void X11WindowManager::handleMotionNotify(XMotionEvent *event) {
     XResizeWindow(m_display, m_resizeFrame->titleBar, newWidth, TITLE_HEIGHT);
 
     // Resize client window
-    XResizeWindow(m_display, m_resizeFrame->client, newWidth, newHeight - TITLE_HEIGHT);
+    XResizeWindow(m_display, m_resizeFrame->client, newWidth,
+                  newHeight - TITLE_HEIGHT);
 
     // Recreate buttons for new width
     for (const X11Button &btn : m_resizeFrame->buttons) {
@@ -1487,6 +1556,8 @@ void X11WindowManager::minimizeWindow(Window window) {
   emit windowChanged(win);
 
   XFlush(m_display);
+  // Trigger re-tile
+  tile(m_currentWorkspace);
 }
 
 void X11WindowManager::closeWindow(Window window) {
@@ -1504,8 +1575,8 @@ void X11WindowManager::closeWindow(Window window) {
   }
 
   // Send WM_DELETE_WINDOW protocol message
-  Atom wmProtocols = XInternAtom(m_display, "WM_PROTOCOLS", False);
-  Atom wmDeleteWindow = XInternAtom(m_display, "WM_DELETE_WINDOW", False);
+  Atom wmProtocols = XInternAtom(m_display, "WM_PROTOCOLS", 0);
+  Atom wmDeleteWindow = XInternAtom(m_display, "WM_DELETE_WINDOW", 0);
 
   XEvent ev;
   memset(&ev, 0, sizeof(ev));
@@ -1516,7 +1587,7 @@ void X11WindowManager::closeWindow(Window window) {
   ev.xclient.data.l[0] = wmDeleteWindow;
   ev.xclient.data.l[1] = CurrentTime;
 
-  XSendEvent(m_display, frame->client, False, NoEventMask, &ev);
+  XSendEvent(m_display, frame->client, 0, NoEventMask, &ev);
   XFlush(m_display);
 }
 
@@ -1550,7 +1621,8 @@ void X11WindowManager::setFocus(Window window) {
 }
 
 void X11WindowManager::updateMonitors() {
-  if (!m_display) return;
+  if (!m_display)
+    return;
 
   m_monitors.clear();
 
@@ -1567,7 +1639,9 @@ void X11WindowManager::updateMonitors() {
     mon.height = DisplayHeight(m_display, DefaultScreen(m_display));
     mon.primary = true;
     m_monitors.append(mon);
-    qInfo() << "[X11] Using default screen:" << mon.width << "x" << mon.height;
+    qInfo() << QString("[X11] Using default screen: %1x%2")
+                   .arg(mon.width)
+                   .arg(mon.height);
     emit monitorsChanged();
     return;
   }
@@ -1583,13 +1657,15 @@ void X11WindowManager::updateMonitors() {
   RROutput primaryOutput = XRRGetOutputPrimary(m_display, m_root);
 
   qInfo() << "[X11] Detecting monitors...";
-  qInfo() << "[X11] Found" << res->noutput << "outputs";
+  qInfo() << QString("[X11] Found %1 outputs").arg(res->noutput);
 
   // Iterate through outputs
   for (int i = 0; i < res->noutput; i++) {
-    XRROutputInfo *outputInfo = XRRGetOutputInfo(m_display, res, res->outputs[i]);
+    XRROutputInfo *outputInfo =
+        XRRGetOutputInfo(m_display, res, res->outputs[i]);
 
-    if (!outputInfo) continue;
+    if (!outputInfo)
+      continue;
 
     // Only process connected outputs
     if (outputInfo->connection == RR_Connected && outputInfo->crtc) {
@@ -1606,10 +1682,13 @@ void X11WindowManager::updateMonitors() {
 
         m_monitors.append(mon);
 
-        qInfo() << "[X11] Monitor:" << mon.name
-                << (mon.primary ? "(PRIMARY)" : "")
-                << "- Position:" << mon.x << "," << mon.y
-                << "Size:" << mon.width << "x" << mon.height;
+        qInfo() << QString("[X11] Monitor: %1 %2 - Position: %3,%4 Size: %5x%6")
+                       .arg(mon.name)
+                       .arg(mon.primary ? "(PRIMARY)" : "")
+                       .arg(mon.x)
+                       .arg(mon.y)
+                       .arg(mon.width)
+                       .arg(mon.height);
 
         XRRFreeCrtcInfo(crtcInfo);
       }
@@ -1633,4 +1712,401 @@ void X11WindowManager::updateMonitors() {
   }
 
   emit monitorsChanged();
+}
+
+// ========== Dock / Strut Management ==========
+
+void X11WindowManager::getWindowTypeAndStrut(Window w, X11Frame *frame) {
+  if (!frame)
+    return;
+  frame->isDock = false;
+  frame->strut = X11Strut();
+
+  Atom actual_type;
+  int actual_format;
+  unsigned long nitems, bytes_after;
+  unsigned char *prop = nullptr;
+
+  // Check _NET_WM_WINDOW_TYPE
+  Atom netWmWindowType = XInternAtom(m_display, "_NET_WM_WINDOW_TYPE", 0);
+  Atom netWmWindowTypeDock =
+      XInternAtom(m_display, "_NET_WM_WINDOW_TYPE_DOCK", 0);
+
+  if (XGetWindowProperty(m_display, w, netWmWindowType, 0, 64, 0, XA_ATOM,
+                         &actual_type, &actual_format, &nitems, &bytes_after,
+                         &prop) == Success &&
+      prop) {
+    Atom *atoms = (Atom *)prop;
+    for (unsigned long i = 0; i < nitems; ++i) {
+      if (atoms[i] == netWmWindowTypeDock) {
+        frame->isDock = true;
+        break;
+      }
+    }
+    XFree(prop);
+    prop = nullptr;
+  }
+
+  // Read _NET_WM_STRUT_PARTIAL (12 cardinals)
+  Atom netWmStrutPartial = XInternAtom(m_display, "_NET_WM_STRUT_PARTIAL", 0);
+  if (XGetWindowProperty(m_display, w, netWmStrutPartial, 0, 12, 0, XA_CARDINAL,
+                         &actual_type, &actual_format, &nitems, &bytes_after,
+                         &prop) == Success &&
+      prop) {
+    unsigned long *vals = (unsigned long *)prop;
+    if (nitems >= 4) {
+      frame->strut.left = vals[0];
+      frame->strut.right = vals[1];
+      frame->strut.top = vals[2];
+      frame->strut.bottom = vals[3];
+    }
+    if (nitems >= 12) {
+      frame->strut.left_start_y = vals[4];
+      frame->strut.left_end_y = vals[5];
+      frame->strut.right_start_y = vals[6];
+      frame->strut.right_end_y = vals[7];
+      frame->strut.top_start_x = vals[8];
+      frame->strut.top_end_x = vals[9];
+      frame->strut.bottom_start_x = vals[10];
+      frame->strut.bottom_end_x = vals[11];
+
+      if (frame->strut.left || frame->strut.right || frame->strut.top ||
+          frame->strut.bottom) {
+        frame->isDock = true;
+      }
+    }
+    XFree(prop);
+  }
+}
+
+void X11WindowManager::updateGlobalStruts() {
+  m_reservedTop = m_manualTop;
+  m_reservedBottom = m_manualBottom;
+  m_reservedLeft = m_manualLeft;
+  m_reservedRight = m_manualRight;
+
+  for (X11Frame *frame : m_frames.values()) {
+    if (!frame->isDock)
+      continue;
+
+    if (frame->strut.top > m_reservedTop)
+      m_reservedTop = frame->strut.top;
+    if (frame->strut.bottom > m_reservedBottom)
+      m_reservedBottom = frame->strut.bottom;
+    if (frame->strut.left > m_reservedLeft)
+      m_reservedLeft = frame->strut.left;
+    if (frame->strut.right > m_reservedRight)
+      m_reservedRight = frame->strut.right;
+  }
+
+  qInfo()
+      << QString(
+             "[X11] Reserved areas updated: Top=%1 Bottom=%2 Left=%3 Right=%4")
+             .arg(m_reservedTop)
+             .arg(m_reservedBottom)
+             .arg(m_reservedLeft)
+             .arg(m_reservedRight);
+}
+
+void X11WindowManager::applyDockGeometry(X11Frame *frame) {
+  if (!frame || !frame->isDock)
+    return;
+
+  int screen = DefaultScreen(m_display);
+  int sw = DisplayWidth(m_display, screen);
+  int sh = DisplayHeight(m_display, screen);
+
+  int new_x = 0, new_y = 0;
+  int new_w = frame->width;
+  int new_h = frame->height;
+
+  const X11Strut &s = frame->strut;
+
+  if (s.top > 0) {
+    new_y = 0;
+    if (s.top_end_x > s.top_start_x) {
+      new_x = (int)s.top_start_x;
+      new_w = (int)(s.top_end_x - s.top_start_x + 1);
+    } else {
+      new_x = 0;
+      new_w = sw - m_reservedLeft - m_reservedRight;
+    }
+    new_h = (int)s.top;
+  } else if (s.bottom > 0) {
+    new_h = (int)s.bottom;
+    new_y = sh - new_h;
+    if (s.bottom_end_x > s.bottom_start_x) {
+      new_x = (int)s.bottom_start_x;
+      new_w = (int)(s.bottom_end_x - s.bottom_start_x + 1);
+    } else {
+      new_x = 0;
+      new_w = sw - m_reservedLeft - m_reservedRight;
+    }
+  } else if (s.left > 0) {
+    new_x = 0;
+    new_w = (int)s.left;
+    if (s.left_end_y > s.left_start_y) {
+      new_y = (int)s.left_start_y;
+      new_h = (int)(s.left_end_y - s.left_start_y + 1);
+    } else {
+      new_y = 0;
+      new_h = sh - m_reservedTop - m_reservedBottom;
+    }
+  } else if (s.right > 0) {
+    new_w = (int)s.right;
+    new_x = sw - new_w;
+    if (s.right_end_y > s.right_start_y) {
+      new_y = (int)s.right_start_y;
+      new_h = (int)(s.right_end_y - s.right_start_y + 1);
+    } else {
+      new_y = 0;
+      new_h = sh - m_reservedTop - m_reservedBottom;
+    }
+  }
+
+  // Clamp
+  if (new_x < 0)
+    new_x = 0;
+  if (new_y < 0)
+    new_y = 0;
+  if (new_w < 1)
+    new_w = 1;
+  if (new_h < 1)
+    new_h = 1;
+  if (new_x + new_w > sw)
+    new_w = sw - new_x;
+  if (new_y + new_h > sh)
+    new_h = sh - new_y;
+
+  frame->x = new_x;
+  frame->y = new_y;
+  frame->width = new_w;
+  frame->height = new_h;
+
+  XMoveResizeWindow(m_display, frame->client, frame->x, frame->y, frame->width,
+                    frame->height);
+}
+
+void X11WindowManager::handlePropertyNotify(XPropertyEvent *event) {
+  if (!event)
+    return;
+  X11Frame *frame = findFrame(event->window);
+
+  // Only listen for property changes on Client windows (not our frame windows,
+  // unless it's a dock which is unframed)
+  if (!frame && m_frames.contains(event->window)) {
+    frame = m_frames[event->window];
+  }
+
+  if (!frame) {
+    if (m_windows.contains(event->window)) {
+      emit windowChanged(m_windows[event->window]);
+    }
+    // Trigger re-tile
+    tile(m_currentWorkspace);
+    return;
+  }
+
+  Atom strutAtom = XInternAtom(m_display, "_NET_WM_STRUT_PARTIAL", 0);
+  Atom typeAtom = XInternAtom(m_display, "_NET_WM_WINDOW_TYPE", 0);
+
+  if (event->atom == strutAtom || event->atom == typeAtom) {
+    if (frame->isDock) {
+      getWindowTypeAndStrut(frame->client, frame);
+      applyDockGeometry(frame);
+      updateGlobalStruts();
+      // TODO: Reflow other windows (Phase 2)
+    }
+  }
+}
+
+// ==========================================
+// Tiling Implementation
+// ==========================================
+
+bool X11WindowManager::isTilingMode() const {
+  return m_workspaceTilingMode.value(m_currentWorkspace, false);
+}
+
+void X11WindowManager::toggleTilingMode() {
+  bool current = m_workspaceTilingMode.value(m_currentWorkspace, false);
+  int cur = m_currentWorkspace; // Assuming 'cur' refers to m_currentWorkspace
+  if (!current) {               // If tiling mode is currently OFF
+    qInfo() << "[X11] Tiling Mode ON for workspace" << cur;
+    m_workspaceTilingMode[cur] = true;
+    tile(cur);
+  } else { // If tiling mode is currently ON
+    qInfo() << "[X11] Tiling Mode OFF for workspace" << cur;
+    m_workspaceTilingMode[cur] = false;
+    restoreDecorations(cur);
+  }
+}
+
+void X11WindowManager::tile(int workspace) {
+  if (workspace == -1)
+    workspace = m_currentWorkspace;
+
+  // specific workspace mode check
+  if (!m_workspaceTilingMode.value(workspace, false)) {
+    return;
+  }
+
+  Monitor mon; // Get monitor for this workspace (assuming single monitor for
+               // now for simplicity, or primary)
+  // Multimonitor TODO: Find which monitor the workspace belongs to or iterate
+  // monitors. For now, use primary logic or just first monitor.
+  if (m_monitors.isEmpty())
+    return;
+  mon = m_monitors.first();
+  // Ideally we iterate all monitors if workspaces specific to monitors,
+  // but CanvasDesk workspace model is global right now?
+
+  // Effective work area
+  int wx = mon.x + m_reservedLeft + m_gapSize;
+  int wy = mon.y + m_reservedTop + m_gapSize;
+  int ww = mon.width - m_reservedLeft - m_reservedRight - (2 * m_gapSize);
+  int wh = mon.height - m_reservedTop - m_reservedBottom - (2 * m_gapSize);
+
+  // Get list of windows to tile
+  // logical order: we need a robust way to list windows.
+  // XQueryTree overhead is small.
+  // Window root_ret, parent_ret;
+  // Window *children = nullptr;
+  // unsigned int nchildren = 0;
+
+  // Using m_windows map for efficiency and simplicity
+  QList<X11Frame *> allFrames;
+  for (auto *win : m_windows) {
+    if (win->workspace == workspace && win->mapped &&
+        win->state != X11Window::Minimized) {
+      if (win->frame && !win->frame->isDock && !win->frame->isFloating &&
+          !win->frame->isFullscreen) {
+        allFrames.append(win->frame);
+      }
+    }
+  }
+
+  // Sort logic? Stable sort by X position then Y position to keep some
+  // stability.
+  std::sort(allFrames.begin(), allFrames.end(), [](X11Frame *a, X11Frame *b) {
+    if (a->x != b->x)
+      return a->x < b->x;
+    return a->y < b->y;
+  });
+
+  int n = allFrames.size();
+  if (n == 0)
+    return;
+
+  // Master Layout Algorithm
+  if (n == 1) {
+    X11Frame *c = allFrames[0];
+    // Fullscreen (minus strut/gaps)
+    int titleH = 2; // Minimal titlebar for tiling
+    XMoveResizeWindow(m_display, c->frame, wx, wy, ww, wh);
+    XResizeWindow(m_display, c->titleBar, ww, titleH);
+    XMoveResizeWindow(m_display, c->client, 0, titleH, ww, wh - titleH);
+
+    c->x = wx;
+    c->y = wy;
+    c->width = ww;
+    c->height = wh;
+    return;
+  }
+
+  int mw = (n > m_masterCount) ? (ww * m_masterFactor) : ww;
+  int sw = ww - mw; // Stack width
+
+  // Master Area values
+  int my = wy;
+  int i = 0;
+  // Master Area
+  int m_actualCount = std::min(n, m_masterCount);
+  int m_h_each = (wh - (m_actualCount - 1) * m_gapSize) / m_actualCount;
+
+  for (i = 0; i < m_actualCount; i++) {
+    X11Frame *c = allFrames[i];
+    int h = m_h_each;
+    // Adjust last one to fit exactly pixels
+    if (i == m_actualCount - 1)
+      h = wh - (my - wy);
+
+    XMoveResizeWindow(m_display, c->frame, wx, my, mw, h);
+    int titleH = 2;
+    XResizeWindow(m_display, c->titleBar, mw, titleH);
+    XMoveResizeWindow(m_display, c->client, 0, titleH, mw, h - titleH);
+
+    c->x = wx;
+    c->y = my;
+    c->width = mw;
+    c->height = h;
+
+    my += h + m_gapSize;
+  }
+
+  // Stack Area
+  if (n > m_masterCount) {
+    int sx = wx + mw + m_gapSize;
+    int sy = wy;
+    int s_count = n - m_masterCount;
+    int s_h_each = (wh - (s_count - 1) * m_gapSize) / s_count;
+
+    for (int j = 0; j < s_count; j++, i++) {
+      X11Frame *c = allFrames[i];
+      int h = s_h_each;
+      if (j == s_count - 1)
+        h = wh - (sy - wy);
+
+      XMoveResizeWindow(m_display, c->frame, sx, sy, sw, h);
+      int titleH = 2;
+      XResizeWindow(m_display, c->titleBar, sw, titleH);
+      XMoveResizeWindow(m_display, c->client, 0, titleH, sw, h - titleH);
+
+      c->x = sx;
+      c->y = sy;
+      c->width = sw;
+      c->height = h;
+
+      sy += h + m_gapSize;
+    }
+  }
+
+  XFlush(m_display);
+}
+
+void X11WindowManager::cycleLayout() {
+  // TODO
+}
+
+void X11WindowManager::setManualStrut(int top, int bottom, int left,
+                                      int right) {
+  if (m_manualTop == top && m_manualBottom == bottom && m_manualLeft == left &&
+      m_manualRight == right)
+    return;
+
+  m_manualTop = top;
+  m_manualBottom = bottom;
+  m_manualLeft = left;
+  m_manualRight = right;
+
+  // Recalculate and Tile
+  updateGlobalStruts();
+
+  if (isTilingMode()) {
+    tile(m_currentWorkspace);
+  }
+}
+
+void X11WindowManager::restoreDecorations(int workspace) {
+  for (auto *win : m_windows) {
+    if (win->workspace == workspace && win->frame && !win->frame->isDock) {
+      X11Frame *c = win->frame;
+      // Resize titlebar to standard height
+      XResizeWindow(m_display, c->titleBar, c->width, TITLE_HEIGHT);
+      // Resize client to fit remaining
+      XMoveResizeWindow(m_display, c->client, 0, TITLE_HEIGHT, c->width,
+                        c->height - TITLE_HEIGHT);
+    }
+  }
+  XFlush(m_display);
 }

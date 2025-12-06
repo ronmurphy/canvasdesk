@@ -4,10 +4,19 @@
 #include <QObject>
 #include <QSocketNotifier>
 // #include <QTimer>  // DISABLED: Compositing disabled for now
+#include <QDebug>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
 #include <QVariantMap>
-#include <X11/Xlib.h>
 #include <X11/Xft/Xft.h>
+#include <X11/Xlib.h>
 #include <X11/extensions/Xrandr.h>
+
+// Undefine X11 macros that conflict with Qt
+#undef True
+#undef False
+
 // DISABLED: Compositing extensions disabled for now
 // #include <X11/extensions/Xcomposite.h>
 // #include <X11/extensions/Xdamage.h>
@@ -18,7 +27,7 @@
 #define TITLE_HEIGHT 24
 #define BUTTON_SIZE 16
 #define PADDING 4
-#define RESIZE_BORDER 5  // Size of resize grab area at edges
+#define RESIZE_BORDER 5 // Size of resize grab area at edges
 
 // Forward declaration
 struct X11Frame;
@@ -34,16 +43,13 @@ struct Monitor {
 class X11Window : public QObject {
   Q_OBJECT
 public:
-  enum State {
-    Normal,
-    Minimized,
-    Maximized
-  };
+  enum State { Normal, Minimized, Maximized };
 
   Window window;
   QString title;
   QString appId;
   bool mapped = false;
+  int workspace = 0;
   State state = Normal;
   X11Frame *frame = nullptr; // Associated frame (if any)
 
@@ -60,6 +66,24 @@ struct X11Button {
 
   // Xft resources for button icon
   XftDraw *xftDraw = nullptr;
+};
+
+// Dock/Panel support
+struct X11Strut {
+  long left = 0;
+  long right = 0;
+  long top = 0;
+  long bottom = 0;
+
+  // Partial struts (start/end coordinates)
+  long left_start_y = 0;
+  long left_end_y = 0;
+  long right_start_y = 0;
+  long right_end_y = 0;
+  long top_start_x = 0;
+  long top_end_x = 0;
+  long bottom_start_x = 0;
+  long bottom_end_x = 0;
 };
 
 // Frame structure - wraps client windows with decorations
@@ -88,6 +112,11 @@ struct X11Frame {
   int savedX = 0, savedY = 0;
   int savedWidth = 0, savedHeight = 0;
   bool isFullscreen = false;
+  bool isFloating = false;
+
+  // Dock/Strut support
+  bool isDock = false;
+  X11Strut strut;
 
   ~X11Frame() {
     // GC and Xft resources will be freed in X11WindowManager cleanup
@@ -97,7 +126,6 @@ struct X11Frame {
 // DISABLED: Compositing disabled for now
 // struct CompositedWindow {
 //   Window window;
-//   Picture picture = 0;
 //   Damage damage = 0;
 //   XWindowAttributes attrs;
 // };
@@ -112,13 +140,21 @@ public:
   QList<X11Window *> windows() const { return m_windows.values(); }
   Window activeWindow() const { return m_activeWindow; }
   QList<Monitor> monitors() const { return m_monitors; }
-  Display* display() const { return m_display; }
+  Display *display() const { return m_display; }
+
+  // Custom struts for internal QML panels
+  void setManualStrut(int top, int bottom, int left, int right);
 
   void activateWindow(Window window);
   void minimizeWindow(Window window);
   void closeWindow(Window window);
   void setFocus(Window window);
   void updateMonitors();
+
+  void cycleLayout();
+  void toggleTilingMode();
+  bool isTilingMode() const;
+  void tile(int workspace = -1);
 
 signals:
   void windowAdded(X11Window *window);
@@ -180,10 +216,12 @@ private:
 
   // Resize cursors
   Cursor m_cursorNormal = None;
-  Cursor m_cursorResizeH = None;   // Horizontal resize (left-right)
-  Cursor m_cursorResizeV = None;   // Vertical resize (top-bottom)
-  Cursor m_cursorResizeNWSE = None; // Diagonal resize (top-left to bottom-right)
-  Cursor m_cursorResizeNESW = None; // Diagonal resize (top-right to bottom-left)
+  Cursor m_cursorResizeH = None; // Horizontal resize (left-right)
+  Cursor m_cursorResizeV = None; // Vertical resize (top-bottom)
+  Cursor m_cursorResizeNWSE =
+      None; // Diagonal resize (top-left to bottom-right)
+  Cursor m_cursorResizeNESW =
+      None; // Diagonal resize (top-right to bottom-left)
 
   // Drag state
   bool m_dragging = false;
@@ -218,4 +256,30 @@ private:
   // // Paint rate limiting (60 FPS)
   // QTimer *m_paintTimer = nullptr;
   // bool m_paintRequested = false;
+
+  // Dock Management
+  void updateGlobalStruts();
+  void getWindowTypeAndStrut(Window w, X11Frame *frame);
+  void applyDockGeometry(X11Frame *frame);
+  void handlePropertyNotify(XPropertyEvent *event);
+
+  void restoreDecorations(int workspace);
+
+  // Reserved screen areas (from docks + manual)
+  int m_reservedTop = 0;
+  int m_reservedBottom = 0;
+  int m_reservedLeft = 0;
+  int m_reservedRight = 0;
+
+  int m_manualTop = 0;
+  int m_manualBottom = 0;
+  int m_manualLeft = 0;
+  int m_manualRight = 0;
+
+  // Tiling state
+  int m_currentWorkspace = 0;
+  int m_masterCount = 1;
+  float m_masterFactor = 0.55f;
+  int m_gapSize = 10;
+  QMap<int, bool> m_workspaceTilingMode;
 };

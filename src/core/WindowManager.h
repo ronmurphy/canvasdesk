@@ -19,7 +19,8 @@ class WindowManager : public QObject {
   Q_PROPERTY(int currentWorkspace READ currentWorkspace WRITE
                  setCurrentWorkspace NOTIFY currentWorkspaceChanged)
   Q_PROPERTY(int workspaceCount READ workspaceCount CONSTANT)
-  Q_PROPERTY(MonitorManager* monitorManager READ monitorManager CONSTANT)
+  Q_PROPERTY(bool isTiling READ isTiling NOTIFY tilingChanged)
+  Q_PROPERTY(MonitorManager *monitorManager READ monitorManager CONSTANT)
 
 public:
   static WindowManager *create(QQmlEngine *qmlEngine, QJSEngine *jsEngine) {
@@ -36,17 +37,23 @@ public:
   int currentWorkspace() const;
   void setCurrentWorkspace(int workspace);
   int workspaceCount() const;
-  MonitorManager* monitorManager() const { return m_monitorManager; }
+  MonitorManager *monitorManager() const { return m_monitorManager; }
 
   Q_INVOKABLE void activate(int id);
   Q_INVOKABLE void close(int id);
   Q_INVOKABLE void minimize(int id);
   Q_INVOKABLE void switchToWorkspace(int index);
+
   Q_INVOKABLE void moveWindowToWorkspace(int windowId, int workspaceIndex);
+  Q_INVOKABLE void toggleTiling();
+  Q_INVOKABLE void setStrut(int top, int bottom, int left, int right);
+  bool isTiling() const;
 
 signals:
   void windowsChanged();
+
   void currentWorkspaceChanged();
+  void tilingChanged();
 
 private:
   void onX11WindowChanged();

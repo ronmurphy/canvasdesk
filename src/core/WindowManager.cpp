@@ -1,6 +1,6 @@
 #include "WindowManager.h"
-#include "X11WindowManager.h"
 #include "MonitorManager.h"
+#include "X11WindowManager.h"
 #include <QDebug>
 
 WindowManager::WindowManager(QObject *parent) : QObject(parent) {
@@ -66,7 +66,8 @@ QVariantList WindowManager::windows() const {
     win["icon"] = x11Window->appId; // Use appId as icon name
 
     // Check if this is the active window
-    bool isActive = (m_x11Manager && m_x11Manager->activeWindow() == x11Window->window);
+    bool isActive =
+        (m_x11Manager && m_x11Manager->activeWindow() == x11Window->window);
     win["active"] = isActive;
     win["workspace"] = 0;
 
@@ -85,9 +86,7 @@ QVariantList WindowManager::windows() const {
   return result;
 }
 
-int WindowManager::currentWorkspace() const {
-  return m_currentWorkspace;
-}
+int WindowManager::currentWorkspace() const { return m_currentWorkspace; }
 
 void WindowManager::setCurrentWorkspace(int workspace) {
   if (workspace >= 0 && workspace < m_workspaceCount &&
@@ -98,13 +97,12 @@ void WindowManager::setCurrentWorkspace(int workspace) {
   }
 }
 
-int WindowManager::workspaceCount() const {
-  return m_workspaceCount;
-}
+int WindowManager::workspaceCount() const { return m_workspaceCount; }
 
 void WindowManager::activate(int id) {
   if (!m_x11Manager) {
-    qWarning() << "[WindowManager] Cannot activate window - X11 manager not initialized";
+    qWarning() << "[WindowManager] Cannot activate window - X11 manager not "
+                  "initialized";
     return;
   }
 
@@ -114,7 +112,8 @@ void WindowManager::activate(int id) {
 
 void WindowManager::close(int id) {
   if (!m_x11Manager) {
-    qWarning() << "[WindowManager] Cannot close window - X11 manager not initialized";
+    qWarning()
+        << "[WindowManager] Cannot close window - X11 manager not initialized";
     return;
   }
 
@@ -124,7 +123,8 @@ void WindowManager::close(int id) {
 
 void WindowManager::minimize(int id) {
   if (!m_x11Manager) {
-    qWarning() << "[WindowManager] Cannot minimize window - X11 manager not initialized";
+    qWarning() << "[WindowManager] Cannot minimize window - X11 manager not "
+                  "initialized";
     return;
   }
 
@@ -132,12 +132,30 @@ void WindowManager::minimize(int id) {
   m_x11Manager->minimizeWindow((Window)id);
 }
 
-void WindowManager::switchToWorkspace(int index) {
-  setCurrentWorkspace(index);
-}
+void WindowManager::switchToWorkspace(int index) { setCurrentWorkspace(index); }
 
 void WindowManager::moveWindowToWorkspace(int windowId, int workspaceIndex) {
   Q_UNUSED(windowId)
   Q_UNUSED(workspaceIndex)
   qDebug() << "TODO: Move window to workspace";
+}
+
+bool WindowManager::isTiling() const {
+  if (!m_x11Manager)
+    return false;
+  return m_x11Manager->isTilingMode();
+}
+
+void WindowManager::toggleTiling() {
+  if (m_x11Manager) {
+    m_x11Manager->toggleTilingMode();
+    emit tilingChanged();
+    emit windowsChanged();
+  }
+}
+
+void WindowManager::setStrut(int top, int bottom, int left, int right) {
+  if (m_x11Manager) {
+    m_x11Manager->setManualStrut(top, bottom, left, right);
+  }
 }

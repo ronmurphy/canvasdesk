@@ -1,6 +1,8 @@
 import QtQuick
+import QtQml
 import QtQuick.Controls
 import QtQuick.Layouts
+// import CanvasDesk // Removing potential conflict
 
 Rectangle {
     id: root
@@ -34,6 +36,40 @@ Rectangle {
 
     // Expose the container for reparenting
     property alias dockedContainer: contentContainer
+
+    // --- Strut Integration ---
+    function updateStrut() {
+        if (typeof WindowManager === "undefined") return;
+
+        if (!visible || (Qt.application.state !== Qt.ApplicationActive && false)) {
+             // ...
+        }
+        
+        if (autoHide && !revealed && !mouseInside) {
+             WindowManager.setStrut(0,0,0,0)
+             return
+        }
+
+        var dpr = Screen.devicePixelRatio || 1
+        var physH = Math.ceil(height * dpr)
+        var physW = Math.ceil(width * dpr)
+
+        if (edge === "top") WindowManager.setStrut(physH, 0, 0, 0)
+        else if (edge === "bottom") WindowManager.setStrut(0, physH, 0, 0)
+        else if (edge === "left") WindowManager.setStrut(0, 0, physW, 0)
+        else if (edge === "right") WindowManager.setStrut(0, 0, 0, physW)
+    }
+
+    onYChanged: updateStrut()
+    onHeightChanged: updateStrut()
+    onWidthChanged: updateStrut()
+    onVisibleChanged: updateStrut()
+    onEdgeChanged: updateStrut()
+    onRevealedChanged: updateStrut()
+    Component.onCompleted: updateStrut()
+    Component.onDestruction: {
+        if (typeof WindowManager !== "undefined") WindowManager.setStrut(0,0,0,0)
+    }
 
     color: panelColor
     opacity: autoHide && !revealed && !editorOpen ? 0.3 : panelOpacity

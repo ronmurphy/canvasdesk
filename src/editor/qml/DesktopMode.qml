@@ -9,6 +9,11 @@ import "components"
 ApplicationWindow {
     id: desktopWindow
     visible: true
+    
+    Shortcut {
+        sequence: "Ctrl+`"
+        onActivated: WindowManager.toggleTiling()
+    }
 
     // Try to span all monitors by using desktop available dimensions
     width: Screen.desktopAvailableWidth
@@ -935,6 +940,38 @@ ApplicationWindow {
                                 opacity: 0.7
                                 wrapMode: Text.WordWrap
                                 Layout.fillWidth: true
+                            }
+                        }
+
+
+                        // Window Management
+                        ColumnLayout {
+                            Layout.fillWidth: true
+                            spacing: 8
+
+                            Label {
+                                text: "Window Management"
+                                color: Theme.uiHighlightColor
+                                font.bold: true
+                            }
+
+                            Rectangle {
+                                Layout.fillWidth: true
+                                height: 1
+                                color: Theme.uiTitleBarLeftColor
+                            }
+
+                            RowLayout {
+                                Layout.fillWidth: true
+                                Label {
+                                    text: "Tiling Mode"
+                                    color: Theme.uiTextColor
+                                    Layout.fillWidth: true
+                                }
+                                Switch {
+                                    checked: WindowManager.isTiling
+                                    onToggled: WindowManager.toggleTiling()
+                                }
                             }
                         }
 
