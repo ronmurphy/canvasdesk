@@ -361,7 +361,10 @@ src/core/CanvasDeskCore_autogen/timestamp: src/core/CanvasDeskCore_autogen/moc_p
   /usr/include/linux/types.h \
   /usr/include/locale.h \
   /usr/include/pthread.h \
+  /usr/include/qt6/QtCore/QDebug \
   /usr/include/qt6/QtCore/QHash \
+  /usr/include/qt6/QtCore/QJsonArray \
+  /usr/include/qt6/QtCore/QJsonDocument \
   /usr/include/qt6/QtCore/QJsonObject \
   /usr/include/qt6/QtCore/QList \
   /usr/include/qt6/QtCore/QMap \
@@ -434,6 +437,7 @@ src/core/CanvasDeskCore_autogen/timestamp: src/core/CanvasDeskCore_autogen/moc_p
   /usr/include/qt6/QtCore/qiodevicebase.h \
   /usr/include/qt6/QtCore/qiterable.h \
   /usr/include/qt6/QtCore/qiterator.h \
+  /usr/include/qt6/QtCore/qjsonarray.h \
   /usr/include/qt6/QtCore/qjsondocument.h \
   /usr/include/qt6/QtCore/qjsonobject.h \
   /usr/include/qt6/QtCore/qjsonparseerror.h \
@@ -1532,7 +1536,10 @@ src/core/CMakeFiles/CanvasDeskCore.dir/CanvasDeskCore_autogen/mocs_compilation.c
   /usr/include/locale.h \
   /usr/include/math.h \
   /usr/include/pthread.h \
+  /usr/include/qt6/QtCore/QDebug \
   /usr/include/qt6/QtCore/QHash \
+  /usr/include/qt6/QtCore/QJsonArray \
+  /usr/include/qt6/QtCore/QJsonDocument \
   /usr/include/qt6/QtCore/QJsonObject \
   /usr/include/qt6/QtCore/QList \
   /usr/include/qt6/QtCore/QMap \
@@ -1606,6 +1613,7 @@ src/core/CMakeFiles/CanvasDeskCore.dir/CanvasDeskCore_autogen/mocs_compilation.c
   /usr/include/qt6/QtCore/qiodevicebase.h \
   /usr/include/qt6/QtCore/qiterable.h \
   /usr/include/qt6/QtCore/qiterator.h \
+  /usr/include/qt6/QtCore/qjsonarray.h \
   /usr/include/qt6/QtCore/qjsondocument.h \
   /usr/include/qt6/QtCore/qjsonobject.h \
   /usr/include/qt6/QtCore/qjsonparseerror.h \
@@ -4790,6 +4798,9 @@ src/core/CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.o: /home/brad/Documents
   /usr/include/pthread.h \
   /usr/include/qt6/QtCore/QDebug \
   /usr/include/qt6/QtCore/QHash \
+  /usr/include/qt6/QtCore/QJsonArray \
+  /usr/include/qt6/QtCore/QJsonDocument \
+  /usr/include/qt6/QtCore/QJsonObject \
   /usr/include/qt6/QtCore/QList \
   /usr/include/qt6/QtCore/QMap \
   /usr/include/qt6/QtCore/QObject \
@@ -4822,6 +4833,8 @@ src/core/CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.o: /home/brad/Documents
   /usr/include/qt6/QtCore/qbytearraylist.h \
   /usr/include/qt6/QtCore/qbytearrayview.h \
   /usr/include/qt6/QtCore/qcalendar.h \
+  /usr/include/qt6/QtCore/qcborcommon.h \
+  /usr/include/qt6/QtCore/qcborvalue.h \
   /usr/include/qt6/QtCore/qchar.h \
   /usr/include/qt6/QtCore/qcompare.h \
   /usr/include/qt6/QtCore/qcompare_impl.h \
@@ -4837,6 +4850,7 @@ src/core/CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.o: /home/brad/Documents
   /usr/include/qt6/QtCore/qdatastream.h \
   /usr/include/qt6/QtCore/qdatetime.h \
   /usr/include/qt6/QtCore/qdebug.h \
+  /usr/include/qt6/QtCore/qendian.h \
   /usr/include/qt6/QtCore/qexceptionhandling.h \
   /usr/include/qt6/QtCore/qflags.h \
   /usr/include/qt6/QtCore/qfloat16.h \
@@ -4851,6 +4865,11 @@ src/core/CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.o: /home/brad/Documents
   /usr/include/qt6/QtCore/qiodevicebase.h \
   /usr/include/qt6/QtCore/qiterable.h \
   /usr/include/qt6/QtCore/qiterator.h \
+  /usr/include/qt6/QtCore/qjsonarray.h \
+  /usr/include/qt6/QtCore/qjsondocument.h \
+  /usr/include/qt6/QtCore/qjsonobject.h \
+  /usr/include/qt6/QtCore/qjsonparseerror.h \
+  /usr/include/qt6/QtCore/qjsonvalue.h \
   /usr/include/qt6/QtCore/qlatin1stringview.h \
   /usr/include/qt6/QtCore/qlist.h \
   /usr/include/qt6/QtCore/qlocale.h \
@@ -4873,6 +4892,7 @@ src/core/CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.o: /home/brad/Documents
   /usr/include/qt6/QtCore/qpointer.h \
   /usr/include/qt6/QtCore/qprocessordetection.h \
   /usr/include/qt6/QtCore/qrefcount.h \
+  /usr/include/qt6/QtCore/qregularexpression.h \
   /usr/include/qt6/QtCore/qscopedpointer.h \
   /usr/include/qt6/QtCore/qscopeguard.h \
   /usr/include/qt6/QtCore/qset.h \
@@ -4922,6 +4942,7 @@ src/core/CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.o: /home/brad/Documents
   /usr/include/qt6/QtCore/qtypes.h \
   /usr/include/qt6/QtCore/qurl.h \
   /usr/include/qt6/QtCore/qutf8stringview.h \
+  /usr/include/qt6/QtCore/quuid.h \
   /usr/include/qt6/QtCore/qvariant.h \
   /usr/include/qt6/QtCore/qvariantlist.h \
   /usr/include/qt6/QtCore/qvariantmap.h \
@@ -5359,6 +5380,8 @@ src/core/CMakeFiles/CanvasDeskCore.dir/X11WindowManager.cpp.o: /home/brad/Docume
   /usr/include/pthread.h \
   /usr/include/qt6/QtCore/QDebug \
   /usr/include/qt6/QtCore/QHash \
+  /usr/include/qt6/QtCore/QJsonArray \
+  /usr/include/qt6/QtCore/QJsonDocument \
   /usr/include/qt6/QtCore/QJsonObject \
   /usr/include/qt6/QtCore/QMap \
   /usr/include/qt6/QtCore/QObject \
@@ -5424,6 +5447,7 @@ src/core/CMakeFiles/CanvasDeskCore.dir/X11WindowManager.cpp.o: /home/brad/Docume
   /usr/include/qt6/QtCore/qiodevicebase.h \
   /usr/include/qt6/QtCore/qiterable.h \
   /usr/include/qt6/QtCore/qiterator.h \
+  /usr/include/qt6/QtCore/qjsonarray.h \
   /usr/include/qt6/QtCore/qjsondocument.h \
   /usr/include/qt6/QtCore/qjsonobject.h \
   /usr/include/qt6/QtCore/qjsonparseerror.h \
@@ -6174,10 +6198,6 @@ src/core/canvasdeskcore_qmltyperegistrations.cpp:
 
 /usr/include/sys/statvfs.h:
 
-/usr/include/qt6/QtCore/QJsonDocument:
-
-/usr/include/qt6/QtCore/QJsonArray:
-
 /usr/include/qt6/QtCore/qnativeinterface.h:
 
 /usr/include/qt6/QtCore/qcoreevent.h:
@@ -6261,8 +6281,6 @@ src/core/CanvasDeskCore_autogen/EWIEGA46WW/moc_AppManager.cpp:
 /usr/include/qt6/QtCore/QProcess:
 
 /usr/include/qt6/QtCore/QFile:
-
-/usr/include/qt6/QtCore/QDebug:
 
 /usr/include/setjmp.h:
 
@@ -6361,6 +6379,10 @@ src/core/.qt/rcc/qrc_qmake_CanvasDesk.cpp:
 /usr/include/qt6/QtQml/QJSEngine:
 
 /usr/include/qt6/QtNetwork/qtnetworkexports.h:
+
+/usr/include/unistd.h:
+
+/usr/include/qt6/QtGui/qtguiglobal.h:
 
 /usr/include/endian.h:
 
@@ -6551,10 +6573,6 @@ src/core/CMakeFiles/CanvasDeskCore.dir/ThemeManager.cpp.o:
 /home/brad/Documents/canvasdesk/src/core/CanvasDeskCore.h:
 
 /usr/include/c++/15.2.1/bits/stl_multimap.h:
-
-/usr/include/unistd.h:
-
-/usr/include/qt6/QtGui/qtguiglobal.h:
 
 /usr/include/c++/15.2.1/bits/atomic_wait.h:
 
@@ -6994,6 +7012,8 @@ src/core/CMakeFiles/CanvasDeskCore.dir/Component.cpp.o:
 
 /usr/include/bits/types/locale_t.h:
 
+/usr/include/qt6/QtCore/QJsonDocument:
+
 /usr/include/bits/types/mbstate_t.h:
 
 /usr/include/bits/types/struct_sched_param.h:
@@ -7256,6 +7276,14 @@ src/core/CMakeFiles/CanvasDeskCore.dir/AppManager.cpp.o:
 
 /usr/include/linux/stddef.h:
 
+/usr/include/qt6/QtCore/QDebug:
+
+/usr/include/qt6/QtCore/qfloat16.h:
+
+/usr/include/qt6/QtCore/qlatin1stringview.h:
+
+/usr/include/qt6/QtCore/QJsonArray:
+
 /usr/lib/libXcomposite.so:
 
 /usr/include/c++/15.2.1/utility:
@@ -7311,6 +7339,10 @@ src/core/CMakeFiles/CanvasDeskCore.dir/AppManager.cpp.o:
 /usr/include/qt6/QtCore/q23type_traits.h:
 
 /usr/include/qt6/QtCore/qabstracteventdispatcher.h:
+
+/usr/include/qt6/QtGui/qwindowdefs.h:
+
+/usr/include/qt6/QtCore/qalgorithms.h:
 
 /usr/include/c++/15.2.1/bits/cpp_type_traits.h:
 
@@ -7391,10 +7423,6 @@ src/core/CMakeFiles/CanvasDeskCore.dir/AppManager.cpp.o:
 /usr/include/qt6/QtCore/qeventloop.h:
 
 /usr/include/qt6/QtCore/qexceptionhandling.h:
-
-/usr/include/qt6/QtCore/qfloat16.h:
-
-/usr/include/qt6/QtCore/qlatin1stringview.h:
 
 /usr/include/qt6/QtCore/qforeach.h:
 
@@ -7521,10 +7549,6 @@ src/core/CMakeFiles/CanvasDeskCore.dir/AppManager.cpp.o:
 /usr/include/qt6/QtCore/qtconfiginclude.h:
 
 /usr/include/qt6/QtCore/qtypes.h:
-
-/usr/include/qt6/QtCore/qalgorithms.h:
-
-/usr/include/qt6/QtGui/qwindowdefs.h:
 
 /usr/include/qt6/QtCore/qurl.h:
 

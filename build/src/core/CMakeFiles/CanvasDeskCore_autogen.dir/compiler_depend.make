@@ -361,7 +361,10 @@ src/core/CanvasDeskCore_autogen/timestamp: src/core/CanvasDeskCore_autogen/moc_p
   /usr/include/linux/types.h \
   /usr/include/locale.h \
   /usr/include/pthread.h \
+  /usr/include/qt6/QtCore/QDebug \
   /usr/include/qt6/QtCore/QHash \
+  /usr/include/qt6/QtCore/QJsonArray \
+  /usr/include/qt6/QtCore/QJsonDocument \
   /usr/include/qt6/QtCore/QJsonObject \
   /usr/include/qt6/QtCore/QList \
   /usr/include/qt6/QtCore/QMap \
@@ -434,6 +437,7 @@ src/core/CanvasDeskCore_autogen/timestamp: src/core/CanvasDeskCore_autogen/moc_p
   /usr/include/qt6/QtCore/qiodevicebase.h \
   /usr/include/qt6/QtCore/qiterable.h \
   /usr/include/qt6/QtCore/qiterator.h \
+  /usr/include/qt6/QtCore/qjsonarray.h \
   /usr/include/qt6/QtCore/qjsondocument.h \
   /usr/include/qt6/QtCore/qjsonobject.h \
   /usr/include/qt6/QtCore/qjsonparseerror.h \
@@ -646,6 +650,10 @@ src/core/CanvasDeskCore_autogen/timestamp: src/core/CanvasDeskCore_autogen/moc_p
 
 /usr/include/qt6/QtNetwork/qtnetworkexports.h:
 
+/usr/include/unistd.h:
+
+/usr/include/qt6/QtGui/qtguiglobal.h:
+
 /usr/include/endian.h:
 
 /usr/include/qt6/QtCore/qstringbuilder.h:
@@ -826,10 +834,6 @@ src/core/CanvasDeskCore_autogen/timestamp: src/core/CanvasDeskCore_autogen/moc_p
 
 /usr/include/c++/15.2.1/bits/stl_multimap.h:
 
-/usr/include/unistd.h:
-
-/usr/include/qt6/QtGui/qtguiglobal.h:
-
 /usr/include/c++/15.2.1/bits/atomic_wait.h:
 
 /usr/include/qt6/QtCore/qline.h:
@@ -939,6 +943,8 @@ src/core/CanvasDeskCore_autogen/timestamp: src/core/CanvasDeskCore_autogen/moc_p
 /usr/include/X11/keysym.h:
 
 /usr/include/bits/setjmp.h:
+
+/usr/include/qt6/QtCore/qjsonarray.h:
 
 /usr/include/c++/15.2.1/bits/quoted_string.h:
 
@@ -1244,6 +1250,8 @@ src/core/CanvasDeskCore_autogen/moc_predefs.h:
 
 /usr/include/bits/types/locale_t.h:
 
+/usr/include/qt6/QtCore/QJsonDocument:
+
 /usr/include/bits/types/mbstate_t.h:
 
 /usr/include/bits/types/struct_sched_param.h:
@@ -1478,6 +1486,14 @@ src/core/CanvasDeskCore_autogen/moc_predefs.h:
 
 /usr/include/linux/stddef.h:
 
+/usr/include/qt6/QtCore/QDebug:
+
+/usr/include/qt6/QtCore/qfloat16.h:
+
+/usr/include/qt6/QtCore/qlatin1stringview.h:
+
+/usr/include/qt6/QtCore/QJsonArray:
+
 /usr/include/c++/15.2.1/utility:
 
 /usr/include/qt6/QtCore/QList:
@@ -1529,6 +1545,10 @@ src/core/CanvasDeskCore_autogen/moc_predefs.h:
 /usr/include/qt6/QtCore/q23type_traits.h:
 
 /usr/include/qt6/QtCore/qabstracteventdispatcher.h:
+
+/usr/include/qt6/QtGui/qwindowdefs.h:
+
+/usr/include/qt6/QtCore/qalgorithms.h:
 
 /usr/include/c++/15.2.1/bits/cpp_type_traits.h:
 
@@ -1609,10 +1629,6 @@ src/core/CanvasDeskCore_autogen/moc_predefs.h:
 /usr/include/qt6/QtCore/qeventloop.h:
 
 /usr/include/qt6/QtCore/qexceptionhandling.h:
-
-/usr/include/qt6/QtCore/qfloat16.h:
-
-/usr/include/qt6/QtCore/qlatin1stringview.h:
 
 /usr/include/qt6/QtCore/qforeach.h:
 
@@ -1735,10 +1751,6 @@ src/core/CanvasDeskCore_autogen/moc_predefs.h:
 /usr/include/qt6/QtCore/qtconfiginclude.h:
 
 /usr/include/qt6/QtCore/qtypes.h:
-
-/usr/include/qt6/QtCore/qalgorithms.h:
-
-/usr/include/qt6/QtGui/qwindowdefs.h:
 
 /usr/include/qt6/QtCore/qurl.h:
 

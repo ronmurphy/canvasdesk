@@ -46,6 +46,7 @@ template <> constexpr inline auto WindowManager::qt_create_metaobjectdata<qt_met
         "windowsChanged",
         "",
         "currentWorkspaceChanged",
+        "tilingChanged",
         "activate",
         "id",
         "close",
@@ -55,10 +56,17 @@ template <> constexpr inline auto WindowManager::qt_create_metaobjectdata<qt_met
         "moveWindowToWorkspace",
         "windowId",
         "workspaceIndex",
+        "toggleTiling",
+        "setStrut",
+        "top",
+        "bottom",
+        "left",
+        "right",
         "windows",
         "QVariantList",
         "currentWorkspace",
         "workspaceCount",
+        "isTiling",
         "monitorManager",
         "MonitorManager*"
     };
@@ -68,36 +76,46 @@ template <> constexpr inline auto WindowManager::qt_create_metaobjectdata<qt_met
         QtMocHelpers::SignalData<void()>(5, 6, QMC::AccessPublic, QMetaType::Void),
         // Signal 'currentWorkspaceChanged'
         QtMocHelpers::SignalData<void()>(7, 6, QMC::AccessPublic, QMetaType::Void),
+        // Signal 'tilingChanged'
+        QtMocHelpers::SignalData<void()>(8, 6, QMC::AccessPublic, QMetaType::Void),
         // Method 'activate'
-        QtMocHelpers::MethodData<void(int)>(8, 6, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::Int, 9 },
+        QtMocHelpers::MethodData<void(int)>(9, 6, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Int, 10 },
         }}),
         // Method 'close'
-        QtMocHelpers::MethodData<void(int)>(10, 6, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::Int, 9 },
+        QtMocHelpers::MethodData<void(int)>(11, 6, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Int, 10 },
         }}),
         // Method 'minimize'
-        QtMocHelpers::MethodData<void(int)>(11, 6, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::Int, 9 },
+        QtMocHelpers::MethodData<void(int)>(12, 6, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Int, 10 },
         }}),
         // Method 'switchToWorkspace'
-        QtMocHelpers::MethodData<void(int)>(12, 6, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::Int, 13 },
+        QtMocHelpers::MethodData<void(int)>(13, 6, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Int, 14 },
         }}),
         // Method 'moveWindowToWorkspace'
-        QtMocHelpers::MethodData<void(int, int)>(14, 6, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::Int, 15 }, { QMetaType::Int, 16 },
+        QtMocHelpers::MethodData<void(int, int)>(15, 6, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Int, 16 }, { QMetaType::Int, 17 },
+        }}),
+        // Method 'toggleTiling'
+        QtMocHelpers::MethodData<void()>(18, 6, QMC::AccessPublic, QMetaType::Void),
+        // Method 'setStrut'
+        QtMocHelpers::MethodData<void(int, int, int, int)>(19, 6, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Int, 20 }, { QMetaType::Int, 21 }, { QMetaType::Int, 22 }, { QMetaType::Int, 23 },
         }}),
     };
     QtMocHelpers::UintData qt_properties {
         // property 'windows'
-        QtMocHelpers::PropertyData<QVariantList>(17, 0x80000000 | 18, QMC::DefaultPropertyFlags | QMC::EnumOrFlag, 0),
+        QtMocHelpers::PropertyData<QVariantList>(24, 0x80000000 | 25, QMC::DefaultPropertyFlags | QMC::EnumOrFlag, 0),
         // property 'currentWorkspace'
-        QtMocHelpers::PropertyData<int>(19, QMetaType::Int, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 1),
+        QtMocHelpers::PropertyData<int>(26, QMetaType::Int, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 1),
         // property 'workspaceCount'
-        QtMocHelpers::PropertyData<int>(20, QMetaType::Int, QMC::DefaultPropertyFlags | QMC::Constant),
+        QtMocHelpers::PropertyData<int>(27, QMetaType::Int, QMC::DefaultPropertyFlags | QMC::Constant),
+        // property 'isTiling'
+        QtMocHelpers::PropertyData<bool>(28, QMetaType::Bool, QMC::DefaultPropertyFlags, 2),
         // property 'monitorManager'
-        QtMocHelpers::PropertyData<MonitorManager*>(21, 0x80000000 | 22, QMC::DefaultPropertyFlags | QMC::EnumOrFlag | QMC::Constant),
+        QtMocHelpers::PropertyData<MonitorManager*>(29, 0x80000000 | 30, QMC::DefaultPropertyFlags | QMC::EnumOrFlag | QMC::Constant),
     };
     QtMocHelpers::UintData qt_enums {
     };
@@ -126,11 +144,14 @@ void WindowManager::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         switch (_id) {
         case 0: _t->windowsChanged(); break;
         case 1: _t->currentWorkspaceChanged(); break;
-        case 2: _t->activate((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
-        case 3: _t->close((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
-        case 4: _t->minimize((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
-        case 5: _t->switchToWorkspace((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
-        case 6: _t->moveWindowToWorkspace((*reinterpret_cast<std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<int>>(_a[2]))); break;
+        case 2: _t->tilingChanged(); break;
+        case 3: _t->activate((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
+        case 4: _t->close((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
+        case 5: _t->minimize((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
+        case 6: _t->switchToWorkspace((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
+        case 7: _t->moveWindowToWorkspace((*reinterpret_cast<std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<int>>(_a[2]))); break;
+        case 8: _t->toggleTiling(); break;
+        case 9: _t->setStrut((*reinterpret_cast<std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<int>>(_a[2])),(*reinterpret_cast<std::add_pointer_t<int>>(_a[3])),(*reinterpret_cast<std::add_pointer_t<int>>(_a[4]))); break;
         default: ;
         }
     }
@@ -139,6 +160,8 @@ void WindowManager::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
             return;
         if (QtMocHelpers::indexOfMethod<void (WindowManager::*)()>(_a, &WindowManager::currentWorkspaceChanged, 1))
             return;
+        if (QtMocHelpers::indexOfMethod<void (WindowManager::*)()>(_a, &WindowManager::tilingChanged, 2))
+            return;
     }
     if (_c == QMetaObject::ReadProperty) {
         void *_v = _a[0];
@@ -146,7 +169,8 @@ void WindowManager::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         case 0: *reinterpret_cast<QVariantList*>(_v) = _t->windows(); break;
         case 1: *reinterpret_cast<int*>(_v) = _t->currentWorkspace(); break;
         case 2: *reinterpret_cast<int*>(_v) = _t->workspaceCount(); break;
-        case 3: *reinterpret_cast<MonitorManager**>(_v) = _t->monitorManager(); break;
+        case 3: *reinterpret_cast<bool*>(_v) = _t->isTiling(); break;
+        case 4: *reinterpret_cast<MonitorManager**>(_v) = _t->monitorManager(); break;
         default: break;
         }
     }
@@ -178,20 +202,20 @@ int WindowManager::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 7)
+        if (_id < 10)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 7;
+        _id -= 10;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 7)
+        if (_id < 10)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 7;
+        _id -= 10;
     }
     if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty
             || _c == QMetaObject::ResetProperty || _c == QMetaObject::BindableProperty
             || _c == QMetaObject::RegisterPropertyMetaType) {
         qt_static_metacall(this, _c, _id, _a);
-        _id -= 4;
+        _id -= 5;
     }
     return _id;
 }
@@ -206,5 +230,11 @@ void WindowManager::windowsChanged()
 void WindowManager::currentWorkspaceChanged()
 {
     QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
+}
+
+// SIGNAL 2
+void WindowManager::tilingChanged()
+{
+    QMetaObject::activate(this, &staticMetaObject, 2, nullptr);
 }
 QT_WARNING_POP

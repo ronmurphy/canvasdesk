@@ -399,11 +399,24 @@ src/core/CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.o: \
  /usr/include/qt6/QtCore/qvariantmap.h /usr/include/qt6/QtCore/QMap \
  /usr/include/qt6/QtCore/qmap.h /usr/include/qt6/QtCore/QString \
  /usr/include/qt6/QtCore/qstring.h \
+ /home/brad/Documents/canvasdesk/src/core/MonitorManager.h \
+ /usr/include/qt6/QtCore/QString \
  /home/brad/Documents/canvasdesk/src/core/X11WindowManager.h \
  /usr/include/qt6/QtCore/QSocketNotifier \
- /usr/include/qt6/QtCore/qsocketnotifier.h /usr/include/X11/Xlib.h \
- /usr/include/X11/X.h /usr/include/X11/Xfuncproto.h \
- /usr/include/X11/Xosdefs.h /usr/include/X11/Xft/Xft.h \
+ /usr/include/qt6/QtCore/qsocketnotifier.h /usr/include/qt6/QtCore/QDebug \
+ /usr/include/qt6/QtCore/qdebug.h /usr/include/qt6/QtCore/QJsonArray \
+ /usr/include/qt6/QtCore/qjsonarray.h \
+ /usr/include/qt6/QtCore/qjsonvalue.h \
+ /usr/include/qt6/QtCore/qcborvalue.h \
+ /usr/include/qt6/QtCore/qcborcommon.h \
+ /usr/include/qt6/QtCore/qregularexpression.h \
+ /usr/include/qt6/QtCore/quuid.h /usr/include/qt6/QtCore/qendian.h \
+ /usr/include/qt6/QtCore/qjsondocument.h \
+ /usr/include/qt6/QtCore/qjsonparseerror.h \
+ /usr/include/qt6/QtCore/QJsonDocument \
+ /usr/include/qt6/QtCore/qjsondocument.h \
+ /usr/include/qt6/QtCore/QJsonObject \
+ /usr/include/qt6/QtCore/qjsonobject.h /usr/include/X11/Xft/Xft.h \
  /usr/include/freetype2/ft2build.h \
  /usr/include/freetype2/freetype/config/ftheader.h \
  /usr/include/freetype2/freetype/freetype.h \
@@ -425,11 +438,9 @@ src/core/CMakeFiles/CanvasDeskCore.dir/WindowManager.cpp.o: \
  /usr/include/bits/statx-generic.h \
  /usr/include/bits/types/struct_statx_timestamp.h \
  /usr/include/bits/types/struct_statx.h \
- /usr/include/X11/extensions/Xrender.h /usr/include/X11/Xutil.h \
- /usr/include/X11/keysym.h /usr/include/X11/keysymdef.h \
- /usr/include/X11/extensions/render.h /usr/include/X11/Xdefs.h \
- /usr/include/X11/Xft/XftCompat.h /usr/include/X11/extensions/Xrandr.h \
- /usr/include/X11/extensions/randr.h \
- /home/brad/Documents/canvasdesk/src/core/MonitorManager.h \
- /usr/include/qt6/QtCore/QString /usr/include/qt6/QtCore/QDebug \
- /usr/include/qt6/QtCore/qdebug.h
+ /usr/include/X11/extensions/Xrender.h /usr/include/X11/Xfuncproto.h \
+ /usr/include/X11/Xlib.h /usr/include/X11/X.h /usr/include/X11/Xosdefs.h \
+ /usr/include/X11/Xutil.h /usr/include/X11/keysym.h \
+ /usr/include/X11/keysymdef.h /usr/include/X11/extensions/render.h \
+ /usr/include/X11/Xdefs.h /usr/include/X11/Xft/XftCompat.h \
+ /usr/include/X11/extensions/Xrandr.h /usr/include/X11/extensions/randr.h

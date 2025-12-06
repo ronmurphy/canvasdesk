@@ -1013,22 +1013,9 @@
                                 "type": "int"
                             }
                         ],
-                        "index": 2,
-                        "lineNumber": 41,
-                        "name": "activate",
-                        "returnType": "void"
-                    },
-                    {
-                        "access": "public",
-                        "arguments": [
-                            {
-                                "name": "id",
-                                "type": "int"
-                            }
-                        ],
                         "index": 3,
                         "lineNumber": 42,
-                        "name": "close",
+                        "name": "activate",
                         "returnType": "void"
                     },
                     {
@@ -1041,6 +1028,19 @@
                         ],
                         "index": 4,
                         "lineNumber": 43,
+                        "name": "close",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "id",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 5,
+                        "lineNumber": 44,
                         "name": "minimize",
                         "returnType": "void"
                     },
@@ -1052,8 +1052,8 @@
                                 "type": "int"
                             }
                         ],
-                        "index": 5,
-                        "lineNumber": 44,
+                        "index": 6,
+                        "lineNumber": 45,
                         "name": "switchToWorkspace",
                         "returnType": "void"
                     },
@@ -1069,9 +1069,41 @@
                                 "type": "int"
                             }
                         ],
-                        "index": 6,
-                        "lineNumber": 45,
+                        "index": 7,
+                        "lineNumber": 47,
                         "name": "moveWindowToWorkspace",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 8,
+                        "lineNumber": 48,
+                        "name": "toggleTiling",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "top",
+                                "type": "int"
+                            },
+                            {
+                                "name": "bottom",
+                                "type": "int"
+                            },
+                            {
+                                "name": "left",
+                                "type": "int"
+                            },
+                            {
+                                "name": "right",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 9,
+                        "lineNumber": 49,
+                        "name": "setStrut",
                         "returnType": "void"
                     }
                 ],
@@ -1123,11 +1155,26 @@
                         "user": false
                     },
                     {
-                        "constant": true,
+                        "constant": false,
                         "designable": true,
                         "final": false,
                         "index": 3,
                         "lineNumber": 22,
+                        "name": "isTiling",
+                        "notify": "tilingChanged",
+                        "read": "isTiling",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false
+                    },
+                    {
+                        "constant": true,
+                        "designable": true,
+                        "final": false,
+                        "index": 4,
+                        "lineNumber": 23,
                         "name": "monitorManager",
                         "read": "monitorManager",
                         "required": false,
@@ -1142,15 +1189,22 @@
                     {
                         "access": "public",
                         "index": 0,
-                        "lineNumber": 48,
+                        "lineNumber": 53,
                         "name": "windowsChanged",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
                         "index": 1,
-                        "lineNumber": 49,
+                        "lineNumber": 55,
                         "name": "currentWorkspaceChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 2,
+                        "lineNumber": 56,
+                        "name": "tilingChanged",
                         "returnType": "void"
                     }
                 ],
@@ -1169,7 +1223,7 @@
         "classes": [
             {
                 "className": "X11Window",
-                "lineNumber": 34,
+                "lineNumber": 43,
                 "object": true,
                 "qualifiedClassName": "X11Window",
                 "superClasses": [
@@ -1181,7 +1235,7 @@
             },
             {
                 "className": "X11WindowManager",
-                "lineNumber": 105,
+                "lineNumber": 133,
                 "object": true,
                 "qualifiedClassName": "X11WindowManager",
                 "signals": [
@@ -1194,7 +1248,7 @@
                             }
                         ],
                         "index": 0,
-                        "lineNumber": 124,
+                        "lineNumber": 160,
                         "name": "windowAdded",
                         "returnType": "void"
                     },
@@ -1207,7 +1261,7 @@
                             }
                         ],
                         "index": 1,
-                        "lineNumber": 125,
+                        "lineNumber": 161,
                         "name": "windowRemoved",
                         "returnType": "void"
                     },
@@ -1220,14 +1274,14 @@
                             }
                         ],
                         "index": 2,
-                        "lineNumber": 126,
+                        "lineNumber": 162,
                         "name": "windowChanged",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
                         "index": 3,
-                        "lineNumber": 127,
+                        "lineNumber": 163,
                         "name": "monitorsChanged",
                         "returnType": "void"
                     }
@@ -1236,7 +1290,7 @@
                     {
                         "access": "private",
                         "index": 4,
-                        "lineNumber": 130,
+                        "lineNumber": 166,
                         "name": "processXEvents",
                         "returnType": "void"
                     }

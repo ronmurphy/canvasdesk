@@ -147,42 +147,61 @@ Module {
             isPropertyConstant: true
         }
         Property {
+            name: "isTiling"
+            type: "bool"
+            read: "isTiling"
+            notify: "tilingChanged"
+            index: 3
+            lineNumber: 22
+            isReadonly: true
+        }
+        Property {
             name: "monitorManager"
             type: "MonitorManager"
             isPointer: true
             read: "monitorManager"
-            index: 3
-            lineNumber: 22
+            index: 4
+            lineNumber: 23
             isReadonly: true
             isPropertyConstant: true
         }
-        Signal { name: "windowsChanged"; lineNumber: 48 }
-        Signal { name: "currentWorkspaceChanged"; lineNumber: 49 }
+        Signal { name: "windowsChanged"; lineNumber: 53 }
+        Signal { name: "currentWorkspaceChanged"; lineNumber: 55 }
+        Signal { name: "tilingChanged"; lineNumber: 56 }
         Method {
             name: "activate"
-            lineNumber: 41
-            Parameter { name: "id"; type: "int" }
-        }
-        Method {
-            name: "close"
             lineNumber: 42
             Parameter { name: "id"; type: "int" }
         }
         Method {
-            name: "minimize"
+            name: "close"
             lineNumber: 43
             Parameter { name: "id"; type: "int" }
         }
         Method {
-            name: "switchToWorkspace"
+            name: "minimize"
             lineNumber: 44
+            Parameter { name: "id"; type: "int" }
+        }
+        Method {
+            name: "switchToWorkspace"
+            lineNumber: 45
             Parameter { name: "index"; type: "int" }
         }
         Method {
             name: "moveWindowToWorkspace"
-            lineNumber: 45
+            lineNumber: 47
             Parameter { name: "windowId"; type: "int" }
             Parameter { name: "workspaceIndex"; type: "int" }
+        }
+        Method { name: "toggleTiling"; lineNumber: 48 }
+        Method {
+            name: "setStrut"
+            lineNumber: 49
+            Parameter { name: "top"; type: "int" }
+            Parameter { name: "bottom"; type: "int" }
+            Parameter { name: "left"; type: "int" }
+            Parameter { name: "right"; type: "int" }
         }
     }
 }

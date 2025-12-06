@@ -443,9 +443,11 @@ src/core/CMakeFiles/CanvasDeskCore.dir/CanvasDeskCore_autogen/mocs_compilation.c
  /home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/EWIEGA46WW/moc_X11WindowManager.cpp \
  /home/brad/Documents/canvasdesk/build/src/core/CanvasDeskCore_autogen/EWIEGA46WW/../../../../../src/core/X11WindowManager.h \
  /usr/include/qt6/QtCore/QSocketNotifier \
- /usr/include/qt6/QtCore/qsocketnotifier.h /usr/include/X11/Xlib.h \
- /usr/include/X11/X.h /usr/include/X11/Xfuncproto.h \
- /usr/include/X11/Xosdefs.h /usr/include/X11/Xft/Xft.h \
+ /usr/include/qt6/QtCore/qsocketnotifier.h /usr/include/qt6/QtCore/QDebug \
+ /usr/include/qt6/QtCore/qdebug.h /usr/include/qt6/QtCore/QJsonArray \
+ /usr/include/qt6/QtCore/qjsonarray.h \
+ /usr/include/qt6/QtCore/QJsonDocument \
+ /usr/include/qt6/QtCore/qjsondocument.h /usr/include/X11/Xft/Xft.h \
  /usr/include/freetype2/ft2build.h \
  /usr/include/freetype2/freetype/config/ftheader.h \
  /usr/include/freetype2/freetype/freetype.h \
@@ -467,8 +469,9 @@ src/core/CMakeFiles/CanvasDeskCore.dir/CanvasDeskCore_autogen/mocs_compilation.c
  /usr/include/bits/statx-generic.h \
  /usr/include/bits/types/struct_statx_timestamp.h \
  /usr/include/bits/types/struct_statx.h \
- /usr/include/X11/extensions/Xrender.h /usr/include/X11/Xutil.h \
- /usr/include/X11/keysym.h /usr/include/X11/keysymdef.h \
- /usr/include/X11/extensions/render.h /usr/include/X11/Xdefs.h \
- /usr/include/X11/Xft/XftCompat.h /usr/include/X11/extensions/Xrandr.h \
- /usr/include/X11/extensions/randr.h
+ /usr/include/X11/extensions/Xrender.h /usr/include/X11/Xfuncproto.h \
+ /usr/include/X11/Xlib.h /usr/include/X11/X.h /usr/include/X11/Xosdefs.h \
+ /usr/include/X11/Xutil.h /usr/include/X11/keysym.h \
+ /usr/include/X11/keysymdef.h /usr/include/X11/extensions/render.h \
+ /usr/include/X11/Xdefs.h /usr/include/X11/Xft/XftCompat.h \
+ /usr/include/X11/extensions/Xrandr.h /usr/include/X11/extensions/randr.h
